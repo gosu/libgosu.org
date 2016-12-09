@@ -7,6 +7,7 @@ body {
   margin: 0px;
   padding: 9px;
   font-family: "Lucida Grande", sans-serif;
+  line-height: 125%;
   background: url("background.png") top repeat-x;
   background-size: auto 512px;
 }
@@ -38,50 +39,62 @@ a img {
 
 #tabs {
   margin-top: -54px;
-  margin-left: -10px;
-  margin-bottom: 45px;
+  margin-bottom: 35px;
 }
 
-#tabs span, #tabs a {
+#tabs > * {
   padding: 10px 25px;
   margin-right: 10px;
   border-top-left-radius: 0.6em 0.5em;
   border-top-right-radius: 0.6em 0.5em;
-  background: #eee;
-  border-bottom: 1px solid #bbb;
   text-align: center;
-  font-weight: bold;
-  height: 20px;
   box-shadow: inset 0px 2px 3px white, inset 0px -1px 5px #bbb;
 }
 
 #tabs span {
+  font-weight: bold;
   background: white;
   border-bottom: 1px solid white;
   box-shadow: none;
 }
 
-#tabs *:first-child {
-  margin-left: -15px;
+#tabs a {
+  background: #eee;
+}
+
+#tabs a:hover {
+  text-decoration: none;
+}
+
+#tabs > *:first-child {
+  margin-left: -25px;
+}
+
+#tabs > *:last-child {
+  margin-right: 0px;
 }
 
 .links {
   float: right;
   clear: right;
-  padding: 20px;
+  padding: 15px 20px;
   border-radius: 0.6em 0.5em;
   width: 260px;
   margin: -15px 0em 25px 1.5em;
   box-shadow: 0px 1px 5px #999;
 }
 
-.links ul {
-  margin: 0.5em;
-  padding-left: 1em;
+.links h3 {
+  margin: 20px 0px 15px;
 }
 
-.links li {
-  margin: 0em;
+.links h3:first-child {
+  margin-top: 5px;
+}
+
+.links a {
+  display: inline-block;
+  line-height: 175%;
 }
 
 a {
@@ -90,7 +103,11 @@ a {
   text-decoration: none;
 }
 
-h1 {
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
   font-size: 115%;
   margin-top: 1.5em;
 }
@@ -104,20 +121,17 @@ small {
 }
 
 tt {
-  color: #efe;
-  text-shadow: 0px 0px 2px #373;
-  background: #333;
-  padding: 0.15em 0.35em;
-  border-radius: 3px;
-  line-height: 140%;
+  color: #333;
+  background: #eee;
+  padding: 5px 10px;
+  font-size: 125%;
+  display: inline-block;
+  line-height: 150%;
+  margin: 2px 0px;
 }
 
-ul.gems {
-  padding-left: 1.5em;
-}
-
-ul.gems li {
-  list-style: none;
+small tt {
+  padding: 3px;
 }
 
 @media (max-width: 900px) {
@@ -147,14 +161,14 @@ ul.gems li {
   #tabs {
     margin-right: 0;
   }
-  #tabs *:first-child {
+  #tabs > *:first-child {
     margin-left: 0px;
   }
   #tabs span, #tabs a {
     padding: 10px 20px;
   }
   .links {
-    width: auto;
+    width: 100%;
     margin: 0 0 20px;
     padding: 0;
     box-shadow: none;

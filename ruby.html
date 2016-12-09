@@ -10,24 +10,27 @@
 
 <body>
   <div id="main">
-    <div id="logo_container">
+    <header id="logo_container">
       <img src="website_header.png" alt="Gosu logo">
-    </div>
+    </header>
 
-    <div class="links">
-      Gosu is hosted partially on this website and on <a href="http://github.com/jlnr/gosu/">GitHub</a>.
-      <ul>
-        <li><a href="https://github.com/gosu/gosu/releases/">packaged c++ downloads</a><br>Ruby: <tt>gem install <b>gosu</b></tt></li>
-        <li><a href="http://github.com/jlnr/gosu/">source code</a></li>
-        <li><a href="http://github.com/jlnr/gosu/issues">issue tracker</a></li>
-        <li><a href="http://github.com/jlnr/gosu/wiki/Change-Log">change log</a></li>
-      </ul>
-      You can also join our low traffic IRC channel, <a href="irc://irc.freenode.org/gosu">#gosu on freenode</a>. Just don’t expect anyone to be in your time zone…
-      <p>
-      Subscribe to Gosu news and discussion via the <a href="http://www.libgosu.org/cgi-bin/mwf/forum_feeds.pl">forum’s RSS feeds</a>.
-    </div>
+    <aside class="links">
+      <h3>ask, explain, show off</h3>
+      <a href="https://www.libgosu.org/cgi-bin/mwf/forum.pl">forum</a> or
+      <a href="https://www.reddit.com/r/gosu/">subreddit</a><br>
+      <a href="https://webchat.freenode.net/?channels=gosu">#gosu on freenode</a><br>
+      <small>(tiny channel, many timezones)</small>
+      <h3>documentation</h3>
+      <a href="https://github.com/gosu/gosu/wiki/">wiki on github</a><br>
+      <a href="http://www.rubydoc.info/github/gosu/gosu">ruby reference</a><br>
+      <a href="https://www.libgosu.org/cpp">c++ reference</a><br>
+      <h3>development</h3>
+      <a href="https://github.com/gosu/gosu/">source on github</a><br>
+      <a href="https://github.com/gosu/gosu/issues">issues &amp; wishlist</a><br>
+      <a href="https://github.com/gosu/gosu/wiki/Change-Log">change log</a>
+    </aside>
           
-    <div id="tabs">
+    <nav id="tabs">
       
         
           <a href="index.html">hello</a>
@@ -45,9 +48,75 @@
           <a href="ios.html">ios</a>
         
       
-    </div>
+    </nav>
   
-    
+    <h2>Getting Started</h2>
+<p>
+  On Windows, you can install Gosu through RubyGems:
+  <br>
+  <tt>gem install <strong>gosu</strong></tt>
+  <br>
+  <a style="display: inline-block" href="https://github.com/gosu/gosu/wiki/Getting-Started-on-OS-X">Installation instructions for macOS</a>
+  |
+  <a style="display: inline-block" href="https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux">Installation instructions for Linux</a>
+</p>
+
+<h2>Example Code</h2>
+<p>
+  Gosu has a companion gem for examples (<a href="https://github.com/gosu/gosu-examples">gosu/gosu-examples</a> on GitHub).
+  <br>
+  <tt>gem install <strong>gosu-examples</strong>
+  <br>
+  <strong>gosu-examples</strong> # ...to show the example box</tt>
+  <br>
+  You can select examples from the right sidebar and jump straight into the source code by pressing <tt>S</tt>.
+  <br>
+  <img src="gosu-examples.png" width="463">
+</p>
+
+<h2>Tutorial</h2>
+<p>
+  We recommend <a href="https://github.com/gosu/gosu/wiki/Ruby-Tutorial">starting with the Ruby/Gosu Tutorial on the wiki</a>.
+  For more documentation, check out the links in the sidebar.
+</p>
+
+<h2>More useful RubyGems</h2>
+<p>
+  There are several Gems for extending Gosu.
+  Some of these libraries have not been updated in a while, so keep an eye open
+</p>
+<p>
+  <tt>gem install <strong>releasy</strong></tt> (<a href="https://github.com/Spooner/releasy">Spooner/releasy</a> on GitHub)<br>
+  Automatically distribute any Ruby game as a Windows executable or Mac app.<br>
+  Built on top of the tools from the Deployment guides in the <a href="https://github.com/gosu/gosu/wiki">documentation wiki</a>.
+</p>
+<p>
+  <tt>gem install <strong>texplay</strong></tt> (<a href="https://github.com/banister/texplay">banister/texplay</a> on GitHub)<br>
+  Pixel-based drawing on Gosu images <a href="http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=79">(forum post)</a>.
+</p>
+<p>
+  <tt>gem install <strong>ashton</strong></tt> (<a href="https://github.com/Spooner/ashton">Spooner/ashton</a> on GitHub)<br>
+  A C extension that integrates GL shaders and a particle engine with Gosu.
+</p>
+<p>
+  <tt>gem install <strong>gamebox</strong></tt> (<a href="https://github.com/shawn42/gamebox">shawn42/gamebox</a> on GitHub)<br>
+  A comprehensive game framework based on Gosu <a href="http://gamebox.io">(website)</a>.
+</p>
+<p>
+  <tt>gem install <strong>chipmunk</strong></tt> (<a href="https://github.com/beoran/chipmunk">beoran/chipmunk</a> on GitHub)<br>
+  <a href="http://chipmunk-physics.net">The popular Chipmunk physics library</a>. There’s <a href="https://github.com/gosu/gosu/wiki/Ruby-Chipmunk-Integration">example code in the wiki</a>.
+</p>
+<p>
+  <tt>gem install <strong>opengl</strong></tt> (<a href="https://github.com/larskanis/opengl">larskanis/opengl</a> on GitHub)<br>
+  The standard Ruby OpenGL gem can be used with Gosu to add 3D effects.<br>
+  <small>(Check out the <tt>gosu-examples</tt> gem for an example, or <a href="https://github.com/tjbladez/gosu-opengl-tutorials">this fine set of tutorials by tjbladez</a>.)</small>
+</p>
+<p>
+  <tt>gem install <strong>rmagick</strong></tt><br>
+  A powerful alternative to TexPlay, but very hard to distribute.</p>
+  <small>(<tt>gosu-examples</tt> comes with an example game. RMagick is mostly useful for experiments and internal tooling.)</small>
+</p>
+
 
     <div style="clear: both"></div>
   </div>

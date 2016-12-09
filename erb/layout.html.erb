@@ -10,24 +10,27 @@
 
 <body>
   <div id="main">
-    <div id="logo_container">
+    <header id="logo_container">
       <img src="website_header.png" alt="Gosu logo">
-    </div>
+    </header>
 
-    <div class="links">
-      Gosu is hosted partially on this website and on <a href="http://github.com/jlnr/gosu/">GitHub</a>.
-      <ul>
-        <li><a href="https://github.com/gosu/gosu/releases/">packaged c++ downloads</a><br>Ruby: <tt>gem install <b>gosu</b></tt></li>
-        <li><a href="http://github.com/jlnr/gosu/">source code</a></li>
-        <li><a href="http://github.com/jlnr/gosu/issues">issue tracker</a></li>
-        <li><a href="http://github.com/jlnr/gosu/wiki/Change-Log">change log</a></li>
-      </ul>
-      You can also join our low traffic IRC channel, <a href="irc://irc.freenode.org/gosu">#gosu on freenode</a>. Just don’t expect anyone to be in your time zone…
-      <p>
-      Subscribe to Gosu news and discussion via the <a href="http://www.libgosu.org/cgi-bin/mwf/forum_feeds.pl">forum’s RSS feeds</a>.
-    </div>
+    <aside class="links">
+      <h3>ask, explain, show off</h3>
+      <a href="https://www.libgosu.org/cgi-bin/mwf/forum.pl">forum</a> or
+      <a href="https://www.reddit.com/r/gosu/">subreddit</a><br>
+      <a href="https://webchat.freenode.net/?channels=gosu">#gosu on freenode</a><br>
+      <small>(tiny channel, many timezones)</small>
+      <h3>documentation</h3>
+      <a href="https://github.com/gosu/gosu/wiki/">wiki on github</a><br>
+      <a href="http://www.rubydoc.info/github/gosu/gosu">ruby reference</a><br>
+      <a href="https://www.libgosu.org/cpp">c++ reference</a><br>
+      <h3>development</h3>
+      <a href="https://github.com/gosu/gosu/">source on github</a><br>
+      <a href="https://github.com/gosu/gosu/issues">issues &amp; wishlist</a><br>
+      <a href="https://github.com/gosu/gosu/wiki/Change-Log">change log</a>
+    </aside>
           
-    <div id="tabs">
+    <nav id="tabs">
       <% for page in PAGES %>
         <% if page.basename == basename %>
           <span><%= title.downcase %></span>
@@ -35,7 +38,7 @@
           <a href="<%= page.basename %>.html"><%= page.title.downcase %></a>
         <% end %>
       <% end %>
-    </div>
+    </nav>
   
     <%= render basename %>
 

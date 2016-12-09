@@ -10,24 +10,27 @@
 
 <body>
   <div id="main">
-    <div id="logo_container">
+    <header id="logo_container">
       <img src="website_header.png" alt="Gosu logo">
-    </div>
+    </header>
 
-    <div class="links">
-      Gosu is hosted partially on this website and on <a href="http://github.com/jlnr/gosu/">GitHub</a>.
-      <ul>
-        <li><a href="https://github.com/gosu/gosu/releases/">packaged c++ downloads</a><br>Ruby: <tt>gem install <b>gosu</b></tt></li>
-        <li><a href="http://github.com/jlnr/gosu/">source code</a></li>
-        <li><a href="http://github.com/jlnr/gosu/issues">issue tracker</a></li>
-        <li><a href="http://github.com/jlnr/gosu/wiki/Change-Log">change log</a></li>
-      </ul>
-      You can also join our low traffic IRC channel, <a href="irc://irc.freenode.org/gosu">#gosu on freenode</a>. Just don’t expect anyone to be in your time zone…
-      <p>
-      Subscribe to Gosu news and discussion via the <a href="http://www.libgosu.org/cgi-bin/mwf/forum_feeds.pl">forum’s RSS feeds</a>.
-    </div>
+    <aside class="links">
+      <h3>ask, explain, show off</h3>
+      <a href="https://www.libgosu.org/cgi-bin/mwf/forum.pl">forum</a> or
+      <a href="https://www.reddit.com/r/gosu/">subreddit</a><br>
+      <a href="https://webchat.freenode.net/?channels=gosu">#gosu on freenode</a><br>
+      <small>(tiny channel, many timezones)</small>
+      <h3>documentation</h3>
+      <a href="https://github.com/gosu/gosu/wiki/">wiki on github</a><br>
+      <a href="http://www.rubydoc.info/github/gosu/gosu">ruby reference</a><br>
+      <a href="https://www.libgosu.org/cpp">c++ reference</a><br>
+      <h3>development</h3>
+      <a href="https://github.com/gosu/gosu/">source on github</a><br>
+      <a href="https://github.com/gosu/gosu/issues">issues &amp; wishlist</a><br>
+      <a href="https://github.com/gosu/gosu/wiki/Change-Log">change log</a>
+    </aside>
           
-    <div id="tabs">
+    <nav id="tabs">
       
         
           <span>hello</span>
@@ -45,41 +48,56 @@
           <a href="ios.html">ios</a>
         
       
-    </div>
+    </nav>
   
     <p>
-  Gosu is a <strong>2D game development library</strong> for the Ruby and C++ programming languages, available for <strong>macOS, Windows, and Linux (including Raspbian)</strong>. The C++ version is also available for <strong>iPad, iPhone, and iPod&nbsp;Touch</strong>. In addition, you can find a <a href="https://github.com/gosu/motion-gosu">RubyMotion compatible version here</a>.<br>
-  <small>The C++ version of Gosu is only compatible with Visual C++ 2015 when used on Windows.</small>
+  Gosu is a <strong>2D game development library</strong> for Ruby and C++.
 </p>
 
 <p>
-  Gosu provides basic building blocks for games:
+  It’s available for <strong>macOS, Windows, Linux (including Raspbian),</strong> and <a href="ios.html">iOS</a>.
+</p>
+
+<p>
+  Gosu is focused, lightweight and has few dependencies (mostly <a href="http://www.libsdl.org/">SDL 2</a>). It provides:
   <ul>
-    <li> a window with a main loop and callbacks
-    <li> 2D graphics and text, accelerated by 3D hardware</li>
-    <li> sound samples and music in various formats</li>
-    <li> keyboard, mouse, and gamepad input</li>
+    <li> a window and a main loop
+    <li> 2D graphics and text, powered by OpenGL or OpenGL&nbsp;ES
+    <li> sounds and music
+    <li> keyboard, mouse, and gamepad input
   </ul>
-
-  The extended Ruby/Gosu gem family:
-  <ul class="gems">
-    <li> <tt>gem install <strong>gosu</strong></tt><br>precompiled for Windows, <a href="https://github.com/gosu/gosu/wiki/Getting-Started-on-OS-X">macOS users see here</a>, <a href="https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux">Linux users see here</a></li>
-    <li> <tt>gem install <strong>releasy</strong></tt><br>automatically distribute any Ruby game as a Windows executable or Mac app, by <a href="https://github.com/Spooner/releasy/">Spooner</a></li>
-    <li> <tt>gem install <strong>texplay</strong></tt><br><a href="http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=79">pixel-based drawing</a> on Gosu images, by <a href="http://github.com/banister">banister</a></li>
-    <li> <tt>gem install <strong>ashton</strong></tt><br>a C extension that integrates GL shaders and a particle engine with Gosu, also <a hreF="https://github.com/Spooner/ashton">by Spooner</a></li>
-    <li> <tt>gem install <strong>gamebox</strong></tt><br><a href="http://gamebox.io">a complete game framework</a> based on Gosu, by <a href="http://github.com/shawn42">shawn42</a></a></li>
-    <li> <tt>gem install <strong>chingu</strong></tt><br><a href="https://github.com/ippa/chingu">a library that adds more game logic</a>, by <a href="http://github.com/ippa">ippa</a> (not maintained anymore)</li>
-    <li> <tt>gem install <strong>chipmunk</strong></tt><br>a <a href="http://wiki.slembcke.net/main/published/Chipmunk">popular physics library</a> with an <a href="http://github.com/jlnr/gosu/wiki/Ruby-Chipmunk-Integration">integration example in the wiki</a>
-    <li> <tt>gem install <strong>opengl</strong></tt><br>the <a href="https://github.com/larskanis/opengl">standard Ruby OpenGL gem</a> works fine with Gosu to add 3D effects<br><small>(See the included example, or <a href="http://github.com/tjbladez/gosu-opengl-tutorials">this fine bundle of tutorials by tjbladez</a>.</small></li>
-    <li> <tt>gem install <strong>rmagick</strong></tt><br>a more powerful but harder-to-distribute alternative to TexPlay, example included with Gosu
-  </ul>
-
-  There is also <a href="RubyGosu.tmbundle.zip">an experimental TextMate bundle</a> that makes Ruby/Gosu easier to use. It is generated from the <a href="http://www.libgosu.org/rdoc/">rdoc</a> every night. The best way to understand what it can do for you is to inspect it in the bundle editor.
 </p>
 
-<h1>Licensing</h1>
 <p>
-  Gosu and all documentation © 2001-2016 <a href="mailto:julian@raschke.de">Julian Raschke</a>, Jan Lücker, and other contributors. Gosu is released under the MIT license.
+  Gosu is mostly used to teach or learn Ruby or in <a href="https://ldjam.com">short game development competitions</a>.
+  It’s also a great prototyping tool and should work for indie game development, though nobody has really tried that.
+</p>
+
+<h2>Resources</h2>
+<p>
+  In addition to the documentation linked from the sidebar, there is a <a href="https://pragprog.com/book/msgpkids/learn-game-programming-with-ruby">book by Mark Sobkowicz</a> that will guide you through the creation of four different games:
+</p>
+<p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/7gNbj7n2maA" frameborder="0" allowfullscreen></iframe>
+</p>
+<p>
+  Both Gosu’s documentation and the book assume that you used Ruby before.
+</p>
+<p>
+  Some recent talks and screencasts about Gosu, or Ruby game development in general:
+  <ul>
+    <li> <a href="https://confreaks.tv/videos/rubyconf2016-attention-rubyists-you-can-write-video-games">RubyConf 2016 talk: Attention Rubyists: you can write video games, by Cory Chamblin (2016)</a>
+    <li> <a href="http://dreamingechoes.github.io/game/gosu/ruby/become-a-videogame-developer-master-with-gosu-and-ruby/">An introduction to Ruby/Gosu, by Iván González (2015)</a>
+    <li> <a href="https://www.youtube.com/watch?v=QtIlyU2Br3o">Making a Flappy Bird clone in Ruby, by Tom Dalling (2015)</a>
+    <li> <a href="https://www.youtube.com/watch?v=jJhbpY70miE">LA Ruby Conf 2014 talk: Writing Games with Ruby, by Mike Moore (2014)</a>
+    <li> <a href="https://www.youtube.com/watch?v=iLXO2FLPulI">Tutorial series: Conway’s Game of Life with Ruby/Gosu in vim, by ofcan (2013)</a>
+    <li> <a href="https://www.youtube.com/watch?v=H5_Kid3hpRs">Ruby Conf 2012 talk: Game Development and Ruby, by Andrew Nordman (2012)</a>
+  </ul>
+</p>
+
+<h2>Licensing</h2>
+<p>
+  Gosu and all documentation © 2001-2016 <a href="mailto:julian@raschke.de">Julian Raschke</a>, Jan Lücker, and other contributors. Gosu is released under the MIT licence.
 </p>
 
 
