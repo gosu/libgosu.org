@@ -18,7 +18,7 @@ end
 PAGES = [
   Page.new("Hello", "index"),
   Page.new("Ruby", "ruby"),
-  Page.new("C++ and RubyMotion", "cpp"),
+  Page.new("C++ / iOS", "cpp"),
 ]
 
 # We could use Rake rules here: http://www.virtuouscode.com/2014/04/23/rake-part-3-rules/
