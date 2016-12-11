@@ -33,7 +33,7 @@ while (1) {
     my $fh;
     open ($fh, '>', "../../potd.inc") or die "could not open potd.inc for writing";
     print $fh "Project of the Day:<br>";
-    print $fh "<a href='/cgi-bin/mwf/topic_show.pl?tid=" . $project->[0] . "'>" . $m->escHtml($project->[1]) . "</a><br>\n";
+    print $fh "<a href='/cgi-bin/mwf/topic_show.pl?tid=" . $project->[0] . "'>" . $project->[1] . "</a><br>\n";
     print $fh "<a href='/cgi-bin/mwf/topic_show.pl?tid=" . $project->[0] . "'>\n";
     print $fh "  <img src='potd.jpg' alt='Project of the Day screenshot'>\n";
     print $fh "</a><br>\n";
