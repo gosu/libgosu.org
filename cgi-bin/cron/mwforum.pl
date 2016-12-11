@@ -40,7 +40,7 @@ while (1) {
     print $fh "Discover more awesome projects in the <a href='/cgi-bin/mwf/board_show.pl?bid=2'>Gosu Showcase</a>.\n";
     close ($fh);
     # Write potd.jpg.
-    $m->resizeImage($filename, "../../potd.jpg", 276, 350, 1, 100);
+    $m->resizeImage($filename, "../../potd.jpg", 260, 350, 1, 100);
     last;
   }
 }
