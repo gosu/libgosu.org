@@ -9,3 +9,7 @@
     RewriteCond %{HTTP_HOST} !^www\.
     RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
+
+# Required for the "Project of the Day" include.
+Options +Includes
+XBitHack on
