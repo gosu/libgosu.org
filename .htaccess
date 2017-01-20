@@ -1,5 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    RewriteRule ^rdoc/(.*).html(.*)$ http://www.rubydoc.info/github/gosu/gosu/$1$2 [R=301,L]
+    RewriteRule ^rdoc/$ http://www.rubydoc.info/github/gosu/gosu/ [R=301,L]
+
     RewriteCond %{HTTPS} off
     # First rewrite to HTTPS:
     # Don't put www. here. If it is already there it will be included, if not
