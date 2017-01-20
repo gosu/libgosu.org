@@ -23,10 +23,12 @@ PAGES = [
 
 # We could use Rake rules here: http://www.virtuouscode.com/2014/04/23/rake-part-3-rules/
 # ...but it doesn't really seem worth the effort, given that this task is super fast.
+desc "Build all HTML pages"
 task :build do
   PAGES.each &:write
 end
 
+desc "Deploy all HTML pages to libgosu.org (requires git commit/push)"
 task :deploy => :build do
   sh "ssh $PROJECTS_HOST 'cd #{ENV['PROJECTS_ROOT']}/libgosu.org && git pull --rebase'"
 end
