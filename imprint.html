@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %> • Gosu</title>
+  <title>Imprint • Gosu</title>
   <link href="styles.css" rel="stylesheet">
 </head>
 
@@ -34,28 +34,42 @@
     </aside>
           
     <nav id="tabs">
-      <% for page in NAV_PAGES %>
-        <% if page.basename == basename %>
-          <span><%= title.downcase %></span>
-        <% else %>
-          <a href="<%= page.basename %>.html"><%= page.title.downcase %></a>
-        <% end %>
-      <% end %>
+      
+        
+          <a href="index.html">hello</a>
+        
+      
+        
+          <a href="ruby.html">ruby</a>
+        
+      
+        
+          <a href="cpp.html">c++ / ios</a>
+        
+      
     </nav>
   
-    <%= render basename %>
+    <h2>Imprint</h2>
+
+<p>
+  Julian Raschke<br>
+  Marienstraße 45<br>
+  30171 Hannover<br>
+  <br>
+  Phone: +49 176 99426259<br>
+  Mail: julian@raschke.de
+</p>
+
 
     <div style="clear: both"></div>
 
     <footer>
-      <% for page in FOOTER_PAGES %>
-        <% if page.basename == basename %>
-          <span><%= page.title.downcase %></span>
-        <% else %>
-          <a href="<%= page.basename %>.html"><%= page.title.downcase %></a>
-        <% end %>
+      
+        
+          <span>imprint</span>
+        
         •
-      <% end %>
+      
       <a target="_blank" href="https://www.lurado.com/privacy">privacy policy</a>
     </footer>
   </div>
