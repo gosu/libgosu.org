@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Two questions: begin/end GL and setResolution()</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=608.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=608.html#tid608'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=608.html#tid608'>Gosu Exchange</a> / Two questions: begin/end GL and setResolution()
+</div>
+</div>
+
+<div class='frm pst' id='pid4551' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4551' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4551.html#pid4551'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2011-07-07 04:14
+</div>
+<div class='ccl'>
+1. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br/><br/>I&#39;m assuming beginGL and endGL both push and pop the graphics stack respectively. However, when I used them in two different classes (using alpha), the second one will be dominate and the first one will have some weird effect. It may just be /me using the functions wrong/ but here&#39;s an example:<br/><br/>Before the boss health bar (drawn by Gosu&#39;s quads)<br/><a class='url' href='http://dl.dropbox.com/u/1333628/TechPics/MrCaffeine/error/before.png'>http://dl.dropbox.com/u/1333628/TechPics/MrCaffeine/error/before.png</a><br/><br/>After is appears (also drawn the same way)<br/><a class='url' href='http://dl.dropbox.com/u/1333628/TechPics/MrCaffeine/error/after.png'>http://dl.dropbox.com/u/1333628/TechPics/MrCaffeine/error/after.png</a><br/><br/>And here&#39;s that code<br/><a class='url' href='http://pastebin.com/a0BQSWy1'>http://pastebin.com/a0BQSWy1</a><br/><br/>I realize that I don&#39;t need beginGL and endGL to draw the quads (as I was doing before) so I don&#39;t have this problem anymore, but I DID use them and the above pictures were the results. So it just raised my eyebrow if the pushing and popping had a bug??<br/><br/>2. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br/><br/>My camera class uses the initial window size as the camera size. However, when using setResolution, this throws off the math going on in the background. For instance, some enemies do not spawn or update outside of camera view. This looks fine normally, but using a different resolution will throw off the math and enemies won&#39;t update or spawn until the &quot;virtual camera&quot; is in appropriate view which is very hard to determine.<br/><br/>So my question is what can I do do adjust the camera to the resolution size?
+</div>
+</div>
+
+<div class='brn' id='brn4551'>
+<div class='frm pst' id='pid4554' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=608.html#pid4551'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4554.html#pid4554'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-07 07:57
+</div>
+<div class='ccl'>
+I think beginGL will draw everything that is queued up to that point then allow you to draw using your own gl. Also with transparences unless you are using shaders the order is very important.<br/><br/>For your camera you can use the getters to reset your virtual camera graphics().width() and graphics().height()
+</div>
+</div>
+
+<div class='frm pst' id='pid4557' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=608.html#pid4551'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4557.html#pid4557'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-07 08:22
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I&#39;m assuming beginGL and endGL both push and pop the graphics stack respectively. However, when I used them in two different classes (using alpha), the second one will be dominate and the first one will have some weird effect.</p></blockquote><br/>beginGL basically flushes everything and then calls <code>glPushAttrib(GL_ALL_ATTRIB_BITS); glDisable(GL_BLEND);</code> - that should be the normal GL state because Gosu only messes with GL_BLEND.<br/><br/>As Basic pointed out, Gosu will flush everything and the normal Z order logic will be broken. If that might cause it, you should use enqueueGL instead :)<br/><br/><blockquote><p>&gt; setResolution</p></blockquote><br/>I think setResolution is undocumented or has some notice above it. I really want to kick it out now that we have scale(). I just have a lot of legacy code that relies on it :( - But I think there was also some question similar to yours: how to keep track of the current size without setResolution etc.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=608.html#tid608'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=608.html#tid608'>Gosu Exchange</a> / Two questions: begin/end GL and setResolution()
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=608.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

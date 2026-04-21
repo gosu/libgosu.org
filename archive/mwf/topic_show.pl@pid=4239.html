@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>__NSAutoreleaseNoPool(): ... autoreleased ...- just leaking</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4239' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=580.html#tid580'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=580.html#tid580'>Gosu Exchange</a> / __NSAutoreleaseNoPool(): ... autoreleased ...- just leaking
+</div>
+</div>
+
+<div class='frm pst' id='pid4239' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4239' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4239.html#pid4239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=619.html' >tjbladez</a>
+<span class='htt'>Date</span> 2011-04-15 22:14
+</div>
+<div class='ccl'>
+I am sporadically seeing few warnings like that when I am running my game (blast_mavens). Having troubles identifying why and where this is happening. Has anyone seen that? If you did, how did you identify the problem?<br/>Any help is appreciated.<br/>tj
+</div>
+</div>
+
+<div class='brn' id='brn4239'>
+<div class='frm pst' id='pid4240' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4240' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4240.html#pid4240'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-04-16 04:30
+<span class='htt'>Edited</span> 2011-04-16 04:39
+</div>
+<div class='ccl'>
+Huh, I know exactly what causes it in the general case, but I&#39;ve never seen it with Gosu. Are you using any Cocoa APIs directly?<br/><br/>You tend to see this a lot with SDL games when they interact with the window server (setting the window title, querying window geometry) because Cocoa makes extensive use of autorelease and SDL is sloppy and doesn&#39;t set up autorelease pools around native operating system functions, but Gosu uses Cocoa&#39;s native application run-loop so autorelease pools are allocated automatically. That makes this error kinda mysterious.<br/><br/>I notice you seem to be using multiple Window classes. I don&#39;t think this is really supported and it could be the indirect source of your NSAutoreleasePool woes. Do you see this warning when the first window (MenuWindow from the looks of it) is open before you start a game?<br/><br/>And finally: I recommend you look into the state pattern—instead of having multiple Window classes, have a single Window object that delegates its draw, update, &amp;c methods to a GameState object and put the code you currently have in your Window subclasses into GameState subclasses instead. When you want to go from menu to game or game to game over, switch out your state instead of your window.
+</div>
+</div>
+
+<div class='brn' id='brn4240'>
+<div class='frm pst' id='pid4241' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4240'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4241' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4241.html#pid4241'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=619.html' >tjbladez</a>
+<span class='htt'>Date</span> 2011-04-16 06:13
+</div>
+<div class='ccl'>
+Thank you for a prompt reply. <br/>I am not using cocoa api directly and I do get a warning for first window open before I start a game.<br/>Previously I was thinking about the delegate pattern and pushing everything to the states, but due to the amount of completely different behavior (different set of goals, functionality and availability to the rest of the objects) sticked with window subclassing. <br/>Note that I dont need multiple windows at any point in time I should only care about 1 window (which works fine for GameWindow - GameOverWindow transition) and I would imagine MenuWindow to fully close prior to start of new run loop on the GameWindow. Implementing a delegate when you are straight up dealing with different windows each responsible for its unrelated set of functionality seems like a hack. Even if you call that a state object (which is disagree with since it is not close to what traditional state and state machine represent). However if there are no solution to support smooth window-window transactions (as in close 1 window, open another one) I will change it.
+</div>
+</div>
+
+<div class='brn' id='brn4241'>
+<div class='frm pst' id='pid4246' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4241'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4246' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4246.html#pid4246'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-04-16 22:49
+</div>
+<div class='ccl'>
+Call them &quot;modes&quot; if you want; I don&#39;t see where delegating calls to different objects for different modes of operation is a hack any more than closing one window and opening another is, especially since Gosu&#39;s Window is really meant to be instantiated once and only once. Most of your code would not need to change—just create one new class that your &quot;windows&quot; inherit from (not strictly necessary), one Window subclass that just does the delegation, then make sure that you pass your single window instance to any image or sample constructors.<br/><br/>I don&#39;t see anything immediately obvious that should be causing leaked autoreleases, but from my observations I&#39;m gonna say it&#39;s probably caused by your use of multiple windows. It&#39;s also worth noting that the additional windows stay open behind, so at the game over screen you&#39;ve got the menu and the game window hanging out behind it. It seems like there are probably multiple Cocoa run loops going at this point and I&#39;m pretty sure run loops other than the main don&#39;t have autorelease pools unless you explicitly allocate them.
+</div>
+</div>
+
+<div class='brn' id='brn4246'>
+<div class='frm pst' id='pid4250' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4246'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4250.html#pid4250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-04-17 05:51
+</div>
+<div class='ccl'>
+And one more bit, the &quot;State&quot; sounds a bit weird if you think of it as a delegate. But it stems from the fact that most oldschool games will have a global &quot;int state&quot; which can then be STATE_GAME, STATE_MENU, STATE_GAME_OVER etc. But having a switch/case in draw, update, button_down,... is very messy. So Gosu games traditionally use object delegates: GameState, MenuState, GameOverState, .... They&#39;re practically the same, which is why the name stuck. It&#39;s a common pattern with Gosu, the Chingu library includes a framework for just that.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4242' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4242.html#pid4242'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-04-16 12:09
+</div>
+<div class='ccl'>
+Can you say which class is leaking? I am usually careful to set up a pool wherever it makes sense. Maybe I have forgotten one place that can be called before the window construction is finished, which would circumvent Cocoa&#39;s safety net, I suppose. E.g., a global <code>SOUND = Gosu::Sample.new(...)</code><br/>Also, Gosu uses slightly different subsets of Cocoa depending on the OS version, so it is very possible that it only happens on some computers.<br/>-<br/>In any case, Gosu was not designed to open several windows. For one thing, the GC is by design not completely reliable. But also, I didn&#39;t really take it into account when writing all three Window implementations. (I should really have put an exception in place for that, since it works on some systems, many Gosu games do it...)<br/><br/>The idea is that Window should get #resize pretty soon—the glfw branch is aimed at that—and then the need will disappear :)
+</div>
+</div>
+
+<div class='frm pst' id='pid4248' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4248.html#pid4248'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=619.html' >tjbladez</a>
+<span class='htt'>Date</span> 2011-04-16 22:56
+</div>
+<div class='ccl'>
+I am changing to code shortly to use just one Window. Thank you very much for your feedback erisdiscord and jlnr. I am curious to see if leaking will stop once it will be single window
+</div>
+</div>
+
+<div class='frm pst' id='pid4259' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4239.html#pid4239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4259.html#pid4259'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=619.html' >tjbladez</a>
+<span class='htt'>Date</span> 2011-04-19 17:52
+</div>
+<div class='ccl'>
+Fixed. Thank you for your input jlnr, erisdiscord.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=580.html#tid580'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=580.html#tid580'>Gosu Exchange</a> / __NSAutoreleaseNoPool(): ... autoreleased ...- just leaking
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4239.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Framerate Limits?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=71.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=71.html#tid71'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=71.html#tid71'>Gosu Exchange</a> / Framerate Limits?
+</div>
+</div>
+
+<div class='frm pst' id='pid249' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=249.html#pid249'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-02-03 02:10
+</div>
+<div class='ccl'>
+I&#39;m working on a smooth scrolling tile engine (a la early console RPGs).&#160; So far, I&#39;m really liking Gosu.&#160; I had tried a lua engine and a few other ruby engines, but Gosu seems to be the most comfortable.&#160; However, being very new to graphics programming in general, I&#39;m having trouble figuring out how to resolve one problem with moving my player around.&#160; Since I can&#39;t tell how to set a target FPS, I have my guy moving 32px--one tile--on each button down of an arrow key.&#160; He moves at lightspeed, leaping multiple tiles in a single depression.&#160; Can I slow him down in any way other than by reducing the number of pixels he moves in &quot;one&quot; down event?<br/><br/>Thanks in advance!
+</div>
+</div>
+
+<div class='frm pst' id='pid250' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=250.html#pid250'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-03 03:17
+</div>
+<div class='ccl'>
+Personally, I have this code in my Player class... obviously you would need to tailor it to your own game somewhat.<br/><br/>def initialize(...)<br/>&#160; ...<br/>&#160; @movement_delay = 0.2<br/>&#160; ...<br/>end<br/><br/>def pressedMovementKey(direction)<br/>&#160; return if Time.now - @last_moved &lt; @movement_delay<br/>&#160; if @facing == direction then<br/>&#160; &#160; destination = self.send(direction)<br/>&#160; &#160; if destination.empty? || destination.collectible? || destination.pushed(direction) then #Short-circuit evaluation is relied on here<br/>&#160; &#160; &#160; @y -= 1 if direction == :north<br/>&#160; &#160; &#160; @y += 1 if direction == :south<br/>&#160; &#160; &#160; @x += 1 if direction == :east<br/>&#160; &#160; &#160; @x -= 1 if direction == :west<br/>&#160; &#160; &#160; destination.playerEnteredTile(self)<br/>&#160; &#160; else<br/>&#160; &#160;&#160; puts &quot;Bump!&quot;<br/>&#160; &#160; end<br/>&#160; else<br/>&#160; &#160; @facing = direction<br/>&#160; end<br/>&#160; @last_moved = Time.now<br/>end
+</div>
+</div>
+
+<div class='frm pst' id='pid253' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=253.html#pid253'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-03 09:21
+</div>
+<div class='ccl'>
+I usually set a counter when I&#39;m moving and decrease it every frame (= update call). If it&#39;s 0, the object is allowed to move again.<br/><br/>You can actually set the target FPS via the last argument to Window#initialize, which is defaulted to 16.6666667 and specifies the millisecond duration between update calls. But if you set it to something really large, i.e. one second, hitting escape to quit the game might also take a second to happen, and the game will seem unresponsive. (I&#39;d always go with the default value.)
+</div>
+</div>
+
+<div class='frm pst' id='pid254' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=254.html#pid254'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-02-03 18:07
+</div>
+<div class='ccl'>
+Thanks for the help!&#160; I adjusted my tile movement size to a fraction of the tile size and that is working for now.&#160; I&#39;m ironing out some issues with borders as the map scrolls and it&#39;s scrolling kind of jerky, but I&#39;m making good progress for never having done this before and going off C tutorials from &#39;99.&#160; I will come back and use your suggestions to time out movement better once I get the map stuff working correctly.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=71.html#tid71'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=71.html#tid71'>Gosu Exchange</a> / Framerate Limits?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=71.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

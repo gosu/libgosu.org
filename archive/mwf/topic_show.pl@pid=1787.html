@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1787 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Crash in Image class for Release Only</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1787' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=273.html#tid273'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=273.html#tid273'>Gosu Exchange</a> / Crash in Image class for Release Only
+</div>
+</div>
+
+<div class='frm pst' id='pid1761' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1761.html#pid1761'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=96' >jblovloss</a>
+<span class='htt'>Date</span> 2009-11-23 05:24
+<span class='htt'>Edited</span> 2009-11-26 07:47
+</div>
+<div class='ccl'>
+There&#39;s a strange bug that I haven&#39;t quite been able to track, even after searching through the source code of Gosu itself. It&#39;s strange because it only occurs in release mode. What essentially happens is that whenever I try to load a png image in, I do so through my own class called a GlowImage (gosu low-level) which simply keeps both the bmp and image pointers and makes sure they stay matched... that way I can edit the image directly any time I want. I found it hard to deal with the static Gosu Image so this was my way around it.<br/><br/>Well, that&#39;s all well and good, except it crashes in release mode.<br/><br/>Granted, this seems like an odd enough pipeline to introduce some bugs, but having run through it step by step, I don&#39;t see how. Here&#39;s how the process goes:<br/><br/>1. Some setup stuff happens for my Application class. It goes to load media<br/><br/>2. I load my images into a table of enums that I use to organize my media. ( bwk_set is a macro for a data manager class )<br/><br/>&#160; &#160; bwk_set(&#160; BwkSlots::BWK_IMG_LOGO,&#160; &#160; &#160;&#160; _loadImage( L&quot;logo.png&quot; ));<br/><br/>3. Inside the _loadImage function, we see this:<br/><br/>&#160;&#160; GlowImage * BwkApplication::_loadImage( std::wstring file ) {<br/>&#160; &#160; &#160;&#160; return new GlowImage(graphics(), L&quot;.\\resources\\images\\&quot; + file );<br/>&#160;&#160; }<br/><br/>4. So far so good... I think. So next, in GlowImage&#39;s appropriate constructor, we see that it simply NULLs some variables and then leaps down to my &quot;loadFromFile&quot; function.<br/><br/>5. Here&#39;s the loadFromFile function, where gfx is a (&amp;) reference to the graphics class of the main application:<br/><br/>&#160; &#160; // Delete the previous image and bitmap, if they exist<br/>&#160; &#160; if( _img ) {<br/>&#160; &#160; &#160; &#160; delete _img;<br/>&#160; &#160; }<br/>&#160; &#160; if( _bmp ) {<br/>&#160; &#160; &#160; &#160; delete _bmp;<br/>&#160; &#160; }<br/><br/>&#160; &#160; // Create a new image and bitmap using the supplied filename<br/>&#160; &#160; _bmp = new Gosu::Bitmap(Gosu::quickLoadBitmap(fileName));<br/>&#160; &#160; _img = new Gosu::Image(_gfx, *_bmp, true);<br/><br/>! The EXACT place of the crash is Gosu::Image::setPixel !<br/><br/>Any ideas? <br/><br/>***************************************************************************************************<br/>FIXED<br/><br/>Sort of.<br/><br/>I removed my &quot;GlowImage&quot; crud and just used Images straight. I still wish you could go from an Image to a Bitmap, but at least everything works really nice. I probably confused auto pointers by doing all that pointer logic.
+</div>
+</div>
+
+<div class='frm pst' id='pid1773' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1773.html#pid1773'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-23 18:03
+</div>
+<div class='ccl'>
+Phew, no idea… actually setPixel is pretty harmless, so that&#39;s a surprise. :) Definitely sounds like memory corruption occurs earlier somewhere. Did you try slimming the program down to the minimum of what you illustrated, and seeing if it works then?<br/><br/>Also, I think the behavior of uninitialized variables may well be different between Release and Debug. Did you double-check all of those? (I don&#39;t trust pointers unless they&#39;re from boost too. ;) )
+</div>
+</div>
+
+<div class='frm pst' id='pid1781' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1781.html#pid1781'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=96' >jblovloss</a>
+<span class='htt'>Date</span> 2009-11-25 04:01
+<span class='htt'>Edited</span> 2009-11-25 04:09
+</div>
+<div class='ccl'>
+Alright, so the crash only occurs when I have tileable set to true. It needs to be set to true or the levels look reeeeeally odd, but if i set them all to false, it runs. This is not an issue in debug mode. I&#39;ll continue investigating it, but there you go.<br/><br/>__EDIT__<br/><br/>I found a hack, lol. Since I have my own wrapper image class, i just made draw stretch the image a bit and draw with an offset so the border is chopped off ;)<br/><br/>I may have done something funny which caused the existence of borders to crash in the first place, I dunno. I can email you the source code if you like, jlnr, it&#39;s going to be FOSS anyway, I just need it to stay private since its still a wet painting until I&#39;m finished.
+</div>
+</div>
+
+<div class='frm pst' id='pid1787' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1787.html#pid1787'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=96' >jblovloss</a>
+<span class='htt'>Date</span> 2009-11-26 06:06
+</div>
+<div class='ccl'>
+Little update. The problem is somewhere in Gosu::Graphics::createImage. It only happens when i set hard borders. For my big images I get some type of crash with setpixel. This I have gathered from the code to happen inside a particular statement scope:<br/><br/>__Graphics.cpp___<br/>&#160; &#160; if ((borderFlags &amp; bfTileable) == bfTileable &amp;&amp;<br/>&#160; &#160; &#160; &#160; srcWidth == srcHeight &amp;&amp;<br/>&#160; &#160; &#160; &#160; (srcWidth &amp; (srcWidth - 1)) == 0 &amp;&amp;<br/>&#160; &#160; &#160; &#160; srcWidth &gt;= 64)<br/>&#160; &#160; { ... }<br/>________________<br/><br/> My 50x50 tiles clearly dont fit so I wanna fix those first. Less code to worry about. Those dont crash on setPixel! They crash on... who knows? It&#39;s a weird stack error and the call stack is basically an explosive jumble of &quot;omg dlls!&quot;<br/><br/>&#160; I have -NO- idea if this is met:&#160; &#160;&#160; if (srcWidth &gt; maxSize - 2 || srcHeight &gt; maxSize - 2)&#160; &#160; 50x50 seems too small to hit that. In fact it looks more like 1000+ x 1000+ from the Texture implementation. So lets say thats not hit either.<br/><br/> *sigh* I suspect it has something to do with pointers. I&#39;m going to try keeping a boost pointer to the bitmap and image instead of normal pointers - there may be some confusion in there. I wonder what happens different in release regarding that
+</div>
+</div>
+
+<div class='frm pst' id='pid1789' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1789.html#pid1789'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2009-11-27 12:22
+</div>
+<div class='ccl'>
+I too had problems with weird crashes in the release build with MSVS. Most of the time I forgot to initialize a variable or did something stupid with points that the debug build just ignores. I guess you have the same problem with your code.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=273.html#tid273'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=273.html#tid273'>Gosu Exchange</a> / Crash in Image class for Release Only
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1787.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

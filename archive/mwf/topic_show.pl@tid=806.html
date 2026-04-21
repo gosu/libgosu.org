@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Lightshifters - a full fov spaceflight sim</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=806.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=806.html#tid806'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=806.html#tid806'>Gosu Showcase</a> / Lightshifters - a full fov spaceflight sim
+</div>
+</div>
+
+<div class='frm pst' id='pid6197' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6197' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6197.html#pid6197'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2012-08-27 23:23
+<span class='htt'>Edited</span> 2012-09-10 10:08
+</div>
+<div class='ccl'>
+I&#39;ve always wanted to have a 3D game with a full 360 degree field of view. (Rumor has it, Boba Fett&#39;s helm gives him a 360 degree view).<br/>So, i started implementing a mapping of global 3D coordinates to player local 3D coordinates (some Quaternions &amp; Matrices) and a mapping of player local 3D coordinates to Spherical Coordinates.<br/>Spherical coordinates are (distance, azimuth, inclination), ([0, inf), [-180, 180), [-90, 90)).<br/>azimuth=0 is forward, azimuth = -180 or azimuth = 180 is backward and azimuth = 90 is to the right<br/>inclination = 0 is forward, inclination 90 is up and inclination -90 is down.<br/>next i mapped azimuth and inclination to x and y coordinates of the Gosu window.<br/>distance i used for sizing the objects so they appear to be further away by being smaller.<br/><br/>Here is a gif showing all 3 possible rotations (right, down and right-spin)<br/><img class='emi' src='http://oli-obk.de/demo.gif' alt=''/><br/>Yes, these labels are correct, when you turn right, everything moves left, when you turn down, everything moves up, and when you spin right, everything spins left.<br/>As you can see, when you turn down, everything that is behind you (right and left screen borders) moves down.<br/><br/>There is a <a class='url' href='http://www.youtube.com/watch?v=cI0xGstaqPw'>Youtube video</a> of an early version. Apparently it looks &quot;a bit trippy&quot; ;)<br/>The repos at <a class='url' href='https://github.com/oli-obk/lightshifters'>github</a> is where i keep the most recent working copy of the game.<br/><br/>For easy linux compilation you need the current git gosu installed.<br/><br/>For windows compilation msvc2012 needs to be installed to the default path. Use codelite (a crossplatform IDE) to compile the sandbox_msvc project.<br/>Gosu precompiled binaries are in the repos.<br/><br/>To play in multiplayer, you need to forward udp AND tcp ports 50042 (as a client udp 50042 is sufficient)<br/>Currently connecting to a server needs to be done by passing the argument &quot;connectTo=address&quot; on the command line.<br/><br/>You can also shoot odd gray balls, which steal points from other players when hit by your gray ball.<br/>You gain score by collecting trolls. The closest troll is highlighted in a green sphere.
+</div>
+</div>
+
+<div class='brn' id='brn6197'>
+<div class='frm pst' id='pid6208' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=806.html#pid6197'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6208.html#pid6208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2012-09-02 16:48
+<span class='htt'>Edited</span> 2012-09-02 17:23
+</div>
+<div class='ccl'>
+now it also runs under windows, the controls are still a bit messed up due to some bug, so keep your mouse in the center of the screen and only move it slightly away from the center to turn in space.<br/><br/>download here: <a class='url' href='http://oli-obk.de/lightshifters.zip'>Lightshifters uploaded 02.09.2012 18:37</a><br/><br/>Note: this has been compiled in windows 7 with msvc2012. Since I have no clue about windows compilation it might not run on your machine. Please post your system and whether this runs on it or not.<br/><br/>[edit] <b>Note: it does not run on windows XP, msvc2012 cannot (yet) compile for winxp</b>
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=806.html#tid806'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=806.html#tid806'>Gosu Showcase</a> / Lightshifters - a full fov spaceflight sim
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=806.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

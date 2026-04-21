@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2638 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Different appearance of drawText and Gosu::Font</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2638' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=397.html#tid397'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=397.html#tid397'>Gosu Exchange</a> / Different appearance of drawText and Gosu::Font
+</div>
+</div>
+
+<div class='frm pst' id='pid2634' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2634.html#pid2634'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=156.html' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-06-09 20:21
+<span class='htt'>Edited</span> 2010-06-09 22:11
+</div>
+<div class='ccl'>
+O HAI,<br/><br/>Looks like drawing a text using drawText renders it differently than using a Gosu::Font. I&#39;ve been looking at the code and, I think, it&#39;s because Gosu::Font doubles the height and then scales down the text, messing it up big time. For big texts may work properly, but small texts like menu items, scaling it down blurs the text, hence drawText is sharper.<br/><br/>In Font.cpp, line 73, there&#39;s a &quot;&#160; &#160; pimpl-&gt;height = fontHeight * 2; // Auto-AA! &quot; statement. I guess that Auto-AA is some kind of trick to get auto antialiasing, but given that the new SDL_ttf engine that Gosu uses automatically anti aliases text, there&#39;s no need to use it.<br/><br/>To get the same appearance with drawText and Gosu::Font, you have to change in Font.cpp:<br/><br/>line 73: remove &quot;* 2&quot;<br/>line 88: remove &quot;/ 2&quot;<br/>line 101: remove &quot;/ 2&quot;<br/>remove or comment out lines 107 and 108<br/><br/>That will do the trick ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2638' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2638.html#pid2638'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-10 02:02
+<span class='htt'>Edited</span> 2010-06-10 02:26
+</div>
+<div class='ccl'>
+Even anti-aliased text looked better for me when I did that, especially when I moved it to odd positions (like xx.5, which often happens when centering). Without the doubling, letters are restricted to have integer sizes, which is pretty rough for small fonts.<br/><br/>I realize that some operating systems, especially Linux, are extremely un-blurry when it comes to fonts. They effectively try to make every line a perfect one-pixel line that is aligned with the screen&#39;s pixel grid. I am not sure if that would work well with Gosu… the image would have to avoid being drawn at xx.5 positions by itself. :/ Also, what happens in cases when Gosu secretly scales the whole screen behind your back, like when it scales down the resolution because the screen is not big enough? I think the OS X&#39;ish approach of just not caring about pixel boundaries would work much better. So I should actually apply the &quot;custom anti-aliasing&quot; to createText too. ;P<br/><br/>Also: Yay, finally a user cares about typography and has some standards even for a gamedev lib! ;)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=397.html#tid397'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=397.html#tid397'>Gosu Exchange</a> / Different appearance of drawText and Gosu::Font
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2638.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

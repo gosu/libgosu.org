@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1901 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>What am I doing wrong when drawing primitives?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1901' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=276.html#tid276'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=276.html#tid276'>Gosu Exchange</a> / What am I doing wrong when drawing primitives?
+</div>
+</div>
+
+<div class='frm pst' id='pid1777' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1777.html#pid1777'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-11-24 23:34
+</div>
+<div class='ccl'>
+This is weird. I&#39;m trying to draw a rectangle with an &#39;outside&#39; border, so I use draw_line with an Y coordinate 1 pixel less than the rectangle&#39;s. But the border is drawn with 1-pixel gap! <br/><br/>I don&#39;t understand why... If I draw two lines one with an Y of 100 and another one with Y value of 99, they should appear together... Am I right?<br/><br/>Related code: <a class='url' href='http://gist.github.com/242335'>http://gist.github.com/242335</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid1790' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1790.html#pid1790'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-27 19:11
+</div>
+<div class='ccl'>
+I don&#39;t have a gap. Just goes to show that draw_line should not use GL_LINE but instead do it&#39;s own magic - GL_LINE is a mess I will never understand :(<br/><br/>For consistency&#39;s sake, I am probably going to rip out draw_triangle, draw_quad and draw_line and replace them by independent pieces of code that will create a 1x1 pixel white texture and use that. Window#draw_xx will remain as a shortcut for Gosu::draw_xx. I just wish I had time to get to it faster :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1791' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1791.html#pid1791'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-11-27 19:30
+</div>
+<div class='ccl'>
+as far as I can tell.. it&#39;s draw_line()<br/><br/>draw_line(0, 0, color, 100, 0, color)&#160;&#160; doesn&#39;t give me a visible line. (drawing from X&#160; / Y&#160;&#160; 0/0&#160; --&gt; 100 / 0)
+</div>
+</div>
+
+<div class='frm pst' id='pid1792' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1792.html#pid1792'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-27 19:40
+</div>
+<div class='ccl'>
+Oh and as far as contributions go, does anyone have any idea how draw_line *should* work? I think it&#39;s fine that draw_quad excludes its bottom-right pixel, but I am not sure what to do about draw_line.
+</div>
+</div>
+
+<div class='frm pst' id='pid1807' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1807.html#pid1807'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-11-29 23:07
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I don&#39;t have a gap. Just goes to show that draw_line should not use GL_LINE but instead do it&#39;s own magic - GL_LINE is a mess I will never understand :(</p></blockquote><br/>:(<br/><br/><blockquote><p>&gt; Oh and as far as contributions go, does anyone have any idea how draw_line *should* work? I think it&#39;s fine that draw_quad excludes its bottom-right pixel, but I am not sure what to do about draw_line.</p></blockquote><br/>draw_quad excludes pixels? Why? If we tell draw_quad to draw a rectangle in the given coordinates, why does it exclude the last col &amp; row of pixels? It&#39;s not intuitive (at least not for me).
+</div>
+</div>
+
+<div class='frm pst' id='pid1820' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1820.html#pid1820'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-30 16:27
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; draw_quad excludes pixels? Why?</p></blockquote><br/>I have given my view on it in <a class='url' href='topic_show.pl@pid=221..html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=221.</a><br/><br/>Maybe the actual explanation is that I just hand things to OpenGL which does the same, and that it has never made my code uglier to justify a change :)<br/><br/>It&#39;s just a bit complicated to think about the lines now …
+</div>
+</div>
+
+<div class='frm pst' id='pid1900' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1900.html#pid1900'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=100.html' >renton_django</a>
+<span class='htt'>Date</span> 2009-12-14 21:16
+</div>
+<div class='ccl'>
+Hi benko,<br/><br/>What is the resolution of your window and what is the native resolution of your monitor? If you are running in fullscreen, then try setting the window resolution the same as your monitor&#39;s native resolution.
+</div>
+</div>
+
+<div class='frm pst' id='pid1901' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1901.html#pid1901'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-12-14 21:45
+</div>
+<div class='ccl'>
+Wow, you are raising a VERY valid point. Thanks. It never occured to me that when I do the full-screen stretching via OpenGL, one-pixel lines lose their last bit of sense. <br/><br/>For now only Linux is affected, but other platforms will follow. Changing the resolution is not worth the hassle. The Linux port has become a lot less problematic since I gave up.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=276.html#tid276'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=276.html#tid276'>Gosu Exchange</a> / What am I doing wrong when drawing primitives?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1901.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

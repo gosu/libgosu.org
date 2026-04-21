@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8866 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>hotswapping code with pry</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8866' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1273.html#tid1273'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1273.html#tid1273'>Gosu Exchange</a> / hotswapping code with pry
+</div>
+</div>
+
+<div class='frm pst' id='pid8865' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8865' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8865.html#pid8865'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1254' >ajtmccann</a>
+<span class='htt'>Date</span> 2016-04-01 05:21
+</div>
+<div class='ccl'>
+Hello, I was wondering, what is the correct way to achieve hotswapping of code using the current versions of gosu and pry?&#160; It&#39;s something I can&#39;t seem to achieve, exactly, going by the original description of the process.&#160; <br/><br/>What happens is, my game window hangs when I enter &#39;load filename.rb&#39; after making and saving some changes (in an external text editor).&#160; If I use the &#39;edit filename.rb&#39; command from within pry, upon saving my changes a brand new game window is initialized. in which the changes are reflected, but in which the key press that triggers binding.pry no longer functions.&#160; Closing that window reopens pry, and when I then enter &#39;continue&#39;, the original game window reopens in the state it was left, with the changes correctly reflected, and binding.pry again triggerable.&#160; &#160; <br/><br/>Any help would be appreciated.
+</div>
+</div>
+
+<div class='brn' id='brn8865'>
+<div class='frm pst' id='pid8866' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8866.html#pid8865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8866.html#pid8866'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-04-01 22:53
+</div>
+<div class='ccl'>
+It sounds as if you should avoid calling <code>SomeWindow.new.show</code> in your <code>.rb</code> file, and instead you should find a way to patch the currently running window. I don&#39;t have much experience with pry, though.<br/><br/>I&#39;ve recently used flgr&#39;s &quot;again&quot; gem for live code reloading and it worked quite well:<br/><br/><a class='ura' href='topic_show.pl@tid=1219.html'>https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=1219</a><br/><br/>This is the git repo - it says it&#39;s a RubyMotion game, but it also works in plain Ruby:<br/><br/><a class='ura' href='https://github.com/jlnr/monstris'>https://github.com/jlnr/monstris</a><br/><br/>(Now if I could only find the time to finish the actual game...)
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1273.html#tid1273'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1273.html#tid1273'>Gosu Exchange</a> / hotswapping code with pry
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8866.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

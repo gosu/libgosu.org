@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Available fonts / default font / fixed width font question</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=51.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=51.html#tid51'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=51.html#tid51'>Gosu Exchange</a> / Available fonts / default font / fixed width font question
+</div>
+</div>
+
+<div class='frm pst' id='pid150' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=150.html#pid150'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-02 05:48
+</div>
+<div class='ccl'>
+Julian and others,<br/><br/>Any recommendations on how to deal with unknown availability of fonts on systems?&#160; I had been just sticking with Gosu::default_font since I saw a doc comment that it would most likely work on all systems.&#160; Recently though, I became frustrated with the default font because it is not a fixed width font so high score tables where getting really ugly looking.&#160; So, I load up &quot;courier&quot; now and that works on my windows box but I&#39;m not sure what fonts / font names are used over win/ mac / linux etc.&#160; Is there anything thing I can do with regard to getting a reliable fixed-width font?&#160; Can you distribute with a font?&#160; Is there by chance a call to Gosu::default_fixed_width_font..?&#160; (joke) ..&#160; Anyway, just looking for any tips anyone would want to provide on how you normally deal with fonts in Gosu / Ruby.<br/><br/>Thanks all!<br/><br/> 
+</div>
+</div>
+
+<div class='frm pst' id='pid158' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=158.html#pid158'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-01-02 17:40
+</div>
+<div class='ccl'>
+You can distribute a game with a font. You just need to create a font folder inside the game folder. And when you load a font do something like this<br/><br/>@font = Gosu::Font.new(self, &quot;dat/font/SP-Normal.ttf&quot;, 20)<br/><br/>Here I save the font in dat/font/ folder.&#160; And the font file name is SP-Normal.ttf. It has to be the filename, not the font name :)
+</div>
+</div>
+
+<div class='frm pst' id='pid163' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=163.html#pid163'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-02 21:10
+</div>
+<div class='ccl'>
+Thanks for the tip Hima-- I guess I hadn&#39;t really thought about just including fonts I want to use right in my /media directory.&#160; Seems to work great though!
+</div>
+</div>
+
+<div class='frm pst' id='pid168' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=168.html#pid168'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-04 13:24
+<span class='htt'>Edited</span> 2009-01-04 14:32
+</div>
+<div class='ccl'>
+But you have to keep in mind that this does not work on Linux due to limitations of the API used there :( Also, you have to have to redistribution rights for the font etc. etc., which limits you to a small number of fonts again.<br/><br/>I wonder if you should just use one of the &quot;web safe fonts&quot;: <a class='url' href='http://en.wikipedia.org/wiki/Web-safe_fonts'>http://en.wikipedia.org/wiki/Web-safe_fonts</a><br/><br/>If your user has a browser to download your game, they should also have all these fonts. I&#39;ll put it on my ToDo list to see if they really, really work on Linux, but if any of you wants to try it before I get to boot my VM, any feedback is welcome. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid174' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=174.html#pid174'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-04 16:11
+</div>
+<div class='ccl'>
+Thanks for that link Julian.&#160; On this topic- it seems mysterious to me that the following works:<br/><br/>I had courier working under Gosu by just originally doing: <br/><br/>@font = Gosu::Font.new(window, &quot;Courier&quot;, 20)<br/><br/>The mystery to me is that I don&#39;t actually have a font file name named &quot;Courier&quot;.&#160; In /windows/fonts the filename is called &quot;cour.ttf&quot;.&#160; How did Gosu know to pick the right font?&#160; Is there some kind of abstraction layer?&#160; Is this an OS level thing that correctly found it?&#160; Is it reading from the &quot;name&quot; of the font and not the &quot;filename&quot; ?<br/><br/>Anyway, good points on the whole legality of distributing fonts!&#160; I think you are right that I should just use web safe fonts.&#160; I just want to understand how Gosu will lookup the font names so I know how to call the fonts in a Gosu::Font.new call so that they grab the right web safe ones.&#160; Any tips?<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid179' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=179.html#pid179'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-04 23:11
+</div>
+<div class='ccl'>
+Yes, TTF fonts contain a name string that is different from the filename. Gosu just tells every operating system to fetch the Courier font and they know what file is the right one for that (that&#39;s why you sometimes have to manually rebuild font tables on Linux). In fact, if Gosu wants to load a TTF file on Windows, it has to load the actual file, then specify the name that&#39;s inside the TTF file for drawing, which is why there is a small TTF file parser contained within Gosu (duh).
+</div>
+</div>
+
+<div class='frm pst' id='pid181' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=181.html#pid181'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-05 03:57
+</div>
+<div class='ccl'>
+Thanks for providing further information Julian!&#160; Hope that &#39;duh&#39; wasn&#39;t because I asked something too stupid..!&#160; ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid184' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=184.html#pid184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-05 08:59
+</div>
+<div class='ccl'>
+Nah, more about having to parse binary TTF files just for one string ;)
+</div>
+</div>
+

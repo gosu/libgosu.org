@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 849 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Setting Gosu on Mac OS X problems... [FIX0RED]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d849' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=143.html#tid143'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=143.html#tid143'>Gosu Exchange</a> / Setting Gosu on Mac OS X problems... [FIX0RED]
+</div>
+</div>
+
+<div class='frm pst' id='pid838' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=838.html#pid838'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-09 18:03
+</div>
+<div class='ccl'>
+I&#39;m not sure what I&#39;m doing wrong but I cannot get Boost recognized by Xcode. I recently got a Mac so I&#39;m not used to the environment. :p<br/>I downloaded the latest boost and copied the boost folder from that into &quot;/usr/local/include&quot;. I could not find &quot;Edit Active Project&quot; So I just edited the header search path in the Project Settings and Project Target instead.<br/><br/>I think everything else is fine though. Thanks. :]<br/><br/>BTW: how do you have the time to answer all of our annoying questions?
+</div>
+</div>
+
+<div class='frm pst' id='pid839' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=839.html#pid839'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-09 20:32
+</div>
+<div class='ccl'>
+Project&gt;Edit Active Target does the same as right-clicking the target in the list to the left and editing it there, and you should add /usr/local/include to the header search paths in both configurations (not .../boost itself). So, you should actually be fine. If you want you can upload the zipped project, though.<br/><br/>And hah, every answer means one other feature isn&#39;t implemented on that day :P ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid841' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=841.html#pid841'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-09 22:12
+</div>
+<div class='ccl'>
+Found the problem. My Include file is this:<br/><br/>/Developer/usr/include<br/>Test<br/>It compiles fine but now the GDB ( or something ) says it gets interrupted and GosuTest returns with a status or value of 5.<br/>Also the _dyld_dyld_fatal_error shows on a little bar above the code. The window doesn&#39;t show up. ( I&#39;m using the basic code from setting up Gosu on OSX )<br/><br/>:[
+</div>
+</div>
+
+<div class='frm pst' id='pid842' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=842.html#pid842'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-09 23:03
+</div>
+<div class='ccl'>
+There is a difference between /usr/local. /usr gets mapped to the SDK in /Developer, /usr/local doesn&#39;t, so you should be fine if you put everything into /usr/local/include and use it from there…<br/><br/>And there should be a message about which dynamic library is missing. Which one is it? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid848' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=848.html#pid848'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-10 03:12
+</div>
+<div class='ccl'>
+Well the problem about boost stopped when I did that...<br/>I didn&#39;t see any libraries missing... lemme check.
+</div>
+</div>
+
+<div class='frm pst' id='pid849' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=849.html#pid849'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-10 03:16
+</div>
+<div class='ccl'>
+Ummmm:<br/><br/>[Session started at 2009-06-09 22:14:33 -0500.]<br/>dyld: Library not loaded: @executable_path/../Frameworks/Gosu.framework/Versions/A/Gosu<br/>&#160; Referenced from: /Users/brianpeppers/Documents/GosuTest/build/Debug/GosuTest.app/Contents/MacOS/GosuTest<br/>&#160; Reason: image not found<br/><br/>The Debugger has exited due to signal 5 (SIGTRAP).The Debugger has exited due to signal 5 (SIGTRAP).<br/><br/>[Session started at 2009-06-09 22:14:44 -0500.]<br/>Loading program into debugger…<br/>GNU gdb 6.3.50-20050815 (Apple version gdb-962) (Sat Jul 26 08:14:40 UTC 2008)<br/>Copyright 2004 Free Software Foundation, Inc.<br/>GDB is free software, covered by the GNU General Public License, and you are<br/>welcome to change it and/or distribute copies of it under certain conditions.<br/>Type &quot;show copying&quot; to see the conditions.<br/>There is absolutely no warranty for GDB.&#160; Type &quot;show warranty&quot; for details.<br/>This GDB was configured as &quot;i386-apple-darwin&quot;.tty /dev/ttys001<br/>warning: Unable to read symbols for &quot;@executable_path/../Frameworks/Gosu.framework/Versions/A/Gosu&quot; (file not found).<br/>warning: Unable to read symbols from &quot;Gosu&quot; (not yet mapped into memory).<br/>Program loaded.<br/>sharedlibrary apply-load-rules all<br/>run<br/>[Switching to process 183 local thread 0x2d03]<br/>Running…<br/>dyld: Library not loaded: @executable_path/../Frameworks/Gosu.framework/Versions/A/Gosu<br/>&#160; Referenced from: /Users/brianpeppers/Documents/GosuTest/build/Debug/GosuTest.app/Contents/MacOS/GosuTest<br/>&#160; Reason: image not found<br/>(gdb) <br/><br/>Yeah..... dunno what this means. Only had Xcode for three days. ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid851' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=851.html#pid851'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-10 09:10
+</div>
+<div class='ccl'>
+Ah, ok, so it&#39;s Gosu itself that is missing. You have to set up the &quot;Copy Files&quot; build phase as outlined in the GettingStartedOnOsx wiki page. If you do this, building will copy Gosu.framework into the .app where it needs to be.
+</div>
+</div>
+
+<div class='frm pst' id='pid853' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=853.html#pid853'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-10 15:59
+</div>
+<div class='ccl'>
+I thought I did already... Hmmmm.
+</div>
+</div>
+
+<div class='frm pst' id='pid854' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=854.html#pid854'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-10 16:08
+<span class='htt'>Edited</span> 2009-06-10 16:30
+</div>
+<div class='ccl'>
+When I go to &quot;New Build Phase&quot; I drag the Gosu.Framework into the Path and I set the thingie above to Framework.<br/>However there is no &quot;OK&quot; button. I just press &quot;X&quot;. Is that where I&#39;m going wrong?<br/><br/>EDIT: <br/>When I do the above nothing branches out like your screen shot on the tutorial did. How you &quot;OK&quot; it?
+</div>
+</div>
+
+<div class='frm pst' id='pid855' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=855.html#pid855'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-10 16:37
+</div>
+<div class='ccl'>
+No, in the Info window of the build phase you just tell it to point to &quot;Frameworks&quot;. The text field is just in case you want to specify another path. Then you look up your target (not executable) in the left pane of Xcode, expand it and drag Gosu.framework on the Copy Files build phase.
+</div>
+</div>
+
+<div class='frm pst' id='pid856' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=856.html#pid856'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-10 18:12
+</div>
+<div class='ccl'>
+Ah! You can click it!<br/>It&#39;s working 100% fine now. Thanks Julian.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=143.html#tid143'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=143.html#tid143'>Gosu Exchange</a> / Setting Gosu on Mac OS X problems... [FIX0RED]
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=849.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

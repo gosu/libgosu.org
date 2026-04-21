@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1355 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Compiled Chipmunk files</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1355' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=82.html#tid82'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=82.html#tid82'>Extending Gosu</a> / Compiled Chipmunk files
+</div>
+</div>
+
+<div class='frm pst' id='pid307' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=307.html#pid307'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=52.html' >bentglasstube</a>
+<span class='htt'>Date</span> 2009-02-11 08:22
+<span class='htt'>Edited</span> 2009-02-11 16:56
+</div>
+<div class='ccl'>
+This one works for me using the latest ruby one-click installer (the mingw compiled version). It will not work with the older MS compiled versions of ruby afaik.&#160; I have it in C:\Ruby18\lib\ruby\site_ruby\1.8\i386-msvcrt\chipmunk.so.&#160; I am not terribly good with compiling things in this fashion so ymmv. Hope this helps.<br/><br/>Edit:<br/><br/>I realize now that the version of ruby I have installed is not the one easily found by searching google for &quot;ruby one-click installer&quot; so here is a link to the version I am using: <a class='url' href='http://www.akitaonrails.com/files/ruby_devkit-186-p279.msi'>http://www.akitaonrails.com/files/ruby_devkit-186-p279.msi</a> and the article discussing its existence: <a class='url' href='http://www.akitaonrails.com/2008/7/26/still-playing-with-ruby-on-windows'>http://www.akitaonrails.com/2008/7/26/still-playing-with-ruby-on-windows</a>.&#160; In any case this chipmunk.so should (theoretically) work for anyone who has the linked version of ruby installed.<br/><br/>Second Edit:<br/><br/>I got to another computer to test out the file on a fresh ruby install and it worked perfectly for me.&#160; Here are the steps I took to get it working:<br/><br/> * Install ruby from <a class='url' href='http://www.akitaonrails.com/files/ruby_devkit-186-p279.msi'>http://www.akitaonrails.com/files/ruby_devkit-186-p279.msi</a> (make sure you uninstall any old versions of ruby you might have)<br/> * Add C:\Ruby18\bin to your PATH variable (the installer unfortunately doesn&#39;t do this for you)<br/> * Install gosu via gem install gosu --platform=mswin32<br/> * Download chipmunk.so (attached) and throw it in C:\Ruby18\lib\ruby\site_ruby\1.8\i386-msvcrt\<br/><br/>I&#39;m not really sure if that path needs to be exact for the last step but that&#39;s where it installed when I compiled it and I don&#39;t really know if there is a better place for it so I leave it there and it works.&#160; If anyone knows better about the ruby inclusion directory hierarchy and has a better idea where to put it or how this could be packaged up nicely, listen to them instead of me.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/7/307/chipmunk.so'>chipmunk.so</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid308' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=308.html#pid308'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-11 19:34
+<span class='htt'>Edited</span> 2009-02-11 19:37
+</div>
+<div class='ccl'>
+Works just fine with my One-Click Ruby (#26), so I&#39;ll link this thread from the relevant wiki pages :)<br/><br/>Also, I attached a Universal bundle for OS X.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/8/308/chipmunk.bundle'>chipmunk.bundle</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid314' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=314.html#pid314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=52.html' >bentglasstube</a>
+<span class='htt'>Date</span> 2009-02-13 17:32
+</div>
+<div class='ccl'>
+Rather than having to copy the chipmunk.so file to an arbitrary directory, I figured out how to put it in a gem.&#160; Download this and do gem install chipmunk --local and it should sort everything out for you.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/14/314/chipmunk-4.1.0-i386-mswin32.gem'>chipmunk-4.1.0-i386-mswin32.gem</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid330' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=330.html#pid330'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2009-02-20 03:56
+</div>
+<div class='ccl'>
+So these were compiled solely for Windows?<br/><br/>I&#39;ve been trying to get ruby chipmunk and gosu working on this Ubuntu box for a while tonight but have failed miserably so far, and have no gem-building knowledge...
+</div>
+</div>
+
+<div class='frm pst' id='pid331' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=331.html#pid331'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-20 13:30
+</div>
+<div class='ccl'>
+Never tried this on Ubuntu, but on OS X you have to go into the ruby directory of the Chipmunk source bundle and run &#39;ruby extconf.rb&#39;, then &#39;make&#39;. That should give you a chipmunk.so file that you can move around and require from your Ruby scripts.
+</div>
+</div>
+
+<div class='frm pst' id='pid334' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=334.html#pid334'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2009-02-20 21:54
+</div>
+<div class='ccl'>
+Yeah, I downloaded the actual Chipmunk source code and ran extconf.rb / make...I&#39;d prefer to have a gem, but using the shared lib isn&#39;t a problem.
+</div>
+</div>
+
+<div class='frm pst' id='pid1049' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1049.html#pid1049'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-28 18:45
+</div>
+<div class='ccl'>
+Since Chipmunk is still progressing and the libraries posted here are already outdated, one pragmatic piece of advice is to extract the chipmunk.dll (or chipmunk.bundle) file from this game&#39;s trial:<br/><br/><a class='url' href='http://howlingmoonsoftware.com/crayonball.php'>http://howlingmoonsoftware.com/crayonball.php</a><br/><br/>(Kudos to ippa @ #gosu for the hint ;))<br/><br/>Will work with Ruby 1.8 only, but at least it&#39;s probably stable. In any case, it is more recent than the 4.10 version linked from the Chipmunk main site, and I couldn&#39;t figure out how to build the Ruby extension from SVN on a Mac.<br/><br/>Also, it looks like a nice indie title :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1351' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1351.html#pid1351'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=107.html' >aimjiel</a>
+<span class='htt'>Date</span> 2009-08-24 17:39
+</div>
+<div class='ccl'>
+I am new, and unsure if this should really be here, but, for those of you on linux having trouble with chipmunk, here is a gem and .so compiled on ubuntu jack.<br/><br/><a class='url' href='http://jolierouge.net/downloads/Chipmunk-4.1.0.gem'>http://jolierouge.net/downloads/Chipmunk-4.1.0.gem</a><br/><br/>And a compressed version, in case I fudged the gem packaging<br/><br/><a class='url' href='http://jolierouge.net/downloads/gem.tar.bz2'>http://jolierouge.net/downloads/gem.tar.bz2</a><br/><br/>I hope this helps.<br/>/Jason
+</div>
+</div>
+
+<div class='frm pst' id='pid1355' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1355.html#pid1355'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-08-25 12:56
+<span class='htt'>Edited</span> 2009-08-25 13:00
+</div>
+<div class='ccl'>
+If we&#39;re adding our own binaries:<br/><br/><a class='url' href='http://www.libgosu.org/mwf/attachments/55/1355/chipmunk.so'>Chipmunk 4.1.0, Ruby 1.9, Ubuntu 9.4</a> (basically <a class='url' href='http://files.slembcke.net/chipmunk/release/ChipmunkLatest.tgz'>ChipmunkLatest.tgz</a>, patched for Ruby 1.9 (<a class='url' href='http://www.libgosu.org/mwf/attachments/55/1355/diff.txt'>diff</a>))
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/55/1355/chipmunk.so'>chipmunk.so</a>  (0B)</div>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/55/1355/diff.txt'>diff.txt</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1356' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1356.html#pid1356'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-25 14:16
+</div>
+<div class='ccl'>
+Nice work :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1612' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1612.html#pid1612'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-10-04 19:49
+</div>
+<div class='ccl'>
+hey i hadn&#39;t seen this. could you do a bundle for 1.9 too ? :) then i&#39;ll just stick it in the gem and the horror is over...? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1883' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1883.html#pid1883'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2009-12-10 20:53
+</div>
+<div class='ccl'>
+Could you please reupload the chipmunk.so? The forum change destroyed all attachments I think.
+</div>
+</div>
+
+<div class='frm pst' id='pid1884' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1884.html#pid1884'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-12-11 01:57
+</div>
+<div class='ccl'>
+Wurst, why not just use the gem?
+</div>
+</div>
+
+<div class='frm pst' id='pid1886' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1886.html#pid1886'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2009-12-11 16:46
+</div>
+<div class='ccl'>
+With a gem it always tells me, that <br/>Ruby/lib/ruby/gems/1.9.1/gems/chipmunk-4.1.0/lib/chipmunk.so<br/>is missing.
+</div>
+</div>
+
+<div class='frm pst' id='pid1887' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1887.html#pid1887'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-12-11 17:02
+<span class='htt'>Edited</span> 2009-12-11 17:19
+</div>
+<div class='ccl'>
+God knows man, your system seems to have a lot of troubles with a lot of things related to ruby hehe :) are you on a 64 bit system?
+</div>
+</div>
+
+<div class='frm pst' id='pid1890' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl1890' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=1890.html#pid1890'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2009-12-12 10:43
+</div>
+<div class='ccl'>
+No, I am using XP 32 bit.<br/>Chipmunk is the only gem that makes problems yet. All others worked fine :/
+</div>
+</div>
+
+<div class='brn' id='brn1890'>
+<div class='frm pst' id='pid3494' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1355.html#pid1890'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3494' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3494.html#pid3494'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-11-07 23:06
+</div>
+<div class='ccl'>
+Since this thread is still being referenced - chipmunk can now be installed in most systems, including Linux and OSX with gem install chipmunk. I&#39;ll try it on win 64 later.
+</div>
+</div>
+
+<div class='brn' id='brn3494'>
+<div class='frm pst' id='pid3495' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1355.html#pid3494'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3495' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3495.html#pid3495'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-11-08 01:16
+</div>
+<div class='ccl'>
+it will only work on win64 with the rubyinstaller devkit, since the platform gems for windows are 32 bit only
+</div>
+</div>
+
+<div class='brn' id='brn3495'>
+<div class='frm pst' id='pid3496' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1355.html#pid3495'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3496' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3496.html#pid3496'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-11-08 03:33
+</div>
+<div class='ccl'>
+Is there any chance of getting a 64 bit gem built? It doesn&#39;t really bother me, as I suppose I can just tell people to install the devkit when they install ruby.&#160; However, just though I&#39;d ask.
+</div>
+</div>
+
+<div class='brn' id='brn3496'>
+<div class='frm pst' id='pid3497' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1355.html#pid3496'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3497.html#pid3497'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-11-08 05:43
+</div>
+<div class='ccl'>
+sure, if there&#39;s anyone with a win64 system, i can give instructions how to build a 64 bit gem and push it
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=82.html#tid82'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=82.html#tid82'>Extending Gosu</a> / Compiled Chipmunk files
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1355.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

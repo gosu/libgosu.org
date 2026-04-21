@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.7.19 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=357.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=357.html#tid357'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=357.html#tid357'>Gosu News</a> / Gosu 0.7.19 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=357.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2377' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2377.html#pid2377'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-24 16:16
+</div>
+<div class='ccl'>
+Hello,<br/><br/>Even though there are still some problems left with Linux/RVM and apparently Ruby 1.9.2 on OS X, I decided to release Gosu 0.7.19 in time for the currently running Ludum Dare competition. Excuse the delay, the first item took a lot longer than expected.<br/><br/>As usual, the release is available on GoogleCode and as a RubyGem.<br/><br/>Changes:<br/><br/>* Mac: Fixed custom TTF loading on 64-bit OS X 10.6 (thanks Tri&amp;Alex for trying it out); see GettingStartedOnOsx for necessary Xcode project setup instructions.<br/>* All: Renamed the semi-documented gosuToRadianScale to degreesToRadian and vice versa (in Ruby, instance methods of Numeric). gosuToRadians and radiansToGosu remain unchanged. Sorry for anyone who already used this and has code breaking now. I only know of one person though, who agreed with the change. :)<br/>* C++: Sockets should work on 64-bit systems now.<br/>* Ruby: Added Gosu::enable_undocumented_retrofication. It globally disables all texture bilinear filtering. Will be removed when proper interface is available, please put this in a &quot;try&quot; block when using. This is provided so developers can avoid the hard-to-distribute ruby-opengl gem to achieve this effect. (Hey, ippa. ;) )
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2377)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2377' style='display:none;'>jlnr</span><a href='post_add.pl@pid=2377.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2383' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2383.html#pid2383'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-25 19:45
+</div>
+<div class='ccl'>
+If anyone should run into problems with <code>RubyGosu App.app</code>, this might be because there is one line missing from <code>Resources/gosu/run.rb</code>:<br/><br/><code><br/>require &#39;gosu/patches&#39;<br/>require &#39;gosu/swig_patches&#39; # previously missing<br/>require &#39;Main&#39;<br/></code><br/><br/>Just add this line and Image.from_text should work again.<br/><br/>Also, I somehow managed to STILL have a bug in <code>Gosu::angle_diff</code> that can be monkey-patched as follows:<br/><br/><code><br/>module Gosu<br/>&#160; alias broken_angle_diff angle_diff<br/>&#160; def angle_diff(a, b)<br/>&#160; &#160; broken_angle_diff((a%360.0+360) % 360.0, (b%360.0+360) % 360.0)<br/>&#160; end<br/>end<br/></code><br/><br/>Sorry, I will push a bugfix release out shortly, but not before the end of this LD. Unless somebody runs into an unpatchable bug, of course.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2383)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2383' style='display:none;'>jlnr</span><a href='post_add.pl@pid=2383.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2385' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2385.html#pid2385'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-04-26 20:53
+</div>
+<div class='ccl'>
+Pardon my ignorance , but what is so important about this version that you needed to release it absolutely for LD ?
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2385)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2385' style='display:none;'>ickylevel</span><a href='post_add.pl@pid=2385.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2386' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2386.html#pid2386'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-26 23:00
+</div>
+<div class='ccl'>
+Well, it was a good motivation to wrap up what I had. :P<br/><br/>Mostly it was that usually a bunch of Ludum Dare games would use ruby-opengl to do the &quot;retrofication&quot; thing, then everybody ran into trouble when deploying. It&#39;s just, this time nobody wanted to do a retro-looking game, so it didn&#39;t really matter.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2386)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2386' style='display:none;'>jlnr</span><a href='post_add.pl@pid=2386.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=357.html#tid357'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=357.html#tid357'>Gosu News</a> / Gosu 0.7.19 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=357.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=357.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

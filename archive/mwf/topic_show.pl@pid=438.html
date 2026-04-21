@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 438 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Text capabilities?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d438' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=40.html#tid40'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=40.html#tid40'>Gosu Exchange</a> / Text capabilities?
+</div>
+</div>
+
+<div class='frm pst' id='pid95' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=95.html#pid95'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2008-12-07 04:05
+</div>
+<div class='ccl'>
+So, I have been assigned to the task of adding a GUI to the MUD client I created. Would Gosu be a good choice to do this with? Can it support multiple windows? Can it support some of the same functionality as Ncurses (static objects, like a prompt line, but with the scrolling MUD text above, etc.)? And, lastly, do extra threads seems to screw with Gosu? <br/><br/>&#160; Thanks in advance,<br/>&#160; &#160; &#160; &#160; &#160;&#160; Timothy. ^_^
+</div>
+</div>
+
+<div class='frm pst' id='pid96' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=96.html#pid96'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-07 06:43
+</div>
+<div class='ccl'>
+Julian could give you a more definitive answer, but I think Gosu might not be what you are looking for for this particular project. It does not support multiple windows, and more importantly does not include a text buffer of *any* sort, let alone ncurses-like functionality. All text is rendered as open-gl textures. Which is not to say you could not implement your own scrolling text buffer... but I can&#39;t think off-hand how you&#39;d do it. Gosu is much more intended for graphical, mostly 2D games with input usually being supplied single-key-a-time by keyboard/gamepad, or input via mouse.<br/><br/>As for a good alternative, that depends on what language you are looking at. Were you intending to write in Ruby, or C++? I assume it&#39;s one of the two if you were looking at Gosu.<br/><br/>Again, though, my word isn&#39;t final on this; Julian may pop up at any moment and point out some undocumented feature that makes Gosu just *perfect* for writing a MUD UI. Though, I doubt it, because his documentation is pretty good, honestly, so I doubt he&#39;d leave something like that out.
+</div>
+</div>
+
+<div class='frm pst' id='pid109' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=109.html#pid109'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-12-09 14:46
+</div>
+<div class='ccl'>
+Extra threads problably won&#39;t hurt as long as all drawing happens while Window#draw is executing, but multiple Windows are a no-go with Gosu (esp. since there is no way to specify the Z-order or positions between them). :(
+</div>
+</div>
+
+<div class='frm pst' id='pid434' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=434.html#pid434'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=70' >leviathan</a>
+<span class='htt'>Date</span> 2009-04-13 04:13
+</div>
+<div class='ccl'>
+I did manage to do a mud client in Gosu using eventmachine.<br/><br/>An entire 3d scene is rendered in the client using opengl in response to input being returned from the MUD server. The mud text renders to the screen and I have a small inputbox on the bottom that you can type into and hit enter to send the text to the server.<br/><br/>The only real problem I had was that I never implemented a scroll back of the buffer of incoming text. So, if there are players chatting and too much mud spam comes in, I can&#39;t scroll back as you would on a game such a Wow or using common mud clients.
+</div>
+</div>
+
+<div class='frm pst' id='pid435' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=435.html#pid435'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=70' >leviathan</a>
+<span class='htt'>Date</span> 2009-04-13 04:17
+</div>
+<div class='ccl'>
+....so, I&#39;m sure this roadblock could be solved with clever programming, making a custom scroll system for the buffer,&#160; but I never really cared to try and when I looked around, I didn&#39;t find anything supporting it on Gosu. <br/><br/>Now that I&#39;ve come back again, there might be someone out there that has tackled this problem, and I may benefit from it.
+</div>
+</div>
+
+<div class='frm pst' id='pid438' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=438.html#pid438'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-04-15 00:18
+</div>
+<div class='ccl'>
+Nice. For anything that involves scrolling, <code>Window#clip_to</code> usually solves some headaches :)
+</div>
+</div>
+
+<div class='frm pst' id='pid452' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=452.html#pid452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=70' >leviathan</a>
+<span class='htt'>Date</span> 2009-04-20 07:38
+</div>
+<div class='ccl'>
+Got any samples of clip_to being used for a simulated window that can be scrolled? 
+</div>
+</div>
+
+<div class='frm pst' id='pid455' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=455.html#pid455'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-04-20 14:43
+</div>
+<div class='ccl'>
+Hmm, how should the result look like? :)<br/><br/>My usual approach to scrolling (in general) is to have a pair of screen_x/screen_y variables that are the position of the upper left corner of the screen on the map, then subtract those from all my drawing coordinates. If you only want to scroll things within a rectangular view, it&#39;d be<br/><code><br/>clip_to(l, r, w, h) { @draw_things x - @screen_x, y - @screen_y, ... }<br/></code>
+</div>
+</div>
+
+<div class='frm pst' id='pid457' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=457.html#pid457'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=70' >leviathan</a>
+<span class='htt'>Date</span> 2009-04-22 20:14
+</div>
+<div class='ccl'>
+Thanks for the reply, <br/>I&#39;d love to see a sample of scrolling text up/down using clip_to.
+</div>
+</div>
+
+<div class='frm pst' id='pid498' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=498.html#pid498'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=76.html' >big_love</a>
+<span class='htt'>Date</span> 2009-05-06 08:12
+</div>
+<div class='ccl'>
+Hi there!<br/>I&#39;m planning on working on a pretty text-heavy game right now and am learning Gosu as well.<br/><br/>I was perusing these forums and this particular post caught my eye. Since I&#39;m trying to figure out this very problem, I decided to post an example of how I plan on implementing this.<br/><br/>Without further ado: <br/><br/><a class='url' href='http://gist.github.com/107429'>http://gist.github.com/107429</a><br/><br/>Now, this is a pretty rudimentary implementation, but you can see from the comments how it might be accomplished. I think it doesn&#39;t need saying, but you could easily implement a method like this and abstract it out into a class that provides methods of shifting the text up or down a line at a time or a specified arbitrary amount. That being said, I hope the comments explain the code well enough, but here&#39;s the gist.<br/><br/>Basically, the code clips an area of the screen that is 1/7th the height of the screen. I then use the word_wrap method to generate an arbitrary number of lines of text, and draw them to the screen. As each second passes, an offset is determined and applied to each lines Y position, which causes the text to either scroll up or down.<br/><br/>Hope this helps!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=40.html#tid40'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=40.html#tid40'>Gosu Exchange</a> / Text capabilities?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=438.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

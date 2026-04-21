@@ -1,0 +1,45 @@
+include Gosu
+
+class Hunter < Entity
+  
+  attr_reader :frags, :color
+  
+  def initialize(game, color)
+    super(game)    # Entity will define @game
+    @accel = H_ACCEL
+    @color = color
+    @angle = 0
+    @last_angle = 0
+    @frags = 0
+  end
+  
+  def update(preys)
+    # Find the closest prey and accelerate towards it
+    closest = find_closest(preys)
+    # if closest is too close, eat it
+    if distance(closest.x, closest.y, @x, @y) < H_RADIUS
+      closest.eaten = true
+      @frags += 1
+    end
+    # take the angle from the hunter to the prey and run along that path
+    temp_ang = angle(@x, @y, closest.x, closest.y)
+    # using differential approximation (that's calculus) to predict the
+    # best angle to accelerate toward. Multiply by 4 for better results.
+    # Cuts about 10sec off the average.
+    @angle = temp_ang + 4*(temp_ang - @last_angle)
+    # prevent any weirdness if angle crosses from 359 to 0
+    @angle = temp_ang if (temp_ang - @last_angle).abs > 300
+    @last_angle = temp_ang
+    accelerate(@angle)
+    move
+  end
+  
+  def draw
+    @game.draw_square(@x, @y, H_RADIUS, @color)
+    # these squares just show the angle they are accelerating toward
+    @game.draw_square(@x + offset_x(@angle, 20),
+                      @y + offset_y(@angle, 20), 2, 0xccffffff)
+  end
+
+end
+

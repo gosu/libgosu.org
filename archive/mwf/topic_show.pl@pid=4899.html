@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>draw_line y coordinate off by one?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4899' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=648.html#tid648'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=648.html#tid648'>Gosu Exchange</a> / draw_line y coordinate off by one?
+</div>
+</div>
+
+<div class='frm pst' id='pid4899' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4899' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4899.html#pid4899'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=870.html' >psylem</a>
+<span class='htt'>Date</span> 2011-10-05 14:42
+</div>
+<div class='ccl'>
+Hi folks, the following lines of code produce unexpected results. Is it just me?<br/><br/>draw_line(0,0, Gosu::Color::YELLOW, 0,10, Gosu::Color::YELLOW, 999)<br/>draw_line(0,0, Gosu::Color::YELLOW, 10,0, Gosu::Color::YELLOW, 999)<br/><br/>This should produce two lines from the top left of my window, one vertical and one horizontal. The horizontal line is missing until I do this...<br/><br/>draw_line(0,1, Gosu::Color::YELLOW, 0,11, Gosu::Color::YELLOW, 999)<br/>draw_line(0,1, Gosu::Color::YELLOW, 10,1, Gosu::Color::YELLOW, 999)<br/><br/>I&#39;m using whatever comes with OSX when you do all that gem jazz.<br/><br/>ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]
+</div>
+</div>
+
+<div class='brn' id='brn4899'>
+<div class='frm pst' id='pid4901' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4901.html#pid4901'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-10-05 18:08
+</div>
+<div class='ccl'>
+Checked your code and I have the same thing, but with vertical line.
+</div>
+</div>
+
+<div class='frm pst' id='pid4902' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4902.html#pid4902'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-10-06 01:23
+</div>
+<div class='ccl'>
+It&#39;s an unfortunate OpenGL bug, or implementation detail, or something. I think Julian has mentioned before that OpenGL doesn&#39;t really have a good, consistent way to draw a line onscreen. On some platforms, the lines will be drawn in exactly the right place; on others, they will be off by one in either direction. If you can use pre-made images of lines instead, you&#39;ll be better off. :C
+</div>
+</div>
+
+<div class='frm pst' id='pid4903' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4903' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4903.html#pid4903'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-06 02:11
+</div>
+<div class='ccl'>
+What I do for this is create a 1x1 pixel white image and #draw that coloured and scaled to render orthogonal lines, rather than using #draw_line. This ensures that the lines are always pixel-perfect and will be drawn consistently in situations like this (especially true when you are trying to draw rectangular frames).
+</div>
+</div>
+
+<div class='brn' id='brn4903'>
+<div class='frm pst' id='pid4904' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4903'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4904.html#pid4904'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-10-06 04:01
+</div>
+<div class='ccl'>
++1 This is what I was trying to suggest, but expressed more clearly. C:
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid4937' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4937' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4937.html#pid4937'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=870.html' >psylem</a>
+<span class='htt'>Date</span> 2011-10-09 14:38
+</div>
+<div class='ccl'>
+Thanks for the workaround, I can live with this since I&#39;m only using this function currently for debugging collision detection. I&#39;d suggest noting the issue and workaround in the documentation... <a class='url' href='../../rdoc/Gosu/Window.html#method-i-draw_line'>http://www.libgosu.org/rdoc/Gosu/Window.html#method-i-draw_line</a><br/><br/>On a related point, can anyone think of a way to get the colour value of a pixel? Perhaps then we could test for glitchy behavior on start up and use an offset based on results. Then draw_line wouldn&#39;t be so useless, and I&#39;m guessing it&#39;s more efficient than the 1x1 image workaround. How can I find out more about the Gosu::Window.gl function?
+</div>
+</div>
+
+<div class='brn' id='brn4937'>
+<div class='frm pst' id='pid4938' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4937'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4938' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4938.html#pid4938'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-09 15:26
+</div>
+<div class='ccl'>
+I made a note to add it to the docs ASAP.<br/><br/>You can take a look at <code>examples/OpenGLIntegration.rb</code> to see how <code>gl</code> can be used. But I will actually replace <code>draw_line</code> by a replacement that uses a 1x1px image, so that is not a good plan for the long term. And in the short term, I am not convinced that there is a speed difference at all :)
+</div>
+</div>
+
+<div class='brn' id='brn4938'>
+<div class='frm pst' id='pid4941' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4938'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4941.html#pid4941'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-09 17:11
+</div>
+<div class='ccl'>
+Yeah, using images is unlikely to be slower and trying to hack the current <code>#draw_line</code> to work would be orders of magnitude slower (the error offset is not consistent across the screen!).
+</div>
+</div>
+
+<div class='frm pst' id='pid4943' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4938'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4943' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4943.html#pid4943'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=870.html' >psylem</a>
+<span class='htt'>Date</span> 2011-10-10 00:20
+</div>
+<div class='ccl'>
+Cool, I was just guessing. I&#39;ve not peered under the hood to see how Gosu works yet.<br/><br/>BTW Spooner, I seem to get consistent results across the screen. When I make a wrapper method that just ups the y coordinate by one it works perfectly. I assumed it was consistently off by one (platform specifically or something). But if your suggesting that&#39;s not the case, I&#39;ll forget about hacking it.
+</div>
+</div>
+
+<div class='brn' id='brn4943'>
+<div class='frm pst' id='pid4945' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4899.html#pid4943'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4945.html#pid4945'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-11 00:10
+</div>
+<div class='ccl'>
+I mainly noticed this effect when drawing rectangular boxes. Some boxes would be drawn correctly, but other ones, at other positions on the screen, would have one or both the sides off by one. It seemed to be dependent on position on the screen and also seemed to be consistent across runs of the game. I&#39;m on win7x64 using an NVidia card.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=648.html#tid648'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=648.html#tid648'>Gosu Exchange</a> / draw_line y coordinate off by one?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4899.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

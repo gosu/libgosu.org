@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9283 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Question about Gosu::Window#update_interval</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9283' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1363.html#tid1363'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1363.html#tid1363'>Gosu Exchange</a> / Question about Gosu::Window#update_interval
+</div>
+</div>
+
+<div class='frm pst' id='pid9281' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9281' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9281.html#pid9281'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2017-10-21 11:12
+</div>
+<div class='ccl'>
+Hi JLNR,<br/><br/>quick question : is the instance attribute update_interval a constant value that is set up during Gosu::Window creation, or is that variable updated regarding the real FPS we are getting ?<br/><br/>I&#39;m asking this because lot&#39;s of frameworks are passing the delta_time within the update method, and Gosu is not if I&#39;m not wrong. And it would be really good to have such a value, corresponding to the really elapsed time between two frames.<br/><br/>Something like :<br/><br/>def draw(dt)<br/>&#160; # so that we can use dt to calculate things, considering frame drop<br/>end<br/><br/>is that update_interval aware of frame drop ? Doesn&#39;t seem so.<br/><br/>For sure I could use Gosu::milliseconds to calculate this difference, but I don&#39;t want to reinvent something that is already there :)
+</div>
+</div>
+
+<div class='brn' id='brn9281'>
+<div class='frm pst' id='pid9283' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9283.html#pid9281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9283' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9283.html#pid9283'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-10-21 16:33
+</div>
+<div class='ccl'>
+<code>update_interval</code> (both the constructor argument, and the r/w property) controls the target framerate of Gosu. However, because Gosu usually waits for a vsync each frame, higher values than 60 (or whatever your screen uses) don&#39;t work.<br/><br/>The vsync part is actually becoming a bit of an issue. When I first wrote Gosu, CRT screens started being replaced by TFT flatscreens which all had a 60 Hz refresh rate, and I hoped that 60 Hz would be *the* standard framerate for a long time. But I&#39;ve now received issue reports on GitHub from users with 40 Hz(!) laptop screens, and many desktop screens are running at 75 Hz all the way up to 144 Hz. And some unlucky people probably run their computer at 30 Hz because their HDMI cable can&#39;t do 4K at 60 Hz etc... Gosu&#39;s model of always running at 60 FPS is sadly not flexible enough for the reality of today&#39;s screens.<br/><br/>If you want to work with delta time, I suggest you use a really small value for <code>update_interval</code>, maybe 5, so that Gosu will max out the screen&#39;s Hz if possible. And then you measure the frame length yourself using <code>Gosu.milliseconds</code> (from one <code>update</code> call to the next), and move your objects accordingly.
+</div>
+</div>
+
+<div class='brn' id='brn9283'>
+<div class='frm pst' id='pid9284' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9283.html#pid9283'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9284.html#pid9284'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2017-10-21 16:35
+</div>
+<div class='ccl'>
+So my simple question got a pretty complete answer ! Thanks, as always ! :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1363.html#tid1363'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1363.html#tid1363'>Gosu Exchange</a> / Question about Gosu::Window#update_interval
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9283.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

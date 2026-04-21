@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8301 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Enemy should trigger a bullet</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8301' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1177.html#tid1177'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1177.html#tid1177'>Gosu Exchange</a> / Enemy should trigger a bullet
+</div>
+</div>
+
+<div class='frm pst' id='pid8286' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8286' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8286.html#pid8286'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-02-22 20:06
+</div>
+<div class='ccl'>
+Hi Everyone,<br/><br/>I have currently some difficulties to implement enemy action / shooting, if an enemy is &quot;close&quot; to the player object. My problem is how do I trigger a shot from an array of bullets?<br/><br/>I have two arrays: An enemy array and a bullet array. Each Enemy gets a number of bullets. The enemy should trigger one bullet (not the whole array) if Gosu::distance(enemy.x, 0, @player.x, 0) &lt; 15 is true.<br/><br/>Thx for having a look at my code. I appreciate every message. Please ask, if something in the code looks confusing. I still learn to code, unfortunatley it seems that I do not have any talent for it.<br/><br/>Since the forum does not have any code highlighting, I&#39;ve used cloud app to share the code:<br/><br/><a class='ura' href='http://cl.ly/code/2M2w2K2u2h0j'>http://cl.ly/code/2M2w2K2u2h0j</a>
+</div>
+</div>
+
+<div class='brn' id='brn8286'>
+<div class='frm pst' id='pid8287' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8286'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8287' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8287.html#pid8287'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-02-22 20:48
+<span class='htt'>Edited</span> 2015-02-22 20:54
+</div>
+<div class='ccl'>
+When enemy is close to player, it will shoot ONE bullet. But problem is that he does it every game tick. You have to remember that each line of the code is executed 60 time per seconds, which means when you are close to enemy, he shoots 60 bullets per second.<br/><br/>To fix your code, you have to add some delay between shots. The best way (and probably only one) is to use some variable.<br/><br/>The code:<br/><code><br/>class Enemy<br/>&#160; def initialize<br/>&#160; &#160; ...<br/>&#160; &#160; @delay=0 #initialize the variable<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; ...<br/>&#160; &#160; @delay-=1 #decrease the variable so delay isn&#39;t infinite<br/>&#160; end<br/>&#160; <br/>&#160; def shoot<br/>&#160; &#160; return if @delay &gt; 0 #don&#39;t shoot if delay is not finished<br/>&#160; &#160; bullet = @bullets.find { |bullet| not bullet.shot } <br/>&#160; &#160; if bullet<br/>&#160; &#160; &#160; @delay = 60 #delay shot for 60 game ticks (one second)<br/>&#160; &#160; &#160; bullet.shot = true<br/>&#160; &#160; &#160; bullet.sample.play<br/>&#160; &#160; end<br/>&#160; end<br/>...<br/>end</code><br/><br/>Tip:<br/>Gosu::distance is for calculating distance between two points. When comparing only one coordinate, it may be more efficient to use <code>(enemy.x - @player.x).abs</code> instead.
+</div>
+</div>
+
+<div class='brn' id='brn8287'>
+<div class='frm pst' id='pid8288' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8287'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8288' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8288.html#pid8288'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-02-23 18:18
+</div>
+<div class='ccl'>
+Thank you for the help. I have indeed ignored the code execution 60 times a second. However, now it seems that the bullet gets triggered (I hear the sample play) but there is rarely a bullet on the screen. I have not discovered the pattern behind it yet. It&#39;s odd. Your code already helped me.
+</div>
+</div>
+
+<div class='brn' id='brn8288'>
+<div class='frm pst' id='pid8289' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8288'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8289' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8289.html#pid8289'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-02-23 20:47
+</div>
+<div class='ccl'>
+You set <code>bullet.shot=true</code>, which only makes bullet updated and drawn. But to make your enemy actually shoot the bullet, you need to set it&#39;s initial position (probably at enemy&#39;s &quot;shootpoint&quot;). As you made currently, the bullet appears &quot;somewhere&quot; and you can&#39;t see it.
+</div>
+</div>
+
+<div class='brn' id='brn8289'>
+<div class='frm pst' id='pid8290' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8289'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8290' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8290.html#pid8290'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-02-23 21:02
+</div>
+<div class='ccl'>
+Should not this (in the bullet class - see linked file in the initial post)<br/><br/>&#160; @x = @entity.x<br/>&#160; @y = @entity.y<br/><br/>takes care of that?
+</div>
+</div>
+
+<div class='brn' id='brn8290'>
+<div class='frm pst' id='pid8291' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8290'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8291' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8291.html#pid8291'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-02-24 07:32
+</div>
+<div class='ccl'>
+I misread your post a bit, you said the bullet appears, only rarely. This @x=... should work, but I see another problem: <code>Array.new(5) { Bullet.new(enemy, window) }</code> It creates array filled with the same bullet. So your enemy shoots the same bullet every time and he won&#39;t shoot when this bullet is still of the screen. You have to make array of five instances of bullets.
+</div>
+</div>
+
+<div class='brn' id='brn8291'>
+<div class='frm pst' id='pid8295' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8291'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8295' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8295.html#pid8295'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-02-25 13:12
+</div>
+<div class='ccl'>
+I think when I create the array like this:<br/><br/>@bullets = Array.new(5) { Bullet.new(self, window) } <br/><br/>I do not have 5 identical objects, this would be the case if I create the array like this<br/><br/>@bullets = Array.new(5, Bullet.new(self, window)<br/><br/>or did I misinterpret your answer? So the @bullets array should hold 5 different bullet objects to my understanding.
+</div>
+</div>
+
+<div class='brn' id='brn8295'>
+<div class='frm pst' id='pid8296' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8295'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8296' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8296.html#pid8296'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-02-25 16:28
+</div>
+<div class='ccl'>
+Yes, it should hold different bullets, and the way you did now makes one bullet. One instance of Bullet object can&#39;t be shot multiple times.<br/><br/>There are two (or more) approaches to make array filled with unique objects:<br/><br/>First:<br/><code>@bullets = [ Bullet.new(self, window), Bullet.new(self, window), Bullet.new(self, window), Bullet.new(self, window), Bullet.new(self, window) ]</code><br/><br/>Second (more suitable for bigger arrays):<br/><code>@bullets = []<br/>5.times{ @bullets &lt;&lt; Bullet.new(self, window) }</code>
+</div>
+</div>
+
+<div class='brn' id='brn8296'>
+<div class='frm pst' id='pid8297' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8296'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8297' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8297.html#pid8297'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-02-25 18:40
+</div>
+<div class='ccl'>
+Actually, passing a block to Array.new does create separate objects. I think it&#39;s functionally identical to your second example.<br/><br/>This can be readily tested in IRB:<br/><br/><code>irb(main):005:0&gt; bullets = Array.new(5) { Numeric.new }<br/>=&gt; [#&lt;Numeric:0x2cdaf38&gt;, #&lt;Numeric:0x2cdaf20&gt;, #&lt;Numeric:0x2cdaf08&gt;, #&lt;Numeric:0x2cdaef0&gt;, #&lt;Numeric:0x2cdaed8&gt;]</code><br/><br/>As you can see, five objects with different IDs are created.
+</div>
+</div>
+
+<div class='brn' id='brn8297'>
+<div class='frm pst' id='pid8298' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8297'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8298' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8298.html#pid8298'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-02-25 18:59
+</div>
+<div class='ccl'>
+Yeah, I was referring to Ruby documentation, but I misread it. Sorry.
+</div>
+</div>
+
+<div class='brn' id='brn8298'>
+<div class='frm pst' id='pid8299' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8298'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8299.html#pid8299'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-02-26 04:36
+</div>
+<div class='ccl'>
+That&#39;s okay... it happens to the best of us :D
+</div>
+</div>
+
+<div class='frm pst' id='pid8300' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8298'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8300.html#pid8300'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-02-27 08:38
+</div>
+<div class='ccl'>
+Yep, also no problem on this site. You already helped me a lot with the loop execution and the count variable.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8301' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8288'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8301' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8301.html#pid8301'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-02-27 21:09
+</div>
+<div class='ccl'>
+Ok, there is one enemy-object out of the enemies array that shoots a bullet. The sample is played and the bullet is being displayed correctly. The other enemy-objects are only triggering the sample to play. No bullet is drawn.
+</div>
+</div>
+
+<div class='brn' id='brn8301'>
+<div class='frm pst' id='pid8302' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8301'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8302' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8302.html#pid8302'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-02-28 20:44
+</div>
+<div class='ccl'>
+<code>@enemies.each { |enemy|<br/>&#160; &#160; &#160; @enemy_bullets = Array.new(5) { Bullet.new(enemy, window) } <br/>&#160; &#160; &#160; enemy.load_bullets(@enemy_bullets) <br/>&#160; &#160; }</code><br/>This ^<br/><br/>Each time you are replacing @enemy_bullets with new array, so only the last enemy has it&#39;s bullets drawn.
+</div>
+</div>
+
+<div class='brn' id='brn8302'>
+<div class='frm pst' id='pid8303' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8302'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8303.html#pid8303'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-03-02 07:21
+</div>
+<div class='ccl'>
+Thank you for the explanation! I already assumed it has to be this part, but I thought, this is the way to initialize and load for each enemy his bullets. I try to find out, how I solve this.
+</div>
+</div>
+
+<div class='frm pst' id='pid8304' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8301.html#pid8302'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8304.html#pid8304'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1064' >zero</a>
+<span class='htt'>Date</span> 2015-03-02 15:04
+</div>
+<div class='ccl'>
+SOLVED! :) Thanks for the clear explanation. I had to initiate the bullets for the enemy object.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1177.html#tid1177'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1177.html#tid1177'>Gosu Exchange</a> / Enemy should trigger a bullet
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8301.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

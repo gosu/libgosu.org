@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3921 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Sample =&gt; segfault</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3921' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=544.html#tid544'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=544.html#tid544'>Gosu Exchange</a> / Gosu::Sample =&gt; segfault
+</div>
+</div>
+
+<div class='frm pst' id='pid3830' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3830' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3830.html#pid3830'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=366.html' >Jscher</a>
+<span class='htt'>Date</span> 2011-02-03 10:02
+</div>
+<div class='ccl'>
+Hello,<br/><br/>I&#39;m new both to Ruby and Gosu. I tried to make my first game, following the tutorial. But as soon as I add this line to my code :<br/> @beep = Gosu::Sample.new(window, &quot;media/Beep.wav&quot;)<br/><br/>I get a seg fault. What could have gone wrong ? Should I open a ticket on google code ?<br/>Here is the stack trace :<br/><br/>/dev/dsp: No such file or directory<br/>/var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu/patches.rb:28: [BUG] Segmentation fault<br/>ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-linux]<br/><br/>-- control frame ----------<br/>c:0013 p:---- s:0040 b:0040 l:000039 d:000039 CFUNC&#160; :initialize<br/>c:0012 p:0049 s:0036 b:0036 l:000035 d:000035 METHOD /var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu/patches.rb:28<br/>c:0011 p:---- s:0032 b:0032 l:000031 d:000031 FINISH<br/>c:0010 p:---- s:0030 b:0030 l:000029 d:000029 CFUNC&#160; :new<br/>c:0009 p:0049 s:0025 b:0025 l:000024 d:000024 METHOD /home/jo/Aptana RadRails Workspace/FirstTest/player.rb:5<br/>c:0008 p:---- s:0021 b:0021 l:000020 d:000020 FINISH<br/>c:0007 p:---- s:0019 b:0019 l:000018 d:000018 CFUNC&#160; :new<br/>c:0006 p:0070 s:0015 b:0015 l:000014 d:000014 METHOD /home/jo/Aptana RadRails Workspace/FirstTest/game_window.rb:7<br/>c:0005 p:---- s:0012 b:0012 l:000011 d:000011 FINISH<br/>c:0004 p:---- s:0010 b:0010 l:000009 d:000009 CFUNC&#160; :new<br/>c:0003 p:0087 s:0007 b:0007 l:0004f8 d:000550 EVAL&#160;&#160; main.rb:9<br/>c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH<br/>c:0001 p:0000 s:0002 b:0002 l:0004f8 d:0004f8 TOP&#160;&#160; <br/>---------------------------<br/>-- Ruby level backtrace information ----------------------------------------<br/>main.rb:9:in <code>&lt;main&gt;&#39;<br/>main.rb:9:in </code>new&#39;<br/>/home/jo/Aptana RadRails Workspace/FirstTest/game_window.rb:7:in <code>initialize&#39;<br/>/home/jo/Aptana RadRails Workspace/FirstTest/game_window.rb:7:in </code>new&#39;<br/>/home/jo/Aptana RadRails Workspace/FirstTest/player.rb:5:in <code>initialize&#39;<br/>/home/jo/Aptana RadRails Workspace/FirstTest/player.rb:5:in </code>new&#39;<br/>/var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu/patches.rb:28:in <code>initialize&#39;<br/>/var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu/patches.rb:28:in </code>initialize&#39;<br/><br/>-- C level backtrace information -------------------------------------------<br/>/usr/lib/libruby-1.9.1.so.1.9(rb_vm_bugreport+0x5f) [0x7fecff66be8f]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x58a56) [0x7fecff576a56]<br/>/usr/lib/libruby-1.9.1.so.1.9(rb_bug+0xb3) [0x7fecff576bc3]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0xedde5) [0x7fecff60bde5]<br/>/lib/libpthread.so.0(+0xfb40) [0x7fecff310b40]<br/>/usr/lib/libstdc++.so.6(__cxa_allocate_exception+0x24) [0x7fecfaba4224]<br/>/var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu.so(+0x45e26) [0x7fecfd938e26]<br/>/var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu.so(_ZN4Gosu6SampleC1ERKSbIwSt11char_traitsIwESaIwEE+0x75) [0x7fecfd939a55]<br/>/var/lib/gems/1.9.1/gems/gosu-0.7.27/lib/gosu.so(+0x2feaf) [0x7fecfd922eaf]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x147258) [0x7fecff665258]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x13f410) [0x7fecff65d410]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x143e31) [0x7fecff661e31]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x14611f) [0x7fecff66411f]<br/>/usr/lib/libruby-1.9.1.so.1.9(rb_class_new_instance+0x30) [0x7fecff5b7e20]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x147258) [0x7fecff665258]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x13f410) [0x7fecff65d410]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x143e31) [0x7fecff661e31]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x14611f) [0x7fecff66411f]<br/>/usr/lib/libruby-1.9.1.so.1.9(rb_class_new_instance+0x30) [0x7fecff5b7e20]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x147258) [0x7fecff665258]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x13f410) [0x7fecff65d410]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x143e31) [0x7fecff661e31]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x14611f) [0x7fecff66411f]<br/>/usr/lib/libruby-1.9.1.so.1.9(rb_class_new_instance+0x30) [0x7fecff5b7e20]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x147258) [0x7fecff665258]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x13f410) [0x7fecff65d410]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x143e31) [0x7fecff661e31]<br/>/usr/lib/libruby-1.9.1.so.1.9(rb_iseq_eval_main+0xb2) [0x7fecff662082]<br/>/usr/lib/libruby-1.9.1.so.1.9(+0x5bd52) [0x7fecff579d52]<br/>/usr/lib/libruby-1.9.1.so.1.9(ruby_exec_node+0x1d) [0x7fecff579d7d]<br/>/usr/lib/libruby-1.9.1.so.1.9(ruby_run_node+0x1e) [0x7fecff57b63e]<br/>/usr/bin/ruby1.9.1(main+0x4b) [0x40092b]<br/>/lib/libc.so.6(__libc_start_main+0xfe) [0x7fecfe6d4d8e]<br/>/usr/bin/ruby1.9.1() [0x400819]<br/><br/>[NOTE]<br/>You may have encountered a bug in the Ruby interpreter or extension libraries.<br/>Bug reports are welcome.<br/>For details: <a class='url' href='http://www.ruby-lang.org/bugreport.html'>http://www.ruby-lang.org/bugreport.html</a>
+</div>
+</div>
+
+<div class='brn' id='brn3830'>
+<div class='frm pst' id='pid3831' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3830'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3831' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3831.html#pid3831'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-03 10:14
+</div>
+<div class='ccl'>
+You get a SEGFAULT due to this bug/incompatibility in Gosu on Linux: <a class='url' href='http://code.google.com/p/gosu/issues/detail?id=82'>http://code.google.com/p/gosu/issues/detail?id=82</a><br/><br/>It&#39;s actually supposed to be an exception, telling you that you have no sound card, as indicated by the debug output: &quot;/dev/dsp: No such file or directory&quot;<br/><br/>Does the previous version of the Gosu gem work for you?<br/><br/>To be honest it didn&#39;t work in my Ubuntu VM either, but then it&#39;s a VM and I have no sound at all. So, no idea how to debug this kind of stuff.<br/><br/>There is an outdated list of other libaudiere users here: <a class='url' href='http://audiere.sourceforge.net/users.php'>http://audiere.sourceforge.net/users.php</a><br/><br/>If you can find any of these games (and they still use audiere), it would be interesting to know it works for them.
+</div>
+</div>
+
+<div class='brn' id='brn3831'>
+<div class='frm pst' id='pid3832' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3831'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3832' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3832.html#pid3832'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=366.html' >Jscher</a>
+<span class='htt'>Date</span> 2011-02-03 10:49
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; It&#39;s actually supposed to be an exception, telling you that you have no sound card, as indicated by the debug output</p></blockquote><br/>It is very strange : the Gnome video player can actually play sounds. <br/><br/>Looking on Internet, I found this workaround : I use &quot;padsp ruby1.9.1 main.rb&quot;.<br/><br/>man padsp :<br/>padsp starts the specified program and redirects its access to OSS compatible audio devices (/dev/dsp and auxiliary devices) to a&#160; PulseAudio sound server.<br/><br/>With this command, the sound is actually played.<br/>Do you think that my issue comes from a misconfiguration of my linux ? I installed it only a few days ago...<br/><br/><blockquote><p>&gt; If you can find any of these games (and they still use audiere), it would be interesting to know it works for them. </p></blockquote><br/>They are all either not downloadable, or windows only :(
+</div>
+</div>
+
+<div class='brn' id='brn3832'>
+<div class='frm pst' id='pid3833' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3832'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3833' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3833.html#pid3833'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-04 02:31
+</div>
+<div class='ccl'>
+Hmm, I think this just means that Ubuntu doesn&#39;t provide an OSS compatible audio device anymore; I&#39;ll see if I can tell audiere to use a different backend, and re-release ASAP :)<br/><br/>The previous version of Gosu (sudo gem uninstall gosu; sudo gem install gosu --version &#39;= 0.7.26&#39;) might work until then, it used SDL_mixer. Sorry for the trouble!
+</div>
+</div>
+
+<div class='brn' id='brn3833'>
+<div class='frm pst' id='pid3854' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3833'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3854' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3854.html#pid3854'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2011-02-05 12:07
+</div>
+<div class='ccl'>
+I would just like to confirm I have the same problem (on Ubuntu 10.10, PulseAudio). Only mine isn&#39;t a segfault, I get a proper exception:<br/>/dev/dsp: No such file or directory<br/>/home/#/.rvm/gems/ruby-1.9.2-p0/gems/gosu-0.7.27/lib/gosu/patches.rb:28:in `initialize&#39;: Could not initialize audiere or library not found (RuntimeError)<br/><br/>padsp worked for me as well, although the sound quality is terrible, and I actually had Tutorial.rb freeze up on me a lot. Ending the process had no effect. Only killing it did.<br/><br/>As far as I can tell, there really is no way to tell Audiere what backend to use.
+</div>
+</div>
+
+<div class='brn' id='brn3854'>
+<div class='frm pst' id='pid3857' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3857' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3857.html#pid3857'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=374.html' >1ntegral</a>
+<span class='htt'>Date</span> 2011-02-05 20:40
+</div>
+<div class='ccl'>
+Hi<br/><br/>padsp gives a segfault for me. How are u using it?&#160; I&#39;m running Ubuntu 10.10 as well.
+</div>
+</div>
+
+<div class='brn' id='brn3857'>
+<div class='frm pst' id='pid3859' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3857'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3859.html#pid3859'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2011-02-05 22:35
+</div>
+<div class='ccl'>
+I use it like this:<br/>padsp ruby Tutorial.rb<br/><br/>Maybe you should try using this instead, to see if you can get some debug output:<br/>padsp -d ruby Tutorial.rb
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3858' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3858' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3858.html#pid3858'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-02-05 20:48
+</div>
+<div class='ccl'>
+Hmm... interesting, I unfortunately have to say that I get the segfault instead.
+</div>
+</div>
+
+<div class='brn' id='brn3858'>
+<div class='frm pst' id='pid3860' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3858'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3860.html#pid3860'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-06 05:08
+</div>
+<div class='ccl'>
+Whether you get a segfault or an exception depends on a lot of things. An apparently common cause is that your gl driver might link to an older version of libstdc++ so that Gosu&#39;s attempt to use &quot;__cxx_exception_alloc&quot; (or whatever it&#39;s called) causes the segfault. For a workaround see the link from <a class='url' href='http://code.google.com/p/gosu/issues/detail?id=82.'>http://code.google.com/p/gosu/issues/detail?id=82.</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3861' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3861.html#pid3861'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-06 05:26
+</div>
+<div class='ccl'>
+padsp is already going into the right direction :)<br/><br/>I just wasted a whole day trying to fix the problem as a Linux outsider. My &quot;insight&quot;:<br/><br/>audiere uses OSS, for which emulation is disabled by default. You can turn on emulation (powered by ALSA) by running &quot;aoss ruby Tutorial.rb&quot;, but it sucks to tell everybody to do that.<br/>You can do &quot;LD_PRELOAD=libaoss.so ruby Tutorial.rb&quot; (which is what &#39;aoss&#39; does), that also kinda worked for me, but apparently there is no way to do the same thing at compile time.<br/><br/>Then, the wiki gods proceed to tell me that &quot;some&quot; installations of Ubuntu may use PulseAudio, and aoss &quot;might not&quot; work anyway, and I&#39;d need to use padsp in that case, and apparently there is not even a library that will do the same thing. And even if there were, how would I come up with a &quot;PulseAudio installation&quot; and an &quot;ALSA installation&quot; of Linux to test stuff? ...<br/><br/>When I have time for Gosu again next week, I&#39;ll probably just revert the Linux port to SDL_mixer even though it has less features.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3872' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3830'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3872' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3872.html#pid3872'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-07 09:03
+</div>
+<div class='ccl'>
+Fixed this by reverting to SDL_mixer.<br/><br/>There&#39;s an inofficial SDL backend for audiere on the webz, just like SDL_mixer uses SDL as its backend. Makes me wish I had time to fork audiere onto github, apply that patch and use this combination for Gosu; with the possible option of adding a proper OpenAL backend later. But then again, it&#39;s annoying LGPL :(
+</div>
+</div>
+
+<div class='brn' id='brn3872'>
+<div class='frm pst' id='pid3918' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3872'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3918' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3918.html#pid3918'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-02-11 07:23
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; But then again, it&#39;s annoying LGPL :(</p></blockquote><br/>As opposed to GPL? I thought LGPL was less restrictive?
+</div>
+</div>
+
+<div class='brn' id='brn3918'>
+<div class='frm pst' id='pid3921' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3918'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3921' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3921.html#pid3921'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-11 13:08
+</div>
+<div class='ccl'>
+Depends, LGPL allows you to dynamically link to an LGPL library from your program. When you have no dynamic linker available (iOS) LGPL and LGPL are effectively the same. Even when you have a dynamic linker, not being able to link it all into one big binary just for licensing reasons is annoying. MIT/BSD ftw :)
+</div>
+</div>
+
+<div class='brn' id='brn3921'>
+<div class='frm pst' id='pid3925' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3921'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3925' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3925.html#pid3925'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-11 15:52
+</div>
+<div class='ccl'>
+On which subject: If I ever release something under [L]GPL that you think would be useful, just ask and I&#39;m willing to make an exception for you. Consider it fair is fair for making this great library for your commercial game available under a permissive license.<br/><br/>I suppose it&#39;s kind of a useless offer since I&#39;ve been leaning towards BSD-style licenses myself, but I do feel that LGPL is sometimes appropriate. A static-linking-is-ok-too version of LGPL would be really nice since all I really care about is ensuring that any <i>improvements</i> to my code come back to me.
+</div>
+</div>
+
+<div class='brn' id='brn3925'>
+<div class='frm pst' id='pid3934' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3921.html#pid3925'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3934.html#pid3934'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-12 06:37
+</div>
+<div class='ccl'>
+Hehe thanks!<br/><br/>Well, I see it as some kind of DRM for code. I agree with the intentions, but between trusting the programmer and forcing them to do the good things with handcuffs, I think the LGPL has made the wrong choice. I guess it&#39;s more reasonable in a secretive, commercially interesting environment. (Of course, Gosu 1.0 is going to be just that!!1) :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=544.html#tid544'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=544.html#tid544'>Gosu Exchange</a> / Gosu::Sample =&gt; segfault
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3921.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

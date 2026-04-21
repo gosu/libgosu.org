@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6672 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>colour, zpos and alphamode</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6672' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=868.html#tid868'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=868.html#tid868'>Gosu Exchange</a> / colour, zpos and alphamode
+</div>
+</div>
+
+<div class='frm pst' id='pid6669' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6669' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6669.html#pid6669'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-03-21 15:54
+</div>
+<div class='ccl'>
+Hi,<br/><br/>there are Gosu::Graphics::pushTransform for translation, rotation and scaling. Which are the 1st, 2nd, 4th, 5th, 6th, 7th and&#160; 8th parameter of Gosu::Image::drawRot.<br/>I have many places where I use these transformations and then end up with several draw calls containing x=0, y=0, scale_x=0, scale_y=0 and only zpos, colour and alphamode.<br/>I&#39;d like to propose severals things:<br/>1. more draw functions with small sets of parameters and all other parameters defaulting<br/>2. Graphics::pushZPos, causing all draw calls until popZPos to use that ZPos (except for draw calls containing a not defaulting zpos)<br/>3. Graphics::pushAlphaMode, causing all draw calls until popAlphaMode to use that alphamode (except for draw calls containing a not defaulting alphamode parameter)<br/>4. same for colour<br/><br/>I&#39;m sure there are many reasons against this idea, but the only ones I can come up with is, that it&#39;ll create confusion (imo the current draw calls are unreadable in c++ anyway) and complicate the rendering code (benchmarks should be done to test whether these features would cause a slowdown even if not used)<br/><br/>please discuss :)
+</div>
+</div>
+
+<div class='brn' id='brn6669'>
+<div class='frm pst' id='pid6670' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6669'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6670.html#pid6670'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2013-03-21 18:04
+</div>
+<div class='ccl'>
+I feel that the current way of handling things is, while at points redundant, differentiated enough for the moment. More functions would require more knowledge on the programmer&#39;s side, and one thing about Gosu I really apprechiate is the lightweight amount of stuff you ned to learn to get started if you&#39;re already with Gosu.<br/>Also, you&#39;d need the current function on top anyways, in case you really do want to use all values at once at some point (backwards compatibility would be a side effect, too).<br/><br/>Instead, if there will ever be a Ruby 2.x release of Gosu, I&#39;d really like to see keyword arguments implemented here instead. This would be even easier in use, as well as not redundant whatsoever.
+</div>
+</div>
+
+<div class='frm pst' id='pid6671' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6669'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6671' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6671.html#pid6671'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-22 01:50
+<span class='htt'>Edited</span> 2013-03-22 01:57
+</div>
+<div class='ccl'>
+<code>scale(5) { img.draw 0, 0, 0&#160; }</code> has completely different performance characteristics than <code>img.draw 0, 0, 0, 5, 5</code>. Transforms work best if they contain a lot of (Z-adjacent) operations as they push and pop OpenGL matrices. The <code>draw</code> parameters work best to draw lots of images with different sets of parameters. The way they are currently being used is just right IMHO (on this board, anyway), and I&#39;d like the keep the separation in principle.<br/><br/>That said...I agree that all the <code>draw</code> parameters are <i>terrible</i> :( I&#39;ve always wanted to come up with a very lightweight interface like <code>image.rotate(5).scale(2).draw(x, y[, z])</code>, and I think it can be implemented at negligible overhead in C++. Ruby could use keyword args instead.<br/><br/>These solutions as well as the one you are proposing can be implemented 100% on top of Gosu, so considering how distracted I&#39;ve been in the last months, it&#39;s likely that someone else would have time for experimentations and benchmarks before I do... :)<br/><br/>Interface nitpick - <code>pushZPos</code>/<code>popZPos</code> are error prone IMHO, I&#39;m planning to change the Gosu calls to something like <code>scale(5, []{ ... }</code> soon, in beautiful symmetry with Ruby. Yay C++0x!
+</div>
+</div>
+
+<div class='brn' id='brn6671'>
+<div class='frm pst' id='pid6672' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6671'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6672' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6672.html#pid6672'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-03-22 08:36
+<span class='htt'>Edited</span> 2013-03-22 08:42
+</div>
+<div class='ccl'>
+I&#39;m using the transforms for rendering a grid.<br/>grid translation and scaling is done with 2 transforms<br/>then every field in the grid gets a transform<br/>inside that i draw the field&#39;s background image and all the objects that are inside that field.<br/><br/><blockquote><p>&gt;I&#39;ve always wanted to come up with a very lightweight interface like image.rotate(5).scale(2).draw(x, y[, z]), and I think it can be implemented at negligible overhead in C++. Ruby could use keyword args instead.</p></blockquote><br/>such an interface would require every image instance to have it&#39;s own member values for rotation and scale and either the rotate/scale functions would modify the original image object or create shallow copies with changed member values.<br/><br/>if you want to do c++11 magic, I have an idea:<br/><code>image.draw(Rotated(5), Scaled(3,7), LowerLeftCorner(x, y), ZPos(z));</code><br/>where all the parameters are in fact objects and a variadic template member function Image::draw does some magic.<br/>This will all be done during compile time. if properly done, i&#39;m guessing no overhead to current draw calls (if the compiler optimizes temporary objects properly).<br/>And it would allow cool stuff like ScaleAbsolute(100, 100) making the image exactly 100,100 pixels, no matter what dimensions it has (instead of currently <code>100/double(image.width())</code>)<br/><br/><blockquote><p>&gt;These solutions as well as the one you are proposing can be implemented 100% on top of Gosu, so considering how distracted I&#39;ve been in the last months, it&#39;s likely that someone else would have time for experimentations and benchmarks before I do... :)</p></blockquote><br/>I had planned on implementing something myself, I just wanted to figure out what to implement ;) As my original idea now seems stupid to me, too.
+</div>
+</div>
+
+<div class='brn' id='brn6672'>
+<div class='frm pst' id='pid6673' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6672'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6673' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6673.html#pid6673'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-22 10:35
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; such an interface would require every image instance to have it&#39;s own member values for rotation and scale</p></blockquote><br/><code>image.rotate(5)</code> would not modify the image (immutability ftw) - it would create something like an <code>ImageDrawParameters</code> that might consist of a 2x2 matrix or four points, four colour values and an <code>ImageData</code> pointer. Each method call on <code>ImageDrawParameters</code> would create a new temporary object, and ideally this could also be optimised away, until it is only <code>image.drawWithImageDrawParameters(...)</code>.<br/><br/>This only works in C++ because it relies on cheap/free stack objects, whereas Ruby only allocates objects on the heap _and_ has a terrible garbage collector :)<br/><br/><code>ScaleAbsolute</code> would be great though. For some reason I&#39;ve never thought about writing a wrapper for that operation.<br/><br/>Your variadic template solution has the advantage that it could be made extensible. The extensible variant of my code would be <code>draw(rotate(scale(image, ...), ...))</code>, yuck! :(
+</div>
+</div>
+
+<div class='brn' id='brn6673'>
+<div class='frm pst' id='pid6674' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6673'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6674' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6674.html#pid6674'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-03-22 11:15
+</div>
+<div class='ccl'>
+i just tried something.<br/>i wanted <code>image.draw(&quot;scale_x&quot;_fpar = 1.5);</code>, but sadly c++11 doesn&#39;t allow templates to process string literals, only numeric literals are allowed :(<br/><br/>the following would have given you compile time string parameters like in ruby.<br/>well… it&#39;s still possible at runtime though :P<br/><br/><code><br/><br/>#include &lt;iostream&gt;<br/>#include &lt;type_traits&gt;<br/><br/>template&lt;typename T&gt;<br/>struct Par<br/>{<br/>&#160; &#160; T val;<br/>&#160; &#160; Par&amp; operator=(T&amp; v)<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; val = v;<br/>&#160; &#160; &#160; &#160; return *this;<br/>&#160; &#160; }<br/>};<br/><br/>template&lt;typename T, typename T2&gt;<br/>constexpr bool isOneOf(T t, T2 first)<br/>{<br/>&#160; &#160; return (t == first);<br/>}<br/><br/>template&lt;typename T, typename T2, typename... Args&gt;<br/>constexpr bool isOneOf(T t, T2 first, Args... rest)<br/>{<br/>&#160; &#160; return (t == first) || isOneOf(t, rest...);<br/>}<br/><br/>template&lt;char c, char... rest&gt; Par&lt;double&gt; operator &quot;&quot; _fpar()<br/>{<br/>&#160; &#160; static_assert(isOneOf(c, &#39;s&#39;, &#39;a&#39;), &quot;invalid parameter name&quot;);<br/>&#160; &#160; switch (c) {<br/>&#160; &#160; &#160; &#160; case &#39;s&#39;:<br/>&#160; &#160; &#160; &#160; &#160; &#160; return Par&lt;double&gt;();<br/>&#160; &#160; &#160; &#160; &#160; &#160; break;<br/>&#160; &#160; &#160; &#160; case &#39;a&#39;:<br/>&#160; &#160; &#160; &#160; &#160; &#160; return Par&lt;double&gt;();<br/>&#160; &#160; &#160; &#160; &#160; &#160; break;<br/>&#160; &#160; }<br/>}<br/><br/>int main()<br/>{<br/>&#160; &#160; std::cout &lt;&lt; (&quot;angle&quot;_fpar = 46.3).val &lt;&lt; std::endl;<br/>&#160; return 0;<br/>}<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn6674'>
+<div class='frm pst' id='pid6675' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6674'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6675' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6675.html#pid6675'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-22 11:40
+</div>
+<div class='ccl'>
+At that point you could probably just use C99 struct literals :) <code>draw((DrawArgs){ .angle = 5 })</code><br/><br/>But why not the other way around? <code>image.draw(5_angle)</code> (omg the namespace pollution...)
+</div>
+</div>
+
+<div class='brn' id='brn6675'>
+<div class='frm pst' id='pid6676' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6675'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6676.html#pid6676'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-03-22 12:05
+</div>
+<div class='ccl'>
+oh ^^ right forgot about structs<br/><br/>hmm… that would work. the question then is, whether<br/><code>image.draw(90_degrees, 1.3_scale_x, 100y, 50x, 10z, 0xFF0000_col)</code><br/>is more readable than<br/><code>image.draw(Angle(90_deg), Scale(1.3, 1), Pos(100, 50, 10), Color(0xFF0000))</code><br/><br/>i&#39;m voting for the 2nd.<br/>Also, if duplicate arguments exist, the last one counts, all others are ignored:<br/><br/><code>image.draw(Pos(100, 50, 10), ZPos(30))</code> will draw at 100,50 with zpos 30<br/><br/>one more thing:<br/><code>image.draw&lt;Angle(90_deg), Scale(1.3, 1), Pos(100, 50, 10), Color(0xFF0000)&gt;()</code><br/>can be guaranteed to be solved at compile time<br/>while<br/><code>image.draw(Angle(90_deg), Scale(1.3, 1), Pos(100, 50, 10), Color(0xFF0000))</code><br/>depends on the compiler&#39;s abilities
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6686' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6671'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6686' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6686.html#pid6686'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-03-29 18:12
+</div>
+<div class='ccl'>
+are you going to force c++11 or will those features be there if c++11 is enabled, and else not?
+</div>
+</div>
+
+<div class='brn' id='brn6686'>
+<div class='frm pst' id='pid6687' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6686'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6687' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6687.html#pid6687'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-30 00:01
+</div>
+<div class='ccl'>
+It would be good if everything still worked on MSVC2010, and if everything that is necessary for the Ruby port would work on gcc4.0+ (that was the OS X 10.4 compiler - I&#39;d like to target OS X 10.5+ but I&#39;m not sure if that was gcc4.0 or 4.2 or whatever - I&#39;ll receive my 10.5 oldtimer machine in May :))
+</div>
+</div>
+
+<div class='brn' id='brn6687'>
+<div class='frm pst' id='pid6689' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6687'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6689' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6689.html#pid6689'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-03-30 18:10
+</div>
+<div class='ccl'>
+a quick search turned up that it&#39;s nearly impossible from inside a c++ file to detect c++11 support in a portable way.<br/>so there&#39;s gonna be some magic in Gosu/Platform.hpp that checks compiler versions and compiler specific defines.
+</div>
+</div>
+
+<div class='brn' id='brn6689'>
+<div class='frm pst' id='pid6691' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6689'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6691.html#pid6691'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-31 02:14
+</div>
+<div class='ccl'>
+...not much worse than what I have to do in TR1.hpp already :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6709' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6672.html#pid6687'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6709.html#pid6709'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-04-01 19:18
+</div>
+<div class='ccl'>
+ok, this got a little out of hand, but here&#39;s my <a class='url' href='https://github.com/oli-obk/gosu/commits/c%2B%2B11'>c++11 branch on github</a>.<br/><br/>everything still works when you disable c++11 on gcc. the changes I made in parts that are not wrapped in #ifdef GOSU_CPP11_ENABLED all seem very harmless to me when considering old compilers or msvc.<br/>the c++11 features I added *should* work on msvc2012 (the msvc version is checked before deciding whether to enable c++11 features, but msvc has some trouble with variadic templates)<br/>some things I changed are not really c++11 issues, but things that suddenly are warned about or don&#39;t compile with c++11&#39;s c++ std lib.<br/><br/>i added <code>Image::draw(x, y, z, …)</code>. <code>Image::draw(...)</code> now simply calls <code>Image::draw(0, 0, 0, ...)</code><br/>&quot;...&quot; may be either an AlphaMode, a Color or anything that inherits DrawModifier, but currently the possible classes are hardcoded<br/><br/>the extensible version I can think of would still inherit from DrawModifier, but supply a function taking x, y, z, c1, c2, c3, c4, scalex, scaley, offsetx, offsety, rotation, alphamode as reference parameters and changing one or more of them.<br/>the following would be a DrawModifier that would keep all previous modifiers but shift the object 10 pixels to the right<br/><code><br/>class Test : public DrawModifier<br/>{<br/>public:<br/>&#160; &#160; void apply(double&amp;x, double&amp;y, double&amp;z, Color&amp; c1, Color&amp; c2, Color&amp; c3, Color&amp; c4, double&amp; factorX, double&amp; factorY, double&amp; angle, double&amp; centerX, double&amp; centerY, AlphaMode&amp; am)<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; x+=10;<br/>&#160; &#160; }<br/>};<br/></code><br/><br/>other user-extensible ideas?
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=868.html#tid868'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=868.html#tid868'>Gosu Exchange</a> / colour, zpos and alphamode
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6672.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

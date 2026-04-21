@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8794 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How get the id of clicked sprite</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8794' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1262.html#tid1262'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1262.html#tid1262'>Gosu Exchange</a> / How get the id of clicked sprite
+</div>
+</div>
+
+<div class='frm pst' id='pid8789' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8789' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8789#pid8789'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1244.html' >JosepM</a>
+<span class='htt'>Date</span> 2016-02-08 11:55
+</div>
+<div class='ccl'>
+Hi,<br/><br/>I&#39;m new to Gosu, excuse me if I ask something basic but I don&#39;t found an answer to this after read many post and tutorials.<br/><br/>How can I get the id of a clicked sprite? I want to create a map with clickable zones and show some data about the zone.<br/>I have the whole map and the XY of each zone (.jpg) to put over the main map. Then the user click over any zone and perform and action.<br/> <br/><br/>It&#39;s possible do that? <br/><br/>Thanks in advance,<br/>Josep M
+</div>
+</div>
+
+<div class='brn' id='brn8789'>
+<div class='frm pst' id='pid8790' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8789'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8790' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8790.html#pid8790'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2016-02-08 13:15
+</div>
+<div class='ccl'>
+You can&#39;t get information which image you clicked (unless there&#39;s some OpenGL stuff that does it, but I don&#39;t know it)<br/>But if you store the x/y position of sprites, you can check the clicked sprite by using the x/y values from your data.<br/><br/>Example:<br/>your zone look like this: <code>zone = [x, y, image]</code><br/>you draw them like this: <code>zone[2].draw(zone[0], zone[1], 0)</code><br/>you can check if your cursor is over zone by: <code>mouse_x.between?(zone[0], zone[0] + zone[2].width) and mouse_y.between?(zone[1], zone[1] + zone[2].height)</code><br/><br/>If you have few zones, you just iterate them to perform these actions.
+</div>
+</div>
+
+<div class='brn' id='brn8790'>
+<div class='frm pst' id='pid8791' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8790'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8791' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8791#pid8791'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1244.html' >JosepM</a>
+<span class='htt'>Date</span> 2016-02-08 13:45
+</div>
+<div class='ccl'>
+Thanks for answer.<br/><br/>Would be possible add the &quot;mouse_over&quot; into the sprite class? I mean each sprite &quot;know&quot; if the cursor is over or not.<br/>If I must iterate over many zone each update I guess will be slow, isn&#39;t?<br/><br/>I have over 50-100 zones, and are irregular forms, each zone is a country with transparent area.<br/><br/>Thoughts? :)<br/><br/>Salut,<br/>Josep M
+</div>
+</div>
+
+<div class='brn' id='brn8791'>
+<div class='frm pst' id='pid8792' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8791'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8792' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8792.html#pid8792'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2016-02-08 14:01
+</div>
+<div class='ccl'>
+If by &quot;sprite&quot; you mean Gosu::Image, then it&#39;s impossible. Gosu doesn&#39;t provide any access to already drawn images. You can view/edit this data with OpenGL operations, but I don&#39;t know if you are able to extract single images from it.<br/><br/>However, even if your zones are irregular, you still can check them like rectangles. First check if mouse is over rectangular area, and if it is, then you can check if it&#39;s over non-transparent pixel (you need some additional library for this). If you have only 50-100 zones, Ruby is fast enough to handle this. If it wasn&#39;t effective enough for you, you could also make some optimizations, like putting your zones into spatial hash.
+</div>
+</div>
+
+<div class='brn' id='brn8792'>
+<div class='frm pst' id='pid8793' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8792'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8793' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8793#pid8793'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1244.html' >JosepM</a>
+<span class='htt'>Date</span> 2016-02-08 14:14
+</div>
+<div class='ccl'>
+Hi,<br/>Yes, sprite is a .png. I like the idea of check the pixel if is inside the rect but keep in mind that the transparent area of one zone is over the non-transparent area of other zone, so the pixel don&#39;t be transparent. Is posible define a shape and check if the pixel is inside?<br/>What you mean as &quot;spatial hash&quot;, an array of positions-zone?<br/><br/>Salut,<br/>Josep M
+</div>
+</div>
+
+<div class='brn' id='brn8793'>
+<div class='frm pst' id='pid8794' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8793'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8794' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8794.html#pid8794'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2016-02-08 14:35
+</div>
+<div class='ccl'>
+Spatial hash is a technique used for optimizations, especially collisions. I never used it, so I don&#39;t know exactly how it works :P, but it has something to do with putting objects into hash, which represents &quot;areas&quot;. Since its hash, you can quickly determine which area is object in, so you know that objects in different areas won&#39;t collide.<br/>But as I said, it&#39;s possible that you won&#39;t need this, because you don&#39;t use that many areas.<br/><br/>As for the rectangles, you first check check rectangular area, so you don&#39;t need to check for non-transparent pixels for every sprite. I don&#39;t know if there are any algorithms that let you define exact shape (you&#39;d need to use vertices to make a polygon etc.), but there are libraries like RMagic, Ahston or Texplay that are compatible with Gosu and allow to check single pixels of image for transparency.<br/><br/>It looks like this:<br/><code>for each zone:<br/>check if mouse is inside rectangular area of zone<br/>if yes: check if mouse is over non-transparent pixel</code>
+</div>
+</div>
+
+<div class='brn' id='brn8794'>
+<div class='frm pst' id='pid8795' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8794'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8795#pid8795'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1244.html' >JosepM</a>
+<span class='htt'>Date</span> 2016-02-08 19:34
+</div>
+<div class='ccl'>
+Hi,<br/><br/>I will try this but if the transparent os over a non-transparent, then ever the mouse will over non-transparent... <br/>When I initialize a new zone exist any way to associate a ID for this instance, creating an array of ID-instance?<br/>The objetive is like a Risk game, I have zones and the players pawns on zones. Selecting one player pawn I should show the posibles destinations.<br/>Thinking about maybe I can do the same from the pawn position that will be a square like the wargames chips, and from the know position xy show the zones in other color. Each zone will have a sprite sheet with the status of the zone. Then changing the frame I can show the posibles destinations.<br/>But how select them,... :(
+</div>
+</div>
+
+<div class='frm pst' id='pid8797' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8794'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8797' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8797.html#pid8797'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1244.html' >JosepM</a>
+<span class='htt'>Date</span> 2016-02-08 22:04
+</div>
+<div class='ccl'>
+Hi,<br/><br/>Some ideas about what I want. <br/><img class='emi' src='https://www.dropbox.com/s/d7y2l489115jikp/map_03.jpg?dl=0' alt=''/><br/><a class='urs' href='https://www.dropbox.com/s/d7y2l489115jikp/map_03.jpg?dl=0'>https://www.dropbox.com/s/d7y2l489115jikp/map_03.jpg?dl=0</a><br/><br/>A map with zones and pawns.
+</div>
+</div>
+
+<div class='brn' id='brn8797'>
+<div class='frm pst' id='pid8798' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8797'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8798' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8798#pid8798'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1236' >ericathegreat</a>
+<span class='htt'>Date</span> 2016-02-09 04:08
+<span class='htt'>Edited</span> 2016-02-09 04:15
+</div>
+<div class='ccl'>
+I built something very much like this a while back. I defined actual polys for the clickable areas. You can take a look here:<br/><br/>Defining a screen with one clickable region:<br/><a class='ura' href='https://github.com/ericathegreat/marco7/blob/master/lib/marco/ui/town_screen.rb'>https://github.com/ericathegreat/marco7/blob/master/lib/marco/ui/town_screen.rb</a><br/><br/>The image map mixin which makes that work:<br/><a class='ura' href='https://github.com/ericathegreat/marco7/blob/master/lib/marco/ui/image_map.rb'>https://github.com/ericathegreat/marco7/blob/master/lib/marco/ui/image_map.rb</a><br/><br/>I can&#39;t speak to how performant it would be with thousands of polys, but if it&#39;s only on click then it shouldn&#39;t be a problem. If you&#39;re doing dragging logic and need to know continuously though, that might be a bit heavier, code wise.<br/><br/>In your case, where I&#39;m storing interactions, you&#39;d just need to store the ID of the region.<br/><br/>(This does rely on the ruby-geometry gem, which makes the calculations super simple)
+</div>
+</div>
+
+<div class='brn' id='brn8798'>
+<div class='frm pst' id='pid8799' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8798'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8799' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8799.html#pid8799'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1244.html' >JosepM</a>
+<span class='htt'>Date</span> 2016-02-09 10:30
+<span class='htt'>Edited</span> 2016-02-09 11:07
+</div>
+<div class='ccl'>
+Hi,<br/><br/>Thanks for answer.<br/><br/>OK. I figure how work but I don&#39;t understand at the end.<br/>I understand that I need all the xy vertex that form each zone.<br/><br/>Inside your TownScreen Class with the method associate add each zone.<br/><br/>But this I don&#39;t understand how work<br/>module ImageMap<br/>&#160; &#160; def define_zone polygon, interaction<br/>&#160; &#160; &#160; @zones ||= Array.new<br/>&#160; &#160; &#160; @zones &lt;&lt; Zone.new(polygon, interaction)<br/>&#160; &#160; end<br/><br/>&#160; &#160; def interactions_under point<br/>&#160; &#160; &#160; @zones.select{ |z| z.region.contains?(point) }.map(&amp;:interaction).flatten<br/>&#160; &#160; end<br/><br/>&#160; &#160; def click(x,y)<br/>&#160; &#160; &#160; puts interactions_under(Point(x,y))<br/>&#160; &#160; end<br/>&#160; end<br/><br/>I&#39;m very glad if you could help me.<br/><br/>I download your GitHub project but I don&#39;t know exactly how execute it. :(<br/><br/>Salut,<br/>Josep M
+</div>
+</div>
+
+<div class='brn' id='brn8799'>
+<div class='frm pst' id='pid8801' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8799'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8801.html#pid8801'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1236' >ericathegreat</a>
+<span class='htt'>Date</span> 2016-02-09 23:36
+</div>
+<div class='ccl'>
+The &#39;define_zone&#39; method is creating/updating an array called &#39;@zones&#39;, which stores the polygons. So if I added three polygons then dumped that to screen, it might look like this:<br/><br/>[<br/> Polygon( (x1,y1), (x2,y2), (x3,y3) ),<br/> Polygon( (x4,y4), (x5,y5), (x6,y6) ),<br/> Polygon( (x7,y7), (x8,y8), (x9,y9) )<br/>]<br/><br/>Now, the interactions_under method takes an x,y point for where the mouse clicked. You can get that from the Gosu mouse up/down methods. It then searches all of the polygons in the @zones array for one which contains that point. The calculation for whether a region contains a point is provided by the library &#39;ruby-geometry&#39;. <br/><br/>z.region.contains? means, for each of these zones, get the polygon (region) and check whether it contains that point.<br/>@zones.select will keep all the zones which return &#39;true&#39; from the above. It then runs .map(&amp;:interaction), which in my case collects the interactions for all of these zones. That&#39;s a concept that&#39;s specific to my game. You&#39;d want to adjust that to collect your IDs instead. The &#39;flatten&#39; method will do handy things like remove any nested arrays. That&#39;s also really only relevant for my game, not for yours. The end result of this is an array of all the matching interactions (or in your case, IDs).<br/><br/>You&#39;re welcome to run my code. It won&#39;t help you very much at this point because this code is not currently active. (It&#39;s for the HUD, which is still a work in progress), but assuming you&#39;re all set up for Gosu development then you should be able to just run:<br/>bundle exec ruby lib/gui.rb
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8802' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8798'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8802' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8802#pid8802'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-02-10 02:42
+</div>
+<div class='ccl'>
+If you&#39;re going to define clickable polygons, there&#39;s also <a class='url' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7997'>lol_o2&#39;s wrapper around Chipmunk</a>. I don&#39;t know how the speed, memory footprint, or ease-of-use compares to your ruby-geometry-based solution, but it&#39;s another option I figured I&#39;d mention, just in case.
+</div>
+</div>
+
+<div class='brn' id='brn8802'>
+<div class='frm pst' id='pid8805' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8802'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8805' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8805.html#pid8805'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1236' >ericathegreat</a>
+<span class='htt'>Date</span> 2016-02-14 09:34
+</div>
+<div class='ccl'>
+If I were having objects which moved, or were governed by physics, I&#39;d almost certainly switch to Chipmunk. As it is though, my zones are static for the entire game (HUD), so adding a physics engine and then turning off all the actual physics just so that it can identify polygons is probably overkill for my particular project. It depends a lot on the situation though, certainly.
+</div>
+</div>
+
+<div class='brn' id='brn8805'>
+<div class='frm pst' id='pid8806' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8805'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8806.html#pid8806'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-02-14 17:56
+</div>
+<div class='ccl'>
+Yes, I suppose it can be considered overkill, but it&#39;s a pretty light and fast library, and it would basically give you infinite room to expand, while never worrying about bogging down the collision engine. It&#39;s your project, though. Like I said before, it&#39;s just another option.<br/>Here&#39;s another one (although it doesn&#39;t do arbitrary polygons): <a class='ura' href='https://github.com/runnerpack/intersect'>https://github.com/runnerpack/intersect</a><br/>It&#39;s kind of a WIP, and I have no idea what the performance is like.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8800' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8794.html#pid8789'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8800.html#pid8800'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1242' >nietzschette</a>
+<span class='htt'>Date</span> 2016-02-09 18:43
+</div>
+<div class='ccl'>
+I&#39;m also working on a gui right now.&#160; I think people here have already given some great advice about how to detect the sprite you are mousing over, so i don&#39;t think my methods would contribute anything new.&#160; I like to use hit boxes and hit circles for both physics and cursor interaction (the cursor being, after, just another sprite.).&#160; For complex shapes use a combination of these hitbox primitives.&#160; The basic idea is to restrict click-able sprites so they are simply not allowed to overlap.&#160; On some Ruby/SDL projects, I had pixel-precise-alpha-channel-ignoring precision in my detection methods; to do this in Gosu would require mapping your img&#39;s #blob data into a &#39;collision map&#39; capable of taking an x,y from your cursor, applying whatever scale and transformation your of your view angle, and then searching the relevant collision map for a transparent/false value or a clickable/true value.&#160; Doing all this, however, seems to go against the entire philosophy behind the simplicity coding with Gosu.&#160; You might want to consider forgoing some level of &#39;desired&#39; precision for an &#39;acceptable&#39; level of precision, although I suppose I shouldn&#39;t discourage you from the utter badassery of pursuing the the former.<br/><br/>However you approach, assume we have some hitbox object with a #detect(x,y) method, and let&#39;s consider optimization:<br/><br/>Your mouse can only ever be in ONE location at any given frame, so given a list of geometries:<br/><br/>@hitboxes = [ hitbox0, hitbox1, ... ]<br/><br/>Remember a value between 0 and hitboxes.size, the last hitbox your mouse was detect in, and only check this one element until it is nolonger detected:<br/><br/>@hitboxes[@value].detect(x,y)<br/><br/>if this method returns false, we might need some enumeration over the hitboxes array to re-set value.&#160; This reduces the time spent enumerating through the list.&#160;&#160; if #detect(x,y) returns a bool, you could do something like this:<br/><br/><code><br/>x = YourGosuWindow.mouse_x<br/>y = YourGosuWindow.mouse_y<br/> if @value<br/>&#160; unless @hitboxes[@value].detect(x,y) <br/>&#160;&#160; @value = nil<br/>&#160; end<br/> else<br/>&#160; @value = @hitboxes.collect{|h| h.detect(x,y)}.rindex(true)<br/> end<br/><br/></code><br/>@value can be nil, or a number.&#160; Whenever a click event is evoked, you already have @value stored so all you need is some method to associate the index references of your hitbox array with your sprite array.&#160; This is just an example to illustrate the idea so it&#39;ll no doubt look much different when incorporated into your own update method, and that second-to-last line with the <br/><br/><code>&#160; @value = @hitboxes.collect{|h| h.detect(x,y)}.rindex(true)</code><br/><br/> requires further optimization especially.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1262.html#tid1262'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1262.html#tid1262'>Gosu Exchange</a> / How get the id of clicked sprite
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8794.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

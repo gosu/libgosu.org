@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2015 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.7.16, 0.7.17, 0.7.18 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2015' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=304.html#tid304'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=304.html#tid304'>Gosu News</a> / Gosu 0.7.16, 0.7.17, 0.7.18 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=304.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2003' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2003.html#pid2003'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-04 18:46
+<span class='htt'>Edited</span> 2010-01-04 18:49
+</div>
+<div class='ccl'>
+Hey,<br/><br/>I released 0.7.16 silently last year, but it had a few little issues that I wanted to resolve before posting here. So now, let me introduce Gosu 0.7.17:<br/><br/>• Ruby: Gosu::milliseconds always returns a Fixnum now<br/>• All: Added Gosu::TextInput#filter for customizing what can/will be entered<br/>• Windows: Added an error message when running a windowed game on a too small desktop<br/>• All: Added Gosu::Color::RED etc., for C++ and Ruby, deprecated Colors::red in C++<br/>• Ruby: Added Gosu::MAX_TEXTURE_SIZE for banisterfiend ;)<br/>• Ruby: Added support for stringio, socket and yaml (=syck.bundle) in RubyGosu App.app<br/>• Ruby: Added enough experimental MacRuby support to run Tutorial.rb (you will need to build Gosu from source)<br/><br/>A lot of these items made bizarre internal monkey-patching necessary, especially with regards to SWIG and libGL on Linux. I hope I can clean that all up at some point. (If anyone knows why calling OpenGL functions at C++ initialization time causes a segfault on Linux, please let me know…)<br/><br/>Also, some places in the code are screaming &quot;gigantic rewrite&quot; already, but I don&#39;t want to go that route. Instead, I will try to hand out small releases like this and wait for reports that everything still works. I also made some changes to the packaging (Mac zip archive is C++ only, source tarball is Linux-only). And last but not least, I pushed all the gems using gemcutter.<br/><br/>Let me know if things still work, and if so on which platform/language. :)<br/><br/>And because I just thought it was a good read: <a class='url' href='http://www.indiegames.com/blog/2009/12/opinion_indie_game_design_dos.html'>http://www.indiegames.com/blog/2009/12/opinion_indie_game_design_dos.html</a>
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2003)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2003' style='display:none;'>jlnr</span><a href='post_add.pl@pid=2003.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2004' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2004.html#pid2004'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-01-04 20:00
+<span class='htt'>Edited</span> 2010-01-04 20:10
+</div>
+<div class='ccl'>
+Ubuntu 9.10 (linux) ruby 1.9.1 gem compiled successfully.<br/>It would seem you have removed Gosu::Button though.. That caused some breakage for my other games.<br/><br/>Hm.. In Tutorial.rb, it seems to error with Gosu::Sample.new:<br/><br/><blockquote><p>&gt;&gt;ruby Tutorial.rbTutorial.rb:19:in <code>initialize&#39;: wrong # of arguments(2 for 1) (ArgumentError)<br/>&gt;&gt;&gt;from Tutorial.rb:19:in </code>new&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:19:in <code>initialize&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:95:in </code>new&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:95:in <code>initialize&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:136:in </code>new&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:136:in `&lt;main&gt;&#39;</p></blockquote><br/>This is the line:<br/><br/><blockquote><p>&gt;&gt; @beep = Gosu::Sample.new(window, &quot;media/Beep.wav&quot;)</p></blockquote><br/>Weird..
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2004)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2004' style='display:none;'>AmIMeYet</span><a href='post_add.pl@pid=2004.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2010' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2010.html#pid2010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-05 04:07
+</div>
+<div class='ccl'>
+Ouch. I see. Actually I hoped Ruby would include gosu.rb, and from there gosu.so. gosu.rb would add patches for exactly the functionality you are missing.<br/><br/>By the way, this sucks. I try to follow a sane versioning model where I don&#39;t use long versions like 0.7.17.1 again, but now I have to bump everything to 0.7.18. Good thing I am not going to run out of natural numbers.<br/><br/>Also, I think I messed the release up in that the Windows version probably still has the old version number. Argh. :)<br/><br/>I&#39;ll wait for another day before I push 0.7.18 to fix it. If you want, you can manually include &#39;gosu/patches&#39; at the top of your script to fix everything, but the Gosu::Button module is deprecated anyway. I just forgot to remove it from the examples for way too long.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2010)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2010' style='display:none;'>jlnr</span><a href='post_add.pl@pid=2010.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2015' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2015.html#pid2015'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-01-05 13:51
+</div>
+<div class='ccl'>
+Chingu also got hit with the Gosu::Button thing, ye I took it from the examples and not the docs ;). Fixed now though. I wouldn&#39;t worry about the versions...
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2015)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2015' style='display:none;'>ippa</span><a href='post_add.pl@pid=2015.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2017' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2017.html#pid2017'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-01-05 14:07
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;&gt;you can manually include &#39;gosu/patches&#39; at the top of your script to fix everything</p></blockquote><br/>ah yes, &#39;gosu/patches&#39; works.<br/><br/><blockquote><p>&gt;&gt;Actually I hoped Ruby would include gosu.rb, and from there gosu.so. gosu.rb would add patches for exactly the functionality you are missing.</p></blockquote><br/>I think you&#39;d need to rename gosu.so for that to work, yes.<br/><br/>Thanks
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2017)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2017' style='display:none;'>AmIMeYet</span><a href='post_add.pl@pid=2017.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2032' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2032.html#pid2032'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-12 11:02
+</div>
+<div class='ccl'>
+Okay, released it as 0.7.18. Windows and Mac users can optionally upgrade to 0.7.18, which has absolutely no effect. But I cannot just upload a new version for *one* platform :)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(2032)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield2032' style='display:none;'>jlnr</span><a href='post_add.pl@pid=2032.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=304.html#tid304'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=304.html#tid304'>Gosu News</a> / Gosu 0.7.16, 0.7.17, 0.7.18 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=304.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2015.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

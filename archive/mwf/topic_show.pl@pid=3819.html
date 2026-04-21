@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3819 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Text Drawing Performance</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3819' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=542.html#tid542'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=542.html#tid542'>Gosu Exchange</a> / Text Drawing Performance
+</div>
+</div>
+
+<div class='frm pst' id='pid3812' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3812' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3812.html#pid3812'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-01 23:33
+</div>
+<div class='ccl'>
+So I&#39;ve got a method to draw text onto an image using Texplay. It basically loads the text as an image with Gosu::Image.from_text and splices the image onto the destination. Let&#39;s say I have about 100 of these commands. They&#39;re called all at once to create an image that draws on the screen. I think it&#39;s the Gosu::Image.from_text call that&#39;s slowing me down at this point, because I (and plenty of others) have had pretty good results with the splice function. Is it possible to improve the performance of this function?<br/><br/>Secondly, I&#39;m not sure the text is being drawn true to the font. Using Arial 24px, I expect it to have a bit more thickness than I&#39;m seeing. The anti-aliasing isn&#39;t too good either. Maybe I&#39;m just too used to seeing sub-pixel anti-aliasing (which would be nice if Gosu could tap into system settings on that).<br/><br/>I hope I&#39;m not barking up the wrong tree here. If there&#39;s a better way to my goal (besides RMagick for various reasons) I&#39;m willing to listen.
+</div>
+</div>
+
+<div class='brn' id='brn3812'>
+<div class='frm pst' id='pid3813' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3812'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3813' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3813.html#pid3813'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-02 02:16
+</div>
+<div class='ccl'>
+The problem is (im guessing) that <code>Gosu::Image.from_text</code> generates a new image each time it&#39;s called. In order for TexPlay to read the image data so it can perform a splice it has to cache the images (pull down image data from vram) - these cache operations are very, very expensive. I don&#39;t know a way around this, but spooner or jlnr may have some ideas.<br/><br/>Another thing that could be slowing it down is the syncing process after each splice - you can speed this up by passing :sync_mode =&gt; :no_sync to the splice calls, and calling a final force_sync at the end to sync the changes to vram all in one go.
+</div>
+</div>
+
+<div class='brn' id='brn3813'>
+<div class='frm pst' id='pid3814' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3813'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3814' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3814.html#pid3814'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-02 02:29
+</div>
+<div class='ccl'>
+Yeah, Gosu::Image#from_text creates a new image each time, which in itself will be prohibitively slow if you have image caching on (in Texplay). Much, much better to use Gosu::Font#draw and then you can avoid splicing altogether!
+</div>
+</div>
+
+<div class='brn' id='brn3814'>
+<div class='frm pst' id='pid3815' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3814'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3815' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3815.html#pid3815'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-02 04:17
+</div>
+<div class='ccl'>
+Also, Font internally renders everything at 2x size and shrinks it down, which looks nicer and less aliased for a variety of reasons.
+</div>
+</div>
+
+<div class='brn' id='brn3815'>
+<div class='frm pst' id='pid3817' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3815'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3817' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3817.html#pid3817'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-02 12:31
+</div>
+<div class='ccl'>
+Wouldn&#39;t the issue in this case be that the AA is applied to the new, blank, image, not the image the text was being spliced into? Thus, it would not look right, depending on what background the final image had.
+</div>
+</div>
+
+<div class='brn' id='brn3817'>
+<div class='frm pst' id='pid3818' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3817'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3818' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3818.html#pid3818'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-02 16:42
+</div>
+<div class='ccl'>
+Oh, I didn&#39;t take backgrounds into account. Anyway, +1 for Font! ;)
+</div>
+</div>
+
+<div class='brn' id='brn3818'>
+<div class='frm pst' id='pid3827' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3818'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3827.html#pid3827'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-02 23:39
+</div>
+<div class='ccl'>
+out of interest, would RMagick be any faster here? and if so, why?
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3819' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3814'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3819' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3819.html#pid3819'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-02 17:36
+</div>
+<div class='ccl'>
+I&#39;m sure it is better to use Gosu::Font#draw, but I&#39;m trying to preserve an interface where the only means of drawing text is to draw it directly onto an image. So I can&#39;t do it that way. Anyway it&#39;s a lot easier to keep track of the information once it&#39;s drawn to a single image, rather than remembering the coordinates of each piece of text, especially if that image would also include non-text.
+</div>
+</div>
+
+<div class='brn' id='brn3819'>
+<div class='frm pst' id='pid3820' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3819'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3820' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3820.html#pid3820'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-02 18:41
+</div>
+<div class='ccl'>
+Yeah, but you need to remember the coordinates if you want to draw it once or 10000 times.<br/><br/>Anyway, if you must render it to the image, the best way is perhaps to look at Texplay&#39;s image rendering system, which allows you to use Image/Font draw methods to render onto another image (<a class='url' href='https://github.com/banister/texplay/blob/master/examples/example_window_render_to_image.rb'>render_to_image</a>).
+</div>
+</div>
+
+<div class='brn' id='brn3820'>
+<div class='frm pst' id='pid3821' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3820'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3821' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3821.html#pid3821'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-02 19:35
+</div>
+<div class='ccl'>
+Just tried out Texplay render_to_image. It seems to improve performance, but I lose alpha blending. Is there any way I can get it back, without knowing what&#39;s supposed to be drawn behind the text when I render_to_image?
+</div>
+</div>
+
+<div class='brn' id='brn3821'>
+<div class='frm pst' id='pid3822' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3821'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3822' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3822.html#pid3822'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-02 19:38
+</div>
+<div class='ccl'>
+Make sure you draw the background image into the image (the one you will render into) first...The way it actually works is to draw the original image onto the screen, allow you to do all your drawing, then copies the screen buffer back into the image, then finally blanks the screen. So either draw the background into the image before you start or draw it as the first thing inside the render block.
+</div>
+</div>
+
+<div class='brn' id='brn3822'>
+<div class='frm pst' id='pid3823' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3822'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3823' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3823.html#pid3823'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-02 19:41
+</div>
+<div class='ccl'>
+Like I said, is there any way to do preserve alpha transparency *without* knowing what draws behind? Just drawing what&#39;s behind it isn&#39;t even the same as preserving alpha transparency, because if the image then moves somewhere else it takes its background with it.
+</div>
+</div>
+
+<div class='brn' id='brn3823'>
+<div class='frm pst' id='pid3824' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3823'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3824' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3824.html#pid3824'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-02 19:47
+</div>
+<div class='ccl'>
+Sorry, I thought you meant ensuring text AA worked, regardless of what was behind the image. The problem with this render &quot;workaround&quot; is that the screen buffer doesn&#39;t maintain alpha values, so the final image will always have alpha = 255. You could use Image#clear (dest set to only black or some other value deemed to be transparent, but that is messy and doesn&#39;t maintain alpha levels).<br/><br/>If you are going to use the image as a transparency once it is composed, you might as well just repeatedly draw the image/fonts each frame. This is something Gosu manages quite quickly and should not impact your frame rate (even if you have a lot of text on the screen). Composing in this case is a very strong case of premature optimisation. The primary use case for render_to_image is so that you can SAVE images that have been generated by your game (this is what I use it for).
+</div>
+</div>
+
+<div class='brn' id='brn3824'>
+<div class='frm pst' id='pid3825' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3824'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3825.html#pid3825'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-02 19:56
+</div>
+<div class='ccl'>
+I don&#39;t think that will work either, because what happens if I try to draw something on top of the text? Since the text is supposed to be part of the image, it&#39;s no longer possible to, say, make transparent a part of it. I&#39;m starting to think that I&#39;m going to have to use RMagick...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4052' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid3812'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4052.html#pid4052'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-03-03 20:45
+</div>
+<div class='ccl'>
+I would like to formally request text drawing as a feature of Texplay. There should be two methods, let&#39;s call them &quot;draw_text&quot; and &quot;text_size&quot;, which operate on a Gosu::Image. The &quot;draw_text&quot; method should take an x,y coordinate and a string, as well as, possibly, an options hash for font options like font name, size, italics, bold, etc. The &quot;text_size&quot; should take the same arguments, except x,y, and return the width and height of that string with those options if it is rendered. There may also possibly be an option in &quot;text_size&quot; as to whether it returns the actual pixel width or the kerned width, so that say you could draw a string one character at a time with the proper kerned width.<br/><br/>I have considered using RMagick for this, and possibly other drawing operations, and concluded that unless there is a capability to modify a Gosu texture every frame with the contents of the RMagick image, my performance would suffer as much or more than the current way I am doing things.<br/><br/>Here&#39;s a use case for drawing text directly to the image instead of returning an image containing that image:<br/><br/>Primary use case: draw lots of text on the screen without keeping track of all of it in Gosu::Window.update . For the sake of elegant programming, there could be a function that builds a chat room or some other text-heavy scene, then Gosu::Window only has to display one image. Perhaps this could be done with render_to_image, but then you can&#39;t change the background. Drawing from a Font is faster, but requires keeping track of all the different texts and their locations. Drawing a bunch of Gosu:Image&#39;s has the same disadvantage, and is slower to start; splicing them all into one image is simpler but still slow. And then what happens if I want to clip the text in a viewport? I&#39;d probably have to either keep track of a call to Gosu::Window.clip_to if I&#39;m using Font.<br/><br/>Ultimately I am trying to preserve an existing interface, and I can see this interface has an advantage when rendering text-heavy scenes. I shouldn&#39;t have to build extraneous Gosu textures to combine several text draws into one image.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid4197' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4197' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4197.html#pid4197'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> sadmemories20
+<span class='htt'>Date</span> 2011-04-01 03:25
+<span class='htt'>Edited</span> 2011-04-05 10:27
+</div>
+<div class='ccl'>
+would RMagick be any faster here? and if so, why? <br/><br/>__________________<br/><a class='url' href='http://www.youtube.com'>watch online movies</a>
+</div>
+</div>
+
+<div class='brn' id='brn4197'>
+<div class='frm pst' id='pid4212' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid4197'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4212' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4212.html#pid4212'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-04-05 02:29
+</div>
+<div class='ccl'>
+watch movies online? are you like a really clever spam spot? or are you paid by those guys?
+</div>
+</div>
+
+<div class='brn' id='brn4212'>
+<div class='frm pst' id='pid4213' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid4212'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4213' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4213.html#pid4213'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-04-05 04:40
+</div>
+<div class='ccl'>
+Hah, I was about to reply to you with &quot;The text is copied from one of banister&#39;s posts&quot;, but lo, that&#39;s you!<br/><br/>Anyways, reported it saying as much, but I suspect you&#39;ve already done too.
+</div>
+</div>
+
+<div class='brn' id='brn4213'>
+<div class='frm pst' id='pid4214' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3819.html#pid4213'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4214.html#pid4214'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-04-05 10:27
+<span class='htt'>Edited</span> 2011-04-05 10:32
+</div>
+<div class='ccl'>
+Only changed the URL because that spam post was just too curiously on-topic :D -Ah, copied from banister.<br/><br/>Also, I can apparently only delete leaf postings. Lucky Spammer!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=542.html#tid542'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=542.html#tid542'>Gosu Exchange</a> / Text Drawing Performance
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3819.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

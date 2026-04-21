@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Clean looping of soundtracks....</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d196' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=62.html#tid62'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=62.html#tid62'>Gosu Exchange</a> / Clean looping of soundtracks....
+</div>
+</div>
+
+<div class='frm pst' id='pid196' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=196.html#pid196'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-12 02:05
+</div>
+<div class='ccl'>
+Anyone got any tips on how you are supposed to get a small soundtrack (.ogg or whatever) to loop cleanly?<br/><br/>Having: @soundtrack.play unless @soundtrack.playing?&#160; just isn&#39;t cutting it inside update function.&#160; It sounds awful when you&#39;ve built a nice tiny soundtrack loop that isn&#39;t supposed to skip a beat.&#160; Well, I understand that you can&#39;t predict when the update loop will be around again I guess but have any of you out there solved this one yet?<br/><br/>All I could think of was to attempt to start again on the &#39;beat&#39; by calculating the BPM of the soundtrack and syncing up its starting and (hopefully) replaying to the internal pulse of gosu.
+</div>
+</div>
+
+<div class='frm pst' id='pid197' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=197.html#pid197'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-12 10:14
+<span class='htt'>Edited</span> 2009-01-12 10:16
+</div>
+<div class='ccl'>
+It&#39;s on the To Do, ... and I&#39;ve moved it up again ;) The next release was supposed to help with real-life problems anyway.<br/><br/>What you could probably do is turn it into a tracked music file (.it or so, using e.g. ModPlug) and set it to loop. Gosu should respect that, but it&#39;s a rather clumsy workaround :)
+</div>
+</div>
+
+<div class='frm pst' id='pid198' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=198.html#pid198'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-12 12:55
+</div>
+<div class='ccl'>
+Hey.. that&#39;s a great idea for a temp fix, thanks!&#160; What I did for the Monorail game was since it was supposed to be a short level per the compo requirements, I just made my loop file larger then the level length... ;)&#160; &#160; Used up more disk and transfer space of course, but fine for a quick deadline fix.<br/><br/>I&#39;ll have to check out that mod plugin you&#39;ve mentioned.&#160; <br/><br/>P.S. good chatting to you in the #ludumdare channel this past weekend about Gosu, thanks for you help!
+</div>
+</div>
+
+<div class='frm pst' id='pid283' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=283.html#pid283'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-06 15:52
+<span class='htt'>Edited</span> 2009-02-06 15:54
+</div>
+<div class='ccl'>
+I&#39;ll just recycle this thread to because the Monorail game also had this timing glitch that we were talking about on IRC. Due to Gosu only using a millisecond timer, the loop always waited 17ms between ticks and that seems to have added an extra frame every now and then. Your fix is use a value of 16 (that will be rounded to the desired 16.6667 by the vsync) seems to be a great workaround even after I&#39;ve taken looks at some alternatives. And when vsync is broken, the game will still run at about 60fps, which should be less of a problem than the ugly tearing ;)<br/><br/>I don&#39;t know if I&#39;ll ever support games that run at more than 60Hz (which currently is only possible on systems with broken vsync). For now, I&#39;ll just truncate the update_interval argument on Windows and try to get vsync to work on more drivers, which seems a much more pragmatic solution.<br/><br/>Just thought I&#39;d let you know, so if you release another version/game after 0.7.12 is out, you can just use the default value again :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=62.html#tid62'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=62.html#tid62'>Gosu Exchange</a> / Clean looping of soundtracks....
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=196.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

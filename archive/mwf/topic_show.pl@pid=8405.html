@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Raspberry Ruby - Could not initialize OpenGL</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8405' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1197.html#tid1197'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1197.html#tid1197'>Gosu Exchange</a> / Raspberry Ruby - Could not initialize OpenGL
+</div>
+</div>
+
+<div class='frm pst' id='pid8405' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8405' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8405.html#pid8405'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1204.html' >PeterWAWood</a>
+<span class='htt'>Date</span> 2015-06-22 07:14
+</div>
+<div class='ccl'>
+I followed the very thorough instructions on <a class='urs' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-Raspbian-(Raspberry-Pi)'>https://github.com/gosu/gosu/wiki/Getting-Started-on-Raspbian-(Raspberry-Pi)</a>. I&#39;m pretty sure that I got everything correct as I copied all the commands from the wiki page into the command line.<br/><br/>When I run a very simple test program, I get this error:<br/><br/><code><br/>pi@raspibplus ~/Code/Ruby/Gosu $ ruby test.rb<br/>/usr/local/lib/ruby/gems/2.2.0/gems/gosu-0.9.2/lib/gosu/swig_patches.rb:19:in <code>initialize&#39;: Could not create window: Could not initialize OpenGL / GLES library (RuntimeError)<br/>&#160; from /usr/local/lib/ruby/gems/2.2.0/gems/gosu-0.9.2/lib/gosu/swig_patches.rb:19:in </code>initialize&#39;<br/>&#160; from test.rb:4:in <code>initialize&#39;<br/>&#160; from test.rb:15:in </code>new&#39;<br/>&#160; from test.rb:15:in `&lt;main&gt;&#39;<br/>terminate called after throwing an instance of &#39;std::runtime_error&#39;<br/>&#160; what():&#160; Could not create window: Could not initialize OpenGL / GLES library<br/>Aborted<br/></code><br/><br/>Any suggestions as to what I may have done incorrectly?<br/><br/>Thanks in advance<br/><br/>Peter
+</div>
+</div>
+
+<div class='brn' id='brn8405'>
+<div class='frm pst' id='pid8406' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8405'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8406' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8406.html#pid8406'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-06-22 08:45
+</div>
+<div class='ccl'>
+I wonder if I have broken something in Gosu 0.9.x - I didn&#39;t have a chance to test this version on a Raspberry Pi. Can you please try using Gosu 0.8.x? If that helps, I&#39;ll need to grab a Raspi again and debug Gosu 0.9.x. Thanks.
+</div>
+</div>
+
+<div class='brn' id='brn8406'>
+<div class='frm pst' id='pid8408' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8406'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8408' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8408.html#pid8408'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1204.html' >PeterWAWood</a>
+<span class='htt'>Date</span> 2015-06-22 13:52
+</div>
+<div class='ccl'>
+I tried with Gosu 0.8.7.2 and got a similar error when I tried to run the tutorial program:<br/><br/><code><br/>pi@raspibplus /usr/local/lib/ruby/gems/2.2.0/gems/gosu-0.8.7.2/examples $ gem list gosu<br/><br/>*** LOCAL GEMS ***<br/><br/>gosu (0.8.7.2)<br/>pi@raspibplus /usr/local/lib/ruby/gems/2.2.0/gems/gosu-0.8.7.2/examples $ ruby Tutorial.rb<br/>Tutorial.rb:84:in <code>initialize&#39;: Could not open window: Could not initialize OpenGL / GLES library (RuntimeError)<br/>&#160; from Tutorial.rb:84:in </code>initialize&#39;<br/>&#160; from Tutorial.rb:130:in <code>new&#39;<br/>&#160; from Tutorial.rb:130:in </code>&lt;main&gt;&#39;<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn8408'>
+<div class='frm pst' id='pid8409' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8408'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8409' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8409.html#pid8409'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-06-22 15:14
+</div>
+<div class='ccl'>
+I&#39;ve diffed the sources for Gosu 0.8.0 (which I know worked on Raspbian) and 0.8.7.2 and couldn&#39;t find anything that should cause this issue. =/ I wonder if anything in SDL 2 or Raspbian has changed since then. The only advice I can give is to compile an OpenGL ES 1.x demo that uses SDL 2 and see if it works on your machine. Sorry! I&#39;ve already given away my Pi.
+</div>
+</div>
+
+<div class='brn' id='brn8409'>
+<div class='frm pst' id='pid8410' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8409'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8410' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8410.html#pid8410'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1204.html' >PeterWAWood</a>
+<span class='htt'>Date</span> 2015-06-23 02:34
+</div>
+<div class='ccl'>
+I&#39;ll try to do that over the next few days. If I&#39;m able I&#39;ll let you know how I got on.
+</div>
+</div>
+
+<div class='brn' id='brn8410'>
+<div class='frm pst' id='pid8411' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8410'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8411' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8411.html#pid8411'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-06-23 21:49
+</div>
+<div class='ccl'>
+Cool, thanks!
+</div>
+</div>
+
+<div class='brn' id='brn8411'>
+<div class='frm pst' id='pid8422' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8411'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8422' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8422.html#pid8422'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1204.html' >PeterWAWood</a>
+<span class='htt'>Date</span> 2015-07-05 07:18
+<span class='htt'>Edited</span> 2015-07-05 08:08
+</div>
+<div class='ccl'>
+It took me a little longer than I had hoped. I wasn&#39;t able to get any of the SDL2 test programs working but that was probably because I was making mistakes.<br/><br/>However, by following these instructions - <a class='ura' href='https://solarianprogrammer.com/2015/01/22/raspberry-pi-raspbian-getting-started-sdl-2/'>https://solarianprogrammer.com/2015/01/22/raspberry-pi-raspbian-getting-started-sdl-2/</a> - I was able to compile and run the simple test program at the end of the blog.<br/><br/>I installed gosu 0.9.2 again using the command from the Gosu wiki but still got the &quot;Could not initialize OpenGL / GLES library message&quot; when I ran the tutorial.<br/><br/>(By the way, it seems that the examples don&#39;t get installed with 0.9.2)
+</div>
+</div>
+
+<div class='brn' id='brn8422'>
+<div class='frm pst' id='pid8423' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8422'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8423' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8423.html#pid8423'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-07-05 08:11
+</div>
+<div class='ccl'>
+Right, the examples live in the <code>gosu-examples</code> gem now: <a class='ura' href='https://github.com/gosu/gosu-examples'>https://github.com/gosu/gosu-examples</a> (a recent and not very well documented move)<br/><br/>Can you please try calling <code>SDL_GL_CreateContext(window)</code> after creating the window and see what it returns?
+</div>
+</div>
+
+<div class='brn' id='brn8423'>
+<div class='frm pst' id='pid8429' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8423'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8429' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8429.html#pid8429'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1204.html' >PeterWAWood</a>
+<span class='htt'>Date</span> 2015-07-07 02:25
+</div>
+<div class='ccl'>
+Thanks for the reply. I&#39;m afraid I don&#39;t know any C++ and only a little C. I found from the compiler that SDL_CreateContext returns a pseudonym for void. I printed this value as an integer, it contained 1. (I&#39;m not sure if this is what you needed or any use).<br/><br/>Please let me know what I can do to help (given my limitations).<br/><br/>This is the line of code that I inserted:<br/><br/>&#160;&#160; <code>printf(&quot;SDL_GL_CreateContext returns %d\n&quot;, int(SDL_GL_CreateContext(window)));</code><br/><br/>I put that immediately after:<br/><br/>&#160;&#160; <code>SDL_Window* window = SDL_CreateWindow(&quot;Test SDL 2&quot;, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 800, 600, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);<br/>&#160;&#160; check_error_sdl(window == nullptr, &quot;Unable to create window&quot;);<br/></code><br/><br/>This is the output:<br/><br/>&#160; <code> ~/SDL2test $ ./sdl2_test<br/> SDL_GL_CreateContext returns 1<br/> ~/SDL2test $ </code>
+</div>
+</div>
+
+<div class='brn' id='brn8429'>
+<div class='frm pst' id='pid8463' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8429'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8463' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8463.html#pid8463'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-01 09:09
+</div>
+<div class='ccl'>
+I am a little confused why SDL_GL_CreateContext would return 1 – but anything that&#39;s not 0 is good, I guess!<br/><br/>There&#39;s been a GitHub issue about the Pi just this week: <a class='ura' href='https://github.com/gosu/gosu/issues/285'>https://github.com/gosu/gosu/issues/285</a><br/><br/>...so I guess Gosu does *theoretically* work on Raspbian, but at this point I can only say that the Pi is terrible platform for SDL 2/OpenGL (ES), and that I don&#39;t know how to support it properly. :(
+</div>
+</div>
+
+<div class='brn' id='brn8463'>
+<div class='frm pst' id='pid8484' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8405.html#pid8463'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8484.html#pid8484'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1204.html' >PeterWAWood</a>
+<span class='htt'>Date</span> 2015-08-10 06:23
+</div>
+<div class='ccl'>
+Being an optimist, I hope that in the not so distant future Raspian will include a decent SDL 2 implementation. In the meantime, I will enjoy learning about Gosu on my Mac. <br/><br/>Thanks for taking a look into the issue.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1197.html#tid1197'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1197.html#tid1197'>Gosu Exchange</a> / Raspberry Ruby - Could not initialize OpenGL
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8405.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

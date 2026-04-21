@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Variables in Pong</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1136.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1136.html#tid1136'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1136.html#tid1136'>Gosu Exchange</a> / Variables in Pong
+</div>
+</div>
+
+<div class='frm pst' id='pid8019' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8019' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8019.html#pid8019'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1151.html' >Hyang</a>
+<span class='htt'>Date</span> 2014-09-15 04:45
+</div>
+<div class='ccl'>
+I posted something about a pong demo I was tweaking before, but this one is hopefully a bit simpler.<br/>I&#39;m looking to find a way to use the score count as a way to end the game, for example: &#39;If score &gt; 10 end game&#39; or something like that. I couldn&#39;t find out how to use the score variable like that. Here is the source code:<br/><code>require &#39;gosu&#39;<br/>include Gosu<br/><br/>class ScoreCard<br/>&#160; def initialize(window)<br/>&#160; &#160; @window = window<br/>&#160; &#160; @font = Font.new(window, &#39;Arial&#39;, 30)<br/>&#160; end<br/><br/>&#160; def draw(players)<br/>&#160; &#160; @font.draw(&quot;#{players.map(&amp;:score).join(&#39; :: &#39;)}&quot;, Game::WIDTH/2, 20, 0)<br/>&#160; end<br/>end<br/><br/>class Ball<br/>&#160; attr_accessor :x, :y<br/><br/>&#160; def initialize(window)<br/>&#160; &#160; @window = window<br/>&#160; &#160; @initial_x = Game::WIDTH/2<br/>&#160; &#160; @initial_y = Game::HEIGHT/2<br/>&#160; &#160; reset<br/>&#160; &#160; @vx = 5<br/>&#160; &#160; @vy = 0<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; @x += @vx<br/>&#160; &#160; @y += @vy<br/>&#160; &#160; if @y &gt; Game::HEIGHT || @y &lt; 0<br/>&#160; &#160; &#160; @vy *= -1<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @window.draw_quad(<br/>&#160; &#160; &#160; @x-5, @y-5, Color::WHITE,<br/>&#160; &#160; &#160; @x+5, @y-5, Color::WHITE,<br/>&#160; &#160; &#160; @x+5, @y+5, Color::WHITE,<br/>&#160; &#160; &#160; @x-5, @y+5, Color::WHITE,<br/>&#160; &#160; )<br/>&#160; end<br/><br/>&#160; def switch_direction(place_on_paddle)<br/>&#160; &#160; @vx *= -1<br/>&#160; &#160; @vy = place_on_paddle / 10<br/>&#160; end<br/><br/>&#160; def reset<br/>&#160; &#160; @x = @initial_x<br/>&#160; &#160; @y = @initial_y<br/>&#160; end<br/>end<br/><br/>class Player<br/>&#160; attr_accessor :x, :y, :score<br/>&#160; WIDTH = 10<br/>&#160; HEIGHT = 80<br/><br/>&#160; def initialize(window, x, y)<br/>&#160; &#160; @window = window<br/>&#160; &#160; @initial_x = x<br/>&#160; &#160; @initial_y = y<br/>&#160; &#160; @x = x<br/>&#160; &#160; @y = y<br/>&#160; &#160; @score = 0<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; end<br/><br/>&#160; def move_up<br/>&#160; &#160; @y -= 5<br/>&#160; &#160; @y = [HEIGHT/2, @y].max<br/>&#160; end<br/><br/>&#160; def move_down<br/>&#160; &#160; @y += 5<br/>&#160; &#160; @y = [Game::HEIGHT - HEIGHT/2, @y].min<br/>&#160; end<br/><br/>&#160; def hits?(ball)<br/>&#160; &#160; (@x - ball.x).abs &lt; 5 &amp;&amp; (@y - ball.y).abs &lt; 50<br/>&#160; end<br/><br/>&#160; def increment_score<br/>&#160; &#160; @score += 1<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @window.draw_quad(<br/>&#160; &#160; &#160; @x-WIDTH/2, @y-HEIGHT/2, Color::WHITE,<br/>&#160; &#160; &#160; @x+WIDTH/2, @y-HEIGHT/2, Color::WHITE,<br/>&#160; &#160; &#160; @x+WIDTH/2, @y+HEIGHT/2, Color::WHITE,<br/>&#160; &#160; &#160; @x-WIDTH/2, @y+HEIGHT/2, Color::WHITE,<br/>&#160; &#160; )<br/>&#160; end<br/><br/>&#160; def reset<br/>&#160; &#160; @x = @initial_x<br/>&#160; &#160; @y = @initial_y<br/>&#160; end<br/><br/>end<br/><br/>class Game &lt; Window<br/>&#160; WIDTH = 640<br/>&#160; HEIGHT = 480<br/><br/>&#160; def initialize<br/>&#160; &#160; super(WIDTH, HEIGHT, false)<br/>&#160; &#160; @ball = Ball.new(self)<br/>&#160; &#160; @player_1 = Player.new(self, 40, HEIGHT/2)<br/>&#160; &#160; @player_2 = Player.new(self, WIDTH-40, HEIGHT/2)<br/>&#160; &#160; @players = [@player_1, @player_2]<br/>&#160; &#160; @score_card = ScoreCard.new(self)<br/>&#160; &#160; @state = :in_play<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; if @state == :in_play<br/>&#160; &#160; &#160; if button_down?(KbW)<br/>&#160; &#160; &#160; &#160; @player_1.move_up<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if button_down?(KbS)<br/>&#160; &#160; &#160; &#160; @player_1.move_down<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if button_down?(KbUp)<br/>&#160; &#160; &#160; &#160; @player_2.move_up<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if button_down?(KbDown)<br/>&#160; &#160; &#160; &#160; @player_2.move_down<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if @player_1.hits?(@ball)<br/>&#160; &#160; &#160; &#160; @ball.switch_direction(@ball.y - @player_1.y)<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if @player_2.hits?(@ball)<br/>&#160; &#160; &#160; &#160; @ball.switch_direction(@ball.y - @player_2.y)<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if @ball.x &gt; Game::WIDTH<br/>&#160; &#160; &#160; &#160; @player_1.increment_score<br/>&#160; &#160; &#160; &#160; @state = :stopped<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if @ball.x &lt; 0<br/>&#160; &#160; &#160; &#160; @player_2.increment_score<br/>&#160; &#160; &#160; &#160; @state = :stopped<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; @ball.update<br/>&#160; &#160; elsif @state == :stopped<br/>&#160; &#160; &#160; if button_down?(KbSpace)<br/>&#160; &#160; &#160; &#160; @players.each(&amp;:reset)<br/>&#160; &#160; &#160; &#160; @ball.reset<br/>&#160; &#160; &#160; &#160; @state = :in_play<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @score_card.draw(@players)<br/>&#160; &#160; @ball.draw<br/>&#160; &#160; @player_1.draw<br/>&#160; &#160; @player_2.draw<br/>&#160; end<br/>end<br/><br/>Game.new.show</code>
+</div>
+</div>
+
+<div class='brn' id='brn8019'>
+<div class='frm pst' id='pid8020' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1136.html#pid8019'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8020' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8020.html#pid8020'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2014-09-15 06:44
+</div>
+<div class='ccl'>
+Just add this condition to your update loop? Like<br/><code>if @state == :in_game<br/>&#160; if @player_1.score &gt; 10 or @player2.score &gt; 10<br/>&#160; &#160; close&#160;&#160; # or whatever you want to do<br/>&#160; end<br/>&#160; # rest of the code<br/>end</code><br/><br/>Or you could take this opportunity to learn how to implement the observer pattern.
+</div>
+</div>
+
+<div class='brn' id='brn8020'>
+<div class='frm pst' id='pid8021' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1136.html#pid8020'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8021' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8021.html#pid8021'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1151.html' >Hyang</a>
+<span class='htt'>Date</span> 2014-09-16 02:39
+</div>
+<div class='ccl'>
+I plugged that in, but nothing happens if the score exceeds 10. I tweaked it to say &#39;in_play&#39; like the rest of the code, but then it told me that &gt; was an unknown method. Then I changed it so it would just respond to @score instead of @player_x.score but still nothing happened. At one point it told me that score was undefined.<br/>Help?
+</div>
+</div>
+
+<div class='brn' id='brn8021'>
+<div class='frm pst' id='pid8024' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1136.html#pid8021'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8024' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8024.html#pid8024'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2014-09-16 15:46
+</div>
+<div class='ccl'>
+I tried your code and did exactly:<br/><code>if @state == :in_play<br/>&#160; &#160; &#160; if @player_1.score &gt; 1 or @player_2.score &gt; 1<br/>&#160; &#160; &#160; &#160; close<br/>&#160; &#160; &#160; end<br/># etc...</code><br/><br/>What happened was, as it should, at score 2:0 game went to <code>:stopped</code>, and then after pressing space the window was closed. If you want it to happen regardless of current <code>@state</code>, just move the condition outside the state if/elsif. There is no reason for it not to work.
+</div>
+</div>
+
+<div class='brn' id='brn8024'>
+<div class='frm pst' id='pid8026' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1136.html#pid8024'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8026.html#pid8026'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1151.html' >Hyang</a>
+<span class='htt'>Date</span> 2014-09-17 02:41
+</div>
+<div class='ccl'>
+That did the trick! Thank you!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1136.html#tid1136'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1136.html#tid1136'>Gosu Exchange</a> / Variables in Pong
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1136.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

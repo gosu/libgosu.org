@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6180 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Bottomless Mine v.1.0-beta2</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6180' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=491.html#tid491'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=491.html#tid491'>Gosu Showcase</a> / Bottomless Mine v.1.0-beta2
+</div>
+<div class='bcl'>
+<span class='pln'>
+<a href='topic_show.pl@tid=491%3Bpg=1.html'>1</a>
+<span>2</span>
+<a href='topic_show.pl@tid=491%3Bpg=3.html'>3</a>
+<a href='topic_show.pl@tid=491%3Bpg=1.html'><img class='sic sic_nav_prev' src='https://www.libgosu.org/mwf/epx.png' title='Go to previous page' alt='Previous'></a>
+<a href='topic_show.pl@tid=491%3Bpg=3.html'><img class='sic sic_nav_next' src='https://www.libgosu.org/mwf/epx.png' title='Go to next page' alt='Next'></a>
+</span>
+&#160;
+</div>
+</div>
+
+<div class='frm pst' id='pid6034' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6032.html'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6034.html#pid6034'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-15 23:43
+</div>
+<div class='ccl'>
+Depending on what you want to do, Ashton might well not replace Texplay for you (or you may be able to replace the slower stuff in Texplay). Anyway, I am not sure I want to get your hopes up on that score, but it really depends what you are struggling to achieve in TexPlay. If you have any specific requests though, I might be able to suggest better ways of doing it in the existing TexPlay/Gosu or, if it is not possible, add it to Ashton.<br/><br/>I&#39;ll take a look at the game now :)
+</div>
+</div>
+
+<div class='frm pst' id='pid6035' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6032.html'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6035' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6035.html#pid6035'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-15 23:57
+</div>
+<div class='ccl'>
+OK, had a bit of a go, but I only had the opportunity to do stuff that didn&#39;t seem to work :)<br/><br/>* Use the option with ocra to avoid putting up a console window when the game starts (or use Releasy to do it :D): <code>--windows</code><br/>* Switching to full-screen meant I had bits of desktop sticking out at right and bottom of the actual window (1680x1050 native res). Needs to scale to a resolution I actually support or it will be glitchy like that - I think we should always run full-screen at native screen resolution when using Gosu and scale/translate to ensure the game fills most, if not all, of the screen. If we could query available resolutions, that might be different.<br/>* I could use up/down to select different options in the main menu, <i>except exit</i>, but neither space nor enter did anything. I pressed a lot of keys, but had no idea how to actually choose an option and was unable to start the game.<br/>* Having a progress bar when loading was good, but loading seemed to stay in a single update, so the window never got updated and appeared unresponsive. Try using Ruby Fibres to do all your loading in a coroutine while keeping the window updated.<br/>* Reinitializing player: Pressing a key didn&#39;t seem to skip anything, although that is what it suggests you do.<br/>* Don&#39;t show FPS in the window caption (in a proper release), since updating the caption text is extremely slow (will cost you significant FPS slowdown just for that!).
+</div>
+</div>
+
+<div class='brn' id='brn6035'>
+<div class='frm pst' id='pid6038' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6035'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6038' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6038.html#pid6038'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-16 07:32
+</div>
+<div class='ccl'>
+Thanks for all your advices :)<br/>Menu controls are in ReadMe and Left Control (by default) is used to accept.<br/>I don&#39;t know how to use Fibers, so they&#39;ll wait for next release. Skipping loading should be done before player graphics, because it loads over 300 images in one frame. It may be faster when I could make this: <a class='url' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=720'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=720</a><br/>I tried to scale the fullscreen window, but it looked so ugly that I left it as it is.<br/><br/>As for Ahston: I use TexPlay for collision masks. Every room has mask image and every tile is splicing to it. If framebuffers would support get_pixel I could hopefully replace the images with framebuffers and it would probably be faster in loading map and in-game manipulation.
+</div>
+</div>
+
+<div class='brn' id='brn6038'>
+<div class='frm pst' id='pid6040' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6040.html#pid6040'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-16 08:52
+</div>
+<div class='ccl'>
+Texplay splice is horrifically slow and should only really be used in cases where you need to alpha-blend. I did suggest how you could make it orders of magnitude faster by using Window#render_to_image (from Texplay), which doesn&#39;t support alpha-blending, but that is fine for tile-maps. . You almost certainly would have done better using Gosu&#39;s inbuilt Window#record for this, which would have been fast enough, but you need to use the newer versions for this to work without being buggy.<br/><br/>Ashton::Framebuffer would be even faster and would support alpha blending as well. Not sure that Framebuffer#[x, y] and Frambuffer#[x, y]= would be faster than Texplay&#39;s system, but I think it makes sense to implement that, at least. The fundamental difference between Texplay and Framebuffer is that Texplay maintains a copy of the image in main memory, alters that data and syncs it back to the card. This makes operations like splice very slow, whereas drawing into a Framebuffer doesn&#39;t require any data to pass to or from the graphics memory, beyond instructions on what to do.<br/><br/>When scaling to full-screen, you need to be aware that the screen might not be in 4:3 ratio like the window. You need to scale up based on height of the screen, then put a global Window#translate in to move the drawn area a bit to the right, and also Window#clip_to so you don&#39;t over-draw the black bands you want at the sides of the screen.
+</div>
+</div>
+
+<div class='frm pst' id='pid6045' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6045' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6045.html#pid6045'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-17 11:40
+</div>
+<div class='ccl'>
+Using Ctrl to move onto starting the game, I got to a screen where it is drawing out an intro text, character by character. I have no idea how you are doing it, but it runs at 2 fps and it takes several minutes to completely render the image.<br/><br/>Once fully rendered, it tells me to &quot;press start&quot; although I have no idea what the start button is. Why is start (enter) a different key to &quot;activate&quot; (ctrl) ? Seems to be needless complexity. The keys appear to be extremely arbitrary and non-intuitive, I&#39;m afraid, and saying &quot;press B&quot; when it doesn&#39;t mean press the B key, but press whatever button you have bound to action B is extremely confusing for me.
+</div>
+</div>
+
+<div class='brn' id='brn6045'>
+<div class='frm pst' id='pid6046' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6045'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6046' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6046.html#pid6046'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-17 17:18
+</div>
+<div class='ccl'>
+Starting text is based on my old method which makes image_from_text each frame. I have &gt;10 FPS there :) Needs to be changed -_-<br/>And sorry for controls, game is based on Metroid and naming controls as on GBA may not be friendly to everyone. Maybe I should replace these B, A, START etc. with actual controls or at least some normal names?
+</div>
+</div>
+
+<div class='brn' id='brn6046'>
+<div class='frm pst' id='pid6047' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6046'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6047' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6047.html#pid6047'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-17 17:35
+</div>
+<div class='ccl'>
+Yeah, image_from_text is extremely slow _especially if you have Texplay loaded and don&#39;t turn off caching_. Really, you should just be rendering it directly on the screen, which would avoid the entire issue.<br/><br/>And yes, unless you have a GBA, then those naming conventions are pretty bad. Why not just call them &quot;activate&quot; &quot;jump&quot; or whatever, which is what they do, rather than the name of the key on a specific piece of hardware?
+</div>
+</div>
+
+<div class='brn' id='brn6047'>
+<div class='frm pst' id='pid6048' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6047'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6048.html#pid6048'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-17 18:01
+</div>
+<div class='ccl'>
+I played on emulator and I just got used&#160; to this naming. On some Metroid forum where I also posted my game, nobody complained the controls, but if more people would play it, I&#39;ll just change these names. Thanks for suggestion anyway.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6049' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6046'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6049.html#pid6049'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-07-17 18:29
+</div>
+<div class='ccl'>
+Here&#39;s a kinda hacky function to get the name of a button from its button id if it helps. For keys that produce printable characters, it returns the character; otherwise, it returns the constant name.<br/><br/>Public domain because it&#39;s trivial.<br/><br/><code>&#160; def button_name id<br/>&#160; &#160; unless defined? @button_names<br/>&#160; &#160; &#160; button_constants = Gosu.constants(false)<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; .grep(/^(?:Gp|Kb|Ms)/)<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; .inject({}) { |h, k| h.merge! Gosu.const_get(k) =&gt; k }<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; @button_names = Hash.new do |names, id|<br/>&#160; &#160; &#160; &#160; ch = button_id_to_char id<br/>&#160; &#160; &#160; &#160; names[id] = (ch and ch.ord &gt; 0x20) ? ch.upcase : button_constants[id]<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @button_names[id]<br/>&#160; end</code>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6036' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6032.html'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6036' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6036.html#pid6036'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-16 02:47
+</div>
+<div class='ccl'>
+Still downloading the game. Re Gosu 0.7.28: Have you tried rendering these MOD files into OGG? Would that change the final size of the game a lot?
+</div>
+</div>
+
+<div class='brn' id='brn6036'>
+<div class='frm pst' id='pid6039' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6036'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6039' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6039.html#pid6039'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-16 07:33
+</div>
+<div class='ccl'>
+I tried with smallest file and from 122 kB grown to 1.97 MB, so with 22 modules final size would be ~20 MB bigger.
+</div>
+</div>
+
+<div class='brn' id='brn6039'>
+<div class='frm pst' id='pid6041' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6039'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6041.html#pid6041'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-16 08:59
+</div>
+<div class='ccl'>
+I just converted boss1.mod to boss1.ogg and it went up from 600k to 1000k, which doesn&#39;t seem that bad at all. Also, remember that although it seems like increasing the download by 20MB (+50% size) seems like a lot, the actual difference in download time between 40mb and 60mb is trivial unless you are on dial-up!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7162' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6032.html'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7162' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7162.html#pid7162'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-24 22:27
+</div>
+<div class='ccl'>
+Hi lol_o2, I previously posted in the Son of Sword discussion, which will give you some background. I am attempting once again to try running your games on my system (Linux). Now that I know a little bit more about Ruby and Gosu, I think I am getting close.<br/><br/>I am running once again into errors that seem to center around specjal.rb:27, although texplay is also mentioned in the error.<br/><br/>I have tried installing earlier versions of texplay, but my system seems to not be able to install version 0.3.1 or version 0.3.5. Not sure if this would have anything to do with it.<br/><br/>Any suggestions would be appreciated!
+</div>
+</div>
+
+<div class='brn' id='brn7162'>
+<div class='frm pst' id='pid7179' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7162'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7179' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7179.html#pid7179'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-08-25 09:31
+</div>
+<div class='ccl'>
+In Son of Sword all files are loaded with proper case.<br/>But in Bottomless Mine every resource in code is loaded with lower case only.<br/>As for TexPlay, you can disable it (it&#39;s loaded in Bottomless_Mine.rb and in Mapper.rb). It&#39;s used only for a secret end-game feature and can be safely disabled.
+</div>
+</div>
+
+<div class='brn' id='brn7179'>
+<div class='frm pst' id='pid7181' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7179'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7181' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7181.html#pid7181'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-26 01:48
+</div>
+<div class='ccl'>
+Thank you I will try disabling Texplay and see what happens....
+</div>
+</div>
+
+<div class='brn' id='brn7181'>
+<div class='frm pst' id='pid7184' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7181'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7184.html#pid7184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-26 04:26
+<span class='htt'>Edited</span> 2013-08-26 04:35
+</div>
+<div class='ccl'>
+Hey I just had another look at it, and based on your comments, I looked into the code and I see that there is definitely an issue of case-sensitivity differences. I&#39;m going to try to see if there&#39;s a better way to get it working than to go in and manually change all the code (or conversely all the filenames in the respective folders)...<br/><br/>EDIT: I think the best approach at this point might be to first update my mac to 10.6, and then try it out on there....
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7182' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7179'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7182' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7182.html#pid7182'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-26 02:37
+</div>
+<div class='ccl'>
+Hey I just tried things out again, and I think I might have identified where my confusion is coming from.<br/><br/>Sometimes when I try out other people&#39;s games, they only work after I add in a little bit of $LOAD_PATH code at the beginning. I don&#39;t entirely understand the LOAD_PATH completely, but I do know that I sometimes have unique issues with it on my OS, which I am sometimes able to resolve.<br/><br/>At the beginning of Bottomless_Mine.rb, there is some code defining $path:<br/><br/>$path=Dir.getwd+&#39;/&#39;<br/><br/>Also, the following code is deactivated:<br/><br/>=begin<br/>str=$0.split(&#39;/&#39;)<br/>str.pop<br/>$path=str.join(&#39;/&#39;)<br/>$path=$path+(if $path != &#39;&#39; then &#39;/&#39; else Dir.getwd+&#39;/&#39; end)<br/>=end<br/><br/>I wonder if I could make some manual changes affecting $path, or if there is an alternate way (for newbs) to handle this segment from specjal.rb:<br/><br/>class Img<br/>&#160; def Img.[](name,reload=nil,tileable=false)<br/>&#160; &#160; @@images = Hash.new unless defined?(@@images)<br/>&#160; &#160; if @@images[name] and !reload<br/>&#160; &#160; &#160; @@images[name]<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @@images[name] = Image.new($screen,$path+&quot;../gfx/&quot;+name+&quot;.png&quot;,tileable)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def Img.reset<br/>&#160; &#160; @@images.clear<br/>&#160; end<br/>end<br/><br/>Maybe I could go in and load all of the images one by one to get around this. But my level of understanding is still quite limited, in terms of being able to anticipate how such changes would affect the rest of the game....<br/><br/>I just went back and tried out Sapphire again as well. I created a game template called Example. When I run Example.rb I run into the same issue in specjal.rb, but this time at line 21 (essentially the same).
+</div>
+</div>
+
+<div class='brn' id='brn7182'>
+<div class='frm pst' id='pid7183' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7182'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7183.html#pid7183'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-26 04:08
+</div>
+<div class='ccl'>
+As a sidenote, I also find that I often (but not always) have to add &quot;../&quot; in places where images and other files are loaded, in order for things to work properly. Not sure if this affects anything relating to BottomlessMine...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7685' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6032.html'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7685' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7685.html#pid7685'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1115.html' >darkhog</a>
+<span class='htt'>Date</span> 2014-01-16 17:33
+</div>
+<div class='ccl'>
+Very good game. I am currently playing heck outta it (still didn&#39;t finished it) and didn&#39;t come upon any issues you mentioned so far.<br/><br/>Anyway, for .mod playback, maybe you could use <a class='url' href='http://rubygems.org/gems/fmod-ruby'>fmod-ruby gem</a>, bypassing Gosu&#39;s soundsystem (at least for music)? Then, you could use newest available Gosu version.<br/><br/>Any etat when/if game will be fully complete, though?
+</div>
+</div>
+
+<div class='brn' id='brn7685'>
+<div class='frm pst' id='pid7686' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7685'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7686' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7686.html#pid7686'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2014-01-16 19:24
+</div>
+<div class='ccl'>
+WOW, anyone is really playing it O_o<br/>Anyway, I converted music to .ogg&#39;s so I can use newest Gosu.<br/>And the game is completed, but it&#39;s in beta, because there still may be some bugs, especially when I switched from TexPlay to Ashton. For something to do, I can only speed-up loading of player&#39;s graphics.<br/>I remember there was also some crash in this version in crystal area, but I was to lazy to upload again the 100MB.<br/>Thanks for interest though :)
+</div>
+</div>
+
+<div class='brn' id='brn7686'>
+<div class='frm pst' id='pid7690' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7686'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7690' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7690.html#pid7690'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1115.html' >darkhog</a>
+<span class='htt'>Date</span> 2014-01-17 09:13
+</div>
+<div class='ccl'>
+My friend tried to play it today, because I recommended it, and couldn&#39;t play it because where game asks you to press return (enter), none works. He tried to press both regular and numpad one.
+</div>
+</div>
+
+<div class='brn' id='brn7690'>
+<div class='frm pst' id='pid7693' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid7690'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7693.html#pid7693'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2014-01-17 12:17
+</div>
+<div class='ccl'>
+He didn&#39;t try hard enough :)<br/>Ok, sorry, but it&#39;s a but with calculating text length. You can continue few seconds after or just load the save again, so this text is skipped.<br/>I&#39;ll re-upload the game fixing some bugs.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6129' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6129' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6129.html#pid6129'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=955.html' >flowerthief</a>
+<span class='htt'>Date</span> 2012-08-07 08:16
+</div>
+<div class='ccl'>
+Yay, a metroidvania! You were wise to put a screenshot of a metroid-ish map up there, as it&#39;s all the persuasion I need to want to play the game. But...it doesn&#39;t seem to have joystick support :(
+</div>
+</div>
+
+<div class='brn' id='brn6129'>
+<div class='frm pst' id='pid6130' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6129'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6130' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6130.html#pid6130'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-07 10:29
+</div>
+<div class='ccl'>
+Gosu doesn&#39;t support joysticks, but does support digital joypads (sadly not analogue joypads), which may or may not be handled by this game. You can probably map your joystick to keys though.
+</div>
+</div>
+
+<div class='brn' id='brn6130'>
+<div class='frm pst' id='pid6131' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6130'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6131' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6131.html#pid6131'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-07 11:09
+</div>
+<div class='ccl'>
+Gosu should map all analogue sticks to left/right/up/down. Is there a bug I&#39;m not aware of?
+</div>
+</div>
+
+<div class='brn' id='brn6131'>
+<div class='frm pst' id='pid6132' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6131'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6132' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6132.html#pid6132'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-07 11:12
+</div>
+<div class='ccl'>
+I don&#39;t know (I don&#39;t own anything past a keyboard and moose...er, mouse).
+</div>
+</div>
+
+<div class='brn' id='brn6132'>
+<div class='frm pst' id='pid6133' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6132'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6133.html#pid6133'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-07 14:18
+</div>
+<div class='ccl'>
+Too bad. I was looking for an excuse to buy one more &quot;development device&quot; :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6180' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6180' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6180.html#pid6180'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-24 18:40
+</div>
+<div class='ccl'>
+<img class='emi' src='../../mwf/attachments/0/3500/Lights.png' alt=''/><br/>Today I decided to make finally some fixes. This one runs with 60 FPS, thanks to Spooner :)
+</div>
+</div>
+
+<div class='brn' id='brn6180'>
+<div class='frm pst' id='pid6181' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6180'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6181' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6181.html#pid6181'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-24 20:20
+</div>
+<div class='ccl'>
+And there&#39;s the first problem.<br/>I tried to replace map masking method from TexPlay to Ashton. It seemed quite well, but I encountered strange bug (or is it some my fault?)<br/>I replaced Image with Ashton::Texture. First, white quad is drawn on it and then tiles draw their masks etc. But when I later want to e.g. change black color into white (by drawing quad), it&#39;s still read as black (using Texture#[]). Most interesting is that when I draw the texture, changes are visible (so that black is white). Hope I explained it well :) It looks like Texture#[] bug.
+</div>
+</div>
+
+<div class='brn' id='brn6181'>
+<div class='frm pst' id='pid6182' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6181'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6182' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6182.html#pid6182'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-24 23:07
+</div>
+<div class='ccl'>
+Ah yes, the problem is that Ashton::Texture doesn&#39;t magically know when you&#39;ve drawn something on it and so doesn&#39;t update the cached data in main memory (that [] accesses). I was in too minds whether to force a recaching operation after you have the opportunity to render, but since the recaching is lazy, there is actually no cost for me to call #refresh_cache after <i>any </i>#render block (or #disable) since it will only do something<i> if and when</i> #[] is next called. I&#39;ve pushed the fix and hopefully that should work fine for you now!
+</div>
+</div>
+
+<div class='brn' id='brn6182'>
+<div class='frm pst' id='pid6183' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6182'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6183' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6183.html#pid6183'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-25 08:52
+<span class='htt'>Edited</span> 2012-08-25 09:07
+</div>
+<div class='ccl'>
+Thanks :) It&#39;s working. Now I need this &#39;instant image duplication&#39; you said about.<br/>But I also found a bug with Stencil. It&#39;s below, marked with red arrow:<br/><img class='emi' src='http://img716.imageshack.us/img716/8679/bugrft.png' alt=''/><br/>Making good, fast and simple lighting effect was surprisingly easy, but there&#39;s a small problem with it. These &#39;lights&#39; are just circle image with alpha-smoothed borders. But when they intersect, you can see a Stencil bug with overlapping of mid-alpha pixels. It would probably work with only 0/255 alpha values, but that way it looks better.<br/><br/>And, the second problem comes to Gosu. I converted whole soundtrack to .ogg&#39;s, but OpenAL seems to be bugged. When I play some loud/noisy/high-pitched sound, the game is silencing. You can&#39;t hear anything, but some similar, noisy sounds. And it lasts few seconds, so it looks like explosion sounds are stunning audio :) There was no such problems before, but when I switched to newer Gosu, everything is rustling (maybe not always)
+</div>
+</div>
+
+<div class='brn' id='brn6183'>
+<div class='frm pst' id='pid6184' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6183'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6184' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6184.html#pid6184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-25 13:56
+</div>
+<div class='ccl'>
+By instant image duplication, I assume you mean....Texture#dup - not instant, but orders of magnitude faster than Texplay can manage.<br/><br/>As to why you are getting a grey circle like that, I have no idea. I&#39;d have to see some of your code to even hazard a guess. It could be that you need to remember to use :add mode when drawing the circles into the buffer?<br/><br/>I really doubt, however, that you need to use the stencil shader for that effect. Stencil is only be necessary<i> if you need to draw without affecting the pixels underneath</i>, but you just have a blackness &quot;behind&quot; the things you stencil. You should be able to do it by drawing the background normally, then rendering the circles into a WindowBuffer (which is just a window-sized Texture) which was first filled with black using a quad (which reminds me I should allow a colour to be passed to Texture#clear), then drawing the texture using :mode =&gt;:multiply. Remember that you&#39;ll need to draw the circles differently for the :multiply to work correctly (with the :add mode), but I&#39;m sure you can work that out. This will actually give a better lighting effect than stencilling anyway!
+</div>
+</div>
+
+<div class='brn' id='brn6184'>
+<div class='frm pst' id='pid6186' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6184'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6186' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6186.html#pid6186'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-25 19:41
+</div>
+<div class='ccl'>
+Uh, Texture? Isn&#39;t it possible to duplicate Images with this speed? I tried to make shader for that palette, but was too hard and now I need fast duplication.<br/><br/>For this Stencil: I draw these circles and then apply them to black-buffer and then draw it. It tried different modes with no better result :/<br/><br/>Also I forgot to mention about a bug with translation. I used the Window.translate and this lighting buffer was drawn like with doubled translation.<br/>I translate graphics when game is fullscreen and code for this buffer looks like this (with global translation (16, 12):<br/><code>@cover.draw($screen.fullscreen? ? -16 : 0, $screen.fullscreen? ? -12 : 0, 3.9, shader: @dark, multitexture: @scene)</code>
+</div>
+</div>
+
+<div class='brn' id='brn6186'>
+<div class='frm pst' id='pid6187' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6186'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6187' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6187.html#pid6187'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-25 20:04
+</div>
+<div class='ccl'>
+No, sadly we can&#39;t duplicate images anything near as fast. The reason for this is that you can copy a Texture purely on the graphics card (it creates a new texture of the given size, then draws the old one into it using :replace mode). In TexPlay, to copy an image, it has to get a copy of the pixel data and pass that to the Image constructor, which is obviously a lot slower! To fix this, Gosu would have to allow you to create a blank image of a given size (then we could render the old image into it on the graphics card).<br/><br/>Incidentally, in case you missed it, the relative benchmarks are here: <a class='url' href='https://gist.github.com/3170006'>https://gist.github.com/3170006</a><br/><br/>Still no idea how your stencilling is going wrong. As I said, there is no real need to use stencilling and you&#39;ll actually get a better effect as I described before (using :multiply mode).<br/><br/>I don&#39;t quite understand why you need to translate the draw only when running fullscreen. Why not just draw @cover <i>outside </i>the translation at 0, 0? Maybe I&#39;m still not understanding the exact problem though. Can you make a simple example that shows this issue?<br/><br/>I know I had some issues with offsets being doubled before, but that was because the x/y values were being used directly as C integers, rather than being translated from Ruby VALUES (duh!). Still, this shouldn&#39;t affect movement caused by using Gosu&#39;s Window#translate though!<br/><br/>Thanks for reporting bugs rather than giving up! Ashton really needs some more strenuous real-world testing like this (the examples and Throckmorton only go so far).
+</div>
+</div>
+
+<div class='brn' id='brn6187'>
+<div class='frm pst' id='pid6188' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6187'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6188' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6188.html#pid6188'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-25 20:30
+</div>
+<div class='ccl'>
+I use this translation, because with my resolution, Gosu switches to 800x600 making window not fitting the screen. I just made clipped black frame around the screen. Translation is global, in window where the game state is drawn, so I can&#39;t draw anything outside.
+</div>
+</div>
+
+<div class='brn' id='brn6188'>
+<div class='frm pst' id='pid6189' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6188'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6189' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6189.html#pid6189'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-25 21:00
+</div>
+<div class='ccl'>
+init:<br/><code><br/>&#160; &#160; @light_buffer = WindowBuffer.new # Or Texture of however big you need.<br/>&#160; &#160; @circle_of_light = Image.new # Your light circle image.<br/></code><br/>The circle shoudl be white in the centre and shaded out to opaque black at the edge OR <br/>white at the center and shaded out to transparent white at the edge. The effect is the same, so it is whichever is easiest. You can, alternatively, draw this with TexPlay when you load the game, but that is a task I&#39;m not going to help you with because life is too short and you can draw it with GIMP or something easily.<br/><br/>update:<br/><code><br/>@light_buffer.render do<br/>&#160;&#160; # &lt;=== Draw an opaque black quad to clear it. Yes, I should implement #clear color: Gosu::Color::BLACK, but not today.<br/><br/>&#160;&#160; @light_sources.each do |light|<br/>&#160; &#160; &#160; @circle_of_light.draw light.x, light.y, 0, 1, 1, 0xffffff, :add # Use Gosu::Image#draw additively, so that lights make each other lighter when they blend.<br/>&#160;&#160; end<br/>end<br/></code><br/><br/>draw:<br/><code><br/># &lt;==draw scene normally<br/><br/>@light_buffer.draw 0, 0, 0, mode: :multiply # Look up multiplicative blending to see why this is best for lighting.<br/><br/># &lt;== draw GUI<br/></code><br/><br/>I&#39;ll see about this translate issue, but it will be a few days I think. Please post an issue on github if you want me to remember :)
+</div>
+</div>
+
+<div class='brn' id='brn6189'>
+<div class='frm pst' id='pid6191' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6189'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6191' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6191.html#pid6191'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-26 10:21
+<span class='htt'>Edited</span> 2012-08-26 10:57
+</div>
+<div class='ccl'>
+Now I don&#39;t understand anything O_o<br/>Oh, yes, your code helped me, it&#39;s im my game and is working. But strange things are happening. The least important. Stencil was making grey circles. Multiplying makes... white<br/><img class='emi' src='http://desmond.imageshack.us/Himg705/scaled.php?server=705&amp;filename=shine.png&amp;res=landing' alt=''/><br/>Better visible here:<br/><img class='emi' src='http://img18.imageshack.us/img18/6058/beamn.png' alt=''/><br/>It doesn&#39;t look so bad so it don&#39;t need to be fixed. Just a bonus effect :)<br/><br/>But, I want also to make a semi-dark room. With Stencil it was as it should, but now I can&#39;t to figure it. When I clear texture, even with multiplying, it should appear invisible. But it&#39;s black. I can skip drawing this quad and the texture is still black when cleared (lights are of course visible). So there&#39;s no matter ho alpha the quad has, you can see nothing through the dark.<br/>And most interesting. When you charge beam, the hero is altering it&#39;s color. But it seems to affect... lights. Charging changes only player&#39;s color and it&#39;s a different class, but somehow, my lights are drawing with last color used by player. AND, charging missile is also changing character&#39;s color, but... not lights&#39;. Maybe it&#39;s something in my code, but it seems impossible. I tried using <code>color: Color::WHITE</code> with no result. Also, when you stop charging, the light is still colored. I looks fun, but not desirable&#160; :)&#160; :/<br/><br/>EDIT:<br/>If it helps you, I&#39;m giving source code: <a class='url' href='http://www.mediafire.com/?1hs6d69tv1coo1w'>http://www.mediafire.com/?1hs6d69tv1coo1w</a><br/>To see how it behaves, load the first save and go down the door. Left Shift to shoot/charge beam, Space to charge missiles. Left Control to jump. To see more interesting charging effect, double tap C key.<br/>And the lighting code is int data/scripts/rooms.rb, line 250.<br/><br/>It&#39;s also for jlnr, because you can hear there the OpenAL noise
+</div>
+</div>
+
+<div class='brn' id='brn6191'>
+<div class='frm pst' id='pid6192' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6191'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6192' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6192.html#pid6192'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-26 18:16
+</div>
+<div class='ccl'>
+Playing it for 5 minutes, I failed to work out how to &quot;go down the door&quot;, so I gave up.<br/><br/>If you have two lights on top of each other and they both peak at white, then you will end up with white circles like that when you draw them all additively. If you know you are going to overlap a lot of lights, then you might be better having the centre more mid or light grey, so that doesn&#39;t happen.<br/><br/>The way multiplication works is that you can see where it is white and you won&#39;t see where it is black (which is not the same as stencilling, which uses alpha channel only). I think I said that you can do it with alpha only, which wasn&#39;t right. The way with black&lt;-&gt;grey&lt;-&gt;white (as in your Light.png) is correct when multiplying. The main advantage of this approach is that colours are preserved, when they are darkened, much better when multiplying than stencilling. You can also use coloured lighting, which is nice too :)<br/><br/>Honestly, using github (or alternative) hosting would be a lot easier, for us at least, than mediafire downloads.
+</div>
+</div>
+
+<div class='brn' id='brn6192'>
+<div class='frm pst' id='pid6193' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6192'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6193' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6193.html#pid6193'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-26 18:53
+</div>
+<div class='ccl'>
+Uh, it really doesn&#39;t explain to much.<br/>To open the door, just shoot it. Down + LeftShift while in air or Z + Down + LeftShift when you stand on it.<br/>And if you have problems with reading code, I of course can make GitHub account. But is it worth for only one thing?
+</div>
+</div>
+
+<div class='brn' id='brn6193'>
+<div class='frm pst' id='pid6194' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6193'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6194.html#pid6194'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-26 19:34
+</div>
+<div class='ccl'>
+It isn&#39;t reading the code that is the problem, though it does make it easier to link a line directly, rather than making someone download/extract/find file/find line to do the same thing. It is more that it is easier to update it here next time you need it looked at, compared to redownloading the whole thing, unzipping it, etc. Also makes clear what has been changed. Not a big thing, but it does make life easier for those you want to help you *cough*
+</div>
+</div>
+
+<div class='frm pst' id='pid6195' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6193'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6195' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6195.html#pid6195'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-27 00:11
+</div>
+<div class='ccl'>
++1 for moving your code to github :) They could also upload ZIPs there.
+</div>
+</div>
+
+<div class='brn' id='brn6195'>
+<div class='frm pst' id='pid6196' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6195'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6196.html#pid6196'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-27 08:32
+</div>
+<div class='ccl'>
+If that so: <a class='url' href='https://github.com/KoBeWi/Bottomless-Mine'>https://github.com/KoBeWi/Bottomless-Mine</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6198' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6180'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6198' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6198.html#pid6198'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-28 19:17
+</div>
+<div class='ccl'>
+Another thing I found: Fibers don&#39;t work with Gosu::Image<br/>I tried to fix this loading screen. But for first, somehow Fibers I make don&#39;t have <code>#alive?</code> method. And, when trying to yield Gosu::Image, game crashes without throwing error.<br/>Any ideas?
+</div>
+</div>
+
+<div class='brn' id='brn6198'>
+<div class='frm pst' id='pid6199' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6198'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6199' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6199.html#pid6199'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-28 23:30
+</div>
+<div class='ccl'>
+I have used Fibers with Gosu, but with an older version of Gosu, can&#39;t remember which one, they did just crash the application. I assume you are on Gosu 0.7.45, so that shouldn&#39;t be the same problem as you are having.<br/><br/>Fiber only has really basic functionality (only <code>Fiber.new</code>, <code>Fiber.yield</code> and <code>Fiber#resume</code>, I think) unless you <code>require &#39;fiber&#39;</code> to load the rest of the functionality (like <code>#alive?</code>). Just the same as Thread really: You have Thread, but unless you <code>require &#39;thread&#39;</code> you miss out on most of what Threads do.<br/><br/>Maybe include some code if you are still struggling to make them work?
+</div>
+</div>
+
+<div class='brn' id='brn6199'>
+<div class='frm pst' id='pid6200' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6199'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6200' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6200.html#pid6200'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-29 18:50
+</div>
+<div class='ccl'>
+I used this <code>require </code>and <code>alive?</code> is really working, but there seem to be no way to load these images, because it&#39;s simply crashing. Just a basic example:<br/><br/><code>require &#39;gosu&#39;<br/>require &#39;fiber&#39;<br/>include Gosu<br/><br/>class GameWindow &lt; Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; &#160; self.caption = &quot;Test Game&quot;<br/>&#160; &#160; <br/>&#160; &#160; @images=[]<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; @fiber=Fiber.new do<br/>&#160; &#160; &#160; yield @images &lt;&lt; Image.new(self, &#39;image1.png&#39;)<br/>&#160; &#160; &#160; yield @images &lt;&lt; Image.new(self, &#39;image2.png&#39;)<br/>&#160; &#160; &#160; yield @images &lt;&lt; Image.new(self, &#39;image3.png&#39;)<br/>&#160; &#160; end if !@fiber<br/>&#160; &#160; <br/>&#160; &#160; @fiber.resume if @fiber.alive?<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; end<br/>end<br/><br/>GameWindow.new.show</code>
+</div>
+</div>
+
+<div class='brn' id='brn6200'>
+<div class='frm pst' id='pid6201' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6200'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6201' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6201.html#pid6201'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-29 19:27
+</div>
+<div class='ccl'>
+yield != Fiber.yield (You aren&#39;t understanding how either work there :D).<br/><br/>multiline do...end if x is really ugly syntax too. You want:<br/><code><br/>@fiber ||= Fiber.new do<br/>&#160; @images &lt;&lt; Image.new(self, &#39;image1.png&#39;)<br/>&#160; Fiber.yield<br/>&#160; @images &lt;&lt; Image.new(self, &#39;image2.png&#39;)<br/>&#160; Fiber.yield<br/>&#160; @images &lt;&lt; Image.new(self, &#39;image3.png&#39;)<br/>end<br/><br/>@fiber.resume if @fiber.alive?<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn6201'>
+<div class='frm pst' id='pid6202' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6201'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6202' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6202.html#pid6202'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-29 19:45
+<span class='htt'>Edited</span> 2012-08-29 19:55
+</div>
+<div class='ccl'>
+Oh, thanks. I know there should be Fiber.yield, I made mistake in example :)<br/>And it&#39;s a weird... bug (?) Fiber don&#39;t work in <code>Window.update</code>. Calling <code>resume</code> there makes crash. But it works in <code>draw</code><br/>And, I first time see this &#39; ||= &#39; but I sometimes I make much worse syntax than here :)<br/><br/>EDIT:<br/>No, it don&#39;t work&#160; even in draw. <code>Fiber.resume</code> don&#39;t crash, but when it &#39;dies&#39;, there&#39;s some &#39;cfp consistency error&#39;
+</div>
+</div>
+
+<div class='brn' id='brn6202'>
+<div class='frm pst' id='pid6205' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6202'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6205.html#pid6205'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-29 22:28
+</div>
+<div class='ccl'>
+In this case, it is probably better to create @fiber in #initialize, so you don&#39;t need to use ||= anyway. It has its uses, certainly, but doesn&#39;t seem necessary here.<br/><br/>Not sure why it still isn&#39;t working properly, but there are still a lot of places where it could be going wrong in your full game, which I assume is doing things a bit more complex than we see in the example. If the example still doesn&#39;t work, then I can&#39;t really help; jlnr probably hasn&#39;t a clue either!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6203' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6203' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6203.html#pid6203'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=907.html' >ExplodingCookie</a>
+<span class='htt'>Date</span> 2012-08-29 20:43
+</div>
+<div class='ccl'>
+I don&#39;t know if this is because I have a Mac, but I need <i>require rubygems</i> present before the <i>require gosu</i> function for it to initialize. By the way, what is <i>gl</i> and <i>glu</i>?
+</div>
+</div>
+
+<div class='brn' id='brn6203'>
+<div class='frm pst' id='pid6204' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6180.html#pid6203'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6204' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6204.html#pid6204'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-29 22:23
+<span class='htt'>Edited</span> 2012-08-29 22:29
+</div>
+<div class='ccl'>
+That is only necessary if you use Ruby 1.8.7 (or earlier). I strongly recommend you use Ruby 1.9.3 though, since it is a lot faster and 1.8.7 is pretty close to being deprecated.<br/><br/>gl and glu are prefixes for methods that are provided by OpenGL or OpenGL Utilities libraries, respectively. The Window#gl block in Gosu, however, is there so you can write OpenGL commands directly, which I don&#39;t recommend :)
+</div>
+</div>
+
+<div class='brn' id='brn6204'>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=491.html#tid491'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=491.html#tid491'>Gosu Showcase</a> / Bottomless Mine v.1.0-beta2
+</div>
+<div class='bcl'>
+<span class='pln'>
+<a href='topic_show.pl@tid=491%3Bpg=1.html'>1</a>
+<span>2</span>
+<a href='topic_show.pl@tid=491%3Bpg=3.html'>3</a>
+<a href='topic_show.pl@tid=491%3Bpg=1.html'><img class='sic sic_nav_prev' src='https://www.libgosu.org/mwf/epx.png' title='Go to previous page' alt='Previous'></a>
+<a href='topic_show.pl@tid=491%3Bpg=3.html'><img class='sic sic_nav_next' src='https://www.libgosu.org/mwf/epx.png' title='Go to next page' alt='Next'></a>
+</span>
+&#160;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6180.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

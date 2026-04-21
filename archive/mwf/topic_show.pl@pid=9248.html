@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Map scrolling nightmare...</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9248' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1354.html#tid1354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1354.html#tid1354'>Gosu Exchange</a> / Map scrolling nightmare...
+</div>
+</div>
+
+<div class='frm pst' id='pid9248' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9248' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9248.html#pid9248'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-09 17:03
+</div>
+<div class='ccl'>
+I was trying to implement a map scrolling system thanks to Gosu&#39;s translate method that semiautomatically handles tiles and events offsets making it easier for game developers to handle more ordinary stuff than usual while drawing a map. Sadly you end up watching how my player and his not so heroic team makes the map look larger and darker than expected. I&#39;m not really used dealing with scrolling issues so I thought somebody here could tell me what I&#39;m doing wrong here hopefully... For now solving the issue with the horizontal map scroll should suffice. I only commented those lines that somehow affect map scrolling.<br/><br/>This happens when I go left... (Those two lonely tiles denote the actual end of the map on the righthand side.) (Check out the first image I attached.)<br/><br/>And this is the disaster that takes place if I go right... (Take a look at the second screenshot if you ever dare...)<br/><br/>class Player<br/>&#160; def update<br/>&#160; &#160; return if @halt<br/>&#160; &#160; @last_x = @screen_x<br/>&#160; &#160; @last_y = @screen_y<br/>&#160; &#160; return if moved?<br/>&#160; &#160; if Gosu.button_down?(Gosu::KbDown)<br/>&#160; &#160; &#160; @dir = @other_way ? 8 : 2<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @y += 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_y = @y * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; elsif Gosu.button_down?(Gosu::KbUp)<br/>&#160; &#160; &#160; @dir = @other_way ? 2 : 8<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @y -= 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_y = @y * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; elsif Gosu.button_down?(Gosu::KbLeft)<br/>&#160; &#160; &#160; @dir = @other_way ? 6 : 4<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @x -= 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_x = @x * 16<br/>&#160; &#160; &#160; ### Calculating the horizontal offset, Current direction: Left (4)<br/>&#160; &#160; &#160; @offset_x = [0, -@screen_x].min if @screen_x &lt; Map.width * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; elsif Gosu.button_down?(Gosu::KbRight)<br/>&#160; &#160; &#160; @dir = @other_way ? 4 : 6<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @x += 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_x = @x * 16<br/>&#160; &#160; &#160; ### Calculating the horizontal offset, Current direction: Right (6)<br/>&#160; &#160; &#160; @offset_x = [[-@screen_x + @last_x, -Map.width * 16].max, 0].min if @screen_x &gt; Map.width * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(:enter) or button_down?(:return)<br/>&#160; &#160; &#160; Map.events.each do |event|<br/>&#160; &#160; &#160; &#160; blocked = block_pass?(event)<br/>&#160; &#160; &#160; &#160; next unless blocked<br/>&#160; &#160; &#160; &#160; event.react_now if event.react<br/>&#160; &#160; &#160; &#160; if event.button?<br/>&#160; &#160; &#160; &#160; &#160; event.activate<br/>&#160; &#160; &#160; &#160; &#160; @halt = true<br/>&#160; &#160; &#160; &#160; &#160; return<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class SceneMap<br/>&#160; def update_scene<br/>&#160; &#160; @offset_x = @player.offset_x # saving last horizontal offset<br/>&#160; &#160; @offset_y = [-@player.screen_y + @window_height / 1.08, 0].min<br/>&#160; &#160; if @map_ticks &gt; 0<br/>&#160; &#160; &#160; @map_ticks -= 1<br/>&#160; &#160; &#160; @map_texts.clear if @map_ticks == 0<br/>&#160; &#160; end<br/>&#160; &#160; @player.update # Calling Player&#39;s Update Method and setting a new horizontal offset value<br/>&#160; &#160; Map.events.each {|e| e.update }<br/>&#160; &#160; @spriteset.update<br/>&#160; &#160; if press_quit?<br/>&#160; &#160; &#160; Game.cancel_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsMenu)<br/>&#160; &#160; &#160; return<br/>&#160; &#160; elsif button_down?(:left_ctrl)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsAchieve)<br/>&#160; &#160; elsif button_down?(:caps_lock)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsFoes)<br/>&#160; &#160; elsif button_down?(:left_shift)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKBookPages, id: 1)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @window.clip_to(0,0,@window_width,@window_height) do # Some sort of Viewport singleton command<br/>&#160; &#160; &#160; @window.translate(@offset_x,@offset_y) do # Scroll loop<br/>&#160; &#160; &#160; &#160; @spriteset.draw<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @map_texts.each {|text| text.draw }<br/>&#160; end<br/>end
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=873.html'><img class='amt' src='../../mwf/attachments/48/9248/kunitsgosumaperror01.thb.jpg' title='RIGHT! It&#39;s a true mess indeed! (33k)' alt=''/></a>
+<a href='attach_show.pl@aid=874.html'><img class='amt' src='../../mwf/attachments/48/9248/kunitsgosumaperror02.thb.jpg' title='A sorrowful blank space Left alone! (27k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn9248'>
+<div class='frm pst' id='pid9249' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9248.html#pid9248'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9249' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9249.html#pid9249'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-09 17:13
+</div>
+<div class='ccl'>
+Guess what? I solved it, not thanks to you, guys -_- (Yeah, I&#39;d say I&#39;m a bit disappointed here... but the truth is that I ended up not needing your help at all! (Tongue sticking out XP))<br/><br/>I&#39;m posting this as a second part of my &quot;sorrowful scripting&quot; story, you&#39;ll see it does make sense after all!<br/><br/>As I told some guy better known as DerVVulfman last night a solution we both had found long time ago for map scrolling would NOT work on KUnits Gosu, that truth hasn&#39;t changed, BUT some creativity was needed to solve this mystery. I had partially found a way to solve it.<br/><br/># Pressing Down Arrow<br/>@offset_y = [-@screen_y + 608 / 1.08, 0].min# Works but only if you hit the lower edge of the game window then you&#39;d make it scroll<br/><br/># Pressing Right Arrow<br/>@offset_x = [-@screen_x + 800 / 1.042, 0].min# Works but only if you hit the right edge of the game window then you&#39;d make it scroll<br/><br/>Don&#39;t ask me why they had to be those values or else the minimum command wouldn&#39;t ever work! (I tried replacing the screen coordinate plus the dimension divided by a weird value with an 8, it automatically chose 0 as result, changing it to max became a new nightmare! The map either got scrolled to the left hand side almost EXPONENTIALLY or a sign change in reverted it by pushing the map to the right hand side making it arrive in Japan!)<br/><br/>But there&#39;s always a catch...<br/><br/>What if in some case like when the offset is decreasing (by adding 8 to its actual value) or the remainder (2px?) was possible in one situation? I started trying to make it work and it didn&#39;t take me long to noticed it was perfect... almost.<br/><br/># Pressing Left Arrow<br/>@offset_x += [8, -@offset_x].min if @offset_x &lt; 0 and @screen_x - @offset_x &lt; Map.width * 32<br/><br/>Yes, every single tile is 32 pixels wide and high as well. Multiplying the corresponding dimension sounds quite logical... but not to our dear Ruby Gosu engine! It made the player vanish unless IT, not the player&#39;s sprite character, got close to the left edge of the game window. Then I thought I had to define it as Map.width * 16 so it would only do it if the offset was less than half the current map&#39;s width... It messed it up as well.<br/><br/>After several attempts I found out the perfect value HAD to be 23.5 and it would work on ANY map that was larger than the minimum width (25 tiles * 32 pixels). Minimum sized maps wouldn&#39;t complain at all. (Shocked)<br/><br/>I still had a serious issue to solve, how could I make it stop waiting for the sprite to hit the opposite edge before it scrolled right? (Or to the right hand side?) I wasn&#39;t slow at all, I quickly thought a conditional statement would take care of that important job! I was WRONG! (Ticked off) I messed up once again!<br/><br/>Then I had a clever idea, what if the solution I applied to it&#39;s opposite direction had a clue on what to do to fix the latter?<br/><br/>@offset_x -= [-8, @offset_x].min if @offset_x &lt; 0 and @screen_x - @offset_x &gt; Map.width * 26 # Yeah I first tried with 26 for a reason I&#39;ve forgotten...<br/><br/>How weird! It didn&#39;t help me, the screen jumped suddenly without warning! How crappy! (Happy with a sweat)<br/><br/>Nope, 0 would make the jump look even more extreme, as much as to beat any X-Gamer while trying to break his bones while flying briefly in the air before dropping onto the floor hitting his legs or arms hard against it...<br/><br/>There was a revelation finally! (Very happy + Tongue sticking out) I had to modify it slightly so it would actually help me there solving my issue.<br/><br/>@offset_x = [@offset_x - 8, @offset_x-@offset_x].min if @offset_x &lt; 0 and @screen_x - @offset_x &gt; Map.width * 26<br/><br/>Got close... but not enough to what people would actually expect, something was missing... (Confused)<br/><br/>Gotcha! I had to include a calculation included in XP, that&#39;s all I had to do!<br/><br/>@offset_x = [[@offset_x - 8, @offset_x-@offset_x].min, (Map.width - 25) * 32].max if @offset_x &lt; 0 and @screen_x - @offset_x &gt; Map.width * 26<br/><br/>It should work fine now for sure, I took into account that Gosu has no such real_x coordinates so I had to multiply it by the actual tile width. Wait a minute! (Ticked off) Where did my stupid map go? It looked like it did break through to the other side, whatever that was! (Feeling sick)<br/><br/>After a while I had found an &quot;imperfect solution&quot;, but it WAS a solution after all!<br/><br/>@offset_x = [[@offset_x - 8, @offset_x-@offset_x].min, -(Map.width - 25) * 32].max if @offset_x &lt; 0 and @screen_x - @offset_x &gt; Map.width * 26<br/><br/>Say what? (Happy with a sweat) &quot;How&#39;s that gonna help you at all?&quot; you may ask me now. Well, it sure did! Yeah, I DO mean it! It took it a few more pixels to react than expected but no signs of oblivion was ever seen!<br/><br/>But how could I make it react soon enough as if I had gone through an invisible trigger right in the middle of the game window? That was the moment when I started fiddling with the map width value by increasing or decreasing it over and over again...<br/><br/>@offset_x = [[@offset_x - 8, @offset_x-@offset_x].min, -(Map.width - 25) * 32].max if @offset_x &lt; 0 and @screen_x - @offset_x &gt; Map.width * 12.75<br/><br/>Yeah! I DID IT! (Winks) I still don&#39;t know what the best value was 12.75, but it sure works fine! (Laughing + Tongue sticking out)<br/><br/>And for a while this early morning (like till 2 o&#39;clock) I was happy with the result until I found out something was missing there... Indifferent<br/><br/>No, wait a second! (Shocked) My second scripting epiphany had arrived! Laughing A missing part was not the ACTUAL issue here, but an extra part was indeed! (Happy with a sweat)<br/><br/>@offset_x = [@offset_x - 8, -(Map.width - 25) * 32].max if @offset_x &lt; 0 and @screen_x - @offset_x &gt; Map.width * 12.75<br/><br/>Yeah, guys, the part inbetween was completely useless at that point... (Happy with a sweat)<br/><br/>Hold on! I clearly stated earlier that such basic solution we scripters knew all about didn&#39;t help me there at all, didn&#39;t I? And you know what, I wasn&#39;t lying, I just ignored why it didn&#39;t and never would. My solution was completely customized and that&#39;s how it should have been from the very beginning! Shocked<br/><br/>But what did I do? (Sarcasm)<br/><br/>First of all it&#39;s not that similar, I don&#39;t call the map to get any scrolling variable, and I skipped any unnecessary calculations and I never ADD the current distance, which is easily determined in my project, it&#39;s always 8 (most of the time (Laughing + Tongue sticking out) ). Oh and I substract the extra tiles width as well!<br/><br/>MYSTERY SOLVED! Ruby Gosu does never add distance to move everything on screen, it substract all values in a flip! (Shocked)<br/><br/>Solving the issue with the map&#39;s height was no problem at all! A real piece of cake! (Very happy + Tongue sticking out)<br/><br/>Was it? (Confused)<br/><br/>Take a look at the actual scrolling code and see by yourself if that was an accurate statement or not.<br/><br/>class Player<br/>&#160; def update<br/>&#160;&#160; return if @halt<br/>&#160;&#160; @last_x = @screen_x<br/>&#160;&#160; @last_y = @screen_y<br/>&#160;&#160; return if moved?<br/>&#160;&#160; if Gosu.button_down?(Gosu::KbDown)<br/>&#160; &#160;&#160; @dir = @other_way ? 8 : 2<br/>&#160; &#160;&#160; return unless pass?<br/>&#160; &#160;&#160; @y += 0.5<br/>&#160; &#160;&#160; @screen_y = @y * 16<br/>&#160; &#160;&#160; @offset_y = [@offset_y - 8, -(Map.height - 19) * 32].max if @screen_y &gt; Map.height * 8<br/>&#160; &#160;&#160; update_steps<br/>&#160;&#160; elsif Gosu.button_down?(Gosu::KbUp)<br/>&#160; &#160;&#160; @dir = @other_way ? 2 : 8<br/>&#160; &#160;&#160; return unless pass?<br/>&#160; &#160;&#160; @y -= 0.5<br/>&#160; &#160;&#160; @screen_y = @y * 16<br/>&#160; &#160;&#160; @offset_y += [8, -@offset_y].min if @offset_y &lt; 0 and @screen_y - @offset_y &lt; Map.height * 32<br/>&#160; &#160;&#160; update_steps<br/>&#160;&#160; elsif Gosu.button_down?(Gosu::KbLeft)<br/>&#160; &#160;&#160; @dir = @other_way ? 6 : 4<br/>&#160; &#160;&#160; return unless pass?<br/>&#160; &#160;&#160; @x -= 0.5<br/>&#160; &#160;&#160; @screen_x = @x * 16<br/>&#160; &#160;&#160; @offset_x += [8, -@offset_x].min if @offset_x &lt; 0 and @screen_x - @offset_x &lt; Map.width * 23.5<br/>&#160; &#160;&#160; update_steps<br/>&#160;&#160; elsif Gosu.button_down?(Gosu::KbRight)<br/>&#160; &#160;&#160; @dir = @other_way ? 4 : 6<br/>&#160; &#160;&#160; return unless pass?<br/>&#160; &#160;&#160; @x += 0.5<br/>&#160; &#160;&#160; @screen_x = @x * 16<br/>&#160; &#160;&#160; @offset_x = [@offset_x - 8, -(Map.width - 25) * 32].max if @screen_x &gt; Map.width * 12.75<br/>&#160; &#160;&#160; update_steps<br/>&#160;&#160; end<br/>&#160;&#160; if button_down?(:enter) or button_down?(:return)<br/>&#160; &#160;&#160; Map.events.each do |event|<br/>&#160; &#160;&#160; blocked = block_pass?(event)<br/>&#160; &#160;&#160; next unless blocked<br/>&#160; &#160;&#160; event.react_now if event.react<br/>&#160; &#160;&#160; if event.button?<br/>&#160; &#160; &#160;&#160; event.activate<br/>&#160; &#160; &#160;&#160; @halt = true<br/>&#160; &#160; &#160;&#160; return<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/>&#160; end<br/>end<br/><br/>class SceneMap<br/>&#160; def update_scene<br/>&#160; &#160; if @map_ticks &gt; 0<br/>&#160; &#160; &#160; @map_ticks -= 1<br/>&#160; &#160; &#160; @map_texts.clear if @map_ticks == 0<br/>&#160; &#160; end<br/>&#160; &#160; @player.update<br/>&#160; &#160; @offset_x = @player.offset_x<br/>&#160; &#160; @offset_y = @player.offset_y<br/>&#160; &#160; Map.events.each {|e| e.update }<br/>&#160; &#160; @spriteset.update<br/>&#160; &#160; if press_quit?<br/>&#160; &#160; &#160; Game.cancel_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsMenu)<br/>&#160; &#160; &#160; return<br/>&#160; &#160; elsif button_down?(:left_ctrl)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsAchieve)<br/>&#160; &#160; elsif button_down?(:caps_lock)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsFoes)<br/>&#160; &#160; elsif button_down?(:left_shift)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKBookPages, id: 1)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @window.clip_to(0,0,@window_width,@window_height) do<br/>&#160; &#160; &#160; @window.translate(@offset_x,@offset_y) do<br/>&#160; &#160; &#160; &#160; @spriteset.draw<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @map_texts.each {|text| text.draw }<br/>&#160; end<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn9249'>
+<div class='frm pst' id='pid9250' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9248.html#pid9249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9250.html#pid9250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-09-10 11:04
+</div>
+<div class='ccl'>
+Well, I don&#39;t get your code at all. Why are you using some @offset_x variable inside player and then assign it inside your scene and translate map with it? Isn&#39;t it better to make a variable inside scene called @screen_x, and then set it to player position after its update? (just how it&#39;s done in <a class='url' href='https://github.com/gosu/gosu-examples/blob/master/examples/cptn_ruby.rb'>Cptn Ruby example</a>) I have a feeling that your code can be MUCH simpler, unless you had your reasons to make it that way. I&#39;ve used Gosu for a long time and never seen stuff like your <code>@screen_x &gt; Map.width * 12.75</code>.<br/><br/>btw, I&#39;m not sure if clipping to screen size affects performance at all. I think it still does some off-screen drawing, but then clips it, so you gain nothing at all. Although maybe it&#39;s implemented in more clever way.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1354.html#tid1354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1354.html#tid1354'>Gosu Exchange</a> / Map scrolling nightmare...
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9248.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

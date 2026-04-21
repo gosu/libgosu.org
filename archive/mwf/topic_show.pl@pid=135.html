@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>[Resolved] Gosu troubles</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d135' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=49#tid49'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=49#tid49'>Gosu Exchange</a> / [Resolved] Gosu troubles
+</div>
+</div>
+
+<div class='frm pst' id='pid135' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=135.html#pid135'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=37.html' >anza</a>
+<span class='htt'>Date</span> 2008-12-29 20:02
+</div>
+<div class='ccl'>
+I wanted to try gosu out, so I just downloaded it (along with boost).&#160; Compiling the GettingStartedOnWindows code works fine, but any attempt to run it crashes immediately:<br/>Unhandled exception at 0x00000000 in BomberPenguin.exe: 0xC0000005: Access violation reading location 0x00000000.<br/><br/>I went ahead and tried to compile gosuDuel code with the same result.<br/><br/>The only thing I can think of is the unmentioned method of linking to fmod.dll.&#160; Normally, you just add fmodvc.lib as additional dependency and drop the fmod.dll wherever the binary is, and this is the method I used.&#160; Since I don&#39;t know what &quot;lazily link up against fmod.dll&quot; means, could someone enlighten me if the method I used is not the correct one?
+</div>
+</div>
+
+<div class='frm pst' id='pid146' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=146#pid146'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-02 00:24
+</div>
+<div class='ccl'>
+fmodvc.lib should be linked statically into Gosu.lib so you shouldn&#39;t have to do anything. What you can do is add /DELAYED= or something similar to the linker flags to instruct it to load FMOD only when the need is there. Missing DLLs shouldn&#39;t cause something like this though.<br/><br/>Can you see the call stack when this happens?
+</div>
+</div>
+
+<div class='frm pst' id='pid149' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=149.html#pid149'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=37.html' >anza</a>
+<span class='htt'>Date</span> 2009-01-02 02:49
+</div>
+<div class='ccl'>
+&#160;&#160; 00000000()<br/>&#160;&#160; BomberPenguin.exe!Gosu::`anonymous namespace&#39;::windowProc(HWND__ * wnd=0x000802ca, unsigned int message=24, unsigned int wparam=1, long lparam=0)&#160; Line 116 + 0x1b bytes&#160; C++<br/><br/>Those are the only things I see.&#160; I haven&#39;t checked out your source code yet, so I&#39;ll have to take a look at WindowWin when I get the time.&#160; I&#39;m also going to reinstall XP and see if it works in there (I&#39;m in 2k SP4).
+</div>
+</div>
+
+<div class='frm pst' id='pid165' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=165#pid165'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=37.html' >anza</a>
+<span class='htt'>Date</span> 2009-01-03 18:49
+</div>
+<div class='ccl'>
+I forgot to update this.&#160; The problem was a simple mistake: I assumed you meant to create an empty project, and not Win32-&gt;Console Application-&gt;Empty Project -- force of habit.&#160; Works fine in both 2k and XP.
+</div>
+</div>
+
+<div class='frm pst' id='pid171' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=171.html#pid171'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-04 14:30
+</div>
+<div class='ccl'>
+Hmmm, actually it should be Win32 application-&gt;Empty Project--does it only work when it also shows a console for you? If so, that&#39;d be a bug :)
+</div>
+</div>
+
+<div class='frm pst' id='pid176' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=176#pid176'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=37.html' >anza</a>
+<span class='htt'>Date</span> 2009-01-04 16:37
+</div>
+<div class='ccl'>
+This is with the 2005 express edition, so I&#39;m not sure if that&#39;s a difference.<br/><br/>The only default options are:<br/>CLR<br/> - Class Library<br/> - CLR Console Application<br/> - CLR Empty Project<br/> - Windows Form Application<br/><br/>Win32<br/> - Win32 Console Application<br/><br/>General<br/> - Empty Project<br/> - Makefile Project<br/><br/>The console app with the<br/>#pragma comment(linker, &quot;/SUBSYSTEM:windows /ENTRY:mainCRTStartup&quot;)<br/>works fine, so it isn&#39;t a big deal to me.
+</div>
+</div>
+
+<div class='frm pst' id='pid178' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=178.html#pid178'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-04 23:06
+</div>
+<div class='ccl'>
+Ah, I haven&#39;t tried the express edition. Thanks for clarifying this, I will link to this thread on the GettingStartedOnWindows page! :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=49#tid49'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=49#tid49'>Gosu Exchange</a> / [Resolved] Gosu troubles
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=135.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

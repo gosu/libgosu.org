@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8566 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Some Gosu requests</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8566' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1224.html#tid1224'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1224.html#tid1224'>Extending Gosu</a> / Some Gosu requests
+</div>
+</div>
+
+<div class='frm pst' id='pid8562' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8562' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8562.html#pid8562'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-14 19:48
+</div>
+<div class='ccl'>
+Hi to all!<br/><br/>I&#39;m new here on forum, and just newbie with Gosu (about 2 months). And I&#39;m from Russia and don&#39;t realy often use english, so don&#39;t blame me to hard for possible mistakes))<br/><br/>So...<br/><br/>I&#39;m in construction of my own engine. I&#39;m using Gosu, Rmagick, Inifile, Chipmunk and Chingu (two lasts I&#39;m not really use by now, maybe later). And in produsing my engine I thought about (IMHO) usefull features? that could be implemented in Gosu, because I use them every time, but don&#39;t see them in Gosu...<br/><br/>They are:<br/><br/>1. Method (and also a class) for cursor. By now I&#39;m using somewhat similar to this:<br/><br/>class GameCursor<br/>&#160; attr_accessor :image<br/>&#160; def initialize filename = nil<br/>&#160; &#160; case filename<br/>&#160; &#160; &#160;&#160; when nil; Gosu::Window.class_eval {def needs_cursor?; false; end}<br/>&#160; &#160; &#160;&#160; when&#160; &quot;&quot;;&#160; Gosu::Window.class_eval {def needs_cursor?; true; end}<br/>&#160; &#160; &#160;&#160; when String<br/>&#160; &#160; &#160; &#160; &#160;&#160; Gosu::Window.class_eval {def needs_cursor?; false; end}<br/>&#160; &#160; &#160; &#160; &#160; @image = Gosu::Image.new(filename)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw x, y; @image.draw(x, y, 100000); end<br/>end<br/><br/>#and in my main class:<br/><br/>class MyClass &lt; Gosu::Window<br/>&#160; def initialize #...<br/>&#160; &#160; #...<br/>&#160; &#160; @cursor = GameCursor.new (#...)<br/>&#160; &#160; #...<br/>&#160; end<br/>#....<br/>&#160; def draw<br/>&#160; &#160;&#160; @cursor.draw<br/>&#160; &#160;&#160; #... <br/>&#160;&#160; end<br/>end<br/><br/>This is not all, that I do with my cursor object (not only implement custom image for it))), but these are basics, that I thought, should be in Gosu core... (Rubygame has this)<br/><br/>2. Is there any way to draw Magick::Image instead of Gosu::Image? I&#39;m on Windows7, so method #display doesn&#39;t fit to me))<br/><br/>3. I&#39;m in need to know screen resolution of user, that will be play my games. For now I&#39;m using Tk methods such are:<br/><br/>require &#39;tk&#39;<br/><br/>$screen_width&#160; = TkWinfo.screenwidth(Tk.root)<br/>$screen_height = TkWinfo.screenheight(Tk.root)<br/><br/>#and so on... aspect ratio, scale factros, restricted on screew width, that user sets in ini-file...<br/><br/>In last update you began integration with Tk, so I thought, that maybe some of this features could be implemented in gosu core?<br/><br/>That is not all, but for the first time it&#39;s ok. I would be grateful for an answer!
+</div>
+</div>
+
+<div class='brn' id='brn8562'>
+<div class='frm pst' id='pid8566' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8562'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8566' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8566.html#pid8566'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-15 21:57
+</div>
+<div class='ccl'>
+Hi and welcome :)<br/><br/>1. Instead of rewriting methods on <code>Gosu::Window</code> with <code>class_eval</code>, you can just add a setter to your own Window subclass:<br/><br/><code>class MyWindow &lt; Gosu::Window<br/>&#160; ...<br/>&#160; attr_accessor :cursor<br/>&#160; <br/>&#160; def initialize(...)<br/>&#160; &#160; ...<br/>&#160; &#160; # Neither default cursor, nor a custom cursor image - I think this makes for nicer code than &quot;&quot;<br/>&#160; &#160; @cursor = false<br/>&#160; end<br/><br/>&#160; def needs_cursor?<br/>&#160; &#160; @cursor.nil?<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; ...<br/>&#160; &#160; if @cursor then<br/>&#160; &#160; &#160; # This is a bit of a hack - it&#39;s probably better to cache cursors indefinitely in a Hash<br/>&#160; &#160; &#160; @cursor_image ||= Gosu::Image.new(@cursor)<br/>&#160; &#160; &#160; @cursor_image.draw mouse_x, mouse_y, 1000000<br/>&#160; &#160; end<br/>&#160; end<br/>end</code><br/><br/>2. No, <code>Magick::Image</code> is a bitmap in memory, <code>Gosu::Image</code> is an OpenGL texture, or something similar. But you can convert RMagick images to Gosu using <code>Gosu::Image.new(rmagick_image)</code>.<br/><br/>(And I feel I have to point out that releasing games that depend on RMagick is going to be complicated =/ Deploying Texplay is a lot easier.)<br/><br/>3. <code>Gosu::screen_width</code> and <code>Gosu::screen_height</code> are your friend.<br/><br/>Thanks for the feedback! I&#39;ll try to look at the asynchronous image loading soon-ish, as well.
+</div>
+</div>
+
+<div class='brn' id='brn8566'>
+<div class='frm pst' id='pid8567' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8566'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8567' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8567.html#pid8567'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-16 08:39
+<span class='htt'>Edited</span> 2015-09-16 08:47
+</div>
+<div class='ccl'>
+Thanks for answer!<br/><br/>I use only RMagick, because TexPlay doesn&#39;t work with Ruby 2.2. And, Rmagick, obviously more functional.
+</div>
+</div>
+
+<div class='brn' id='brn8567'>
+<div class='frm pst' id='pid8568' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8567'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8568.html#pid8568'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-16 09:30
+</div>
+<div class='ccl'>
+Oh, I didn&#39;t know that about TexPlay. =/
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8573' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8573' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8573.html#pid8573'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-18 21:05
+</div>
+<div class='ccl'>
+And one more question...<br/><br/>I couldn&#39;t understand how to privide a mouse double_clicking (( Didn&#39;t find this anywhere. Could someone provide me with a sample code of such event?
+</div>
+</div>
+
+<div class='brn' id='brn8573'>
+<div class='frm pst' id='pid8574' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8573'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8574' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8574.html#pid8574'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-09-20 00:30
+</div>
+<div class='ccl'>
+If you think about the problem for a while, I&#39;m sure you could come up with your own solution, but I like to solve little programming challenges like this, so I&#39;ll share mine.<br/><br/>Detecting that the mouse is over the item of interest is left as an exercise for the reader ;)
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/74/8574/GosuRubyDoubleClick.7z'>GosuRubyDoubleClick.7z</a> - Sample code to detect double-clicks in Ruby (7k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn8574'>
+<div class='frm pst' id='pid8575' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8574'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8575' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8575.html#pid8575'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-20 07:24
+</div>
+<div class='ccl'>
+Yeah! That&#39;s work! BTW, after posting this question, I spend some time to do this myself and my code was just as yours, except the minimal range of pointer DBLCLICKDIST)) Thanks for your help!
+</div>
+</div>
+
+<div class='brn' id='brn8575'>
+<div class='frm pst' id='pid8579' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8575'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8579' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8579.html#pid8579'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-09-20 15:13
+</div>
+<div class='ccl'>
+You&#39;re quite welcome.<br/>I knew you could do it, but to make it really robust, you need that distance check (which Gosu makes very easy, as you can see). It&#39;s been in MS Windows since the beginning for a reason ;)
+</div>
+</div>
+
+<div class='brn' id='brn8579'>
+<div class='frm pst' id='pid8581' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8579'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8581' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8581.html#pid8581'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-23 09:59
+<span class='htt'>Edited</span> 2015-09-23 13:12
+</div>
+<div class='ccl'>
+I went a little bit futher and impliment this feature to Gosu-core:<br/><br/>module Gosu<br/><br/>&#160; MsDoubleLeft&#160; = &quot;Mouse left&#160; button is double-clicked&quot;<br/>&#160; MsDoubleRight = &quot;Mouse right button is double-clicked&quot;<br/><br/>&#160; class Window<br/><br/>&#160; &#160; DBLCLICKTIME = 500<br/>&#160; &#160; DBLCLICKDIST = 5<br/><br/>&#160; &#160; def button_down id<br/>&#160; &#160; &#160; if id == Gosu::MsLeft<br/>&#160; &#160; &#160; &#160; if @click<br/>&#160; &#160; &#160; &#160; &#160; fast_enough&#160; = (Gosu.milliseconds - @time_now &lt; DBLCLICKTIME)<br/>&#160; &#160; &#160; &#160; &#160; close_enough = (distance(@now_x, @now_y, mouse_x, mouse_y) &lt;= DBLCLICKDIST)<br/>&#160; &#160; &#160; &#160; &#160; @click = false<br/>&#160; &#160; &#160; &#160; &#160; fast_enough and close_enough ? MsDoubleLeft : id<br/>&#160; &#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; @time_now = Gosu.milliseconds<br/>&#160; &#160; &#160; &#160; &#160; @now_x, @now_y = mouse_x, mouse_y<br/>&#160; &#160; &#160; &#160; &#160; @click = true<br/>&#160; &#160; &#160; &#160; &#160; id<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>Now in my MainWindow &lt; Gosu::Window I use this:<br/><br/>def button_down id<br/>&#160; id = super id<br/>&#160; #...other logic<br/>end<br/><br/>This helps me to capture double-click event with less code)) But have you any ideas how to improve this even more?
+</div>
+</div>
+
+<div class='brn' id='brn8581'>
+<div class='frm pst' id='pid8582' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8581'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8582' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8582.html#pid8582'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-09-24 03:26
+</div>
+<div class='ccl'>
+Great work! I&#39;m not sure how much more functionality a simple double-click test needs, but there is one thing...<br/><br/>While writing my code, I thought a bit about how one would integrate it into Gosu. At first, I assumed a double-click shouldn&#39;t trigger either of the constituent single-clicks. However, to do this, you&#39;d have to defer reporting the first click until after the timeout, so you can throw it (and the second click) away if the user completed the double-click. Thinking some more, I decided it wouldn&#39;t be worth the trouble to implement, especially considering that wouldn&#39;t always be the desired functionality (e.g. when getting single clicks rapidly is the goal, as it often is in mouse-based games). If I&#39;m reading it right, your code throws away the <i>second</i> click, but still triggers the first one immediately. This is probably a good compromise, but still isn&#39;t ideal in all cases, and will almost always still have to be worked around, even when you don&#39;t care about rapid-fire clicks.<br/><br/>More comments on your code:<br/>1. Why are &quot;MsDoubleLeft&quot; and &quot;...Right&quot; strings? It seems wasteful of memory and CPU cycles. Why not just use symbols like (I think/assume) Gosu does?<br/>2. As jlnr mentioned before, it&#39;s better to simply subclass Gosu::Window, rather than &quot;monkey-patching&quot; functionality into it at runtime. If you want to keep your code clean, you can use separate, &quot;require_relative&#39;d&quot; files to break things up for readability.
+</div>
+</div>
+
+<div class='brn' id='brn8582'>
+<div class='frm pst' id='pid8583' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8582'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8583.html#pid8583'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-24 04:56
+</div>
+<div class='ccl'>
+Gosu&#39;s button constants are integers (Fixnums):<br/><br/><a class='ura' href='https://github.com/gosu/gosu/blob/master/Gosu/Buttons.hpp#L127-L141'>https://github.com/gosu/gosu/blob/master/Gosu/Buttons.hpp#L127-L141</a><br/><br/>It would probably be best to pick two random unused Fixnums for new constants, to avoid collisions.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8601' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8601' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8601.html#pid8601'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-10-05 11:55
+</div>
+<div class='ccl'>
+This is very dumb question may be, but...<br/><br/>Could anyone provide me a small guide to &quot;Game saving&quot;? I didn&#39;t find this information anywhere. How can I implement a save|load -game features to my project?
+</div>
+</div>
+
+<div class='brn' id='brn8601'>
+<div class='frm pst' id='pid8602' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8601'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8602' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8602.html#pid8602'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2015-10-05 13:09
+</div>
+<div class='ccl'>
+It is a perfectly valid question and there&#39;s definitely more than one valid answer. Also, it has very little to do with the technology you use, and much more with your design choices.<br/><br/>First of all, you have to answer yourself what defines your &quot;game state&quot; - for example it would be variables for level number and user position. Easy approach would be to wrap these variables into a <code>GameState</code> class. Now when your game has a <code>game_state</code> object you can serialize/deserialize it on save/load events - and that&#39;s about it.
+</div>
+</div>
+
+<div class='brn' id='brn8602'>
+<div class='frm pst' id='pid8603' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8602'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8603' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8603.html#pid8603'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-10-05 15:18
+</div>
+<div class='ccl'>
+So, as I see, I&#39;ll need to use Marshal module? But how deep can it goes? My GameState consisits of VERY many other classes. Let&#39;s think about it like that: GameState is some kind of location. In this location are: my party (class Party) and other NPCs (class NPC). My Party consisit of heroes (class Hero) and every hero has @hp, @mp and so on. Also, every hero has its equipment, wich is instance of Item class, and every item, of course, has its own attributes. Some of them generates on the fly, some could be taken from database file... And every NPC has its own attributes... So? What object should I marshalize?))
+</div>
+</div>
+
+<div class='brn' id='brn8603'>
+<div class='frm pst' id='pid8604' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8603'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8604.html#pid8604'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2015-10-05 17:26
+</div>
+<div class='ccl'>
+You can marshalize fairly everything. The biggest object I marshaled was whole world (editor data). It was a hash, which consisted of rooms, which had object and objects had attributes. The whole file was over 20MB and loaded few seconds, but it was doing right.
+</div>
+</div>
+
+<div class='frm pst' id='pid8605' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8603'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8605.html#pid8605'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2015-10-06 06:52
+</div>
+<div class='ccl'>
+Well, if your game state is complex, then your save file can get complex too. So what do you serialize? Well, that depends on you. You can, as stated above, marshalize almost everything. You can have a <code>state</code> object for every game object that can be altered and iterate through them. You could have a <code>Save</code> class that would be a minimal representation from which you are able to restore game state (good idea when yous savefiles are getting too big, but will require additional coding + it might be tricky to keep it consistent during development).<br/><br/>Also, ask yourself how exactly should the save mechanism work - should I spawn in the exact same position or in the checkpoint? should enemies/exploding barrel respawn? should my health regen? etc., because some of these choices may complicate/simplify your saving mechanics.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8639' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8639' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8639.html#pid8639'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-11-05 06:55
+</div>
+<div class='ccl'>
+I have one more question. Is it possible to draw text with Image.from_text with different colors of words in the same string?
+</div>
+</div>
+
+<div class='brn' id='brn8639'>
+<div class='frm pst' id='pid8640' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8639'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8640' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8640.html#pid8640'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-11-05 09:07
+</div>
+<div class='ccl'>
+Yes, try this: &quot;Hello &lt;c=ff00ff&gt;World!&lt;/c&gt;&quot;<br/><br/>I&#39;m afraid the syntax is VERY poorly documented, but for now this should do the trick :)
+</div>
+</div>
+
+<div class='brn' id='brn8640'>
+<div class='frm pst' id='pid8641' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8566.html#pid8640'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8641.html#pid8641'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-11-05 16:13
+</div>
+<div class='ccl'>
+Yeah! It works! Thanks!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1224.html#tid1224'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1224.html#tid1224'>Extending Gosu</a> / Some Gosu requests
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8566.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

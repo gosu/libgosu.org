@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1952 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>DevIL imaging library now works with Gosu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1952' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=244.html#tid244'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=244.html#tid244'>Extending Gosu</a> / DevIL imaging library now works with Gosu
+</div>
+</div>
+
+<div class='frm pst' id='pid1633' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1633.html#pid1633'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-10-13 04:42
+<span class='htt'>Edited</span> 2009-10-13 16:23
+</div>
+<div class='ccl'>
+Heya,<br/><br/>I&#39;ve been working on ruby bindings for the DevIL imaging library these last few days and I think i&#39;ve finally finished the first iteration.<br/>DevIL provides the following functionality for Gosu users:<br/><br/>* lets you load any file format into Gosu, .jpg, .gif, .tga and more<br/>* lets you *save* Gosu::Images (only really useful if you&#39;ve manipulated them first in some way, using TexPlay for example)<br/>* lets you convert between Gosu::Images and Devil::Images (using #to_devil and #to_gosu)<br/>* lets you take screenshots of the current state of the Gosu Window, manipulate it using Devil, and save to a file (or import back into Gosu if you wish, using #to_gosu)<br/>* Of course DevIL also works independently of Gosu (though that&#39;s not relevant to this forum... hehe :)<br/><br/>GEMS YOU NEED:<br/>==========<br/><br/>* The very latest version of TexPlay (0.2.666)&#160; (gem install texplay)<br/>* ruby-opengl (gem install ruby-opengl)<br/><br/>INITIAL SETUP:<br/>=========<br/><br/>To use DevIL on *nix sysems (incl. macosx) you should first install the &#39;devil&#39; library and development packages. <br/>On Debian-based systems:<br/>* you can find the name of these using <code>apt-cache search devil</code>. The packages have names such as libdevil-dev, etc<br/><br/>On Gentoo:<br/>*&#160; emerge &quot;media-libs/devil&quot;<br/><br/>On Windows:<br/>* simply extract the following zip file into c:\windows\system:<br/>* <a class='url' href='http://cloud.github.com/downloads/banister/devil/devil-dlls.zip'>http://cloud.github.com/downloads/banister/devil/devil-dlls.zip</a>&#160; &#160; (it should include devil.dll and ilu.dll)<br/><br/>INSTALLING THE GEM:<br/>============<br/><br/>Once you&#39;ve done the above it&#39;s just a matter of going<br/>* gem install devil<br/><br/>and you&#39;re good to go!<br/><br/>Just have a look at the rdoc and the test/ directory for examples on how to use it. Also feel free to ask questions on this thread!<br/><br/>RDOC:<br/>====<br/><br/><a class='url' href='http://rdoc.info/projects/banister/devil'>http://rdoc.info/projects/banister/devil</a><br/><br/>GITHUB:<br/>====<br/><br/>here&#39;s the project page: <a class='url' href='http://github.com/banister/devil'>http://github.com/banister/devil</a><br/><br/>thanks,<br/><br/>banister
+</div>
+</div>
+
+<div class='frm pst' id='pid1950' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1950.html#pid1950'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2009-12-21 20:12
+</div>
+<div class='ccl'>
+Hi again,<br/>I have a problem with DevIL ^^&#39;<br/>When I call gem install devil I get the error:<br/><br/>gem install devil<br/>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing devil:<br/>&#160; &#160; &#160; &#160; ERROR: Failed to build gem native extension.<br/><br/>D:/Programme/Ruby/bin/ruby.exe extconf.rb<br/>checking for main() in -lDevIL... no<br/>*** extconf.rb failed ***<br/>Could not create Makefile due to some reason, probably lack of<br/>necessary libraries and/or headers.&#160; Check the mkmf.log file for more<br/>details.&#160; You may need configuration options.<br/><br/>Provided configuration options:<br/>&#160; &#160; &#160; &#160; --with-opt-dir<br/>&#160; &#160; &#160; &#160; --without-opt-dir<br/>&#160; &#160; &#160; &#160; --with-opt-include<br/>&#160; &#160; &#160; &#160; --without-opt-include=${opt-dir}/include<br/>&#160; &#160; &#160; &#160; --with-opt-lib<br/>&#160; &#160; &#160; &#160; --without-opt-lib=${opt-dir}/lib<br/>&#160; &#160; &#160; &#160; --with-make-prog<br/>&#160; &#160; &#160; &#160; --without-make-prog<br/>&#160; &#160; &#160; &#160; --srcdir=.<br/>&#160; &#160; &#160; &#160; --curdir<br/>&#160; &#160; &#160; &#160; --ruby=D:/Programme/Ruby/bin/ruby<br/>&#160; &#160; &#160; &#160; --with-DevILlib<br/>&#160; &#160; &#160; &#160; --without-DevILlib<br/><br/>Gem files will remain installed in D:/Programme/Ruby/lib/ruby/gems/1.9.1/gems/de<br/>vil-0.1.9.1 for inspection.<br/>Results logged to D:/Programme/Ruby/lib/ruby/gems/1.9.1/gems/devil-0.1.9.1/ext/d<br/>evil/gem_make.out
+</div>
+</div>
+
+<div class='frm pst' id='pid1952' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1952.html#pid1952'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-12-22 01:11
+</div>
+<div class='ccl'>
+AFAIK DevIL should be precompiled on Win32 and the fix should be the same as last time:<br/><br/><a class='url' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1876#pid1876'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1876#pid1876</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid1955' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1955.html#pid1955'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2009-12-22 16:17
+</div>
+<div class='ccl'>
+Oh, yes sorry.<br/>I totally forgot that.
+</div>
+</div>
+
+<div class='frm pst' id='pid2365' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2365.html#pid2365'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-04-21 04:59
+<span class='htt'>Edited</span> 2010-04-21 05:29
+</div>
+<div class='ccl'>
+(A little late, but...)<br/><br/>This is an incredibly cool addition to Gosu and TexPlay! Now I can save my algorithmically generated pixels to a file! (Well, I already could, but now it&#39;s way easier...) Not to mention the plethora of other image manipulations...<br/><br/>I&#39;m off to write a Gosu+TexPlay ray-tracer, now! (j/k, of course, but I do want to make some kind of paint program...)<br/><br/>(BTW, I left a &quot;possible bug&quot; report about TexPlay in the comments on the TexPlay entry of your blog.)
+</div>
+</div>
+
+<div class='frm pst' id='pid2368' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2368.html#pid2368'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-04-22 20:45
+</div>
+<div class='ccl'>
+hey, sorry man i dont have time to test that at the moment. But i really do not think it&#39;s a bug in the line drawing code...<br/><br/>if you could isolate the &#39;bug&#39; into a simple code that i can run some tests on, ill have another look at it. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2369' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2369.html#pid2369'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-04-23 08:50
+</div>
+<div class='ccl'>
+I agree, the bug may not be in the &quot;line&quot; code itself. It&#39;s more likely that it&#39;s in the &quot;paint&quot; block code.<br/><br/>I just changed the paint block into two directly invoked &quot;line&quot; statements and it works fine (I can&#39;t believe I didn&#39;t test that... Anyway, most of the IM I sent is still relevant).<br/><br/>Well, I&#39;ll stop hijacking this thread now...
+</div>
+</div>
+
+<div class='frm pst' id='pid2370' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2370.html#pid2370'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-04-23 13:16
+</div>
+<div class='ccl'>
+Cool. I&#39;ll check up on it. Thanks :)
+</div>
+</div>
+
+<div class='frm pst' id='pid3099' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3099' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3099.html#pid3099'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-19 00:01
+</div>
+<div class='ccl'>
+As far as I can tell, Gosu::Image.to_devil is broken, since it does a vertical flip on the new image (Devil.from_blob seems to work fine).<br/><br/>&#160; devil_image = Devil.from_blob(gosu_image.to_blob, gosu_image.width, gosu_image.height)<br/><br/>is equivalent in effect to:<br/><br/>&#160; devil_image = gosu_image.to_devil<br/>&#160; devil_image.flip<br/><br/>(note that in both cases, I get the same red/blue colour shifting, but that is a known problem with Gosu::Image.to_blob).
+</div>
+</div>
+
+<div class='brn' id='brn3099'>
+<div class='frm pst' id='pid3100' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3099'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3100' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3100.html#pid3100'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-19 01:38
+</div>
+<div class='ccl'>
+i remember i had huge problems with this....sometimes the flip was required and other times it wasn&#39;t, and i could never exactly determine the situations when it was/wasn&#39;t required....<br/><br/>i could try taking another look at it, but iirc the issue was kinda related to the fact that opengl image coordinates are bottom-right, whereas gosu image coords are topleft, and there was some kind of weird interaction when attempting to switch between them<br/><br/>as for the color switching, you could TRY this temporary fix: <br/>class Gosu::Image; remove_method :to_blob; end<br/><br/>let me know if that fix above works, as personally i couldn&#39;t get it working in windows (though it worked in linux)<br/><br/>thx
+</div>
+</div>
+
+<div class='brn' id='brn3100'>
+<div class='frm pst' id='pid3102' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3100'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3102' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3102.html#pid3102'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-19 01:45
+<span class='htt'>Edited</span> 2010-08-19 01:48
+</div>
+<div class='ccl'>
+Or try...<br/><br/>class Gosu::Image; undef :to_blob; end<br/><br/>or...<br/><br/>class Gosu::Image; undef to_blob; end
+</div>
+</div>
+
+<div class='brn' id='brn3102'>
+<div class='frm pst' id='pid3103' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3102'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3103' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3103.html#pid3103'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-19 01:48
+</div>
+<div class='ccl'>
+i dont think undef would work as it not only removes the method but it prevents look-up further up the inheritance chain. What we want is the method looked up in TexPlay, which is a superclass of Gosu::Image
+</div>
+</div>
+
+<div class='brn' id='brn3103'>
+<div class='frm pst' id='pid3104' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3103'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3104.html#pid3104'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-19 02:04
+</div>
+<div class='ccl'>
+Interesting, I didn&#39;t know that&#39;s what remove_method could actually do that undef couldn&#39;t do.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3109' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3100'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3109' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3109.html#pid3109'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-19 09:14
+</div>
+<div class='ccl'>
+Sadly, your color switching fix doesn&#39;t work so well. Leads to a nice little segfault (Win7x64 / Ruby 1.9.2)! I know jnlr has fixed it, so I&#39;ll just wait for the fix to get pushed out, presumably after LD.<br/><br/>I managed to overcome the color bug myself, though in a <a class='url' href='http://gist.github.com/537441'>messy way</a>, which also needs <a class='url' href='http://gist.github.com/525668'>from_blob</a>. It will do for now!<br/><br/>I would have thought the to_gosu fix would be easy though, since all you need to do is call the correctly working Devil::from_blob code. Still, since from_blob works fine I don&#39;t really need to_gosu; it is just cleaner. Oh, while I&#39;m causing trouble, to_gosu probably needs a :tileable option (I really don&#39;t need it; just pointing it out in case others see this and suddenly realise they need it).
+</div>
+</div>
+
+<div class='brn' id='brn3109'>
+<div class='frm pst' id='pid3112' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3112' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3112.html#pid3112'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-19 09:32
+</div>
+<div class='ccl'>
+Yeah&#160; I got a segfault in windows too; I don&#39;t understand it. Have to wait until guys at rubyinstaller.org push a debuggable win release before I can figure out what&#39;s going on<br/><br/>Can you explain in more detail the tileable option?
+</div>
+</div>
+
+<div class='brn' id='brn3112'>
+<div class='frm pst' id='pid3113' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3112'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3113' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3113.html#pid3113'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-19 09:41
+</div>
+<div class='ccl'>
+Gosu::Image::new takes a <a class='url' href='http://www.libgosu.org/rdoc/classes/Gosu/Image.html#M000056'>option</a> which is whether the new image is <a class='url' href='http://www.libgosu.org/rdoc/files/reference/Tileability_rdoc.html'>tileable</a>. When you blob/unblob an image this info is lost. Actually, thinking about it, might be worth putting on your create_image to. If you want, I could fork/patch it for you, adding a Gosu::Image::from_blob too, since I found that quite useful. Texplay has already been invaluable to me (and Devil is becoming more important), so I&#39;d be happy to do it if you are feeling lazy for a change :)
+</div>
+</div>
+
+<div class='brn' id='brn3113'>
+<div class='frm pst' id='pid3114' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3113'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3114' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3114.html#pid3114'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-19 11:12
+</div>
+<div class='ccl'>
+yes you better patch it :) since there is very little explanatino for the tileable option in the docs and i dont understand it
+</div>
+</div>
+
+<div class='brn' id='brn3114'>
+<div class='frm pst' id='pid3115' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3114'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3115' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3115.html#pid3115'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-19 11:22
+<span class='htt'>Edited</span> 2010-08-21 00:10
+</div>
+<div class='ccl'>
+Basically, if you draw a tileable image bigger than its actual size (Image#draw with factor &gt; 1), it will anti-alias the inside of it, but ensure that the edge is sharp, so that it can be used as a background tile. A standard (untileable) image may have anti-aliased edges in this situation, which looks fine for sprites but will not tile perfectly. If you look at the <a class='url' href='http://www.libgosu.org/rdoc/files/reference/Tileability_rdoc.html'>example images</a>, the right-hand version is tilable and the right-hand edge of that image is perfectly sharp; the left hand version has slightly blurred edges, most apparent on its left edge). jlnr would probably be better able to explain what this is doing in terms of actual OpenGL commands.&#160; <br/><br/>Mm, another github fork. I should have kept my mouth shut :)
+</div>
+</div>
+
+<div class='brn' id='brn3115'>
+<div class='frm pst' id='pid3116' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3115'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3116' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3116.html#pid3116'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-19 11:29
+</div>
+<div class='ccl'>
+Nothing on the OpenGL side, but when I put images onto a texture, I can either pad them with transparent pixels (untileable) or manually repeat the last pixel (tileable). If I wouldn&#39;t pad them at all, they would bleed into each other.<br/><br/>Of course, you can just always use tileable and manually pad your images. :)
+</div>
+</div>
+
+<div class='brn' id='brn3116'>
+<div class='frm pst' id='pid3117' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1952.html#pid3116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3117.html#pid3117'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-19 12:33
+</div>
+<div class='ccl'>
+Hmm, that means that tileable is not really compatible with &quot;Texplayed&quot; images, since the edge pixels can change after creation without updating that padding (unless Banister wants to do a _lot_ of work in the C code). Thanks for the explanation!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=244.html#tid244'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=244.html#tid244'>Extending Gosu</a> / DevIL imaging library now works with Gosu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1952.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

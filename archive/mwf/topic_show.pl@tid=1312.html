@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How does the Map Class in Captain Ruby work?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1312.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1312.html#tid1312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1312.html#tid1312'>Gosu Exchange</a> / How does the Map Class in Captain Ruby work?
+</div>
+</div>
+
+<div class='frm pst' id='pid9056' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9056' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9056.html#pid9056'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2016-11-14 23:41
+<span class='htt'>Edited</span> 2016-11-15 02:58
+</div>
+<div class='ccl'>
+How does Gosu get the tiles on the screen?<br/>While trying to write my own map class I use some code to assign every tile a pixel coordinate. Gosu then draws the tile where I want it.<br/>But in Captain Ruby game, the Map class reads an array full of either ones or zeros and somehow knows where to put the tiles on the screen.<br/>Here&#39;s where it creates the array the maps are in.<br/><br/><code>@tiles = Array.new(@width) do |x|<br/>&#160; &#160; &#160; Array.new(@height) do |y|<br/>&#160; &#160; &#160; &#160; case lines[y][x, 1]<br/>&#160; &#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Grass<br/>&#160; &#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Earth<br/>&#160; &#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; &#160; @gems.push(CollectibleGem.new(gem_img, x * 50 + 25, y * 50 + 25))<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end</code><br/><br/>Here we get the multi-dimensional array. It&#39;s full of 1&#39;s and 0&#39;s and nil. (I&#39;m ignoring the gems for right now. Trying to keep things simple.)<br/>This array becomes the raw material for the draw method:<br/><br/><code>def draw<br/>&#160; &#160; # Very primitive drawing function:<br/>&#160; &#160; # Draws all the tiles, some off-screen, some on-screen.<br/>&#160; &#160; @height.times do |y|<br/>&#160; &#160; &#160; @width.times do |x|<br/>&#160; &#160; &#160; &#160; tile = @tiles[x][y]<br/>&#160; &#160; &#160; &#160; if tile<br/>&#160; &#160; &#160; &#160; &#160; # Draw the tile with an offset (tile images have some overlap)<br/>&#160; &#160; &#160; &#160; &#160; # Scrolling is implemented here just as in the game objects.<br/>&#160; &#160; &#160; &#160; &#160; @tileset[tile].draw(x * 50 - 5, y * 50 - 5, 0)<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @gems.each { |c| c.draw }<br/>&#160; end</code><br/><br/>This draw method is hard for me to understand. I don&#39;t know enough about ruby to decipher what&#39;s going on here.<br/>What I do know:<br/>I know the <code>.times</code> method. We do &#39;something&#39; @height and @width times. Where height and width are the values taken from the map text file.<br/>I get a little fuzzy when it creates the<code> tile</code> variable. <br/>Then we get to the Gosu <code>draw</code> method.<br/>The method parameters<code> x * 50</code> -5 &amp; <code>y * 50 -5</code> decide where the tiles are drawn in the window.(I think.) But I don&#39;t understand what the x and y are and why you times them by 50. I mean, I know that <code>x</code> and <code>y</code> represent items in the <code>@tiles</code> array but... I&#39;m confused :)<br/>Any help to clarify would be appreciated.
+</div>
+</div>
+
+<div class='brn' id='brn9056'>
+<div class='frm pst' id='pid9057' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1312.html#pid9056'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9057' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9057.html#pid9057'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2016-11-15 15:44
+<span class='htt'>Edited</span> 2016-11-15 15:52
+</div>
+<div class='ccl'>
+Hi !<br/><br/>I suggest you to IRB any portion of code you don&#39;t get.<br/><br/>For example, if you go like :<br/><br/>@width = 10<br/>@width.times do |x|<br/>&#160; p x<br/>end<br/><br/>you&#39;ll see in the output that you&#39;ll display 10 times the variable x, that will take from 0 to 9 values. It&#39;s just a way to handle every tile in the map, to make x and y take any possible value.<br/><br/>you could also do :<br/><br/>for x in 0...@width<br/>&#160; for y in 0...@height<br/>&#160; &#160; # handle [x][y] position<br/>&#160; end<br/>end<br/><br/>which is the way I&#39;m pretty much always using myself.<br/><br/>Then you get your coordinates in tiles unit, and you need to multiply by the tile size in pixels to get the position in the screen. This is where the &quot;* 50&quot; is used, to get from tiles coordinates to screen coordinates.
+</div>
+</div>
+
+<div class='brn' id='brn9057'>
+<div class='frm pst' id='pid9058' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1312.html#pid9057'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9058.html#pid9058'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2016-11-16 02:31
+</div>
+<div class='ccl'>
+Thanks for the reply.<br/>That helped a lot to figure it out in IRB.<br/>Previously I was loading the entire Map class into IRB. Breaking it down to the individual methods and processes made a difference.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid9059' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1312.html#pid9056'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9059.html#pid9059'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-11-16 23:21
+</div>
+<div class='ccl'>
+Using <code>.times</code> is shorter than the <code>for ... in</code> loop, but I have to agree it&#39;s hard to read. Glad that you asked about it, I&#39;ll make a note to change it :)
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1312.html#tid1312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1312.html#tid1312'>Gosu Exchange</a> / How does the Map Class in Captain Ruby work?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1312.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

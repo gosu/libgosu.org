@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4748 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Windows woes</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4748' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=629.html#tid629'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=629.html#tid629'>Gosu Exchange</a> / Windows woes
+</div>
+</div>
+
+<div class='frm pst' id='pid4730' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4730' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4730.html#pid4730'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-13 20:12
+</div>
+<div class='ccl'>
+Hello all -<br/><br/>I&#39;m getting ready for next week&#39;s Ludum Dare by doing a quick, one-day mini-game event. Basically a lunar lander type thing.<br/><br/>I develop on OSX Lion, using ruby 1.9.2 p180 (in rvm), and gosu 0.7.33. Everything works like a charm. I get 60 frames per second, as expected.<br/><br/>Then I copy the game over to Windows. I&#39;m using XP SP3 and Win7 to test with. I have ruby 1.9.2 p290 (i386-mingw32) and gosu 0.7.35 (i386-mingw32).<br/><br/>On both Windows setups, my frame rate drops to around 16fps. And when I close the window, rubyw hangs around in the task list, until I manually kill it. I have tried using the console version, and when the game exits, the console stays there, but is unresponsive, and I have to manually kill it.<br/><br/>I realize that both of these questions are probably more about ruby than gosu, but I&#39;m wondering if other developers using a similar setup have seen the same thing.
+</div>
+</div>
+
+<div class='brn' id='brn4730'>
+<div class='frm pst' id='pid4736' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4730'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4736' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4736.html#pid4736'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-14 22:18
+</div>
+<div class='ccl'>
+No, Gosu hanging around in the task list is a problem with OpenAL. OpenAL seems to be terrible, but at least it doesn&#39;t crash in-game like the last library did. I will try to fix it until the Ludum Dare is coming up.<br/><br/>Gosu running slower is news though. Are these native Windows installations or running in a VM?
+</div>
+</div>
+
+<div class='brn' id='brn4736'>
+<div class='frm pst' id='pid4737' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4736'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4737' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4737.html#pid4737'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-15 12:30
+</div>
+<div class='ccl'>
+Hi jlnr -<br/><br/>I have run my Windows code on both a VM (Parallels on the Mac) and actual hardware. It was consistent on both, which is what got me thinking it might be a Windows specific thing.<br/><br/>I&#39;ll get mingw installed on one of the Windows images and see if I can help troubleshoot. I can also post my ruby code, if that would be useful.<br/><br/>Thanks for all your hard work! I&#39;m really liking the library.
+</div>
+</div>
+
+<div class='brn' id='brn4737'>
+<div class='frm pst' id='pid4743' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4737'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4743' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4743.html#pid4743'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-16 01:31
+</div>
+<div class='ccl'>
+Is your game running faster if you use an older version of the Gosu gem, e.g. 0.7.33 or 0.7.30?<br/><br/>I haven&#39;t yet tried p290, maybe something has changed there. I will check it out.
+</div>
+</div>
+
+<div class='brn' id='brn4743'>
+<div class='frm pst' id='pid4744' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4743'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4744' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4744.html#pid4744'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-16 03:31
+</div>
+<div class='ccl'>
+No, both 0.7.30 and 0.7.33 give me the same results. I was thinking that maybe it had something to do with blitting to a window versus full screen, so I reran the tests with fullscreen set to true. I got the same frame rates, and a 640,480 window in the middle of a big black background.<br/><br/>On the plus side, the console didn&#39;t hang afterwards when using 0.7.30 or 0.7.33.<br/><br/>It would be a little tougher for me to roll back to an older ruby version, but I can if you think it will give you some meaningful info.
+</div>
+</div>
+
+<div class='brn' id='brn4744'>
+<div class='frm pst' id='pid4748' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4744'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4748' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4748.html#pid4748'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-17 02:29
+</div>
+<div class='ccl'>
+Is your game resource intensive at all? Gosu tends to be slower on Windows, but I never heard of such a crass difference. Is the code to your game available online?
+</div>
+</div>
+
+<div class='brn' id='brn4748'>
+<div class='frm pst' id='pid4753' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4748'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4753' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4753.html#pid4753'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-18 20:36
+</div>
+<div class='ccl'>
+I pasted it to <a class='url' href='http://pastebin.com/53beHCdB'>http://pastebin.com/53beHCdB</a><br/><br/>Now, keep in mind it&#39;s not *good* code. I was going at Ludum Dare speed. It ran fine on my Mac, so I didn&#39;t worry about it much. It wasn&#39;t until I copied it over to Windows (to configure ocra, not even really to test it) that I saw the speed difference.
+</div>
+</div>
+
+<div class='brn' id='brn4753'>
+<div class='frm pst' id='pid4754' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4753'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4754' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4754.html#pid4754'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-19 05:57
+</div>
+<div class='ccl'>
+Can you also upload the media files so I can test it on my machine? You can simply zip them &amp; attach the ZIP to your posting here after answering too. My schedule is a bit rough but if there is anything wrong with Gosu, I&#39;d like to issue a hotfix before the LD starts.
+</div>
+</div>
+
+<div class='brn' id='brn4754'>
+<div class='frm pst' id='pid4757' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4754'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4757.html#pid4757'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-19 16:43
+</div>
+<div class='ccl'>
+Doh! Media files would definitely help.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/57/4757/Lander.zip'>Lander.zip</a>  (2584k)</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4741' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4736'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4741' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4741.html#pid4741'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2011-08-15 18:12
+</div>
+<div class='ccl'>
+There&#39;s got to be a good audio library alternative. I wish there were! D:<br/><br/>What are the ones you&#39;ve already tried? Maybe in my spare time I can do a little research and find one?
+</div>
+</div>
+
+<div class='brn' id='brn4741'>
+<div class='frm pst' id='pid4742' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4741'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4742' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4742.html#pid4742'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-16 01:30
+</div>
+<div class='ccl'>
+No, please not another one :) OpenAL seems to work fine if you are super, super careful about resource management. It works okay for Ray (another Ruby gamedev lib). I will try to get it fixed this week.
+</div>
+</div>
+
+<div class='brn' id='brn4742'>
+<div class='frm pst' id='pid4745' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4745' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4745.html#pid4745'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-16 03:34
+</div>
+<div class='ccl'>
+I noticed that my background music played fine on the mac, but was unsupported on windows. It was an m4a file. I guess I need to convert everything to ogg?<br/><br/>Also, and this was weird, on Windows, some of the color constants didn&#39;t work. Gosu::Color::GREEN was undefined. It worked fine on the Mac side. I got around it by just setting my own constants, but I thought that was maybe worth mentioning.
+</div>
+</div>
+
+<div class='brn' id='brn4745'>
+<div class='frm pst' id='pid4747' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4745'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4747.html#pid4747'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-17 01:55
+<span class='htt'>Edited</span> 2011-08-17 02:28
+</div>
+<div class='ccl'>
+Hmm, the constant thing sounds very unusual too. Can you post a minimal script that doesn&#39;t work with GREEN?<br/><br/>And yep, you may need to convert the files. OGG is great except on iOS, where m4a is a much better choice (hardware accelerated decoding!). I updated this wiki page a bit to reflect the recent library changes on Windows and Linux, though my writing skills aren&#39;t great today: <a class='url' href='https://github.com/jlnr/gosu/wiki/Supported-Audio-Formats'>https://github.com/jlnr/gosu/wiki/Supported-Audio-Formats</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4750' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4730'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4750' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4750.html#pid4750'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-17 11:23
+</div>
+<div class='ccl'>
+Does this OpenAL32.dll solve your problems?<br/><br/><a class='url' href='../../mwf/attachments/49/4749/OpenAL32.dll'>http://www.libgosu.org/mwf/attachments/49/4749/OpenAL32.dll</a><br/><br/>It should work if you just put it in your game&#39;s directory; otherwise you can overwrite the one in the <code>lib</code> folder of the Gosu gem.
+</div>
+</div>
+
+<div class='brn' id='brn4750'>
+<div class='frm pst' id='pid4796' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4748.html#pid4750'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4796.html#pid4796'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-27 04:37
+</div>
+<div class='ccl'>
+Better late than never. The new OpanAL library did not cause a hang on exit. That lib is what I ended up using the Ludum Dare. Thanks!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=629.html#tid629'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=629.html#tid629'>Gosu Exchange</a> / Windows woes
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4748.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

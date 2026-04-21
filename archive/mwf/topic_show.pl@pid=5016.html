@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5016 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Transparent pixels causes darkening?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5016' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=655.html#tid655'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=655.html#tid655'>Gosu Exchange</a> / Transparent pixels causes darkening?
+</div>
+</div>
+
+<div class='frm pst' id='pid4991' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4991' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4991.html#pid4991'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-22 17:35
+</div>
+<div class='ccl'>
+I am programming my game in Ruby. I have an icon with a transparent glow effect. However, the transparent parts of the icon darken the colours behind them instead of blend with them.<br/><br/><img class='emi' src='http://filesmelt.com/dl/icon_with_alpha.png' alt=''/><br/><br/>As a comparison, here&#39;s what it looks like when I past the icon over the screenshot in Photoshop, with the blending that I intended.<br/><br/><img class='emi' src='http://filesmelt.com/dl/icon_with_alpha_photoshop.png' alt=''/><br/><br/>As far as I can tell, alpha blending is controlled by the <b>mode</b> parameter in <b>Image::draw</b>. The only modes I&#39;m aware of (since the modes aren&#39;t actually listed in the documentation) are <b>:default</b> and <b>:additive</b>. Additive won&#39;t work for me since it applies to the whole image instead of just its transparent pixels, rendering the image too bright at best, rendering the image semi-transparent at worst.<br/><br/><img class='emi' src='http://filesmelt.com/dl/too_bright.png' alt=''/><br/><br/>Is there anything I can do to fix how transparent pixels in an image are drawn?
+</div>
+</div>
+
+<div class='brn' id='brn4991'>
+<div class='frm pst' id='pid4992' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4991'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4992' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4992.html#pid4992'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-22 18:25
+</div>
+<div class='ccl'>
+There is also :multiply mode (or is it :multiplicative ? I can never remember). <br/><br/>It does seem most likely that there might be an issue with the image of the sword itself, rather than an issue with Gosu. I have had no problems doing the same thing with semi-transparent images in Gosu.
+</div>
+</div>
+
+<div class='brn' id='brn4992'>
+<div class='frm pst' id='pid4993' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4992'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4993' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4993.html#pid4993'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-22 19:53
+</div>
+<div class='ccl'>
+I&#39;ve verified that it&#39;s <b>:multiply</b> mode. Except that it messes up the icon.<br/><br/><img class='emi' src='http://filesmelt.com/dl/multiply_mode.png' alt=''/><br/><br/>How would I tell if the problem is with the image itself? All of my images are PNGs, either exported from Inkscape or created in Photoshop (not The Gimp).
+</div>
+</div>
+
+<div class='brn' id='brn4993'>
+<div class='frm pst' id='pid4994' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4993'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4994' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4994.html#pid4994'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-22 21:04
+</div>
+<div class='ccl'>
+That looks like it is operating correctly for multiply mode though (as was your description of additive making it too bright). The default (which is standard &quot;alpha blending&quot;) is what you want; still no idea why it isn&#39;t working for you.<br/><br/>I exported all my pngs from The Gimp, but no reason other PNGs would be different or fail in that odd way. Maybe upload the image here or else wait for jlnr (the author) to offer an opinion?
+</div>
+</div>
+
+<div class='brn' id='brn4994'>
+<div class='frm pst' id='pid4995' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4994'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4995' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4995.html#pid4995'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-22 21:13
+</div>
+<div class='ccl'>
+OK, I&#39;ve attached the icon image.<br/><br/>To be honest, the darkening seems to be happening with all images that have transparencies in them. It&#39;s just most noticeable in the glowing sword icon.<br/><br/>I&#39;m developing this on Mac OS X 10.6.8. One thing I&#39;ve done a lot is opening PNGs created with Photoshop in Preview and re-saving them, because Preview tends to make the file sizes smaller than Photoshop.
+</div>
+<div class='ccl pat'>
+<img class='ami' src='../../mwf/attachments/95/4995/attack.png' title='Glowing sword (2k)' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn4995'>
+<div class='frm pst' id='pid4997' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4995'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4997' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4997.html#pid4997'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2011-10-23 00:51
+</div>
+<div class='ccl'>
+&quot;One thing I&#39;ve done a lot is opening PNGs created with Photoshop in Preview and re-saving them, because Preview tends to make the file sizes smaller than Photoshop.&quot;<br/><br/>Have you tried not doing that?
+</div>
+</div>
+
+<div class='brn' id='brn4997'>
+<div class='frm pst' id='pid4998' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4997'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4998.html#pid4998'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-23 01:42
+</div>
+<div class='ccl'>
+I just tried re-saving the sword icon in Photoshop without converting it in Preview. The glow effect is still dark.<br/><br/>I also tried re-exporting the icon directly from Inkscape without modifying it afterwards, but that still had no effect.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4999' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4991'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4999' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4999.html#pid4999'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-23 15:25
+</div>
+<div class='ccl'>
+I had trouble with Photoshop exporting alpha channels before, but never had it go darker. Does it maybe add some weird background matte color again? What dialog are you using for exporting, how does it look in that dialog? Have you embedded it in a simple HTML container to compare Gosu with web browsers? If your browser renders it the same, it&#39;s a Photoshop problem that should be easier to google than Gosu problems. :)
+</div>
+</div>
+
+<div class='brn' id='brn4999'>
+<div class='frm pst' id='pid5000' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4999'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5000' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5000.html#pid5000'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-23 17:09
+</div>
+<div class='ccl'>
+I haven&#39;t noticed a background matte colour, just some darkening in pixels that have a transparency but aren&#39;t completely transparent.<br/><br/>The blending seems to work fine in an HTML document, at least in Chrome.<br/><br/>When I save it from Photoshop I just choose &quot;PNG&quot; as the file type (using CS3) and choose no interlacing. I have RGB colour and 8 bits/channel set. When I export it from Inkscape I just use the default export settings for PNGs.<br/><br/>You can <a class='url' href='https://bitbucket.org/aaron_wizardstar/wizardstar'>check out my project</a> and see if you notice the darkening when you run it on your own computer.
+</div>
+</div>
+
+<div class='brn' id='brn5000'>
+<div class='frm pst' id='pid5002' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5000'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5002.html#pid5002'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-24 09:04
+</div>
+<div class='ccl'>
+Wow, if Chrome and Gosu disagree then the problem might indeed be with Gosu.<br/><br/>I also use CS3, but I always Save for Web because it disables most of the fancy stuff. Have you tried that dialog?<br/><br/>BTW, what exact OS are you on?
+</div>
+</div>
+
+<div class='frm pst' id='pid5003' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5000'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5003' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5003.html#pid5003'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-24 10:51
+</div>
+<div class='ccl'>
+I tried to run your project, but I was missing <code>priority_queue</code>; I installed the gem but it crashed as soon as I clicked the screen:<br/><br/><code>./graph.rb:24:in </code>dijkstra_search&#39;: undefined method <code>[]=&#39; for #&lt;PriorityQueue:0x1027c8668 @queues={}&gt; (NoMethodError)</code><br/><br/>I think you should consider using Bundler. As much as I hate the whole infrastructure, it&#39;s still the best way to manage your dependencies :/
+</div>
+</div>
+
+<div class='brn' id='brn5003'>
+<div class='frm pst' id='pid5006' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5003'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5006.html#pid5006'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-24 14:33
+</div>
+<div class='ccl'>
+I&#39;ll second bundler. Hard to live without it unless you are only distributing executables.
+</div>
+</div>
+
+<div class='frm pst' id='pid5013' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5003'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5013' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5013.html#pid5013'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-24 21:17
+</div>
+<div class='ccl'>
+I&#39;m using the PriorityQueue gem from <a class='url' href='http://ruby.brian-amberg.de/priority-queue/'>http://ruby.brian-amberg.de/priority-queue/</a> (which, incidentally, seems to be down right now). I installed it with <code>gem install PriorityQueue</code>. Of course, if <b>priority_queue</b> is a better alternative I can switch to that. I&#39;ll clean up my packaging when I&#39;m ready to start showing my project to a wider audience.<br/><br/>I tried using <i>Save for Web &amp; Devices</i> in Photoshop, selecting PNG-24 as the image type (PNG-8 put a white background on the glow effect). I still got a darkening effect. There&#39;s also the fact that the darkening happens to unedited images exported from Inkscape.<br/><br/>I&#39;m running Mac OS X 10.6.8 on an iMac, with an ATI Radeon HD 4850.<br/><br/>As an aside, here&#39;s a screenshot of what the icon looks like in Chrome, with a gradient background.
+</div>
+<div class='ccl pat'>
+<img class='ami' src='../../mwf/attachments/13/5013/chrome_test.png' title='Sword icon in Chrome (7k)' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn5013'>
+<div class='frm pst' id='pid5015' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5013'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5015.html#pid5015'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-25 07:05
+<span class='htt'>Edited</span> 2011-10-25 08:37
+</div>
+<div class='ccl'>
+Reproduced it here. I think this is some issue with premultiplied vs non-premultiplied alpha. When I load your PNG into a Gosu::Image and download it again (using #to_blob/OpenGL), I can see that the color values have been premultiplied.<br/><br/>Now to check this out on Windows to see if this is an error with OS X image loading. o_O
+</div>
+</div>
+
+<div class='frm pst' id='pid5016' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5013'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5016.html#pid5016'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-25 08:51
+</div>
+<div class='ccl'>
+Confirmed as a bug on OS X. This is weird- I was using Gosu quite often in the last days and it never occured to me. But I had darker backgrounds and sharper alpha borders. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid5017' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5013'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5017' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5017.html#pid5017'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-25 12:03
+</div>
+<div class='ccl'>
+Fixed in git, just ignore it for now. And thanks for reporting of course!
+</div>
+</div>
+
+<div class='brn' id='brn5017'>
+<div class='frm pst' id='pid5019' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid5017'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5019.html#pid5019'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=875.html' >Aaron</a>
+<span class='htt'>Date</span> 2011-10-25 20:51
+</div>
+<div class='ccl'>
+No problem. Glad I could help. :)<br/><br/>Good luck on the next release and on Gosu in general.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5001' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5016.html#pid4991'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5001.html#pid5001'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-10-23 19:41
+</div>
+<div class='ccl'>
+As a sort of workaround, you might export the glow and the icon as separate tiles, then draw the icon normally and draw the glow additively.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=655.html#tid655'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=655.html#tid655'>Gosu Exchange</a> / Transparent pixels causes darkening?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5016.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

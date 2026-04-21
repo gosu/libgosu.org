@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7826 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Bug in Gosu 0.7.47 Mac .app wrapper</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7826' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=887.html#tid887'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=887.html#tid887'>Gosu News</a> / Bug in Gosu 0.7.47 Mac .app wrapper
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=887.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid6791' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6791' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6791.html#pid6791'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-04-29 10:14
+</div>
+<div class='ccl'>
+The current Mac .app wrapper has a bug that&#39;s easy to work around:<br/><br/>Its main binary is three-way universal (Intel 64-bit, 32-bit, PowerPC). But the standard library (or parts of it) are missing the 64-bit component, leading to a crash if you <code>require &#39;yaml&#39;</code>.<br/><br/>To discard the 64-bit core and make it a 32-bit app, you can use the following command on the terminal:<br/><br/><code>lipo -remove x86_64 PATH_TO_YOUR_APP_HERE/Contents/MacOS/RubyGosu\ App -output PATH_TO_YOUR_APP_HERE/Contents/MacOS/RubyGosu\ App</code><br/><br/>This will be fixed in the next Gosu release.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(6791)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield6791' style='display:none;'>jlnr</span><a href='post_add.pl@pid=6791.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn6791'>
+<div class='frm pst' id='pid6849' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7826.html#pid6791'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6849.html#pid6849'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1019' >carno</a>
+<span class='htt'>Date</span> 2013-05-20 03:17
+</div>
+<div class='ccl'>
+Thanks you.<br/><br/>The only problem with lipo solution is that it seems to break compatibility with the opengl gem. Can&#39;t wait for the next version.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(6849)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield6849' style='display:none;'>carno</span><a href='post_add.pl@pid=6849.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid7824' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7826.html#pid6791'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7824' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7824.html#pid7824'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1137.html' >mcdowellgames</a>
+<span class='htt'>Date</span> 2014-06-05 00:55
+</div>
+<div class='ccl'>
+Hey there! I know this post is very old, lol, but I see another problem with this App Wrapper:<br/><br/>Some information you might need to know:<br/>My computer - Mac OS X 10.6.8 (Intel 64-bit)<br/>Ruby version - 1.8.7 patch-level 358<br/><br/>What happened:<br/>I downloaded the wrapper (0.7.47), and when I opened it and it crashed, even if it was just a blank app.<br/><br/>I tried putting a gosu.bundle file in the Resources folder, but nothing got fixed.<br/><br/>Do I need to have a &quot;gosu gem&quot; installed to run it? If so, how can I get it to work without even using the gem?<br/><br/>Thanks,<br/>Taylor<br/>____________________________________________________________<br/>Console Result:<br/><br/>Process:&#160; &#160; &#160; &#160;&#160; RubyGosu App [52028]<br/>Path:&#160; &#160; &#160; &#160; &#160; &#160; /Users/taylormcdowell/Desktop/RubyGosu App.app/Contents/MacOS/RubyGosu App<br/>Identifier:&#160; &#160; &#160; org.libgosu.UntitledGame<br/>Version:&#160; &#160; &#160; &#160;&#160; ??? (1.0)<br/>Code Type:&#160; &#160; &#160;&#160; X86-64 (Native)<br/>Parent Process:&#160; launchd [213]<br/><br/>Date/Time:&#160; &#160; &#160;&#160; 2014-06-04 20:55:22.143 -0400<br/>OS Version:&#160; &#160; &#160; Mac OS X 10.6.8 (10K549)<br/>Report Version:&#160; 6<br/><br/>Interval Since Last Report:&#160; &#160; &#160; &#160; &#160; 136355 sec<br/>Crashes Since Last Report:&#160; &#160; &#160; &#160; &#160;&#160; 4<br/>Per-App Crashes Since Last Report:&#160;&#160; 4<br/>Anonymous UUID:&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; A4FEC6BD-2198-4AE7-83C0-4B12A5DB7A31<br/><br/>Exception Type:&#160; EXC_BREAKPOINT (SIGTRAP)<br/>Exception Codes: 0x0000000000000002, 0x0000000000000000<br/>Crashed Thread:&#160; 0<br/><br/>Dyld Error Message:<br/>&#160; Symbol not found: _environ<br/>&#160; Referenced from: /Users/taylormcdowell/Desktop/RubyGosu App.app/Contents/MacOS/../Frameworks/libruby.1.9.1.dylib<br/>&#160; Expected in: flat namespace<br/> in /Users/taylormcdowell/Desktop/RubyGosu App.app/Contents/MacOS/../Frameworks/libruby.1.9.1.dylib
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(7824)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield7824' style='display:none;'>mcdowellgames</span><a href='post_add.pl@pid=7824.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn7824'>
+<div class='frm pst' id='pid7826' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7826.html#pid7824'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7826' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7826.html#pid7826'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-06-05 07:12
+</div>
+<div class='ccl'>
+From what I remember, that is exactly the bug that I have mentioned in the top posting :)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(7826)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield7826' style='display:none;'>jlnr</span><a href='post_add.pl@pid=7826.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn7826'>
+<div class='frm pst' id='pid7828' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7826.html#pid7826'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7828.html#pid7828'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1137.html' >mcdowellgames</a>
+<span class='htt'>Date</span> 2014-06-05 13:36
+</div>
+<div class='ccl'>
+Er, oops! Sorry, I didn&#39;t read your earlier post carefully enough. lol<br/><br/>Thanks anyway. :)<br/>Taylor
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(7828)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield7828' style='display:none;'>mcdowellgames</span><a href='post_add.pl@pid=7828.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=887.html#tid887'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=887.html#tid887'>Gosu News</a> / Bug in Gosu 0.7.47 Mac .app wrapper
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=887.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7826.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5439 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Additional Mouse Button Support</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5439' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=693.html#tid693'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=693.html#tid693'>Gosu Exchange</a> / Additional Mouse Button Support
+</div>
+</div>
+
+<div class='frm pst' id='pid5423' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5423' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5423.html#pid5423'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-29 22:04
+</div>
+<div class='ccl'>
+Is there any plans to support &quot;extra&quot; mouse buttons in Gosu? I believe linux supports &quot;n button&quot; mice, and there are some crazy mice out there with a ridiculous number of buttons.&#160; I have a mouse with two additional buttons which are not recognized by Gosu, but work fine with linux in general.&#160; Is there any way to define values for these extra buttons, or at least have some sort of button code pass through Gosu from the OS to allow the usage of these buttons in conjunction with #button_down()?
+</div>
+</div>
+
+<div class='brn' id='brn5423'>
+<div class='frm pst' id='pid5427' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5423'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5427' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5427.html#pid5427'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-30 04:54
+<span class='htt'>Edited</span> 2013-04-01 04:48
+</div>
+<div class='ccl'>
+It should be super easy to add these buttons, but they&#39;d change the indices of the <code>Gosu::gp*</code> constants. I wouldn&#39;t be opposed to it though.<br/><br/>Is there a standard maximum number of buttons to support? 4? 8?
+</div>
+</div>
+
+<div class='brn' id='brn5427'>
+<div class='frm pst' id='pid5429' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5427'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5429' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5429.html#pid5429'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-30 05:19
+</div>
+<div class='ccl'>
+Not quite sure how many buttons is &quot;standard&quot; for this sort of thing.&#160; I have an extra 2 buttons on mine, for a total of 9 &quot;buttons&quot;&#160; (counting the scroll wheel with side scrolling).&#160; I feel like that&#39;s fairly &quot;standard&quot; in terms of mice with more than R/M/L click and scroll.<br/><br/>If you could guarantee that the values for the Gosu::gp* constants will come right after the mouse ones in the enum, it may be acceptable to just overflow the extra mouse buttons into the Gosu::gp* section.&#160; By that I mean that the extra buttons would simply return the identifiers for gamepad buttons.&#160; Don&#39;t really foresee many people using keyboard/mouse and a gamepad simultaneously.&#160; Though I have tried playing Halo like that before... it was interesting.
+</div>
+</div>
+
+<div class='brn' id='brn5429'>
+<div class='frm pst' id='pid5432' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5429'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5432' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5432.html#pid5432'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-12-31 20:50
+</div>
+<div class='ccl'>
+I think keyboard/mouse vs gamepad might be popular for certain types of games played on a split screen. There shouldn&#39;t be an issue with all the constants being shoved up if more are needed, since they are all defined as constants anyway (If you are using the numbers directly, then something is wrong).
+</div>
+</div>
+
+<div class='brn' id='brn5432'>
+<div class='frm pst' id='pid5433' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5432'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5433' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5433.html#pid5433'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-31 21:38
+</div>
+<div class='ccl'>
+True, there&#39;s really no point to use the enum numbers directly.<br/><br/>You bring up a good point about split screen.&#160; I hadn&#39;t considered the possibility of people wanting to play split screen on a computer, as I generally see that as a console feature.&#160; Cobalt is the first game I can think of which is a PC game that has split-screen multiplayer.
+</div>
+</div>
+
+<div class='brn' id='brn5433'>
+<div class='frm pst' id='pid5434' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5433'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5434.html#pid5434'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-12-31 22:35
+</div>
+<div class='ccl'>
+Plenty of games use shared-keyboard multi-player (I have written 3 of them :D) with or without an actual split screen. Trine 1+2 are immediate commercial games that I can think of doing this. I admit that Cobalt is one of the few that use mouse+keyboard type controls where you&#39;d need to use that along with a controller rather than just being able to use opposite ends of the keyboard.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5436' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5432'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5436' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5436.html#pid5436'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-01-01 03:31
+<span class='htt'>Edited</span> 2012-01-01 03:55
+</div>
+<div class='ccl'>
+Well, something is wrong with Gosu already then. There is no portable way to save players&#39; keyboard configuration short of storing those magic numbers in a file right now. :( You could look them up based on constant names, especially in Ruby, but that doesn&#39;t help if the player binds actions to unnamed keys.<br/><br/>Using names with a fallback on numbers, and maybe even storing <code>id_to_char</code> along with it, would be the safest solution. I think Gosu should provide this, actually. It could also store the USB device identifier later if multiple gamepads are ever supported.
+</div>
+</div>
+
+<div class='brn' id='brn5436'>
+<div class='frm pst' id='pid5437' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5436'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5437.html#pid5437'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-01-01 12:44
+</div>
+<div class='ccl'>
+I save the Chingu input names, which are symbols that reference the gosu constants, so that is fine. But yeah, you could do with something like that in Gosu itself.
+</div>
+</div>
+
+<div class='frm pst' id='pid5439' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5436'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5439' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5439.html#pid5439'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-01-02 15:50
+</div>
+<div class='ccl'>
+How is it possible to bind actions to unnamed keys? At least on Linux, when I press a key for which there is no constant, I do not get any ID in #button_down().&#160; Should the ability to bind unnamed keys even exist in Gosu?
+</div>
+</div>
+
+<div class='brn' id='brn5439'>
+<div class='frm pst' id='pid5451' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5439'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5451' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5451.html#pid5451'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-01-08 08:02
+</div>
+<div class='ccl'>
+Yes, sure. I think Gosu is even missing names for some really basic keys that I didn&#39;t know how to name, like [] (the öäü+# area on a German keyboard). If you do not get the ID, then this is a bug actually- feel free to file it. (It may be related to Gosu translating keys to characters too early on Linux.)
+</div>
+</div>
+
+<div class='brn' id='brn5451'>
+<div class='frm pst' id='pid5460' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5451'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5460' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5460.html#pid5460'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-01-09 23:26
+</div>
+<div class='ccl'>
+KbÖ appears to be a valid identifier in Ruby 1.9.3. C:
+</div>
+</div>
+
+<div class='brn' id='brn5460'>
+<div class='frm pst' id='pid5461' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5460'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5461' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5461.html#pid5461'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-01-10 18:40
+</div>
+<div class='ccl'>
+Maybe we can also find a safe character resembling &#39;[&#39; somewhere in Unicode :)
+</div>
+</div>
+
+<div class='brn' id='brn5461'>
+<div class='frm pst' id='pid5462' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5461'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5462.html#pid5462'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-01-10 23:21
+</div>
+<div class='ccl'>
+<i>Now</i> you&#39;re just being silly. :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5435' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5429'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5435.html#pid5435'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-01-01 03:30
+<span class='htt'>Edited</span> 2012-01-01 03:52
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; it may be acceptable to just overflow the extra mouse buttons into the Gosu::gp* section</p></blockquote><br/>This would mess with the internal code, I think :)<br/><br/>Do you want to prepare a patch for the whole story (or at least one OS)? Otherwise you should file a github bug.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6699' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid5423'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6699' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6699.html#pid6699'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-04-01 09:00
+</div>
+<div class='ccl'>
+Only a short year later *cough*, this has been fixed: <a class='url' href='https://github.com/jlnr/gosu/issues/112'>https://github.com/jlnr/gosu/issues/112</a>
+</div>
+</div>
+
+<div class='brn' id='brn6699'>
+<div class='frm pst' id='pid6710' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid6699'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6710' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6710.html#pid6710'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2013-04-02 00:26
+<span class='htt'>Edited</span> 2013-04-02 00:50
+</div>
+<div class='ccl'>
+What&#39;s the syntax? The new documentation doesn&#39;t seem to list constants, and the rdoc in the gem doesn&#39;t seem to have been updated.<br/><br/>EDIT: Never mind; I found the hot-fix update thread...
+</div>
+</div>
+
+<div class='brn' id='brn6710'>
+<div class='frm pst' id='pid6711' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid6710'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6711.html#pid6711'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-04-02 02:34
+</div>
+<div class='ccl'>
+Ouch - thanks for pointing that out! I forgot to update the fake &quot;<code>gosu.rb</code> that the reference is compiled from. It should really be generated automatically. :/
+</div>
+</div>
+
+<div class='frm pst' id='pid6713' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5439.html#pid6710'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6713.html#pid6713'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-04-02 02:52
+</div>
+<div class='ccl'>
+I have just pushed the changes to the docs, should be synced up to <a class='url' href='http://libgosu.org/rdoc'>http://libgosu.org/rdoc</a> within the next 24 hours. (I forgot for when the job is scheduled :) )
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=693.html#tid693'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=693.html#tid693'>Gosu Exchange</a> / Additional Mouse Button Support
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5439.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

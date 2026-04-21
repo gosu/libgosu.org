@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5853 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Is an Audio cache/manager a good idea?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5853' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=763.html#tid763'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=763.html#tid763'>Gosu Exchange</a> / Is an Audio cache/manager a good idea?
+</div>
+</div>
+
+<div class='frm pst' id='pid5849' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5849' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5849.html#pid5849'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-05-13 15:55
+</div>
+<div class='ccl'>
+I am new with gosu and decided to make a class to handle my audio playing needs. I ended up with this:<br/><br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/><br/><code>class Audio<br/>&#160; def initialize(source)<br/>&#160; &#160; @source = source&#160;&#160; # The game window<br/>&#160; &#160; @bgm = {}<br/>&#160; &#160; @se = {}<br/>&#160; &#160; loadBGM<br/>&#160; &#160; loadSE<br/>&#160; end<br/>&#160; <br/>&#160; def playBGM(file)<br/>&#160; &#160; @bgm[file].play<br/>&#160; end<br/>&#160; <br/>&#160; def playSE(file)<br/>&#160; &#160; @se[file].play<br/>&#160; end<br/>&#160; <br/>&#160; def loadBGM<br/>&#160; &#160; Dir.glob(File.join(File.dirname(__FILE__), &#39;Audio/BGM/&#39;) + &#39;*.wav&#39;) do |wav_file|<br/>&#160; &#160; &#160; @bgm[File.basename(wav_file)] = Gosu::Song.new(@source,wav_file)<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def loadSE<br/>&#160; &#160; Dir.glob(File.join(File.dirname(__FILE__), &#39;Audio/SE/&#39;) + &#39;*.wav&#39;) do |wav_file|<br/>&#160; &#160; &#160; @se[File.basename(wav_file)] = Gosu::Sample.new(@source,wav_file)<br/>&#160; &#160; end<br/>&#160; end<br/>end</code><br/><br/>So far, it does work. But what do you think? Was it even a good idea to load all audio at once in this class?<br/><br/>And also, I almost do the same thing with Images. I load all images in my graphics folder at once the same way I do with audio. Was that okay as well?
+</div>
+</div>
+
+<div class='brn' id='brn5849'>
+<div class='frm pst' id='pid5851' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5853.html#pid5849'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5851' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5851.html#pid5851'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-05-13 21:38
+</div>
+<div class='ccl'>
+Some kind of resource manager is always a good idea for a project of any size. I wouldn&#39;t personally load every song and sound effect at the beginning, though, unless there are only a few of them.<br/><br/>I might have implemented something like this:<br/><br/><code>class Audio<br/>&#160; AUDIO_PATH = File.join(File.dirname(__FILE__), &#39;Audio&#39;)<br/>&#160; BGM_PATH&#160;&#160; = File.join(AUDIO_PATH, &#39;BGM&#39;)<br/>&#160; SE_PATH&#160; &#160; = File.join(AUDIO_PATH, &#39;SE&#39;)<br/>&#160; <br/>&#160; def initialize(source)<br/>&#160; &#160; @source = source&#160;&#160; # The game window<br/>&#160; &#160; @bgm = {}<br/>&#160; &#160; @se = {}<br/>&#160; end<br/>&#160; <br/>&#160; # Clear preloaded audio resources.<br/>&#160; def clear<br/>&#160; &#160; @bgm.clear<br/>&#160; &#160; @se.clear<br/>&#160; end<br/>&#160; <br/>&#160; # Preload the BGM +file+.<br/>&#160; def preloadBGM(file)<br/>&#160; &#160; @bgm[file] ||= File.join(BGM_PATH, &quot;#{file}.wav&quot;)<br/>&#160; end<br/>&#160; <br/>&#160; # Preload the sound effect +name+.<br/>&#160; def preloadSE(file)<br/>&#160; &#160; @se[file] ||= File.join(SE_PATH, &quot;#{file}.wav&quot;)<br/>&#160; end<br/>&#160; <br/>&#160; # Play the BGM +file+. If +file+ hasn&#39;t been preloaded, it will be loaded<br/>&#160; # on demand the first time it&#39;s played.<br/>&#160; def playBGM(file)<br/>&#160; &#160; preloadBGM(file).play<br/>&#160; end<br/>&#160; <br/>&#160; # Play the sound effect +file+. If +file+ hasn&#39;t been preloaded, it will be<br/>&#160; # loaded on demand the first time it&#39;s played.<br/>&#160; def playSE(file)<br/>&#160; &#160; preloadSE(file).play<br/>&#160; end<br/>&#160; <br/>end</code><br/><br/>Call clear at the end of a level, scene change or whatever, then preload any files that you anticipate using.
+</div>
+</div>
+
+<div class='brn' id='brn5851'>
+<div class='frm pst' id='pid5852' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5853.html#pid5851'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5852' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5852.html#pid5852'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-05-14 02:01
+</div>
+<div class='ccl'>
+I see, thanks. So the same goes for Images?
+</div>
+</div>
+
+<div class='brn' id='brn5852'>
+<div class='frm pst' id='pid5853' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5853.html#pid5852'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5853.html#pid5853'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-05-14 02:04
+</div>
+<div class='ccl'>
+Well, that&#39;s my advice, but it&#39;s up to you to decide what you think is right for your game. Don&#39;t let me tell you what to do if you don&#39;t agree. :Ɔ
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=763.html#tid763'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=763.html#tid763'>Gosu Exchange</a> / Is an Audio cache/manager a good idea?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5853.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

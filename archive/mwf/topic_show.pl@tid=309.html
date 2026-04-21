@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Audio</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=309.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=309.html#tid309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=309.html#tid309'>Gosu Exchange</a> / Audio
+</div>
+</div>
+
+<div class='frm pst' id='pid2033' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2033.html#pid2033'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-12 14:25
+</div>
+<div class='ccl'>
+Hi :)<br/>I would like to suggest a better way to handel sound output of Gosu.<br/>There are some features which, I think, should be improved if it is possible.<br/>First, there are two classes (Gosu::Song, Gosu::Sample) for playing sound files and the only difference between them is, the way the data is loaded. Apart from that, Gosu::Sample has a lot more features.<br/>Things which could be better:<br/>- only one class, with a parameter which defines kind of loading data<br/>- beside volume and speed it also would be nice to have pitch<br/>- still being able to play as many sounds/musics as you want to<br/><br/>I also like the idea that pausing, resuming and stoping is done using a Gosu::SampleInstance. A mistake in the Documentation (<a class='url' href='http://www.libgosu.org/rdoc/classes/Gosu/SampleInstance.html'>http://www.libgosu.org/rdoc/classes/Gosu/SampleInstance.html</a>) gave me a good idea.<br/>If the parameters pan, volume and speed (and maybe pitch :) are possible to be used with a SampleInstance you could do for example a fading effect in the background music.<br/><br/>Last, I&#39;d like a variable which defines, if the sounds are still playing if the window isn&#39;t selected because at the moment it stops which may be good for some games/scenes but not for others :)<br/><br/>I never dealt with audio playing yet so I don&#39;t know if even any of these suggestions is possible to include but I think it would be a could step for Gosu =)<br/><br/>PS: jlnr, are you german? =o
+</div>
+</div>
+
+<div class='frm pst' id='pid2034' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2034.html#pid2034'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-12 17:19
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; First, there are two classes (Gosu::Song, Gosu::Sample) for playing sound files and the only difference between them is, the way the data is loaded.</p></blockquote><br/>The bigger difference is that there is only one song playing at any time, and that is actually because it fits both (initially) used APIs a lot: FMOD and SDL_mixer. For tracked music files (IT, S3M, …) or streamed music files, they just don&#39;t offer the functionality needed to make them work like a Sample. :(<br/><br/><blockquote><p>&gt; A mistake in the Documentation </p></blockquote><br/>Which mistake? :)<br/><br/><blockquote><p>&gt; Last, I&#39;d like a variable which defines, if the sounds are still playing if the window isn&#39;t selected because at the moment it stops which may be good for some games/scenes but not for others :)</p></blockquote><br/>Since sound works completely differently on all three platforms, please always mention on which platform it behaves like that :)<br/><br/><blockquote><p>&gt; PS: jlnr, are you german? =o</p></blockquote><br/>Yes ;)<br/><br/>My internal To Do list for audio looks like this:<br/>• get rid of the &quot;Window&quot; or &quot;Audio&amp;&quot; arguments in all constructors (works except on Windows)<br/>• get rid of FMOD on Windows, because its licensing is complicated enough that you actually have to think about it<br/>• make streamed music files work on OS X again (the Ostnati Bastion game needs this to work on OS X :/)<br/>• find a way to implement &quot;speed&quot; on Linux, which probably means leaving SDL_mixer alone for good<br/><br/>After that all works, I agree that a single class Gosu::Sound would be awesome, but I think it will take a few years to that point ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2035' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2035.html#pid2035'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2010-01-12 18:02
+</div>
+<div class='ccl'>
+For songs usable can be also loops. Music after end do not start from beginning, but from marked point.<br/><br/>And it&#39;s Ostatni, not Ostnati :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2036' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2036.html#pid2036'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-12 19:44
+</div>
+<div class='ccl'>
+Well, that all depends on which library Gosu uses, I think. For example, in the current (hopefully soon obsolete) FMOD port on Windows, I would expect looping points to actually work right now.
+</div>
+</div>
+
+<div class='frm pst' id='pid2037' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2037.html#pid2037'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-12 20:23
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; The bigger difference is that there is only one song playing at any time, and that is actually because it fits both (initially) used APIs a lot: FMOD and SDL_mixer. For tracked music files (IT, S3M, …) or streamed music files, they just don&#39;t offer &gt; the functionality needed to make them work like a Sample. :(</p></blockquote><br/>So the APIs you use miss support for such features? Aren&#39;t there other good free sound APIs around the net? :)<br/><br/><blockquote><p>&gt; Which mistake? :)</p></blockquote><br/>It says:<br/>Attributes<br/>Name&#160; Read/write?<br/>pan&#160;&#160; RW<br/>speed&#160;&#160; RW<br/>volume&#160;&#160; RW<br/>at SampleInstance but I think these should be at Sample ;)<br/><br/><blockquote><p>&gt; Since sound works completely differently on all three platforms, please always mention on which platform it behaves like that :)</p></blockquote><br/>On Windows (XP, SP 3).<br/><br/><blockquote><p>&gt; Yes ;)</p></blockquote><br/>Dann sind wir ja schon 2 :)<br/><br/><blockquote><p>&gt; My internal To Do list for audio looks like this:<br/>&gt; • get rid of the &quot;Window&quot; or &quot;Audio&amp;&quot; arguments in all constructors (works except on Windows)<br/>&gt; • get rid of FMOD on Windows, because its licensing is complicated enough that you actually have to think about it<br/>&gt; • make streamed music files work on OS X again (the Ostnati Bastion game needs this to work on OS X :/)<br/>&gt; • find a way to implement &quot;speed&quot; on Linux, which probably means leaving SDL_mixer alone for good<br/>&gt;<br/>&gt; After that all works, I agree that a single class Gosu::Sound would be awesome, but I think it will take a few years to that point ;) </p></blockquote><br/>Maybe this will help you?<br/><a class='url' href='http://www.rpg-studio.de/scriptdb/script_files/181/FmodExAudio.html'>http://www.rpg-studio.de/scriptdb/script_files/181/FmodExAudio.html</a><br/>It is a code written in RGSS (used in RPG-Maker) which uses Fmod (should be clear through the name :)<br/>It provides functions like fading while playing.<br/><br/>Also, maybe you&#39;d like to take a look at BASS:<br/><a class='url' href='http://www.un4seen.com/'>http://www.un4seen.com/</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2041' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2041.html#pid2041'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-13 20:11
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; So the APIs you use miss support for such features? Aren&#39;t there other good free sound APIs around the net? :)</p></blockquote><br/>&quot;other&quot;? FMOD isn&#39;t even really free, it&#39;s just the best thing to use on Windows … ;)<br/><br/><blockquote><p>&gt; at SampleInstance but I think these should be at Sample ;)</p></blockquote><br/>No, it&#39;s exactly correct and the point of SampleInstance that these are not attributes of Sample :)<br/><br/><blockquote><p>&gt; ... which uses Fmod ...<br/>&gt; BASS:</p></blockquote><br/>I don&#39;t mind FMOD, but if there is one top feature request for Gosu, it might be a sound library that is completely free, as in &quot;sell your game and don&#39;t even worry&quot;. So if I should ever mess around with the Windows port of Gosu/Audio, I should look for something that is easier in that regard …
+</div>
+</div>
+
+<div class='frm pst' id='pid2042' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2042.html#pid2042'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-14 22:00
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; No, it&#39;s exactly correct and the point of SampleInstance that these are not attributes of Sample :)</p></blockquote><br/>Oh yes, I tried .volume -= 0.01 last time but the attribute is not readable.<br/>So my new idea for SampleInstance is:<br/>- make the attributes readable<br/>- give Gosu::Sample the same attributes<br/><br/><blockquote><p>&gt; I don&#39;t mind FMOD, but if there is one top feature request for Gosu, it might be a sound library that is completely free, as in &quot;sell your game and don&#39;t even worry&quot;. So if I should ever mess around with the Windows port of Gosu/Audio, I should &gt; look for something that is easier in that regard … </p></blockquote><br/>I don&#39;t think a lot of people would care about a game done in Gosu. You shouldn&#39;t take this as an insult but I think for the commercial games languages like C++ are better. So I think you should just concentrate on finishing it and not on problems with law people may have later on.
+</div>
+</div>
+
+<div class='frm pst' id='pid2043' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2043.html#pid2043'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-01-14 22:12
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; … I think for the commercial games languages like C++ are better.</p></blockquote><br/>Gosu is written in C++ with Ruby bindings, so this argument doesn&#39;t really hold up.
+</div>
+</div>
+
+<div class='frm pst' id='pid2044' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2044.html#pid2044'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-14 22:26
+</div>
+<div class='ccl'>
+It may be written in C++ but most of the code (if you develop a full game) will be written in Ruby and the actual Ruby is not the perfect language for games.
+</div>
+</div>
+
+<div class='frm pst' id='pid2045' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2045.html#pid2045'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-01-14 22:58
+</div>
+<div class='ccl'>
+my point is it&#39;s perfectly possible (as far as I&#39;m aware) to write a game in C++ with Gosu. In fact, from the looks of things in the repository, Objective-C might be an option as well.
+</div>
+</div>
+
+<div class='frm pst' id='pid2046' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2046.html#pid2046'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-15 06:31
+<span class='htt'>Edited</span> 2010-01-15 06:37
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I tried .volume -= 0.01 last time but the attribute is not readable.</p></blockquote><br/>Are you sure? It should be...<br/><br/><blockquote><p>&gt; - give Gosu::Sample the same attributes</p></blockquote><br/>Why? What does it mean if you reduce the volume of the sample? Will it be more quiet if you play it afterwards? What about instances that are already playing? One library I worked with (ClanLib) applies the same to images, which have rotation and scaling properties. It&#39;s the direct opposite of what I want Gosu to be :)<br/><br/><blockquote><p>&gt; I don&#39;t think a lot of people would care about a game done in Gosu. You shouldn&#39;t take this as an insult but I think for the commercial games languages like C++ are better. So I think you should just concentrate on finishing it and not on problems with law people may have later on.</p></blockquote><br/>If there was no commercial project driving Gosu, the library and this board wouldn&#39;t be here.
+</div>
+</div>
+
+<div class='frm pst' id='pid2047' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2047.html#pid2047'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-15 13:24
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; my point is it&#39;s perfectly possible (as far as I&#39;m aware) to write a game in C++ with Gosu. In fact, from the looks of things in the repository, Objective-C might be an option as well. </p></blockquote><br/>Of course my post only makes sense when talking about a game in Ruby ;)<br/><br/><blockquote><p>&gt; Are you sure? It should be...</p></blockquote><br/>testsampleinstance.rb:18:in <code>update&#39;: undefined method </code>volume&#39; for #&lt;Gosu::Samp<br/>leInstance:0xe7f980&gt; (NoMethodError)<br/><br/>I still have 0.7.15 so you may have changed it already?<br/><br/><blockquote><p>&gt; Why? What does it mean if you reduce the volume of the sample? Will it be more quiet if you play it afterwards? What about instances that are already playing? One library I worked with (ClanLib) applies the same to images, which have <br/>&gt; rotation and scaling properties. It&#39;s the direct opposite of what I want Gosu to be :)</p></blockquote><br/>Never mind. I had an idea how I can do it on my own :)<br/><br/><blockquote><p>&gt; If there was no commercial project driving Gosu, the library and this board wouldn&#39;t be here. </p></blockquote><br/>Okay... never saw one ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid2048' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2048.html#pid2048'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-01-15 17:11
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; If there was no commercial project driving Gosu, the library and this board wouldn&#39;t be here.</p></blockquote><br/>You&#39;ve got me curious; what is this commercial project? I&#39;ve looked but I can&#39;t find anything online. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2054' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2054.html#pid2054'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-16 09:31
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I still have 0.7.15 so you may have changed it already?</p></blockquote><br/>I can&#39;t remember any change there, I will look into it. Either the documentation or the code is obviously wrong. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2055' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2055.html#pid2055'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-16 09:32
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; You&#39;ve got me curious; what is this commercial project?</p></blockquote><br/>It should be out one of the next years (not on the initially planned release date of 1998 it seems) *cough* ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2060' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2060.html#pid2060'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-17 11:03
+</div>
+<div class='ccl'>
+Sorry for annoying you again ^^&#39;<br/>I got a problem with streaming the music. When I try to play a sound file which is some MBs big it doesn&#39;t start playing at 0:00 but about 3 seconds later.<br/>Is there a way to fix it?
+</div>
+</div>
+
+<div class='frm pst' id='pid2061' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2061.html#pid2061'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-17 17:45
+<span class='htt'>Edited</span> 2010-01-17 17:51
+</div>
+<div class='ccl'>
+I don&#39;t think so. It cannot even be a delay due to excessive loading; because when you call play, the file has already been loaded from disk completely. I guess it might just be a bug in FMOD? What format is the file anyway? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2062' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2062.html#pid2062'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-01-17 19:29
+</div>
+<div class='ccl'>
+Weird... now it works :S<br/>Maybe last time my PC was just running slow or something :/
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=309.html#tid309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=309.html#tid309'>Gosu Exchange</a> / Audio
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=309.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

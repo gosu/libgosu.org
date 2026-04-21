@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>drawing tiles with Gosu... HELP</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8700' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1247.html#tid1247'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1247.html#tid1247'>Gosu Exchange</a> / drawing tiles with Gosu... HELP
+</div>
+</div>
+
+<div class='frm pst' id='pid8700' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8700' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8700.html#pid8700'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-14 20:23
+</div>
+<div class='ccl'>
+Hello everyone!,<br/>i want to make a 2d minecraft-like plataformer game,<br/>i make this game with Quby, an Ruby-Like programing language, but<br/>i like too much Ruby, and a want to create my game with gosu,<br/>but my problem is:<br/><br/>i want to make a tile image with all Minecraft blocks,<br/>and i use a hash for add the block in the game<br/>like that:<br/><br/>$tile = {<br/>&#160; :air =&gt; [0,0]<br/>}<br/><br/>and the air blocks was in the firt tile<br/>of the Tileset!<br/><br/>but the gosu draws is:<br/><br/>image.draw(x, y)<br/><br/>i need this one:<br/><br/>drawImage( image, srcX, srcY, srcWidth, srcHeight, x, y, width, height, isCentred=false )<br/><br/>this class i want to draw:<br/><br/>class Block<br/>&#160; &#160; def new(id, x, y)<br/>&#160; &#160; &#160; @size = 16<br/>&#160; &#160; &#160; &#160; @id = id<br/>&#160; &#160; &#160; &#160; @x = x<br/>&#160; &#160; &#160; &#160; @y = y<br/>&#160; &#160; &#160; &#160; @w = @size<br/>&#160; &#160; &#160; &#160; @h = @w<br/>&#160; &#160; end<br/>&#160; &#160; def getId()<br/>&#160; &#160; &#160; &#160; return @id<br/>&#160; &#160; end<br/>&#160; &#160; def setId(id)<br/>&#160; &#160; &#160; &#160; @id = id<br/>&#160; &#160; end<br/>&#160; &#160; def getX()<br/>&#160; &#160; &#160; &#160; return @x<br/>&#160; &#160; end<br/>&#160; &#160; def getY()<br/>&#160; &#160; &#160; &#160; return @y<br/>&#160; &#160; end<br/>&#160; &#160; def render()<br/>&#160; &#160; &#160; &#160; if @id != $blocks[:air]<br/>&#160; &#160; &#160; &#160; &#160; &#160; drawImage( $tile,&#160; @id[0]*@size, @id[1]*@size, @size, @size, @x, @y, @w, @h )<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; end<br/>end<br/><br/>help me Please!,<br/>thanks.
+</div>
+</div>
+
+<div class='brn' id='brn8700'>
+<div class='frm pst' id='pid8701' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8700'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8701' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8701.html#pid8701'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-14 22:35
+</div>
+<div class='ccl'>
+Hello? someone can help-me?
+</div>
+</div>
+
+<div class='brn' id='brn8701'>
+<div class='frm pst' id='pid8702' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8701'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8702' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8702.html#pid8702'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1234.html' >aktivb</a>
+<span class='htt'>Date</span> 2015-12-15 01:21
+</div>
+<div class='ccl'>
+Instead of storing where the tile is on the image, use Gosu::Image.load_tiles and store the image as tiles/image objects.<br/>Then instead of passing the coordinates of the tile and where to draw it to a function drawImage(..., x, y), you just pass<br/>where to draw the tile to the tile itself, tile.draw(x, y)
+</div>
+</div>
+
+<div class='brn' id='brn8702'>
+<div class='frm pst' id='pid8703' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8702'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8703' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8703.html#pid8703'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-15 20:42
+</div>
+<div class='ccl'>
+but i want to make my game with a tileset,<br/>is just 1 Image, with all the blocks,<br/>and i just add a block with:<br/><br/>$ids = {<br/>:air =&gt; [0, 0]<br/>}<br/><br/>understood?
+</div>
+</div>
+
+<div class='brn' id='brn8703'>
+<div class='frm pst' id='pid8704' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8703'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8704' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8704.html#pid8704'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-15 21:00
+</div>
+<div class='ccl'>
+Ok!, now have a new Problem!...<br/><br/>code:<br/>require &#39;gosu&#39;<br/><br/>$size = 16<br/><br/>$tile = Gosu::Image.new(&quot;res/tile.png&quot;, :tileable =&gt; true)<br/><br/>$ids = {<br/>&#160; :air =&gt; [0, 0],<br/>&#160; :dirt =&gt; [4, 0]<br/>}<br/><br/>$w = 30<br/>$h = $w<br/><br/>$level = Level.new(30, 30)<br/><br/>class Block<br/>&#160; def initialize(id, x, y)<br/>&#160; &#160; @id = id<br/>&#160; &#160; @x = x<br/>&#160; &#160; @y = y<br/>&#160; end<br/>&#160; def getId()<br/>&#160; &#160; return @id<br/>&#160; end<br/>&#160; def setId(id)<br/>&#160; &#160; @id = id<br/>&#160; end<br/>&#160; def tick()<br/>&#160; end<br/>&#160; def render()<br/>&#160; &#160; $tile.draw((@id[0]*$size), (@id[1]*$size), 0)<br/>&#160; end<br/>end<br/><br/>def Level<br/>&#160; def initialize(w, h)<br/>&#160; &#160; @w = w<br/>&#160; &#160; @h = h<br/>&#160; &#160; @map = []<br/>&#160; &#160; <br/>&#160; &#160; initLevel()<br/>&#160; end<br/>&#160; def initLevel()<br/>&#160; &#160; @w.times() do |x|<br/>&#160; &#160; &#160; @map[x] = []<br/>&#160; &#160; &#160; @h.times() do |y|<br/>&#160; &#160; &#160; &#160; @map[x][y] = Block.new($ids[:air], x*$size, y*$size)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; def tick()<br/>&#160; end<br/>&#160; def render()<br/>&#160; &#160; @w.times() do |x|<br/>&#160; &#160; &#160; @h.times() do |y|<br/>&#160; &#160; &#160; &#160; @map[x][y].render()<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize()<br/>&#160; &#160; super(480, 480, false)<br/>&#160; &#160; self.caption = &quot;Pix2D&quot;<br/>&#160; end<br/>&#160; &#160; <br/>&#160; def update()<br/>&#160; &#160; $level.tick()<br/>&#160; end<br/>&#160; <br/>&#160; def draw()<br/>&#160; &#160; $level.render()<br/>&#160; end<br/>&#160; <br/>&#160; def needs_cursor?<br/>&#160; &#160; true<br/>&#160; end<br/>end<br/><br/>def fillRect(x, y, width, height, t, color)<br/>&#160; draw_quad(x+t-width, y+t-height, color, x+t+width, y+t-height, color, x+t-width, y+t+height, color, x+t+width, y+t+height, color, 0)<br/>end<br/><br/>GameWindow.new.show<br/><br/>ERROR:<br/><br/>main.rb:15:in `&lt;main&gt;&#39;: uninitialized constant Level (NameError)
+</div>
+</div>
+
+<div class='brn' id='brn8704'>
+<div class='frm pst' id='pid8705' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8704'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8705' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8705.html#pid8705'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-12-15 21:54
+</div>
+<div class='ccl'>
+<code>def Level</code> should be <code>class Level</code>
+</div>
+</div>
+
+<div class='brn' id='brn8705'>
+<div class='frm pst' id='pid8706' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8705'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8706' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8706.html#pid8706'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-15 22:17
+</div>
+<div class='ccl'>
+Nope!, i have changed but the Terminal say the same error...
+</div>
+</div>
+
+<div class='brn' id='brn8706'>
+<div class='frm pst' id='pid8707' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8706'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8707' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8707.html#pid8707'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-16 00:08
+</div>
+<div class='ccl'>
+ok, now works, but is not working corectly!, the window show the full tile image...
+</div>
+</div>
+
+<div class='brn' id='brn8707'>
+<div class='frm pst' id='pid8708' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8707'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8708' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8708.html#pid8708'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-12-16 11:55
+</div>
+<div class='ccl'>
+You need to use <code>Image.load_tiles(image_name, width, height)</code><br/>It returns and array of images, with width/height being the size of your tile.<br/><br/>If you make it like this: <code>$tile = Image.load_tiles(&quot;res/tile.png&quot;, 16, 16)</code><br/>Then drawing first tile goes like this: <code>$tile[0].draw(pos_x, pos_y, some_z)</code> for first tile.<br/><br/>If you want to access tiles by their row/column number, it&#39;s just calculating tile index: <code>tile_id = x % columns + y * columns</code>, where x/y is the tile you want to get and columns is number of columns in your tileset.
+</div>
+</div>
+
+<div class='brn' id='brn8708'>
+<div class='frm pst' id='pid8709' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8708'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8709' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8709.html#pid8709'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-16 19:13
+</div>
+<div class='ccl'>
+you can make a simple example? please...<br/>i don&#39;t understood...
+</div>
+</div>
+
+<div class='brn' id='brn8709'>
+<div class='frm pst' id='pid8710' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8709'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8710' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8710.html#pid8710'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-12-16 20:23
+</div>
+<div class='ccl'>
+Let&#39;s say you have tileset like this:<br/><img class='emi' src='http://i.imgur.com/G4RIKxr.png' alt=''/><br/><br/>To load it, use: <code>my_tileset = Image.new(&quot;tileset.png&quot;, 32, 32)</code><br/><code>my_tileset </code>will be array containing tiles. This is how Gosu organizes it:<br/><img class='emi' src='http://i.imgur.com/63LceK9.png' alt=''/><br/><br/>So if you want to draw for example the center tile, you do it like this: <code>my_tileset[4].draw(tile_x, tile_y, z)</code><br/><br/>But you probably don&#39;t want to use direct indexes. So you have to use the formula I posted earlier.<br/><br/>Let&#39;s say you want to access bottom-left border tile. It&#39;s position is (0, 2)<br/>You have: x = 0, y = 2, and the number of columns is 3. <i>(number of columns is also number of tiles in top row)</i><br/>And use the formula: index = (x % columns + y * columns) = (0 % 3 + 2 * 3) = 6<br/>And if you look at the image, 6 is the tile we wanted to retrieve.<br/><br/>Hope it&#39;s clear enough.
+</div>
+</div>
+
+<div class='brn' id='brn8710'>
+<div class='frm pst' id='pid8711' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8710'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8711' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8711.html#pid8711'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-16 20:40
+</div>
+<div class='ccl'>
+you can make an example with Code, a simple game with a tile?,<br/>i&#39;m from brazil, and i don&#39;t speak and read english good...
+</div>
+</div>
+
+<div class='brn' id='brn8711'>
+<div class='frm pst' id='pid8712' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8711'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8712' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8712.html#pid8712'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-16 20:43
+</div>
+<div class='ccl'>
+i understood the first part...<br/>like that:<br/>require &#39;gosu&#39;<br/><br/>$tile = Gosu::Image.load_tiles(&quot;res/tile.png&quot;, 16, 16)<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize()<br/>&#160; &#160; super(480, 480, false)<br/>&#160; &#160; self.caption = &quot;Pix2D&quot;<br/>&#160; end<br/>&#160;&#160; <br/>&#160; def update()<br/>&#160; &#160; #$level.tick()<br/>&#160; end<br/> <br/>&#160; def draw()<br/>&#160; &#160; #$level.render()<br/>&#160; &#160; $tile[0].draw(0,0,0)<br/>&#160; end<br/> <br/>&#160; def needs_cursor?<br/>&#160; &#160; true<br/>&#160; end<br/>end<br/><br/>GameWindow.new.show
+</div>
+</div>
+
+<div class='brn' id='brn8712'>
+<div class='frm pst' id='pid8713' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8712'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8713.html#pid8713'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-16 20:46
+</div>
+<div class='ccl'>
+but i want to make:<br/>@map[2][0].setId(block[:stone])<br/><br/>like that!.
+</div>
+</div>
+
+<div class='frm pst' id='pid8714' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8712'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8714' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8714.html#pid8714'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-12-16 20:52
+<span class='htt'>Edited</span> 2015-12-16 21:09
+</div>
+<div class='ccl'>
+<code>require &#39;gosu&#39;<br/><br/>$tile = Gosu::Image.load_tiles(&quot;res/tile.png&quot;, 16, 16)<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize()<br/>&#160; &#160; super(480, 480, false)<br/>&#160; &#160; self.caption = &quot;Pix2D&quot;<br/>&#160; end<br/>&#160;&#160; <br/>&#160; def update()<br/>&#160; &#160; #$level.tick()<br/>&#160; end<br/><br/>&#160; def draw()<br/>&#160; &#160; #$level.render()<br/>&#160; &#160; $tile[ get_tile_index(0, 0) ].draw(0,0,0) #replace 0,0 with the indexes you want to use<br/>&#160; end<br/><br/>&#160; def needs_cursor?<br/>&#160; &#160; true<br/>&#160; end<br/><br/>&#160; def get_tile_index(x,y)<br/>&#160; &#160; columns = $tile.width / 16<br/>&#160; &#160; return x % columns + y * columns<br/>&#160; end<br/>end<br/><br/>GameWindow.new.show</code>
+</div>
+</div>
+
+<div class='brn' id='brn8714'>
+<div class='frm pst' id='pid8715' style='margin-left: 42%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8700.html#pid8714'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8715.html#pid8715'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1233.html' >cloudyyard</a>
+<span class='htt'>Date</span> 2015-12-16 21:22
+</div>
+<div class='ccl'>
+Ok, Ok, Ok!, now i understood!!!,<br/>now work!!, the problem was very simple!,<br/>i try with:<br/>$tile[0].draw(@x, @y, 0)<br/>and now works!! <br/><br/>Thanks for all the help!!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1247.html#tid1247'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1247.html#tid1247'>Gosu Exchange</a> / drawing tiles with Gosu... HELP
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8700.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

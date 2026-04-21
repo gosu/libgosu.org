@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3052 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>TexPlay image creation/loading slow</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3052' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=440.html#tid440'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=440.html#tid440'>Gosu Exchange</a> / TexPlay image creation/loading slow
+</div>
+</div>
+
+<div class='frm pst' id='pid3049' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3049' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3049.html#pid3049'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-14 09:25
+</div>
+<div class='ccl'>
+If using TexPlay, whenever a Gosu::Image is loaded from disk, created (Texplay::create_blank_image) or duplicated (Gosu::Image#dup), Texplay caches that image so that it can be manipulated by drawing commands. The problem with this is that it is a rather slow process and will either slow frame rate if an image is created during the game or lead to an extra several second delay if lots of images are generated at once, for example when loading a new level.<br/><br/>I realise that it is probably impossible to shorten the time necessary to perform this caching, but I think there may be an option available to reduce this time in certain circumstances. Not saying that directly optimising the caching wouldn&#39;t be greatly appreciated, of course :)<br/><br/>When creating a blank image or duplicating an existing image, there is no reason not to immediately cache it, since there is nothing else to use it for except for Texplay manipulation. However, when loading an image from disk, it may be being intended to use only with Gosu::Image#draw, rather than be manipulated with TexPlay, so perhaps having a :caching option added to Gosu::Image#new, with values :auto, :lazy (cache only when first TexPlay operation is applied to the image) &amp; :no? Alternatively, a global TexPlay::caching attribute would be fine, I think. <br/><br/>In my project, I have some images that will just be used with vanilla Gosu and some that will be manipulated with Texplay, so being able to control when, and if, my images are cached would make a significant difference to level changing delays (I don&#39;t need to create/load images in-game, but I do need to load quite a lot of new &quot;static&quot; images when changing levels, 100 or more, but significantly less &quot;dynamic&quot; images).
+</div>
+</div>
+
+<div class='brn' id='brn3049'>
+<div class='frm pst' id='pid3050' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3052.html#pid3049'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3050' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3050.html#pid3050'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-14 10:42
+</div>
+<div class='ccl'>
+you are right, this issue has been raised before and i&#39;ll work on adding this functionality very soon :)
+</div>
+</div>
+
+<div class='brn' id='brn3050'>
+<div class='frm pst' id='pid3052' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3052.html#pid3050'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3052' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3052.html#pid3052'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-14 10:51
+<span class='htt'>Edited</span> 2010-08-14 10:54
+</div>
+<div class='ccl'>
+Thanks! I just thought I&#39;d remind you in writing, since I think I mentioned it in IRC a couple of weeks ago and I&#39;ve seen other mentions of it on the forumv (but not a direct feature request or workaround discussion). I monkey-patched to disable caching so there isn&#39;t a massive rush for myself :$
+</div>
+</div>
+
+<div class='brn' id='brn3052'>
+<div class='frm pst' id='pid3069' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3052.html#pid3052'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3069' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3069.html#pid3069'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-15 15:05
+</div>
+<div class='ccl'>
+I&#39;ve currently implemented this API in the git repo:<br/><br/>TexPlay.set_options :caching =&gt; true<br/><br/>Gosu::Image.new(window, &quot;1.png&quot;, :caching =&gt; false)<br/><br/>So you can turn caching on and off globally with TexPlay.set_options, or on or off locally as you load a given Image<br/><br/>I&#39;ve just implemented true or false values, something like :lazy would require messing with the C code (which i may or may not do at some point :))<br/><br/>Let me know if you have any alternative API ideas
+</div>
+</div>
+
+<div class='brn' id='brn3069'>
+<div class='frm pst' id='pid3070' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3052.html#pid3069'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3070' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3070.html#pid3070'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-15 15:21
+</div>
+<div class='ccl'>
+That sounds fine; thanks!<br/><br/>I&#39;m not sure the :lazy would have been useful for many people really. Thinking about it, the easier way to manage this, in pure Ruby, would be Image#cached? and a Image#cache just in case you want to cache just-in-time manually (drawing operations needn&#39;t check this value, since, as you say, that would mean lots of C changes). I don&#39;t think those are critical additions, though and again, I&#39;m not sure if there are use-cases (so good idea not to implement them :$).<br/><br/>I assume that Texplay::create_image is always cached, regardless of options, but that Image::dup follows the global option? What about images from Devil::to_gosu? (sorry, I am picky, though it is a useful skill to have occasionally).<br/><br/>What exactly can you not do with an un-cached image? I assume it just won&#39;t work with any Texplay functions at all (or act oddly)? No exceptions?
+</div>
+</div>
+
+<div class='brn' id='brn3070'>
+<div class='frm pst' id='pid3079' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3052.html#pid3070'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3079.html#pid3079'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-16 04:39
+<span class='htt'>Edited</span> 2010-08-16 11:34
+</div>
+<div class='ccl'>
+Image#dup doesn&#39;t need a :caching option as internally it involves a #splice over the whole image, which will cause TP to overwrite any junk data that may be in the cache. TexPlay.create_image may NOT need a refresh_cache, because really it&#39;s just a large blank (or colored with the :color option to create_image) filled rect over the entire image, so it too will overwrite any junk data. I think I can safely get rid of the refresh_cache in create_image(), that should make dynamic image creation/manipulation at runtime substantially faster.<br/><br/>Ok, there already is a #cached? method, but it&#39;s called Image#quad_cached? This is because gosu images (if they&#39;re &lt; MAX_TEXTURE_SIZE x MAX_TEXTURE_SIZE) share territory on a single opengl texture; so you&#39;re actually checking if the entire opengl texture is cached. If you look at the prepare_image() method in texplay.rb, you&#39;ll see that #quad_cached? is already being used to determine if refresh_cache is necessary <a class='url' href='http://github.com/banister/texplay/blob/master/lib/texplay.rb#L154'>http://github.com/banister/texplay/blob/master/lib/texplay.rb#L154</a> )<br/><br/>I wrote somewhere an explanation for why the refresh_cache appears in Gosu::Image.new, here it is:<br/>&quot;90% of the time you will be able to use TexPlay just fine without the automatic caching in the Gosu::Image.new method...however in certain rare situations (see below) TexPlay will not do what you want unless auto-caching is enabled.<br/><br/>The rare situation is when two or more Gosu images are stored internally on the same quad yet you invoke a TexPlay drawing method on one of those images BEFORE you&#39;ve finished loading the other images.. In this situation all TexPlay manipulations will work fine for the images loaded prior to the first TexPlay drawing call (TexPlay lazily caches the quad on a drawing action if the quad is not already cached) but will produce weird results for all image manipulation on the images loaded AFTER (since they missed out on being cached.)<br/>&quot;<br/><br/>So, so long as you load all images at the start of the game, you do not need refresh_cache at all. The difficulty only arises where some images are loaded at runtime, after the other images that share their opengl texture have already been cached. So yeah, in most cases you wont need the #refresh_cache at all.<br/><br/>The reason #refresh_cache is so expensive is that it&#39;s caching the whole quad, so in most cases this requires downloading a 1024x1024 image from video memory and this is a slow process. It is impossible (afaik) to just download a portion of an opengl texture...though it IS possible to upload a portion of an opengl texture (see glTexSubImage2D). This is why syncing is relatively fast (and so manipulating images at runtime is viable) but caching is slow and prohibitive).<br/><br/>One strange point you may note from looking at prepare_image() is that #refresh_cache is called IF #quad_cached? returns true, rather than if it returns false (as you&#39;d expect). This is because if it returns false we dont have to worry about it as TP will lazily cache it on first drawing action and everything will be fine. However if it returns true then the cached data is out of date, as the quad was cached BEFORE the new image was loaded and so excludes the new image data; hence we have to refresh it.<br/><br/>Notwithstanding all of the above, i think it is possible to still do things better -- maybe an image can recognize that the cache is out of date but postpone refreshing it until a drawing action is first performed. Still though, this doesn&#39;t really help things, as the bottleneck -- i.e downloading a huge 1024x1024 image from video memory must still be done at some point.<br/><br/>One technique i use myself, to get around this slow caching process, is to reuse old images. So rather than doing a TexPlay.create_image() at runtime, I just clear out an old image that has already been cached by doing something like: old_image.rect 0, 0, width, height, :fill =&gt; true, :color =&gt; :alpha, and then drawing over it as usual.<br/><br/>TL;DR<br/>With the removal of the refresh_cache call in TexPlay.create_image()&#160; creating/manipulating images at runtime using TexPlay.create_image() should be significantly faster. However the bottleneck still exists when loading a normal image from a file at runtime (i.e not using create_image). But this bottleneck disappears when you do not intend to manipulate the image (load with :caching =&gt; false). In the case where we do need to manipulate the loaded image though, I cannot think of any way to get around needing to refresh_cache and so downloading a 1024x1024 texture from video memory, I think this will always be slow. But now that i&#39;ve restricted the stituations where this (refresh_cache) happens I hope it&#39;s not such a big deal anymore.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3082' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3052.html#pid3049'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3082.html#pid3082'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-16 07:33
+</div>
+<div class='ccl'>
+Ok, i pushed a new 0.2.980 gem, that has all this caching stuff. <br/><br/>(1) adds :caching option (to both Gosu::Image.new and TexPlay.set_options... remember it only accepts true and false)<br/>(2) gets rid of auto-caching for TexPlay.create_image<br/>(3) also added TexPlay#clear method, it essentially&#160; just sticks a filled rect over an image of a set color, e.g<br/>&#160; &#160;&#160; img.clear :color =&gt; :red, :dest_select =&gt; :transparent<br/>&#160; &#160;&#160; is equivalent to:<br/>&#160; &#160;&#160; img.rect 0,0, width, height, :fill =&gt; true, :color =&gt; :red, :dest_select =&gt; :transparent
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=440.html#tid440'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=440.html#tid440'>Gosu Exchange</a> / TexPlay image creation/loading slow
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3052.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

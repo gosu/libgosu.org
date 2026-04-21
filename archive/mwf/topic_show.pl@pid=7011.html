@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Uninitialized constant error all of a sudden</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7011' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=922.html#tid922'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=922.html#tid922'>Gosu Exchange</a> / Uninitialized constant error all of a sudden
+</div>
+</div>
+
+<div class='frm pst' id='pid7011' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7011' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7011.html#pid7011'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=131.html' >dsr</a>
+<span class='htt'>Date</span> 2013-07-20 12:45
+</div>
+<div class='ccl'>
+I&#39;m really not sure what happened here....<br/><br/>One minute my game was working, and the next I was getting the following error:<br/><br/>`initialize&#39;: uninitialized constant Gosu::KbRangeBegin<br/><br/>Any help on somewhere to start to figure this out would be appreciated.
+</div>
+</div>
+
+<div class='brn' id='brn7011'>
+<div class='frm pst' id='pid7012' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7011.html#pid7011'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7012' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7012.html#pid7012'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-20 12:58
+</div>
+<div class='ccl'>
+This probably happened because you&#39;ve updated Gosu. I&#39;ve removed the <code>KbRangeBegin</code> constant, which was only leaked into Ruby/Gosu because of a configuration error - it is actually part of my internal bookkeeping. What do you use this constant for?
+</div>
+</div>
+
+<div class='brn' id='brn7012'>
+<div class='frm pst' id='pid7013' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7011.html#pid7012'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7013.html#pid7013'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=131.html' >dsr</a>
+<span class='htt'>Date</span> 2013-07-20 16:07
+</div>
+<div class='ccl'>
+Ah. I wondered. I <b>did</b> update Gosu. <br/><br/>I&#39;m using it, and a few others, to capture all the key codes in a spelling game. I&#39;m using the code from the Chingu examples actually.<br/><br/>@key_codes = (Gosu::KbRangeBegin..Gosu::KbRangeEnd).to_a + <br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; (Gosu::GpRangeBegin..Gosu::GpRangeEnd).to_a + <br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; (Gosu::MsRangeBegin..Gosu::MsRangeEnd).to_a<br/>&#160; &#160; # End key detection <a class='ura' href='https://github.com/ippa/chingu/blob/master/examples/tests/tool1_input_codes.rb'>https://github.com/ippa/chingu/blob/master/examples/tests/tool1_input_codes.rb</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid7014' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7011.html#pid7012'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7014' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7014.html#pid7014'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-20 18:03
+</div>
+<div class='ccl'>
+I use it in Chingu to ensure that all keys have been mapped from Gosu to their Chingu equivalents (from KbRangeBegin to KbRangeEnd) :D
+</div>
+</div>
+
+<div class='brn' id='brn7014'>
+<div class='frm pst' id='pid7018' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7011.html#pid7014'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7018' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7018.html#pid7018'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=131.html' >dsr</a>
+<span class='htt'>Date</span> 2013-07-21 14:31
+</div>
+<div class='ccl'>
+Should I be using something else then?
+</div>
+</div>
+
+<div class='brn' id='brn7018'>
+<div class='frm pst' id='pid7021' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7011.html#pid7018'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7021' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7021.html#pid7021'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=131.html' >dsr</a>
+<span class='htt'>Date</span> 2013-07-21 17:52
+</div>
+<div class='ccl'>
+Hang on. I think I&#39;m starting to figure some solutions out.
+</div>
+</div>
+
+<div class='brn' id='brn7021'>
+<div class='frm pst' id='pid7023' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7011.html#pid7021'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7023.html#pid7023'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-21 20:51
+</div>
+<div class='ccl'>
+Nah, the only place I use it in is that tool to check what keys are called in both Gosu and Chingu (as far as I know). You can always run it with an old version of Gosu (to avoid the begin/end values being missing); the key names will be the same in newer versions of Gosu.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=922.html#tid922'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=922.html#tid922'>Gosu Exchange</a> / Uninitialized constant error all of a sudden
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7011.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

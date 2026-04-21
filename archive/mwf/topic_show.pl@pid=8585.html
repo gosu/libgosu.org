@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Another flag to Gosu::Image creation to handle it single</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8585' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1226.html#tid1226'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1226.html#tid1226'>Gosu Exchange</a> / Another flag to Gosu::Image creation to handle it single
+</div>
+</div>
+
+<div class='frm pst' id='pid8585' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8585' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8585.html#pid8585'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-09-27 09:52
+</div>
+<div class='ccl'>
+Hi Jlnr !<br/><br/>Would it be possible for you to add a flag to the options, when we create a Gosu::Image, so that Gosu handles it as a single OpenGL Texture, and not optimized in a mixed 1024² texture ? Because if your current way is really good when we use the gl.tex.info left/right/top/bottom methods, it&#39;s not easy to specify :<br/>- a portion that is different of one tile size<br/>- to repeat a texture (impossible in fact, we have to add some geometry to handle it, or maybe I miss a way to do it).<br/><br/>For example, we&#39;re working with a woman on a map editor, and we have a spritesheet where we want to be able to pick a rectangular (not necessary square) selection of tiles, to handle it as a single 3D sprite. We provide to the user a pixel based selection, so for example we could take 24*16 based anywhere on the spritesheet, so we can&#39;t use Gosu::Image.load_tiles for that. We would rather go with Gosu::Image.new and want to specify a special portion of it to display a really specific quad. So we need to provide opengl with coordinates from 0.0 to 1.0, not from gl_tex_info.left to gl_tex_info.right, for example.<br/><br/>Using Gosu::Image#to_blob, I managed to recreate the texture, but it takes some time on launch, so maybe it would be a lot more efficient if Gosu could load it like this directly if asked on the options.
+</div>
+</div>
+
+<div class='brn' id='brn8585'>
+<div class='frm pst' id='pid8586' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8585.html#pid8585'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8586' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8586.html#pid8586'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-27 17:38
+</div>
+<div class='ccl'>
+I&#39;ve created a new GitHub issue here: <a class='ura' href='https://github.com/gosu/gosu/issues/300'>https://github.com/gosu/gosu/issues/300</a><br/><br/>But here&#39;s a workaround you can try in the meantime:<br/><br/>If you load the image using <code>Image.new</code>, then use <code>image.subimage(x,y,w,h)</code> to create a <code>Gosu::Image</code> representing a portion of the image, and then call <code>gl_tex_info</code> on the new (sub-)image, you should get the correct u/v values (0.0 to 1.0) in <code>.left</code>/<code>.right</code>/<code>.top</code>/<code>.bottom</code>.<br/>You only need to take care not to create an image &gt;1022x1022px with <code>Image.new</code>, because when an image is split up across several textures, <code>subimage</code> and <code>gl_tex_info</code> won&#39;t work.
+</div>
+</div>
+
+<div class='brn' id='brn8586'>
+<div class='frm pst' id='pid8588' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8585.html#pid8586'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8588' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8588.html#pid8588'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-10-03 15:18
+</div>
+<div class='ccl'>
+Hi !<br/><br/>The problem with your solution is that you handle my issue during the loading phase. What I would like is to handle the size in the actual drawing, so that I can load my texture as a whole single image, and then to draw it on irregular not square portions. :)<br/><br/>I don&#39;t want to create sub images, but rather drawing the same cropped / doubled and so on.
+</div>
+</div>
+
+<div class='brn' id='brn8588'>
+<div class='frm pst' id='pid8589' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8585.html#pid8588'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8589.html#pid8589'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-10-03 16:31
+</div>
+<div class='ccl'>
+Creating subimages is probably cheap enough that you can do it in every tick. Images are not much more than a refcount to the texture, plus u/v values.<br/>Doubled is not possible right now, though :(
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1226.html#tid1226'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1226.html#tid1226'>Gosu Exchange</a> / Another flag to Gosu::Image creation to handle it single
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8585.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>No marshal_dump is defined for class Gosu::Image</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3139' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=448.html#tid448'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=448.html#tid448'>Gosu Exchange</a> / No marshal_dump is defined for class Gosu::Image
+</div>
+</div>
+
+<div class='frm pst' id='pid3139' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3139' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3139.html#pid3139'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-22 03:18
+</div>
+<div class='ccl'>
+Well, I get this error message whenever I try to save the game...<br/><br/>:in `dump&#39;: no marshal_dump is defined for class Gosu::Image (TypeError)<br/><br/>I wonder how could I avoid this meaning either how I dispose of the image before I dump the player&#39;s info or how can I handle the player&#39;s info so it doesn&#39;t include any single Gosu::Image and the image should be disposed long time (OK, just a couple of milliseconds) before I even try to save the info in the file. I think I should be able to dispose of the image without taking anything else into consideration, but since I&#39;m newbie I could be mistaken and trying to achieve what&#39;s impossible and illogical.<br/><br/>So could any of you give me a hand by telling me how should I solve this issue?
+</div>
+</div>
+
+<div class='brn' id='brn3139'>
+<div class='frm pst' id='pid3141' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3139'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3141.html#pid3141'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2010-08-22 12:11
+</div>
+<div class='ccl'>
+You can use some method to store images over the game (like class method with hash) or save image to a different (global) value and then dump, like:<br/>$image=@image<br/>@image=nil<br/>Marshal.dump(...)<br/>@image=$image
+</div>
+</div>
+
+<div class='frm pst' id='pid3186' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3139'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3186' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3186.html#pid3186'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-24 17:31
+</div>
+<div class='ccl'>
+I&#39;d suggest monkey-patching Gosu::Image::initialize so that the image stores its original file name in @file_name and just store that string when marshalling. When loading again, you&#39;d reload the image from the string name.<br/><br/>&#160; class Gosu::Image<br/>&#160; &#160; alias_method :old_initialize, :initialize<br/> <br/>&#160; &#160; def initialize(window, file_name)<br/>&#160; &#160; &#160; @file_name = file_name<br/>&#160; &#160; &#160; old_initialize(window, file_name)<br/>&#160; &#160; end<br/><br/>&#160; &#160; def _dump(depth)<br/>&#160; &#160; &#160; @file_name # The only info you need to recreate an image is the filename it was originally created from.<br/>&#160; &#160; end<br/><br/>&#160; &#160; def self._load(file_name)<br/>&#160; &#160; &#160; new($window, file_name) # Create a new copy, using the stored filename.<br/>&#160; &#160; end<br/>&#160; end<br/><br/>You&#39;d just need to set $window to the current Window before you loaded. Not tested that code, but hopefully should make it obvious one way to do this.
+</div>
+</div>
+
+<div class='brn' id='brn3186'>
+<div class='frm pst' id='pid3187' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3186'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3187' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3187.html#pid3187'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-24 18:19
+<span class='htt'>Edited</span> 2010-08-24 18:23
+</div>
+<div class='ccl'>
+Interesting, if it works, there won&#39;t be a need to write separate class(es) for all the images in a game... but new or initialize is a private method...
+</div>
+</div>
+
+<div class='brn' id='brn3187'>
+<div class='frm pst' id='pid3192' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3187'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3192' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3192.html#pid3192'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-25 09:56
+</div>
+<div class='ccl'>
+* &#39;new&#39; is a public class method (Object.new(12))<br/>* &#39;initialize&#39; is a protected instance method that is called by &#39;new&#39; (in theory at least, though people often make it public by not specifying the access level).<br/><br/>&#39;new&#39; is made a private class method in order to prevent direct creation via new. This is done when defining object factories or singleton classes (well, those are the uses I am aware of).
+</div>
+</div>
+
+<div class='brn' id='brn3192'>
+<div class='frm pst' id='pid3194' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3192'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3194.html#pid3194'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-25 23:50
+</div>
+<div class='ccl'>
+That doesn&#39;t explain why both failed and threw those error messages I posted above... I mean, I already know I can&#39;t use them the way you did in your example.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3188' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3186'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3188' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3188.html#pid3188'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-25 00:34
+</div>
+<div class='ccl'>
+Note that this is cute, but it won&#39;t work for images loaded with <code>Gosu::Image.load_tiles</code>. There&#39;s no obvious way to get around that one with a monkey patch, either, and if you do then I can promise it will be ugly. I&#39;d recommend implementing the marshalling code in the player object and handling the image loading yourself.
+</div>
+</div>
+
+<div class='brn' id='brn3188'>
+<div class='frm pst' id='pid3189' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3188'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3189.html#pid3189'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-25 01:40
+</div>
+<div class='ccl'>
+Thank you for your advices, I guess I should never expect that to be easy, neat or even viable. I was just trying to avoid any possible &quot;code duplication&quot; so to say.
+</div>
+</div>
+
+<div class='frm pst' id='pid3190' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3188'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3190' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3190.html#pid3190'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-25 02:22
+</div>
+<div class='ccl'>
+If the result from load_tiles is always directly assigned to an instance variable, then returning an extended Array from load_tiles (one that remembers its arguments) would actually work, I think :) Just pouring some oil into the fire of a tempting hack…
+</div>
+</div>
+
+<div class='brn' id='brn3190'>
+<div class='frm pst' id='pid3191' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3139.html#pid3190'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3191.html#pid3191'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-25 02:24
+</div>
+<div class='ccl'>
+I suppose you could do that! But then you&#39;re basically delegating loading your images back to your owning object just like I suggested. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=448.html#tid448'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=448.html#tid448'>Gosu Exchange</a> / No marshal_dump is defined for class Gosu::Image
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3139.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

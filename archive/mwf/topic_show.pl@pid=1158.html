@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>My Addon : GlowImage ( C++)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1158' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=180.html#tid180'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=180.html#tid180'>Extending Gosu</a> / My Addon : GlowImage ( C++)
+</div>
+</div>
+
+<div class='frm pst' id='pid1158' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1158.html#pid1158'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=96' >jblovloss</a>
+<span class='htt'>Date</span> 2009-07-25 19:41
+<span class='htt'>Edited</span> 2009-07-28 01:22
+</div>
+<div class='ccl'>
+Glow stands for Gosu &quot;Low&quot;(er), as in low-level. I got a bit annoyed when using Gosu because it was a chore to go back and forth between bitmaps and images when i wanted to dynamically create something. And the fact that I couldn&#39;t figure out how to go from Image to Bitmap just made things worse. So, I made a library - a class called a GlowImage, which contains both a bitmap and an image. The Image side gets updated when the bitmap changes, but efficiently, and only when you want it to. I also added lines, fills, and rectangles in there to make things easier.<br/><br/>I started on flipping, but decided to back off on that for now. You can still fetch the original bitmap or image, and call all of Gosu&#39;s usual functions on it. By all means, feel free to add features to this class if you like it.<br/><br/>##############EDIT##################<br/><br/>Aha i caught a bug right away. Few of em, actually. Also, a resize function was missing... tsk tsk, Joseph.<br/><br/>##EDIT##<br/><br/>Forgot to say... i fixed said bugs
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/58/1158/GlowImage.zip'>GlowImage.zip</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1168' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1168.html#pid1168'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-07-29 14:06
+<span class='htt'>Edited</span> 2009-07-31 08:38
+</div>
+<div class='ccl'>
+nice.&#160; you should check out <a class='url' href='http://en.wikipedia.org/wiki/Bresenham&#39;s_line_algorithm'>Bresenham&#39;s line algorithm</a> for further optimization<br/><br/>also, im really scared of recursive floodfill algorithms, you never had a problem with it blowing the stack on a large image?
+</div>
+</div>
+
+<div class='frm pst' id='pid1169' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1169.html#pid1169'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=96' >jblovloss</a>
+<span class='htt'>Date</span> 2009-07-31 13:03
+</div>
+<div class='ccl'>
+Actually i have before, but I hadn&#39;t used lines. I simply called recursion up, down, left, right, and 400x400 images crashed it.<br/><br/>For this floodfill, I used what I was SUPPOSED to use - lines. You will never have more items on the stack than horizontal lines needed to fill the space. Take a1027 x 768 resolution - that&#39;s only a maximum of 768 recursions on the stack at any one time.&#160; One optimization would be to find the middle of the fill space and start there, thus splitting the max stack usage in half. Probably unneeded. <br/><br/>What you have to remember about recursions is that they&#39;re okay as long as they pop off the stack often enough. Every time this algorithm finishes moving upward from a particular spot, the stack gets released all the way back to where it started and it proceeds in another area. Pixel-by-pixel recursion crashed because it basically filled like a constantly moving pen searching for uncolored spots, so that almost every single pixel went on the stack! At 400x400, that&#39;s around 160,000 for just a rectangle! Compare that to horizontal lines, which at&#160; worst case will use 400.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=180.html#tid180'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=180.html#tid180'>Extending Gosu</a> / My Addon : GlowImage ( C++)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1158.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

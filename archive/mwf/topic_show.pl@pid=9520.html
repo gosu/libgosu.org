@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9520 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Changing the level in a  game</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9520' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1415.html#tid1415'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1415.html#tid1415'>Gosu Exchange</a> / Changing the level in a  game
+</div>
+</div>
+
+<div class='frm pst' id='pid9513' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9513' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9513.html#pid9513'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1335' >Acturus</a>
+<span class='htt'>Date</span> 2019-08-22 14:16
+</div>
+<div class='ccl'>
+So this is my game loop <br/><br/>&#160; def&#160; draw<br/>&#160; &#160; case @scene<br/>&#160; &#160; &#160; &#160; when:start<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_start<br/>&#160; &#160; &#160; &#160; when:game<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_game<br/>&#160; &#160; &#160; &#160; when:level<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_level<br/>&#160; &#160; &#160; &#160; when:end<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_end<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/>However, I can&#39;t save the level that the game is on. How do I that? As soon as draw level occurs and the player presses a key the program reverts back&#160; draw game, but the problem is nothing is saved. How do I make the program calculate the number of times draw_game occurs and save that value&#160; throughout the life of the program? <br/><br/>Thank you, <br/><br/>Acturus
+</div>
+</div>
+
+<div class='brn' id='brn9513'>
+<div class='frm pst' id='pid9515' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9513'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9515' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9515.html#pid9515'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2019-08-23 06:54
+</div>
+<div class='ccl'>
+You know, that would relatively soon become a LARGE number so it wouldn&#39;t help you to store it at all. You&#39;d better divide it by the update interval. Plus why do you wanna save any data in the draw method? You got an input and a general update method to do that! I&#39;d recommend saving stuff inside any of those two methods. Since you&#39;re using an instance variable to determine the scene, that won&#39;t be a problem. :)
+</div>
+</div>
+
+<div class='brn' id='brn9515'>
+<div class='frm pst' id='pid9516' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9515'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9516' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9516.html#pid9516'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1335' >Acturus</a>
+<span class='htt'>Date</span> 2019-08-23 10:37
+</div>
+<div class='ccl'>
+Thank you for your response.&#160; <br/><br/>So I put the instance variable in the input&#160; method and&#160; increment the level in&#160; the update game method, but it still doesn&#39;t save it. After&#160;&#160; @scene = :game runs through its cycle all changes&#160; are erased and the game moves to @scene = :level or @scene = :end. I need the program to save the changes that occur in @scene = :game. How can I do this?&#160; <br/><br/>Acturus
+</div>
+</div>
+
+<div class='brn' id='brn9516'>
+<div class='frm pst' id='pid9517' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9516'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9517' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9517.html#pid9517'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2019-08-23 21:05
+</div>
+<div class='ccl'>
+First it&#39;d be helpful if you tell us what are the &quot;changes&quot; you&#39;re talking about. What kind of stuff do you need to save before the scene changes? HP HUD? Level? Difficulty? Angle? Zoom? X Y coordinates? O_o?<br/><br/>Even so you might keep in mind you can use more instance variables to store other stuff as well. :)
+</div>
+</div>
+
+<div class='brn' id='brn9517'>
+<div class='frm pst' id='pid9518' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9517'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9518.html#pid9518'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1335' >Acturus</a>
+<span class='htt'>Date</span> 2019-08-23 23:41
+</div>
+<div class='ccl'>
+I need to save the level and increase it by one.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid9519' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9513'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9519' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9519.html#pid9519'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2019-08-25 19:22
+</div>
+<div class='ccl'>
+Please post more source code, it&#39;s not clear from the snippet where the problem might be.
+</div>
+</div>
+
+<div class='brn' id='brn9519'>
+<div class='frm pst' id='pid9520' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9519'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9520' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9520.html#pid9520'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1335' >Acturus</a>
+<span class='htt'>Date</span> 2019-08-25 19:49
+</div>
+<div class='ccl'>
+require &#39;gosu&#39;<br/>require_relative &#39;credit&#39;<br/>require_relative &#39;player&#39;<br/>require_relative &#39;enemy&#39;<br/>require_relative &#39;bullet&#39;<br/>require_relative &#39;explosion&#39;<br/>require_relative &#39;score&#39;<br/>require_relative &#39;boss&#39;<br/>require_relative &#39;bossbullet&#39;<br/><br/>class SectorFive &lt; Gosu::Window<br/># THE BELOW VARIABLES ARE CALLED CONSTANTS<br/>&#160; WIDTH =&#160; 800<br/>&#160; HEIGHT = 600<br/>&#160; #ENEMY_FREQUENCY = 0.005<br/>&#160; MAX_ENEMIES = 10000<br/>&#160; EXPIRE = 180<br/><br/># THE INITIALIZE METHOD STARTS THE INITIAL GAME AND SETS THE SCENE :START<br/><br/>&#160; def initialize<br/>&#160; &#160; super(WIDTH, HEIGHT)<br/>&#160; &#160; self.caption =&#160; &quot;Sector Five&quot;<br/>&#160; &#160; @background_image = Gosu::Image.new(&#39;ima/start.png&#39;)<br/>&#160; &#160; @start_music = Gosu::Song.new(&#39;sounds/heart.ogg&#39;)<br/>&#160; &#160; @start_music.play(true)<br/>&#160; &#160; @scene = :start<br/>&#160; end<br/><br/># THIS METHOD CALLS THE DIFFERENT DRAW METHOD DEPENDING ON WHICH PART IN THE<br/># GAME THE PLAYER IS AT&gt;&gt; START&lt; GAME &lt; END<br/><br/>&#160; def&#160; draw<br/>&#160; &#160; case @scene<br/>&#160; &#160; &#160; &#160; when:start<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_start<br/>&#160; &#160; &#160; &#160; when:game<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_game<br/>&#160; &#160; &#160; &#160; when:level<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_level<br/>&#160; &#160; &#160; &#160; when:end<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_end<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/># THIS METHOD DRAWS THE BACKGROUND IMAGE DURING THE START WINDOW<br/>def draw_start<br/>@background_image.draw(0,0,0)<br/>end<br/><br/># THIS&#160; METHOD DRAWS THE IMAGES ON THE&#160; WINDOW<br/><br/>def draw_game<br/>&#160;&#160; @player.draw<br/>&#160;&#160; @background_image.draw(0,0,0)<br/>&#160;&#160; @score_board.draw_text(&quot;Score=#{@enemies_destroyed}&quot;,40,40,1,1,1,Gosu::Color::AQUA)<br/>&#160;&#160; @time.draw_text(&quot;Time=#{@countdown}&quot;,650,40,1,1,1,Gosu::Color::RED)<br/>&#160;&#160; @time.draw_text(&quot;Health#{@bosshealth}&quot;,50,500,1,1,1,Gosu::Color::GREEN)<br/>&#160;&#160; @score_board.draw_text(&quot;Location#{@distance},#{@distance}&quot;,400,400,1,1,1,Gosu::Color::AQUA)<br/><br/>&#160;&#160; @time.draw_text(&quot;level#{@wave_count}&quot;,460,460,1,1,1,Gosu::Color::GREEN)<br/><br/> @enemies.each&#160; do |enemy|<br/>&#160; &#160; &#160; &#160;&#160; enemy.draw<br/>&#160;&#160; end<br/>&#160;&#160; @enemybullets.each do |bullet|<br/>&#160; &#160; &#160; &#160;&#160; bullet.draw<br/>&#160;&#160; end<br/>&#160;&#160; @bullets.each do |bullet|<br/>&#160; &#160;&#160; bullet.draw_two<br/>&#160;&#160; end<br/>&#160;&#160; @explosions.each do |explosion|<br/>&#160; &#160;&#160; explosion.draw<br/>&#160;&#160; end<br/>&#160;&#160; @playerexplosions.each do |explosion|<br/>&#160; &#160;&#160; explosion.draw_two<br/>&#160;&#160; end<br/>&#160;&#160; @boss.each do |b|<br/>&#160; &#160;&#160; b.draw<br/>&#160;&#160; end<br/>&#160;&#160; @bossbullets.each do |bullet|<br/>&#160; &#160;&#160; bullet.draw<br/>&#160;&#160; end<br/>end<br/><br/># THIS METHOD&#160; TELLS THE GAME WHICH UPDATE TO FOLLOW DEPENDING ON WHICH PART<br/># THE GAME IS ON. GAME OR END<br/><br/>def update<br/>&#160; case @scene<br/>&#160; when :game<br/>&#160; &#160; update_game<br/>&#160; when :end<br/>&#160; &#160; update_end<br/>&#160; end<br/>end<br/><br/># THIS METHOD SPECIFIES THE DIFFERENT USABLE BUTTONS DEPENDING ON WHICH&#160; PART<br/># OF THE GAME THE PLAYER IS ON. START &lt; GAME &lt; END<br/><br/>def button_down(id)<br/>&#160; case @scene<br/> when :start<br/>&#160;&#160; button_down_start(id)<br/> when :game<br/>&#160;&#160; button_down_game(id)<br/> when :level<br/>&#160;&#160; button_down_level(id)<br/> when :end<br/>&#160;&#160; button_down_end(id)<br/> end<br/>end<br/><br/># THIS METHOD STARTS THE GAME<br/><br/>def button_down_start(id)<br/> initialize_game<br/>end<br/><br/># THIS METHOD CONTAINS&#160; ALL THE VARIABLES TO BE MANIPULATED<br/><br/>def initialize_game<br/>&#160;&#160; @background_image = Gosu::Image.new(&#39;ima/space.png&#39;)<br/>&#160;&#160; @player = Player.new(self)<br/>&#160;&#160; @enemy_frequency = 0.0<br/>&#160;&#160; @boss = []<br/>&#160;&#160; @bosshealth = 0<br/>&#160;&#160; @enemies = []<br/>&#160;&#160; @bullets = []<br/>&#160;&#160; @enemybullets = []<br/>&#160;&#160; @bossbullets = []<br/>&#160;&#160; @random_enemy_bullets = []<br/>&#160;&#160; @explosions = []<br/>&#160;&#160; @playerexplosions = []<br/>&#160;&#160; @bossexplosions = []<br/>&#160;&#160; @framecounter = 0<br/>&#160;&#160; @scene = :game<br/>&#160;&#160; @enemies_appeared = 0<br/>&#160;&#160; @enemies_destroyed = 0<br/>&#160;&#160; @credits = []<br/>&#160;&#160; @game_music = Gosu::Song.new(&#39;sounds/chill.ogg&#39;)<br/>&#160;&#160; @game_music.play(true)<br/>&#160;&#160; @explosion_sound = Gosu::Sample.new(&#39;sounds/explosion.ogg&#39;)<br/>&#160;&#160; @shooting_sound = Gosu::Sample.new(&#39;sounds/shoot.ogg&#39;)<br/>&#160;&#160; @falling_sound = Gosu::Sample.new(&#39;sounds/fall.ogg&#39;)<br/>&#160;&#160; @score_board = Gosu::Font.new(30)<br/>&#160;&#160; @counter = 0<br/>&#160;&#160; @time = Gosu::Font.new(30)<br/>&#160;&#160; @distance = 0<br/>&#160;&#160; @distance_two = 0<br/>&#160;&#160; @bossbulletdistance = 0<br/>&#160;&#160; @turn_r_counter = 0<br/>&#160;&#160; @turn_l_counter = 0<br/>&#160;&#160; @killedenemies = 100<br/>&#160;&#160; @countdown = 10<br/>&#160;&#160; @level = update_level<br/> end<br/><br/>def update_game<br/>@countdown -= 1 if @framecounter % 60 == 0<br/>@framecounter += 1<br/>@counter += 1 if @framecounter % 60 == 0<br/># @enemy_frequency += 0 if @counter % 3600 == 0<br/>@player.turn_left if button_down?(Gosu::KbLeft)<br/>@player.turn_right if&#160; button_down?(Gosu::KbRight)<br/>@player.accelerate if button_down?(Gosu::KbUp)<br/>@player.backward if&#160; button_down?(Gosu::KbDown)<br/>@player.move<br/><br/>&#160;&#160; #CREATES THE ENEMEY<br/>&#160; if rand &lt; @enemy_frequency<br/>&#160; &#160;&#160; @enemies.push Enemy.new(self)<br/>&#160; &#160;&#160; @enemies_appeared += 1<br/>&#160; end<br/><br/>&#160; #THE BOSS CREATION<br/>&#160; if @framecounter % 900 == 0<br/>&#160; &#160; @boss.push Boss.new(self)<br/>&#160; &#160; @bosshealth += 100<br/>&#160; end<br/><br/> @boss.each do |b|<br/>&#160;&#160; if @boss.length &gt; 1<br/>&#160; &#160;&#160; @boss.delete b<br/>&#160;&#160; end<br/> end<br/><br/> # When A Bullet Hits a Boss AN EXPLOSION IS CREATED<br/> @boss.dup.each do |b|<br/>&#160;&#160; @bullets.dup.each do |bullet|<br/>&#160; &#160;&#160; distance = Gosu.distance(b.x, b.y, bullet.x, bullet.y)<br/>&#160; &#160;&#160; if distance &lt; b.radius + bullet.radius<br/>&#160; &#160; &#160;&#160; @bullets.delete bullet<br/>&#160; &#160; &#160;&#160; @explosions. push Explosion.new(self, b.x, b.y)<br/>&#160; &#160; &#160;&#160; @enemies_destroyed += 5<br/>&#160; &#160; &#160;&#160; @bosshealth -= 20<br/>&#160; &#160; &#160;&#160; if @bosshealth &lt;= 0<br/>&#160; &#160; &#160; &#160;&#160; @boss.delete b<br/>&#160; &#160; &#160;&#160; end<br/>&#160; &#160; &#160;&#160; @explosion_sound.play(0.3)<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/> end<br/><br/>&#160;&#160; # ENEMY Fires a bullet<br/>&#160;&#160; @enemies.select do |enemy|<br/>&#160; &#160;&#160; if @framecounter % 600 == 0<br/>&#160; &#160; &#160;&#160; @enemybullets.push Bullet.new(self, @enemies[-1].x, @enemies[-1].y, @enemies[-1].angle)<br/>&#160; &#160; &#160;&#160; if @enemies.length &gt;&#160; 3<br/>&#160; &#160; &#160; &#160;&#160; @enemybullets.push Bullet.new(self, enemy.x, enemy.y, enemy.angle)<br/>&#160; &#160; &#160;&#160; end<br/>&#160; &#160;&#160; end<br/>&#160; end<br/><br/>&#160;&#160; #Boss Fires A Bullet<br/>&#160;&#160; @boss.select do |b|<br/>&#160; &#160;&#160; if @framecounter % 60 == 0<br/>&#160; &#160; &#160;&#160; @bossbullets.push BBullet.new(self, @boss[-1].x, @boss[-1].y, @boss[-1].angle)<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/>&#160;&#160; #Direction of Boss Bullet<br/>@bossbullets.each do |bullet|<br/> @bossbulletdistance = Gosu::distance(@player.x, @player.y, bullet.x, bullet.y)<br/>&#160; &#160;&#160; @bossbulletdistance &lt; 800<br/>&#160; &#160; &#160; &#160; if @player.x &gt; bullet.x<br/>&#160; &#160; &#160; &#160; &#160; &#160; bullet.move<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; if @player.y &lt; bullet.y<br/>&#160; &#160; &#160; &#160; &#160;&#160; bullet.move_four<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; if @player.x &lt; bullet.x<br/>&#160; &#160; &#160; &#160; &#160;&#160; bullet.move_three<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; if @player.y &gt; bullet.y<br/>&#160; &#160; &#160; &#160; &#160;&#160; bullet.move_two<br/>&#160; &#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; &#160; if @bossbulletdistance &lt; bullet.radius + @player.radius<br/>&#160; &#160;&#160; @bossbullets.delete bullet<br/>&#160;&#160; end<br/> end<br/><br/>#&#160; THE BOSS FOLLOWS THE ENEMY<br/>@boss.each do |b|<br/>@distance = Gosu::distance(@player.x, @player.y, b.x, b.y)<br/>x1 = @player.x<br/>y1 = @player.y<br/>x2 = b.x<br/>y2 = b.y<br/>&#160; @distance &lt; 800<br/>&#160; &#160; if @player.x &gt; b.x<br/>&#160; &#160; &#160; b.move<br/>&#160; &#160; end<br/>&#160; &#160; # if @player.y &lt; b.y<br/>&#160; &#160; #&#160;&#160; b.move_four<br/>&#160; &#160; # end<br/>&#160; &#160; # if @player.x &lt; b.x<br/>&#160; &#160; #&#160;&#160; b.move_three<br/>&#160; &#160; # end<br/>&#160; &#160; # if @player.y &gt; b.y<br/>&#160; &#160; #&#160; &#160; b.move_two<br/>&#160; &#160; # end<br/> end<br/><br/>#TURN THE BOSS TO THE PLAYER<br/>@boss.each do |b|<br/> @ang = b.angle<br/> b.angle<br/>end<br/><br/># Detects whether there is a collision between a player bullet and an&#160; enemy.<br/>&#160; @enemies.dup.each do |enemy|<br/>&#160; &#160; @bullets.dup.each do&#160; |bullet|<br/>&#160; &#160; &#160; distance = Gosu.distance(enemy.x, enemy.y, bullet.x, bullet.y)<br/>&#160; &#160; &#160; if distance &lt; enemy.radius + bullet.radius<br/>&#160; &#160; &#160; &#160; @enemies.delete enemy<br/>&#160; &#160; &#160; &#160; @bullets.delete bullet<br/>&#160; &#160; &#160; &#160; @explosions.push Explosion.new(self, enemy.x, enemy.y)<br/>&#160; &#160; &#160; &#160; @enemies_destroyed += 1<br/>&#160; &#160; &#160; &#160; @explosion_sound.play(0.3)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/><br/># DELETES THE EXPLOSIONS AFTER&#160; THE EXPLOSION&#160; ARRAY LENGTH IS GREATER THAN 15<br/>&#160; @explosions.dup.each do |explosion|<br/>&#160;&#160; if @explosions.length &gt; 15<br/>&#160; &#160; @explosions.delete explosion<br/>&#160; &#160; @explosions.delete explosion<br/>&#160; end<br/>end<br/><br/># DELETES AN ENEMY IF THE ENEMY COMES IN CONTACT WITH AN EXPLOSION<br/>&#160;&#160; @explosions.dup.each do |explosion|<br/>&#160; &#160;&#160; @enemies.dup.each do |enemy|<br/>&#160; &#160; &#160;&#160; distance = Gosu.distance(explosion.x, explosion.y, enemy.x, enemy.y)<br/>&#160; &#160; &#160;&#160; if distance&#160; &lt; explosion.radius + enemy.radius<br/>&#160; &#160; &#160; &#160;&#160; @enemies.delete enemy<br/>&#160; &#160; &#160; &#160;&#160; @explosions.push Explosion.new(self, enemy.x, enemy.y)<br/>&#160; &#160; &#160; &#160;&#160; @enemies_destroyed += 1<br/>&#160; &#160; &#160; &#160;&#160; @explosion_sound.play(0.3)<br/>&#160; &#160; &#160;&#160; end<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/>#&#160; CREATES AN&#160; EXPLOSION IF A BULLET TOUCHES AN ENEMY<br/>@enemybullets.each&#160; do |bullet|<br/> distance = Gosu.distance(bullet.x, bullet.y, @player.x, @player.y)<br/> if distance &lt; bullet.radius + @player.radius<br/>&#160;&#160; @enemybullets.delete bullet<br/>&#160;&#160; @playerexplosions.push Explosion.new(self, @player.x, @player.y)<br/>&#160;&#160; @explosion_sound.play(0.3)<br/> end<br/>end<br/>@playerexplosions.dup.each do |explosion|<br/> @explosions.delete explosion unless explosion.finishedtwo<br/>end<br/><br/># CREATES A SOUND IF AN ENEMY LEAVES SOUTH OF THE GAMEBOARD<br/>&#160; @enemies.dup.each do |enemy|<br/>&#160; &#160; if enemy.y &gt; HEIGHT + enemy.radius<br/>&#160; &#160; &#160; @enemies.delete enemy<br/>&#160; &#160; &#160; @falling_sound.play(0.2)<br/>&#160; &#160; end<br/>&#160; end<br/><br/> # THE BELOW COMMANDS MOVE THE DIFFERENT CLASSES<br/><br/>&#160; @bullets.dup.each do |bullet|<br/>&#160; &#160; @bullets.delete bullet unless bullet.onscreen?<br/>&#160; end<br/>&#160; @enemybullets.each do |bullet|<br/>&#160; &#160; bullet.enemy_move<br/>&#160; end<br/>&#160; @bullets.each do |bullet|<br/>&#160; &#160; bullet.move<br/>&#160; end<br/>&#160; @explosions.each&#160; do |explosion|<br/>&#160; &#160; explosion.move<br/>&#160; end<br/>&#160;&#160; @playerexplosions.each do |explosion|<br/>&#160; &#160;&#160; explosion.move<br/>&#160; end<br/>&#160;&#160; @enemies.each do |enemy|<br/>&#160; &#160; &#160; enemy.move<br/>&#160; end<br/><br/># STARTS THE INITIALIZE_END METHOD DEPENDING IF ONE OF THE&#160; CONDITIONS BELOW IS MET<br/>&#160;&#160; initialize_end(:count_reached) if @enemies_appeared &gt; MAX_ENEMIES<br/>&#160;&#160; @enemies.each do |enemy|<br/>&#160; &#160;&#160; distance = Gosu::distance(enemy.x, enemy.y, @player.x, @player.y)<br/><br/>&#160;&#160; initialize_end(:hit_by_enemy) if distance &lt; @player.radius + enemy.radius<br/>&#160;&#160; end<br/>&#160;&#160; initialize_end(:off_top) if @player.y &lt; -@player.radius<br/><br/>&#160;&#160; initialize_level(:time_expire) if @countdown == 0<br/>&#160;&#160; update_level if @count_down ==&#160; 0<br/>end<br/><br/># CONTROLS THE PLAYERS FIRING MECHONISIM<br/><br/>def button_down_game(id)<br/> if&#160; id == Gosu::KbSpace<br/>&#160;&#160; @bullets.push Bullet.new(self, @player.x, @player.y, @player.angle)<br/>&#160;&#160; @shooting_sound.play(0.9)<br/> end<br/>end<br/><br/># THE INITILIALIZE END METHOD CREATES THE MESSAGES AFTER THE GAME IS&#160; OVER<br/><br/>def end_of_level(what)<br/> case what<br/>&#160; &#160; when :time_expire<br/>&#160; &#160;&#160; @message3 = &quot;Congratulations!!! :) You Survived the Swarm&quot;<br/>&#160; &#160; when :enemy<br/>&#160; &#160;&#160; @message4 = &quot; Congratulations!!! :) You Killed all the Enemies&quot;<br/> end<br/> @final_message = &quot;THE NEXT LEVEL WILL BEGIN SOON&quot;<br/> @final_message2 = &quot; OR YOU CAN PRESS P to play again, or Q to quit.&quot;<br/>end<br/><br/>def initialize_end(fate)<br/> case fate<br/> when :count_reached<br/>&#160;&#160; @message = &quot;You Made it! You destroyed #{@enemies_destroyed} ships&quot;<br/>&#160;&#160; @message2 = &quot;and #{100 - @enemies_destroyed} reached the base.&quot;<br/><br/> when :hit_by_enemy<br/>&#160;&#160; @message = &quot;You were struck by an enemy ship&quot;<br/>&#160;&#160; @message2 = &quot;Before your ship was destroyed, &quot;<br/>&#160;&#160; @message2 += &quot;you took out #{@enemies_destroyed} enemy ships!&quot;<br/><br/> when :off_top<br/>&#160;&#160; @message = &quot;You got too close to the enemy mothership.&quot;<br/>&#160;&#160; @message2 = &quot;Before your ship was destroyed, &quot;<br/>&#160;&#160; @message2 += &quot;you took out #{@enemies_destroyed} enemy ships!&quot;<br/> end<br/> @bottom_message = &quot;Press P to play again, or Q to quit.&quot;<br/> @message_font = Gosu::Font.new(28)<br/> y = 700<br/><br/> # THIS FUNCTION FILE.OPEN LINKS TO THE FILE WITH THE END CREDIT INFORMATION<br/> # AND APPLIES A&#160; SCROLLING&#160; FUNCTION<br/> File.open(&#39;credits.txt&#39;).each do |line|<br/>&#160;&#160; @credits.push(Credit.new(self,line.chomp,100,y))<br/>&#160;&#160; y+=30<br/>end<br/><br/>#&gt;&gt;&gt; @SCENE CHANGES TO :END<br/>@scene = :end<br/>@end_music = Gosu::Song.new(&#39;sounds/mind.ogg&#39;)<br/>@end_music.play(true)<br/>end<br/><br/># THIS PART DRAWS THE&#160; SCORE ON THE TOP LEFT&#160; CORNER OF THE WINDOW<br/>def score_counter<br/>&#160; clip_to(50,140,700,360) do<br/>&#160; &#160; @score += 1 if @enemies_destroyed +=1<br/>&#160; &#160; @score.draw<br/>&#160; end<br/>end<br/><br/># THIS METHOD PLACES THE FILE INFORMATION IN THE MIDDLE OF THE SCREEN<br/>def draw_end<br/>&#160; clip_to(50,140,700,360) do<br/>&#160; &#160; &#160; &#160;&#160; @credits.each do |credit|<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; credit.draw<br/>&#160; &#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; end<br/># THIS&#160; PORTION OF THE METHOD ADDS COLOR TO THE&#160; TEXT AND SEPARATES<br/># PIECES OF THE WINDOW USING LINES&gt;<br/>draw_line(10,140,Gosu::Color::GREEN,WIDTH,140,Gosu::Color::RED)<br/>@message_font.draw(@message,40,40,1,1,1,Gosu::Color::FUCHSIA)<br/>@message_font.draw(@message2,40,75,1,1,1,Gosu::Color::FUCHSIA)<br/>draw_line(0,500,Gosu::Color::GREEN,WIDTH,500,Gosu::Color::RED)<br/>@message_font.draw(@bottom_message,180,540,1,1,1,Gosu::Color::AQUA)<br/>end<br/><br/># THIS PORTION CALLS THE&#160; MOVE METHOD FROM THE&#160; CREDITS FILE<br/>def update_end<br/> @credits.each do |credit|<br/>&#160;&#160; credit.move<br/> end<br/>if @credits.last.y &lt; 150<br/>&#160; &#160; @credits.each do |credit|<br/>&#160; &#160;&#160; credit.reset<br/>&#160;&#160; end<br/> end<br/>end<br/><br/># COMMANDS THE GAME TO RUN AGAIN IF PLAYER PRESSES &quot;P&quot; OR QUIT GAME IF THE<br/># PLAYER PRESSES &quot;Q&quot;<br/><br/>def button_down_end(id)<br/>&#160; if id == Gosu::KbP<br/>&#160; &#160;&#160; initialize_game<br/>&#160;&#160; elsif id&#160; == Gosu::KbQ<br/>&#160; &#160;&#160; close<br/>&#160;&#160; end<br/> end<br/>end<br/><br/>def initialize_level(medium)<br/><br/>&#160; case medium<br/>&#160; when :time_expire<br/>&#160; &#160; @message_three = &quot;You survived wave number #{@level}. Congratualations!<br/>&#160; &#160; Prepare for the next level by Pressing P!&quot;<br/>&#160; &#160; @message_font_two = Gosu::Font.new(40)<br/>&#160; &#160; @scene = :level<br/>&#160; end<br/><br/>end<br/><br/>&#160; def draw_level<br/>&#160; &#160; @message_font_two.draw(@message_three,30,300,1,1,1,Gosu::Color::FUCHSIA)<br/>&#160; end<br/><br/>&#160; def update_level<br/>&#160; &#160; @wave_count = 0<br/>&#160; &#160; if @scene = :game<br/>&#160; &#160; &#160; @wave_count += 1<br/>&#160; &#160; end<br/>&#160; &#160; return @wave_count<br/>&#160; end<br/><br/>&#160; def button_down_level(id)<br/>&#160; &#160; if id == Gosu::KbP<br/>&#160; &#160; &#160;&#160; initialize_game<br/>&#160; &#160;&#160; end<br/>&#160; end<br/><br/># THIS FUNCTION OPENS THE WINDOW<br/><br/>window = SectorFive.new<br/>window.show<br/><br/>#THANK YOU!
+</div>
+</div>
+
+<div class='brn' id='brn9520'>
+<div class='frm pst' id='pid9521' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9520'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9521.html#pid9521'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2019-08-25 21:37
+</div>
+<div class='ccl'>
+I&#39;m still not quite sure what the issue is, but I would suggest a structure that I&#39;ve used and seen in many Gosu games: Instead of having all the methods and variables in the Window, you can create new classes such as <code>StartScene</code>, <code>GameScene</code> etc. And then inside your window, you point <code>@scene</code> at an instance of the scene that is currently selected, and call <code>@scene.draw</code> in <code>draw</code> etc. That makes it a lot easier to follow the flow of control throughout the game.<br/><br/>To make it possible for scenes to replace themselves with a new scene, you can pass the window to each scene&#39;s constructor, and then you can set <code>@window.scene = EndScene.new(...)</code> to advance to the next part of the game. Or you could simply make the current scene a global variable <code>$scene</code> and update that as appropriate.<br/><br/>Anyway. Once you have scene objects, you would typically construct the scene for a specific level like this: <code>GameScene.new(@window, level_number)</code>, and the GameScene would store the level number in an instance variable <code>@level_number</code>. And if you have a screen that comes up inbetween levels, you would also pass the next level number to its constructor, and so on.<br/><br/>I hope that is the kind of progress saving you are talking about? Either way, it&#39;s a useful design pattern :)
+</div>
+</div>
+
+<div class='frm pst' id='pid9522' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9520.html#pid9520'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9522.html#pid9522'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2019-08-27 03:51
+</div>
+<div class='ccl'>
+Since jlnr suggested you should redistribute your game data, here&#39;s a small example of how to extrapolate all that stuff to different scenes.<br/><br/>#!/usr/bin/env ruby<br/>#&#160;&#160; Scripter : Kyonides-Arkanthes<br/>#&#160;&#160; Last Update : 2019-08-25<br/>begin<br/>&#160; puts &#39;Using custom Gosu gem&#39;<br/>&#160; require &#39;./gosu.so&#39;<br/>&#160; require &#39;./lib/require_custom&#39;<br/>&#160; Game.custom_gem = true<br/>rescue<br/>&#160; puts &#39;Retry - Now using default Gosu gem&#39;<br/>&#160; require &#39;gosu&#39;<br/>&#160; require &#39;./lib/require_default&#39;<br/>&#160; Game.custom_gem = nil<br/>end<br/>require &#39;./tileset&#39;<br/>require &#39;./lib/map&#39;<br/>class MainWindow &lt; Gosu::Window<br/>&#160; attr_accessor :scene<br/>&#160; def initialize<br/>&#160; &#160; super(800, 608, false, 40) # Custom Gosu Gem<br/>&#160; &#160; Game.current_dimensions(self.width, self.height)<br/>&#160; &#160; self.show_cursor = true rescue nil<br/>&#160; &#160; self.caption = &#39;KScenario Gosu&#39;<br/>&#160; &#160; puts &#39;Using Gosu version &#39; + Gosu::VERSION<br/>&#160; &#160; Game.setup_title<br/>&#160; end<br/>&#160; def button_down(bid) Game.scene.button_down(bid) end<br/>&#160; def button_up(bid) Game.scene.button_up(bid) end<br/>&#160; def update() Game.update end<br/>&#160; def draw() Game.scene.draw rescue nil end<br/>&#160; #def needs_cursor?() true end # Not needed in my custom Gosu gem!<br/>end<br/><br/>begin<br/>&#160; Game.start_loop(MainWindow)<br/>rescue<br/>&#160; Load.clear<br/>&#160; puts &quot;Rescue!&quot;<br/>&#160; puts m = $!.message<br/>&#160; puts b = $!.backtrace.reverse<br/>&#160; File.open(&#39;log.txt&#39;,&#39;w&#39;) do |file|<br/>&#160; &#160; puts &quot;Opened file!&quot;<br/>&#160; &#160; file.puts Time.now<br/>&#160; &#160; file.puts m<br/>&#160; &#160; file.puts b<br/>&#160; end<br/>end
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1415.html#tid1415'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1415.html#tid1415'>Gosu Exchange</a> / Changing the level in a  game
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9520.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

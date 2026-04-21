@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5940 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Stencil buffer?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5940' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=772.html#tid772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=772.html#tid772'>Extending Gosu</a> / Stencil buffer?
+</div>
+</div>
+
+<div class='frm pst' id='pid5911' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5911' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5911#pid5911'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-13 21:22
+</div>
+<div class='ccl'>
+Noticed from poking around the forums that Gosu doesn&#39;t support the stencil buffer.&#160; Is this something that could easily be added to Gosu? I&#39;m going to try to patch support in, but I want to make sure it&#39;s not completely impossible.<br/><br/>Or would it just be better to go for the GLFW stuff first?
+</div>
+</div>
+
+<div class='brn' id='brn5911'>
+<div class='frm pst' id='pid5913' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5911'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5913' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5913.html#pid5913'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-14 03:42
+</div>
+<div class='ccl'>
+Without glfw, you&#39;d have to add allocation of a stencil buffer to all three OpenGL initializations, but that is the least of all problems actually. :) Have you found a nice interface for using the stencil from within Gosu?
+</div>
+</div>
+
+<div class='brn' id='brn5913'>
+<div class='frm pst' id='pid5920' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5913'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5920' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5920#pid5920'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-17 22:13
+</div>
+<div class='ccl'>
+Well, this is how I have it set up.&#160; Of course it currently doesn&#39;t work, but I think the interface is pretty clean.&#160; It has nice symmetry with the syntax for other block commands like #gl or #transform.<br/><br/><code><br/>mask = lambda { #draw the &quot;mask&quot; for the stencil buffer}<br/><br/>@window.stencil mask, z=0 do<br/>&#160;&#160; # Drawing code here<br/>end<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn5920'>
+<div class='frm pst' id='pid5924' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5920'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5924' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5924.html#pid5924'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-18 00:26
+</div>
+<div class='ccl'>
+Maybe we could even overload <code>#clip_to</code> to accept a lambda or macro rendered with <code>#record {}</code>? Agreed, the interface is actually doable!<br/><br/>Oh man, I really have no excuse not to find time for Gosu hacking. I really hope I can take a week off freelancing again.
+</div>
+</div>
+
+<div class='brn' id='brn5924'>
+<div class='frm pst' id='pid5932' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5924'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5932#pid5932'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-18 20:48
+</div>
+<div class='ccl'>
+Oh yeah, I totally forgot about the macro function.<br/><br/>I&#39;d rather not overload clip_to because clipping is a rather different thing, especially once you start using transforms.
+</div>
+</div>
+
+<div class='frm pst' id='pid5935' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5924'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5935' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5935.html#pid5935'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-23 01:50
+</div>
+<div class='ccl'>
+...I&#39;m totally supposed to be using SWIG instead of hacking directly into RubyGosu_wrap.cxx, aren&#39;t I.<br/><br/>I was starting to wonder why it was such a mess in there.
+</div>
+</div>
+
+<div class='brn' id='brn5935'>
+<div class='frm pst' id='pid5936' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5935'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5936' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5936.html#pid5936'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-23 04:04
+</div>
+<div class='ccl'>
+Right. :D<br/><br/>On the C++ side, you don&#39;t *have* to use the <code>beginStencil</code>/<code>endStencil</code> scheme that clipping uses. I want to slowly migrate everything to methods that take <code>std::function&lt;&gt;</code> callback objects to make it more Ruby-like. But, whatever suits you best. :)
+</div>
+</div>
+
+<div class='brn' id='brn5936'>
+<div class='frm pst' id='pid5938' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5936'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5938' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5938.html#pid5938'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-23 04:45
+<span class='htt'>Edited</span> 2012-06-23 05:07
+</div>
+<div class='ccl'>
+I&#39;ll have to take a look at the std::function&lt;&gt; callback interface a bit later.&#160; Taking a bit of a break from C++ for a bit (at most just a day or two) after looking through that SWIG mess.&#160; Of course I brought that upon myself, but still :P<br/><br/>Looks like a C++ thing (still don&#39;t know much of the language) so it is part of SWIG, C++, or a Gosu-specific thing?<br/><br/>Side note: The long term plan is to migrate towards GLFW, right? As GLFW is made in C, does this mean that Gosu will be moving more towards a focus on C? Or is the plan for Gosu to always be C++?
+</div>
+</div>
+
+<div class='brn' id='brn5938'>
+<div class='frm pst' id='pid5940' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5940.html#pid5938'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5940.html#pid5940'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-23 08:22
+</div>
+<div class='ccl'>
+Gosu will always be in C++, and the APIs in the background have always been C. Not much of a change there with GLFW. :)<br/><br/>Yeah, <code>std::function&lt;&gt;</code> is relatively new - I forgot if it was introduced in C++11 or C++03. In any case, it was well-established as <code>boost::function&lt;&gt;</code> before.<br/><br/>It&#39;s basically a variable that can hold everything you can call with a given signature, not just C function pointers. Think proc variables in Ruby. So if you want to accept a callback that can be called without any arguments, you&#39;d use <code>std::function&lt;void()&gt; f</code> and then just call <code>f()</code> to run the callback.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=772.html#tid772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=772.html#tid772'>Extending Gosu</a> / Stencil buffer?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5940.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

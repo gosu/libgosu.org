@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2875 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Chipmunk Collision Handlers in Ruby</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2875' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=424.html#tid424'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=424.html#tid424'>Gosu Exchange</a> / Chipmunk Collision Handlers in Ruby
+</div>
+</div>
+
+<div class='frm pst' id='pid2865' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2865' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2865.html#pid2865'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-23 19:36
+</div>
+<div class='ccl'>
+I&#39;m trying to use the Ruby bindings for Chipmunk 5 created by Beoran, but I can&#39;t seem to find any documentation. As such, I have been using the C documentation and trying to figure out how that translates to Ruby.&#160; However, I can not figure out how the collision handlers work.&#160; In the C version, there is a function called cpSpaceAddCollisionHandler, and the Ruby equivalent is CP::Space#add_collision_handler.&#160; Does anyone know what the argument of the Ruby version are supposed to be?&#160; Collision handlers are different from just defining collision functions, as you can define actions that take place at different times in the solution of the collision, as seen here <a class='url' href='http://code.google.com/p/chipmunk-physics/wiki/Documentation?tm=6'>http://code.google.com/p/chipmunk-physics/wiki/Documentation?tm=6</a><br/><br/>I am very eager to find a way to get Chipmunk to call a specific method when objects separate, and believe this would be the way to do that.&#160; Any documentation at all regarding the way collisions are handled in the Ruby version of Chipmunk would be very helpful.&#160; Well, with the exception of the Gosu tutorial on Chipmunk integration, as I have already looked at that.&#160; Sorry to say, but it only really seems to scratch the surface of what can be done.
+</div>
+</div>
+
+<div class='brn' id='brn2865'>
+<div class='frm pst' id='pid2866' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2866.html#pid2866'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-23 19:53
+</div>
+<div class='ccl'>
+Ah, so I poked around in the gemspec (at least I think that&#39;s what this stuff is called...) and found some information.&#160; Check it out.<br/><a class='url' href='http://pastebin.com/6EUm3qYy'>http://pastebin.com/6EUm3qYy</a><br/><br/>So apparently, the code is contained in a separate class called CollisionHandler... though I&#39;m not quite exactly how that works.&#160; I would assume it would be very similar to the way collision handlers work in the C version.<br/><br/>I would still be very happy to have more specific information.
+</div>
+</div>
+
+<div class='frm pst' id='pid2867' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2867' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2867.html#pid2867'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-07-23 23:17
+</div>
+<div class='ccl'>
+Hmmm, do you happen to know if the chipmunk gem is way outdated now? Are Beoran&#39;s bindings the new way to go? Are these a gem too? :)
+</div>
+</div>
+
+<div class='brn' id='brn2867'>
+<div class='frm pst' id='pid2869' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2867'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2869.html#pid2869'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-07-24 00:29
+</div>
+<div class='ccl'>
+I believe it&#39;s outdated—see my response about chipmunk-ffi for more info. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2874' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2867'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2874.html#pid2874'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-24 05:10
+<span class='htt'>Edited</span> 2010-07-24 05:12
+</div>
+<div class='ccl'>
+You have to make the gem yourself, to my knowledge, which is a bit annoying.&#160; Someone should really get it up on the net somewhere though, as the ruby bindings of Chipmunk available through &#39;gem install chipmunk&#39; are rather old.&#160; But Beoran&#39;s code is a little odd, as the resultant gem has a version of 2.1.0, which is lower than the one in the repository.&#160; The readme file confirms that the bindings are for Chipmunk 5.2 though.&#160; I assume the version number correlates to the version of the &#39;gem&#39; as it were.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid2868' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2868' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2868.html#pid2868'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-07-24 00:28
+</div>
+<div class='ccl'>
+I&#39;d recommend looking at <a class='url' href='http://github.com/shawn42/chipmunk-ffi'>chipmunk-ffi</a> for your Chipmunk needs, although I&#39;m not a neutral party since I&#39;ve contributed to it. ;) You can call <code>Space#add_collision_handler(a, b, handler)</code> and pass any object that responds to begin, pre, post and/or sep. You don&#39;t need to use a particular class and you don&#39;t need to implement all the methods.<br/><br/>If you just want to have a particular method called, you could call <code>Space#add_collision_func(a, b, type, &amp;block)</code> and pass, say, <code>&amp;your_object.method(:handle_collision)</code> as the last parameter instead of a block.<br/><br/>Your collision callback will get different arguments depending on its arity. It will either receive a single <code>Arbiter</code> or the two colliding <code>Shape</code> objects. The single argument form is preferred since the arbiter holds the two shapes plus additional collision information. Have a look at <code>chipmunk-ffi/arbiter.rb</code> to see what exactly it offers.<br/><br/>Any further questions? :)
+</div>
+</div>
+
+<div class='brn' id='brn2868'>
+<div class='frm pst' id='pid2870' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2868'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2870' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2870.html#pid2870'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-24 00:57
+</div>
+<div class='ccl'>
+isn&#39;t there a difficulty with chipmunk-ffi that you need to have pre-installed the compiled chipmunk binaries to a directory on the library load path prior to installing chipmunk-ffi? at least that was where it was at last time i looked at it. IMO This seems prohibitively hard for ruby noobs.. Nonetheless I think it&#39;s possible to have the chipmunk binary compile on gem installation even with chipmunk-ffi
+</div>
+</div>
+
+<div class='brn' id='brn2870'>
+<div class='frm pst' id='pid2875' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2870'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2875.html#pid2875'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-24 05:14
+</div>
+<div class='ccl'>
+Indeed, the concept of chipmunk-ffi baffles me, and I&#39;d rather not install it feeling that I have to install a pre-compiled chipmunk binary as well.&#160; I&#39;d rather have a complete package that I can simply use.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid2876' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2868'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2876' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2876.html#pid2876'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-24 05:28
+</div>
+<div class='ccl'>
+Ah I see... well while I was poking through the gemspec it appears as if you can use any class as well with Beoran&#39;s version.&#160; I am just a little confused as to why these two developers went that route instead of accepting a method as an argument.&#160; You could easily do this using lambda in ruby.&#160; Regaurdless, how are the methods to be named? begin, presolve, postsolve, separate; or simply begin, pre, post, sep? Beoran&#39;s example simply only defined begin, so I&#39;m not quite sure how this works out, though I would assume that Beoran&#39;s bindings and the ffi bindings work the same way.&#160; I suppose I&#39;ll just have to try it and see to find out for sure though xD<br/><br/>Arbiters exist in Beoran&#39;s version as well, I believe.&#160; I would assume both his version and the chipmunk-ffi version both work the same way as the C version.<br/><br/>What is &quot;arity&quot;? How do I know what the &quot;arity&quot; of a collision callback will be?
+</div>
+</div>
+
+<div class='brn' id='brn2876'>
+<div class='frm pst' id='pid2878' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2876'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2878' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2878.html#pid2878'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-07-24 06:26
+</div>
+<div class='ccl'>
+Arity is the number of arguments a method takes—sorry, I took for granted that it is pretty standard terminology. :) You&#39;ll know its arity because you declared its argument list yourself, of course.<br/><br/>The collision handlers are probably there just because Chipmunk itself uses a roughly equivalent data structure. If you want to use one of those, the methods should have the short names of begin, pre, post and sep. Only the ones you&#39;ve defined will be called.<br/><br/>You can pass a block (or lambda, or method, or anything that can be converted to a <code>Proc</code> object) to the other method I mentioned, <code>add_collision_func</code>.
+</div>
+</div>
+
+<div class='brn' id='brn2878'>
+<div class='frm pst' id='pid2883' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2878'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2883' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2883.html#pid2883'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-25 18:37
+</div>
+<div class='ccl'>
+I have heard the term arity before, and I believe it is a fairly standard term, but I&#39;m still learning about programming and computer science, so I didn&#39;t really understand what it was.&#160; Thank you for enlightening me.<br/><br/>Ah, I see.&#160; I also did not realize that all those things eventually boiled down to Proc objects.&#160; That&#39;s pretty cool.
+</div>
+</div>
+
+<div class='brn' id='brn2883'>
+<div class='frm pst' id='pid2885' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2883'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2885' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2885.html#pid2885'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-07-25 18:52
+</div>
+<div class='ccl'>
+Strictly speaking, <code>Method</code> and <code>Proc</code> objects are distinct, but you can convert a method to a proc easily. :) The nice thing is that the method stays bound to the object it belongs to, so you can pass it around and call it just like a proc and self will still be the&#160; original &quot;owner&quot; object.<br/><br/>Good luck with your Ruby learning, and computer science in general. Don&#39;t forget to dabble with other languages too!
+</div>
+</div>
+
+<div class='brn' id='brn2885'>
+<div class='frm pst' id='pid2886' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2885'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2886.html#pid2886'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-26 02:36
+</div>
+<div class='ccl'>
+Thank you.&#160; I have studied other languages, particularly Java and C.&#160; I&#39;ve taken a few classes in Java, but the course I took in C was really only enough to familiarize myself with the language.&#160; I haven&#39;t had the need to do anything very complex in C.&#160; However, I feel like that could get rather cumbersome rather quickly as C is a rather low-level language.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid2897' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2868'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2897' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2897.html#pid2897'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-27 01:40
+</div>
+<div class='ccl'>
+Beoran tells me that his chipmunk extension was designed to be API compatible with chipmunk-ffi, he even has a spec that ensures they match. Haven&#39;t run the spec though (nor do i know anything about chipmunk-ffi) so i can&#39;t confirm this.<br/><br/>Another point though...can chipmunk-ffi work on a windows system?
+</div>
+</div>
+
+<div class='brn' id='brn2897'>
+<div class='frm pst' id='pid2898' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2898.html#pid2898'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-07-27 01:46
+</div>
+<div class='ccl'>
+I don&#39;t have access to Windows so I can&#39;t say for sure, but Ruby FFI officially supports Windows, so chipmunk-ffi should work there.
+</div>
+</div>
+
+<div class='frm pst' id='pid2900' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2900.html#pid2900'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-28 18:16
+</div>
+<div class='ccl'>
+Well, I suppose this is as good of a spot to add this info as any.<br/><br/>Beoran&#39;s extension is slightly different, in at least one way.&#160; When creating a class to pass to CP::Space#add_collision_handler, the methods should be named begin, pre_solve, post_solve, and separate.&#160; This is as opposed to the shortened names used in the ffi version.&#160; Personally, I prefer the former way, as it makes the code more self-documenting.&#160; That seems to be the philosophy behind ruby no? Make the code easy to read, as long as you understand English, even if you don&#39;t completely understand the syntax.
+</div>
+</div>
+
+<div class='frm pst' id='pid2904' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2904' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2904.html#pid2904'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=130' >Trebor777</a>
+<span class='htt'>Date</span> 2010-07-29 12:40
+</div>
+<div class='ccl'>
+well Shawn42 tried to make me a chipmunk dll to work with chipmunk-ffi&#160; but it crashes... so nope it doesn&#39;t work for the moment... :/ so thank you a lot for that gem
+</div>
+</div>
+
+<div class='brn' id='brn2904'>
+<div class='frm pst' id='pid2905' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2904'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2905.html#pid2905'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2010-07-29 16:00
+</div>
+<div class='ccl'>
+Hrm, this is a good nudge for me to get that chipmunk.dll built correctly then...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid2872' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2872' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2872.html#pid2872'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-24 01:26
+</div>
+<div class='ccl'>
+can you explain how you installed beoran&#39;s bindings and tell me whether or not they are different to the bindings in the chipmunk gem itself?
+</div>
+</div>
+
+<div class='brn' id='brn2872'>
+<div class='frm pst' id='pid2873' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2872'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2873' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2873.html#pid2873'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-24 05:09
+</div>
+<div class='ccl'>
+It&#39;s been a while since I did it, but I believe I just downloaded the source from github, ran rake on it, and then did &#39;sudo gem install&#39; to install the gem.&#160; Beoran&#39;s bindings are in the same style as the ones in the chipmunk gem installable from &#39;sudo gem install chipmunk&#39;, but they pertain to the most recent version of Chipmunk, allowing for things such as Chipmunk&#39;s version of raycasting, I believe it&#39;s called line query or something like that.
+</div>
+</div>
+
+<div class='brn' id='brn2873'>
+<div class='frm pst' id='pid2877' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2873'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2877.html#pid2877'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-24 05:52
+</div>
+<div class='ccl'>
+well i hold rights to update the chipmunk gem so i&#39;ll take a look at it and maybe update the gem if it&#39;s not too difficult
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid2879' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2879.html#pid2879'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-24 07:40
+</div>
+<div class='ccl'>
+ok i&#39;ve checked it, the current chipmunk gem supports chipmunk version 4.1. Beoran&#39;s code updates the bindings to support chipmunk version 5.1 (but, confusingly, he keeps a separate gem version number which is 2.1.0). <br/><br/>I&#39;ll either give Beoran privs to update the current gem to 5.1 or i&#39;ll update it myself in the next couple of days
+</div>
+</div>
+
+<div class='frm pst' id='pid2880' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2880' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2880.html#pid2880'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-25 04:38
+</div>
+<div class='ccl'>
+updated the chipmunk gem to 5.2.0, let me know if it works
+</div>
+</div>
+
+<div class='brn' id='brn2880'>
+<div class='frm pst' id='pid2881' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2880'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2881' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2881.html#pid2881'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-07-25 06:11
+</div>
+<div class='ccl'>
+Works great for me under XP.<br/><br/>RUBYGEMS VERSION: 1.3.7<br/>RUBY VERSION: 1.9.1 (2010-01-10 patchlevel 378) [i386-mingw32] (Latest RubyInstaller)<br/><br/>Thanks, banister!<br/><br/>Anybody have some demo code that illustrates more of the API? It seems quite different from the 2D physics OOP code I&#39;m used to (Box2DAS3 is the only thing I have significant experience with).
+</div>
+</div>
+
+<div class='brn' id='brn2881'>
+<div class='frm pst' id='pid2882' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2881'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2882' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2882.html#pid2882'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-07-25 10:16
+</div>
+<div class='ccl'>
+This might be outdated then, but maybe the concepts are still similar:<br/><br/><a class='url' href='topic_show.pl@tid=182.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=182</a><br/><br/>(Chipmunk demos translated to Ruby.)
+</div>
+</div>
+
+<div class='brn' id='brn2882'>
+<div class='frm pst' id='pid2884' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2882'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2884' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2884.html#pid2884'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-25 18:46
+</div>
+<div class='ccl'>
+I believe I tried that code numerous times before, and it seems as if it is too outdated to run correctly.&#160; I didn&#39;t take the time to see if conversion to something runnable was merely trivial or not.<br/><br/>However, if you download Beoran&#39;s code for the Chipmunk bindings and look in the spec/ directory, you will find that the gemspec files are quite self documenting and are supported by comments as necessary.&#160; This, combined with the API on the Chipmunk wiki on the google code site (<a class='url' href='http://code.google.com/p/chipmunk-physics/'>http://code.google.com/p/chipmunk-physics/</a>) should be enough to understand how everything works.&#160; The Chipmunk integration demo for Gosu is also a good starting point.&#160; <br/><br/>It seems Beoran was trying to port all of the demos from the C version to Ruby, but I do not know how long it has been since that code was updated.&#160; It would be nice if a few of us could try contributing some code to that effort.&#160; I may try to edit some stuff personally now that I have a scattered, but comprehensive, API for Chipmunk in Ruby.&#160; I would understand if people are working on other things though, I know I am.
+</div>
+</div>
+
+<div class='brn' id='brn2884'>
+<div class='frm pst' id='pid2887' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2884'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2887' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2887.html#pid2887'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-07-26 02:41
+</div>
+<div class='ccl'>
+hi,<br/><br/>since you are the guy most familiar with beoran&#39;s chipmunk 5.2 bindings, could you confirm that the new chipmunk gem has successfully been updated to 5.2? <br/><br/>thanks
+</div>
+</div>
+
+<div class='brn' id='brn2887'>
+<div class='frm pst' id='pid2888' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2887'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2888' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2888.html#pid2888'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-07-26 02:44
+</div>
+<div class='ccl'>
+As far as I can tell, yes, the new gem uses Beoran&#39;s chipmunk 5.2 bindings.<br/><br/>Thank you so much for updating that gem, now I don&#39;t have to distribute it with my game.
+</div>
+</div>
+
+<div class='brn' id='brn2888'>
+<div class='frm pst' id='pid2899' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2875.html#pid2888'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2899.html#pid2899'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2010-07-27 12:59
+</div>
+<div class='ccl'>
+I&#39;m a little late to the discussion, but as the author of chipmunk-ffi, I feel I should chime in.&#160; First, it should be 5.2 compliant. Secondly, chipmunk-ffi does require that you have the chipmunk binary installed somewhere (you can specify the path at runtime if not installed in a standard system wide location).&#160; The idea was that scott (author of chipmunk) would eventually publish binaries for all platforms that could just be pulled down. That hasn&#39;t really happened yet. Feel free to drop an issue on the chipmunk-ffi github repo or email me at shawn42 _at gmail.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=424.html#tid424'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=424.html#tid424'>Gosu Exchange</a> / Chipmunk Collision Handlers in Ruby
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2875.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4316 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Tutorial fails: can&#39;t load image</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4316' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=588.html#tid588'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=588.html#tid588'>Gosu Exchange</a> / Tutorial fails: can&#39;t load image
+</div>
+</div>
+
+<div class='frm pst' id='pid4309' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4309' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4309.html#pid4309'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=804.html' >Garant</a>
+<span class='htt'>Date</span> 2011-05-04 09:53
+</div>
+<div class='ccl'>
+Hey, everyone. I&#39;m having a bit of trouble with (I believe?) my Gosu install. I can get the very first part of the tutorial done fine: window spawned and caption set. However, trying to load images fails every time. &quot;Cannot load image file xyz.png.&quot; I used the same code from the tutorial and used every type of path I could (relative, full, full escaped, full un-escaped). Even attempting to run the Tutorial.rb file that comes with the gem results in &quot;Cannot load image file media/Space.png.&quot; This happens in both 1.8.7 (system default, never updated) and 1.9.2 (managed by RVM). I have a feeling this is going to end up being a stupid blunder on my part, but can someone point me in the right direction here?<br/><br/>OS 10.6.7<br/>Ruby 1.8.7/1.9.2<br/>gosu 0.7.31<br/>RVM 1.6.5
+</div>
+</div>
+
+<div class='brn' id='brn4309'>
+<div class='frm pst' id='pid4310' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4310.html#pid4310'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-04 12:12
+</div>
+<div class='ccl'>
+Huh... I have messed around with exactly that part of image loading in 0.7.30/31. It seems to work for me and some others though. Do you happen to use Xcode sometimes? If you do, you can just run *any* Cocoa application, pause and enter this into the debug/gdb console:<br/><br/><code>po [[NSImage class] imageFileTypes]</code><br/><br/>This will list all the formats that Gosu should load without a problem.<br/><br/>Also, are you on a 32-bit or 64-bit system?
+</div>
+</div>
+
+<div class='frm pst' id='pid4311' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4311' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4311.html#pid4311'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-04 12:18
+</div>
+<div class='ccl'>
+Alternatively, you can list the file types supported by NSImage by installing MacRuby in rvm, then using irb:<br/><br/><code>irb(main):005:0&gt; framework &#39;AppKit&#39;<br/>irb(main):006:0&gt; NSImage.imageFileTypes<br/>=&gt; [&quot;&#39;PDF &#39;&quot;, &quot;PDF&quot;, &quot;pdf&quot;, &quot;&#39;PICT&#39;&quot;, &quot;PIC&quot;, &quot;pic&quot;, &quot;PCT&quot;, &quot;pct&quot;, &quot;PICT&quot;, &quot;pict&quot;, &quot;&#39;EPSF&#39;&quot;, &quot;PS&quot;, &quot;ps&quot;, &quot;EPSI&quot;, &quot;epsi&quot;, &quot;EPSF&quot;, &quot;epsf&quot;, &quot;EPI&quot;, &quot;epi&quot;, &quot;EPS&quot;, &quot;eps&quot;, &quot;&#39;BMPf&#39;&quot;, &quot;&#39;PNTG&#39;&quot;, &quot;&#39;TPIC&#39;&quot;, &quot;&#39;BMP &#39;&quot;, &quot;&#39;8BPS&#39;&quot;, &quot;&#39;icns&#39;&quot;, &quot;&#39;TIFF&#39;&quot;, &quot;&#39;jp2 &#39;&quot;, &quot;&#39;GIFf&#39;&quot;, &quot;&#39;JPEG&#39;&quot;, &quot;&#39;PNGf&#39;&quot;, &quot;HDR&quot;, &quot;hdr&quot;, &quot;EXR&quot;, &quot;exr&quot;, &quot;MAC&quot;, &quot;mac&quot;, &quot;PNT&quot;, &quot;pnt&quot;, &quot;PNTG&quot;, &quot;pntg&quot;, &quot;TARGA&quot;, &quot;targa&quot;, &quot;TGA&quot;, &quot;tga&quot;, &quot;CUR&quot;, &quot;cur&quot;, &quot;XBM&quot;, &quot;xbm&quot;, &quot;BMP&quot;, &quot;bmp&quot;, &quot;ICO&quot;, &quot;ico&quot;, &quot;PSD&quot;, &quot;psd&quot;, &quot;ORF&quot;, &quot;orf&quot;, &quot;MRW&quot;, &quot;mrw&quot;, &quot;RWL&quot;, &quot;rwl&quot;, &quot;RAW&quot;, &quot;raw&quot;, &quot;RW2&quot;, &quot;rw2&quot;, &quot;RAF&quot;, &quot;raf&quot;, &quot;CRW&quot;, &quot;crw&quot;, &quot;ICNS&quot;, &quot;icns&quot;, &quot;EFX&quot;, &quot;efx&quot;, &quot;JFAX&quot;, &quot;jfax&quot;, &quot;JFX&quot;, &quot;jfx&quot;, &quot;G3&quot;, &quot;g3&quot;, &quot;FAX&quot;, &quot;fax&quot;, &quot;TIF&quot;, &quot;tif&quot;, &quot;TIFF&quot;, &quot;tiff&quot;, &quot;DCR&quot;, &quot;dcr&quot;, &quot;ERF&quot;, &quot;erf&quot;, &quot;ARW&quot;, &quot;arw&quot;, &quot;SR2&quot;, &quot;sr2&quot;, &quot;SRF&quot;, &quot;srf&quot;, &quot;SRW&quot;, &quot;srw&quot;, &quot;PEF&quot;, &quot;pef&quot;, &quot;NRW&quot;, &quot;nrw&quot;, &quot;NEF&quot;, &quot;nef&quot;, &quot;3FR&quot;, &quot;3fr&quot;, &quot;FFF&quot;, &quot;fff&quot;, &quot;MOS&quot;, &quot;mos&quot;, &quot;CR2&quot;, &quot;cr2&quot;, &quot;DNG&quot;, &quot;dng&quot;, &quot;JPF&quot;, &quot;jpf&quot;, &quot;JP2&quot;, &quot;jp2&quot;, &quot;GIF&quot;, &quot;gif&quot;, &quot;JPE&quot;, &quot;jpe&quot;, &quot;JPEG&quot;, &quot;jpeg&quot;, &quot;JPG&quot;, &quot;jpg&quot;, &quot;PNG&quot;, &quot;png&quot;]<br/>irb(main):012:0&gt; NSImage.alloc.initWithContentsOfFile(&quot;/Library/Ruby/Gems/1.8/gems/gosu-0.7.31-universal-darwin/examples/media/Space.png&quot;)<br/>=&gt; #&lt;NSImage:0x2005a4b00&gt;</code><br/><br/>That is replicating pretty much what Gosu does when loading an image file. The last line should consequently yield &#39;nil&#39; for you.
+</div>
+</div>
+
+<div class='brn' id='brn4311'>
+<div class='frm pst' id='pid4312' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4311'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4312' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4312.html#pid4312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=804.html' >Garant</a>
+<span class='htt'>Date</span> 2011-05-04 22:43
+</div>
+<div class='ccl'>
+I have (as far as I can tell) all the same supported image types that you listed. However, attempting to allocate an image does indeed yield &#39;nil.&#39; Could this maybe be a problem with OS X not being able to find the file? I had to muck about in /etc/bashrc (and I think ~/.profile) to get RVM working, and I&#39;m not totally confident I did it correctly (especially since I&#39;ve uninstalled RVM once before: I don&#39;t know how well it cleans up after itself). If this is a possibility, perhaps someone could paste the contents of their own bashrc and profile and I could try with those.<br/><br/>Oh, and I&#39;m running the 32-bit kernel.
+</div>
+</div>
+
+<div class='brn' id='brn4312'>
+<div class='frm pst' id='pid4313' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4313' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4313.html#pid4313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-05 00:11
+</div>
+<div class='ccl'>
+The only line I have added to my .profile (I don&#39;t have a .bashrc) is<br/><br/><code>if [[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]]&#160; ; then source &quot;$HOME/.rvm/scripts/rvm&quot; ; fi</code><br/><br/>But if you get as far as playing around with MacRuby and NSImage, I doubt that this is the problem :S<br/><br/>Does file loading in general work? For example, if I use MacRuby&#39;s irb from my home folder:<br/><br/><code>irb(main):005:0&gt; NSData.dataWithContentsOfFile(&#39;.profile&#39;)<br/>=&gt; #&lt;NSConcreteData:0x2000f45a0&gt;</code><br/><br/>Just to find out if NSImage or paths are the problem.
+</div>
+</div>
+
+<div class='brn' id='brn4313'>
+<div class='frm pst' id='pid4314' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4313'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4314' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4314.html#pid4314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=804.html' >Garant</a>
+<span class='htt'>Date</span> 2011-05-05 02:09
+</div>
+<div class='ccl'>
+Nope, returns &#39;nil.&#39; Which means there&#39;s something terribly wrong with my computer. =/<br/><br/>I skipped Xcode 3 and installed v4 from the App Store, maybe I should try v3?<br/><br/>Sorry that this isn&#39;t actually gosu-related. I&#39;ll take my problems to Stack Overflow if your next post isn&#39;t &quot;Oh yeah, I&#39;ve seen that before: do this.&quot; =)
+</div>
+</div>
+
+<div class='brn' id='brn4314'>
+<div class='frm pst' id='pid4315' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4314'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4315' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4315.html#pid4315'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-05 03:11
+</div>
+<div class='ccl'>
+Hmm that is all very mysterious indeed, especially since the system uses NSData and NSImage left and right, so these can&#39;t be internally broken. It appears that you have a Ruby-only problem that affects Apple APIs, but in all three separate installations o_O<br/><br/>One last thing I&#39;d try (and then maybe add to Stack Overflow) is the last example, but using only the Ruby API. So, again, in your home folder (fresh Terminal with system Ruby):<br/><br/><code>&gt;&gt; File.read(&#39;.profile&#39;)<br/>=&gt; &quot;...file contents here...&quot;</code><br/><br/>Maybe the problem isn&#39;t related to Apple APIs after all...maybe *all* your paths are off. I was only focussing on the Apple stuff first because I thought it&#39;d be a format problem, not a file-not-found one.
+</div>
+</div>
+
+<div class='brn' id='brn4315'>
+<div class='frm pst' id='pid4316' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4316' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4316.html#pid4316'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=804.html' >Garant</a>
+<span class='htt'>Date</span> 2011-05-05 08:57
+</div>
+<div class='ccl'>
+Also not found. And I can&#39;t find anyone with an even remotely similar problem on Stack Overflow or via Google. I&#39;m thinking I&#39;ll just reinstall OS X; wouldn&#39;t hurt to clean this thing out anyway. Thanks so much for your help, though. I&#39;m a fan of gosu already just for your selfless tech support. Hopefully I&#39;ll be back here with a project (or *actual* gosu problem) in the near future.
+</div>
+</div>
+
+<div class='brn' id='brn4316'>
+<div class='frm pst' id='pid4317' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4316.html#pid4316'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4317.html#pid4317'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-05 10:08
+</div>
+<div class='ccl'>
+No problem and good luck!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=588.html#tid588'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=588.html#tid588'>Gosu Exchange</a> / Tutorial fails: can&#39;t load image
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4316.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 1.0.0 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9545' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1423.html#tid1423'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=1423.html#tid1423'>Gosu News</a> / Gosu 1.0.0 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/post_add.pl?tid=1423' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid9545' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=9545.html#pid9545'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2020-12-29 22:49
+</div>
+<div class='ccl'>
+• Breaking change: <code>Image.from_text</code>, <code>Font.draw_text</code> and <code>Font.text_width</code> have stopped parsing pseudo-HTML markup. Replace &quot;text&quot; with &quot;markup&quot; in each method name to get this functionality back.<br/>• Breaking change: The alternative <code>gosu/zen</code> interface has been removed.<br/>• Breaking change: <code>Gosu::Window::needs_cursor?</code> now returns true by default, not false.<br/>• Support for Ruby 3.0. Gosu now requires Ruby 2.5 or later, and can only be used on Windows when the RubyInstaller DevKit has been installed.<br/>• Support for analog gamepad sticks. Previously, all sticks and D-pads of gamepad 1 were merged into the same constants such as <code>GP_0_LEFT</code>. Now there is a <code>GP_0_DPAD_LEFT</code> button ID for the D-pad, and <code>GP_LEFT_STICK_X_AXIS</code> / <code>GP_RIGHT_STICK_X_AXIS</code> axis IDs that which can be used with <code>Gosu.axis()</code> to query a value between -1 and 1. Thanks to @cyberarm for this contribution. (#524, #540, #542, #543. #546)<br/>• Replace all audio libraries by a statically bundled copy of SDL_sound. (#539) <br/>• Added button IDs: <code>KB_PRINT_SCREEN</code>, <code>KB_SCROLL_LOCK</code>, <code>KB_PAUSE</code>, <code>KB_CAPS_LOCK</code>. Thanks to @edwinacunav for this contribution. (#545)<br/>• Some method arguments have been made optional again, for compatibility with very early Ruby/Gosu projects.<br/>• C++: Rewrite CMake files for Linux and macOS (#535), clean up MSVC 2019 project.<br/>• Adds a C API to use Gosu from other languages (using FFI or other mechanisms); this is a work in progress, but there are proof of concept bindings for Crystal and MRuby. Join the Discord server to learn more. Thanks to @cyberarm for this contribution.<br/>• Update all stb libraries.<br/>• Windows: Update the bundled versions of SDL 2 (2.0.14) and OpenAL soft (1.21.0).
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(9545)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield9545' style='display:none;'>jlnr</span><a href='https://www.libgosu.org/cgi-bin/mwf/post_add.pl?pid=9545' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1423.html#tid1423'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=1423.html#tid1423'>Gosu News</a> / Gosu 1.0.0 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/post_add.pl?tid=1423' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9545.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

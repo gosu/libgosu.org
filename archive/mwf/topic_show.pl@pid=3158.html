@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3158 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>bug in translate et al., or just a shortcoming of Ruby?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3158' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=450.html#tid450'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=450.html#tid450'>Gosu Exchange</a> / bug in translate et al., or just a shortcoming of Ruby?
+</div>
+</div>
+
+<div class='frm pst' id='pid3143' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3143' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3143.html#pid3143'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-23 03:46
+</div>
+<div class='ccl'>
+Wanna see something messed up?<br/><br/><code>translate (@scroll_x, @scroll_y) { return }</code><br/><br/>Oops, now everything else gets translated too. Here&#39;s how to fix it.<br/><br/><code>rb_ensure(rb_yield, Qnil, hypotheticalPopTransformWrapperThatAcceptsAnInstanceOfGraphics, (VALUE)&amp;($self-&gt;graphics() ) );</code><br/><br/>How ugly is that? :D Forgive the parentheses, but I&#39;m never sure whether &amp; binds more tightly than -&gt; or not!
+</div>
+</div>
+
+<div class='brn' id='brn3143'>
+<div class='frm pst' id='pid3144' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3143'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3144' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3144.html#pid3144'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-23 04:14
+</div>
+<div class='ccl'>
+im guessing those blocks aren&#39;t exception safe either (though not such a big deal of course)...the: begin; block.call; ensure; clean_up_code; end, is pretty standard ruby when messing with blocks. Much easier to do in Ruby than in the C api though. iirc, in the C API it&#39;s got a horrible interface all to do with passing functions pointers around
+</div>
+</div>
+
+<div class='brn' id='brn3144'>
+<div class='frm pst' id='pid3145' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3144'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3145' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3145.html#pid3145'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-23 04:32
+</div>
+<div class='ccl'>
+Yeah, that&#39;s what the <code>rb_ensure(…)</code> nonsense is that I posted below the problem code. I guess I forgot to change the topic after I peeked at Gosu&#39;s source. :D<br/><br/>For the curious, this is its signature in Ruby 1.9.2:<br/><br/><code>VALUE rb_ensure(VALUE(*)(ANYARGS),VALUE,VALUE(*)(ANYARGS),VALUE);</code><br/><br/>For the masochistic, here&#39;s its source code:<br/><br/><code>VALUE<br/>rb_ensure(VALUE (*b_proc)(ANYARGS), VALUE data1, VALUE (*e_proc)(ANYARGS), VALUE data2)<br/>{<br/>&#160; &#160; int state;<br/>&#160; &#160; volatile VALUE result = Qnil;<br/><br/>&#160; &#160; PUSH_TAG();<br/>&#160; &#160; if ((state = EXEC_TAG()) == 0) {<br/>&#160; result = (*b_proc) (data1);<br/>&#160; &#160; }<br/>&#160; &#160; POP_TAG();<br/>&#160; &#160; /* TODO: fix me */<br/>&#160; &#160; /* retval = prot_tag ? prot_tag-&gt;retval : Qnil; */&#160; &#160;&#160; /* save retval */<br/>&#160; &#160; (*e_proc) (data2);<br/>&#160; &#160; if (state)<br/>&#160; JUMP_TAG(state);<br/>&#160; &#160; return result;<br/>}</code><br/><br/>That &quot;fix me&quot; comment is a little unnerving. Anyway, from this we can at least figure out which parameters do what. If Ruby&#39;s ensure block were somehow implemented using Ruby&#39;s ensure block, it might look something like this:<br/><br/><code>def rb_ensure b_proc, data1, e_proc, data2<br/>&#160; result = nil<br/>&#160; begin<br/>&#160; &#160; result = b_proc.call data1<br/>&#160; ensure<br/>&#160; &#160; e_proc.call data2<br/>&#160; end<br/>&#160; return result<br/>end</code>
+</div>
+</div>
+
+<div class='brn' id='brn3145'>
+<div class='frm pst' id='pid3149' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3145'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3149' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3149.html#pid3149'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-23 05:28
+</div>
+<div class='ccl'>
+To me it looks more like a rewrite of ensure, which is already included in Ruby... but I might be wrong...
+</div>
+</div>
+
+<div class='brn' id='brn3149'>
+<div class='frm pst' id='pid3151' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3149'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3151.html#pid3151'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-23 05:32
+</div>
+<div class='ccl'>
+The tangled mess of C code? It is the implementation of ensure, straight from Ruby&#39;s source. The Ruby code at the bottom? It&#39;s a clarification of what the C code does. :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3153' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3145'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3153' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3153.html#pid3153'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-23 07:19
+</div>
+<div class='ccl'>
+yeah it&#39;s a mess.<br/><br/>When i need to use the begin;ensure;end functionality in a C extension, i don&#39;t. Instead i expose the action code and cleanup code as hidden methods and then invoke them from an accompanying ruby script, like so (as i did in object2module):<br/><br/>&#160; &#160; &#160; begin<br/>&#160; &#160; &#160; &#160; &#160; mod = o.__to_module__<br/>&#160; &#160; &#160; &#160; &#160; include(mod)<br/>&#160; &#160; &#160; ensure<br/>&#160; &#160; &#160; &#160; &#160; mod.__reset_tbls__ if mod != o &amp;&amp; o != Object &amp;&amp;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; o != Class &amp;&amp; o != Module<br/>&#160; &#160; &#160; end
+</div>
+</div>
+
+<div class='brn' id='brn3153'>
+<div class='frm pst' id='pid3154' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3153'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3154.html#pid3154'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-23 07:24
+</div>
+<div class='ccl'>
+Ick, that&#39;s probably for the best. I wonder if there&#39;s a cleaner way to implement it with C. It could probably be made less ugly with Apple&#39;s C blocks if they make it into the standard… Well, a <i>little</i> less ugly anyway.<br/><br/>I&#39;ve discovered that some aspects of Ruby&#39;s C API are really nice, but there are some things that just make me cringe. Plus it&#39;s kind of cluttered with a lot of redundant macros and stuff that aren&#39;t even namespaced.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3157' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3143'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3157' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3157.html#pid3157'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-23 08:26
+<span class='htt'>Edited</span> 2010-08-23 08:29
+</div>
+<div class='ccl'>
+Huh. I guess it&#39;s not that bad because even if an exception happens during rendering, the frame shouldn&#39;t be flipped (?), unless you catch the error within the rendering, but even then only one frame gets trashed in good cases.<br/><br/>The bigger question to me is... why does return trigger this too?? Ruby keeps puzzling me after years o_O<br/><br/>—<br/><br/>I actually think I did something with rb_ensure myself before I used SWIG. It wasn&#39;t really that bad, I could probably just use macros to generate the hypothetical wrapper functions. Is there a good use case for this so that I should move it up on my priority list? :)
+</div>
+</div>
+
+<div class='brn' id='brn3157'>
+<div class='frm pst' id='pid3158' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3157'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3158' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3158.html#pid3158'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-23 08:47
+</div>
+<div class='ccl'>
+The bigger question is actually pretty easy to answer, but difficult for me to describe. Better to show you with an example from my own code.<br/><br/><code># Recursively tests whether +point+ falls within one of the container&#39;s<br/># subviews. Returns the first subview that tested positively, +self+ if<br/># no subviews contain the point, or +nil+ if the container does not<br/># contain the point.<br/>def point_query point<br/>&#160; if frame.include? point<br/>&#160; &#160; # query each subview and return the first non-nil result<br/>&#160; &#160; point -= frame.offset<br/>&#160; &#160; @subviews.each do |subview|<br/>&#160; &#160; &#160; found_view = subview.point_query point<br/>&#160; &#160; &#160; return found_view if found_view<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; # fall back on self if no subview contains the point<br/>&#160; &#160; self<br/>&#160; else<br/>&#160; &#160; nil<br/>&#160; end<br/>end</code><br/><br/>If blocks didn&#39;t behave this way, then that return statement would basically be a no op. The block would return, the enumerator would move on to the next item in <code>@subviews</code> and the method would eventually return self. If I wanted to return the result of the subview&#39;s <code>point_query</code>, I&#39;d have to write something significantly nastier using a catch/throw or something. I&#39;m sure if it worked that way I&#39;d figure something out.<br/><br/>Let me know if you&#39;re not convinced this is the right way to do it. :)
+</div>
+</div>
+
+<div class='brn' id='brn3158'>
+<div class='frm pst' id='pid3159' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3158.html#pid3158'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3159.html#pid3159'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-23 08:58
+</div>
+<div class='ccl'>
+OK, got it. :) Shouldn&#39;t have been surprising to me that ensure has to handle return too. I guess I am already thinking too much in stack destructors, or rather, they are thinking too much for me. ;)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=450.html#tid450'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=450.html#tid450'>Gosu Exchange</a> / bug in translate et al., or just a shortcoming of Ruby?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3158.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

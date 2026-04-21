@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8413 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>I have a questions for gamepads control.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8413' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1198.html#tid1198'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1198.html#tid1198'>Gosu Exchange</a> / I have a questions for gamepads control.
+</div>
+</div>
+
+<div class='frm pst' id='pid8412' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8412' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8412#pid8412'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1133' >cdpro2</a>
+<span class='htt'>Date</span> 2015-06-29 21:46
+</div>
+<div class='ccl'>
+Sorry about my English.<br/><br/>My Gosu version is 0.9.2 for windows.<br/><br/>I test 4 direction keys for gamepad, however, to operate the on-screen objects but not as I expected.<br/><br/>For example, when I press the Up button object but move down.<br/>When I press the Down button object but move up.<br/>When I press the Left button object but move top left.<br/>When I press the Right button object but move bottom right.<br/><br/>I don&#39;t know what happened :(<br/><br/>This is my code and gamepad style.<br/><a class='url' href='http://i.imgur.com/NrrVXTO.png'>code</a><br/><a class='url' href='http://i.imgur.com/Hml1T78.jpg'>gamepad</a>
+</div>
+</div>
+
+<div class='brn' id='brn8412'>
+<div class='frm pst' id='pid8413' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8413.html#pid8412'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8413.html#pid8413'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-06-30 08:37
+</div>
+<div class='ccl'>
+早安 :) Can you please try if it works with Gosu v0.7.50?<br/><br/>In Gosu 0.8+, I use SDL 2.x to handle all gamepad input. I remember SDL 1.x had a bug with handling some directional pads, maybe it still exists in 2.x? -&gt; In that case we can simply file a bug at the libsdl bug tracker.<br/><br/>Since Gosu 0.8.x+ uses the SDL GameController API to access gamepads, it possible to fix this issue by writing a SDL game controller mapping string for your gamepad:<br/><br/><a class='ura' href='https://wiki.libsdl.org/SDL_GameControllerAddMapping'>https://wiki.libsdl.org/SDL_GameControllerAddMapping</a><br/><br/>Maybe this tool is useful to find out the gamepad&#39;s GUID etc.; I haven&#39;t tried it:<br/><br/><a class='ura' href='https://github.com/Ryochan7/antimicro'>https://github.com/Ryochan7/antimicro</a><br/><a class='ura' href='https://github.com/Ryochan7/antimicro-profiles'>https://github.com/Ryochan7/antimicro-profiles</a><br/><br/>Once you have a mapping string for your gamepad, you can set this environment variable before requiring Gosu:<br/><br/><a class='ura' href='https://github.com/spurious/SDL-mirror/blob/master/include/SDL_hints.h#L306'>https://github.com/spurious/SDL-mirror/blob/master/include/SDL_hints.h#L306</a><br/><br/>It probably looks like this:<br/><br/><code>ENV[&#39;SDL_GAMECONTROLLERCONFIG&#39;] = &#39;..........,Sun-Yes USB Gamepad,...........&#39;<br/>require &#39;gosu&#39;</code><br/><br/>Hope that helps. I&#39;ll make a note to test this myself and write a guide for the Gosu wiki. (....But I usually need a few years to follow up on my notes ;) ).
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1198.html#tid1198'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1198.html#tid1198'>Gosu Exchange</a> / I have a questions for gamepads control.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8413.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

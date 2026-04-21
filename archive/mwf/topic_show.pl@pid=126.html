@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 126 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Linux/Ubuntu/Ruby sound/font performance issues??</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d126' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=44.html#tid44'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=44.html#tid44'>Gosu Exchange</a> / Linux/Ubuntu/Ruby sound/font performance issues??
+</div>
+</div>
+
+<div class='frm pst' id='pid124' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=124#pid124'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2008-12-19 15:01
+</div>
+<div class='ccl'>
+Heya everyone, (Hi Julian, this is HybridMind from the Ludum Dare community)<br/><br/>Was wondering if anyone might have some ideas or suggestions regarding some issues that are really dogging me when I am developing and running my Gosu projects under Ubuntu.&#160; I&#39;m am not 100% certain that these issues are Gosu&#39;s fault mind you but I have only noticed them while playing Gosu games.&#160; The same issues never occur while running the identical code under Windows.<br/><br/>The two major issues I experience under Ubuntu/Ruby.&#160; (same prob on Gosu versions 7.8.5 through 7.11) (same prob on last couple of Ubuntu releases)<br/><br/>* I experience half-second lag for the first 30 seconds or so of playing a game each time any sample.play event happens.&#160; These eventually smooth out and seem to be fine after awhile. Works fine under windows.<br/><br/>* I experience about a 1-2+ second lag anytime a new call to the font.draw routine happens.&#160; This has basically made most things I&#39;m trying to develop crawl to a halt and I have not been able to get to the bottom of this.&#160; Works fine under windows.<br/><br/>I had experienced the issue with the sound lag for a lot longer than the font problem.&#160; This seems a more recent event.&#160; I am not doing anything weird or non-standard that I know of.&#160; I am following basic procedures for font and sound calls.&#160; I try where possible to use @@vars in classes to open only one copy of sound sample or font across identical classes etc.<br/><br/>Any help would be great as this is really discouraging me from being able to develop away from my windows box as my linux laptop is what I use most often to dev on.&#160; Thanks all!
+</div>
+</div>
+
+<div class='frm pst' id='pid126' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=126.html#pid126'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-12-20 02:33
+</div>
+<div class='ccl'>
+Ah, I didn&#39;t realize that you participated in the last LD :) One more game I can play! (No time to borrow a Windows machine right now ...)<br/><br/>Regarding the first issue, I don&#39;t think Gosu is doing anything unusual in Sample::play so I wonder if it&#39;s a problem with SDL_mixer or its backing audio system. You can make the gem version of Gosu use FMOD (v3) by having it installed globally, which means at /usr/lib/libfmod.so, because the Gosu configure script checks for exactly this location before falling back to SDL_mixer. The fmod.h header and the errors one also have to be available to gcc without any special flags.<br/>This is pretty ugly and not a proper solution--but it this helps it would mean that SDL_mixer is the problem. Not sure what else to try for debugging this :)<br/><br/>As for the second problem, I looked at Jan&#39;s oldish Pango/Freetype port of Gosu&#39;s text system and it doesn&#39;t look like it&#39;s caching as much as it could. Maybe there&#39;s something in there that used to be more lightweight but shouldn&#39;t be initialized multiple times per frame nowadays. Since the next version of Gosu was supposed to be about graphics and performance I&#39;ll give it a try to cache as much as possible there. I&#39;ll bump this thread when I get to it.<br/><br/>In any case, thanks for the feedback! I only test the Linux version in a VM so I can hardly judge the performance of it :)
+</div>
+</div>
+
+<div class='frm pst' id='pid127' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=127#pid127'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2008-12-20 05:19
+</div>
+<div class='ccl'>
+Julian,<br/><br/>Thanks for the quick response!&#160; I haven&#39;t had a chance to play your LD13 entry yet but I plan on it.&#160; I only managed to play about 50% of the entries so far because a lot of crazy stuff happened in my life / schedule past two weeks but I&#39;m trying to finish up as many as possible as I know I appreciate the feedback and ratings too!<br/><br/>As far as the sound issue goes:<br/><br/>I know I have suspected the sound subsystems and have made various attempts to &#39;mess&#39; with them in the past.&#160; I originally used sdl_mixer I believe as I hadn&#39;t compiled fmod support.&#160; After running into issues I then attempted to get fmod working as I suspected it might give me better performance.&#160; I was never sure for certain whether I got it right though so I may try again with the info you have provided.&#160; Thanks!<br/><br/>As far as the font issues goes:<br/><br/>What you suspect would make good sense in the behavior I&#39;m seeing.&#160; It is performing so awful that something HAS to be wrong somewhere (could totally be something wacky on my laptop of course) but I know that my computer should be able to display a font.... with all the sprites I push around with Gosu without speed problems I shouldn&#39;t be having the game frames / updates halt for almost 1-2 seconds just to display a simple line of text..!! ;)<br/><br/>For now I&#39;ll just shift my dev over to my windows box and watch for any updates on this thread / topic / Gosu. Thanks again for all your efforts!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=44.html#tid44'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=44.html#tid44'>Gosu Exchange</a> / Linux/Ubuntu/Ruby sound/font performance issues??
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=126.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

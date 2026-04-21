@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Again, regarding update and draw calling order...</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=392.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=392.html#tid392'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=392.html#tid392'>Gosu Exchange</a> / Again, regarding update and draw calling order...
+</div>
+</div>
+
+<div class='frm pst' id='pid2595' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2595.html#pid2595'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=182.html' >BlueScope</a>
+<span class='htt'>Date</span> 2010-06-06 20:05
+</div>
+<div class='ccl'>
+After spending over an hour yesterday, trying to put my finger on an error, I found myself puzzled about why my freezepoint-detecting print line was working after initialization, however not at the beginning of updating. Randomly, I tried putting it in other places, which is how I figured out that draw actually get called before update in Gosu&#39;s code (I figure this might be Ruby Gosu only).<br/><br/>While not trying to blame anyone for this, and being aware of the other thread that basically had a tie between which one should be called first and which shouldn&#39;t, I have a suggestion to satisfy everyone: Another definition in Window class, wrapping the calls for update, draw, button_up and button_down, named something like call_order, and obviously looking like this:<br/><br/>class Window<br/><br/>&#160; def initialize(width, height, fullscreen, whatnot)<br/>&#160; &#160; # regular stuff<br/>&#160; &#160; calling_order<br/>&#160; end<br/><br/>&#160; def calling_order<br/>&#160; &#160; button_down(key)<br/>&#160; &#160; button_up(key)<br/>&#160; &#160; draw<br/>&#160; &#160; update<br/>&#160; end<br/><br/>end<br/><br/>That&#39;d allow everyone to choose their own order of calling the methods while perfectly keeping everything the way it is at the moment, which would make everyone happy on the cost of a nanobit of performance (estimated ;) ).<br/><br/>What do you guys think?
+</div>
+</div>
+
+<div class='frm pst' id='pid2599' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2599.html#pid2599'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-07 09:30
+</div>
+<div class='ccl'>
+I think this is overengineering because it&#39;s actually only about perceived performance: When you hit a button, should it first redraw the game or first call update to be able to react to the call before drawing etc. It is not really about where the loop starts, I think I should point that out in the diagram.<br/><br/>If you have an error because of the order, then it is an error nevertheless. You should never rely on draw() being called exactly once between updates. It might not be called if the OS realizes the window is obscured or it might be called twice if the user drags a window over the Gosu window etc.<br/><br/>If you need to be sure that draw has been called once, set a variable in draw.
+</div>
+</div>
+
+<div class='frm pst' id='pid2605' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2605.html#pid2605'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=182.html' >BlueScope</a>
+<span class='htt'>Date</span> 2010-06-07 12:39
+</div>
+<div class='ccl'>
+Well, the way I see it is that draw draws what results from update. Therefore, calling draw before update would resulting in whatever gets updated will get drawn a frame later, essentially delaying all draw commands by 1 frame, no?<br/><br/>And the error I had was in no way related to the order really, I just had a hard time spotting what&#39;s causing that error, as I was putting print commands to find out where it stops executing (because of the known black-screen-freeze-bug whatever), and it took me a while to realize I actually have my error in def draw, as I was checking the end of initialize and the beginning of update and was like &quot;wtf gets called inbetween? O_o&quot;
+</div>
+</div>
+
+<div class='frm pst' id='pid2610' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2610.html#pid2610'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-07 18:58
+</div>
+<div class='ccl'>
+Well, if you take input callbacks out of the picture it is really just<br/><br/>1: zero to n calls of draw<br/>2: update<br/>3: goto 1<br/><br/>Which means that any sequence of update and draw is possible. The diagram is mostly there for the most common case, in which the two alternate, and you want to fine-tune the game&#39;s reaction to input.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=392.html#tid392'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=392.html#tid392'>Gosu Exchange</a> / Again, regarding update and draw calling order...
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=392.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

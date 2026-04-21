@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Question about using under_point? inside an array.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5636' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=728.html#tid728'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=728.html#tid728'>Gosu Exchange</a> / Question about using under_point? inside an array.
+</div>
+</div>
+
+<div class='frm pst' id='pid5636' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5636' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5636.html#pid5636'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=902.html' >h4y4shi</a>
+<span class='htt'>Date</span> 2012-03-01 20:25
+<span class='htt'>Edited</span> 2012-03-01 20:39
+</div>
+<div class='ccl'>
+Hey guys thanks for the help so far. But I have another problem. I made a tile class and it has a method named under_point? I want to test if the objects are under_point? The problem is that I allowed the user to push alot of objects onto the array. So I want to be able to find out which object is being clicked on and delete or pop that object off of the array whenever a user clicks on it. So far I have the erase button but all it does is delete the [-1] object off of the array until I stop holding down left mouse. <br/><br/>Please help me find out how I can click on an object and then have that specific object popped off of the array. <br/><br/>Here is the source code. <br/><br/>Main.rb <a class='url' href='http://pastie.org/3499100'>http://pastie.org/3499100</a><br/>Tileclasses.rb <a class='url' href='http://pastie.org/3499001'>http://pastie.org/3499001</a><br/>Buttonclasses.rb <a class='url' href='http://pastie.org/3499004'>http://pastie.org/3499004</a>
+</div>
+</div>
+
+<div class='brn' id='brn5636'>
+<div class='frm pst' id='pid5644' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5636.html#pid5636'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5644' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5644.html#pid5644'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-03-02 14:06
+</div>
+<div class='ccl'>
+<code>.pop</code> method you used deletes the last element from array. You need to test all tiles and use <code>.delete</code><br/><br/><code><br/>when &#39;eraser_selected&#39;<br/>&#160; @water.each{|tile| if tile.under_point?(mouse_x,mouse_y) then @water.delete(tile) end}<br/>&#160; @dirts.each{|tile| if tile.under_point?(mouse_x,mouse_y) then @dirts.delete(tile) end}<br/>&#160; @grasses.each{|tile| if tile.under_point?(mouse_x,mouse_y) then @grasses.delete(tile) end}<br/></code><br/>To make it simpler, push all tiles in one array (even along with other arrays), like:<br/><code>when &#39;grass_selected&#39;<br/>&#160; @grasses.push(tile=GrassTile.new(self))<br/>&#160; @alltiles.push(tile)<br/>&#160; @grasses[-1].tile_position(mouse_x, mouse_y)</code>
+</div>
+</div>
+
+<div class='brn' id='brn5644'>
+<div class='frm pst' id='pid5650' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5636.html#pid5644'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5650' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5650.html#pid5650'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=902.html' >h4y4shi</a>
+<span class='htt'>Date</span> 2012-03-02 17:47
+</div>
+<div class='ccl'>
+Im getting an error. <br/><br/>C:/.../tileclasses.rb:22:in <code>&gt;&#39;: comparison of Float with nil failed (ArgumentError)<br/>&#160; &#160; &#160; &#160; from C:/Users/h4y4shi/gosu-tile-experiment/tileclasses.rb:22:in </code>under_point?&#39;<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; from main.rb:63:in <code>block in update&#39;<br/>&#160; &#160; &#160; &#160; from main.rb:63:in </code>each&#39;<br/>&#160; &#160; &#160; &#160; from main.rb:63:in <code>update&#39;<br/>&#160; &#160; &#160; &#160; from main.rb:94:in </code>&lt;main&gt;&#39;<br/><br/>I pasted the code you wrote in the eraser button and I renamed the water.each and water.delete to waters.each and waters.delete because that is the name of the array. Do you know why the error is happening?
+</div>
+</div>
+
+<div class='brn' id='brn5650'>
+<div class='frm pst' id='pid5651' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5636.html#pid5650'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5651' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5651.html#pid5651'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2012-03-02 18:21
+</div>
+<div class='ccl'>
+It&#39;s probably because the mouse is over an empty tile, so ruby try to run the under_point? method on a nil object which cause an error<br/>Try this. <br/><br/>when &#39;eraser_selected&#39;<br/>&#160; @waters.each do |tile|<br/>&#160; &#160; ## Skip to next tile if current til is nil<br/>&#160; &#160; next if tile.nil?<br/>&#160; &#160; <br/>&#160; &#160; if tile.under_point?(mouse_x,mouse_y)<br/>&#160; &#160; &#160; @waters.delete(tile)<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; @dirts.each do |tile|<br/>&#160; &#160; next if tile.nil?<br/>&#160; &#160; <br/>&#160; &#160; if tile.under_point?(mouse_x,mouse_y)<br/>&#160; &#160; &#160; @dirts.delete(tile)<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; @grasses.each do |tile|<br/>&#160; &#160; next if tile.nil?<br/>&#160; &#160; <br/>&#160; &#160; if tile.under_point?(mouse_x,mouse_y)<br/>&#160; &#160; &#160; @grasses.delete(tile)<br/>&#160; &#160; end<br/>&#160; end
+</div>
+</div>
+
+<div class='brn' id='brn5651'>
+<div class='frm pst' id='pid5652' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5636.html#pid5651'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5652.html#pid5652'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-03-02 19:23
+</div>
+<div class='ccl'>
+No, it&#39;s not that. Error is in this line:<br/><code>mouse_x &gt; @x and mouse_x &lt; @x + 40 and</code><br/><br/><code>tile_position</code> method sets <code>@x_tile</code> instead of <code>@x</code>. That&#39;s the problem: the <code>@x</code> variable is <code>nil</code>.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5654' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=5654.html#pid5654'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=902.html' >h4y4shi</a>
+<span class='htt'>Date</span> 2012-03-02 21:46
+</div>
+<div class='ccl'>
+Thanks a lot it works now.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=728.html#tid728'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=728.html#tid728'>Gosu Exchange</a> / Question about using under_point? inside an array.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5636.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

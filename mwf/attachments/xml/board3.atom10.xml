@@ -1,0 +1,660 @@
+<?xml version='1.0' encoding='utf-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:slash='http://purl.org/rss/1.0/modules/slash/' xml:base='http://www.libgosu.org'>
+  <id>http://www.libgosu.org/cgi-bin/mwf/forum.pl</id>
+  <link rel='self' href='http://www.libgosu.org/mwf/attachments/xml/board3.atom10.xml'/>
+  <link rel='alternate' href='http://www.libgosu.org/cgi-bin/mwf/forum.pl'/>
+  <title>Gosu Forums - Gosu Exchange</title>
+  <subtitle>Gosu Forum Feed</subtitle>
+  <updated>2025-08-25T21:37:01Z</updated>
+  <generator version='2.29.7' uri='http://www.mwforum.org/'>mwForum</generator>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9605</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9605'/>
+    <title>Is Gosu suitable for making games like Doom (BSP)?</title>
+    <author><name>kutsalkedi</name></author>
+    <published>2025-08-24T23:26:56Z</published>
+    <updated>2025-08-24T23:26:56Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[Bok]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9600</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9600'/>
+    <title>PGM (Pokemon Game Maker Project) - Error when using rect</title>
+    <author><name>jlnr</name></author>
+    <published>2024-07-12T13:57:58Z</published>
+    <updated>2024-07-12T13:57:58Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Oops, looks like I had unsubscribed from this board by accident. Welp, I can only assume that the image does not contain the rect that you&#39;ve tried to load from it.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9599</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9599'/>
+    <title>Any good tutorials for Gosu?</title>
+    <author><name>memecode</name></author>
+    <published>2024-07-12T13:01:14Z</published>
+    <updated>2024-07-12T13:01:14Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[I know, the topic is old. But 2024 and AI is here. I used chat gpt to play around with gosu.<br/>Even asked to explain some methods with a lack of documentation. For sure, you have to know Ruby and understand the code. AI will make mistakes. But it is a good tool, and much better than rubberducking ^_^]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9595</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9595'/>
+    <title>PGM (Pokemon Game Maker Project) - Error when using rect</title>
+    <author><name>Fulgurance</name></author>
+    <published>2023-09-14T16:51:29Z</published>
+    <updated>2023-09-14T16:51:29Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Hi, I am using ruby with Gosu to make a remake of the first version of Pokemon.<br/>I have a class called Sprite inherite directly from Gosu::Image, but I don&#39;t know why, when my script load the third sprite, I have a very unusual error.<br/><br/><b>Sprite class:</b><br/><br/><code>class Sprite &lt; Gosu::Image<br/><br/>&#160; &#160; attr_accessor :x<br/>&#160; &#160; attr_accessor :y<br/>&#160; &#160; attr_accessor :z<br/>&#160; &#160; attr_accessor :zoomX<br/>&#160; &#160; attr_accessor :zoomY<br/>&#160; &#160; attr_accessor :color<br/>&#160; &#160; attr_accessor :mode<br/><br/>&#160; &#160; def initialize(source, options = {})<br/>&#160; &#160; &#160; &#160; super(source,options)<br/>&#160; &#160; &#160; &#160; @x = 0<br/>&#160; &#160; &#160; &#160; @y = 0<br/>&#160; &#160; &#160; &#160; @z = 0<br/>&#160; &#160; &#160; &#160; @zoomX = 1.0<br/>&#160; &#160; &#160; &#160; @zoomY = 1.0<br/>&#160; &#160; &#160; &#160; @color = 0xff_ffffff<br/>&#160; &#160; &#160; &#160; @mode = :default<br/>&#160; &#160; end<br/><br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; super(@x,@y,@z,@zoomX,@zoomY,@color,@mode)<br/>&#160; &#160; end<br/><br/>end</code><br/><br/><b>The code who generate the bug:</b><br/><br/><code>class GameMessageScene &lt; GameScene<br/><br/>&#160; &#160; def initialize(text,skinNumber)<br/>&#160; &#160; &#160; &#160; super()<br/><br/>&#160; &#160; &#160; &#160; #GLOBAL SETTINGS<br/>&#160; &#160; &#160; &#160; @color = Color.new(180,255,255,255)<br/>&#160; &#160; &#160; &#160; @path = &quot;Graphics/Messages/#{skinNumber}.png&quot;<br/>&#160; &#160; &#160; &#160; @space = 5<br/><br/>&#160; &#160; &#160; &#160; #CORNERS<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft = Sprite.new(@path,{rect: [0,0,16,16]})<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft.color = @color<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft.x = @space<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft.y = $gameWindow.height - 64 / 2 - @space<br/><br/>&#160; &#160; &#160; &#160; @backgroundTopRight = Sprite.new(@path,{rect: [32,0,16,16]})<br/>&#160; &#160; &#160; &#160; @backgroundTopRight.color = @color<br/>&#160; &#160; &#160; &#160; @backgroundTopRight.x = $gameWindow.width - 16 - @space<br/>&#160; &#160; &#160; &#160; @backgroundTopRight.y = @backgroundTopLeft.y<br/><br/>&#160; &#160; &#160; &#160; #THE NEXT LINE WILL BUG<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft = Sprite.new(@path,{rect: [0,32,16,16]})<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft.color = @color<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft.x = @space<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft.y = $gameWindow.height - 16 - @space</code><br/><br/><b>The error (the game freeze few second and then crash, with this error then):</b><br/><br/><code>zohran@alienware-m17-r3 ~/Documents/Programmation/PGM $ ruby Game.rb<br/>/usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/bits/stl_vector.h:1144: std::vector&lt;_Tp, _Alloc&gt;::const_reference std::vector&lt;_Tp, _Alloc&gt;::operator[](size_type) const [with _Tp = Gosu::Color; _Alloc = std::allocator&lt;Gosu::Color&gt;; const_reference = const Gosu::Color&amp;; size_type = long unsigned int]: Assertion &#39;__n &lt; this-&gt;size()&#39; failed.<br/>Aborted</code>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9588</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9588'/>
+    <title>Is Gosu suitable for making games like Doom (BSP)?</title>
+    <author><name>lol_o2</name></author>
+    <published>2023-04-22T16:50:45Z</published>
+    <updated>2023-04-22T16:50:45Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[If you are asking in terms of speed, then yes, Gosu is very much suitable. I remember when I upgraded from Ruby 1.8 to 1.9 and my game was running a lot faster. I imagine with Ruby 3 performance is now irrelevant concern (for your use-case at least).<br/><br/>Gosu is in no way inferior to PyGame. I&#39;ve used it for a few years and it proved to be quite capable. I didn&#39;t use PyGame much, but given they are both frameworks, I suppose it boils down to which language you prefer.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9587</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9587'/>
+    <title>Is Gosu suitable for making games like Doom (BSP)?</title>
+    <author><name>MDtox</name></author>
+    <published>2023-04-22T08:56:08Z</published>
+    <updated>2023-04-22T08:56:08Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;ve heard about the <b>Rubystein</b> project. However, it is very old and written in Ruby 1.8 (I think so). Now there is already Ruby 3.x, which should be also pretty much faster even than Ruby 2.5. I want to make a game also similar to <b>Catacomb 3D: Armageddon</b> or <b>Doom</b> (using BSP) in gameplay, but completely with my own textures, sprites and story (although I have no idea yet how I will create different maps for different levels, I haven&#39;t found any level editors for Raycaster).<br/><br/>For example, there is the DUGA project, written in Python + Pygame. I would like to know if Gosu is inferior to Pygame in some way?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9583</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9583'/>
+    <title>Sound problem in game developed in 2017 with current version</title>
+    <author><name>jlnr</name></author>
+    <published>2022-04-09T13:15:55Z</published>
+    <updated>2022-04-09T13:15:55Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Hey, I am not sure why I didn&#39;t receive an email for this new post. This issue has been discussed a bit on the Discord, and sound is actually one of the areas that have changed the most recently. Gosu now uses SDL_sound for loading audio files (as opposed to a merry mix of different libraries), and mojoAL for playback instead of a different OpenAL implementation per operating system.<br/><br/>Can you please share the WAV file? I am curious what kind of WAV format/encoding broke.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9582</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9582'/>
+    <title>Sound problem in game developed in 2017 with current version</title>
+    <author><name>barrykad3</name></author>
+    <published>2022-03-31T15:20:27Z</published>
+    <updated>2022-03-31T15:20:27Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Hello!<br/><br/>In 2017 I developed a game using ruby and gosu, it played perfectly. Recently I wanted to update my portfolio with this project, but when I run it I get the following error message:<br/><br/><b>/var/lib/gems/2.7.0/gems/gosu-1.4.3/lib/gosu/compat.rb:116:in `initialize&#39;: Could not parse audio file sounds/game.wav: Sound format unsupported (RuntimeError)</b><br/><br/>I&#39;ve checked the game.wav file, it&#39;s working fine.<br/><br/>The code fragment where I load the sound is this one:<br/>&#160; &#160; @font = Gosu::Font.new(30)<br/>&#160; &#160; @game_music = Gosu::Song.new(&#39;sounds/game.wav&#39;)<br/>&#160; &#160; @game_music.play(true)<br/>&#160; &#160; @collide_sound = Gosu::Sample.new(&#39;sounds/collide.wav&#39;)<br/>&#160; &#160; @death_sound = Gosu::Sample.new(&#39;sounds/death1.wav&#39;)<br/>&#160; &#160; @hurt_sound = Gosu::Sample.new(&#39;sounds/hurt.wav&#39;)<br/>&#160; &#160; @player_death_sound = Gosu::Sample.new(&#39;sounds/player_death.wav&#39;)<br/>&#160; &#160; @throw_sound = Gosu::Sample.new(&#39;sounds/throw.wav&#39;)<br/><br/>I&#39;m aware gosu has been updated a lot since 2017, but I can&#39;t find any changes related to sound.<br/><br/>Any tips on how to fix this?<br/><br/>Thank you.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9580</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9580'/>
+    <title>Problem to tile a texture in a single quad</title>
+    <author><name>jlnr</name></author>
+    <published>2022-03-27T13:13:49Z</published>
+    <updated>2022-03-27T13:13:49Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[This has already been discussed in the Discord. In general, it is probably easier to use raw OpenGL to manage textures because then you can ask for advice in general gamedev communities, not just the tiny niche that is Ruby/Gosu. If you want to use Gosu to load images into RGBA format, you can use <code>Gosu::Image.new(...).to_blob</code> to retrieve a binary RGBA string.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9579</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9579'/>
+    <title>Making Arrows With GIMP</title>
+    <author><name>kyonides</name></author>
+    <published>2022-03-10T00:43:16Z</published>
+    <updated>2022-03-10T00:43:16Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>0</slash:comments>
+    <content type='html'>
+      <![CDATA[<b>Steps to Include the Arrow Making Script in GIMP</b><br/><i>Works in GIMP 2.10!</i><br/><br/>First of all, download the <b>ZIPPED</b> script.<br/><br/><a class='ura' href='http://programmer97.byethost10.com/Files/arrow.zip'>http://programmer97.byethost10.com/Files/arrow.zip</a><br/><br/>You know what to do with a ZIP file, right? Winking<br/><br/>Then take a look at the menu bar. You should find the Scripts location if you look in:<br/><br/><b>Edit</b> -&gt; <b>Preferences</b> -&gt; <b>Folders</b><br/><br/>There it should list your scripts folder(s) one after another.<br/><br/>How they look like might depend on what OS you are currently working on. Confused<br/><br/>Make sure you have placed the <b>SCM</b> file there. Happy with a sweat<br/><br/><b>How to Use the Script?</b><br/><br/>First go make a <b>PATH</b> with just two points<br/><br/>Then invoke the script by going to:<br/><br/><b>Tools</b> -&gt; <b>Arrow...</b><br/><br/>A new window will open where you can change the default settings.<br/><br/>Click <b>OK</b> and you will see how GIMP makes a new arrow for you! Grinning<br/><br/><b>Original Post</b><br/><a class='ura' href='https://www.gimp-forum.net/Thread-Arrow-...01#pid1401'>https://www.gimp-forum.net/Thread-Arrow-...01#pid1401</a>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9578</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9578'/>
+    <title>Problem to tile a texture in a single quad</title>
+    <author><name>Zohran</name></author>
+    <published>2022-03-01T00:02:15Z</published>
+    <updated>2022-03-01T00:02:15Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Hello, I&#39;m learning actually how to use OpenGL with Ruby. I done this simple scene class actually to test all OpenGL capability. And I have a problem with my part titled: #DRAW THE GROUND<br/>I would like to draw this quad with the texture as tiled. I try to change every thing, but nothing. Every time this quad show only one time my texture. What is the problem ? I recognize I&#39;m a little bit lost with the U/V coordinates and 3D coordinates of my vertex when I&#39;m using a texture. For example, with textured quad, how can I set the angle of my quad ?:<br/><br/>class Test3D &lt; GameScene<br/><br/>&#160; def initialize<br/>&#160; &#160; @texture = Gosu::Image.new(&#39;Test.png&#39;)<br/>&#160; &#160; @texture1 = Gosu::Image.new(&#39;Test1.png&#39;, {tileable: true})<br/>&#160; &#160; @texture2 = Gosu::Image.new(&#39;Tree.png&#39;)<br/>&#160; &#160; @texture3 = Gosu::Image.new(&#39;Character.png&#39;)<br/><br/>&#160; &#160; @backgroundMusic = Gosu::Song.new(&quot;Test.wav&quot;)<br/>&#160; &#160; @backgroundMusic.play(true)<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; Gosu.gl do<br/><br/>&#160; &#160; &#160; glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)<br/>&#160; &#160; &#160; glEnable(GL_TEXTURE_2D)<br/>&#160; &#160; &#160; glEnable(GL_DEPTH_TEST)<br/>&#160; &#160; &#160; glMatrixMode(GL_PROJECTION)<br/>&#160; &#160; &#160; glLoadIdentity<br/>&#160; &#160; &#160; gluPerspective(45.0, $gameWindow.width.to_f / $gameWindow.height.to_f, 1, 1000)<br/>&#160; &#160; &#160; glMatrixMode(GL_MODELVIEW)<br/>&#160; &#160; &#160; glLoadIdentity<br/>&#160; &#160; &#160; gluLookAt(0,-640,250,0,0,0,0,0,1)<br/><br/>&#160; &#160; &#160; #DRAW THE BUILDING<br/>&#160; &#160; &#160; glBindTexture(GL_TEXTURE_2D, @texture.gl_tex_info.tex_name)<br/><br/>&#160; &#160; &#160; glPushMatrix<br/>&#160; &#160; &#160; &#160; glScalef(@texture.width, 0, @texture.height)<br/><br/>&#160; &#160; &#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture.gl_tex_info.left,@texture.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-0.5, 0.0, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture.gl_tex_info.right,@texture.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(0.5, 0.0, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture.gl_tex_info.right,@texture.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(0.5, 0.0, 1.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture.gl_tex_info.left,@texture.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-0.5, 0.0, 1.0)<br/>&#160; &#160; &#160; &#160; glEnd<br/>&#160; &#160; &#160; glPopMatrix<br/><br/>&#160; &#160; &#160; #DRAW THE GROUND<br/>&#160; &#160; &#160; glBindTexture(GL_TEXTURE_2D, @texture1.gl_tex_info.tex_name)<br/><br/>&#160; &#160; &#160; glPushMatrix<br/>&#160; &#160; &#160; &#160; glScalef(@texture1.width, @texture1.height, 0)<br/><br/>&#160; &#160; &#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture1.gl_tex_info.left,@texture1.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-512/2, -512/2, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture1.gl_tex_info.right,@texture1.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(512/2, -512/2, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture1.gl_tex_info.right,@texture1.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(512/2, 512/2, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture1.gl_tex_info.left,@texture1.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-512/2, 512/2, 0.0)<br/>&#160; &#160; &#160; &#160; glEnd<br/>&#160; &#160; &#160; glPopMatrix<br/><br/>&#160; &#160; &#160; #DRAW A TREE<br/>&#160; &#160; &#160; glBindTexture(GL_TEXTURE_2D, @texture2.gl_tex_info.tex_name)<br/>&#160; &#160; &#160; glEnable(GL_ALPHA_TEST)<br/>&#160; &#160; &#160; glAlphaFunc(GL_GREATER,0)<br/><br/>&#160; &#160; &#160; glPushMatrix<br/>&#160; &#160; &#160; glTranslatef(64*3,64,0)<br/>&#160; &#160; &#160; glScalef(@texture2.width,@texture2.height, @texture2.height)<br/><br/>&#160; &#160; &#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture2.gl_tex_info.left,@texture2.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-0.5, 0.0, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture2.gl_tex_info.right,@texture2.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(0.5, 0.0, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture2.gl_tex_info.right,@texture2.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(0.5, 0.0, 1.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture2.gl_tex_info.left,@texture2.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-0.5, 0.0, 1.0)<br/>&#160; &#160; &#160; &#160; glEnd<br/><br/>&#160; &#160; &#160; glDisable(GL_ALPHA_TEST)<br/>&#160; &#160; &#160; glPopMatrix<br/><br/>&#160; &#160; &#160; #DRAW A CHARACTER<br/>&#160; &#160; &#160; glBindTexture(GL_TEXTURE_2D, @texture3.gl_tex_info.tex_name)<br/>&#160; &#160; &#160; glEnable(GL_ALPHA_TEST)<br/>&#160; &#160; &#160; glAlphaFunc(GL_GREATER,0)<br/><br/>&#160; &#160; &#160; glPushMatrix<br/>&#160; &#160; &#160; glTranslatef(0,-64,1)<br/>&#160; &#160; &#160; &#160; glScalef(@texture3.width,@texture3.height,@texture3.height)<br/><br/>&#160; &#160; &#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture3.gl_tex_info.left,@texture3.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-0.5, 0.0, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture3.gl_tex_info.right,@texture3.gl_tex_info.bottom)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(0.5, 0.0, 0.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture3.gl_tex_info.right,@texture3.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(0.5, 0.0, 1.0)<br/><br/>&#160; &#160; &#160; &#160; &#160; glTexCoord2d(@texture3.gl_tex_info.left,@texture3.gl_tex_info.top)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(-0.5, 0.0, 1.0)<br/>&#160; &#160; &#160; &#160; glEnd<br/>&#160; &#160; &#160; glDisable(GL_ALPHA_TEST)<br/>&#160; &#160; &#160; glPopMatrix<br/><br/>&#160; &#160; end<br/><br/>&#160; end<br/><br/>end]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9576</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9576'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>kyonides</name></author>
+    <published>2022-02-25T01:05:45Z</published>
+    <updated>2022-02-25T01:05:45Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I see, still, I do think you might have forgotten the time when you told me all images were actually displayed scaled to 110% or 1.1 of its actual size...]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9571</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9571'/>
+    <title>[SOLVED] Installing to Windows failed</title>
+    <author><name>il mietitore</name></author>
+    <published>2021-11-12T17:40:54Z</published>
+    <updated>2021-11-12T17:40:54Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[There was a problem with my MSYS2 installation. Apparently it had only partially been installed, and indeed it gave issues if I tried to update it. I reinstalled ruby from scratch, and MSYS2 as well, and now it&#39;s working.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9570</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9570'/>
+    <title>[SOLVED] Installing to Windows failed</title>
+    <author><name>il mietitore</name></author>
+    <published>2021-11-12T00:18:43Z</published>
+    <updated>2021-11-12T00:18:43Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Greetings everybody. I was playing with Gosu around 9 years ago, and lately I found out I could use it to make a game for my gf as a Christmas present. It&#39;s nice to see that the community grew and that this forum is still around. It&#39;s nice to be back.<br/><br/>I&#39;m finding issues in reinstalling Gosu. I read that since version 1.0.0 it should be installable on Windows as well. Though, here&#39;s what happens if I try to install it:<br/><br/><code>C:\Users\rapto\Downloads&gt;gem install gosu<br/>Building native extensions. This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; &#160; &#160; &#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; current directory: C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/gosu-1.2.0/ext/gosu<br/>C:/Ruby30-x64/bin/ruby.exe -I C:/Ruby30-x64/lib/ruby/site_ruby/3.0.0 -r ./siteconf20211112-18800-8utqrr.rb extconf.rb<br/>creating Makefile<br/><br/>current directory: C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/gosu-1.2.0/ext/gosu<br/>make DESTDIR\= clean<br/>current directory: C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/gosu-1.2.0/ext/gosu<br/>make DESTDIR\=<br/>make failedNo such file or directory - make<br/><br/>Gem files will remain installed in C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/gosu-1.2.0 for inspection.<br/>Results logged to C:/Ruby30-x64/lib/ruby/gems/3.0.0/extensions/x64-mingw32/3.0.0/gosu-1.2.0/gem_make.out</code><br/><br/>I updated RubyGems. I tried to search for other issues like this on the forum and I found a lot of issues of this kind but it seems that they all are related to previous versions of Gosu, Ruby or even Windows.<br/><br/>I see that the devkit is required and I believe that it is installed (after all, I didn&#39;t have any issue with the other gems I installed in the past).<br/><br/>How should I proceed?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9569</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9569'/>
+    <title>Discord Channel vs. Gosu Forum (also, Forum Backup thought)</title>
+    <author><name>jlnr</name></author>
+    <published>2021-10-02T07:25:59Z</published>
+    <updated>2021-10-02T07:25:59Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[Hey, for some reason I didn&#39;t see a notification about this thread. Thanks for the suggestions. I have actually reduced the number of channels in the past because I found it hard to remember which channel had which discussion. Honestly I just think Discord is pretty bad for anything but real-time chat, Slack is a bit better with its threads, and I&#39;ve heard good things about Zulip, but nobody uses it.<br/><br/>Re: Backups, I think I&#39;ll probably back it up by just crawling the site and saving every HTML page, so in case everything breaks, it&#39;ll just be frozen in time forever.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9566</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9566'/>
+    <title>Discord Channel vs. Gosu Forum (also, Forum Backup thought)</title>
+    <author><name>EagleDog</name></author>
+    <published>2021-09-07T04:35:33Z</published>
+    <updated>2021-09-07T04:35:33Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[.<br/>.<br/>[<a href='https://www.libgosu.org/mwf/attachments/65/9565/creds.png'>https://www.libgosu.org/mwf/attachments/65/9565/creds.png</a>]<br/>It appears that active Gosu conversations are now taking place primarily on Discord.<br/><br/>The <code> ||#introduce yourself|| </code> tab is a nice place to get started there. However, the Discord channel seems a bit congested. Threading is a theoretical possibility, but most replies seem to get posted as a new comment, not a response, with about 80% of conversations appearing in the <code> ||#general|| </code> tab. I am searching for more of a <code> ||#help|| </code> tab, where I can post my silly newb questions, so I don&#39;t muddy up the <code> ||#general|| </code> discussion.<br/><br/>I wonder if it might be helpful to spread things out a little bit, by adding one or two extra tabs in the Discord channel. This way, people could have an easier time going back and finding a given conversation, because it would be spread out a little more, instead of all being squished into one scrollable column.<br/><br/>With regard to backing up the old forum: My personal experience with website data loss tells me that it is actually the DATABASE, and not the website implementation, which needs to get backed up.<br/><br/>Best wishes to all!]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9560</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9560'/>
+    <title>Possible to mirror or flip sprite?</title>
+    <author><name>RunnerPack</name></author>
+    <published>2021-07-24T20:43:28Z</published>
+    <updated>2021-07-24T20:43:28Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[<a class='ura' href='https://rubydoc.info/github/gosu/gosu/Gosu/Image#draw_rot-instance_method'>https://rubydoc.info/github/gosu/gosu/Gosu/Image#draw_rot-instance_method</a><br/><br/>There are &quot;center_x&quot; and &quot;center_y&quot; parameters before the scale parameters.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9558</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9558'/>
+    <title>Possible to mirror or flip sprite?</title>
+    <author><name>kodywilson</name></author>
+    <published>2021-05-03T17:47:33Z</published>
+    <updated>2021-05-05T22:04:06Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;m wondering if it is possible to mirror a sprite in Gosu? One example would be having a player that runs right and left, can you create a right running sprite and then just flip or mirror it for running left?<br/><br/>If not, I will just make left versions, but I thought I would ask before I go down that path.<br/><br/>Thanks and have a good one!<br/><br/>EDIT to add: I cannot seem to get an image to scale when using .draw_rot.<br/><br/>Doing this:<br/><br/>def draw<br/>&#160; &#160; @image.draw(@x, @y, @z, scale_x = @scale, scale_y = @scale)<br/>end<br/><br/>works great, I can scale the images no problem.<br/><br/>But this:<br/><br/>def draw<br/>&#160; &#160; @image.draw_rot(@x, @y, @angle, @z, scale_x = @scale, scale_y = @scale)<br/>end<br/><br/>does not scale the image at all. Otherwise it behaves as expected (x and y are the center of the image).]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9557</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9557'/>
+    <title>AL lib: (EE) alc_cleanup: 1 device not closed</title>
+    <author><name>kodywilson</name></author>
+    <published>2021-04-27T23:15:47Z</published>
+    <updated>2021-04-27T23:15:47Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[Right on, thank you so much for letting me know I can safely ignore it.<br/><br/>I&#39;m having a blast and my 10 year old daughter is interested in helping program some games too, which is really awesome! Thanks again and have a good one.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9556</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9556'/>
+    <title>AL lib: (EE) alc_cleanup: 1 device not closed</title>
+    <author><name>jlnr</name></author>
+    <published>2021-04-27T22:09:20Z</published>
+    <updated>2021-04-27T22:09:20Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[Hey Kody, glad to hear you&#39;re enjoying Gosu.<br/><br/>The OpenAL implementation on Linux seems to be pretty verbose in genereal. Maybe there&#39;s a way Gosu could finalize everything at the right time to avoid this message, but when I tried doing so with at_exit callbacks, it didn&#39;t quite work. I haven&#39;t invested more time afterwards because any game that is packaged for final release will run without a terminal attached, so only developers will see this.<br/><br/>Annoying as it is, I recommend ignoring it for now.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9555</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9555'/>
+    <title>AL lib: (EE) alc_cleanup: 1 device not closed</title>
+    <author><name>kodywilson</name></author>
+    <published>2021-04-26T18:55:59Z</published>
+    <updated>2021-04-26T18:55:59Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[Hi Gosu Community!<br/><br/>I&#39;ve been working through various tutorials on Gosu and Ruby, hoping to learn enough to build an RPG and while completing the Ruby Tutorial here: <a class='ura' href='https://github.com/gosu/gosu/wiki/Ruby-Tutorial,'>https://github.com/gosu/gosu/wiki/Ruby-Tutorial,</a> everything works as expected on my Mac, no error messages and the game runs just fine.<br/><br/>However, on Ubuntu, the game runs fine, but I get this message when I close the game:<br/><br/>AL lib: (EE) alc_cleanup: 1 device not closed<br/><br/>Any thoughts on what I can do to resolve? My Internet sleuthing hasn&#39;t turned up much yet... :)<br/><br/>I&#39;m using Ubuntu 20.10. Gem installs no problem and the game runs fine, I just get the above message when closing the game...<br/>✔ ~/code/ruby/gaming/gosu/learn_gosu/ruby_tutorial_01 [dev L|✚ 1] <br/>11:49 $ lsb_release -a<br/>No LSB modules are available.<br/>Distributor ID:&#160; Ubuntu<br/>Description:&#160; Ubuntu 20.10<br/>Release:&#160; 20.10<br/>Codename:&#160; groovy<br/><br/>Thank you for this cool software, really enjoying learning more and hoping to build some cool stuff!<br/><br/>Have a good one,<br/><br/>Kody]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9554</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9554'/>
+    <title>Gosu::Window#tick doesn&#39;t raise error.</title>
+    <author><name>Andrek</name></author>
+    <published>2021-04-26T13:50:21Z</published>
+    <updated>2021-04-26T13:50:21Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>5</slash:comments>
+    <content type='html'>
+      <![CDATA[Back to working with this, i checked the pull request and use that version instead this because i&#39;m using Ruby 3.<br/><br/>Thanks a lot :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9553</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9553'/>
+    <title>Gosu::Window#tick doesn&#39;t raise error.</title>
+    <author><name>cyberarm</name></author>
+    <published>2021-04-24T13:45:54Z</published>
+    <updated>2021-04-24T13:45:54Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>5</slash:comments>
+    <content type='html'>
+      <![CDATA[You can add this patch directly to your Gosu::Window subclass without needing to wait for a release:<br/><br/>require &#39;eventmachine&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; 0 / 0 # Generate error.<br/>&#160; end<br/><br/>&#160; alias_method :tick_internal, :tick<br/>&#160; def tick<br/>&#160; &#160; tick_internal<br/><br/>&#160; &#160; if defined? @_exception<br/>&#160; &#160; &#160; raise @_exception<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>$window = Window.new<br/><br/>EM.run do<br/>&#160; EM.add_periodic_timer(1 / 60.0) { $window.tick }<br/>end]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9552</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9552'/>
+    <title>Gosu::Window#tick doesn&#39;t raise error.</title>
+    <author><name>Andrek</name></author>
+    <published>2021-04-24T13:30:16Z</published>
+    <updated>2021-04-24T13:30:16Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>5</slash:comments>
+    <content type='html'>
+      <![CDATA[Thanks! I&#39;ll wait for that, while I have the solution that I said rencently.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9551</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9551'/>
+    <title>Gosu::Window#tick doesn&#39;t raise error.</title>
+    <author><name>Andrek</name></author>
+    <published>2021-04-24T13:25:52Z</published>
+    <updated>2021-04-24T13:25:52Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>5</slash:comments>
+    <content type='html'>
+      <![CDATA[I tested Gosu::Window#tick alone and realized that is its fault and EventMachine has nothing to do here, for now i&#39;m catching errors in Gosu::Window#update by my self using this:<br/><br/><code>require &#39;eventmachine&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; begin<br/>&#160; &#160; &#160; 0 / 0 # Generate error.<br/>&#160; &#160; rescue =&gt; e<br/>&#160; &#160; &#160; p e<br/>&#160; &#160; &#160; self.close<br/>&#160; &#160; &#160; EM.stop<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>$window = Window.new<br/><br/>EM.run do<br/>&#160; EM.add_periodic_timer(1 / 60.0) { $window.tick }<br/>end</code><br/><br/>Is there a way to check if Gosu::Window is closed? want to:<br/><code>EM.add_periodic_timer(1 / 60.0) { $window.tick unless $window.closed? }</code>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9550</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9550'/>
+    <title>Gosu::Window#tick doesn&#39;t raise error.</title>
+    <author><name>cyberarm</name></author>
+    <published>2021-04-24T13:24:34Z</published>
+    <updated>2021-04-24T13:24:34Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>5</slash:comments>
+    <content type='html'>
+      <![CDATA[Thanks for reporting this issue Andrek!<br/>I&#39;ve submitted a patch to Gosu that should resolve this issue.<br/><br/><a class='ura' href='https://github.com/gosu/gosu/pull/594'>https://github.com/gosu/gosu/pull/594</a>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9549</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9549'/>
+    <title>Gosu::Window#tick doesn&#39;t raise error.</title>
+    <author><name>Andrek</name></author>
+    <published>2021-04-22T17:07:30Z</published>
+    <updated>2021-04-22T17:07:30Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>5</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;m working with <a class='url' href='https://github.com/eventmachine/eventmachine'>Event Machine</a> and Gosu so i&#39;m using Gosu::Window#tick to make them work together and everything is fine till a error occurs in Gosu Loop(tick) and doesn&#39;t raise it and the Gosu::Window get bugged, i can&#39;t debbug my code so i&#39;m stuck!<br/><br/><b><i>Sample code:</i></b><br/><code>require &#39;eventmachine&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; 0 / 0 # Generate error.<br/>&#160; end<br/>end<br/><br/>$window = Window.new<br/><br/>EM.run do<br/>&#160; EM.add_periodic_timer(1 / 60.0) { $window.tick }<br/>end</code><br/><br/>I&#39;m following <a class='url' href='https://github.com/eventmachine/eventmachine/wiki/Code-Snippets#using-eventmachine-with-gtk'>Using EventMachine with GTK+</a> and <a class='url' href='https://github.com/eventmachine/eventmachine/wiki/Code-Snippets#using-eventmachine-with-qt'>Using EventMachine with Qt<br/></a> so i think this is the correct way.<br/><br/>Note: EM.add_periodic_timer is not a thread so Gosu::Window#tick can work correctly.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9544</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9544'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>jlnr</name></author>
+    <published>2020-09-25T08:19:41Z</published>
+    <updated>2020-09-25T08:19:41Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Hmm, sorry, not sure what place in the code you mean specifically. All the high-level scaling happens in Window::resize, which also keeps the scaling of graphics and mouse input in sync.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9543</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9543'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>kyonides</name></author>
+    <published>2020-09-05T04:05:41Z</published>
+    <updated>2020-09-05T04:05:41Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Thanks jlnr, but that&#39;s EXACTLY what I wanna avoid. It&#39;s not even necessary to do it, you know. If I included a bug in the source code I was modifying, while I was trying to do something else, now sprites look as dwarves or sprites in the mythological sense. XD This means it can be done by default with a few additions. I know, I&#39;ve already used a variable to let it change but that&#39;s only a disguised bug, so to say. Nope, it wasn&#39;t a Gosu::Image.scale_x or scale_y call, I&#39;ve already discarded it. The window remained as big as originally intended.<br/><br/>Don&#39;t you recall where in the gosu code there was a place that was multiplied by some value that enlarged sprites displayed on screen?<br/><br/>I do remember we once discussed something on the discord channel about images being slightly enlarged by default in gosu, you&#39;d said back then they&#39;d look kind of tiny otherwise. Where&#39;s that part of the code? That part contains the key to implementing a &quot;fake&quot; scaling effect without needing the Gosu.scale(params) method call.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9542</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9542'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>jlnr</name></author>
+    <published>2020-09-04T18:41:20Z</published>
+    <updated>2020-09-04T18:41:20Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Hey, I had this thread open in a tab but didn&#39;t really understand the CRuby parts. If you want every image to be twice the size, then the most pragmatic approach would be to subclass or monkey-patch Gosu::Image to apply a factor to the scale_x/scale_y arguments. If you want to scale all coordinates, not just image sizes, then you can put a <code>Gosu.scale(2) do ... end</code> block around your Window#draw implementation.<br/><br/>If you want to do the same by modifying the Gosu source code, then multiplying scale_x/scale_y in Image::draw would be one simple way (plus draw_rot probably).]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9541</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9541'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>kyonides</name></author>
+    <published>2020-09-03T23:04:32Z</published>
+    <updated>2020-09-03T23:04:32Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Well, I&#39;ve pretty much ready to get some features work without SWIG&#39;s interference but I managed to change the scale of all drawables by changing some specific value... the very same one I don&#39;t recall and I can&#39;t find it even if I&#39;ve checked the source code several times already. :P<br/><br/>So jlnr or anybody else, you could please remind me of where in the original C++ code is the factor or scale that doubles the size of all images from the very beginning?<br/>I should have documented it on my own but forgot to do it. :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9540</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9540'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>kyonides</name></author>
+    <published>2020-08-26T23:33:43Z</published>
+    <updated>2020-08-27T01:56:28Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;m still working on this executable but I was wondering if I didn&#39;t explain myself clearly. I&#39;d prefer to think none of you hate me for unknown reasons. :P<br/><br/>EDIT<br/><br/>Here&#39;s a piece of C++ code that lets me intercommunicate between both CRuby and C++ portions of code.<br/><br/><b><a class='url' href='https://hastebin.com/ejomifagug.cpp'>Code on HasteBin</a></b><br/><br/>Any suggestions or corrections would be appreciated.<br/><br/>I also got rid of the tick-ish loop because it bothered me how Ruby didn&#39;t stay in control because of that inner loop. :S]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9539</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9539'/>
+    <title>Converting Ruby Gosu Gem into Executable</title>
+    <author><name>kyonides</name></author>
+    <published>2020-08-21T05:58:02Z</published>
+    <updated>2020-08-21T05:58:02Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I was wondering if any of you guys would know effective ways to achieve such a goal with relative ease.<br/>As of late I&#39;m working on a different machine so I no longer have access to my old testing code. Still, I do recall I had issues with this project because I couldn&#39;t manage to display every single sprite on the game window as intended because some of them disappeared at random Z coordinates. I thought that the only way was to keep the loop inside the C executable that would replace the gem and still use all the usual Ruby code.<br/>Since that doesn&#39;t seem to be a nice way to deal with this issue, how would you do it?<br/>By the way, I&#39;m working on a Linux box.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9527</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9527'/>
+    <title>Cannot build Gosu Gem on Fedora 31 with Ruby 2.6.5</title>
+    <author><name>jlnr</name></author>
+    <published>2019-12-11T22:57:57Z</published>
+    <updated>2019-12-11T22:57:57Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[Thanks! I have added this package to the &quot;Getting Started on Linux&quot; wiki page.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9526</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9526'/>
+    <title>Cannot build Gosu Gem on Fedora 31 with Ruby 2.6.5</title>
+    <author><name>kyonides</name></author>
+    <published>2019-12-08T02:23:38Z</published>
+    <updated>2019-12-08T02:23:38Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[Well, this might sound weird but I could finally solve it. I just needed to install fontconfig-devel package and it now works... =_=¡]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9525</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9525'/>
+    <title>Cannot build Gosu Gem on Fedora 31 with Ruby 2.6.5</title>
+    <author><name>kyonides</name></author>
+    <published>2019-12-07T02:24:27Z</published>
+    <updated>2019-12-08T02:13:30Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>2</slash:comments>
+    <content type='html'>
+      <![CDATA[The shell window confirms I have installed all required packages via dnf...<br/><br/>sudo dnf groupinstall --assumeyes &quot;Development Tools&quot;<br/>Last metadata expiration check: 0:33:21 ago on Fri 06 Dec 2019 07:45:42 PM CST.<br/>Dependencies resolved.<br/>=============================================================================================<br/> Package&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Architecture&#160; &#160; &#160; &#160; &#160; Version&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Repository&#160; &#160; &#160; &#160; &#160; &#160; &#160; Size<br/>=============================================================================================<br/>Installing Groups:<br/> Development Tools&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <br/><br/>Transaction Summary<br/>=============================================================================================<br/><br/>Complete!<br/><br/>sudo dnf install mpg123-devel mesa-libGL-devel openal-devel libsndfile-devel gcc-c++ redhat-rpm-config SDL2-devel<br/>Last metadata expiration check: 0:33:51 ago on Fri 06 Dec 2019 07:45:42 PM CST.<br/>Package mpg123-devel-1.25.12-1.fc31.x86_64 is already installed.<br/>Package mesa-libGL-devel-19.2.6-1.fc31.x86_64 is already installed.<br/>Package openal-soft-devel-1.19.1-3.fc31.x86_64 is already installed.<br/>Package libsndfile-devel-1.0.28-11.fc31.x86_64 is already installed.<br/>Package gcc-c++-9.2.1-1.fc31.x86_64 is already installed.<br/>Package redhat-rpm-config-142-1.fc31.noarch is already installed.<br/>Package SDL2-devel-2.0.10-1.fc31.x86_64 is already installed.<br/>Dependencies resolved.<br/>Nothing to do.<br/>Complete!<br/><br/>The Error Log Itself... I think...<br/><br/><a class='ura' href='https://pastebin.com/x4m74tss'>https://pastebin.com/x4m74tss</a>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9523</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9523'/>
+    <title>Including temporary Screenshots in Gosu</title>
+    <author><name>jlnr</name></author>
+    <published>2019-09-14T20:16:41Z</published>
+    <updated>2019-09-14T20:16:41Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[This feature has been added as <code>Gosu.render{}</code>. (I&#39;m replying to see if new posts are being reported on Discord now :P)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9522</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9522'/>
+    <title>Changing the level in a  game</title>
+    <author><name>kyonides</name></author>
+    <published>2019-08-27T03:51:16Z</published>
+    <updated>2019-08-27T03:51:16Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[Since jlnr suggested you should redistribute your game data, here&#39;s a small example of how to extrapolate all that stuff to different scenes.<br/><br/>#!/usr/bin/env ruby<br/>#&#160;&#160; Scripter : Kyonides-Arkanthes<br/>#&#160;&#160; Last Update : 2019-08-25<br/>begin<br/>&#160; puts &#39;Using custom Gosu gem&#39;<br/>&#160; require &#39;./gosu.so&#39;<br/>&#160; require &#39;./lib/require_custom&#39;<br/>&#160; Game.custom_gem = true<br/>rescue<br/>&#160; puts &#39;Retry - Now using default Gosu gem&#39;<br/>&#160; require &#39;gosu&#39;<br/>&#160; require &#39;./lib/require_default&#39;<br/>&#160; Game.custom_gem = nil<br/>end<br/>require &#39;./tileset&#39;<br/>require &#39;./lib/map&#39;<br/>class MainWindow &lt; Gosu::Window<br/>&#160; attr_accessor :scene<br/>&#160; def initialize<br/>&#160; &#160; super(800, 608, false, 40) # Custom Gosu Gem<br/>&#160; &#160; Game.current_dimensions(self.width, self.height)<br/>&#160; &#160; self.show_cursor = true rescue nil<br/>&#160; &#160; self.caption = &#39;KScenario Gosu&#39;<br/>&#160; &#160; puts &#39;Using Gosu version &#39; + Gosu::VERSION<br/>&#160; &#160; Game.setup_title<br/>&#160; end<br/>&#160; def button_down(bid) Game.scene.button_down(bid) end<br/>&#160; def button_up(bid) Game.scene.button_up(bid) end<br/>&#160; def update() Game.update end<br/>&#160; def draw() Game.scene.draw rescue nil end<br/>&#160; #def needs_cursor?() true end # Not needed in my custom Gosu gem!<br/>end<br/><br/>begin<br/>&#160; Game.start_loop(MainWindow)<br/>rescue<br/>&#160; Load.clear<br/>&#160; puts &quot;Rescue!&quot;<br/>&#160; puts m = $!.message<br/>&#160; puts b = $!.backtrace.reverse<br/>&#160; File.open(&#39;log.txt&#39;,&#39;w&#39;) do |file|<br/>&#160; &#160; puts &quot;Opened file!&quot;<br/>&#160; &#160; file.puts Time.now<br/>&#160; &#160; file.puts m<br/>&#160; &#160; file.puts b<br/>&#160; end<br/>end]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9521</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9521'/>
+    <title>Changing the level in a  game</title>
+    <author><name>jlnr</name></author>
+    <published>2019-08-25T21:37:10Z</published>
+    <updated>2019-08-25T21:37:10Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;m still not quite sure what the issue is, but I would suggest a structure that I&#39;ve used and seen in many Gosu games: Instead of having all the methods and variables in the Window, you can create new classes such as <code>StartScene</code>, <code>GameScene</code> etc. And then inside your window, you point <code>@scene</code> at an instance of the scene that is currently selected, and call <code>@scene.draw</code> in <code>draw</code> etc. That makes it a lot easier to follow the flow of control throughout the game.<br/><br/>To make it possible for scenes to replace themselves with a new scene, you can pass the window to each scene&#39;s constructor, and then you can set <code>@window.scene = EndScene.new(...)</code> to advance to the next part of the game. Or you could simply make the current scene a global variable <code>$scene</code> and update that as appropriate.<br/><br/>Anyway. Once you have scene objects, you would typically construct the scene for a specific level like this: <code>GameScene.new(@window, level_number)</code>, and the GameScene would store the level number in an instance variable <code>@level_number</code>. And if you have a screen that comes up inbetween levels, you would also pass the next level number to its constructor, and so on.<br/><br/>I hope that is the kind of progress saving you are talking about? Either way, it&#39;s a useful design pattern :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9520</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9520'/>
+    <title>Changing the level in a  game</title>
+    <author><name>Acturus</name></author>
+    <published>2019-08-25T19:49:47Z</published>
+    <updated>2019-08-25T19:49:47Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[require &#39;gosu&#39;<br/>require_relative &#39;credit&#39;<br/>require_relative &#39;player&#39;<br/>require_relative &#39;enemy&#39;<br/>require_relative &#39;bullet&#39;<br/>require_relative &#39;explosion&#39;<br/>require_relative &#39;score&#39;<br/>require_relative &#39;boss&#39;<br/>require_relative &#39;bossbullet&#39;<br/><br/>class SectorFive &lt; Gosu::Window<br/># THE BELOW VARIABLES ARE CALLED CONSTANTS<br/>&#160; WIDTH =&#160; 800<br/>&#160; HEIGHT = 600<br/>&#160; #ENEMY_FREQUENCY = 0.005<br/>&#160; MAX_ENEMIES = 10000<br/>&#160; EXPIRE = 180<br/><br/># THE INITIALIZE METHOD STARTS THE INITIAL GAME AND SETS THE SCENE :START<br/><br/>&#160; def initialize<br/>&#160; &#160; super(WIDTH, HEIGHT)<br/>&#160; &#160; self.caption =&#160; &quot;Sector Five&quot;<br/>&#160; &#160; @background_image = Gosu::Image.new(&#39;ima/start.png&#39;)<br/>&#160; &#160; @start_music = Gosu::Song.new(&#39;sounds/heart.ogg&#39;)<br/>&#160; &#160; @start_music.play(true)<br/>&#160; &#160; @scene = :start<br/>&#160; end<br/><br/># THIS METHOD CALLS THE DIFFERENT DRAW METHOD DEPENDING ON WHICH PART IN THE<br/># GAME THE PLAYER IS AT&gt;&gt; START&lt; GAME &lt; END<br/><br/>&#160; def&#160; draw<br/>&#160; &#160; case @scene<br/>&#160; &#160; &#160; &#160; when:start<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_start<br/>&#160; &#160; &#160; &#160; when:game<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_game<br/>&#160; &#160; &#160; &#160; when:level<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_level<br/>&#160; &#160; &#160; &#160; when:end<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_end<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/># THIS METHOD DRAWS THE BACKGROUND IMAGE DURING THE START WINDOW<br/>def draw_start<br/>@background_image.draw(0,0,0)<br/>end<br/><br/># THIS&#160; METHOD DRAWS THE IMAGES ON THE&#160; WINDOW<br/><br/>def draw_game<br/>&#160;&#160; @player.draw<br/>&#160;&#160; @background_image.draw(0,0,0)<br/>&#160;&#160; @score_board.draw_text(&quot;Score=#{@enemies_destroyed}&quot;,40,40,1,1,1,Gosu::Color::AQUA)<br/>&#160;&#160; @time.draw_text(&quot;Time=#{@countdown}&quot;,650,40,1,1,1,Gosu::Color::RED)<br/>&#160;&#160; @time.draw_text(&quot;Health#{@bosshealth}&quot;,50,500,1,1,1,Gosu::Color::GREEN)<br/>&#160;&#160; @score_board.draw_text(&quot;Location#{@distance},#{@distance}&quot;,400,400,1,1,1,Gosu::Color::AQUA)<br/><br/>&#160;&#160; @time.draw_text(&quot;level#{@wave_count}&quot;,460,460,1,1,1,Gosu::Color::GREEN)<br/><br/> @enemies.each&#160; do |enemy|<br/>&#160; &#160; &#160; &#160;&#160; enemy.draw<br/>&#160;&#160; end<br/>&#160;&#160; @enemybullets.each do |bullet|<br/>&#160; &#160; &#160; &#160;&#160; bullet.draw<br/>&#160;&#160; end<br/>&#160;&#160; @bullets.each do |bullet|<br/>&#160; &#160;&#160; bullet.draw_two<br/>&#160;&#160; end<br/>&#160;&#160; @explosions.each do |explosion|<br/>&#160; &#160;&#160; explosion.draw<br/>&#160;&#160; end<br/>&#160;&#160; @playerexplosions.each do |explosion|<br/>&#160; &#160;&#160; explosion.draw_two<br/>&#160;&#160; end<br/>&#160;&#160; @boss.each do |b|<br/>&#160; &#160;&#160; b.draw<br/>&#160;&#160; end<br/>&#160;&#160; @bossbullets.each do |bullet|<br/>&#160; &#160;&#160; bullet.draw<br/>&#160;&#160; end<br/>end<br/><br/># THIS METHOD&#160; TELLS THE GAME WHICH UPDATE TO FOLLOW DEPENDING ON WHICH PART<br/># THE GAME IS ON. GAME OR END<br/><br/>def update<br/>&#160; case @scene<br/>&#160; when :game<br/>&#160; &#160; update_game<br/>&#160; when :end<br/>&#160; &#160; update_end<br/>&#160; end<br/>end<br/><br/># THIS METHOD SPECIFIES THE DIFFERENT USABLE BUTTONS DEPENDING ON WHICH&#160; PART<br/># OF THE GAME THE PLAYER IS ON. START &lt; GAME &lt; END<br/><br/>def button_down(id)<br/>&#160; case @scene<br/> when :start<br/>&#160;&#160; button_down_start(id)<br/> when :game<br/>&#160;&#160; button_down_game(id)<br/> when :level<br/>&#160;&#160; button_down_level(id)<br/> when :end<br/>&#160;&#160; button_down_end(id)<br/> end<br/>end<br/><br/># THIS METHOD STARTS THE GAME<br/><br/>def button_down_start(id)<br/> initialize_game<br/>end<br/><br/># THIS METHOD CONTAINS&#160; ALL THE VARIABLES TO BE MANIPULATED<br/><br/>def initialize_game<br/>&#160;&#160; @background_image = Gosu::Image.new(&#39;ima/space.png&#39;)<br/>&#160;&#160; @player = Player.new(self)<br/>&#160;&#160; @enemy_frequency = 0.0<br/>&#160;&#160; @boss = []<br/>&#160;&#160; @bosshealth = 0<br/>&#160;&#160; @enemies = []<br/>&#160;&#160; @bullets = []<br/>&#160;&#160; @enemybullets = []<br/>&#160;&#160; @bossbullets = []<br/>&#160;&#160; @random_enemy_bullets = []<br/>&#160;&#160; @explosions = []<br/>&#160;&#160; @playerexplosions = []<br/>&#160;&#160; @bossexplosions = []<br/>&#160;&#160; @framecounter = 0<br/>&#160;&#160; @scene = :game<br/>&#160;&#160; @enemies_appeared = 0<br/>&#160;&#160; @enemies_destroyed = 0<br/>&#160;&#160; @credits = []<br/>&#160;&#160; @game_music = Gosu::Song.new(&#39;sounds/chill.ogg&#39;)<br/>&#160;&#160; @game_music.play(true)<br/>&#160;&#160; @explosion_sound = Gosu::Sample.new(&#39;sounds/explosion.ogg&#39;)<br/>&#160;&#160; @shooting_sound = Gosu::Sample.new(&#39;sounds/shoot.ogg&#39;)<br/>&#160;&#160; @falling_sound = Gosu::Sample.new(&#39;sounds/fall.ogg&#39;)<br/>&#160;&#160; @score_board = Gosu::Font.new(30)<br/>&#160;&#160; @counter = 0<br/>&#160;&#160; @time = Gosu::Font.new(30)<br/>&#160;&#160; @distance = 0<br/>&#160;&#160; @distance_two = 0<br/>&#160;&#160; @bossbulletdistance = 0<br/>&#160;&#160; @turn_r_counter = 0<br/>&#160;&#160; @turn_l_counter = 0<br/>&#160;&#160; @killedenemies = 100<br/>&#160;&#160; @countdown = 10<br/>&#160;&#160; @level = update_level<br/> end<br/><br/>def update_game<br/>@countdown -= 1 if @framecounter % 60 == 0<br/>@framecounter += 1<br/>@counter += 1 if @framecounter % 60 == 0<br/># @enemy_frequency += 0 if @counter % 3600 == 0<br/>@player.turn_left if button_down?(Gosu::KbLeft)<br/>@player.turn_right if&#160; button_down?(Gosu::KbRight)<br/>@player.accelerate if button_down?(Gosu::KbUp)<br/>@player.backward if&#160; button_down?(Gosu::KbDown)<br/>@player.move<br/><br/>&#160;&#160; #CREATES THE ENEMEY<br/>&#160; if rand &lt; @enemy_frequency<br/>&#160; &#160;&#160; @enemies.push Enemy.new(self)<br/>&#160; &#160;&#160; @enemies_appeared += 1<br/>&#160; end<br/><br/>&#160; #THE BOSS CREATION<br/>&#160; if @framecounter % 900 == 0<br/>&#160; &#160; @boss.push Boss.new(self)<br/>&#160; &#160; @bosshealth += 100<br/>&#160; end<br/><br/> @boss.each do |b|<br/>&#160;&#160; if @boss.length &gt; 1<br/>&#160; &#160;&#160; @boss.delete b<br/>&#160;&#160; end<br/> end<br/><br/> # When A Bullet Hits a Boss AN EXPLOSION IS CREATED<br/> @boss.dup.each do |b|<br/>&#160;&#160; @bullets.dup.each do |bullet|<br/>&#160; &#160;&#160; distance = Gosu.distance(b.x, b.y, bullet.x, bullet.y)<br/>&#160; &#160;&#160; if distance &lt; b.radius + bullet.radius<br/>&#160; &#160; &#160;&#160; @bullets.delete bullet<br/>&#160; &#160; &#160;&#160; @explosions. push Explosion.new(self, b.x, b.y)<br/>&#160; &#160; &#160;&#160; @enemies_destroyed += 5<br/>&#160; &#160; &#160;&#160; @bosshealth -= 20<br/>&#160; &#160; &#160;&#160; if @bosshealth &lt;= 0<br/>&#160; &#160; &#160; &#160;&#160; @boss.delete b<br/>&#160; &#160; &#160;&#160; end<br/>&#160; &#160; &#160;&#160; @explosion_sound.play(0.3)<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/> end<br/><br/>&#160;&#160; # ENEMY Fires a bullet<br/>&#160;&#160; @enemies.select do |enemy|<br/>&#160; &#160;&#160; if @framecounter % 600 == 0<br/>&#160; &#160; &#160;&#160; @enemybullets.push Bullet.new(self, @enemies[-1].x, @enemies[-1].y, @enemies[-1].angle)<br/>&#160; &#160; &#160;&#160; if @enemies.length &gt;&#160; 3<br/>&#160; &#160; &#160; &#160;&#160; @enemybullets.push Bullet.new(self, enemy.x, enemy.y, enemy.angle)<br/>&#160; &#160; &#160;&#160; end<br/>&#160; &#160;&#160; end<br/>&#160; end<br/><br/>&#160;&#160; #Boss Fires A Bullet<br/>&#160;&#160; @boss.select do |b|<br/>&#160; &#160;&#160; if @framecounter % 60 == 0<br/>&#160; &#160; &#160;&#160; @bossbullets.push BBullet.new(self, @boss[-1].x, @boss[-1].y, @boss[-1].angle)<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/>&#160;&#160; #Direction of Boss Bullet<br/>@bossbullets.each do |bullet|<br/> @bossbulletdistance = Gosu::distance(@player.x, @player.y, bullet.x, bullet.y)<br/>&#160; &#160;&#160; @bossbulletdistance &lt; 800<br/>&#160; &#160; &#160; &#160; if @player.x &gt; bullet.x<br/>&#160; &#160; &#160; &#160; &#160; &#160; bullet.move<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; if @player.y &lt; bullet.y<br/>&#160; &#160; &#160; &#160; &#160;&#160; bullet.move_four<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; if @player.x &lt; bullet.x<br/>&#160; &#160; &#160; &#160; &#160;&#160; bullet.move_three<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; if @player.y &gt; bullet.y<br/>&#160; &#160; &#160; &#160; &#160;&#160; bullet.move_two<br/>&#160; &#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; &#160; if @bossbulletdistance &lt; bullet.radius + @player.radius<br/>&#160; &#160;&#160; @bossbullets.delete bullet<br/>&#160;&#160; end<br/> end<br/><br/>#&#160; THE BOSS FOLLOWS THE ENEMY<br/>@boss.each do |b|<br/>@distance = Gosu::distance(@player.x, @player.y, b.x, b.y)<br/>x1 = @player.x<br/>y1 = @player.y<br/>x2 = b.x<br/>y2 = b.y<br/>&#160; @distance &lt; 800<br/>&#160; &#160; if @player.x &gt; b.x<br/>&#160; &#160; &#160; b.move<br/>&#160; &#160; end<br/>&#160; &#160; # if @player.y &lt; b.y<br/>&#160; &#160; #&#160;&#160; b.move_four<br/>&#160; &#160; # end<br/>&#160; &#160; # if @player.x &lt; b.x<br/>&#160; &#160; #&#160;&#160; b.move_three<br/>&#160; &#160; # end<br/>&#160; &#160; # if @player.y &gt; b.y<br/>&#160; &#160; #&#160; &#160; b.move_two<br/>&#160; &#160; # end<br/> end<br/><br/>#TURN THE BOSS TO THE PLAYER<br/>@boss.each do |b|<br/> @ang = b.angle<br/> b.angle<br/>end<br/><br/># Detects whether there is a collision between a player bullet and an&#160; enemy.<br/>&#160; @enemies.dup.each do |enemy|<br/>&#160; &#160; @bullets.dup.each do&#160; |bullet|<br/>&#160; &#160; &#160; distance = Gosu.distance(enemy.x, enemy.y, bullet.x, bullet.y)<br/>&#160; &#160; &#160; if distance &lt; enemy.radius + bullet.radius<br/>&#160; &#160; &#160; &#160; @enemies.delete enemy<br/>&#160; &#160; &#160; &#160; @bullets.delete bullet<br/>&#160; &#160; &#160; &#160; @explosions.push Explosion.new(self, enemy.x, enemy.y)<br/>&#160; &#160; &#160; &#160; @enemies_destroyed += 1<br/>&#160; &#160; &#160; &#160; @explosion_sound.play(0.3)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/><br/># DELETES THE EXPLOSIONS AFTER&#160; THE EXPLOSION&#160; ARRAY LENGTH IS GREATER THAN 15<br/>&#160; @explosions.dup.each do |explosion|<br/>&#160;&#160; if @explosions.length &gt; 15<br/>&#160; &#160; @explosions.delete explosion<br/>&#160; &#160; @explosions.delete explosion<br/>&#160; end<br/>end<br/><br/># DELETES AN ENEMY IF THE ENEMY COMES IN CONTACT WITH AN EXPLOSION<br/>&#160;&#160; @explosions.dup.each do |explosion|<br/>&#160; &#160;&#160; @enemies.dup.each do |enemy|<br/>&#160; &#160; &#160;&#160; distance = Gosu.distance(explosion.x, explosion.y, enemy.x, enemy.y)<br/>&#160; &#160; &#160;&#160; if distance&#160; &lt; explosion.radius + enemy.radius<br/>&#160; &#160; &#160; &#160;&#160; @enemies.delete enemy<br/>&#160; &#160; &#160; &#160;&#160; @explosions.push Explosion.new(self, enemy.x, enemy.y)<br/>&#160; &#160; &#160; &#160;&#160; @enemies_destroyed += 1<br/>&#160; &#160; &#160; &#160;&#160; @explosion_sound.play(0.3)<br/>&#160; &#160; &#160;&#160; end<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/>#&#160; CREATES AN&#160; EXPLOSION IF A BULLET TOUCHES AN ENEMY<br/>@enemybullets.each&#160; do |bullet|<br/> distance = Gosu.distance(bullet.x, bullet.y, @player.x, @player.y)<br/> if distance &lt; bullet.radius + @player.radius<br/>&#160;&#160; @enemybullets.delete bullet<br/>&#160;&#160; @playerexplosions.push Explosion.new(self, @player.x, @player.y)<br/>&#160;&#160; @explosion_sound.play(0.3)<br/> end<br/>end<br/>@playerexplosions.dup.each do |explosion|<br/> @explosions.delete explosion unless explosion.finishedtwo<br/>end<br/><br/># CREATES A SOUND IF AN ENEMY LEAVES SOUTH OF THE GAMEBOARD<br/>&#160; @enemies.dup.each do |enemy|<br/>&#160; &#160; if enemy.y &gt; HEIGHT + enemy.radius<br/>&#160; &#160; &#160; @enemies.delete enemy<br/>&#160; &#160; &#160; @falling_sound.play(0.2)<br/>&#160; &#160; end<br/>&#160; end<br/><br/> # THE BELOW COMMANDS MOVE THE DIFFERENT CLASSES<br/><br/>&#160; @bullets.dup.each do |bullet|<br/>&#160; &#160; @bullets.delete bullet unless bullet.onscreen?<br/>&#160; end<br/>&#160; @enemybullets.each do |bullet|<br/>&#160; &#160; bullet.enemy_move<br/>&#160; end<br/>&#160; @bullets.each do |bullet|<br/>&#160; &#160; bullet.move<br/>&#160; end<br/>&#160; @explosions.each&#160; do |explosion|<br/>&#160; &#160; explosion.move<br/>&#160; end<br/>&#160;&#160; @playerexplosions.each do |explosion|<br/>&#160; &#160;&#160; explosion.move<br/>&#160; end<br/>&#160;&#160; @enemies.each do |enemy|<br/>&#160; &#160; &#160; enemy.move<br/>&#160; end<br/><br/># STARTS THE INITIALIZE_END METHOD DEPENDING IF ONE OF THE&#160; CONDITIONS BELOW IS MET<br/>&#160;&#160; initialize_end(:count_reached) if @enemies_appeared &gt; MAX_ENEMIES<br/>&#160;&#160; @enemies.each do |enemy|<br/>&#160; &#160;&#160; distance = Gosu::distance(enemy.x, enemy.y, @player.x, @player.y)<br/><br/>&#160;&#160; initialize_end(:hit_by_enemy) if distance &lt; @player.radius + enemy.radius<br/>&#160;&#160; end<br/>&#160;&#160; initialize_end(:off_top) if @player.y &lt; -@player.radius<br/><br/>&#160;&#160; initialize_level(:time_expire) if @countdown == 0<br/>&#160;&#160; update_level if @count_down ==&#160; 0<br/>end<br/><br/># CONTROLS THE PLAYERS FIRING MECHONISIM<br/><br/>def button_down_game(id)<br/> if&#160; id == Gosu::KbSpace<br/>&#160;&#160; @bullets.push Bullet.new(self, @player.x, @player.y, @player.angle)<br/>&#160;&#160; @shooting_sound.play(0.9)<br/> end<br/>end<br/><br/># THE INITILIALIZE END METHOD CREATES THE MESSAGES AFTER THE GAME IS&#160; OVER<br/><br/>def end_of_level(what)<br/> case what<br/>&#160; &#160; when :time_expire<br/>&#160; &#160;&#160; @message3 = &quot;Congratulations!!! :) You Survived the Swarm&quot;<br/>&#160; &#160; when :enemy<br/>&#160; &#160;&#160; @message4 = &quot; Congratulations!!! :) You Killed all the Enemies&quot;<br/> end<br/> @final_message = &quot;THE NEXT LEVEL WILL BEGIN SOON&quot;<br/> @final_message2 = &quot; OR YOU CAN PRESS P to play again, or Q to quit.&quot;<br/>end<br/><br/>def initialize_end(fate)<br/> case fate<br/> when :count_reached<br/>&#160;&#160; @message = &quot;You Made it! You destroyed #{@enemies_destroyed} ships&quot;<br/>&#160;&#160; @message2 = &quot;and #{100 - @enemies_destroyed} reached the base.&quot;<br/><br/> when :hit_by_enemy<br/>&#160;&#160; @message = &quot;You were struck by an enemy ship&quot;<br/>&#160;&#160; @message2 = &quot;Before your ship was destroyed, &quot;<br/>&#160;&#160; @message2 += &quot;you took out #{@enemies_destroyed} enemy ships!&quot;<br/><br/> when :off_top<br/>&#160;&#160; @message = &quot;You got too close to the enemy mothership.&quot;<br/>&#160;&#160; @message2 = &quot;Before your ship was destroyed, &quot;<br/>&#160;&#160; @message2 += &quot;you took out #{@enemies_destroyed} enemy ships!&quot;<br/> end<br/> @bottom_message = &quot;Press P to play again, or Q to quit.&quot;<br/> @message_font = Gosu::Font.new(28)<br/> y = 700<br/><br/> # THIS FUNCTION FILE.OPEN LINKS TO THE FILE WITH THE END CREDIT INFORMATION<br/> # AND APPLIES A&#160; SCROLLING&#160; FUNCTION<br/> File.open(&#39;credits.txt&#39;).each do |line|<br/>&#160;&#160; @credits.push(Credit.new(self,line.chomp,100,y))<br/>&#160;&#160; y+=30<br/>end<br/><br/>#&gt;&gt;&gt; @SCENE CHANGES TO :END<br/>@scene = :end<br/>@end_music = Gosu::Song.new(&#39;sounds/mind.ogg&#39;)<br/>@end_music.play(true)<br/>end<br/><br/># THIS PART DRAWS THE&#160; SCORE ON THE TOP LEFT&#160; CORNER OF THE WINDOW<br/>def score_counter<br/>&#160; clip_to(50,140,700,360) do<br/>&#160; &#160; @score += 1 if @enemies_destroyed +=1<br/>&#160; &#160; @score.draw<br/>&#160; end<br/>end<br/><br/># THIS METHOD PLACES THE FILE INFORMATION IN THE MIDDLE OF THE SCREEN<br/>def draw_end<br/>&#160; clip_to(50,140,700,360) do<br/>&#160; &#160; &#160; &#160;&#160; @credits.each do |credit|<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; credit.draw<br/>&#160; &#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; end<br/># THIS&#160; PORTION OF THE METHOD ADDS COLOR TO THE&#160; TEXT AND SEPARATES<br/># PIECES OF THE WINDOW USING LINES&gt;<br/>draw_line(10,140,Gosu::Color::GREEN,WIDTH,140,Gosu::Color::RED)<br/>@message_font.draw(@message,40,40,1,1,1,Gosu::Color::FUCHSIA)<br/>@message_font.draw(@message2,40,75,1,1,1,Gosu::Color::FUCHSIA)<br/>draw_line(0,500,Gosu::Color::GREEN,WIDTH,500,Gosu::Color::RED)<br/>@message_font.draw(@bottom_message,180,540,1,1,1,Gosu::Color::AQUA)<br/>end<br/><br/># THIS PORTION CALLS THE&#160; MOVE METHOD FROM THE&#160; CREDITS FILE<br/>def update_end<br/> @credits.each do |credit|<br/>&#160;&#160; credit.move<br/> end<br/>if @credits.last.y &lt; 150<br/>&#160; &#160; @credits.each do |credit|<br/>&#160; &#160;&#160; credit.reset<br/>&#160;&#160; end<br/> end<br/>end<br/><br/># COMMANDS THE GAME TO RUN AGAIN IF PLAYER PRESSES &quot;P&quot; OR QUIT GAME IF THE<br/># PLAYER PRESSES &quot;Q&quot;<br/><br/>def button_down_end(id)<br/>&#160; if id == Gosu::KbP<br/>&#160; &#160;&#160; initialize_game<br/>&#160;&#160; elsif id&#160; == Gosu::KbQ<br/>&#160; &#160;&#160; close<br/>&#160;&#160; end<br/> end<br/>end<br/><br/>def initialize_level(medium)<br/><br/>&#160; case medium<br/>&#160; when :time_expire<br/>&#160; &#160; @message_three = &quot;You survived wave number #{@level}. Congratualations!<br/>&#160; &#160; Prepare for the next level by Pressing P!&quot;<br/>&#160; &#160; @message_font_two = Gosu::Font.new(40)<br/>&#160; &#160; @scene = :level<br/>&#160; end<br/><br/>end<br/><br/>&#160; def draw_level<br/>&#160; &#160; @message_font_two.draw(@message_three,30,300,1,1,1,Gosu::Color::FUCHSIA)<br/>&#160; end<br/><br/>&#160; def update_level<br/>&#160; &#160; @wave_count = 0<br/>&#160; &#160; if @scene = :game<br/>&#160; &#160; &#160; @wave_count += 1<br/>&#160; &#160; end<br/>&#160; &#160; return @wave_count<br/>&#160; end<br/><br/>&#160; def button_down_level(id)<br/>&#160; &#160; if id == Gosu::KbP<br/>&#160; &#160; &#160;&#160; initialize_game<br/>&#160; &#160;&#160; end<br/>&#160; end<br/><br/># THIS FUNCTION OPENS THE WINDOW<br/><br/>window = SectorFive.new<br/>window.show<br/><br/>#THANK YOU!]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9519</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9519'/>
+    <title>Changing the level in a  game</title>
+    <author><name>jlnr</name></author>
+    <published>2019-08-25T19:22:26Z</published>
+    <updated>2019-08-25T19:22:26Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[Please post more source code, it&#39;s not clear from the snippet where the problem might be.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9518</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9518'/>
+    <title>Changing the level in a  game</title>
+    <author><name>Acturus</name></author>
+    <published>2019-08-23T23:41:31Z</published>
+    <updated>2019-08-23T23:41:31Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[I need to save the level and increase it by one.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9517</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9517'/>
+    <title>Changing the level in a  game</title>
+    <author><name>kyonides</name></author>
+    <published>2019-08-23T21:05:56Z</published>
+    <updated>2019-08-23T21:05:56Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[First it&#39;d be helpful if you tell us what are the &quot;changes&quot; you&#39;re talking about. What kind of stuff do you need to save before the scene changes? HP HUD? Level? Difficulty? Angle? Zoom? X Y coordinates? O_o?<br/><br/>Even so you might keep in mind you can use more instance variables to store other stuff as well. :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9516</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9516'/>
+    <title>Changing the level in a  game</title>
+    <author><name>Acturus</name></author>
+    <published>2019-08-23T10:37:30Z</published>
+    <updated>2019-08-23T10:37:30Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[Thank you for your response.&#160; <br/><br/>So I put the instance variable in the input&#160; method and&#160; increment the level in&#160; the update game method, but it still doesn&#39;t save it. After&#160;&#160; @scene = :game runs through its cycle all changes&#160; are erased and the game moves to @scene = :level or @scene = :end. I need the program to save the changes that occur in @scene = :game. How can I do this?&#160; <br/><br/>Acturus]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9515</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9515'/>
+    <title>Changing the level in a  game</title>
+    <author><name>kyonides</name></author>
+    <published>2019-08-23T06:54:13Z</published>
+    <updated>2019-08-23T06:54:13Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[You know, that would relatively soon become a LARGE number so it wouldn&#39;t help you to store it at all. You&#39;d better divide it by the update interval. Plus why do you wanna save any data in the draw method? You got an input and a general update method to do that! I&#39;d recommend saving stuff inside any of those two methods. Since you&#39;re using an instance variable to determine the scene, that won&#39;t be a problem. :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9514</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9514'/>
+    <title>How do I make an enemy target a moving player and fire?</title>
+    <author><name>Acturus</name></author>
+    <published>2019-08-22T21:19:31Z</published>
+    <updated>2019-08-22T21:19:31Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[Thank you!]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9513</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9513'/>
+    <title>Changing the level in a  game</title>
+    <author><name>Acturus</name></author>
+    <published>2019-08-22T14:16:14Z</published>
+    <updated>2019-08-22T14:16:14Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>8</slash:comments>
+    <content type='html'>
+      <![CDATA[So this is my game loop <br/><br/>&#160; def&#160; draw<br/>&#160; &#160; case @scene<br/>&#160; &#160; &#160; &#160; when:start<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_start<br/>&#160; &#160; &#160; &#160; when:game<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_game<br/>&#160; &#160; &#160; &#160; when:level<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_level<br/>&#160; &#160; &#160; &#160; when:end<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_end<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/><br/>However, I can&#39;t save the level that the game is on. How do I that? As soon as draw level occurs and the player presses a key the program reverts back&#160; draw game, but the problem is nothing is saved. How do I make the program calculate the number of times draw_game occurs and save that value&#160; throughout the life of the program? <br/><br/>Thank you, <br/><br/>Acturus]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9512</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9512'/>
+    <title>How do I make an enemy target a moving player and fire?</title>
+    <author><name>jlnr</name></author>
+    <published>2019-08-19T21:21:25Z</published>
+    <updated>2019-08-19T21:21:25Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[You can find the angle from point 1 to point 2 using <code>Gosu::angle(x1, y1, x2, y2)</code>, which internally does the tan^-1 that nifriz mentioned.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9511</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9511'/>
+    <title>SCROLLABLE Items list selection</title>
+    <author><name>nifriz</name></author>
+    <published>2019-08-19T06:42:03Z</published>
+    <updated>2019-08-19T06:42:03Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[What you mean?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9510</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9510'/>
+    <title>SCROLLABLE Items list selection</title>
+    <author><name>kyonides</name></author>
+    <published>2019-08-15T21:45:39Z</published>
+    <updated>2019-08-15T21:45:39Z</updated>
+    <category term='Gosu Exchange'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[How curious... You didn&#39;t pick clipping and updating y coordinate.]]>
+    </content>
+  </entry>
+</feed>

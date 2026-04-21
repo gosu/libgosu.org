@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>PGM (Pokemon Game Maker Project) - Error when using rect</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9595' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1447.html#tid1447'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1447.html#tid1447'>Gosu Exchange</a> / PGM (Pokemon Game Maker Project) - Error when using rect
+</div>
+</div>
+
+<div class='frm pst' id='pid9595' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9595' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9595.html#pid9595'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1360' >Fulgurance</a>
+<span class='htt'>Date</span> 2023-09-14 16:51
+</div>
+<div class='ccl'>
+Hi, I am using ruby with Gosu to make a remake of the first version of Pokemon.<br/>I have a class called Sprite inherite directly from Gosu::Image, but I don&#39;t know why, when my script load the third sprite, I have a very unusual error.<br/><br/><b>Sprite class:</b><br/><br/><code>class Sprite &lt; Gosu::Image<br/><br/>&#160; &#160; attr_accessor :x<br/>&#160; &#160; attr_accessor :y<br/>&#160; &#160; attr_accessor :z<br/>&#160; &#160; attr_accessor :zoomX<br/>&#160; &#160; attr_accessor :zoomY<br/>&#160; &#160; attr_accessor :color<br/>&#160; &#160; attr_accessor :mode<br/><br/>&#160; &#160; def initialize(source, options = {})<br/>&#160; &#160; &#160; &#160; super(source,options)<br/>&#160; &#160; &#160; &#160; @x = 0<br/>&#160; &#160; &#160; &#160; @y = 0<br/>&#160; &#160; &#160; &#160; @z = 0<br/>&#160; &#160; &#160; &#160; @zoomX = 1.0<br/>&#160; &#160; &#160; &#160; @zoomY = 1.0<br/>&#160; &#160; &#160; &#160; @color = 0xff_ffffff<br/>&#160; &#160; &#160; &#160; @mode = :default<br/>&#160; &#160; end<br/><br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; super(@x,@y,@z,@zoomX,@zoomY,@color,@mode)<br/>&#160; &#160; end<br/><br/>end</code><br/><br/><b>The code who generate the bug:</b><br/><br/><code>class GameMessageScene &lt; GameScene<br/><br/>&#160; &#160; def initialize(text,skinNumber)<br/>&#160; &#160; &#160; &#160; super()<br/><br/>&#160; &#160; &#160; &#160; #GLOBAL SETTINGS<br/>&#160; &#160; &#160; &#160; @color = Color.new(180,255,255,255)<br/>&#160; &#160; &#160; &#160; @path = &quot;Graphics/Messages/#{skinNumber}.png&quot;<br/>&#160; &#160; &#160; &#160; @space = 5<br/><br/>&#160; &#160; &#160; &#160; #CORNERS<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft = Sprite.new(@path,{rect: [0,0,16,16]})<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft.color = @color<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft.x = @space<br/>&#160; &#160; &#160; &#160; @backgroundTopLeft.y = $gameWindow.height - 64 / 2 - @space<br/><br/>&#160; &#160; &#160; &#160; @backgroundTopRight = Sprite.new(@path,{rect: [32,0,16,16]})<br/>&#160; &#160; &#160; &#160; @backgroundTopRight.color = @color<br/>&#160; &#160; &#160; &#160; @backgroundTopRight.x = $gameWindow.width - 16 - @space<br/>&#160; &#160; &#160; &#160; @backgroundTopRight.y = @backgroundTopLeft.y<br/><br/>&#160; &#160; &#160; &#160; #THE NEXT LINE WILL BUG<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft = Sprite.new(@path,{rect: [0,32,16,16]})<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft.color = @color<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft.x = @space<br/>&#160; &#160; &#160; &#160; @backgroundBottomLeft.y = $gameWindow.height - 16 - @space</code><br/><br/><b>The error (the game freeze few second and then crash, with this error then):</b><br/><br/><code>zohran@alienware-m17-r3 ~/Documents/Programmation/PGM $ ruby Game.rb<br/>/usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/bits/stl_vector.h:1144: std::vector&lt;_Tp, _Alloc&gt;::const_reference std::vector&lt;_Tp, _Alloc&gt;::operator[](size_type) const [with _Tp = Gosu::Color; _Alloc = std::allocator&lt;Gosu::Color&gt;; const_reference = const Gosu::Color&amp;; size_type = long unsigned int]: Assertion &#39;__n &lt; this-&gt;size()&#39; failed.<br/>Aborted</code>
+</div>
+</div>
+
+<div class='brn' id='brn9595'>
+<div class='frm pst' id='pid9600' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9595.html#pid9595'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9600.html#pid9600'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2024-07-12 13:57
+</div>
+<div class='ccl'>
+Oops, looks like I had unsubscribed from this board by accident. Welp, I can only assume that the image does not contain the rect that you&#39;ve tried to load from it.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1447.html#tid1447'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1447.html#tid1447'>Gosu Exchange</a> / PGM (Pokemon Game Maker Project) - Error when using rect
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9595.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

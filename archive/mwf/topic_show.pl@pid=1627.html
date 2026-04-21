@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1627 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Chingu - A game framework for Ruby / Gosu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1627' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=243.html#tid243'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=243.html#tid243'>Extending Gosu</a> / Chingu - A game framework for Ruby / Gosu
+</div>
+</div>
+
+<div class='frm pst' id='pid1624' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1624.html#pid1624'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-10-07 21:20
+</div>
+<div class='ccl'>
+I&#39;ve been working on a framework for Ruby/Gosu for a couple of months now. <br/><br/>After ~10 game prototypes in both Rubygame and Gosu and some small full games I noticed what I constantly repeated in my projects.<br/>Then I decided to start build some reusable base code. Chingu is the result of that history + 4 different games being developed and common patterns abstracted out.<br/><br/>The core of Chingu:<br/>- Pretty input-handling:&#160;&#160; @player.input = { :left =&gt; :go_left, :right =&gt; :go_right, :space =&gt; :fire }&#160;&#160; (main window and game states can also have input)<br/>- Deployment safe asset handling: Image[&quot;player.png&quot;]&#160;&#160; Sound[&quot;woff.wav&quot;].play&#160; etc<br/>- A stack based (push/pop), robust game state system<br/>- Automatic tracking, drawing and updating of game objects if you use Enemy.create&#160; (instead of Enemy.new. Enemy is inherited from Chingu::GameObject)<br/>- Base classes (BasicGameObject, GameObject) which will provide the most common functionality for 2D game objects<br/>- Traits - simple but effective way of extending your game classes to provide physics, effects, timers and basic collision-detection etc<br/>- Useful helper classes like: Animation, Parallax, Text and Rect<br/><br/>I know nobody will even look at a framework if it&#39;s not documented so I&#39;ve taken some time to do just that:<br/><br/>RDocs: <a class='url' href='http://rdoc.info/projects/ippa/chingu'>http://rdoc.info/projects/ippa/chingu</a><br/>Big readme: <a class='url' href='http://github.com/ippa/chingu'>http://github.com/ippa/chingu</a><br/><br/>I&#39;ve bundled ~11 commented examples with Chingu since I myself love learning from examples. Examples show off game states, input-handling, the parallax-class, traits like collision_detect and velocity, particles and more.<br/><br/>There&#39;s 1 full game finished in Chingu so far: The Eternally Grey. See <a class='url' href='topic_show.pl@tid=242.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=242</a> for more info.<br/>It&#39;s a 48-compo game so it&#39;s not the best code ever :P. But it&#39;s decent and it depends on Chingu.<br/><br/>I got 4 more (very different) games in the works which I hope to be able to release during the coming months.<br/>They&#39;re deliberately very different so I would force myself to constantly thinking in very abstract terms and not build any kind of game logic into Chingu.<br/><br/>During the development I&#39;ve gotten feedback and input from the #gosu irc channel: Banisterfiend, shawn24, jlrn of course, jduff, apillet and others.<br/>It&#39;s being developed in Ruby 1.9.1 so that&#39;s the preferred version. Both for Chingu-compatibility and, of course, speed. 1.8.7+ should work as well, 1.8.6 will have some problems.<br/><br/>Install<br/>====<br/>gem install chingu
+</div>
+</div>
+
+<div class='frm pst' id='pid1625' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1625.html#pid1625'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=112' >deps</a>
+<span class='htt'>Date</span> 2009-10-08 19:02
+</div>
+<div class='ccl'>
+I decided to take this framework for a test drive. I&#39;m trying to create a remake of Berzerk (It&#39;s the Finish-Something month over at the Retro Remakes forum), and wanted to try something new. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1626' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1626.html#pid1626'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2009-10-10 02:18
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I know nobody will even look at a framework if it&#39;s not documented …</p></blockquote><br/>You kidding, mang? You&#39;ve described exactly the kind of framework I&#39;ve tried to write. I&#39;d look at the source code if I had to, because this sounds incredibly useful. I&#39;ll be trying it myself momentarily. Thanks in advance!
+</div>
+</div>
+
+<div class='frm pst' id='pid1627' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1627.html#pid1627'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2009-10-10 02:48
+</div>
+<div class='ccl'>
+I got an OpenGL error (from Image#retrofy) when attempting to run example10.rb. I fixed it by changing:<br/><br/>require &quot;opengl&quot;<br/><br/>to:<br/><br/>require &quot;gl&quot;<br/><br/>And adding:<br/><br/>include Gl<br/><br/>BTW, I&#39;m (temporarily) using 1.8.6 p114 on WinXP and I have ruby-opengl 0.60.1 (the latest gem).<br/><br/>Also, example11.rb seems to be missing some graphics, and has &#39;)&#39;s instead of &#39;}&#39;s on lines 28-30.<br/><br/>Anyway, those little hiccups aside, this is looking really good. I definitely want to start using this for my Gosu projects!<br/><br/>Jolly good show, eh wot? ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2805' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2805' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2805.html#pid2805'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-07-16 18:00
+<span class='htt'>Edited</span> 2010-07-16 18:04
+</div>
+<div class='ccl'>
+One gotcha I found when using Chingu with TexPlay is that if you alter text at runtime then it seriously affects the FPS as you are actually creating an image each time that forces caching which is a very slow operation. It isn&#39;t obvious in Chingu that you are actually creating images since you are just doing @my_text.text = &quot;Hello dave&quot;. There shouldn&#39;t be any reason to create images at runtime, so you can usually avoid the issue, but when I spoke to Banister about it, there was some suggestion of adding a switch to turn off caching when you didn&#39;t want to suffer the slowdown.
+</div>
+</div>
+
+<div class='brn' id='brn2805'>
+<div class='frm pst' id='pid2927' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1627.html#pid2805'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2927' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2927.html#pid2927'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-08-02 18:23
+</div>
+<div class='ccl'>
+Right, Text is indeed creating a Image. This will enable the text to act like a GameObject that can be scaled, rotated etc etc. I suggest checking out <a class='url' href='http://www.libgosu.org/rdoc/classes/Gosu/Font.html'>http://www.libgosu.org/rdoc/classes/Gosu/Font.html</a> .. which might be what you need. Btw, did some changes to Text#height/width/size due to your report, more info on github.
+</div>
+</div>
+
+<div class='brn' id='brn2927'>
+<div class='frm pst' id='pid2928' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=1627.html#pid2927'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2928.html#pid2928'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-02 18:29
+</div>
+<div class='ccl'>
+Thanks for that. In the end, I ended up writing the text directly with Gosu::Font. Sorry, should have come back and stated that here.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=243.html#tid243'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=243.html#tid243'>Extending Gosu</a> / Chingu - A game framework for Ruby / Gosu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1627.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

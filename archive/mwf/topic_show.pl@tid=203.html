@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Game state manager for Gosu (Gem available)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=203.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=203.html#tid203'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=203.html#tid203'>Extending Gosu</a> / Game state manager for Gosu (Gem available)
+</div>
+</div>
+
+<div class='frm pst' id='pid1306' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1306.html#pid1306'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-08-19 11:08
+</div>
+<div class='ccl'>
+So, I&#39;ve been working on a framework for Gosu this summer, Chingu. It can be found @ <a class='url' href='http://github.com/ippa/chingu/tree/master'>http://github.com/ippa/chingu/tree/master</a><br/>While Chingu the framework isn&#39;t release-ready just yet parts of it are. <br/><br/>One of those part is a basic but decently powerfull stack-based game state system which is usable even in very small games.<br/>I&#39;ve made it &quot;stand alone&quot; so it should it plugs nicely into any Gosu game.<br/><br/>INSTALL:<br/>=======<br/>gem sources -a <a class='url' href='http://gems.github.com'>http://gems.github.com</a><br/>gem install ippa-chingu<br/><br/>BASIC USAGE:<br/>===========<br/>class Game &lt; Gosu::Window<br/>&#160; attr_reader :font<br/>&#160; def initialize<br/>&#160; &#160; $window = super(800,600,false) <br/>&#160; &#160; # Create our game state manager and start out with State1<br/>&#160; &#160; @manager = Chingu::GameStateManager.new<br/>&#160; &#160; @manager.switch_game_state(State1)<br/>&#160; end<br/>&#160; <br/>&#160; def button_down(id)<br/>&#160; &#160; @manager.button_down(id)<br/>&#160; end<br/>&#160; <br/>&#160; def button_up(id)<br/>&#160; &#160; @manager.button_up(id)<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160;&#160; @manager.draw<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; @manager.update<br/>&#160; end<br/>end<br/><br/>class State1 &lt; Chingu::GameState<br/>&#160; def setup<br/>&#160; &#160; @spinner = [&quot;|&quot;, &quot;/&quot;, &quot;-&quot;, &quot;\\&quot;, &quot;|&quot;, &quot;/&quot;, &quot;-&quot;, &quot;\\&quot;]<br/>&#160; &#160; @spinner_index = 0.0<br/>&#160; end<br/>&#160; <br/>&#160; def update(dt)<br/>&#160; &#160; @spinner_index += 0.1<br/>&#160; &#160; @spinner_index = 0&#160; &#160; if @spinner_index &gt;= @spinner.size<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; $window.font.draw(&quot;Inside State1: #{@spinner[@spinner_index.to_i]}&quot;, 100, 100, 0)<br/>&#160; end<br/>end<br/><br/>DOCS:<br/>=====<br/>A GameState is just a class with the following instance methods:<br/>&#160; * setup() - called each time the game state becomes active.<br/>&#160; * button_down(id) - Called when a button is down<br/>&#160; * button_up(id) - Called when a button is released<br/>&#160; * update() - just as in your normal game loop, put your game logic here.<br/>&#160; * draw() - just as in your normal game loop, put your screen manipulation here.<br/>&#160; * finalize() - called when a game state de-activated (for example by pushing a new one on top with push_game_state)<br/><br/>GameStateManager has the following public instance methods to work with states:<br/><br/>&#160; * push_game_state(state) - adds a new gamestate on top of the stack, which then becomes the active one<br/>&#160; * pop_game_state - removes active gamestate and activates the previous one<br/>&#160; * switch_game_state(state) - replaces current game state with a new one<br/>&#160; * current_game_state - returns the current game state<br/>&#160; * previous_game_state - returns the previous game state (useful for pausing and dialog boxes, see example4.rb)<br/>&#160; * pop_until_game_state(state) - pop game states until given state is found<br/>&#160; * clear_game_states - removes all game states from stack<br/><br/>There&#39;s some more documentation @ <a class='url' href='http://rdoc.info/rdoc/ippa/chingu/blob/407e5bb9b3cead4d02d7d07c1da1d0a2fad8cbfe/Chingu/GameStateManager.html'>http://rdoc.info/rdoc/ippa/chingu/blob/407e5bb9b3cead4d02d7d07c1da1d0a2fad8cbfe/Chingu/GameStateManager.html</a><br/>Chingu&#160; docs @ <a class='url' href='http://rdoc.info/projects/ippa/chingu'>http://rdoc.info/projects/ippa/chingu</a><br/><br/>MORE CODE:<br/>===========<br/>If you install the gem you get an examples-dir:<br/><br/>&#160; * example4.rb shows Chingu / game states <br/>&#160; * example5.rb shows game states with Only Gosu.<br/><br/>I&#39;m using this in 2 games, and those games have been a driving force of getting a decent system in place.<br/><br/>While Chingu very much still is work in progress I feedback is always cool, on the game state system and in Chingu in general. I&#39;ll probably make a full Chingu-release-statement within a couple of weeks once it has matured and good documentation is in place.
+</div>
+</div>
+
+<div class='frm pst' id='pid1307' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1307.html#pid1307'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2009-08-19 11:56
+</div>
+<div class='ccl'>
+Cool :o is like the system im using for my project, stacking the updates and button_<br/><br/>is possible to get this with fades? will be awesome
+</div>
+</div>
+
+<div class='frm pst' id='pid1308' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1308.html#pid1308'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-08-19 13:17
+</div>
+<div class='ccl'>
+That&#39;s an important thing on my list, transitions. I haven&#39;t yet decided the best way to do it. Maybe easiest solved with just a game state.<br/><br/>Something like: (this is not working code)<br/><br/>class FadeTo &lt; Chingu::GameState<br/>&#160;&#160; def initialize(gamestate)<br/>&#160; &#160;&#160; @gamestate = gamestate<br/>&#160; end<br/><br/>&#160;&#160; def draw<br/>&#160; &#160; &#160;&#160; if @fading_out<br/>&#160; &#160; &#160; &#160; &#160; previous_game_state.draw&#160;&#160; # draw previous screen<br/>&#160; &#160; &#160; &#160; &#160; $window.draw_quad&#160; &#160; &#160; &#160; &#160; &#160; &#160; # darken with a transparent layover<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; @gamestate.update&#160; # call update once not to progress the gameplay too much<br/>&#160; &#160; &#160; &#160; &#160; @gamestate.draw&#160; &#160;&#160; # draw <br/>&#160; &#160; &#160; &#160; &#160; $window.draw_quad&#160; &#160; &#160; &#160; &#160; &#160; &#160; # start dark, lighten with trans layover<br/>&#160; &#160; &#160; end <br/>&#160;&#160; end<br/><br/>&#160; def finalize<br/>&#160; &#160; &#160;&#160; $window.manager.switch_game_state(@gamestate)<br/>&#160; end <br/>end<br/><br/>Then in Menu game state:<br/>@manager.push_game_state(FadeTo.new(Play))<br/><br/>I&#39;ll post something working when I have it.
+</div>
+</div>
+
+<div class='frm pst' id='pid1317' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1317.html#pid1317'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=49.html' >psadda</a>
+<span class='htt'>Date</span> 2009-08-20 17:05
+</div>
+<div class='ccl'>
+ippa, I implemented a FadeTo GameState in my Gosu GUI Library. You should check it out. You can use the code if you want. (It&#39;s open source, MIT License)
+</div>
+</div>
+
+<div class='frm pst' id='pid1320' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1320.html#pid1320'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-08-20 20:09
+</div>
+<div class='ccl'>
+Hey psadda .. I tracked down your code in state.rb :). Nice lib, though it would be cool if you don&#39;t have to inherit from GGLib::GUIWindow to use the widgets etc. Another thing, the examples needs to be moved around to find &quot;../gglib.rb&quot;. Looking forward to your full 2.0 release!<br/><br/>I made my own fade implementation from scratch:<br/><br/><a class='url' href='http://github.com/ippa/chingu/blob/80ed4dfcbbaffd8e1c60fe69a444b3e01ac6b615/examples/example6.rb'>http://github.com/ippa/chingu/blob/80ed4dfcbbaffd8e1c60fe69a444b3e01ac6b615/examples/example6.rb</a><br/><br/>That&#39;s a full example, the actual fade logic is only 35 lines and fades between current state and a state of coders choice.
+</div>
+</div>
+
+<div class='frm pst' id='pid1325' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1325.html#pid1325'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-21 01:33
+</div>
+<div class='ccl'>
+I could never figure out how to get transparency with $window.draw_quad. How did you do that?
+</div>
+</div>
+
+<div class='frm pst' id='pid1326' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1326.html#pid1326'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=49.html' >psadda</a>
+<span class='htt'>Date</span> 2009-08-21 01:34
+</div>
+<div class='ccl'>
+That was me by the way. ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid1328' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1328.html#pid1328'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-08-21 05:27
+</div>
+<div class='ccl'>
+@psadda: draw a quad over the whole screen, color black, start with full 255 transperency, &quot;fade&quot; to 0 transperency.
+</div>
+</div>
+
+<div class='frm pst' id='pid1331' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1331.html#pid1331'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-08-21 17:05
+</div>
+<div class='ccl'>
+Been working alot on the state system today.<br/><br/>First off I&#39;ve bundled 2 premade game states with Chingu, FadeTo and Pause. FadeTo fades between the current game state and a new one. Pause pauses any game state with a nice shading of the scene. They&#39;ll work with pure gosu + the above game state manager.<br/><br/>Since FadeTo gives a game such a nice touch, it&#39;s probably something you want to use throughout a certain game. Therefore:<br/><br/>&#160; @manager.transitional_game_state(Chingu::GameStates::FadeTo)<br/><br/>Whenever a game state is pushed, popped or switched, FadeTo will be inserted in between. FadeTo is just another GameState so it&#39;s easy to make some own effect you want to have. Your code has to switch to the new game state though, preferable with &quot;:transition =&gt; false&quot; not to create an eternal loop :p.<br/><br/>See updated <a class='url' href='http://github.com/ippa/chingu/blob/fdad865c4bdb20f6461a967f71f0879a2c8fbeb6/examples/example6.rb'>http://github.com/ippa/chingu/blob/fdad865c4bdb20f6461a967f71f0879a2c8fbeb6/examples/example6.rb</a> for an example.<br/><br/>Cheers.
+</div>
+</div>
+
+<div class='frm pst' id='pid1541' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1541.html#pid1541'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2009-09-14 06:51
+</div>
+<div class='ccl'>
+Perhaps you should create another GameState subclass as part of your library—something like, er, Transition—and have that class implement all the magic like switching to the next state automatically. Transitional states such as FadeTo, obviously, would inherit from that.<br/><br/>Oh boy, when the alert popup told me I was replying to a post older than 24 hours, I didn&#39;t realise it was from last month. Sorry, I&#39;ll pay more attention next time!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=203.html#tid203'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=203.html#tid203'>Extending Gosu</a> / Game state manager for Gosu (Gem available)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=203.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

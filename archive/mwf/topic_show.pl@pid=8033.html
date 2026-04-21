@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8033 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>KbEscape not registering</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8033' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1138.html#tid1138'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1138.html#tid1138'>Gosu Exchange</a> / KbEscape not registering
+</div>
+</div>
+
+<div class='frm pst' id='pid8028' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8028' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8028#pid8028'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1161.html' >boviex</a>
+<span class='htt'>Date</span> 2014-09-18 01:42
+<span class='htt'>Edited</span> 2014-09-18 02:09
+</div>
+<div class='ccl'>
+I&#39;m trying out Gosu, and it&#39;s going pretty well, except that for some reason, the Esc key is not working.<br/><br/>For starters, I&#39;m running Gosu 0.8.4 x86 with Ruby 1.9.3 on Win8 x64 on a Dell Inspiron 14 7437.<br/><br/>I threw together a quick program that shows the button code for whatever button was pressed:<br/><br/><code>&#160; def draw<br/>&#160; &#160; @background_image.draw(0,0,0)<br/>&#160; &#160; @font.draw(&quot;Button pressed: #{@button}&quot;, 10, 10, 1, 1.0, 1.0, 0xffffff00)<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; @button = id<br/>&#160; end</code><br/><br/>This way, I can see that almost all the buttons have codes (letters, numbers, directions, shift, alt, ctrl, win etc.), even the numpad keys will work using the Onscreen Keyboard.<br/><br/>The only buttons that don&#39;t work are Esc (Onscreen Keyboard ESC also doesn&#39;t work), fn + F10-12 (even fn + F1-9 work), and the Airplane Mode key.<br/><br/>Does anyone know what the problem could be?
+</div>
+</div>
+
+<div class='brn' id='brn8028'>
+<div class='frm pst' id='pid8029' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8033.html#pid8028'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8029' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8029.html#pid8029'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-09-18 03:30
+</div>
+<div class='ccl'>
+The only thing I can think of is Windows or some program is trapping the Esc key for some reason.<br/><br/>I tried your code, and I get ID 41 for Escape (Win7 x64, same Ruby/Gosu versions)<br/><br/>Have you tried #button_up to see if it catches the release code?<br/><br/>Does Fn+Esc do anything?<br/><br/>You could try a keyboard testing program, just to rule out hardware damage (although if that was the problem, the onscreen keyboard would still work).
+</div>
+</div>
+
+<div class='brn' id='brn8029'>
+<div class='frm pst' id='pid8032' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8033.html#pid8029'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8032' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8032#pid8032'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1161.html' >boviex</a>
+<span class='htt'>Date</span> 2014-09-18 09:50
+</div>
+<div class='ccl'>
+#button_up didn&#39;t work, Fn+Esc didn&#39;t work.<br/>I restarted into Safe Mode, and it worked.<br/>Then I booted normally, and it still worked.<br/><br/>It turns out the culprit was Adobe Photoshop. I have no idea why or how this is the case, but when I have Photoshop open, Esc stops working. I also tried Illustrator and Indesign, but they don&#39;t do anything. It&#39;s not just Gosu, either: I tried using Esc to stop a page loading in Chrome, but it doesn&#39;t work when Photoshop is open.<br/><br/>On further Googling, it apparently is caused by Intel HD Graphics clashing with Adobe Photoshop, and I fixed it by disabling hotkeys in the Intel HD Graphics tray icon menu. Now everything is fine!<br/><br/>So thanks for your help, you were absolutely right about &#39;some program&#39; trapping the Esc key.
+</div>
+</div>
+
+<div class='brn' id='brn8032'>
+<div class='frm pst' id='pid8033' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8033.html#pid8032'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8033.html#pid8033'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-09-18 13:09
+</div>
+<div class='ccl'>
+o__O That sounds like one of the crazier bugs I&#39;ve heard about!
+</div>
+</div>
+
+<div class='frm pst' id='pid8034' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8033.html#pid8032'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8034#pid8034'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-09-18 17:15
+</div>
+<div class='ccl'>
+Great! Glad you figured it out. I also have Intel HD, and the hotkey function was one of the first things I disabled, merely for CPU cycle conservation reasons (I also use the old &quot;Win9x&quot; theme instead of Aero ;).
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1138.html#tid1138'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1138.html#tid1138'>Gosu Exchange</a> / KbEscape not registering
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8033.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

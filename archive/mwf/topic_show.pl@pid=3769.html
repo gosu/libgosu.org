@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3769 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Image equivalance</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3769' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=530.html#tid530'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=530.html#tid530'>Gosu Exchange</a> / Gosu::Image equivalance
+</div>
+</div>
+
+<div class='frm pst' id='pid3751' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3751' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3751.html#pid3751'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-15 19:46
+</div>
+<div class='ccl'>
+I&#39;m getting a very odd bug here.&#160; <br/><br/>img = Gosu::Image.new($window, &quot;./Sprites/Effects/Aero.png&quot;,false)<br/>img2 = img.clone<br/>assert_equal img.to_blob, img2.to_blob #This works fine<br/>assert_equal img, img2 #This does not<br/><br/>I have defined Gosu::Image#== as follows<br/><br/>def ==(arg)<br/>&#160; if arg.class == Gosu::Image<br/>&#160; &#160; return self.to_blob == arg.to_blob<br/>&#160; else<br/>&#160; &#160; return self.== arg<br/>&#160; end<br/>end<br/><br/>Can anyone tell me why this does not work?
+</div>
+</div>
+
+<div class='brn' id='brn3751'>
+<div class='frm pst' id='pid3753' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3751'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3753' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3753.html#pid3753'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-01-15 23:12
+</div>
+<div class='ccl'>
+is this with texplay required? im still not sure of the issue, but texplay does redefine the #clone method for Gosu::Image
+</div>
+</div>
+
+<div class='brn' id='brn3753'>
+<div class='frm pst' id='pid3754' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3753'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3754' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3754.html#pid3754'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-15 23:27
+</div>
+<div class='ccl'>
+Yes, I do have texplay required.<br/><br/>On the topic of texplay, I noticed that texplay defines Gosu::Image#new instead of Gosu::Image#initialize, which I thought was weird, but I suppose that&#39;s a bit off topic... I just remembered I took a brief look at that part of the code, and thought it could be possibly related.
+</div>
+</div>
+
+<div class='brn' id='brn3754'>
+<div class='frm pst' id='pid3755' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3754'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3755' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3755.html#pid3755'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-01-15 23:58
+<span class='htt'>Edited</span> 2011-01-16 00:10
+</div>
+<div class='ccl'>
+hehe, I wrote that part of the code 2 years ago (it needs a major refactor along with that whole file). I&#39;m not sure why i do that, im sure i had good reason for it at the time, but that reason then may no longer be relevant now. I don&#39;t think it&#39;s related to yoru issue though
+</div>
+</div>
+
+<div class='brn' id='brn3755'>
+<div class='frm pst' id='pid3771' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3755'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3771.html#pid3771'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-19 09:26
+</div>
+<div class='ccl'>
+It caused some other issue before though.&#160; Unfortunately, the code that triggered that error was so horrendous I simply trashed it, so I couldn&#39;t tell you exactly what that problem was... The traceback put the blame somewhere in Gosu::Image#clone or #new, so it could be related to this.&#160; <br/><br/>I&#39;m really just taking vaguely-educated stabs in the dark though.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3757' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3751'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3757' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3757.html#pid3757'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-16 02:56
+</div>
+<div class='ccl'>
+No idea, but a nit-pick: you need to compare either width or height too. Otherwise, it can theoretically happen that two images of the same area but different dimensions contain the same color values :)
+</div>
+</div>
+
+<div class='brn' id='brn3757'>
+<div class='frm pst' id='pid3770' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3757'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3770.html#pid3770'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-19 09:24
+</div>
+<div class='ccl'>
+Took me a while to understand how that would happen, but I get it now.&#160; Made sure to add that to the code.&#160; This has the added benefit of short-circuiting the check if the dimensions of the images are not the same.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3764' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3751'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3764' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3764.html#pid3764'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-01-18 22:21
+</div>
+<div class='ccl'>
+First thing, don&#39;t use &quot;arg.class == Gosu::Image&quot;, use &quot;arg.is_a?(Gosu::Image)&quot; because that also checks inheritance (although if you don&#39;t want to check inheritance, you don&#39;t have to, but that might be your problem caused by Texplay; perhaps you can debug this with &quot;puts arg.class, arg.ancestors&quot;)<br/><br/>Second, I suspect that if you ever have an argument that wasn&#39;t a Gosu::Image it could get stuck in an infinite loop; use &quot;return false&quot; instead of &quot;self.==arg&quot;.<br/><br/>Try adding an &quot;assert_equal img.class, img2.class&quot; for debugging.
+</div>
+</div>
+
+<div class='brn' id='brn3764'>
+<div class='frm pst' id='pid3769' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3769.html#pid3764'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3769.html#pid3769'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-19 09:23
+</div>
+<div class='ccl'>
+Good point about using #is_a?, I&#39;ll change that right away.&#160; However, correct me if I&#39;m wrong, but I believe as Texplay edits the Gosu::Image class itself, rather than creating a descendant class, this should not be a problem in this instance.<br/><br/>Ah, I had meant to do arg.==self, but I suppose it&#39;s really just better to return false.&#160; Will do.<br/><br/>I already checked to make sure both variables were instances of Gosu::Image.&#160;&#160; I simply did not include that in this snippet.<br/><br/>Thanks for the help, although these changes still do not fix the problem.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=530.html#tid530'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=530.html#tid530'>Gosu Exchange</a> / Gosu::Image equivalance
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3769.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

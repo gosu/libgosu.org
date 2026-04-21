@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 672 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>What to do with button_id_to_char / char_to_button_id?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d672' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=130.html#tid130'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=130.html#tid130'>Gosu Exchange</a> / What to do with button_id_to_char / char_to_button_id?
+</div>
+</div>
+
+<div class='frm pst' id='pid664' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=664.html#pid664'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-23 18:08
+</div>
+<div class='ccl'>
+Quick poll because I&#39;m thinking about what I should change in Gosu 0.8:<br/><br/>These two functions (button_id_to_char/char_to_button_id) have always been hard to implement across operating systems, and I am thinking about dropping them altogether. Does anyone have a real use for them? For entering text, TextInput is the way to go anyway, but maybe I&#39;m missing other uses of them.<br/><br/>The way I see it, button_id_to_char is only useful to present the controls of the game to the user. If a game uses KbW, KbA, KbS, KbD as the controls, button_id_to_char() will always return the actual characters on these keys on different international keyboards. But then, shouldn&#39;t it just be name_of_button?<br/>My use case would be that the user has to press the button they want to use for walking, firing, whatever, and the game would use this function to determine the name. Which leads to the question, should it also return names for keys such as &#39;left arrow&#39; and &#39;backspace&#39; (seems like a pretty common need to me)? If so, should these names be localized? I think only Windows has a function to get the localized name of a key. Should Gosu just include as many localizations as possible for other systems?<br/><br/>Any feedback welcome :)
+</div>
+</div>
+
+<div class='frm pst' id='pid669' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=669.html#pid669'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-05-23 20:03
+</div>
+<div class='ccl'>
+I think there should be a function to get some kind of identifier (the scancode could do the job, I think) of the key pressed by the user. For example, if we want to include customizable controls in the game (to let the player choose which key/button wants to use to do some action). Maybe this could be done (getting the key pressed) with TextInput but maybe could cause troubles with compounds characters like é or ü or something like that.
+</div>
+</div>
+
+<div class='frm pst' id='pid670' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=670.html#pid670'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-05-23 20:11
+</div>
+<div class='ccl'>
+I&#39;ve always wondered what use they had.
+</div>
+</div>
+
+<div class='frm pst' id='pid672' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=672.html#pid672'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-24 01:50
+</div>
+<div class='ccl'>
+Interestingly, I&#39;m currently using the following code to get the names of keys, precisely because button_id_to_char() does not function for non-alphanumerics:<br/><br/>#helper hash to get Gosu button constant names<br/>module OperationLambda<br/>&#160; GosuButtonIdNames = {}<br/>&#160; <br/>&#160; module_function<br/>&#160; def build_hash_of_gosu_button_id_names<br/>&#160; &#160; (Gosu.constants - [&#39;MsNum&#39;,:MsNum]).each do |str|<br/>&#160; &#160; &#160; x = Gosu.const_get(str)<br/>&#160; &#160; &#160; if x.is_a? Fixnum<br/>&#160; &#160; &#160; &#160; GosuButtonIdNames[x] = str<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>On the flip side, I actually *am* using char_to_button_id() at the moment, since there&#39;s no Gosu::KbLeftBracket and Gosu::KbRightBracket constants (that is, &#39;[&#39; and &#39;]&#39;).
+</div>
+</div>
+
+<div class='frm pst' id='pid678' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=678.html#pid678'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-24 10:32
+<span class='htt'>Edited</span> 2009-05-24 11:41
+</div>
+<div class='ccl'>
+There are no codes for [] because they are in different places on different international keyboards. I try to only encode the &#39;standard&#39; keys that everyone hopefully has, like Alt and Strg. Of course, you could argue that like KbZ and the other constants, they should just always stand for &quot;the keys next to return&quot;. Hmm. :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=130.html#tid130'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=130.html#tid130'>Gosu Exchange</a> / What to do with button_id_to_char / char_to_button_id?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=672.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

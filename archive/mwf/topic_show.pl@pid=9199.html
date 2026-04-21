@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9199 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Raspberry Pi music touchscreen</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9199' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1335.html#tid1335'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=1335.html#tid1335'>Gosu Showcase</a> / Raspberry Pi music touchscreen
+</div>
+</div>
+
+<div class='frm pst' id='pid9179' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9179' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9179.html#pid9179'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1288' >leddy231</a>
+<span class='htt'>Date</span> 2017-04-10 12:29
+</div>
+<div class='ccl'>
+Get a cup of tea or coffee, sit back and enjoy the wall of text.<br/><br/><b>The goal.</b><br/>I was tasked by a local gym to build them a music touchscreen. The user was supposed to be able to run pre-mixed mp3 files from it. A raspberry pi with their official touchscreen was the logical choice. But I also needed a graphics api that could run fullscreen, receive touch/mouse input and play mp3 files. It didn’t take many minutes to get a Gosu demo app running using my <a class='url' href='https://github.com/leddy231/luit'>UI toolkit.</a> And since my last Gosu project went so smooth this could not be that hard, could it? Wrong. <br/><br/><b>The problems along the way</b><br/>First up, Gosu just didn’t install. There are probably not many Gosu users running it on a pi so it’s understandable. Got help from Jlnr to solve the installation issues, but even after that Gosu wouldn’t start. At this point I understood that I might need to find another graphics api to use. First on the list was Pygame, comes preloaded on the pi so it was looking promising. But it turns out the fullscreen mode was broken on raspbian. Next up was Kivy, also running on python. After much tinkering, I got it running fullscreen and with multitouch support. I was just about to learn it and develop the app when Jlnr got Gosu running on the pi! This was a relief for me since I didn’t want to spend time learning another language just for this project. I installed Gosu with the new instructions, and my prototype app ran almost without issues, in fullscreen! I figured if I got this far any other issues could be handled, so I gave the green light for the project and they bought the hardware.<br/><br/>Other issues that appeared:<br/><b>Gosu can’t play mp3 files outside of on macOS.</b> Didn’t know this since most of my development is done on school time on my mac. Jnlr to the rescue again, adding mp3 support with the help of mpg123.<br/><br/><b>Gosu didn’t do well with the touchscreen.</b> It only updated mouse_x and mouse_y when the user pressed the screen the first time, and not when the finger was moved around. No button_down for MsLeft was registered. Made a quick hack where the mouse was forced to sit at (0,0), and if it moved (the user touched somewere) it was considered a “click”, and the next update the mouse was moved back. You can find this in my UI toolkit, “LUIT.updateTouch”. This however meant no dragging on sliders was possible, but that was a very minor annoyance. Jlnr suggested updating SDL2.0.3 to 2.0.5, but at this point I was so fed up with installing and compiling things on the Pi.<br/><br/><b>Gosu overheated the Pi.</b> This was a surprise to me, the Pi only survived maybe 15 minutes in fullscreen mode before it flat out died and the screen faded away. Some minor screen flickering could also be seen when it was running. Then it hit me, most of the time nothing is happening on the screen, so I dug out “needs_redraw” and set up the “LUIT.updateTouch” to redraw the screen two times after a click. (to get the hover effects to fade away). And would you look at that, no flickering, no heat, 3% cpu at idle.<br/><br/>Here is a screenshot from the finished app, will post some photos once its installed in the gym.<br/><img class='emi' src='http://i.imgur.com/0k82ECz.png' alt=''/><br/><br/>Big thanks to Jlnr for the help along the way, and Kjarrigan for feedback on my toolkit!
+</div>
+</div>
+
+<div class='brn' id='brn9179'>
+<div class='frm pst' id='pid9199' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9199.html#pid9179'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9199.html#pid9199'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-05-26 10:42
+</div>
+<div class='ccl'>
+(Took me forever to get back to this post in my reading queue...)<br/><br/>That was really great timing with the MP3 patents expiring just in time for this project ;)<br/><br/>I didn&#39;t think it was possible to overheat the Pi though. Is it really the temperature? I&#39;ve noticed flakiness on my Pi when I use a USB port that doesn&#39;t provide enough power. Has it worked OK in the long term?
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1335.html#tid1335'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=1335.html#tid1335'>Gosu Showcase</a> / Raspberry Pi music touchscreen
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9199.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

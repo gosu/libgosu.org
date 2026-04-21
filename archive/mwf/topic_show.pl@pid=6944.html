@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6944 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Releasy Issues</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6944' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=910#tid910'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=910#tid910'>Gosu Exchange</a> / Releasy Issues
+</div>
+</div>
+
+<div class='frm pst' id='pid6915' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6915' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6915.html#pid6915'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2013-06-30 16:42
+</div>
+<div class='ccl'>
+Hello everyone, I&#39;m trying to test Releasy to create the executables for my game but I can&#39;t get it to work.<br/>I installed everything, created the example Rakefile and when I execute it I get:<br/><br/>Unable to activate releasy-0.2.2, because rake-0.9.6 conflicts with rake (~&gt; 0.9.2.2)<br/><br/>So googling a bit, I read that I have to create a Gemfile requiring rake in it.<br/>So after doing that, I execute it again and I get:<br/><br/>rake aborted!<br/>cannot load such file -- releasy<br/><br/>What is going on?<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='brn' id='brn6915'>
+<div class='frm pst' id='pid6916' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6915'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6916' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6916#pid6916'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-06-30 16:47
+</div>
+<div class='ccl'>
+I think if you create a Gemfile that contains all of rake, release as well as your other gems (e.g. gosu), this should work-<br/><br/><code>bundle exec rake &lt;your_task_name&gt;</code><br/><br/>Bundle ensures that Ruby sees the gems in the Gemfile, and only these.
+</div>
+</div>
+
+<div class='brn' id='brn6916'>
+<div class='frm pst' id='pid6944' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6916'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6944' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6944.html#pid6944'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-07-05 05:20
+</div>
+<div class='ccl'>
+Hi, I am posting here, because I have run into a very similar situation. I am trying to compile a very simple, basic game, using releasy. I have created the Gemfile and the Rakefile, per the instructions on the readme. I have added to the Gemfile:&#160; gem &quot;rake&quot;, &quot;~&gt;0.9.2.2&quot; due to the same compatibility issue mentioned above.<br/><br/>My biggest problem is that I don&#39;t actually really know exactly how to use rake properly. When following these instructions:<br/><br/>bundle exec rake &lt;your_task_name&gt;<br/><br/>I run into the problem that I DON&#39;T KNOW WHAT MY TASK NAME SHOULD BE BECAUSE I AM A NEWB...<br/><br/>I have tried simply typing:<br/><br/>$ rake<br/><br/>as well as:<br/><br/>$ bundle exec rake<br/><br/>and I get:<br/><br/>rake aborted!<br/>wrong number of arguments (3 for 1)<br/><br/>Any suggestions?....<br/><br/>For reference, and in case it helps, the project, with the Rakefile and the Gemfile, are included here:<br/><a class='ura' href='https://github.com/MattLemmon/cat2'>https://github.com/MattLemmon/cat2</a><br/><br/>BTW, the cat2 github includes the wrapper folder and the wrappers themselves, to demonstrate how I have everything laid out.<br/><br/>Best wishes to all.
+</div>
+</div>
+
+<div class='brn' id='brn6944'>
+<div class='frm pst' id='pid6946' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6944'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6946' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6946#pid6946'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-06 17:13
+</div>
+<div class='ccl'>
+You should be able to list all available rake tasks using <code>bundle exec rake -T</code>.
+</div>
+</div>
+
+<div class='brn' id='brn6946'>
+<div class='frm pst' id='pid6948' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6946'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6948' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6948.html#pid6948'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-07-07 02:29
+</div>
+<div class='ccl'>
+Thank you, this has helped me to get moving in the right direction!<br/><br/>I tracked down the issue to the following two lines from the Rakefile:<br/>12&#160; &#160; files &quot;lib/**/*.rb&quot;, &quot;config/**/*.yml&quot;, &quot;media/**/*.*&quot;<br/>13&#160; &#160; exposed_files &quot;README.html&quot;, &quot;LICENSE.txt&quot;<br/><br/>I can get a list of available tasks when I comment out the files in the following manner:<br/>12&#160; &#160; files &quot;lib/**/*.rb&quot;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; #, &quot;config/**/*.yml&quot;, &quot;media/**/*.*&quot;<br/>13&#160; &#160; exposed_files &quot;README.html&quot;&#160; &#160; &#160; #, &quot;LICENSE.txt&quot;<br/><br/>It appears that this gives rake the &quot;correct&quot; number of arguments, so that when I type &quot;bundle exec rake -T&quot; it gives me a list of tasks.<br/><br/>Then when I run<br/>bundle exec rake build:osx:app<br/><br/>it goes through and starts building the app... but of course it stops working when it runs into the part where it needs the files which I have commented out.<br/><br/>So I am still up against this &#39;wrong number of arguments&#39; difficulty. It seems that rake wants me to only list 1 file, and 1 exposed_file, instead of the the 3 files and 2 exposed_files which are needed.<br/><br/>Not sure if it makes a difference, but I am on Ubuntu 12.04, using RVM.<br/><br/>Also, the &#39;wrong number of arguments&#39; issue seems to be coming from the following code in /gems/releasy-0.2.2/lib/releasy/project.rb:<br/><br/>91&#160; &#160; def exposed_files; @exposed_files; end<br/>92&#160; &#160; def exposed_files=(files); @exposed_files = Rake::FileList.new files; end<br/>93<br/>94&#160; &#160; def files; @files; end<br/>95&#160; &#160; def files=(files); @files = Rake::FileList.new files; end<br/><br/>I would make some manual adjustments to get it to work, but for someone like me, this would be akin to a four-year-old trying to rebuild an automobile transmission - well, actually, more like a two-year-old trying to rebuild a transmission....
+</div>
+</div>
+
+<div class='brn' id='brn6948'>
+<div class='frm pst' id='pid6950' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6948'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6950' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6950#pid6950'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-07 08:50
+</div>
+<div class='ccl'>
+I haven&#39;t tried this in a while, but I think you need to pass the filenames as arrays:<br/><br/><code>12&#160; &#160; files [&quot;lib/**/*.rb&quot;, &quot;config/**/*.yml&quot;, &quot;media/**/*.*&quot;]<br/>13&#160; &#160; exposed_files [&quot;README.html&quot;, &quot;LICENSE.txt&quot;]</code>
+</div>
+</div>
+
+<div class='brn' id='brn6950'>
+<div class='frm pst' id='pid6951' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6950'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6951.html#pid6951'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-07-07 10:01
+</div>
+<div class='ccl'>
+Thank you, this is an enormous help!
+</div>
+</div>
+
+<div class='frm pst' id='pid6952' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6950'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6952' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6952#pid6952'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-07-07 23:25
+</div>
+<div class='ccl'>
+Just a quick update. Passing the files as an array made a big difference. I am still experimenting with Releasy and trying to figure it all out. I added a readme.txt file and a license.txt file, as well as adding the file media/icon.icns. Baby steps...
+</div>
+</div>
+
+<div class='brn' id='brn6952'>
+<div class='frm pst' id='pid6953' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6952'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6953' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6953.html#pid6953'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-08 02:15
+</div>
+<div class='ccl'>
+Sorry about that... The docs online are ahead of the release of Releasy (that is the only real issue), which doesn&#39;t help a great deal!<br/><br/>EDIT: Keep meaning to go back and test the newer version properly so I can release it, but the tests are fubar...*makes feeble excuses*
+</div>
+</div>
+
+<div class='brn' id='brn6953'>
+<div class='frm pst' id='pid6972' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6953'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6972' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6972#pid6972'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-07-10 06:14
+<span class='htt'>Edited</span> 2013-07-10 06:23
+</div>
+<div class='ccl'>
+No worries whatsoever. All of this - Gosu, Chingu, Releasy, etc. - is very, very, very awesome. I can&#39;t say thank you enough!<br/><br/>I&#39;m still working on trying to compile with Releasy. I have successfully created something which appears to be a working mac .app - it has the icon I created and everything. I tried testing it (the .app file, not releasy) on mac osx 10.4, and it didn&#39;t work. However, I think that it very possibly might work on osx 10.5. I plan to upgrade to 10.5 in order to test it out properly. However, this will take a few days or more (must back everything up first). I also intend to get access to a pc and test Releasy out on there. This will also take some time.<br/><br/>I tried to compile for windows (from Ubuntu) using:<br/>$ bundle exec rake build:windows:wrapped<br/><br/>and I got:<br/>WARNING:&#160; Error fetching data: SocketError: getaddrinfo: Name or service not known (<a class='ura' href='http://rubygems.org/specs.4.8.gz'>http://rubygems.org/specs.4.8.gz</a>)<br/>rake aborted!<br/>Gem json is binary, but 1.7.6 does not have a published binary<br/>Tasks: TOP =&gt; build:windows:wrapped =&gt; pkg/cat_game_0_0_1_WIN32<br/><br/>I am not sure exactly what this means, but I take it as a sign that I am moving in the right direction...
+</div>
+</div>
+
+<div class='brn' id='brn6972'>
+<div class='frm pst' id='pid6973' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6972'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6973.html#pid6973'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-10 07:59
+</div>
+<div class='ccl'>
+I&#39;d recommend using VirtualBox to install a version of Windows for the purpose of testing (I also have one that runs Mountain Lion).<br/><br/>Don&#39;t put the json gem in your Gemfile. JSON is included in the standard library from Ruby 1.9.2. Since Releasy is not a cross-compiler, it can&#39;t add binary gems for another OS unless they have been compiled.<br/><br/>If you absolutely have to use Ruby 1.8.7 and cross-build, then use the json_pure gem, which is implemented in Ruby (but is, obviously, much slower than the C extension version).
+</div>
+</div>
+
+<div class='frm pst' id='pid6975' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6972'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6975' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6975#pid6975'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-10 12:11
+</div>
+<div class='ccl'>
+I have recently dropped support for 10.4. The current .app should work on 10.5 though (which is the oldest test system I have).
+</div>
+</div>
+
+<div class='brn' id='brn6975'>
+<div class='frm pst' id='pid6976' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6975'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6976' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6976.html#pid6976'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-07-11 02:43
+</div>
+<div class='ccl'>
+You guys are great! I found JSON being required in Gemfile.lock, which I think must have been created by bundler. I deleted the relevant line from Gemfile.lock, and then ran:<br/>$ bundle exec rake build:windows:wrapped<br/><br/>and it appears to have worked! :)<br/><br/>I have now created a probably-working .app and a probably-working .exe.<br/><br/>I installed VirtualBox to try to test out the .exe, but it is going to take me some time to get my hands on a good Windows Install .iso in order to get VirtualBox all set up. In the interim, I will easily be able to test the .exe on a pc in the next day or two.<br/><br/>Regarding mac 10.4, this is a good impetus for me to update to 10.5, which I have been planning and preparing to do for a long time. I am making progress on this front. Perhaps in a another day or two...<br/><br/>I also might possibly try running mac 10.5 on VirtualBox, since I already have the mac 10.5 install .iso....<br/><br/>In summary - thank you this is awesome!
+</div>
+</div>
+
+<div class='brn' id='brn6976'>
+<div class='frm pst' id='pid7073' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid6976'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7073' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7073#pid7073'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-06 06:29
+</div>
+<div class='ccl'>
+Hey guys just a quick update about my efforts to use Releasy. I ended up trying out installing Ruby on a Windows machine, and it was so easy to do, that I ended up just installing Ruby on the destination computer, which I had been trying to compile the .exe for. So, it was a success, except that I still have not figured out how to fully utilize Releasy on my setup (Ubuntu). I am still going to keep picking away at it. In the interim I&#39;ve been working on some other Gosu/Chingu related projects, and making slow but steady progress. Previously, I wasn&#39;t able to load almost any of the&#160; games from the Gosu Showcase. Now I have gone through and successfully loaded up a bunch of different ones. I&#39;m still having trouble with Bottomless Mine and a few others, but I am making significant progress. I will post about my current gosu project in the Showcase. Thanks as always.
+</div>
+</div>
+
+<div class='brn' id='brn7073'>
+<div class='frm pst' id='pid7084' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid7073'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7084' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7084.html#pid7084'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-07 05:46
+</div>
+<div class='ccl'>
+If you figure releasy out, please let me know.&#160; I&#39;ve been just using ocra to make an .exe for windows friends.&#160; It works fine for Gosu games on Windows.&#160; Just &quot;ocra gosu_game.rb&quot; and then exit the game after it starts, spits out an exe.&#160; &quot;gem install ocra&quot; to get it.&#160; Dunno if it works on other platforms, but it works great on Windows.
+</div>
+</div>
+
+<div class='brn' id='brn7084'>
+<div class='frm pst' id='pid7085' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid7084'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7085#pid7085'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-08-07 06:20
+</div>
+<div class='ccl'>
+There are random bugs on different computers when using advanced Open GL stuff (like framebuffers), so sharing Gosu games, at least on Windows, is fully possible only with pure Gosu. Just saying.
+</div>
+</div>
+
+<div class='frm pst' id='pid7092' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6944.html#pid7084'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7092.html#pid7092'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-10 01:19
+</div>
+<div class='ccl'>
+@allcaps, I&#39;m still working on figuring out Releasy. It seems that I need to learn more about Rake. I will definitely try the &quot;ocra&quot; approach you described (thanks for the helpful suggestion), and see if it works for me. I mostly work on Linux (Ubuntu) and my access to a PC is &quot;sometimes,&quot; but I should be able to give it a try in the upcoming weeks.<br/><br/>@lol_02, very good to know about the limitations of Releasy with gl effects. What if I&#39;m not using any gl effects, and the only gems are Gosu and Chingu?...<br/><br/>Regardless, the main problem I have right now is a PEBCAK error (&quot;Problem Exists Between Chair And Keyboard&quot;). I&#39;m still working at it, and I have decided that, for me, with my current level of skills and knowledge, compiling to .exe and .app are going to be long-term goals. I will post to this thread when I make significant progress.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=910#tid910'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=910#tid910'>Gosu Exchange</a> / Releasy Issues
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6944.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

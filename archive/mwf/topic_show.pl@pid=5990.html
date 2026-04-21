@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5990 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How do you actually distribute your finished Ruby game?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5990' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=777.html#tid777'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=777.html#tid777'>Gosu Exchange</a> / How do you actually distribute your finished Ruby game?
+</div>
+</div>
+
+<div class='frm pst' id='pid5941' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5941' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5941.html#pid5941'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-06-28 00:55
+</div>
+<div class='ccl'>
+Ocra packs your ruby game in an executable, which is great. But every time you open it, it will extract and install ruby interpreter and then run the game... which is slow even for small games.<br/><br/>My game is written in Ruby. I want to use Ruby. But there doesn&#39;t seem to be an actual proper way to distribute my game. But given that there are some Ruby game developers using gosu out there, well, I assume there *is* a way, is there not? What do you do?
+</div>
+</div>
+
+<div class='brn' id='brn5941'>
+<div class='frm pst' id='pid5945' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5941'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5945' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5945.html#pid5945'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-06-29 03:11
+</div>
+<div class='ccl'>
+Releasy (by me), using the :windows_folder or :windows_installer or :windows_wrapped option, will create a non-extracting version! That is, you get a tiny .exe that is just there to start everything up and all your files + ruby are zipped up with it - which means it starts faster and doesn&#39;t use space in your temp folder. Obviously, you don&#39;t get the advantage of distributing as a single file, but frankly that isn&#39;t as important as people think and Releasy makes compressing your game even easier :)<br/><br/> :windows_wrapped can even be built on OSX/Linux and Releasy will make building an OSX executable as easy as making a Windows one.<br/><br/>Sadly, Releasy is still a bit hard to use, so please visit the #gosu forum and I&#39;ll try and help you pack up your game with it, though you might get somewhere looking at games of mine or those others who have packed games with it.<br/><br/>&lt;/advert-for-spooner-enterprises&gt;
+</div>
+</div>
+
+<div class='brn' id='brn5945'>
+<div class='frm pst' id='pid5947' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5945'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5947' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5947.html#pid5947'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-06-29 05:51
+</div>
+<div class='ccl'>
+#gosu forum? Isn&#39;t that... here? XD<br/><br/>Currently I am working on rewriting almost everything in the game to optimize stuff etc... but it will be great to learn how to use Releasy.
+</div>
+</div>
+
+<div class='brn' id='brn5947'>
+<div class='frm pst' id='pid5949' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5947'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5949' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5949.html#pid5949'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-06-29 10:31
+</div>
+<div class='ccl'>
+Sorry, I meant the #gosu IRC channel :$
+</div>
+</div>
+
+<div class='brn' id='brn5949'>
+<div class='frm pst' id='pid5962' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5949'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5962' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5962.html#pid5962'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-07-03 16:47
+</div>
+<div class='ccl'>
+One more question!<br/><br/>I heard that since Ocra self-extracted things to a temp folder, it was possible for users to, well, take a look at all the source and resources used in the game. Can Releasy err, stop that from happening?
+</div>
+</div>
+
+<div class='brn' id='brn5962'>
+<div class='frm pst' id='pid5963' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5962'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5963' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5963.html#pid5963'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-03 16:52
+</div>
+<div class='ccl'>
+No, it is impossible to hide your sources in CRuby. You can, however, release compiled Java bytecode files with JRuby or other compilable versions of Ruby (Maybe in CRuby 2.0 we&#39;ll get this; I think it is on the cards for us to save bytecode, but don&#39;t quote me on that and it will be a few years before it happens :( ).<br/><br/>If you think that your code is so good that people will steal it, you are a better coder than me. If you think people shouldn&#39;t learn by freely looking at your code, then you are a worse person than me :D
+</div>
+</div>
+
+<div class='brn' id='brn5963'>
+<div class='frm pst' id='pid5964' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5963'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5964' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5964.html#pid5964'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-07-03 18:46
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; If you think that your code is so good that people will steal it, you are a better coder than me. If you think people shouldn&#39;t learn by freely looking at your code, then you are a worse person than me :D</p></blockquote><br/>This, a thousand times. I think you&#39;ve summed up my philosophy on, well, pretty much any creative endeavour. I take it one step further and license everything I release permissively, but I won&#39;t hold it against anyone who chooses not to take that extra step. C:
+</div>
+</div>
+
+<div class='brn' id='brn5964'>
+<div class='frm pst' id='pid5965' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5964'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5965.html#pid5965'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-03 23:22
+</div>
+<div class='ccl'>
+Most of us host our code at Github or similar, so trying to keep readable files out of releases seems like closing the gate after the horse has bolted :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5966' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5963'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5966' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5966.html#pid5966'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-07-03 23:47
+<span class='htt'>Edited</span> 2012-07-06 00:04
+</div>
+<div class='ccl'>
+I&#39;m not a great coder. But if I was, I WOULD BE A TERRIBLE PERSON, FWAHAHAHAHAHA..........<br/><br/>.... It isn&#39;t much about the code, it is about the graphics and audio I use. Is it the same case?<br/><br/>Oh and also, what if my game connects to a remote MySQL database? In my code, I use, well, an username and a password. If people can see the source code, they would be able to see such credentials... so making a ruby game with the ability to connect to an online database (for highscores or perhaps multiplayer features) is not impossible?
+</div>
+</div>
+
+<div class='brn' id='brn5966'>
+<div class='frm pst' id='pid5970' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5966'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5970' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5970.html#pid5970'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-07-05 03:40
+</div>
+<div class='ccl'>
+I definitely wouldn&#39;t recommend putting the username and password in the program and connecting to MySQL directly. If you hide your source code, even if you obfuscate it somehow, it&#39;s still trivially easy to run the application under a debugger or even open it with a hex editor and find that information. If you encrypt it, you need to also distribute the keys to decrypt, or they can&#39;t run your game at all. There&#39;s just no way to do something like that securely.<br/><br/>Better to hide the SQL database behind a CGI script (or better still, a web application) that can <i>only</i> add high scores to the table and retrieve them.
+</div>
+</div>
+
+<div class='brn' id='brn5970'>
+<div class='frm pst' id='pid5973' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5970'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5973' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5973.html#pid5973'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-05 06:13
+</div>
+<div class='ccl'>
+Do you know this story? Super Meat Boy did exactly that, it connected to an RDBMS directly, and the response was pretty bad.<br/><br/><a class='url' href='http://forums.somethingawful.com/showthread.php?noseen=0&amp;pagenumber=258&amp;threadid=2803713'>http://forums.somethingawful.com/showthread.php?noseen=0&amp;pagenumber=258&amp;threadid=2803713</a>
+</div>
+</div>
+
+<div class='brn' id='brn5973'>
+<div class='frm pst' id='pid5981' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5973'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5981.html#pid5981'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-07-05 23:58
+</div>
+<div class='ccl'>
+Oh my god, I had <i>not</i> seen that. :D Wow, the arrogance from the developers. That&#39;s kind of sad.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5975' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5970'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5975' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5975.html#pid5975'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-05 10:31
+</div>
+<div class='ccl'>
+Yes, I hadn&#39;t considered that. I&#39;d suggest creating a simple RESTclient with Sinatra to act as the safety wrapper.
+</div>
+</div>
+
+<div class='brn' id='brn5975'>
+<div class='frm pst' id='pid5982' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5975'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5982' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5982.html#pid5982'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-07-06 00:11
+</div>
+<div class='ccl'>
+Alright, nevermind the highscore thing for now lol.<br/><br/>But yeah, what about graphics and audio? Are such resources protected or are there other ways to protect them? Perhaps I don&#39;t mind people looking at the game code, but I certainly don&#39;t want them to get those resources.<br/><br/>Naturally,everything can be hacked I guess - so let me reformulate my question: how can I make it *very hard* at least to steal the graphics/audio I use?
+</div>
+</div>
+
+<div class='brn' id='brn5982'>
+<div class='frm pst' id='pid5983' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5982'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5983' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5983.html#pid5983'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-06 00:16
+</div>
+<div class='ccl'>
+Well, the standard Ocra (or Releasy :windows_standalone) methods, which self-extract, are likely to deter anyone who is a complete noob, so if you are that worried...<br/><br/>I&#39;ll reiterate that most commercial games have some or all of their assets non-encrypted in their releases. If they are in a proprietary format, then modders take about a week to work it out anyway.
+</div>
+</div>
+
+<div class='brn' id='brn5983'>
+<div class='frm pst' id='pid5985' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5983'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5985' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5985.html#pid5985'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-07-06 05:30
+</div>
+<div class='ccl'>
+When they say that opensource is the future, it is because there is no other choice anyway e___e
+</div>
+</div>
+
+<div class='brn' id='brn5985'>
+<div class='frm pst' id='pid5988' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5985'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5988.html#pid5988'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-06 08:51
+</div>
+<div class='ccl'>
+I am not so sure. You can pay Github &lt;$10 a month and get private repos, but open-source is pretty much a requirement of CRuby deployment though!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid5990' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5990.html#pid5982'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5990.html#pid5990'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-06 14:53
+</div>
+<div class='ccl'>
+I think having them inside the ocra exe is good enough. Even DRM-protected iPhone games are just glorified ZIP files with all the assets right in there (usually). It is pretty obvious when someone reuses your graphics for their game and plain copyright seems to work ok in this case.<br/><br/>Open-sourcing your game only makes it easier to cheat or to circumvent any DRM (obviously). I think this battle is lost for small developers anyway. You really need to be Blizzard and rule with an iron (online-only) hand to keep your game under control.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=777.html#tid777'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=777.html#tid777'>Gosu Exchange</a> / How do you actually distribute your finished Ruby game?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5990.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

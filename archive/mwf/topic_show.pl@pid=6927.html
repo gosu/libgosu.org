@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6927 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>A few questions on Gosu...</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6927' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=911.html#tid911'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=911.html#tid911'>Gosu Exchange</a> / A few questions on Gosu...
+</div>
+</div>
+
+<div class='frm pst' id='pid6922' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6922' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6922.html#pid6922'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1022.html' >Eamonn</a>
+<span class='htt'>Date</span> 2013-07-02 22:11
+</div>
+<div class='ccl'>
+Ok, most my questions on Gosu can be summed up in one question, if you&#39;re familiar with the LÖVE engine.<br/><br/>Is Gosu as powerful(or maybe even more powerful) than LÖVE/löve/Löve/love2d/Love2d/löve2d/Löve2d/LÖVE2d?<br/><br/>If you are not familiar with LÖVE, here are my questions:<br/><br/>• Can Gosu handle SpriteSheets, either via a plugin/library or natively?<br/>• Can Gosu render Tiled maps?<br/>• Is Gosu capable of creating a commercial game? Purely curiosity!!<br/>• Is Gosu still active?<br/><br/>Those are questions that could have been answered if you knew what LÖVE was. Now I have a few other questions on Ruby &amp; Gosu, and here they are:<br/><br/>• I asked this a while ago, but maybe there&#39;s one now: Is there a tutorial on Gosu? If not, can I have a game to learn from?<br/>• Where could I go to recap on Ruby?<br/>• Are there any commercial games made using Gosu?<br/><br/>As I asked above, where can I go to recap on Ruby? Maybe a small 20 minute recap? The Ruby website was good for a recap, with their learn Ruby in 20 minutes. But I&#39;d like to recap more!!<br/><br/>Thanks! Any help is appreciated!
+</div>
+</div>
+
+<div class='brn' id='brn6922'>
+<div class='frm pst' id='pid6923' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6922'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6923' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6923.html#pid6923'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2013-07-02 22:40
+</div>
+<div class='ccl'>
+Well, I never looked up on Löve, so I&#39;m not sure whether it is as/more powerful as/than it, but I can try answering most of these questions.<br/><br/><i>Can Gosu handle SpriteSheets, either via a plugin/library or natively?</i><br/>Yup, Gosu can natively handle spritesheets. Using<br/><code>Gosu::Image.load_tiles(window, path, width, height, tileable?)</code><br/>(where width and height is the size of <b>single</b> sprite (if you&#39;re not sure what is the size of single sprites, but know that spritesheet will be ex. 8x8 sprites, use negative values to divide)) will create an array (1d) of Images from given file. You can then access them in other methods, such as <code>draw</code><br/><br/><i>Can Gosu render Tiled maps?</i><br/>If you mean maps created with program called Tiled ( <a class='ura' href='http://www.mapeditor.org/'>http://www.mapeditor.org/</a> ) then I&#39;m not sure. If you mean normal tiled map, with tiles stored in 2d array, then yes, Gosu can render those easily, with simple <code>for</code> loops.<br/><br/><i>Is Gosu capable of creating a commercial game? Purely curiosity!!</i><br/>Of course, Gosu is capable of creating a commercial game. <br/><br/><i>Is Gosu still active?</i><br/>Yup. Gosu is still active, and it is actively being updated (as far as I&#39;m aware). Surely any problem you have with it will be dealt pretty fast, depending on the problem.<br/><br/><i>I asked this a while ago, but maybe there&#39;s one now: Is there a tutorial on Gosu? If not, can I have a game to learn from?</i><br/>There is definately one tutorial, you can find it here: <a class='ura' href='https://github.com/jlnr/gosu/wiki/Ruby-Tutorial'>https://github.com/jlnr/gosu/wiki/Ruby-Tutorial</a> . I guess that&#39;s the tutorial most of us (if not all) started with. More you will probably have to learn by yourself, but there are few basic files, well commented too, that you can find in your Gosu gem location, in &quot;examples&quot; folder. Where is it depends on where you installed ruby, ex. on my desktop the path is:<br/><code>C:\Ruby192\lib\ruby\gems\1.9.1\gems\gosu-0.7.47.1-x86-mingw32\examples</code><br/><br/><i>Are there any commercial games made using Gosu?</i><br/>I don&#39;t know that, but I&#39;m actually wondering that myself. I think I read about a Ruby/Gosu game being sold on Steam somewhere, but I&#39;m not sure where, and if I really did, so... yeah.
+</div>
+</div>
+
+<div class='brn' id='brn6923'>
+<div class='frm pst' id='pid6927' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6923'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6927' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6927.html#pid6927'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-03 22:43
+</div>
+<div class='ccl'>
+I doubt if Ruby/Gosu has been commercialised. I know Unity of Command is a commercial Python/PyGame game on Steam though. Bit different though (only ships with bytecode, for example).<br/><br/>That said, there are several commercial open-source games, but for obvious reasons that makes &quot;fair&quot; multi-player pretty much impossible in a Ruby.
+</div>
+</div>
+
+<div class='brn' id='brn6927'>
+<div class='frm pst' id='pid6931' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6927'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6931' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6931.html#pid6931'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-04 06:54
+</div>
+<div class='ccl'>
+there are simple systems for open source games to have fair multiplayer, just have a look at clonk<br/><br/>also, why would ruby be worse than any other language?
+</div>
+</div>
+
+<div class='brn' id='brn6931'>
+<div class='frm pst' id='pid6936' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6931'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6936' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6936.html#pid6936'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-04 11:03
+</div>
+<div class='ccl'>
+Sorry, I meant that editable source (like Ruby) games make fair multiplayer impossible. Open-source games that ship exe/bytecode certainly have the potential to be fair.
+</div>
+</div>
+
+<div class='brn' id='brn6936'>
+<div class='frm pst' id='pid6937' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6936'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6937' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6937.html#pid6937'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-04 12:37
+</div>
+<div class='ccl'>
+i don&#39;t see how an open source game would be fairer if it&#39;s code can be compiled to bytecode?
+</div>
+</div>
+
+<div class='brn' id='brn6937'>
+<div class='frm pst' id='pid6938' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6937'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6938' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6938.html#pid6938'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-04 12:39
+</div>
+<div class='ccl'>
+It can&#39;t be edited directly, unlike Ruby files. Thus, it is significantly harder to hack (or, rather, it must be hacked, rather than just edited in notepad :D).
+</div>
+</div>
+
+<div class='brn' id='brn6938'>
+<div class='frm pst' id='pid6941' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6938'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6941' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6941.html#pid6941'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-04 12:43
+</div>
+<div class='ccl'>
+it&#39;s open source, do tell me how i cannot use the source to compile my own hacked version
+</div>
+</div>
+
+<div class='brn' id='brn6941'>
+<div class='frm pst' id='pid6942' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6941'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6942.html#pid6942'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-04 13:47
+</div>
+<div class='ccl'>
+Ha, good point. My wisdom is seriously lacking today!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6924' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6922'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6924.html#pid6924'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-07-03 10:04
+</div>
+<div class='ccl'>
+I don&#39;t know what LÖVE is. But i now for sure what Gosu is ! I&#39;ve been using it for years and can&#39;t go anywere else. This lib is great because it seems anything can be done with it. But you&#39;ll have to get your hands dirty.<br/><br/>SpriteSheets for example don&#39;t exist in Gosu, but like it was said, Gosu::Image.load_tiles can do the job. It&#39;ll be yours to find an efficient way to get the correct frame from the returned array of Gosu::Image.<br/><br/>For tiled map, if you&#39;re refering to the technique itself, the way to do it will be the same as SpriteSheets : a global tileset that is loaded into multiple Gosu::Image using Gosu::Image.load_tiles. You could improve the performances if you&#39;re recording your map after the drawing using Gosu::Window#record method.<br/><br/>For commercial opportunities, the problem would be that Ruby is not easy to hide, since it wasn&#39;t made for this purpose. I never found a good way to protect source code, mostly because I never had to. I don&#39;t know a lot about licences, but I think MIT licence is ok with that. Check this with JLNR.<br/><br/>Gosu is really active, compared to Rubygame for example. There is often new versions and a great support on both those forums and the IRC channel.<br/><br/>For Ruby in 20 minutes... there is no secret way to learn a langage. The 20 minutes tutorial gives the taste of programming in Ruby langage. But you&#39;ll have to practice a lot before being able to code in a proper way. I&#39;m not as good as most of programmers here, I learned enought so I can create quite complicated things in a small amount of time, but I know my Ruby style is not the best one, I just like it. I guess it&#39;s all relative to the person here.
+</div>
+</div>
+
+<div class='frm pst' id='pid6925' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6922'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6925' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6925.html#pid6925'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-03 10:26
+</div>
+<div class='ccl'>
+Re: Sprite sheets. I have just added a method to the upcoming Gosu version that makes it possible to cleanly write a loader for TexturePacker, or whatever the popular sprite sheet builder app is called. :) So if that&#39;s a requirement, it should only take a few lines of Ruby to implement sprite sheet support.<br/><br/>Gosu&#39;s license allows commercial use, but it&#39;s impossible to hide the source code of Ruby games on Windows. I don&#39;t think anyone has ever sold a Ruby/Gosu app, but I do have a wildly unsuccessful C++/Gosu game on the iOS App Store.<br/><br/>The biggest thing to be aware of is that while Gosu is &quot;active&quot;, it is also a never-ending project because operating systems get overhauled much faster these days than I can keep up with. Most users here have existing experience with Ruby or C(++) and that allows them to patch bits and pieces that get in the way of their games. I am also usually happy to fix things relatively quickly if a game release depends on it.
+</div>
+</div>
+
+<div class='brn' id='brn6925'>
+<div class='frm pst' id='pid6926' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6925'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6926' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6926.html#pid6926'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-03 22:41
+</div>
+<div class='ccl'>
+Not being able to hide the source code is more an effect of CRuby (MRI) than Windows. Does Gosu actually work with any of the other versions of Ruby? I&#39;ve never looked into it since CRuby is the only Ruby that works perfectly on Windows.<br/><br/>CRuby also has a dreadful garbage collector, which means you need to be very careful, especially on Windows, with action games, since otherwise your game will stutter horribly.
+</div>
+</div>
+
+<div class='brn' id='brn6926'>
+<div class='frm pst' id='pid6928' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6926'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6928' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6928.html#pid6928'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-04 00:38
+</div>
+<div class='ccl'>
+Yeah, it&#39;s dangerous that I rarely use Windows. I really have no idea how good or bad the GC is these days. :)<br/><br/>Is there any other Ruby impl. that supports C extensions on Windows? I guess I could wrap Gosu to Java using the JNI, and then use JRuby to use the resulting C/Java library. But that&#39;s already pretty ugly… :)
+</div>
+</div>
+
+<div class='brn' id='brn6928'>
+<div class='frm pst' id='pid6929' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6929' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6929.html#pid6929'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-04 01:06
+</div>
+<div class='ccl'>
+I&#39;m pretty sure that extensions aren&#39;t supported on Windows/JRuby. At least they weren&#39;t last time I looked...
+</div>
+</div>
+
+<div class='brn' id='brn6929'>
+<div class='frm pst' id='pid6930' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6929'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6930' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6930.html#pid6930'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-04 05:36
+</div>
+<div class='ccl'>
+Right, but &quot;Java extensions&quot; are probably supported… :)
+</div>
+</div>
+
+<div class='brn' id='brn6930'>
+<div class='frm pst' id='pid6932' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6930'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6932' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6932.html#pid6932'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-07-04 09:09
+</div>
+<div class='ccl'>
+I found this : <a class='ura' href='http://rubyencoder.com/'>http://rubyencoder.com/</a><br/><br/>It seems to encrypt all the source code. Do you know if that works ?
+</div>
+</div>
+
+<div class='brn' id='brn6932'>
+<div class='frm pst' id='pid6933' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6932'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6933' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6933.html#pid6933'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-04 10:07
+</div>
+<div class='ccl'>
+even if it does, you need the decryption code somewhere before you can execute the program -&gt; there&#39;s probably some program on the interwebs that simply decrypts that encrypted ruby code :)<br/><br/>the more important part of this rubyencoder is the conversion to bytecode. if that is done properly, there is no trivial un-compiler :)
+</div>
+</div>
+
+<div class='brn' id='brn6933'>
+<div class='frm pst' id='pid6934' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6933'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6934' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6934.html#pid6934'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-07-04 10:15
+</div>
+<div class='ccl'>
+So it makes the task of reverse engineering more difficult, but still possible. I thought about using a socket way to get the app from a server, but even this can get intercepted... It seems that there is just no safe way to use Ruby in a commercial purpose.
+</div>
+</div>
+
+<div class='brn' id='brn6934'>
+<div class='frm pst' id='pid6939' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6934'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6939.html#pid6939'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-04 12:42
+</div>
+<div class='ccl'>
+depends on your definition of safety.<br/>what is the goal you want to reach?<br/>in a singleplayer game, you don&#39;t really care about cheating.<br/>in a multiplayer game, you can design the server software as cheat-safe as you wish<br/>in a closed source game, people still cheat and manipulate the raw bytes<br/><br/>so having a game with readable source only prevents you from creating useful DRM<br/>do you really believe you need DRM? other than that, who cares if your game is closed source but ruby and therefor decompilable?<br/>a simple wrapper to only unpack your ruby code on execution and delete the temporary files afterwards is hard enough to keep away script kiddies, and everyone else will crack any other protection anyway.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6935' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6933'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6935' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6935.html#pid6935'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-04 11:01
+<span class='htt'>Edited</span> 2013-07-04 12:44
+</div>
+<div class='ccl'>
+True bytecode export is something that is &quot;coming&quot; in Ruby 2 (I read that it is implemented, but disabled, in 2.0, so maybe in 2.1?)
+</div>
+</div>
+
+<div class='brn' id='brn6935'>
+<div class='frm pst' id='pid6940' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6927.html#pid6935'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6940.html#pid6940'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-04 12:42
+</div>
+<div class='ccl'>
+now that is cool.<br/>bring on the bytecode optimizers!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=911.html#tid911'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=911.html#tid911'>Gosu Exchange</a> / A few questions on Gosu...
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6927.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

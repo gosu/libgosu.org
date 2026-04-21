@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7329 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Collision Detection: Sprites getting &quot;stuck&quot;</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7329' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=986.html#tid986'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=986.html#tid986'>Gosu Exchange</a> / Collision Detection: Sprites getting &quot;stuck&quot;
+</div>
+</div>
+
+<div class='frm pst' id='pid7327' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7327' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7327.html#pid7327'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1066.html' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-10 17:34
+</div>
+<div class='ccl'>
+Hi everyone,<br/><br/>I&#39;ve tried working through this on my own - first by reading Gosu&#39;s examples (CptnRuby and Tutorial), second by looking up articles on Gamedev.net and third by searching the Gosu forum.&#160; I like to look at examples, but implement the concept on my own without copy-pasting the examples.<br/><br/>I&#39;m stuck on implementing a bounding-box collision example.&#160; I&#39;ve just got a very simple example - I&#39;ve drawn a sprite in the middle of a window (immovable) and drawn another sprite (the player) that is moveable.&#160; Following the example <a class='url' href='http://www.gamedev.net/page/resources/_/technical/game-programming/collision-detection-r735'>here (Gamedev.net)</a> - I <b>think</b> I&#39;ve written it correctly for Ruby.<br/><br/>What happens is I move the &quot;player&quot; sprite and once I make contact with the non-moving sprite, the player sprite will get stuck.&#160; I thought I had my code checking for the collision before actually doing the move, but I&#39;m obviously wrong.<br/><br/>So a couple questions:<br/>1) I have an image that I&#39;ve drawn using <i>draw_rot</i>, when I ask that image what it&#39;s x, y, width, and height values are... is that from the center of the image?<br/><br/>2) Can you help me work through why my sprite is getting stuck?&#160; I&#39;m not understanding everything that is happening in my game loop obviously.<br/><br/>Any guidance would be muchly appreciated.<br/><br/>Here is my collision checking routine (defined in my game class):<br/><code><br/>def check_collisions(player, object)<br/>&#160; &#160; left1 = player.x<br/>&#160; &#160; left2 = object.x<br/>&#160; &#160; right1 = player.x + player.width<br/>&#160; &#160; right2 = object.x + object.width<br/>&#160; &#160; top1 = player.y<br/>&#160; &#160; top2 = object.y<br/>&#160; &#160; bottom1 = player.y + player.height<br/>&#160; &#160; bottom2 = object.y + object.height<br/><br/>&#160; &#160; if bottom1 &lt; top2 <br/>&#160; &#160; &#160; false<br/>&#160; &#160; &#160; return<br/>&#160; &#160; end<br/><br/>&#160; &#160; if top1 &gt; bottom2<br/>&#160; &#160; &#160; false<br/>&#160; &#160; &#160; return<br/>&#160; &#160; end<br/><br/>&#160; &#160; if right1 &lt; left2 <br/>&#160; &#160; &#160; false<br/>&#160; &#160; &#160; return<br/>&#160; &#160; end<br/>&#160; &#160; if left1 &gt; right2<br/>&#160; &#160; &#160; false<br/>&#160; &#160; &#160; return<br/>&#160; &#160; end<br/><br/>&#160; &#160; true<br/>&#160; end<br/>end<br/></code><br/><br/>And here is the update routine for the Game class:<br/><code><br/>&#160; def update<br/>&#160; &#160; move_x = move_y = 0<br/><br/>&#160; &#160; move_x += 3 if button_down? Gosu::KbRight<br/>&#160; &#160; move_x -= 3 if button_down? Gosu::KbLeft<br/>&#160; &#160; move_y += 3 if button_down? Gosu::KbDown<br/>&#160; &#160; move_y -= 3 if button_down? Gosu::KbUp<br/><br/>&#160; &#160; if check_collisions(@player, @pot_image)<br/>&#160; &#160; &#160; move_x = move_y = 0&#160; &#160; &#160; <br/>&#160; &#160; end<br/>&#160; &#160; @player.move(move_x, move_y)<br/>&#160; end<br/></code><br/><br/>And finally a Google Drive link to a screenshot showing the problem and my full Ruby source:<br/><a class='url' href='https://drive.google.com/folderview?id=0B4H6Muskqd1NLTlrSnB2WnFRN0U&amp;usp=sharing'>Google Drive</a>
+</div>
+</div>
+
+<div class='brn' id='brn7327'>
+<div class='frm pst' id='pid7328' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7329.html#pid7327'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7328' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7328.html#pid7328'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=867.html' >SPK</a>
+<span class='htt'>Date</span> 2013-10-10 19:05
+<span class='htt'>Edited</span> 2013-10-10 19:11
+</div>
+<div class='ccl'>
+Your code doesn&#39;t make any sense, because you always return nil.<br/><br/>Either remove the redundant return (well, not in your case) or move the true/false next to return.<br/><br/>Example:<br/>&#160; if top1 &gt; bottom2<br/>&#160; &#160; &#160; false<br/>&#160; &#160; &#160; return<br/>&#160; &#160; end<br/><br/>becomes<br/><br/>&#160; if top1 &gt; bottom2<br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/><br/>and so on.
+</div>
+</div>
+
+<div class='brn' id='brn7328'>
+<div class='frm pst' id='pid7329' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7329.html#pid7328'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7329.html#pid7329'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1066.html' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-11 00:33
+</div>
+<div class='ccl'>
+Thanks for your feedback.&#160; My inexperience with Ruby is showing through.&#160; I&#39;ve made that tweaks like you suggested, but I still encounter the same result with my sprite getting &#39;stuck&#39; once the collision happens.<br/><br/>Do you see anything else I am missing?<br/><br/><code><br/>&#160; &#160; if bottom1 &lt; top2 <br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/><br/>&#160; &#160; if top1 &gt; bottom2<br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/><br/>&#160; &#160; if right1 &lt; left2 <br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/>&#160; &#160; if left1 &gt; right2<br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/><br/>&#160; &#160; return true</code>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7330' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7329.html#pid7327'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7330' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7330.html#pid7330'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-10-11 04:35
+</div>
+<div class='ccl'>
+First, an image does not have an <code>x</code> or <code>y</code>; rather, your objects have <code>x</code> and <code>y</code> methods and you are drawing an image relative to that. Because of how <code>draw_rot</code> works, <code>x</code> and <code>y</code> are at the centre of the image of each object.<br/><br/>Your collision does not work because you do not check for collisions before moving - you do not pass <code>move_x</code> and <code>move_y</code> into <code>check_collision</code>, which are the new values, but instead <code>check_collision</code> uses the current position values.
+</div>
+</div>
+
+<div class='brn' id='brn7330'>
+<div class='frm pst' id='pid7331' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7329.html#pid7330'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7331.html#pid7331'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1066.html' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-11 09:18
+</div>
+<div class='ccl'>
+Thank you for your help - it makes sense now what was happening.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=986.html#tid986'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=986.html#tid986'>Gosu Exchange</a> / Collision Detection: Sprites getting &quot;stuck&quot;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7329.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

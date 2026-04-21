@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8778 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Procedural terrain generator works!  well . . . sorta.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8778' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1258.html#tid1258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1258.html#tid1258'>Gosu Exchange</a> / Procedural terrain generator works!  well . . . sorta.
+</div>
+</div>
+
+<div class='frm pst' id='pid8775' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8775' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8775.html#pid8775'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1242' >nietzschette</a>
+<span class='htt'>Date</span> 2016-01-27 04:07
+</div>
+<div class='ccl'>
+I&#39;m new to gosu and have some experience with sdl and opengl.&#160; I don&#39;t really have an end goal in mind; I&#39;m just curious what I could do with Gosu.&#160; Perhaps something simple like Alpha Centauri cuz that game was bawss!<br/><br/>so i&#39;ve been working on some isometric tiles and here a sample of what was generated supplying random tiles and elevations: <br/><br/><img class='emi' src='http://i.imgur.com/uwkxL5o.png' alt=''/><br/><br/>The server and client appear to be communicating data correctly.&#160; The blending functions all seem to be in order!<br/><br/>But when I zoom out and start changing elevations . . . <br/><br/><img class='emi' src='http://i.imgur.com/8tzZbph.png' alt=''/><br/><br/>. .&#160; there are black triangles scattered about, and can&#39;t find where in MY code those are coming from.&#160; I&#39;m sure it&#39;s just something I overlooked (isometric views are not as intuitive as I had originally intuited), so I&#39;ll keep looking.&#160; In the mean time I was curious if anyone else has encountered this sort of thing using the draw_as_quad function.
+</div>
+</div>
+
+<div class='brn' id='brn8775'>
+<div class='frm pst' id='pid8776' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8778.html#pid8775'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8776' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8776.html#pid8776'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-01-27 08:00
+</div>
+<div class='ccl'>
+Welcome to Gosu! I think you might be the first user to build a isometric map with depth :)<br/><br/>Have the images been loaded with <code>tileable: true</code>?<br/><br/><a class='ura' href='https://libgosu.org/rdoc/Gosu/Image.html#initialize-instance_method'>https://libgosu.org/rdoc/Gosu/Image.html#initialize-instance_method</a>
+</div>
+</div>
+
+<div class='brn' id='brn8776'>
+<div class='frm pst' id='pid8777' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8778.html#pid8776'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8777' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8777.html#pid8777'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1242' >nietzschette</a>
+<span class='htt'>Date</span> 2016-01-29 02:00
+</div>
+<div class='ccl'>
+yes, indeed.
+</div>
+</div>
+
+<div class='brn' id='brn8777'>
+<div class='frm pst' id='pid8778' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8778.html#pid8777'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8778' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8778.html#pid8778'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-01-29 09:06
+</div>
+<div class='ccl'>
+So are these black thin lines between tiles intentional? I am surprised that they&#39;re there :O<br/><br/>Also no idea about the black triangles. If you can build a small test case and it turns out that <code>draw_quad</code> cannot handle some coordinates well, I&#39;ll gladly look into it. In the meantime, can you add some runtime tests to make sure that the corners of adjacent tiles always match?
+</div>
+</div>
+
+<div class='brn' id='brn8778'>
+<div class='frm pst' id='pid8779' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8778.html#pid8778'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8779' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8779.html#pid8779'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1242' >nietzschette</a>
+<span class='htt'>Date</span> 2016-01-29 18:28
+</div>
+<div class='ccl'>
+those black lines are not intentional.&#160; i suspect they are some error with my home-brewed scaling function.&#160; Because my blending function is operating on every pixel of each tile, I need to employ some mip-mapping to reduce the time it takes to complete based upon the number of total number tiles being displayed at any time.&#160; Smaller tiles are not just scaled by gosu, but are using lower res versions of the tileset.&#160; without this scaling function there are no little black lines; although it would take forever to blend up to four 1024x1024 textures per tile.<br/><br/>That said, if i do fix this scaling function, I&#39;d likely want to switch between the two versions, as sometimes it might be handy to see the boarders between tiles, depending on what sort of game comes out of this.&#160; &#39;There are no mistakes, only happy accidents!&#39;<br/><br/>I&#39;m interested how others might approach scaling/mip-mapping?&#160; here is mine, belongs to an instance of Surface class, and takes a float between 0.0 and 1.0 as input:<br/><br/>`<br/>def scale(n)<br/> nw = (@w*n).to_i<br/> nh = (@h*n).to_i<br/> skipw = (@w/nw)*4<br/> skiph = (@h/nh)*4<br/> pixie = &#39;&#39;<br/> nh.times{|y|<br/>&#160; nw.times{|x|<br/>&#160;&#160; pixie &lt;&lt; @pixels[((y*skiph)*@w)+(x*skipw),4]<br/>&#160; }<br/> }<br/> @w = nw<br/> @h = nh<br/> @pixels = pixie<br/> return self<br/>end<br/>&#39;<br/>pixels, here, being the same as blob.
+</div>
+</div>
+
+<div class='brn' id='brn8779'>
+<div class='frm pst' id='pid8780' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8778.html#pid8779'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8780.html#pid8780'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-01-30 10:46
+</div>
+<div class='ccl'>
+I have not built mip-maps before, but I&#39;d try to generate the different mip-map levels during development using RMagick or some other tool. Less code, better results, because it does not simply skip pixels :)<br/>(Or maybe Gosu should just let you enable mip-mapping with a flag...but so far this has not been a common request.)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1258.html#tid1258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1258.html#tid1258'>Gosu Exchange</a> / Procedural terrain generator works!  well . . . sorta.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8778.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Tileset management class</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=162.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=162.html#tid162'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=162.html#tid162'>Gosu Exchange</a> / Tileset management class
+</div>
+</div>
+
+<div class='frm pst' id='pid1017' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1017.html#pid1017'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=90.html' >liekzomg</a>
+<span class='htt'>Date</span> 2009-06-23 08:45
+</div>
+<div class='ccl'>
+Making a 2d top down game with a friend that will use a lot tilesets. He&#39;s going to be doing a lot of the art. Ideally I want him to be able to edit tilesets to his hearts content, moving things around, redoing them etc. So I don&#39;t want to hardcode any particular tiles (like 3,4 is player.run_left). I think I can achieve this by having a 2nd file alongside the png with names and positions. Eg. player.png and player.ts in the /media file with player.png having a bunch of tiles and player.ts having 16x16 on first line for tile size followed by run_left,run_up,...,walk_left etc in matching positions to that of the png. When I call Tileset.load(&quot;player&quot;) it splits up all the tiles into single tiles and their corresponding name so I can call something like player.tile(:run_up) and get the tile for player running up.<br/><br/>This is my first ever try at creating a game so any advice you can give me on whether this is a bad idea or any pitfalls I&#39;ll run into would be appreciated.
+</div>
+</div>
+
+<div class='frm pst' id='pid1018' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1018.html#pid1018'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-23 13:58
+</div>
+<div class='ccl'>
+Hmm, if you use YAML it should be very straightforward to construct such a class :)<br/><br/><code># player.yml<br/>foo: { x: 5, y: 6 }<br/>bar: { x: 6, y: 10 }<br/></code><br/><br/><code># .rb<br/>require &#39;yaml&#39;<br/>…<br/>tiles = YAML.load_file(&quot;player.yml&quot;)<br/>p tiles[&#39;foo&#39;][&#39;x&#39;]</code><br/><br/>Now all the class would need is a hash to remember available images.
+</div>
+</div>
+
+<div class='frm pst' id='pid1019' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1019.html#pid1019'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-06-23 16:05
+<span class='htt'>Edited</span> 2009-06-23 16:13
+</div>
+<div class='ccl'>
+Well, you might want to take a look at my ImageManager, Tileset and Tile classes from Operation Lambda, though in my game I didn&#39;t pack sprites for different poses or orientations into single files. The only time I load multiple tiles from a single png is when loading animation frames. None-the-less, some of it could be helpful.<br/><br/><a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/app/ImageManager.rb'>ImageManager</a>, <a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/app/Tileset.rb'>Tileset</a>, <a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/app/Tile.rb'>Tile</a>, my main <a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/appdata/media/images/tiles/OperationLambda/metadata.yaml'>tileset metadata file</a>.<br/><br/>Here&#39;s an example usage, the main draw method in my GameplayMap class:<br/><br/><code><br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; @background_image.draw(0,0,ZOrder::Stars)<br/>&#160; &#160; &#160; self.each_with_coords do |obj,x,y|<br/>&#160; &#160; &#160; &#160; xpos = x * Sizes::TileWidth<br/>&#160; &#160; &#160; &#160; ypos = y * Sizes::TileHeight<br/>&#160; &#160; &#160; &#160; @floor_image.draw(xpos,ypos,ZOrder::Floor) unless (obj.noun == &#39;Space&#39;)<br/>&#160; &#160; &#160; &#160; ImageManager.tile(obj.key).frame(obj.frame_fraction,true).draw(xpos,ypos,ZOrder::Things)<br/>&#160; &#160; &#160; &#160; obj.draw_beams(xpos,ypos)<br/>&#160; &#160; &#160; end <br/>&#160; &#160; end <br/></code><br/><br/>Edit: By all means, please ignore all the font-related code in ImageManager, by the way. Though functional, it is hideous and not a starting point for your own work. I need to change it. The actual image-related code is pretty good, though. At least, it&#39;s served me very well.<br/><br/>I should also note (since this hasn&#39;t made it into source comments yet) that in the context of Operation Lambda, a &#39;Tileset&#39; is a complete set of every tile image that is used by the game. This differs from what is probably the normal use of the term, under which you would have a tileset for each entity, such as a player tileset, a tileset for each enemy, etc. In other words, my Tileset class might be more appropriately called a &#39;theme&#39; or &#39;skin&#39;.<br/><br/>Anyway, hope this helps.<br/><br/>Edit again: Spelling.
+</div>
+</div>
+
+<div class='frm pst' id='pid1029' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1029.html#pid1029'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=90.html' >liekzomg</a>
+<span class='htt'>Date</span> 2009-06-25 23:35
+</div>
+<div class='ccl'>
+Thankyou jlnr and philomory. YAML seems like a really good fit and I&#39;m reading through your code now, don&#39;t know how I&#39;m going to handle animations so your code is definitely helping.<br/><br/>P.S. sorry for somehow putting this post in the showcase forum... really not sure how I managed to do that.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=162.html#tid162'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=162.html#tid162'>Gosu Exchange</a> / Tileset management class
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=162.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

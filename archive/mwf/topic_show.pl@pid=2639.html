@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2639 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu text consistency</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2639' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=398.html#tid398'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=398.html#tid398'>Gosu Exchange</a> / Gosu text consistency
+</div>
+</div>
+
+<div class='frm pst' id='pid2635' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2635.html#pid2635'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=156.html' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-06-09 22:04
+</div>
+<div class='ccl'>
+Hello,<br/><br/>I&#39;ve been chatting about this on IRC, but I think it&#39;s worth writing it on the forum as well.<br/><br/>I think Gosu::createText is almost perfect, but I don&#39;t understand why it&#39;s got no color argument. &quot;Use Gosu::drawText, it does have color&quot; you may say; the problem is that drawText draws on an already initialized Bitmap, and createText creates that bitmap, automatically resizing it to properly fit the text.<br/><br/>Of course, I can do:<br/><br/><code>Gosu::Bitmap b;<br/>b.resize(Gosu::textWidth(text, font, fontHeight), fontHeight);<br/>Gosu::drawText(b, text, x, y, color, font, fontHeight);</code><br/><br/>But that&#39;s three lines, and those three lines are literally the ones that appear in Gosu::createText (from Text.cpp, lines 312-314). Just adding a fifth parameter to Gosu::createText would do the trick.<br/><br/>On IRC it was also said that I could use createText and then colorize the created image using .draw. Yep, but I would have to clutter my draw event with color logic, and I think the proper place to choose the color is the creation.<br/><br/>What do you think?
+</div>
+</div>
+
+<div class='frm pst' id='pid2639' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2639.html#pid2639'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-10 02:05
+</div>
+<div class='ccl'>
+I always just do like the Tutorial does and color the text by using the color argument to draw. Is there a use case for not doing that? I was actually even thinking about kicking out the color argument to drawText because I didn&#39;t remember it being used ^^&quot;
+</div>
+</div>
+
+<div class='frm pst' id='pid2650' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2650' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2650.html#pid2650'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-12 17:45
+</div>
+<div class='ccl'>
+Circumventing this issue and others by beefing up Text support a bit (finally!!!). This will allow you to use everything with everything without flag bit masks, color arguments here and there, etc.
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=462.html'><img class='amt' src='../../mwf/attachments/50/2650/textformatting.thb.jpg' title='textformatting.png (33k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn2650'>
+<div class='frm pst' id='pid2726' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2639.html#pid2650'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2726' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2726.html#pid2726'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=154.html' >ell</a>
+<span class='htt'>Date</span> 2010-06-17 20:52
+</div>
+<div class='ccl'>
+Awfully sorry about an off-topic post, but what is the font you used for the source code in that last screen shot?
+</div>
+</div>
+
+<div class='brn' id='brn2726'>
+<div class='frm pst' id='pid2727' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2639.html#pid2726'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2727.html#pid2727'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-06-17 22:47
+</div>
+<div class='ccl'>
+Looks like <a class='url' href='http://en.wikipedia.org/wiki/Monaco_(typeface)'>Monaco</a>; I&#39;m not sure if it&#39;s available for Windows since it&#39;s an Apple typeface.
+</div>
+</div>
+
+<div class='frm pst' id='pid2734' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2639.html#pid2726'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2734.html#pid2734'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=182.html' >BlueScope</a>
+<span class='htt'>Date</span> 2010-06-18 17:37
+</div>
+<div class='ccl'>
+It doesn&#39;t seem to cost anything, as it&#39;s featured on quite a lot of locations... such as <a class='url' href='http://www.fonts101.com/fonts/view/Uncategorized/51239/Monaco.aspx'>http://www.fonts101.com/fonts/view/Uncategorized/51239/Monaco.aspx</a> (TrueType Font)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid2769' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2639.html#pid2650'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2769.html#pid2769'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=156.html' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-07-02 09:06
+</div>
+<div class='ccl'>
+You rock!
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=398.html#tid398'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=398.html#tid398'>Gosu Exchange</a> / Gosu text consistency
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2639.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

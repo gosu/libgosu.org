@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>zooming/unzooming background image</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6471' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=840.html#tid840'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=840.html#tid840'>Gosu Exchange</a> / zooming/unzooming background image
+</div>
+</div>
+
+<div class='frm pst' id='pid6471' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6471' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6471.html#pid6471'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=982' >OldBoy</a>
+<span class='htt'>Date</span> 2013-01-17 20:58
+</div>
+<div class='ccl'>
+I want to load large picture (above 3000x3000 pixels, static, like a background), and I want to be able to zoom/unzoom a portion of it (with mousewheel and/or keyboard) and also to move it to see other parts of whole image. Sort of like an imageviewer (acdsee, irfanview) - open image, zoom, unzoom, scroll to the edges.... The (big) plan is to load a map image, &quot;surf&quot; through it and record every movement and zoom(vent) and then play it at custom speed<br/><br/>I tried to achieve this with gamemaker studio, but scrolling feels unnatural, and I think it has a bug in latest version.<br/><br/>I just wonder if it&#39;s possible to do this with gosu and which methods am I looking for ?<br/>I&#39;m fairly new to ruby/gosu, just wanted to ask before I start to dig deeper
+</div>
+</div>
+
+<div class='brn' id='brn6471'>
+<div class='frm pst' id='pid6472' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid6471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6472' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6472.html#pid6472'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-01-17 23:53
+</div>
+<div class='ccl'>
+You should be able to do everything you are asking for in Gosu. You can move and scale images each time you draw them, so that is easy enough (or you can translate or scale the whole window). Gosu will happily load large images of any size, though internally it will actually use several smaller textures, but that is transparent to us.<br/><br/>In <i>very</i> complex games, scrolling with Gosu can get a bit jerky because the Ruby garbage collector decides to hate you, but for your simple application I can&#39;t imagine that being noticeable at all.
+</div>
+</div>
+
+<div class='brn' id='brn6472'>
+<div class='frm pst' id='pid6474' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid6472'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6474.html#pid6474'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=961.html' >erikskoglund</a>
+<span class='htt'>Date</span> 2013-01-18 09:31
+</div>
+<div class='ccl'>
+I haven&#39;t read up a lot on the GC in Ruby. But I have some experience with other frameworks and languages that use garbage collection. From what I have tried there are two ways to go with this:<br/>1. Allocate everything up front, during load time. Use resource pooling instead of creating new objects all the time. The goal of this method is to not have the GC run at all.<br/>2. Keep a simple heap, small amount on references to objects. The goal of this method is to make the GC take less time to run.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6476' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid6471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6476.html#pid6476'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-18 09:58
+</div>
+<div class='ccl'>
+This is absolutely possible in Gosu. My biggest worry is that zoomed-out images will look odd because Gosu does not use MIP-mapping, and rendering a huge OpenGL texture onto a very small plane might look terrible.<br/><br/>Ruby (and by extension, Gosu) is also a desert when it comes to GUI libraries. So if you want to add a secondary window, or a custom application menu, you can only simulate it inside Gosu&#39;s drawing area.<br/><br/>Oh and you cannot load images asynchronously, so the app might hang for a bit when loading a huge image. I guess it all depends on whether this is a user-facing app or a creation tool ...
+</div>
+</div>
+
+<div class='frm pst' id='pid7410' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid6471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7410' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7410.html#pid7410'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1074.html' >Donna111</a>
+<span class='htt'>Date</span> 2013-10-25 06:56
+</div>
+<div class='ccl'>
+HI there<br/>I also want to zoom my image.But i don&#39;t know how.Is there any image&#160; program which supports to <a class='url' href='http://www.rasteredge.com/how-to/csharp-imaging/zoom-online/'>zoom image online</a>?<br/>I think that would be more convinient.Thanks for any suggestion.
+</div>
+</div>
+
+<div class='brn' id='brn7410'>
+<div class='frm pst' id='pid7414' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7410'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7414.html#pid7414'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-10-25 13:12
+</div>
+<div class='ccl'>
+Are you looking for a free image editor to stretch images? If so, then I think Paint.net is the most popular free editor for Windows. But even good old MS Paint can do it :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7423' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid6471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7423' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7423.html#pid7423'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-26 06:33
+</div>
+<div class='ccl'>
+@Donna111, good luck finding what you&#39;re looking for.<br/><br/>@OldBoy, you could try something like:<br/><br/><code>def increase_image_size<br/>&#160; self.factor *= 1.05<br/>end<br/><br/>def decrease_image_size<br/>&#160; self.factor *= 0.95<br/>end</code><br/><br/>and call these methods when an arrow is pushed or the scrollwheel is moved.
+</div>
+</div>
+
+<div class='brn' id='brn7423'>
+<div class='frm pst' id='pid7427' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7423'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7427' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7427.html#pid7427'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-10-26 20:10
+</div>
+<div class='ccl'>
+Note, this assumes one is using chingu. :)
+</div>
+</div>
+
+<div class='brn' id='brn7427'>
+<div class='frm pst' id='pid7429' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7427'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7429.html#pid7429'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-27 08:20
+</div>
+<div class='ccl'>
+Oops! I unthinkingly assumed it was the same in Chingu as in Gosu... and we all know what assuming does....
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7746' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid6471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7746' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7746.html#pid7746'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=982' >OldBoy</a>
+<span class='htt'>Date</span> 2014-02-28 13:17
+</div>
+<div class='ccl'>
+wow, it&#39;s already been a year since I asked this ... I must be the slowest programmer ever :)<br/>Anyway, here&#39;s what I&#39;ve came up with:<br/><code>----------------------------------------------------------------------------------------------------------------<br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; POMAK = 5<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; super 1366, 768, true, update_interval = 20<br/>&#160; &#160; <br/>&#160; &#160; @x = @y = 0<br/>&#160; &#160; @f_x = @f_y = 1.0<br/>&#160; &#160; @slika = Gosu::Image.new(self, &#39;18.jpg&#39;, false) <br/>&#160; &#160; @font = Gosu::Font.new(self, Gosu::default_font_name, 20)<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; if button_down?(Gosu::KbLeft)<br/>&#160; &#160; &#160; @x += POMAK<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(Gosu::KbRight)<br/>&#160; &#160; &#160; @x -= POMAK<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(Gosu::KbUp)<br/>&#160; &#160; &#160; @y += POMAK<br/>&#160; &#160; &#160; #@player.accelerate<br/>&#160; &#160; end <br/>&#160; &#160; if button_down?(Gosu::KbDown)<br/>&#160; &#160; &#160; @y -= POMAK<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(Gosu::KbNumpadAdd)<br/>&#160; &#160; &#160; @f_x += 0.01<br/>&#160; &#160; &#160; @f_y += 0.01<br/>&#160; &#160; &#160; @x -= 15<br/>&#160; &#160; &#160; @y -= 15<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(Gosu::KbNumpadSubtract)<br/>&#160; &#160; &#160; @f_x -= 0.01<br/>&#160; &#160; &#160; @f_y -= 0.01<br/>&#160; &#160; &#160; @x += 15<br/>&#160; &#160; &#160; @y += 15<br/>&#160; &#160; end&#160; <br/>&#160; &#160; if button_down?(Gosu::MsWheelUp)<br/>&#160; &#160; &#160; @f_x += 0.01<br/>&#160; &#160; &#160; @f_y += 0.01<br/>&#160; &#160; &#160; @x -= 15<br/>&#160; &#160; &#160; @y -= 15<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(Gosu::MsWheelDown)<br/>&#160; &#160; &#160; @f_x -= 0.01<br/>&#160; &#160; &#160; @f_y -= 0.01<br/>&#160; &#160; &#160; @x += 15<br/>&#160; &#160; &#160; @y += 15<br/>&#160; &#160; end&#160; <br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; @slika.draw(@x, @y, 1, @f_x, @f_y)<br/>&#160; &#160; @font.draw(&quot;Mish_x: #{mouse_x}; Mish_y: #{mouse_y}&quot;, 10, 10, 3, 1.0, 1.0, 0xffffff00)<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; case id<br/>&#160; &#160; when Gosu::KbEscape<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; &#160; # when MsLeft<br/>&#160; &#160; # not working !&#160; <br/>&#160; &#160; # end<br/>&#160; end<br/>&#160; <br/>&#160; def needs_cursor?<br/>&#160; &#160; true<br/>&#160; end<br/>end<br/><br/>window = GameWindow.new<br/>window.show<br/>------------------------------------------------------------------------------------------------------------ </code><br/><br/>It&#39;s a good start, but I have few problems:<br/><br/>1- How to implement mouse wheel to work (wheel up should do same as KbNumpadAdd,&#160; wheeldown = KbNumpadSubtract) <br/>2- How to implement image movement when mouse left button is pressed and hold (like google maps) ... drag and drop, is that how it&#39;s called ?<br/>3- How to ZOOM at the CENTER of the screen ?? You can notice that I am manually adding 15 pixels ( @x += 15 and @y += 15 ) when I&#39;m changing factor_x/factor_y (@f_x -= 0.01 and @f_y -= 0.01) ... but it still isn&#39;t right ... I&#39;m affraid I&#39;ll need some advanced math for this ?<br/>4- How to set font to Courier New ?<br/><br/>Any help appreciated !
+</div>
+</div>
+
+<div class='brn' id='brn7746'>
+<div class='frm pst' id='pid7747' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7746'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7747' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7747.html#pid7747'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-02-28 13:25
+</div>
+<div class='ccl'>
+I only have time to answer 1 - <code>MsWheelUp</code> and <code>MsWheelDown</code> are sent to <code>button_down(id)</code> when the wheel is moved.
+</div>
+</div>
+
+<div class='brn' id='brn7747'>
+<div class='frm pst' id='pid7751' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7747'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7751.html#pid7751'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=982' >OldBoy</a>
+<span class='htt'>Date</span> 2014-02-28 17:26
+</div>
+<div class='ccl'>
+yep, that did the trick ... thank you very much ... now I have only one (two) problem(s) left:<br/><br/>a- How to zoom image at the center of the screen<br/>or <br/>b- How to zoom/unzoom image at the point of mouse cursor (google maps way)<br/><br/>Take as much time as you need ... I am very slow and inconsistent with finishing my code anyway
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7749' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7746'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7749' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7749.html#pid7749'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2014-02-28 14:18
+</div>
+<div class='ccl'>
+2.<br/>You need three conditions: when mouse is pressed, being hold and released. You&#39;d need some variable that is set true when you just press the button (in <code>button_down(id)</code>) or use simpler solution, store initial position of mouse and image and then translate while button is being pressed<br/><br/><code>if button_down?(Gosu::KbLeft) #button is being hold<br/>&#160; if !@drag #store the current position of image and mouse<br/>&#160; &#160; @drag = [mouse_x, mouse_y]<br/>&#160; &#160; @origin = [@x, @y]<br/>&#160; else<br/>&#160; &#160; @x&#160; = @origin[0] - (mouse_x - @drag[0]) #translate according to mouse movement<br/>&#160; &#160; @y&#160; = @origin[1] - (mouse_y - @drag[1])<br/>&#160; end<br/>else #button is released<br/>&#160; @drag = @origin = nil #clear variables, so you can re-use them<br/>end<br/></code><br/>Ask if you don&#39;t understand something.<br/><br/>4.<br/>Instead of <code>Gosu::default_font_name</code> use just <i>&quot;Courier New&quot;</i> (string). Gosu will look for the font in your system directory or given path.
+</div>
+</div>
+
+<div class='brn' id='brn7749'>
+<div class='frm pst' id='pid7750' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6471.html#pid7749'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7750.html#pid7750'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=982' >OldBoy</a>
+<span class='htt'>Date</span> 2014-02-28 17:13
+</div>
+<div class='ccl'>
+<code>if button_down?(Gosu::MsLeft) #button is being hold<br/>&#160; &#160; &#160; if !@drag&#160;&#160; #this executes only once,when we press mouse button @drag == nil means !@drag is true<br/>&#160; &#160; &#160; &#160; @drag = [mouse_x, mouse_y] #store the current position of mouse<br/>&#160; &#160; &#160; &#160; @origin = [@x, @y]&#160; &#160; &#160; &#160;&#160; #store the current position of image<br/>&#160; &#160; &#160; else&#160;&#160; #after initial mouse click, @drag != nil, meaning&#160; !@drag == false, meaning this block executes while we hold mouse button pressed<br/>&#160; &#160; &#160; &#160; @x&#160; = @origin[0] + (mouse_x - @drag[0]) #translate according to mouse movement<br/>&#160; &#160; &#160; &#160; @y&#160; = @origin[1] + (mouse_y - @drag[1])<br/>&#160; &#160; &#160; end<br/>&#160; &#160; else #button is released<br/>&#160; &#160; &#160; @drag = @origin = nil #clear variables, so you can re-use them<br/>&#160; &#160; end</code><br/>---------------------------------------------------------------------------------------------------<br/><br/>This is beautiful, works perfectly ... it took me some time to figure out whats going on though, so I added some comments if there are other newbies like me reading this.<br/>You also solved my #4 question<br/><br/>Thank you very much !
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=840.html#tid840'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=840.html#tid840'>Gosu Exchange</a> / zooming/unzooming background image
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6471.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

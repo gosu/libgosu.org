@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4854 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Set image transparency</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4854' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=641.html#tid641'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=641.html#tid641'>Gosu Exchange</a> / Set image transparency
+</div>
+</div>
+
+<div class='frm pst' id='pid4842' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4842' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4842.html#pid4842'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-26 18:01
+</div>
+<div class='ccl'>
+Hi to everyone ;)<br/><br/>I was wondering: is there a way to set the transparency of an image? I&#39;m trying to have a sort of glow effect, but with no transparency that&#39;s pretty hard :S
+</div>
+</div>
+
+<div class='brn' id='brn4842'>
+<div class='frm pst' id='pid4843' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4842'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4843' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4843.html#pid4843'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-09-26 19:01
+</div>
+<div class='ccl'>
+Draw this image using color with lower alpha value, like 0x80ffffff
+</div>
+</div>
+
+<div class='brn' id='brn4843'>
+<div class='frm pst' id='pid4844' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4843'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4844' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4844.html#pid4844'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-26 19:45
+</div>
+<div class='ccl'>
+cool, this seems to work :P<br/><br/>is there a way i can insert a variable inside the alpha value? i mean: this isn&#39;t working, but if i had the possibility to write something like this:<br/><br/>@immagini_logo.draw(0, 0, 0, factor_x=1, factor_y=1, color=0x<b>(ff-$n)</b>ffffff)<br/><br/>with $n floating between 00 and ff, i could have my glowing image. But this code just doesn&#39;t seem to work :\
+</div>
+</div>
+
+<div class='brn' id='brn4844'>
+<div class='frm pst' id='pid4845' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4844'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4845' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4845.html#pid4845'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2011-09-26 20:18
+</div>
+<div class='ccl'>
+use the Color class instead of a fixnum
+</div>
+</div>
+
+<div class='brn' id='brn4845'>
+<div class='frm pst' id='pid4846' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4845'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4846' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4846.html#pid4846'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-26 22:23
+</div>
+<div class='ccl'>
+uhm. sorry but, as you can see, I am definitely a noob. How can I use a class to modify the color of the image? you mean using Gosu::Color in someway?
+</div>
+</div>
+
+<div class='brn' id='brn4846'>
+<div class='frm pst' id='pid4848' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4846'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4848.html#pid4848'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-09-27 05:16
+</div>
+<div class='ccl'>
+@immagini_logo.draw(0, 0, 0, 1, 1, Color.new(alpha , red , green , blue))<br/><br/>And you don&#39;t need to write &#39;factor_x=&#39;&#160; or&#160;&#160; &#39;color=&#39;&#160;&#160; each time.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4847' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4844'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4847' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4847.html#pid4847'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-09-26 23:13
+</div>
+<div class='ccl'>
+Try:<br/><br/><code>@immagini_logo.draw(0, 0, 0, 1, 1, ((0xFF - $n) &lt;&lt; 24) + 0xFFFFFF)</code><br/><br/>(Or use the <a class='url' href='../../rdoc/Gosu/Color.html'>the Color class</a> like Dahrkael said).
+</div>
+</div>
+
+<div class='brn' id='brn4847'>
+<div class='frm pst' id='pid4849' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4847'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4849' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4849.html#pid4849'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-09-27 15:41
+</div>
+<div class='ccl'>
+-1 for being the sort of hack <i>I&#39;d</i> resort to. :D
+</div>
+</div>
+
+<div class='brn' id='brn4849'>
+<div class='frm pst' id='pid4864' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4849'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4864' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4864.html#pid4864'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-09-29 04:30
+</div>
+<div class='ccl'>
+heh<br/><br/>I only did it to show how close his code was to working. He&#39;s obviously a newbie (no offense, Italian reaper dude) and I knew there would be other people spoiling him by coding it for him &quot;the right way&quot;. This way, I thought he might at least learn something on his own, even if it&#39;s not directly &quot;properly&quot; applicable here...
+</div>
+</div>
+
+<div class='brn' id='brn4864'>
+<div class='frm pst' id='pid4865' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4864'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4865.html#pid4865'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-09-29 04:32
+</div>
+<div class='ccl'>
+Hopefully the jocular nature of my comment came through! I <i>have</i> done it that way and probably would again. :D
+</div>
+</div>
+
+<div class='frm pst' id='pid4868' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4864'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4868.html#pid4868'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-29 23:39
+</div>
+<div class='ccl'>
+no offense, I surely am a newbie ;)<br/><br/>(i do these things for hobby, i never had some serious programming course... i do what i can XD)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4851' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4847'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4851' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4851.html#pid4851'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-27 16:15
+</div>
+<div class='ccl'>
+ok, this works, but i can&#39;t understand why.<br/><br/>what&#39;s that &lt;&lt; 24 ? :S
+</div>
+</div>
+
+<div class='brn' id='brn4851'>
+<div class='frm pst' id='pid4866' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4851'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4866.html#pid4866'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-09-29 04:34
+</div>
+<div class='ccl'>
+It means &quot;shift a number 24 bits to the left&quot;. It&#39;s shorthand for &quot;multiply by 16777216&quot;. It seems to be a bit beyond your skill level at this point, but if you keep learning about programming you&#39;ll eventually get to binary math and it&#39;ll make sense. Just do it the &quot;right&quot; way using Gosu::Color.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4850' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4844'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4850' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4850.html#pid4850'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-09-27 15:46
+</div>
+<div class='ccl'>
+It&#39;s also worth a note that you probably shouldn&#39;t be using the $ sigil (as in $n), because that indicates a global variable. Just use a bare name for local variables.<br/><br/>You <i>will</i> encounter strange bugs later using global variables like that if you use the same name in more than one place. C:
+</div>
+</div>
+
+<div class='brn' id='brn4850'>
+<div class='frm pst' id='pid4852' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4850'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4852' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4852.html#pid4852'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-27 16:25
+</div>
+<div class='ccl'>
+uhm. but if i use a local variable, then i can use it in an other method?<br/><br/>for example, in this case, now we have:<br/><br/>def initialize<br/>[...]<br/>&#160; &#160; $glow_logo = 0<br/>&#160; &#160; $glow_logo_boolean = false<br/>end<br/><br/>def update<br/>[...]<br/>&#160; &#160; if $menu == true then<br/>&#160; &#160; &#160; if $glow_logo_boolean == false then<br/>&#160; &#160; &#160; &#160; $glow_logo = $glow_logo + 2<br/>&#160; &#160; &#160; &#160; if $glow_logo == 200 then<br/>&#160; &#160; &#160; &#160; &#160; $glow_logo_boolean = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; $glow_logo = $glow_logo - 2<br/>&#160; &#160; &#160; &#160; if $glow_logo == 0 then<br/>&#160; &#160; &#160; &#160; &#160; $glow_logo_boolean = false<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>end<br/><br/>def draw<br/>[...]<br/>&#160; &#160; if ($menu == true) then<br/>&#160; &#160; &#160; @immagini_logo.draw(0, 0, 0, factor_x=1, factor_y=1, ((0xFF - $glow_logo) &lt;&lt; 24) + 0xFFFFFF)<br/>&#160; &#160; end<br/>[...]<br/>end<br/><br/>I just tried to change $glow_logo_boolean in a local variable, but it doesn&#39;t work.
+</div>
+</div>
+
+<div class='brn' id='brn4852'>
+<div class='frm pst' id='pid4854' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4852'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4854.html#pid4854'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-09-27 20:20
+</div>
+<div class='ccl'>
+Well, for variables that need to be shared across methods, use an instance variable. They shouldn&#39;t need to be accessible outside of your object.<br/><br/>As for fading in and out, let me see if I can get the math right this time. I wrote an equation that was wrong and kept getting the corrections wrong a while ago because I was on a tablet and couldn&#39;t test it!<br/><br/>There we go. <code>0.5 + Math.sin(Math::PI * Gosu.milliseconds / 1000.0) / 2</code> should give you a float in the range 0 – 1 inclusive, with a period of one second. If you want toit to go faster or slower, change 1000 to something else—it&#39;s basically the period in milliseconds.
+</div>
+</div>
+
+<div class='frm pst' id='pid4855' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4852'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4855' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4855.html#pid4855'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-09-27 20:36
+</div>
+<div class='ccl'>
+More usefully:<br/><br/><code><br/>&#160; def draw<br/>&#160; &#160; …<br/>&#160; &#160; if @menu<br/>&#160; &#160; &#160; alpha = (128 + 128 * Math.sin(Math::PI * Gosu.milliseconds / 1000.0)).floor<br/>&#160; &#160; &#160; @immagini_logo.draw 0, 0, 0, 1, 1, Gosu::Color.argb(alpha, 255, 255, 255)<br/>&#160; &#160; end<br/>&#160; &#160; …<br/>&#160; end<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn4855'>
+<div class='frm pst' id='pid4856' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4855'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4856' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4856.html#pid4856'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-27 22:47
+<span class='htt'>Edited</span> 2011-09-27 22:54
+</div>
+<div class='ccl'>
+that&#39;s crazy.<br/><br/>it works but i can&#39;t understand what the heck is that &gt;.&lt;<br/><br/>what is PI? and that .floor? O___O<br/><br/>(thanks a lot =D )
+</div>
+</div>
+
+<div class='brn' id='brn4856'>
+<div class='frm pst' id='pid4857' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4856'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4857' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4857.html#pid4857'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-09-28 05:58
+</div>
+<div class='ccl'>
+PI is a math constant. You should know it from school.<br/>.floor removes decimal, like (1.25).floor = 1
+</div>
+</div>
+
+<div class='brn' id='brn4857'>
+<div class='frm pst' id='pid4858' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4857'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4858' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4858.html#pid4858'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-28 12:38
+</div>
+<div class='ccl'>
+ah, the π!<br/><br/>what i&#39;m trying to understand is: why this equation gives a different result at every refresh? i mean, there are no variables that changes each time... i suppose it&#39;s related to that Gosu.milliseconds, because all the other things are fixed &gt;.&lt; what is that Gosu.milliseconds, anyway?
+</div>
+</div>
+
+<div class='brn' id='brn4858'>
+<div class='frm pst' id='pid4859' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4858'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4859' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4859.html#pid4859'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-09-28 13:16
+</div>
+<div class='ccl'>
+The current time in milliseconds. The rdoc is ugly right now, but you will still be able to find all that here: <a class='url' href='http://libgosu.org/rdoc'>http://libgosu.org/rdoc</a>
+</div>
+</div>
+
+<div class='brn' id='brn4859'>
+<div class='frm pst' id='pid4867' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4859'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4867.html#pid4867'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-09-29 19:20
+</div>
+<div class='ccl'>
+So here it is, now it&#39;s all clear.<br/><br/>Well thanks a lot to everyone in here ;) i suppose i&#39;ll be back soon, i&#39;ll surely find some other curious problem to fight with.<br/><br/>heya ;)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4860' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4855'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4860' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4860.html#pid4860'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2011-09-28 16:41
+</div>
+<div class='ccl'>
+i tested the snippet and it crashes after some seconds.<br/><br/><blockquote><p>&gt;ruby test.rb</p></blockquote><br/>test.rb:13:in <code>argb&#39;: Wrong arguments for overloaded method &#39;Color.argb&#39;. (ArgumentError)<br/>Possible C/C++ prototypes are:<br/>&#160; &#160; Gosu::Color Color.argb(Gosu::Color const *self)<br/>&#160; &#160; Gosu::Color Color.argb(Gosu::Color::Channel a, Gosu::Color::Channel r, Gosu::Color::Channel g, Gosu::Color::Channel b)<br/>&#160; &#160; Gosu::Color Color.argb(std::tr1::uint32_t argb)<br/>&#160; from test.rb:13:in </code>draw&#39;<br/>&#160; from test.rb:18:in `&lt;main&gt;&#39;<br/><br/><blockquote><p>&gt;Exit code: 1</p></blockquote>
+</div>
+</div>
+
+<div class='brn' id='brn4860'>
+<div class='frm pst' id='pid4862' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4860'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4862.html#pid4862'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-09-28 20:08
+</div>
+<div class='ccl'>
+The trick is to use <code>127.5 + 127.5 * ...</code>:)
+</div>
+</div>
+
+<div class='frm pst' id='pid4869' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4860'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4869' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4869.html#pid4869'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-09-30 03:31
+</div>
+<div class='ccl'>
+Oops! Wow, that didn&#39;t happen for me even after many, many iterations. I had numerous previous versions that did. :D<br/><br/>@jlnr Can we get a constructor that takes normalized floats? I&#39;m much more comfortable with those. C:
+</div>
+</div>
+
+<div class='brn' id='brn4869'>
+<div class='frm pst' id='pid4871' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4869'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4871.html#pid4871'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-09-30 05:46
+</div>
+<div class='ccl'>
+I thought about overloading it, but it would be confusing if passing 1.0 and 1 would make a difference. I could add a _f variant for everything on Color, but I am not sure about that.<br/><br/>It may be a bit clearer if you work with normalized floats and then do *255 in the end, though. Now if Color.argb only called .to_i on its arguments...sigh.
+</div>
+</div>
+
+<div class='frm pst' id='pid4926' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4869'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4926' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4926.html#pid4926'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-08 11:06
+</div>
+<div class='ccl'>
+Color now (=in the next release) truncates and wraps all values into 0..255 automatically. That was a painless fix at least. :)
+</div>
+</div>
+
+<div class='brn' id='brn4926'>
+<div class='frm pst' id='pid4944' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4854.html#pid4926'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4944.html#pid4944'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-10-10 23:08
+</div>
+<div class='ccl'>
+This is a good change. :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=641.html#tid641'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=641.html#tid641'>Gosu Exchange</a> / Set image transparency
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4854.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

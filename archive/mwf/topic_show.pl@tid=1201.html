@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby does not want to create a new object</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1201.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1201.html#tid1201'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1201.html#tid1201'>Gosu Exchange</a> / Ruby does not want to create a new object
+</div>
+</div>
+
+<div class='frm pst' id='pid8442' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8442' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8442.html#pid8442'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=904.html' >Andrek</a>
+<span class='htt'>Date</span> 2015-07-12 19:10
+<span class='htt'>Edited</span> 2015-07-12 19:28
+</div>
+<div class='ccl'>
+Hi everyone! i&#39;m back with Ruby/Gosu from almost 2 year and i have a problem with ruby, first i dont speak very english then i&#39;m confused about where i can post this.<br/><br/>I try to make a data class like this:<br/><br/><code>@data = Array.new(width, Array.new(height, default_value))</code><br/><br/>but when i want to change a value like this:<br/><br/><code>@data[x][y] = terrain_id</code><br/><br/>No only change that coordinate, Ruby change all coordinate Y in X coordinate, example:<br/><br/><code><br/>@data[0][1] = 0 # [<br/>[nil, 1, nil], # XY: 0, 1<br/>[nil, 1, nil], # XY: 1, 1<br/>[nil, 1, nil] # XY: 2, 1<br/>]<br/></code><br/><br/>The problem is that all arrays have the same object_id. I can&#39;t understand why, please help me!<br/><br/>Data Class Completed<br/><code>class Data_Tilemap<br/>&#160; attr_reader(:data)<br/>&#160; attr_accessor(:default_value)<br/>&#160; def initialize(width, height, default_value = 0)<br/>&#160; &#160; @width = width<br/>&#160; &#160; @height = height<br/>&#160; &#160; @default_value = default_value<br/>&#160; &#160; #@data = Array.new(width, Array.new(height, default_value))<br/>&#160; &#160; @data = []<br/>&#160; &#160; width.times { @data.push(Array.new) }<br/>&#160; end<br/>&#160; def [](x, y)<br/>&#160; &#160; if x.between?(0, @width - 1) and y.between?(0, @height - 1)<br/>&#160; &#160; &#160; return @data[x][y]<br/>&#160; &#160; else<br/>&#160; &#160; &#160; return @default_value<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; def []=(x, y, value)<br/>&#160; &#160; @data[x][y] = value if x.between?(0, @width - 1) and y.between?(0, @height - 1)<br/>&#160; &#160; print(<br/>&#160; &#160; @data[0].object_id, &quot; &quot;, #=&gt; 21483444<br/>&#160; &#160; @data[1].object_id, &quot; &quot;, #=&gt; 21483444<br/>&#160; &#160; @data[2].object_id) #=&gt; 21483444<br/>&#160; &#160; puts<br/>&#160; end<br/>&#160; def resize(width, height)<br/>&#160; &#160; new_data = Array.new(width, Array.new(height, @default_value))<br/>&#160; &#160; for x in 0...@width<br/>&#160; &#160; &#160; for y in 0...@height<br/>&#160; &#160; &#160; &#160; if x.between?(0, width - 1) and y.between?(0, height - 1)<br/>&#160; &#160; &#160; &#160; &#160; new_data[x][y] = @data[x][y]<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @data = new_data<br/>&#160; &#160; @width = width<br/>&#160; &#160; @height = height<br/>&#160; end<br/>end</code><br/><br/>Edit:<br/><br/>Important information: i save the data like this:<br/><code>file = File.open(filename, &quot;wb&quot;)<br/>Marshal.dump(data, file)<br/>file.close</code><br/><br/>and load:<br/><br/><code>file = File.open(@filename, &quot;rb&quot;)<br/>@data = Marshal.load(file)<br/>file.close</code>
+</div>
+</div>
+
+<div class='brn' id='brn8442'>
+<div class='frm pst' id='pid8444' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1201.html#pid8442'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8444' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8444.html#pid8444'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-07-13 07:20
+</div>
+<div class='ccl'>
+Re:<br/><br/><code>@data = Array.new(width, Array.new(height, default_value))</code><br/><br/>When you pass a second argument to <code>Array#initialize</code>, it will be <i>evaluated once</i> (like all method arguments) and used as the initial value in the array. If you pass a block, however, that block will be evaluated once to generate the initial value for each cell:<br/><br/><code>@data = Array.new(width) { Array.new(height, default_value) }</code>
+</div>
+</div>
+
+<div class='brn' id='brn8444'>
+<div class='frm pst' id='pid8446' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1201.html#pid8444'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8446.html#pid8446'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=904.html' >Andrek</a>
+<span class='htt'>Date</span> 2015-07-13 14:36
+</div>
+<div class='ccl'>
+It&#39;s work! thanks a lot, i can understand the operation. Now i can continue with my project, ty!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1201.html#tid1201'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1201.html#tid1201'>Gosu Exchange</a> / Ruby does not want to create a new object
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1201.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

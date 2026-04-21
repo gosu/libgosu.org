@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ludum Dare post mortem</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4780' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=634.html#tid634'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=634.html#tid634'>Gosu Exchange</a> / Ludum Dare post mortem
+</div>
+</div>
+
+<div class='frm pst' id='pid4780' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4780' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4780.html#pid4780'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-22 12:51
+</div>
+<div class='ccl'>
+(posted to the LD site, thought it might be of interest here as well)<br/><br/>Ludum Dare 21 Post Mortem<br/><br/>LD21 marks my third serious attempt at completing a game in 48 hours. On the previous two attempts, I stalled on Sunday<br/>morning and didn&#39;t finish.<br/><br/>The theme this time was &quot;Escape&quot;. It wasn&#39;t one that I voted for, but I could work with it. You can see the results <a class='url' href='http://www.ludumdare.com/compo/ludum-dare-21/?action=preview&amp;uid=1450&quot; title=&quot;here&quot; target=&quot;_blank&quot;'>here</a>.<br/><br/>My idea was that the player is a process marked for deletion in a Tron-like computer system. Player must navigate through various cores (levels) to reach the free network. He has to avoid firewalls, sentry programs and search bots.<br/><br/>I didn&#39;t get my intro screens done in time, so the story itself isn&#39;t really in the game, and you wouldn&#39;t know unless you read this. Ah well.<br/><br/>All in all, I was extremely pleased with the weekend. I submitted a game, which was a huge goal. I didn&#39;t do anything drastically wrong; although I could definitely do more things more right. Now it&#39;s just a matter of continual improvement. <br/><br/>WHAT WENT RIGHT<br/><br/>1) Ruby Ruby Ruby! Man I love this language. It&#39;s plenty fast for these kinds of game. I was constantly amazed at how quickly I could go from thinking of a feature, to seeing it in the game. Ruby isn&#39;t always the best tool for the job, but it&#39;s usually the first tool I reach for.<br/><br/>2) Gosu Gosu Gosu! The gosu library (www.libgosu.org) with ruby bindings takes a zen like minimalism approach. Load a graphic, blit it. Load a sound, play it. Not a whole lot of options. But you know what? It was exactly the right amount. It did its job when asked and stayed out of my way otherwise. It conformed to the way that I worked, rather than requiring me to conform.<br/><br/>3) More time devoted to artwork. Previous LD efforts were almost entirely coding, with no thought to art other than the barest stand-in images. Never sound or music. This time, while my art isn&#39;t great, it&#39;s all there, along with sound and music. Not great, but a huge step forward in terms of actually finishing.<br/><br/>4) Family support. It&#39;s hard to overstate how awesome it is to have a family that was not only willing to let me disappear into the cave for the whole weekend, but would actually bring me food and water. Thanks ladies!<br/><br/>5) Git. I can&#39;t imagine working without a repository now. Even in a single user environment. Next time I&#39;ll be setup on github. <br/><br/>WHAT WENT WRONG<br/><br/>1) Collision detection. I borked this part up HARD. And I spent a lot of time looking in the wrong places. This is one of those basic game formula that I should have known, should have easily implemented, should have loaded from a gem, something. Spending several hours reinventing the wheel (or square, in this case) was frustrating and wasteful.<br/><br/>2) Ergonomics and comfort. Apple peripherals are stylish and pretty, but by the end, my wrists and shoulders were killing me. Using a Magic Trackpad for Photoshop work was a lesson in pain. TextMate took too many keystrokes to do oft-repeated actions. And I felt like I was constantly reaching for the trackpad, just to change window focus so I could go back to the keyboard. Probably just a matter of figuring out the right way to do it. I want to be able to never take my hands off the keyboard when coding. Even reaching for the arrow keys has to go. That might mean emacs. Sigh.<br/><br/>3) Cross platform issues can&#39;t be put off to the last minute. I should have been doing Windows builds the whole time. I was also packaging everything by hand, which is error prone. My uploaded entry is missing the right audio libs, so I&#39;ll need to fix that. So next time, some rake tasks for doing builds automatically, and frequent Windows tests.<br/><br/>NEXT TIME<br/><br/>Ruby and Gosu, definitely. That combination just works. Figure out packaging and cross platform stuff ahead of time. Find (or build) a gem with some basic game dev primitives. Improve my editor-fu. Not as much junk food.<br/><br/>TOOLS USED<br/>OSX Lion<br/>Ruby 1.9.2 / 1.8.7<br/>Gosu<br/>Ocra<br/>TextMate<br/>git<br/>Photoshop CS3<br/>GarageBand<br/>Audacity
+</div>
+</div>
+
+<div class='brn' id='brn4780'>
+<div class='frm pst' id='pid4782' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4780.html#pid4780'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4782' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4782.html#pid4782'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-24 10:31
+</div>
+<div class='ccl'>
+Well, thanks for the Gosu part! :) If you want your game to become a tiny bit more discoverable here, I can move this into Gosu Showcase and you can attach a screenshot of your (root) posting. The &quot;project of the day&quot; link on the front page sometimes attracts an extra player or two over the months.<br/><br/>I actually liked the gameplay, but I think a single introductory screen would have helped the story a lot. And the fact that the player always auto-rotated to the top is weird, since the animation is really nicely done otherwise. I&#39;ll give it another try with my gamepad if the game supports that.<br/><br/>Off Topic: So you have your magic trackpad next to the keyboard? I like to use open laptop as a keyboard/trackpad combo. Means I can integrate lots of clicking in my workflow without lifting my hands. Is there a way to set it up like that? Or do the slopes ruin it?<br/><br/>And I still like to let Time Machine run alongside git, saved me during two LDs. This time I was jamming along on a remake of an old game, and I again deleted an hour of work when I tried to exclude part of a file from a commit. This stuff is just so painful under a tight schedule...
+</div>
+</div>
+
+<div class='brn' id='brn4782'>
+<div class='frm pst' id='pid4795' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4780.html#pid4782'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4795' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4795.html#pid4795'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2011-08-27 04:28
+</div>
+<div class='ccl'>
+I&#39;m not sure this one is worth being discoverable, at least as is. The more I look at the code, the more I hang my head in shame. That said, I don&#39;t think I&#39;ve ever seen LD code that was worth cheering over. I can&#39;t decide whether to clean this up, or start from scratch and build something different.<br/><br/>I was *VERY* impressed that the double parallax worked as well as it did. I honestly thought that I would have to cut one of those for performance, but at least on my machine, it was very smooth. A couple people reported sluggishness, but I have no idea on their hardware specs.<br/><br/>The player turning was actually a last minute addition. Up until about an hour to go, the player always faced forward. The rotation is completely faked in the code, as a visual effect. It never occurred to me to have true rotation in a top down scroller. Ah, hindsight.<br/><br/>I have the Apple wireless keyboard, with the trackpad setup right next to it. So I still have to reach to get to it. I tried it briefly in front of my keyboard, thinking it would be the same as the laptop trackpad, but it didn&#39;t work very well. Mostly due to the rise of the top of the trackpad, but also because I ended up touching it more than the laptop trackpad. For the final bit of photoshop, I had to switch back to my regular gaming mouse (a logitech), because I could feel my shoulder starting to bunch up. <br/><br/>Are you using TextMate? There are so many things about the editor that I love. The bundle support is great. But some of the keybindings are suboptimal, and whenever I would run my game, I would have to Cmd~ to get back to the editor screen, then tab over to whatever file needed attention, because the CmdR launch would only work on main.rb. I&#39;m sure I could set up some project bindings to ease some of that. Just seemed like a lot of tabbing through windows to get where I wanted to go, and after a while it started to wear on me. I keep toying with the idea of moving to emacs, but it&#39;s so &quot;not Mac&quot; that I keep going back to TM.<br/><br/>I&#39;m using Time Machine as well, and it has saved my butt more times than I can count. On projects that pay money. People don&#39;t understand how incredible a feeling it is to have a backup every hour while you&#39;re working.<br/><br/>I&#39;ve forked gosu on github, in the (probably vain) idea that I might be useful. Is looking at the issue tracker the best approach? I would like to see some basic collision math somewhere; I can either build it as a separate gem, or add it into gosu. Separate is probably better, in the spirit of minimalism. Let me know what you think.<br/><br/>Thanks again for gosu. It really does follow the ruby philosophy of just being enjoyable to work with.&#160; :)
+</div>
+</div>
+
+<div class='brn' id='brn4795'>
+<div class='frm pst' id='pid4798' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4780.html#pid4795'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4798.html#pid4798'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-27 04:53
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; A couple people reported sluggishness, but I have no idea on their hardware specs.</p></blockquote><br/>Feel free to forward any Gosu related problems. LD is really great for catching all those, with so many different people playing your stuff.<br/><br/>Bummer about the magic trackpad. I guess I&#39;ll just keep my open Mac under my screen. Seems it&#39;s really the best thing for your hands, but it looks terrible and destroys any desktop Zen.<br/><br/><blockquote><p>&gt; Are you using TextMate?</p></blockquote><br/>Yep. I got used to tabbing to main.rb to run stuff. I guess a <code>Gosu.tmbundle</code> to run main.rb and to snippets for complicated calls would be awesome (draw_rot, tab!). Or even window(tab) to create the full skeleton. With such a tiny interface as Gosu, maybe it could even add snippets for everything.<br/><br/>The issue tracker is usually pretty intense stuff that other people have pointed out. The little things are synced from my OmniFocus db every day:<br/><br/><a class='url' href='https://github.com/jlnr/gosu/wiki/To-Do'>https://github.com/jlnr/gosu/wiki/To-Do</a><br/><br/>Most issues have to be fixed from the C++ side though and I bet some don&#39;t make sense to anyone but me :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=634.html#tid634'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=634.html#tid634'>Gosu Exchange</a> / Ludum Dare post mortem
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4780.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

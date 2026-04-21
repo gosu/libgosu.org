@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 909 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>[C++] GosuWidgets</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d909' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=145.html#tid145'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=145.html#tid145'>Extending Gosu</a> / [C++] GosuWidgets
+</div>
+</div>
+
+<div class='frm pst' id='pid866' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=866.html#pid866'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=80.html' >Quit</a>
+<span class='htt'>Date</span> 2009-06-11 20:20
+<span class='htt'>Edited</span> 2009-06-19 18:48
+</div>
+<div class='ccl'>
+GosuWidgets is a simple way of creating an own &quot;UI&quot; for Gosu. It actually supports Images, Buttons, Cursors, Texts (static and &#39;dynamic&#39;) and inputs (for text). Everything is in its namespace &#39;Widgets&#39;. Every widget can fire callbacks (boost::function, use boost::bind to bind them), some are useful, others aren&#39;t. An (stupid but working and documentated...!) example is included.<br/><br/>MEET THE WIDGET:<br/>The widget is the basic class for this whole thing. It can be just a container, means it has no x/y/z/width/height values and (itself) does not trigger any events but it could also be an &quot;invisible&quot; layer of area that triggers onHover/onBlur/on(Left|Right)Click (as used in SimpleButton). It&#39;s recommended to have a WidgetPtr defined as rootWidget in your Window-class. Widgets can have children, which can have children, which ..., you see my point. If you hide the parent the children won&#39;t be drawn (unless they&#39;re in another, visible widget, which isn&#39;t recommended). You can mix all different z-Levels into a widget. They do *not* respect that, i.e. having two visible and active widgets at the same position with same size will fire the events twice, for both widgets (for menus etc: Disable the whole UI, which you put into another widget than the menu, and enable the menu then).<br/><br/>MEET THE IMAGE:<br/>Maybe the most used widget. Like a widget but it can (or better said: should) have a shared_ptr to a Gosu::Image, which is drawn. This class accept many attributes Gosu provides, such as different color, different alphamode or &quot;stretching factors&quot;.<br/><br/>MEET THE SIMPLEBUTTON:<br/>SimpleButton is (somehow) an example how you can easily build something new out of the basic widgets. It always requires an Widgets::Image-ptr to the default (= not hovering, not disabled) widget. If an hover widget is defined, it will be shown when the cursor moves over it. If a disabled widget is defined, it is shown when the widget is disabled (it doesn&#39;t matter if the cursor is above it or whatever). You should always bind to the SimpleButton, not to its Image-Widgets.<br/><br/>MEET THE SIMPLECURSOR:<br/>Well, takes an Image and a z-Position and is doing a great job as cursor.<br/><br/>MEET THE TEXT:<br/>&quot;Dynamic text&quot;, based on Gosu::Font. This widget does not trigger onHover when the mouse is over a letter, just when it is over the rect that the text produces. Can have a different color, alphamode, factors or relations.<br/><br/>MEET THE STATICTEXT:<br/>StaticText, quite the same as Text, except it is writing its data to an Gosu::Image, which is somehow &quot;caching&quot;. Faster than Text if not changed very often. If your text changes often, go and use Text instead.<br/><br/>MEET THE TEXTINPUT:<br/>TextInput, allows you to simple let the user enter something. You can define textcolor, the color of the caret (the, usually, blinking thing, which isn&#39;t blinking here because that would be annoying) and the color of the selection (passing Gosu::Colors::none if you don&#39;t want that). This kind of widget has a new callback: onReturn. It&#39;s fired as soon as the user presses the return (&#39;Enter&#39;) key (Gosu::kbReturn).<br/><br/>The whole thing is thought to be built as a lib and requires, of course, Gosu-Headers (to build the lib it shouldn&#39;t be necessary to link against the libs of Gosu though) and boost. I don&#39;t know if it&#39;s already out there, may you will need an SVN version of Gosu to build it correctly.<br/><br/>The whole lib hasn&#39;t been tested and I&#39;m quite sure they are some bugs around because I simply don&#39;t use that silly stuff I put in somehow (&quot;setAlphaMode&quot;?!). The code is a bit messy, I haven&#39;t cleaned it yet and I guess some things are only settable in the constructor. If you find something like this, tell me. I will fix it.<br/><br/>What I&#39;ve tested are mostly basic things (&quot;create everything in the Window-constructor and change only things like the text or something like that&quot;) under WinXP 32bit SP3 which is working quite well. All headers are documentated, the c++ files aren&#39;t. The example contains a C++-file, the images and the Inkscape .svg they were created with.<br/><br/>Don&#39;t expect crazy things like the things the guys do in the ruby section about UIs - it&#39;s not thought to &quot;imitate&quot; the OS or to have everything. I think there will come more things in the future, like some kind of a list (but mostly only when I require it in a application/game).<br/><br/>Set your include path to there where the .sln is (you should include &#39;GosuWidgets/GosuWidgets.hpp&#39; for example), if you want to use it as lib the MSVS2008 project will build it into libs/.<br/><br/>Well. Have Fun.<br/><br/><b>Update 19.06.2009</b><br/>Now using shared_ptr&lt;Widget&gt; (aka WidgetPtr) for almost everything. Using widget[5] is not possible anymore, use -&gt;getChild to get the pointer to that child. However, the [] for a simple Widget will still return Widget&amp;. Some few fixes with canHover (unsigned-thingy) and SimpleButton.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='http://www.libgosu.org/mwf/attachments/66/866/GosuWidgets.zip'>GosuWidgets.zip</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid867' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=867.html#pid867'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-11 20:43
+</div>
+<div class='ccl'>
+Kewl. I&#39;ll check it out when I gotz time. 
+</div>
+</div>
+
+<div class='frm pst' id='pid869' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=869.html#pid869'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-06-11 22:57
+</div>
+<div class='ccl'>
+nice work! :) do you have any screenshots of working widgets?
+</div>
+</div>
+
+<div class='frm pst' id='pid875' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=875.html#pid875'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=80.html' >Quit</a>
+<span class='htt'>Date</span> 2009-06-12 09:57
+</div>
+<div class='ccl'>
+Since a screen wouldn&#39;t show much more than just drawing Gosu::Image / Gosu::Font, no. I think the name could be miss interpreted, this is *not* for some kind of sidebar.
+</div>
+</div>
+
+<div class='frm pst' id='pid903' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=903.html#pid903'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-16 14:21
+</div>
+<div class='ccl'>
+Okay, bundled criticism from my first attempt at integrating them into my game:<br/><br/>• SimpleButton is a bit weird to use. Why are its states Widgets again? I think I&#39;d prefer subclassing it to show some Gosu::Images, but I guess I can just do that, so no problem :)<br/>• StaticText requiring a shared_ptr&lt;Font&gt; is evil when it just needs it to extract the font name and height. Even if you insist on the existence of a font (I happen to have it), Font&amp; would be nicer<br/>• As the root of the class hierarchy, Widget should be boost::noncopyable to avoid slicing and double-freeing.<br/>• I don&#39;t always have a Gosu::Window&amp; in my code. The game uses one, the editor doesn&#39;t (yet). What are you using it for other than the mouse position?<br/>• Beware, Input::mouseX() can be negative ;)<br/><br/>I&#39;ll leave it in my codebase for now and retry it in a few iterations :)
+</div>
+</div>
+
+<div class='frm pst' id='pid909' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=909.html#pid909'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=80.html' >Quit</a>
+<span class='htt'>Date</span> 2009-06-17 10:04
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;• SimpleButton is a bit weird to use. Why are its states Widgets again? I think I&#39;d prefer subclassing it to show some Gosu::Images, but I guess I can just do that, so no problem :)</p></blockquote><br/>Because of the Design. Since it&#39;s just a &quot;wrapper&quot; for three other Widgets (and in my local, newest version) they really can be any widget, you could also do Text-Things - but I think that there will be something like &quot;SimpleColorTextButton&quot;, or something like that.<br/><br/><blockquote><p>&gt;• StaticText requiring a shared_ptr&lt;Font&gt; is evil when it just needs it to extract the font name and height. Even if you insist on the existence of a font (I happen to have it), Font&amp; would be nicer</p></blockquote><br/>Text requires a shared_ptr to a Font, so does StaticText. I don&#39;t know if you could set another font anyway, I&#39;m changing the font in a program of mine for example. Also, I don&#39;t know how the memory management with many Widgets with the same font-reference would be (you have to keep the Font in your Window-class?)<br/><br/><blockquote><p>&gt;• As the root of the class hierarchy, Widget should be boost::noncopyable to avoid slicing and double-freeing.</p></blockquote><br/>It&#39;s not the root. You can put a Widget into a Widget into a Widget into a Widget, as often as you like, for &#39;layers&#39; or better said &#39;groups&#39;. Also, since everything in the Widget-things is using shared_ptr now, that shouldn&#39;t be a problem.<br/><br/><blockquote><p>&gt;• I don&#39;t always have a Gosu::Window&amp; in my code. The game uses one, the editor doesn&#39;t (yet). What are you using it for other than the mouse position?</p></blockquote><br/>Custom widgets. Because you can (and are allowed/expected to) create new Widgets, based on the default widgets, you may require something from the Window. I thought about storing the window in a weak_ptr or something like that. However, if you use the widgets I expect you to have an instance of Gosu::Window or a childclass. Since updating/drawing requires this variable anyway... Or did you thought about the StaticText::setText-thing?<br/><br/><blockquote><p>&gt;• Beware, Input::mouseX() can be negative ;)</p></blockquote><br/>That&#39;s a fossil. Widgets were unsigned int with x/y/height/width once. It&#39;s fixed in my local version.
+</div>
+</div>
+
+<div class='frm pst' id='pid911' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=911.html#pid911'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-17 14:14
+</div>
+<div class='ccl'>
+OK, I think I should clarify some points from my quick feedback:<br/><br/><blockquote><p>&gt; Text requires a shared_ptr to a Font, so does StaticText. I don&#39;t know if you could set another font anyway, I&#39;m changing the font in a program of mine for example. Also, I don&#39;t know how the memory management with many Widgets with the same font-reference would be (you have to keep the Font in your Window-class?)</p></blockquote><br/>So the way I understand it now, StaticText uses the Font just to get the font name and height. Couldn&#39;t it do that in the constructor and then forget about the Font&amp; altogether afterwards? (Haven&#39;t used Text, sounds like it actually uses the Font dynamically)<br/><br/><blockquote><p>&gt; It&#39;s not the root. You can put a Widget into a Widget into a Widget into a Widget, as often as you like, for &#39;layers&#39; or better said &#39;groups&#39;. Also, since everything in the Widget-things is using shared_ptr now, that shouldn&#39;t be a problem.</p></blockquote><br/>But it&#39;s still the root of the C++ class hierarchy ;) And classes meant to be derived from should always be noncopyable IMHO. Otherwise, the compiler will allow this: <code>Widget a = otherWidget;</code>, something that can happen implicitly if you forget a &amp; somewhere, but which will crash at runtime.<br/><br/><blockquote><p>&gt; Custom widgets. Because you can (and are allowed/expected to) create new Widgets, based on the default widgets, you may require something from the Window.</p></blockquote><br/>Yeah, but if these widgets need anything from a Window (or MyWindowSubclass, or MyCustomUnrelatedClass), couldn&#39;t they take it in their constructors?
+</div>
+</div>
+
+<div class='frm pst' id='pid916' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=916.html#pid916'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=80.html' >Quit</a>
+<span class='htt'>Date</span> 2009-06-17 18:20
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;So the way I understand it now, StaticText uses the Font just to get the font name and height. Couldn&#39;t it do that in the constructor and then forget about the Font&amp; altogether afterwards? (Haven&#39;t used Text, sounds like it actually uses the Font dynamically)</p></blockquote><br/>Could, yes. But I think you may want to get the Font again and this way, you can get it.<br/><br/><blockquote><p>&gt;But it&#39;s still the root of the C++ class hierarchy ;) And classes meant to be derived from should always be noncopyable IMHO. Otherwise, the compiler will allow this: Widget a = otherWidget;, something that can happen implicitly if you forget a &amp; somewhere, but which will crash at runtime.</p></blockquote><br/>OK, will do that next time.<br/><br/><blockquote><p>&gt;Yeah, but if these widgets need anything from a Window (or MyWindowSubclass, or MyCustomUnrelatedClass), couldn&#39;t they take it in their constructors? </p></blockquote><br/>And then save it as? Reference? shared_ptr?
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=145.html#tid145'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=145.html#tid145'>Extending Gosu</a> / [C++] GosuWidgets
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=909.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

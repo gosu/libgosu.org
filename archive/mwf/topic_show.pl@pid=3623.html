@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3623 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Chingu 0.8 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3623' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=507.html#tid507'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=507.html#tid507'>Extending Gosu</a> / Chingu 0.8 released
+</div>
+</div>
+
+<div class='frm pst' id='pid3613' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3613' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3613.html#pid3613'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-12-13 13:28
+<span class='htt'>Edited</span> 2010-12-13 14:11
+</div>
+<div class='ccl'>
+Just in time for Christmas LD #19, here&#39;s Chingu 0.8:<br/><br/>In late 0.7.x and 0.8 tons of new things have been implemented:<br/>=============================================<br/>- I finally started doing tests (rspec) seriously. This has helped in making Chingu more stable and finding those small bugs I wouldn&#39;t otherwise had found. Thanks txus and spooner (on github) for helping me with this.<br/><br/>- Shipping with GameStates::Edit, just push it and you can edit your GameObjects on screen, and save and load your maps. Pretty minimalistic yet powerful.<br/><br/>- GameStates::EnterName, premade gamestate to have the gamer enter his alias/name.<br/><br/>- Example16 shows off how you can get online highscores for your game with _minimal_ work using class OnlineHighScore, GameStates::EnterName and a free account @ www.gamercv.com.<br/><br/>- Example21 shows off a sidescrolling game. Press &#39;E&#39; anytime, edit any object, press &#39;E&#39; again to return to the game and jump on that new block you just created. Edit as you play, enabled by the premade GameStates::Edit !<br/><br/>- README is updated, reflecting most of the new stuff. There&#39;s also a list of projects using Chingu so you easily can learn by example.<br/><br/>- Premade class SimpleMenu, for quick &#39;n easy menusystems. Nice for compos like LD.<br/><br/>- Tons of other small fixes, additions and tweaks. See github commitlog for everything ;)<br/><br/>Maybe most cool of all, a lot of quality patches from other ppl:<br/>===========================================<br/><br/>- HakubJozak made GameObject into a Chingu trait instead of a big monolithic class. This will open up for easier implementation of for example a ChipmunkObject.<br/><br/>Spooner have:<br/>- rewritten the inputhandling making it a whole lot better and more stable.<br/>- added caching of fonts with Font[16] (using default font size 16) or Font[&quot;verdana&quot;, 16] (verdana size 16)<br/>- made it possible to change windows (Window#close deletes all the cached assets), for example if you want a splash window or a config window before the main game loads.<br/><br/>---------------------------------<br/>What is it: a game library depending on ruby/gosu<br/>install: gem install chingu<br/>source: <a class='url' href='https://github.com/ippa/chingu'>https://github.com/ippa/chingu</a><br/>rdocs: <a class='url' href='http://rdoc.info/github/ippa/chingu'>http://rdoc.info/github/ippa/chingu</a>
+</div>
+</div>
+
+<div class='brn' id='brn3613'>
+<div class='frm pst' id='pid3614' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3613'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3614' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3614.html#pid3614'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-12-13 13:40
+</div>
+<div class='ccl'>
+The caching of fonts isn&#39;t quite as described. Either use Font[16] (default font of size 16) or, to be more specific, Font[&quot;verdana&quot;, 15].<br/><br/>I also made it possible to change windows (Window#close deletes all the cached assets), for example if you want a splash window or a config window before the main game loads. This would also allow the possibility to change resolution or full-screen window state (previously opening a new window would work, but cached assets wouldn&#39;t work any more).
+</div>
+</div>
+
+<div class='brn' id='brn3614'>
+<div class='frm pst' id='pid3617' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3614'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3617.html#pid3617'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-12-13 14:18
+</div>
+<div class='ccl'>
+right, fixed :).
+</div>
+</div>
+
+<div class='frm pst' id='pid3618' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3614'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3618' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3618.html#pid3618'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-12-13 18:52
+</div>
+<div class='ccl'>
+I would be wary of opening a new Gosu::Window, I think I tried it on OS X and it would not work—only the first Window that is shown actually works. It seems to vary from platform to platform.<br/><br/>Patches welcome, but moving Gosu::Window to GLFW and offering Window#resize() seems wiser to me. This could automatically keep the position etc. :)
+</div>
+</div>
+
+<div class='brn' id='brn3618'>
+<div class='frm pst' id='pid3619' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3618'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3619.html#pid3619'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-12-13 21:16
+</div>
+<div class='ccl'>
+Ah, I see. I thought the issue was just Chingu (which failws on new windows because it tried to use the assets from the original window again).<br/><br/>It seems to work OK in Windows, at least. I didn&#39;t try in Linux. Window#resize might be useful, but it would also be nice to be able to have Window.full_screen = true as well (if that is possible).<br/><br/>The reason I made this change was that I was hoping to have a config window that then opened the main app in the resolution and full-screen depending on the users requirements. I could just use a separate process for this though, although it would mean I had to reload all my gems (or 10s wait on Windows) and make another ocra exe, which although not ideal, would work.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3623' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3613'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3623' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3623.html#pid3623'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-14 02:02
+</div>
+<div class='ccl'>
+Seems like Chingu is just getting better and better.&#160; I would switch, but I think the time it would take to retool would not be so good.&#160; Plus, I&#39;d have to reimplement a lot of stuff for the rather eccentric way that I&#39;m handling sprites.&#160; I might just copy some things like the state manager, timer, and edit state ^_^; <br/><br/>If I have the time though, I&#39;ll try to whip up some Chipmunk integration stuff.&#160; No reason for more people to go through that than necessary...
+</div>
+</div>
+
+<div class='brn' id='brn3623'>
+<div class='frm pst' id='pid3625' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3623'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3625' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3625.html#pid3625'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-12-14 10:48
+</div>
+<div class='ccl'>
+Copy away, if you can use anything it&#39;s all good. There&#39;s actually an example on how to use GameStateManager in pure gosu... but haven&#39;t looked at it in a while. class Animation is also pretty decent and &quot;standalone&quot; from Chingu.<br/><br/>An easy-to-use ChipmunkObject would be awesome since chipmunk is a bit cumbersome to work with IMHO. Actually this fork -- <a class='url' href='https://github.com/gwil/chingu'>https://github.com/gwil/chingu</a> -- was made to add chipmunk stuff, but seems like it didn&#39;t happen :P. I might take a look at it for 0.9 myself if nobody else does it. I would love some patches from you :). Long time since I looked at chipmunk actually.
+</div>
+</div>
+
+<div class='brn' id='brn3625'>
+<div class='frm pst' id='pid3626' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3625'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3626' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3626.html#pid3626'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-14 11:25
+</div>
+<div class='ccl'>
+I have to admit, the animation stuff it looks interesting, but I don&#39;t completely understand it.&#160; Perhaps if I look at it a bit more I&#39;ll get it ^_^;<br/><br/>I&#39;ve got some stuff in place in my code already to provide an interface layer on the Chipmunk stuff, so when I get the time (dang finals...) it shouldn&#39;t be that hard.&#160; Well, in theory anyway.&#160; Though, I question the wisdom of essentially putting a wrapper on a wrapper, it is convenient.&#160; However, I suppose if I wanted sheer speed I&#39;d be using C/C++...<br/><br/>Though as a general note, I&#39;d be happy to submit patches, as I can see a few areas already where the code could be cleaned up.
+</div>
+</div>
+
+<div class='brn' id='brn3626'>
+<div class='frm pst' id='pid3627' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3623.html#pid3626'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3627.html#pid3627'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-12-14 18:19
+</div>
+<div class='ccl'>
+I use the bits of Chingu I like, patch other bits and ignore others. I did use Chipmunk with it in my LD game, Alpha Channel (though only after my actual LD entry, which just used really naive hand-made physics).
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3624' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=3624.html#pid3624'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-12-14 10:44
+</div>
+<div class='ccl'>
+There&#39;s a Chingu 0.8.0.2 just released taking care of the &quot;missing rest-client&quot; gem dependency thingie that hit a few ppl.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=507.html#tid507'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=507.html#tid507'>Extending Gosu</a> / Chingu 0.8 released
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3623.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

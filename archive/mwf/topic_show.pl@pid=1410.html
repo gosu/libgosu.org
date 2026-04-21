@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1410 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu, Ruby &amp; Snow Leopard</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1410' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=213.html#tid213'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=213.html#tid213'>Gosu Exchange</a> / Gosu, Ruby &amp; Snow Leopard
+</div>
+</div>
+
+<div class='frm pst' id='pid1404' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1404.html#pid1404'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=111.html' >robc</a>
+<span class='htt'>Date</span> 2009-08-29 13:28
+<span class='htt'>Edited</span> 2009-08-29 13:35
+</div>
+<div class='ccl'>
+Hi all,<br/><br/>Has anyone successfully run any of their Gosu projects under the version of Ruby (1.8.7) which ships with Snow Leopard?<br/><br/>After getting my Mac upgraded and whatnot, I installed the 0.7.14 gem and finding that when I try to run any game (my own, as well as the tutorials), I happen to get the following error appear in the output…<br/><br/>/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in <code>gem_original_require&#39;: no such file to load -- /Library/Ruby/Gems/1.8/gems/gosu-0.7.14-universal-darwin/lib/gosu.bundle (LoadError)<br/>&#160; from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in </code>require&#39;<br/>&#160; from /Library/Ruby/Gems/1.8/gems/gosu-0.7.14-universal-darwin/lib/gosu.rb:10<br/>&#160; from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in <code>gem_original_require&#39;<br/>&#160; from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in </code>require&#39;<br/>&#160; from CptnRuby.rb:35<br/><br/>Just wondering if there&#39;s something messed up with my configuration, or if I&#39;ve missed something to getting it all up and running.<br/><br/>--<br/>[EDIT]<br/>NB: Did a bit more of an investigation. My Mac&#39;s running Ruby in 64-bit, and I&#39;m not sure, but it looks like gosu&#39;s built for 32-bit Intel/PPC only.&#160; I&#39;ll investigate and see if I can get it to build 64-bit locally for me and see if this fixes it.
+</div>
+</div>
+
+<div class='frm pst' id='pid1405' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1405.html#pid1405'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-29 18:43
+</div>
+<div class='ccl'>
+Oh man, I totally forgot about this. My MacBook (Pro) has been such a pain lately that I didn&#39;t even upgrade yet.<br/><br/>No, Gosu does not build in 64-bit and this is horrible. I hope the Ruby 1.9 Wrapper app still works. The problem is that I have no 64-bit replacement for some of the functions, I should probably just release a stripped down version ASAP. (It&#39;s mostly button_id_to_char and vice versa.)<br/><br/>Thanks for reminding me :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1406' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1406.html#pid1406'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=111.html' >robc</a>
+<span class='htt'>Date</span> 2009-08-30 12:44
+</div>
+<div class='ccl'>
+No worries about the reminder - glad to know that it&#39;s not a configuration screw-up or the likes on my end.&#160; I&#39;m happy to wait for a proper release in due time.<br/><br/>I&#39;m happy to give the 1.9 stuff a whirl - I&#39;ll just need to see if I can get a 1.9 build on my Mac that&#39;s 32-bit only.&#160; If I do I&#39;ll post somewhere to let you know :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1407' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1407.html#pid1407'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-30 14:14
+</div>
+<div class='ccl'>
+It would be great if you could just try the 1.9 .app package from the Google Code download page (don&#39;t need to modify it, it should open an empty window):<br/><br/><a class='url' href='http://code.google.com/p/gosu/downloads/list'>http://code.google.com/p/gosu/downloads/list</a><br/><br/>I built this one as a self-contained Ruby distro for deployment, to prevent all sorts of trouble like the 64-bit change :)<br/><br/>For development, it&#39;s a pain of course, and I&#39;m currently patching Gosu to use APIs that are available on 64-bit Cocoa. If all goes well, I can upload it tomorrow.
+</div>
+</div>
+
+<div class='frm pst' id='pid1410' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1410.html#pid1410'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-30 20:07
+</div>
+<div class='ccl'>
+Woohoo, great news, the 1.9 wrapper seems to work on SL. Yay for an existing hotfix.
+</div>
+</div>
+
+<div class='frm pst' id='pid1411' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1411.html#pid1411'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=111.html' >robc</a>
+<span class='htt'>Date</span> 2009-08-31 01:23
+</div>
+<div class='ccl'>
+Yup, got it running on my end as well.<br/><br/>As a temporary work around, I should just be able to drop my code and resources into a copy of that 1.9 standalone bundle, then test it by just firing up the whole bundle then?<br/><br/>That&#39;ll be enough to tide me over until some fixes are available.<br/><br/>Thanks again :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1425' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1425.html#pid1425'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=113.html' >manne</a>
+<span class='htt'>Date</span> 2009-09-02 20:09
+</div>
+<div class='ccl'>
+gosu from gem install gosu works just fine out of the box in snow leopard with ruby 1.8.7 if you start ruby in 32 bits mode.<br/>$ arch -i386 ruby mygame.rb 
+</div>
+</div>
+
+<div class='frm pst' id='pid1436' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1436.html#pid1436'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=114.html' >moonpxi</a>
+<span class='htt'>Date</span> 2009-09-04 21:28
+</div>
+<div class='ccl'>
+Thanks a lot guys! The tip from manne just worked. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1466' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1466.html#pid1466'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-07 13:58
+</div>
+<div class='ccl'>
+:(<br/><br/>I don&#39;t think I&#39;ve ever had so much frustration with computers in years. Did anyone already upgrade to SL and feels like just fetching the 1.9 source tarball from ruby-lang.org, then running &quot;./configure --enable-shared --program-suffix=1.9 &amp;&amp; make&quot;, then posting/sending me the libruby-1....dylib? I can&#39;t get a 64-bit Ruby compiled on Leopard no matter what I throw at configure and make, and I need a lib like that for the Snow Leopard gem. Or maybe I can manage to build a gem with just five of the six combinations (i.e. no 64-bit 1.9 support), but that sounds ugly too.<br/><br/>Thanks :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1481' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1481.html#pid1481'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-08 04:14
+</div>
+<div class='ccl'>
+Thanks to a quick &amp; kind contribution by Paulo, here is my experimental three-way Universal gem: <a class='url' href='http://www.raschke.de/julian/temp/gosu-0.7.15-universal-darwin.gem'>http://www.raschke.de/julian/temp/gosu-0.7.15-universal-darwin.gem</a><br/><br/>Can anyone on SL download, then &#39;sudo gem install&#39; it, and then run the Tutorial.rb example? (<code>cd /Library/Ruby/Gems/1.8/gems/gosu-0.7.15-universal-darwin/examples &amp;&amp; ruby Tutorial.rb</code> if the Gem path is still the same on SL.)
+</div>
+</div>
+
+<div class='frm pst' id='pid1489' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1489.html#pid1489'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=114.html' >moonpxi</a>
+<span class='htt'>Date</span> 2009-09-08 20:12
+</div>
+<div class='ccl'>
+Yup, all working now! Thanks Julian!<br/><br/>Paulo
+</div>
+</div>
+
+<div class='frm pst' id='pid1493' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1493.html#pid1493'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-09 03:53
+</div>
+<div class='ccl'>
+Awesome! :) Did the score text in the corner render correctly too? (That&#39;s what I had to rewrite for SL)<br/><br/>I&#39;ll try to push the gem out in the next hours.
+</div>
+</div>
+
+<div class='frm pst' id='pid1506' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1506.html#pid1506'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-09-10 06:14
+</div>
+<div class='ccl'>
+The text do not render on snow leopard...
+</div>
+</div>
+
+<div class='frm pst' id='pid1510' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1510.html#pid1510'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-10 14:21
+</div>
+<div class='ccl'>
+Thanks, I hope I won&#39;t mess everything up with my current plans on how to fix this :)<br/><br/>*boots up Xcode…*
+</div>
+</div>
+
+<div class='frm pst' id='pid1519' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1519.html#pid1519'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=117.html' >Jakob S</a>
+<span class='htt'>Date</span> 2009-09-12 10:49
+<span class='htt'>Edited</span> 2009-09-12 11:01
+</div>
+<div class='ccl'>
+For what it&#39;s worth, the above gem works for me on Snow Leopard with Ruby 1.8.7 installed from ports. However, as above, I don&#39;t see any text in the Tutorial.rb example.<br/><br/>Edit: I spoke too quickly. After running a game in full screen mode, it crashes when exiting. I&#39;ve boiled the code down to the following, which crashes on exit:<br/><br/>&#160; require &#39;rubygems&#39;<br/>&#160; require &#39;gosu&#39;<br/>&#160; class GameWindow &lt; Gosu::Window<br/>&#160; &#160; def initialize<br/>&#160; &#160; &#160; super(800, 600, false)<br/>&#160; &#160; end<br/>&#160; &#160; def update<br/>&#160; &#160; &#160; exit<br/>&#160; &#160; end<br/>&#160; &#160; def draw; end<br/>&#160; end<br/>&#160; GameWindow.new.show<br/><br/>The error message is:<br/><br/>&#160; 2009-09-12 12:55:55.698 ruby[43539:903] -[NSScreen setFrame:]: unrecognized selector sent to instance 0x101511c20<br/>&#160; 2009-09-12 12:55:55.717 ruby[43539:903] An uncaught exception was raised<br/>&#160; 2009-09-12 12:55:55.718 ruby[43539:903] -[NSScreen setFrame:]: unrecognized selector sent to instance 0x101511c20<br/>&#160; 2009-09-12 12:55:55.832 ruby[43539:903] *** Terminating app due to uncaught exception &#39;NSInvalidArgumentException&#39;, reason: &#39;-[NSScreen setFrame:]: unrecognized selector sent to instance 0x101511c20&#39;<br/>&#160; *** Call stack at first throw:<br/>&#160; (<br/>&#160; &#160; 0&#160;&#160; CoreFoundation&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 0x00007fff87eae5a4 __exceptionPreprocess + 180<br/>&#160; &#160; 1&#160;&#160; libobjc.A.dylib&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x00007fff80206313 objc_exception_throw + 45<br/>&#160; &#160; 2&#160;&#160; CoreFoundation&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 0x00007fff87f072a0 +[NSObject(NSObject) doesNotRecognizeSelector:] + 0<br/>&#160; &#160; 3&#160;&#160; CoreFoundation&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 0x00007fff87e8130f ___forwarding___ + 751<br/>&#160; &#160; 4&#160;&#160; CoreFoundation&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 0x00007fff87e7d458 _CF_forwarding_prep_0 + 232<br/>&#160; &#160; 5&#160;&#160; gosu.for_1_8.bundle&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010067b334 _ZN4Gosu6WindowD2Ev + 372<br/>&#160; &#160; 6&#160;&#160; gosu.for_1_8.bundle&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010063ef51 _ZN19SwigDirector_WindowD0Ev + 65<br/>&#160; &#160; 7&#160;&#160; gosu.for_1_8.bundle&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010063f6ae _Z16free_Gosu_WindowPN4Gosu6WindowE + 46<br/>&#160; &#160; 8&#160;&#160; libruby.dylib&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010003b01f rb_gc_call_finalizer_at_exit + 191<br/>&#160; &#160; 9&#160;&#160; libruby.dylib&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010001f870 ruby_finalize_1 + 32<br/>&#160; &#160; 10&#160; libruby.dylib&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010002ee62 ruby_cleanup + 274<br/>&#160; &#160; 11&#160; libruby.dylib&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x000000010002ef89 ruby_stop + 9<br/>&#160; &#160; 12&#160; libruby.dylib&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0x00000001000350e4 ruby_run + 68<br/>&#160; &#160; 13&#160; ruby&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 0x0000000100000ee4 main + 52<br/>&#160; &#160; 14&#160; ruby&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 0x0000000100000ea4 start + 52<br/>&#160; )<br/>&#160; terminate called after throwing an instance of &#39;NSException&#39;<br/>&#160; Abort trap<br/><br/>It doesn&#39;t seem to matter what resolution is used, and the above code doesn&#39;t crash in windowed mode.
+</div>
+</div>
+
+<div class='frm pst' id='pid1520' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1520.html#pid1520'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-09-12 12:59
+</div>
+<div class='ccl'>
+shawn42 also encountered this behaviour on macosx (i dont think he&#39;s running snow leopard)
+</div>
+</div>
+
+<div class='frm pst' id='pid1529' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1529.html#pid1529'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-13 01:28
+<span class='htt'>Edited</span> 2009-09-13 01:31
+</div>
+<div class='ccl'>
+Thanks everyone for the reports, I hope I fixed all of these bugs and uploaded the new 0.7.15 gems. Will make the release official soon, but if anyone wants to try them out now, that would boost my confidence that the fix actually worked this time :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1533' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1533.html#pid1533'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=112.html' >deps</a>
+<span class='htt'>Date</span> 2009-09-13 08:04
+</div>
+<div class='ccl'>
+I tried some unit tests I have on a small project. They don&#39;t open a display but they didn&#39;t complain that something was broken, as they did with 0.7.14<br/>I can&#39;t do any real testing until tomorrow.
+</div>
+</div>
+
+<div class='frm pst' id='pid1537' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1537.html#pid1537'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=112.html' >deps</a>
+<span class='htt'>Date</span> 2009-09-13 21:27
+</div>
+<div class='ccl'>
+Can happily report that the new gem works just fine. And this time I even tested it by opening a window. :P<br/>(Well, I played a few turns of Mr Monocle...)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=213.html#tid213'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=213.html#tid213'>Gosu Exchange</a> / Gosu, Ruby &amp; Snow Leopard
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1410.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

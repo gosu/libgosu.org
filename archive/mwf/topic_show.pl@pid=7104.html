@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7104 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>rPhalanx 2</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7104' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=928#tid928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=928#tid928'>Gosu Showcase</a> / rPhalanx 2
+</div>
+</div>
+
+<div class='frm pst' id='pid7046' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7046' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7046.html#pid7046'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-07-29 16:06
+<span class='htt'>Edited</span> 2013-08-07 00:11
+</div>
+<div class='ccl'>
+This is the first lump of code I&#39;m actually kind of sort of a tiny bit proud of.<br/><br/><a class='url' href='https://github.com/mikezila/rPhalanx2'>rPhalanx2</a><br/><br/>A pretty simple semi-bullet hell engine in the sirit of R-Type and Phalanx, which is steals its name and graphics from.<br/><br/>I pretty much re-wrote this whole thing after realizing I was hitting a wall with the way I was doing my game&#39;s objects.&#160; I followed jlnr&#39;s advice/method of using gamestates and gameobjects in a way that makes it much easier for all objects to interact with each other.&#160; I wanted to take it a step further, though, so I added an array to all gameobjects called &quot;tags&quot;, which just contains simple strings.&#160; Things like &quot;shot&quot;, &quot;player_shot&quot;, &quot;enemy_ship&quot;, and so on.&#160; This way I can do...<br/><br/><code><br/>self.game.objects.each do |object|<br/>&#160; if object.tags include? &quot;some_tag&quot;<br/>&#160; &#160; object.do_stuff<br/>&#160; end<br/>end<br/></code><br/><br/>...and I can be sure I&#39;m only hitting the objects I want with my callbacks.&#160; It also makes it easy to do things like count how many bullets there are, and how many belong to the player or to enemies without having to keep a running tally.&#160; Ruby&#39;s arrays seem reasonably fast.&#160; We can get up to about 150 enemies all firing shots at the player before we start to get any slowdown, having about 300 bullets on screen, give or take. I also have a lot of debug display code running over the gameobjects each frame, so that&#39;s probably bogging it a little bit too.<br/><br/>I was inspired by Unity3D, as it makes use of a very similar tagging system that lets you find and act on gameobjects using their tags, though I think the way it does it is that when you tag an object it&#39;s registered into a list for that tag, rather then the tag being search for on-the-fly.<br/><br/>I&#39;m sure this can be improve a lot.&#160; There are a lot of things that don&#39;t need to use the tag system, like things that search for just the player, and other misc ways to make it more efficient.&#160; But for small games this should be fine.&#160; It&#39;s of course still missing a lot, like shots connecting or enemy movement.&#160; Just wanted to share.<br/><br/><b>Update:</b>&#160; Holy smokes.&#160; Just making enemy fire more efficient by breaking after it finds the player let me go from about 300 bullets at a time at 55fps to nearly a thousand with 60fps and no stutter at all when new volleys are fired.&#160; And this is with the player now checking to see if they&#39;re hit. A simple distance check, but still.&#160; Pretty sure I&#39;m going to be using Ruby and Gosu for any future game jams.<br/><br/><b>Update 2:</b> Code is a bit cleaner, and enemies now spawn and can be destroyed, with an animation and everything.&#160; It&#39;s getting to the point it could be turned into an actual game, but I think I&#39;m ready to move on.&#160; I tried/learned a lot of things with this mini-project, and I&#39;ll apply those going forward.&#160; Some things worked well, some didn&#39;t, but it was all good learning.
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=776.html'><img class='amt' src='https://www.libgosu.org/mwf/attachments/46/7046/screen.thb.jpg' title='screen.jpg (108k)' alt=''/></a>
+<a href='attach_show.pl@aid=778.html'><img class='amt' src='https://www.libgosu.org/mwf/attachments/46/7046/screen2.thb.jpg' title='lag after about 250 shots at once (112k)' alt=''/></a>
+<a href='attach_show.pl@aid=779.html'><img class='amt' src='https://www.libgosu.org/mwf/attachments/46/7046/screen3.thb.jpg' title='After some optimization, nearly a thousand shots with zero lag at any time (113k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn7046'>
+<div class='frm pst' id='pid7047' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7046'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7047' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7047.html#pid7047'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-07-29 18:11
+</div>
+<div class='ccl'>
+Iterating through game objects so many times isn&#39;t much efficient. You could group objects or make some global references just to not search for ship through 500+ objects only to check its health.<br/>Or just reduce the number of searches.<br/><br/>Like this:<br/><code>self.game.objects.each do |object|<br/>&#160; &#160; &#160; if object.tags.include? &quot;enemy_shot&quot;<br/>&#160; &#160; &#160; &#160; @enemy_shots += 1<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if object.tags.include? &quot;enemy_ship&quot;<br/>&#160; &#160; &#160; &#160; @enemies += 1<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if object.tags.include? &quot;player_shot&quot;<br/>&#160; &#160; &#160; &#160; @player_shots += 1<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if object.tags.include? &quot;player_ship&quot;<br/>&#160; &#160; &#160; &#160; @health = object.health<br/>&#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; if object.tags.include? &quot;player_ship&quot;<br/>&#160; &#160; &#160; &#160; @boost = object.boost<br/>&#160; &#160; &#160; end<br/>end</code><br/>Does the same and cycles only once.
+</div>
+</div>
+
+<div class='brn' id='brn7047'>
+<div class='frm pst' id='pid7048' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7047'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7048' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7048.html#pid7048'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-07-29 18:48
+</div>
+<div class='ccl'>
+This is a good point!&#160; The hud was put together pretty quickly, so I didn&#39;t take that into account when I was putting it together.&#160; It was also mostly just for debugging purposes, so I kind of added bits and pieces as I was going along and adding things.&#160; Thanks for the tip though, simple as it sounds I hadn&#39;t really thought about gathering multiple pieces of data in the same sweep through objects.<br/><br/>I also think I&#39;ll just store a reference to the player in the gamestate.&#160; The hud will be different once it&#39;s finished, the one that&#39;s there now is really just for debugging like I said, mostly to make sure objects were being created and deleted like they should be.&#160; The actual hud doesn&#39;t need to check so many things, just keep track of some info about the player, so it likely won&#39;t need to sweep over the objects array at all.
+</div>
+</div>
+
+<div class='brn' id='brn7048'>
+<div class='frm pst' id='pid7049' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7048'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7049' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7049#pid7049'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-07-29 19:10
+</div>
+<div class='ccl'>
+But player reference is also for enemies, bullets etc. Player object is probably the most important and it&#39;s referred in many situations (especially in more complex games, e.g. in events).<br/>Also, to make life a bit simpler and not create game state link for each object, you can store current game state and window in global variable for easy use anywhere. Keeping Window in global variable allows you to call something like $window.button_down? without bizarre methods.<br/>AND, by typing &#39;<code>include Gosu</code>&#39; at the beginning of program, you can skip <code>Gosu::</code> thing in all methods. Just saying.
+</div>
+</div>
+
+<div class='brn' id='brn7049'>
+<div class='frm pst' id='pid7050' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7049'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7050.html#pid7050'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-07-29 19:34
+</div>
+<div class='ccl'>
+I&#39;d like to avoid using globals if I can.&#160; I prefer just using self.game.window.&#160; I&#39;d also rather using gosu without the include, I don&#39;t use the Gosu::methods that often, and with the Gosu:: on them it makes it easier to tell a gosu method from a local one.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7058' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7047'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7058' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7058#pid7058'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-08-01 18:04
+</div>
+<div class='ccl'>
+I personally prefer to use a series of arrays inside of a hash.&#160; Makes for a cleaner syntax.<br/><br/>For example:<br/><code><br/>@gameobjects[:enemy_shot].each do |x|<br/>&#160; @enemy_shots += 1<br/>end<br/></code><br/><br/>The tagging system might be better for finding objects multiple tags, but the strategy I use lets you easily pass a reference to a group of objects. Depends on your particular needs, I suppose.
+</div>
+</div>
+
+<div class='brn' id='brn7058'>
+<div class='frm pst' id='pid7082' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7058'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7082.html#pid7082'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-07 00:08
+</div>
+<div class='ccl'>
+Hadn&#39;t thought about using a hash, that&#39;s actually a really good idea.&#160; Gives pretty much all of the benefits of using the tagging system, but with no performance overhead if you only want to hit one tag (hence, one array in the hash).&#160; Plus lets you still check the tags of the items in that array if you&#39;re looking for objects with more than one tag.&#160; Thank you.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7093' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7046'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7093' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7093.html#pid7093'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-10 01:25
+</div>
+<div class='ccl'>
+Hi, I was able to load rPhalanx2 and get it to run. The HUD was giving me errors, so I deactivated it, an everything worked without the HUD. I&#39;ll have to spend some time on it to figure out why the HUD isn&#39;t working for me. Thanks for another game which serves as a good, instructive, basic example.<br/><br/>Lots of good, detailed discussion here about the code. :)
+</div>
+</div>
+
+<div class='brn' id='brn7093'>
+<div class='frm pst' id='pid7094' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7093'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7094' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7094.html#pid7094'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-10 04:06
+</div>
+<div class='ccl'>
+What about the HUD was not working?&#160; I just downloaded the source I have on github right now and it&#39;s working correctly for me using both the .exe and running the .rb directly.
+</div>
+</div>
+
+<div class='brn' id='brn7094'>
+<div class='frm pst' id='pid7095' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7094'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7095' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7095.html#pid7095'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-10 19:00
+</div>
+<div class='ccl'>
+Hi allcaps. Here&#39;s the error I get:<br/><br/>/rPhalanx2/hud.rb:40:in &#39;draw&#39;: Could not open TTF file ./gfx/AGENCYR.ttf (RuntimeError)<br/>&#160; from /rPhalanx2/hud.rb:40:in &#39;draw&#39;<br/>&#160; from /rPhalanx2/core.rb:62:in &#39;block in draw&#39;<br/>&#160; from /rPhalanx2/core.rb:61:in &#39;each&#39;<br/>&#160; from /rPhalanx2/core.rb:61:in &#39;draw&#39;<br/>&#160; from /rPhalanx2/level1.rb:95:in &#39;draw&#39;<br/>&#160; from phalanx.rb:42:in &#39;draw&#39;<br/>&#160; from phalanx.rb:71:in &#39;&lt;main&gt;&#39;<br/><br/>Some kind of issue with the TTF files.<br/><br/>I&#39;m running the .rb on Linux (Ubuntu). Not sure if this makes a difference.
+</div>
+</div>
+
+<div class='brn' id='brn7095'>
+<div class='frm pst' id='pid7096' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7095'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7096' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7096.html#pid7096'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-10 19:17
+<span class='htt'>Edited</span> 2013-08-10 19:23
+</div>
+<div class='ccl'>
+ah, it must be taking issue with the font I included.&#160; If you open the HUD.rb and change the file patch to something present on your system it will work.&#160; &quot;Arial&quot; is a pretty safe value on all platforms I believe.&#160; Not sure on Linux though, this particular game was made/tested on Windows mostly.<br/><br/>It might also be a simple case-sensativity issue.&#160; Make sure it&#39;s all lower case both in filename and in the .rb file.&#160; It looks like the file extension is lowercase in the ruby file but uppercase in the actual filename.&#160; If you make them the same it should work.
+</div>
+</div>
+
+<div class='brn' id='brn7096'>
+<div class='frm pst' id='pid7098' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7096'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7098' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7098.html#pid7098'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-10 19:32
+</div>
+<div class='ccl'>
+I replied at the same time as you were replying. Yes, it was a simple case-sensitivity issue.
+</div>
+</div>
+
+<div class='brn' id='brn7098'>
+<div class='frm pst' id='pid7099' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7098'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7099.html#pid7099'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-10 19:40
+</div>
+<div class='ccl'>
+..or rather, you replied while I was re-replying...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7097' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7095'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7097' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7097#pid7097'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-10 19:30
+</div>
+<div class='ccl'>
+Hey I figured it out - very small detail... in hud.rb:7<br/><br/>@font = Gosu::Font.new(self.game.window,&quot;./gfx/AGENCYR.ttf&quot;,26)<br/><br/>But the files themselves have .TTF extensions, in caps.<br/><br/>Either changing the filenames so the extension is lower-case - or changing hud.rb:7 so that the extension is in caps - makes it works for me.<br/><br/>Nice game, and very instructive for me as a novice.
+</div>
+</div>
+
+<div class='brn' id='brn7097'>
+<div class='frm pst' id='pid7104' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7097'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7104' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7104.html#pid7104'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-08-12 08:54
+</div>
+<div class='ccl'>
+Sudden realisation: Wouldn&#39;t it be useful if Gosu would warn you for any file you load using the wrong capitalisation? :O Sounds like such an easy fix for this recurring problem.
+</div>
+</div>
+
+<div class='brn' id='brn7104'>
+<div class='frm pst' id='pid7105' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7104'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7105#pid7105'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-08-12 09:47
+</div>
+<div class='ccl'>
+or since loading doesn&#39;t happen very often, stat the folder, search (ignoring caps) for same named files, load if there is exactly one and warn, else die like right now
+</div>
+</div>
+
+<div class='frm pst' id='pid7106' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7104.html#pid7104'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7106.html#pid7106'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-12 18:41
+</div>
+<div class='ccl'>
+For Windows users it doesn&#39;t seem to make a difference, not sure on Mac, but for me on Linux, it is definitely a common issue. At least now that I&#39;m kind of familiar with it, I know to look for it and make the necessary changes. Another common one I&#39;ve had to change is:<br/><br/>$window.WIDTH
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=928#tid928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=928#tid928'>Gosu Showcase</a> / rPhalanx 2
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7104.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

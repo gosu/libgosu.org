@@ -1,0 +1,49 @@
+Index: rake/todo.rb
+===================================================================
+--- rake/todo.rb	(revision 1459)
++++ rake/todo.rb	(working copy)
+@@ -1,6 +1,6 @@
+-require 'appscript'
+ 
+ if ENV['USER'] == 'jlnr' then
++  require 'appscript'
+   desc "Publish OmniFocus tasks in ToDo Wiki page"
+   task :todo do
+     File.open "wiki/ToDo.wiki", "w" do |wiki_page|
+Index: Rakefile
+===================================================================
+--- Rakefile	(revision 1459)
++++ Rakefile	(working copy)
+@@ -1,5 +1,5 @@
+ require 'rubygems'
+-require 'ftools'
++require 'fileutils'
+ require 'date'
+ require 'rake/gempackagetask'
+ 
+Index: linux/extconf.rb
+===================================================================
+--- linux/extconf.rb	(revision 1459)
++++ linux/extconf.rb	(working copy)
+@@ -32,7 +32,7 @@
+ 
+ # Symlink our pretty gosu.so into ../lib
+ # FIXME gosu.rb should just look in the right place
+-`ln -s ../linux/gosu.so ../lib/gosu.custom.so`
++`ln -s ../linux/gosu.so ../lib/gosu.so`
+ 
+ sdl_config = with_config("sdl-config", "sdl-config")
+ pango_config = "pkg-config pangoft2" # FIXME should probably use with_config
+Index: lib/gosu.rb
+===================================================================
+--- lib/gosu.rb	(revision 1459)
++++ lib/gosu.rb	(working copy)
+@@ -9,7 +9,7 @@
+   require "#{File.dirname(__FILE__)}/gosu.for_#{version}.#{Config::CONFIG['DLEXT']}"
+   require "#{File.dirname(__FILE__)}/gosu/swig_patches.rb"
+ rescue LoadError => e
+-  require "#{File.dirname(__FILE__)}/gosu.custom.#{Config::CONFIG['DLEXT']}"
++  require "#{File.dirname(__FILE__)}/gosu.#{Config::CONFIG['DLEXT']}"
+   require "#{File.dirname(__FILE__)}/gosu/swig_patches.rb"
+ end
+ 

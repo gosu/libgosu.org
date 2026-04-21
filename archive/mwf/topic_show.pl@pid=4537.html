@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4537 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Game Loop and Drawing in the Update</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4537' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=606.html#tid606'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=606.html#tid606'>Gosu Exchange</a> / Game Loop and Drawing in the Update
+</div>
+</div>
+
+<div class='frm pst' id='pid4515' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4515' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4515.html#pid4515'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-05 08:43
+<span class='htt'>Edited</span> 2011-07-05 09:04
+</div>
+<div class='ccl'>
+I was wondering how this worked, I would try this but I am traveling about at the moment and dont have access to windows atm.<br/><br/>I know that drawing in the update() is generally not a good idea, however I am trying to add some stuff to Gosu and it seems legitimate for the time being.<br/><br/>iirc simply calling the drawing commands queue up the requests which are then blitted at the end of the draw call. So why would it be a bad thing to call the render functions in the update method?<br/><br/>On a side note: I noticed that the game loop is (on Windows)<br/><br/>Process Messages (Draw)<br/>Update<br/><br/>Is it guaranteed that WM_PAINT will be called each tick? While it stops sending the message when its minimised etc, I thought it wasn&#39;t a sure bet it would be called, which could lead to an update update draw no?
+</div>
+</div>
+
+<div class='brn' id='brn4515'>
+<div class='frm pst' id='pid4518' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4515'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4518' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4518.html#pid4518'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-05 10:48
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; which could lead to an update update draw</p></blockquote><br/>Right. I guess there are circumstances where Windows might decide to draw your windows a second time too, so you might end up with update draw draw. And then there are three other platforms… :) What are you trying to achieve?
+</div>
+</div>
+
+<div class='brn' id='brn4518'>
+<div class='frm pst' id='pid4526' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4518'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4526' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4526.html#pid4526'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-05 12:54
+</div>
+<div class='ccl'>
+I want to make gosu event driven as that is generally the first thing I do when I start a prototype or some such, I was digging in the game loop to try and find out what the effects of calling drawing functions in the update cycle. Which is when I noticed WM_PAINT etc.<br/><br/>I have looked at the drawing queue as well, I dont see much actual problem calling drawing calls from the update method as they get queued anyway. Am I missing something for that?
+</div>
+</div>
+
+<div class='brn' id='brn4526'>
+<div class='frm pst' id='pid4528' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4526'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4528.html#pid4528'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-07-05 13:25
+</div>
+<div class='ccl'>
+I use Texplay&#39;s render_to_image in update (which draws to the screen, flushes, then pastes the screen area into an image). It works cross-platform, but jlnr told me that he couldn&#39;t support that always working. If it stops working, I&#39;ll have to wrangle it a bit to make the drawing happen at the start of the draw phase instead, but that would be messy.
+</div>
+</div>
+
+<div class='frm pst' id='pid4530' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4526'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4530' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4530.html#pid4530'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-05 15:03
+</div>
+<div class='ccl'>
+It is unexpected behavior from Gosu&#39;s side. Even though the current system is very clear with the queues, I am free to change the implementation any way I want and it would break your gem. And I don&#39;t know how your game would react to draw-draw-update or update-update-draw, but I guess it could detect that.<br/><br/>What do you mean by event-driven? I am still trying to understand the use case.
+</div>
+</div>
+
+<div class='brn' id='brn4530'>
+<div class='frm pst' id='pid4531' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4530'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4531' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4531.html#pid4531'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-05 15:16
+</div>
+<div class='ccl'>
+In the way that buttonUpButton down are single events, the last bunch of uni projects I&#39;ve used use an event system which goes along the lines of<br/><code><br/>class Player<br/>{<br/>&#160; &#160; /* some code */<br/>&#160; &#160; void update()<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; SomeEvent event;<br/>&#160; &#160; &#160; &#160; /* some code */<br/>&#160; &#160; &#160; &#160; eventManager.triggerEvent(&amp;event, PLAYER_MOVED_MSG);<br/>&#160; &#160; }<br/>};<br/><br/>class SomeEnemy<br/>{<br/>&#160; &#160; /* some code */<br/><br/>&#160; &#160; void eventListener(void* data, int msgID)<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; if(msgID == PLAYER_MOVED_MSG)<br/>&#160; &#160; &#160; &#160; {<br/>&#160; &#160; &#160; &#160; &#160; &#160; SomeEvent eventData = static_cast&lt;SomeEvent&gt;(data);&#160; &#160; <br/>&#160; &#160; &#160; &#160; &#160; &#160; /* react to the event */<br/>&#160; &#160; &#160; &#160; }<br/>&#160; &#160; }<br/>};<br/></code><br/>This is a (very) rough example, dont do it this way :) But I think it shows what I mean.<br/><br/>Essentially I was thinking about adding this to Gosu, and adding buttonEvents into this. I know I can easily write this on top of Gosu for each application, and essentially that is what I was going todo, but I was thinking about adding drawing operations into the event system, which would mean that the update would be calling the drawing operations, although I could queue the ops, however Gosu does this anyway.
+</div>
+</div>
+
+<div class='brn' id='brn4531'>
+<div class='frm pst' id='pid4532' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4531'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4532' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4532.html#pid4532'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-05 17:23
+</div>
+<div class='ccl'>
+I see. The event system itself doesn&#39;t really conflict with the drawing, you could just have <code>void draw() { eventManager.triggerEvent(REDRAW) }</code>. It&#39;s the mix of logic and rendering that I am not sure I want to support in Gosu. It&#39;s too bad that you are not using Ruby or C++0x (I guess), otherwise you could have super-easy enqueuing with lambdas.<br/><br/>Unrelated, but this is a great use case for boost::any, my favorite C++ thingie! In case you need inspiration for the non-rough version.
+</div>
+</div>
+
+<div class='brn' id='brn4532'>
+<div class='frm pst' id='pid4533' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4532'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4533' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4533.html#pid4533'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-05 19:42
+</div>
+<div class='ccl'>
+I&#39;m not sure what REDRAW is doing? Is that related to gosu? I know of the needsRedraw().<br/><br/>I really like the decoupled nature of event/messages nothing really needs to know about anything else just the ability to send receive messages. I could split the messages to updateMsg() drawMsg(), that should be in keeping with Gosu<br/><br/>So do I understand that it should work but dont rely on it :)<br/><br/>boost::any is nice, I dislike void* but when doing the PS2 stuff its a 10 year old compiler and while some boost works on it, I&#39;ve been avoiding it incase some insidious bug creeps in. I&#39;m actually using boost::serialize ( this was recommended to me, I think primarily to be able send data over networks.)
+</div>
+</div>
+
+<div class='brn' id='brn4533'>
+<div class='frm pst' id='pid4534' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4533'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4534' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4534.html#pid4534'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-05 21:12
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I&#39;m not sure what REDRAW is doing?</p></blockquote><br/>Something like <code>const int REDRAW_MSG =…</code>.<br/><br/>Also, this does not really belong in here, but isn&#39;t this equivalent to just using virtual functions? I usually have an Object base class which has a gazillion empty virtual methods (<code>virtual void getHitBySilverBullet() { /* Vampire subclass can override this */</code> }).<br/>It means that the Object class is fat and has a gazillion methods, but the same is true if you have a gazillion message IDs, and you get all the type safety and an easy way to specify default behavior. I can imagine that it would be easier to do catch-all forwarding with void*/int though :)<br/><br/>Oh well, sorry for the Off Topicness!
+</div>
+</div>
+
+<div class='brn' id='brn4534'>
+<div class='frm pst' id='pid4537' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4534'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4537.html#pid4537'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-06 05:36
+</div>
+<div class='ccl'>
+Ah I thought you where hinting at something Gosu related with the REDRAW_MSG.<br/><br/>Yes the huge enum is a fairly crap way of doing it, it just moves the mess, one change and everything needs recompiling. I use hashed strings now, Which are alot nicer, but there is a small danger of a hash collision.<br/><br/>The two problems I&#39;ve had in the past are insane logic in the object managers update and lots of pointer/refs flying around particularly in the player class, just to have access to a tiny amount of info. Events clean that up only having to know about the event manager (and messages), objects could also just send drawing request which would be picked up by a graphics object.<br/><br/>Events have the added bonus of easily being able to respond that frame and send another message to another object without having to loop over.<br/><br/>I guess its apples and oranges really.<br/><br/>Well off topic now :)<br/><br/>PS: I like the simplicity of your gazillion virtual methods (not the object class so much :) must remember&#160; for LD21
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4529' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4537.html#pid4515'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4529.html#pid4529'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-07-05 14:25
+</div>
+<div class='ccl'>
+I guess what I really want to know is it ok to send drawing info in the update() cycle? or will this result in unexpected behaviour
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=606.html#tid606'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=606.html#tid606'>Gosu Exchange</a> / Game Loop and Drawing in the Update
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4537.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

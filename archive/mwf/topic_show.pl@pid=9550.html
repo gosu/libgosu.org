@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9550 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Window#tick doesn&#39;t raise error.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9550' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1427.html#tid1427'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1427.html#tid1427'>Gosu Exchange</a> / Gosu::Window#tick doesn&#39;t raise error.
+</div>
+</div>
+
+<div class='frm pst' id='pid9549' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9549' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9549#pid9549'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=904.html' >Andrek</a>
+<span class='htt'>Date</span> 2021-04-22 17:07
+</div>
+<div class='ccl'>
+I&#39;m working with <a class='url' href='https://github.com/eventmachine/eventmachine'>Event Machine</a> and Gosu so i&#39;m using Gosu::Window#tick to make them work together and everything is fine till a error occurs in Gosu Loop(tick) and doesn&#39;t raise it and the Gosu::Window get bugged, i can&#39;t debbug my code so i&#39;m stuck!<br/><br/><b><i>Sample code:</i></b><br/><code>require &#39;eventmachine&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; 0 / 0 # Generate error.<br/>&#160; end<br/>end<br/><br/>$window = Window.new<br/><br/>EM.run do<br/>&#160; EM.add_periodic_timer(1 / 60.0) { $window.tick }<br/>end</code><br/><br/>I&#39;m following <a class='url' href='https://github.com/eventmachine/eventmachine/wiki/Code-Snippets#using-eventmachine-with-gtk'>Using EventMachine with GTK+</a> and <a class='url' href='https://github.com/eventmachine/eventmachine/wiki/Code-Snippets#using-eventmachine-with-qt'>Using EventMachine with Qt<br/></a> so i think this is the correct way.<br/><br/>Note: EM.add_periodic_timer is not a thread so Gosu::Window#tick can work correctly.
+</div>
+</div>
+
+<div class='brn' id='brn9549'>
+<div class='frm pst' id='pid9550' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9550.html#pid9549'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9550' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9550.html#pid9550'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=957' >cyberarm</a>
+<span class='htt'>Date</span> 2021-04-24 13:24
+</div>
+<div class='ccl'>
+Thanks for reporting this issue Andrek!<br/>I&#39;ve submitted a patch to Gosu that should resolve this issue.<br/><br/><a class='ura' href='https://github.com/gosu/gosu/pull/594'>https://github.com/gosu/gosu/pull/594</a>
+</div>
+</div>
+
+<div class='brn' id='brn9550'>
+<div class='frm pst' id='pid9552' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9550.html#pid9550'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9552' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9552#pid9552'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=904.html' >Andrek</a>
+<span class='htt'>Date</span> 2021-04-24 13:30
+</div>
+<div class='ccl'>
+Thanks! I&#39;ll wait for that, while I have the solution that I said rencently.
+</div>
+</div>
+
+<div class='brn' id='brn9552'>
+<div class='frm pst' id='pid9553' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9550.html#pid9552'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9553' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9553.html#pid9553'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=957' >cyberarm</a>
+<span class='htt'>Date</span> 2021-04-24 13:45
+</div>
+<div class='ccl'>
+You can add this patch directly to your Gosu::Window subclass without needing to wait for a release:<br/><br/>require &#39;eventmachine&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; 0 / 0 # Generate error.<br/>&#160; end<br/><br/>&#160; alias_method :tick_internal, :tick<br/>&#160; def tick<br/>&#160; &#160; tick_internal<br/><br/>&#160; &#160; if defined? @_exception<br/>&#160; &#160; &#160; raise @_exception<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>$window = Window.new<br/><br/>EM.run do<br/>&#160; EM.add_periodic_timer(1 / 60.0) { $window.tick }<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn9553'>
+<div class='frm pst' id='pid9554' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9550.html#pid9553'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9554#pid9554'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=904.html' >Andrek</a>
+<span class='htt'>Date</span> 2021-04-26 13:50
+</div>
+<div class='ccl'>
+Back to working with this, i checked the pull request and use that version instead this because i&#39;m using Ruby 3.<br/><br/>Thanks a lot :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid9551' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9550.html#pid9549'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9551.html#pid9551'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=904.html' >Andrek</a>
+<span class='htt'>Date</span> 2021-04-24 13:25
+</div>
+<div class='ccl'>
+I tested Gosu::Window#tick alone and realized that is its fault and EventMachine has nothing to do here, for now i&#39;m catching errors in Gosu::Window#update by my self using this:<br/><br/><code>require &#39;eventmachine&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; begin<br/>&#160; &#160; &#160; 0 / 0 # Generate error.<br/>&#160; &#160; rescue =&gt; e<br/>&#160; &#160; &#160; p e<br/>&#160; &#160; &#160; self.close<br/>&#160; &#160; &#160; EM.stop<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>$window = Window.new<br/><br/>EM.run do<br/>&#160; EM.add_periodic_timer(1 / 60.0) { $window.tick }<br/>end</code><br/><br/>Is there a way to check if Gosu::Window is closed? want to:<br/><code>EM.add_periodic_timer(1 / 60.0) { $window.tick unless $window.closed? }</code>
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1427.html#tid1427'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1427.html#tid1427'>Gosu Exchange</a> / Gosu::Window#tick doesn&#39;t raise error.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9550.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

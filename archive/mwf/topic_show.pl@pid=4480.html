@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4480 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Segfault and Sample</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4480' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=602.html#tid602'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=602.html#tid602'>Gosu Exchange</a> / Segfault and Sample
+</div>
+</div>
+
+<div class='frm pst' id='pid4479' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4479' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4479.html#pid4479'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=204.html' >Rez</a>
+<span class='htt'>Date</span> 2011-07-03 16:35
+</div>
+<div class='ccl'>
+I&#39;ve been playing with gosu for a quite long time, but since changing audio library in gosu I&#39;ve encountered problem with segfaults.<br/>It seems that it occurs while three or more samples are being played at the same moment. The bug doesn&#39;t depend on sample file or command line, it&#39;s completely random (playing a lot of sounds in the same time increases chance to get the bug, but even with few it still happens).<br/>Here&#39;s one of my logs:<br/><br/><blockquote><p>&gt;ruby TheThing.rb</p></blockquote><br/>Scripts/Player.rb:2097: [BUG] Segmentation fault<br/>ruby 1.9.2p180 (2011-02-18) [i386-mingw32]<br/>-- control frame ----------<br/>c:0012 p:---- s:0091 b:0091 l:000090 d:000090 CFUNC&#160; :play<br/>c:0011 p:3712 s:0087 b:0087 l:000086 d:000086 METHOD Scripts/Player.rb:2097<br/>c:0010 p:1983 s:0059 b:0059 l:000058 d:000058 METHOD Scripts/Items.rb:432<br/>c:0009 p:0074 s:0041 b:0041 l:000040 d:000040 METHOD Scripts/Player.rb:928<br/>c:0008 p:0560 s:0038 b:0038 l:000037 d:000037 METHOD Scripts/Scenes.rb:170<br/>c:0007 p:0022 s:0032 b:0032 l:000031 d:000031 METHOD TheThing.rb:343<br/>c:0006 p:0011 s:0029 b:0029 l:000028 d:000028 METHOD C:/Ruby192/lib/ruby/gems/1.9.1/gems/gosu-0.7.31-x86-mingw32/lib/gosu/swig_patches.rb:10<br/>c:0005 p:---- s:0025 b:0025 l:000024 d:000024 FINISH<br/>c:0004 p:---- s:0023 b:0023 l:000022 d:000022 CFUNC&#160; :show<br/>c:0003 p:1805 s:0020 b:0020 l:000984 d:00224c EVAL&#160;&#160; TheThing.rb:411<br/>c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH<br/>c:0001 p:0000 s:0002 b:0002 l:000984 d:000984 TOP&#160;&#160; <br/>---------------------------<br/>-- Ruby level backtrace information ----------------------------------------<br/>TheThing.rb:411:in <code>&lt;main&gt;&#39;<br/>TheThing.rb:411:in </code>show&#39;<br/>C:/Ruby192/lib/ruby/gems/1.9.1/gems/gosu-0.7.31-x86-mingw32/lib/gosu/swig_patches.rb:10:in <code>update_&#39;<br/>TheThing.rb:343:in </code>update&#39;<br/>Scripts/Scenes.rb:170:in <code>update&#39;<br/>Scripts/Player.rb:928:in </code>A_use&#39;<br/>Scripts/Items.rb:432:in <code>use&#39;<br/>Scripts/Player.rb:2097:in </code>shot&#39;<br/>Scripts/Player.rb:2097:in `play&#39;<br/>[NOTE]<br/>You may have encountered a bug in the Ruby interpreter or extension libraries.<br/>Bug reports are welcome.<br/>For details: <a class='url' href='http://www.ruby-lang.org/bugreport.html'>http://www.ruby-lang.org/bugreport.html</a><br/><br/>This application has requested the Runtime to terminate it in an unusual way.<br/>Please contact the application&#39;s support team for more information.<br/><br/><blockquote><p>&gt;Exit code: 3</p></blockquote><br/>I&#39;m using ruby 1.9.2 (I&#39;ve also seen the bug on 1.9.1) with gosu 0.7.31 (and with the newest one the problem is still present) on Windows XP 32bit.<br/>Am I really the only one with this problem?<br/>Sorry for my English ;d
+</div>
+</div>
+
+<div class='brn' id='brn4479'>
+<div class='frm pst' id='pid4480' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4480.html#pid4479'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4480' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4480.html#pid4480'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-03 18:34
+</div>
+<div class='ccl'>
+I have had spurious bug reports in IRC, but nobody was ever sure if it was really a bug in Gosu, Ruby or if it had to do with their own code. It seems it&#39;s true, which leaves me with the same old question, which audio library to use for Windows? I think I&#39;ll just go with SDL_mixer, even though it is missing features I like :(
+</div>
+</div>
+
+<div class='brn' id='brn4480'>
+<div class='frm pst' id='pid4550' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4480.html#pid4480'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4550' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4550.html#pid4550'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-07-07 00:09
+</div>
+<div class='ccl'>
+Will that result in Gosu having fewer features in regards to sound? Or will there be &quot;special&quot; features which only work on non-Windows platforms?
+</div>
+</div>
+
+<div class='brn' id='brn4550'>
+<div class='frm pst' id='pid4555' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4480.html#pid4550'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4555.html#pid4555'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-07 08:10
+</div>
+<div class='ccl'>
+libsndfile was suggested on IRC in the meantime.<br/><br/>Windows and Linux are both likely to move to OpenAL (just like Mac and iOS) and then use libsndfile for sound loading. That would mean, all the features for Linux (finally) and Windows, no crashes on WIndows, and only one(!!) audio backend.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=602.html#tid602'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=602.html#tid602'>Gosu Exchange</a> / Segfault and Sample
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4480.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2320 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How to : Inital Window in &quot;hidden&quot; mode?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2320' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=344.html#tid344'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=344.html#tid344'>Gosu Exchange</a> / How to : Inital Window in &quot;hidden&quot; mode?
+</div>
+</div>
+
+<div class='frm pst' id='pid2265' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2265#pid2265'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=175.html' >pjfitzgibbons</a>
+<span class='htt'>Date</span> 2010-03-29 15:12
+</div>
+<div class='ccl'>
+Hello All,<br/><br/>I am using Ruby/Gosu and writing TDD style using Rspec.&#160; I am currently following the Ruby Tutorial &quot;Star Chaser Game&quot;<br/><br/>Could anyone give me an idea on how to open a Gosu::Window _without_ display?&#160; The Rspec process preferrs to have most (not necessarily ALL) tests operate without GUI interaction. <br/><br/>To limit the discussion from the onset :<br/>* Yes, I understand that not all operations should run sans-GUI.&#160; I am focusing this question on the subset of methods/operations that _should_ be able to run sans-GUI<br/>* The behaviour here (beyond screen flashing of the displayed window), is that the main window is &quot;rebuilt&quot; for every test (TDD Setup) in order to provide a &quot;clean&quot; environment for every test.&#160; I have not yet investigated framework-level test setup, which is possible but suboptimal.<br/><br/>Thanks for your thoughts and ideas.<br/><br/>Peter Fitzgibbons<br/>peter.fitzgibbons@gmail.com
+</div>
+</div>
+
+<div class='frm pst' id='pid2266' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2266.html#pid2266'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-29 15:24
+</div>
+<div class='ccl'>
+Gosu does not support that. Can you just mock out Gosu::Window to be something that will call its draw and update in a loop? Is resource loading the problem?<br/><br/>My hunch is still that unit tests and simulations of any kind don&#39;t mix very well, but I like being proven wrong ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2316' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2316#pid2316'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=175.html' >pjfitzgibbons</a>
+<span class='htt'>Date</span> 2010-04-12 11:24
+</div>
+<div class='ccl'>
+Hi,<br/><br/>Not sure what you meant by &quot;simulations&quot;... do you mean mocking?<br/><br/>Actually, to me the primary question is &quot;what is the &#39;glue&#39; ? &quot;&#160; Identifiying the separation between the library and &quot;your code&quot; is the defining factor in creating mocks.&#160; While it&#39;s important to test as much of the &quot;application&quot; as possible, eventually there will be edges and points where the framework gets in the way... sometimes though, it gets a bit iffy on exactly what part is &quot;framework&quot;.<br/><br/>I agree with you, the best option is to mock Gosu::Window.&#160; That&#39;s my next todo: Read the C++ Gosu::Window source (not the wrapper... the gosu lib), and understand the options and methods... then I will feel comfortable mocking it.&#160; Black-box mocking is fun sometimes too!
+</div>
+</div>
+
+<div class='frm pst' id='pid2320' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2320.html#pid2320'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=95.html' >lobo_tuerto</a>
+<span class='htt'>Date</span> 2010-04-12 16:45
+<span class='htt'>Edited</span> 2010-04-12 16:50
+</div>
+<div class='ccl'>
+Here is an example apillet wrote for me to explain how I could do TDD for game dev.<br/><br/>Here is an instantiation of the main window game, without showing it, and proving that an actor after being killed is indeed removed from the update and draw queues.<br/>It doesn&#39;t do &quot;running&quot; tests (as in calling draw and update every 16.66ms) but I think it makes a point about how you could do tests.<br/><br/><a class='url' href='https://gist.github.com/d4f3c7a8c4cce07c138d'>https://gist.github.com/d4f3c7a8c4cce07c138d</a><br/><br/>I think the problem when doing testing is in HOW to test. What are the questions you need to ask (and the testing framework needs to answer) to do successful TDD.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=344.html#tid344'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=344.html#tid344'>Gosu Exchange</a> / How to : Inital Window in &quot;hidden&quot; mode?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2320.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

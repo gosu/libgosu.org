@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9205 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Make lots of random sprites move in a &#39;wave&#39; pattern</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9205' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1342.html#tid1342'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1342.html#tid1342'>Gosu Exchange</a> / Make lots of random sprites move in a &#39;wave&#39; pattern
+</div>
+</div>
+
+<div class='frm pst' id='pid9204' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9204' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9204.html#pid9204'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2017-06-15 19:45
+</div>
+<div class='ccl'>
+Here&#39;s my problem I&#39;ve been working on for a while.<br/>I have a shoot-em-up with lots of randomly generated sprites. I want to have the sprites move in a wave or oscillating pattern as they cross the screen. Basically the sprites will move across the screen. Bouncing up and down between two points within the Gosu window.&#160; So they&#39;ll be harder to hit.<br/>I&#39;ve been trying to do this in a method of my &#39;Enemies&#39; class. The method is called wave.<br/><br/><code>def wave<br/>&#160; top_of_wave = @y_sprite_coordinate - 20<br/>&#160; bottom_of_wave =@y_sprite_coordinate + 20<br/>&#160; sprite_at_top_of_wave = false<br/>&#160; #heres some pseudo code<br/> <b> if </b>sprite_at_top_of_wave is false <b>and</b> @y_sprite_coordinate <b>is greater than</b> top_of_wave<br/>&#160; <b>then</b> @y_sprite_coordinate -= 5<br/> <b> else if</b> @y_sprite_coordinate &lt;= top_of_wave <br/>&#160; <b>then</b> sprite_at_top_of_wave = true<br/>&#160; <b>else if</b> sprite_at_top_of_wave == true <b>and</b> @y_sprite_coordinate <b>is less than</b> bottom_of_wave<br/> <b> then</b> @y_sprite_coordinate += 5<br/>&#160; <b>else if</b> @y_sprite_coordinate greater than bottom_of_wave<br/>&#160; <b>then</b> sprite_at_top_of_wave = true<br/>end</code><br/><br/>I write this code but then the sprites just move UP or <code>@y_sprite_coordinate -= 5</code> I think this is happening because it calls the method during the update phase. So I think its calling the method 60 times a second. If that&#39;s the case then the method just keeps resetting the <code>@y_sprite_coordinate</code>&#160; and it goes up and up and up.<br/><br/>Any suggestions on how to solve this?
+</div>
+</div>
+
+<div class='brn' id='brn9204'>
+<div class='frm pst' id='pid9205' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9205.html#pid9204'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9205' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9205.html#pid9205'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-06-16 22:48
+</div>
+<div class='ccl'>
+1) There&#39;s an <code>initialize</code> method, where you probably do some initialization. Set your <code>top_wave </code>and <code>bottom_wave </code>there (save them in instance variable).<br/><br/>2)<code> if @y_sprite_coordinate greater than bottom_of_wave<br/>&#160; &#160; &#160; &#160; then sprite_at_top_of_wave = true</code> <b>&lt;- should be false</b>
+</div>
+</div>
+
+<div class='brn' id='brn9205'>
+<div class='frm pst' id='pid9206' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9205.html#pid9205'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9206' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9206.html#pid9206'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2017-06-17 01:43
+</div>
+<div class='ccl'>
+That works. I was overthinking the problem. I thought I could do it within a method without additional instance variables. But especially because I have a lot of random sprites, I need the additional instance variables.<br/>Thanks for your feedback.
+</div>
+</div>
+
+<div class='brn' id='brn9206'>
+<div class='frm pst' id='pid9207' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9205.html#pid9206'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9207' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9207.html#pid9207'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-06-17 11:50
+</div>
+<div class='ccl'>
+Oh, one more thing. You can also use the <b>||=</b> operator.<br/><br/><code>@top_of_wave ||= @y_sprite_coordinate - 20<br/>@bottom_of_wave ||=@y_sprite_coordinate + 20</code><br/><br/>You still need to use instance variables, but you don&#39;t need to move your code. Sometimes it might be useful.
+</div>
+</div>
+
+<div class='brn' id='brn9207'>
+<div class='frm pst' id='pid9209' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9205.html#pid9207'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9209.html#pid9209'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2017-06-19 23:30
+</div>
+<div class='ccl'>
+Nice! Thanks. I didn&#39;t know ||= was a thing. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1342.html#tid1342'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1342.html#tid1342'>Gosu Exchange</a> / Make lots of random sprites move in a &#39;wave&#39; pattern
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9205.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

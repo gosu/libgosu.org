@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>GGLib: A Gosu GUI Library</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=67.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=67.html#tid67'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=67.html#tid67'>Extending Gosu</a> / GGLib: A Gosu GUI Library
+</div>
+</div>
+
+<div class='frm pst' id='pid229' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=229.html#pid229'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=49.html' >psadda</a>
+<span class='htt'>Date</span> 2009-01-28 21:05
+<span class='htt'>Edited</span> 2009-01-28 21:08
+</div>
+<div class='ccl'>
+I can see that someone has already made a GUI library for Gosu. That just shows how long I have taken in packaging my library.<br/>I started work on a Gosu project just over a year ago. As part of the project, I wrote a simple Ruby GUI Framework and decided that I would release it independently. (Which, once again, took an entire year...)<br/><br/>If you want to opt out before these copious amount of text, check out the download before you go: <a class='url' href='http://code.google.com/p/gglib/downloads/list'>http://code.google.com/p/gglib/downloads/list</a><br/><br/>Unlike Rubygoo, GGLib does not provide a full fledged GUI library, but aims to make it very easy to write one&#39;s own widgets. And it is unbelievably easy to write widgets with GGLib. It&#39;s almost like using C# or VB with .NET to write Windows GUI apps. That said, GGLib does still provide a small assortment of predefined widgets. It has some interesting widgets, such as the DebugConsole and TracePanel which Rubygoo does not have. It also had the ability to fade in and out of menus, which Rubygoo does not have, and has an extensible window state mechanism. As of now, GGLib lacks a full set of widgets, but I will continue to add new widgets such as check boxes, radio buttons, and labels in the near future. <br/><br/>Unfortunately, many of the widgets which were previously part of this library have been removed because they are two heavily intertwined with the project I was previously working on. I will try to extract these widgets from the rest of the project so that they can be neatly distributed with the library. One of these widgets, the TextBar deserves a special mention. The TextBar is not a text editor like the TextBox, but a medium for conversation with in game characters. It is similar to the textbar in Gameboy games and many console games: that strip with text and response options that appears at the bottom of the screen. But the really cool thing about the TextBar is that it is fully scriptable: not from Ruby, but from a special custom language which the application parses passively rather than actively. (That is, the application pauses parsing the script to obtain a human response, rather than the other way around.)<br/><br/>Since this library is so old, some of it is a bit outdated. For example, before Gosu&#39;s text input was updated in 0.7.9, GGLib had it&#39;s own text input interface. With Gosu 0.7.9, GGLib&#39;s Widget#feedText and associated routines became redundant. This, and other legacy code, will be scrapped as soon as possible.<br/><br/>Currently supported widgets:<br/>DebugConsole<br/>GenericButton<br/>SelectionBox<br/>TextBox<br/>ThemeButton<br/>TracePanel<br/><br/>Finished widgets which must be cleaned up before release<br/>TextBar<br/>MenuBar<br/>Menu<br/>MenuItem<br/>MiniMap<br/><br/>Planned widget additions:<br/>RadioButton<br/>CheckBox<br/>Label<br/>TextArea<br/>HScroll<br/>VScroll<br/><br/>Other planned additions:<br/>Remove legacy code<br/>Add audio hooks<br/>Reintroduce serialization/deserialization<br/>Reintroduce debugging/logging<br/>Add layout mechanism<br/>Add theme mechanism<br/>Add support for drawn widgets as well as image-widgets.<br/><br/>Download:<br/><a class='url' href='http://code.google.com/p/gglib/downloads/list'>http://code.google.com/p/gglib/downloads/list</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid230' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=230.html#pid230'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=50.html' >wh1pl4sh</a>
+<span class='htt'>Date</span> 2009-01-29 00:30
+</div>
+<div class='ccl'>
+First post on the forum =)<br/><br/>Let me say I really appreciated your lib. I&#39;m creating a game here (actually my first game with Gosu) and it helped me alot to create great GUI so far. Just let me ask you (and, of course, all the other members) a kind of rethorical question, wouldn&#39;t be better if Gosu handle panels, instead of creating new windows? I mean, I created some games using Pygame, and&#160; I&#160; could use the pygame.sprite.Sprite class to create the panels for my GUI. Maybe because I&#39;m newbie to Gosu I&#39;m not considering problems that could arise from this idea.<br/><br/>psadda, keep up the nice work! if you need any help on further development, let me know =). Although my Ruby experience is kind of limited, I&#39;m really enjoying Ruby and Gosu =P.<br/>Cya, happy hacking
+</div>
+</div>
+
+<div class='frm pst' id='pid232' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=232.html#pid232'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=49.html' >psadda</a>
+<span class='htt'>Date</span> 2009-01-29 21:37
+</div>
+<div class='ccl'>
+If all you need is the ability to display a background image for your panel, you could use the GUIWindow#newImage function. If you need some slightly more advanced functionality, such as the ability to recieve input such as mouse clicks, you could implement a simple subclass of widget. (Actually, you could use widget itself, as it would provide all the necessary functionality, but it would be bad style to use something which should be considered an abstract base class.) If you need more advanced functionality such as panel based content layout, it isn&#39;t available yet, but I am working on it. I hope that answers your question.<br/><br/>Thanks for the input.<br/><br/>By the way, do you mind sharing your app, or screenshots of your GUI? I&#39;m interested in seeing what kind of stuff people are doing with the library. 
+</div>
+</div>
+
+<div class='frm pst' id='pid233' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=233.html#pid233'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-01-30 08:27
+</div>
+<div class='ccl'>
+Ok, I haven&#39;t had a chance to download this and play with it yet, but from readings your description I&#39;m quite excited. I&#39;ve been wishing for something like this for a while now.
+</div>
+</div>
+
+<div class='frm pst' id='pid234' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=234.html#pid234'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-01-30 15:00
+</div>
+<div class='ccl'>
+Is there any gui library for guso c++? If not, any plans to extend gosu a little bit more to handle gui? (The text input abstract class is a great start, but not quite enough for a full gui some games would need).<br/><br/>Thanks
+</div>
+</div>
+
+<div class='frm pst' id='pid235' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=235.html#pid235'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=50.html' >wh1pl4sh</a>
+<span class='htt'>Date</span> 2009-01-30 19:15
+</div>
+<div class='ccl'>
+Not at all, I&#39;ve being away from my pc for a couple of days, but I guess by Sunday I&#39;ll have the game finished (anyway, is a just a simple Space Invaders clone, but I&#39;m working on to, who knows, do some great game in few weeks with Ruby =P).<br/>I&#39;ve actually extended some of your code, and modified some part of it too, but just some lines, not much.<br/>I&#39;ve gotta tell you, the fade effect is awesome! I really liked that. To simulate the kind-of panel behaviour I&#39;m using this effect, it seems pretty nice actually (of course, fading too much just feels a bit awkward lol).<br/>So, as soon as I&#39;m done with the game, I can happily share it =).<br/><br/>Cya, happy hacking.
+</div>
+</div>
+
+<div class='frm pst' id='pid242' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=242.html#pid242'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=49.html' >psadda</a>
+<span class='htt'>Date</span> 2009-02-01 03:35
+<span class='htt'>Edited</span> 2009-02-01 03:38
+</div>
+<div class='ccl'>
+wh1pl4sh, I&#39;m glad to hear that the library is working well for you. The FadeScreen was a short bit of inspiration. I was trying to figure out how to stop the transitions between menus from looking so choppy, and then I realized that most fullscreen apps/video games actually have a very quick fade in/fade out between screens. So, I felt it was pretty important to add the fade in class. Right know, I&#39;m trying to see if I can use the new clip_to method to limit the fading to a single widget. What kind of modifications did you make? Maybe I should add them to the main library. ;)<br/><br/>About C++ libraries, there is no C++ GUI library specifically targeted at Gosu that I know of, but in C++, it is possible to directly access the components of the window, such as the Graphics class, use them with existing C++ or C toolkits such as wxWidgets, FLTK, GTK, ,etc.<br/><br/>philomory, I hope you like the library.<br/><br/>I&#39;ve made some updates to the library. I&#39;ll post them along with more complete documentation on the Google Code site sometime tomorrow. I added support for themes to the library. Now, the same widgets can reused with different graphics. Themes can also be loaded from textfiles. The only problem is, there aren&#39;t any themes yet! There are two types of themes right now: drawn themes, drawn themes, which are drawn from code, and image based themes. Drawn themes can be easily reshaped and resized, but they don&#39;t look as good as image themes can. I&#39;ve also added two new widgets: Label and CheckBox.
+</div>
+</div>
+

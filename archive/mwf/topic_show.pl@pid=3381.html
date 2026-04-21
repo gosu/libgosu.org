@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3381 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Transformations and clipping</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3381' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=477.html#tid477'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=477.html#tid477'>Gosu Exchange</a> / Transformations and clipping
+</div>
+</div>
+
+<div class='frm pst' id='pid3380' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3380' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3380.html#pid3380'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-12 15:11
+</div>
+<div class='ccl'>
+Firstly: In theory, the transformations <code>translate</code>, <code>scale</code> and <code>rotate</code> would be enough to place an image at any position you&#39;d like, right? I&#39;m thinking about whether having<br/><br/><code>&#160; at (20, 50) $ rotate 50 $ scale 2 $ drawImageCentered bla</code><br/><br/>wouldn&#39;t actually be a good idea. I wouldn&#39;t even have to use the transformation support, as my Haskell layer could translate most of it into &quot;normal&quot; drawRot calls behind the scenes. In case the transformation gets too complex, I can always fallback.<br/><br/>Secondly: There&#39;s an idea I had while implementing Cptn Ruby in Haskell: For the tile drawing optimization, I would have to pass in the camera position and everything. Wouldn&#39;t it be nicer if I could just ask Gosu for the bounding box that applies to all current drawing calls?<br/><br/>That would have to keep track of:<br/>* The window size<br/>* If present, user-defined clippers<br/>* and all kinds of transformations that might be active at that point<br/><br/>The last point could obviously be a bit non-trivial, as Gosu would have to invert the matrices active at that point.<br/><br/>And lastly: Are transformations and clipping interacting correctly anyway? Would<br/><br/><code>&#160; scale 2 $ clip (0,0) (50, 50) $ scale 2 $ drawImage sky</code><br/><br/>Give me a 25x25 part of the &quot;sky&quot; image, zoomed up 4 times to (100, 100)?
+</div>
+</div>
+
+<div class='brn' id='brn3380'>
+<div class='frm pst' id='pid3381' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3380'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3381' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3381.html#pid3381'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-12 17:23
+</div>
+<div class='ccl'>
+I don&#39;t know much about Haskell (well, nothing at all actually...) but if you use Chipmunk for collision detection and physics, as I am doing in my game, you can get a bounding box which you can use to figure out which objects need to be drawn.&#160; I&#39;m using ruby, but I believe that there is a haskell version of Chipmunk as well.&#160; However, this is not really the core of Gosu, so it might be best not to have it in the Cptn Ruby demo.
+</div>
+</div>
+
+<div class='brn' id='brn3381'>
+<div class='frm pst' id='pid3384' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3381'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3384.html#pid3384'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-13 11:42
+<span class='htt'>Edited</span> 2010-10-13 11:46
+</div>
+<div class='ccl'>
+That&#39;s not really what I meant. Let&#39;s say I have some complicated top-level transformation. Worst case: The character drank a potion of whiskey, and from personal experience the game programmer decides to represent this by randomly translating, scaling and rotating the whole view around.<br/><br/>So now I&#39;m in the bottom-most drawing call and am asking the questions: What do I need to draw? The call should not need to care about what the upper layers are doing with the transformation matrices. It shouldn&#39;t need to keep some Chipmunk sensor up-to-date and synchronized. It should just be able to ask Gosu: &quot;What&#39;s the box I need to fill at this point?&quot;. That&#39;s the idea.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3385' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3380'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3385.html#pid3385'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-13 11:51
+</div>
+<div class='ccl'>
+As to your last question, yes you are interpreting the interactions correctly (25x25 of the sky zoomed to 100x100).
+</div>
+</div>
+
+<div class='frm pst' id='pid3388' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3380'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3388' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3388.html#pid3388'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-14 08:28
+</div>
+<div class='ccl'>
+I have thought about getting the current bounding box, but the box can be rotated so I thought I&#39;d leave this up to the actual games for now. ;)<br/><br/>I think the whole thing needs further practical evaluation. So far, it would not really save me much or any code. :( This would be mostly for clipping objects and maps, right?
+</div>
+</div>
+
+<div class='brn' id='brn3388'>
+<div class='frm pst' id='pid3390' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3388'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3390.html#pid3390'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-14 16:25
+</div>
+<div class='ccl'>
+Well, yes. Which is an important enough issue once your game world is big enough, I&#39;d guess? You could also try to use it for a level-of-detail-type estimation.<br/><br/>Rotation could probably get away with pretty conservative estimates - the &quot;fine&quot; check is better left to the graphics card or the driver. The only problematic scenario would be many stacked rotations, which doesn&#39;t strike me as a very typical scenario.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3407' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3380'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3407' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3407.html#pid3407'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-20 15:27
+</div>
+<div class='ccl'>
+Hm, nobody wants to comment on the first suggestion? I must say I am rather tempted by this. Would greatly prefer it to implementing factorX/factorY.<br/><br/>In the meantime, I have now a rather naive implementation of the clipping area calculation, and it seems to work pretty well without additional headache. The headache only started when I decided to build that into Captain Gosu and played for some time with a rotating yet efficiently drawn playing field %(
+</div>
+</div>
+
+<div class='brn' id='brn3407'>
+<div class='frm pst' id='pid3414' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3407'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3414' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3414.html#pid3414'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-20 21:15
+</div>
+<div class='ccl'>
+Well there are threads on the board already about changing the Ruby/C++ syntax to img.scale(2).draw(x, y, z) already, so I think it&#39;s a good idea. Can&#39;t comment on the exakt Haskell syntax though :)
+</div>
+</div>
+
+<div class='brn' id='brn3414'>
+<div class='frm pst' id='pid3418' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3414'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3418.html#pid3418'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-21 12:36
+</div>
+<div class='ccl'>
+Okay, thank you, that&#39;s all I need :)<br/><br/>I actually just figured out that I can capture the &quot;scale relative to point x&quot; and &quot;rotate around point y&quot; stuff with a simple modifier like so:<br/><br/><code>&#160; rotate 90 <code>around</code> (5,5) $ do ...</code><br/><br/>Which I think is neat enough to have it in the interface. I was stuck at that detail for some time.<br/><br/>[And just because I can&#39;t resist being pedagogical here: <code><code>around</code></code> is Haskell syntax for &quot;operator-like&quot; function application, so the above is equivalent to <code>around (rotate 90) (5,5) (do ...)</code>. Type signature:<br/><br/><code>around :: (GosuIO a -&gt; GosuIO a) -&gt; (Double, Double) -&gt; (GosuIO a -&gt; GosuIO a)</code><br/><br/>which essentially means &quot;takes a function from a Gosu draw action to a Gosu draw action (a transformation), a point and then maps a Gosu draw action to a Gosu draw action (= again, a transformation)&quot;. The actual implementation is then:<br/><br/><code>around trans (x,y) = translate (x, y) . trans . translate (-x, -y)</code><br/><br/>Which says that, unsurprisingly, the whole thing is just a combination (= function composition, operator &quot;.&quot;) of transformations.]
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3490' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3380'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3490' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3490.html#pid3490'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-06 14:44
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;&#160; I wouldn&#39;t even have to use the transformation support, as my Haskell layer could translate most of it into &quot;normal&quot; drawRot calls behind the scenes.</p></blockquote><br/>Hm, would that even be worth it? Is there some kind of data on what the performance difference is of using transformations versus bare draw calls?
+</div>
+</div>
+
+<div class='brn' id='brn3490'>
+<div class='frm pst' id='pid3491' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3490'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3491' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3491.html#pid3491'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-06 15:01
+</div>
+<div class='ccl'>
+No hard data, but at least it&#39;s not the way Gosu is meant to be used, so I can&#39;t take it into account when optimizing. On the current iOS port, you would definitely ruin rendering performance. :)
+</div>
+</div>
+
+<div class='brn' id='brn3491'>
+<div class='frm pst' id='pid3505' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3491'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3505' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3505.html#pid3505'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-10 12:34
+</div>
+<div class='ccl'>
+Seems it ruins rendering performance here as well. At least if I haven&#39;t somehow managed to kill it otherwise. 16 ms per draw for the captain example is unacceptable, that&#39;s for sure.<br/><br/>Hm, emulation leaves me with quite a number of tricky design decisions.
+</div>
+</div>
+
+<div class='brn' id='brn3505'>
+<div class='frm pst' id='pid3517' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3505'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3517' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3517.html#pid3517'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-11 03:08
+</div>
+<div class='ccl'>
+And it seems it really is pushTransform/popTransform that makes the difference. If I call it a few thousand times per frame, things slow to a crawl. I guess I will now use the ImageData::draw interface, which is equally powerful and probably a lot faster.<br/><br/>My only problem is that there seems to be no equivalent version for text. Currently thinking of just implementing my own version. Any thoughts?
+</div>
+</div>
+
+<div class='brn' id='brn3517'>
+<div class='frm pst' id='pid3523' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3517'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3523' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3523.html#pid3523'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-11 11:05
+</div>
+<div class='ccl'>
+By text you mean Font? You really need transforms for that, but are there usually many Font calls per frame? I&#39;d say it&#39;s &lt;10 in the common case.
+</div>
+</div>
+
+<div class='brn' id='brn3523'>
+<div class='frm pst' id='pid3524' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3523'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3524' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3524.html#pid3524'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-11 12:10
+</div>
+<div class='ccl'>
+Well, yes, right now you do. But there isn&#39;t really a good reason for it. And I wouldn&#39;t really like to have two transformation mechanism implementations side-by-side... Using the &quot;corner&quot; style interface, I can pack all information into a single coordinate transformation function that gets changed around by the transformation functions. Now I would have to additionally keep a list of transforms I would have to apply &quot;just in case&quot; I have to draw text.<br/><br/>Plus I&#39;m currently thinking about going a step further and implement an &quot;align&quot; transform (with &quot;center = align 0.5 0.5&quot;) which automatically determines the bounding box of the drawn stuff and aligns it as specified. That would not only make the current &quot;drawCentered&quot; call unnecessary, but also a good number of possible parameters to the text drawing functions.<br/><br/>And as I have to calculate bounding boxes for this anyway, having a quick &quot;draw this text into the space given by these corners&quot; would be really convenient.
+</div>
+</div>
+
+<div class='brn' id='brn3524'>
+<div class='frm pst' id='pid3525' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3524'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3525' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3525.html#pid3525'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-12 00:33
+</div>
+<div class='ccl'>
+I think then a reimplementation of Font would be the fastest path for you. If vertex arrays worked, you could just do (in Ruby notation):<br/><br/><code>record { font.draw(…) }.draw_as_quad(x1, y1, c1, … )</code><br/><br/>This would just put all the font coordinates into a coordinate array, wrap it into an ImageData and then follow the same quad logic that you are using with other ImageDatas. Except you&#39;d probably calculate the resulting matrix, transform it into four coordinates and the ImageData impl would transform the coordinates back into a matrix, but still pretty close. :)
+</div>
+</div>
+
+<div class='brn' id='brn3525'>
+<div class='frm pst' id='pid3529' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3525'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3529' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3529.html#pid3529'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-12 17:43
+<span class='htt'>Edited</span> 2010-11-12 17:49
+</div>
+<div class='ccl'>
+Hm, at what point would it get re-transformed into a matrix? I was under the impression that the quad was actually pretty close to what GL gets in the end.<br/><br/>And I remembered that with all the flexible coordinate transformation, I still have to make sure the clippings work correctly. Actually not convinced yet Gosu even does the right thing there from looking at the code. Will clipping, then rotating, then clipping again work correctly, for instance?
+</div>
+</div>
+
+<div class='brn' id='brn3529'>
+<div class='frm pst' id='pid3544' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3381.html#pid3529'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3544.html#pid3544'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-14 23:30
+</div>
+<div class='ccl'>
+And sweet irony, I guess I&#39;m now using matrixes in my code again - more efficient than functions. I *still* had to do some pretty hardcore investigation to get performance back on track. But at least now the performance of the captain example isn&#39;t completely embarassing anymore.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=477.html#tid477'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=477.html#tid477'>Gosu Exchange</a> / Transformations and clipping
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3381.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

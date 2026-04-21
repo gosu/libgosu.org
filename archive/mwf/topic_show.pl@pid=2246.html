@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2246 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu and Rubinius</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2246' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=337.html#tid337'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=337.html#tid337'>Extending Gosu</a> / Gosu and Rubinius
+</div>
+</div>
+
+<div class='frm pst' id='pid2237' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2237.html#pid2237'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2010-03-17 11:47
+</div>
+<div class='ccl'>
+Hello fellow gosuers,<br/><br/>I&#39;m wondering what the status is of using Gosu with other ruby implementations than MRI. Essentially, there are 2 problems with MRI as I see it:<br/><br/>1. No code obfuscation - not fun to release the source code with every install of the game<br/>2. Performance/Garbage Collector - even if ruby 1.9 is fast enough (at least for my purposes) the GC-hit that comes every now and then can make the otherwise smooth game stutter.<br/><br/>Both are quite important issues I think. As far as I know, Rubinius, MacRuby and JRuby could all possibly solve both those issues. JRuby might be out of the question, unless there is a nice way to get Gosu working with Java (but i would love it if there was!). And I know there&#39;s been some work on getting Gosu working with MacRuby, right? The problem with MacRuby is that I want to release the game in a cross-platform way, and that leaves JRuby and Rubinius. What about Rubinius then? I tried it with RC3 today, but got this error:<br/><br/>NativeLibrary::load_symbol(): dlsym(0x2d5db40, Init_gosu.for_1_8): symbol not found (SystemCallError)<br/><br/>Backtrace:<br/>&#160; &#160; &#160; &#160; &#160;&#160; NativeMethod.load_extension at kernel/common/native_method.rb:23<br/>&#160; &#160; &#160; &#160; &#160;&#160; Requirer::Utils.single_load at kernel/delta/requirer.rb:314<br/>&#160; &#160; &#160; &#160; &#160; Requirer::Utils.unified_load at kernel/delta/requirer.rb:98<br/>&#160; Kernel(Object)#gem_original_require (require) at kernel/common/kernel.rb:725<br/><br/>I&#39;m currently working on a game that is starting to look really promising, and thusly, I&#39;m looking at my deployment options, and I&#39;m a bit surprised that there aren&#39;t more people interested in getting Gosu working for other Ruby VMs. Gosu is such a sweet library, and Ruby is such a sweet language, I&#39;d hate to have to rewrite the game in C++, just to solve those two issues...<br/><br/>And about the game... we will probably start a blog for it in a while, so you can all see the cool stuff we&#39;re doing. :) Just a little teaser. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2246' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2246.html#pid2246'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-03-21 06:10
+</div>
+<div class='ccl'>
+I&#39;ve been searching for a nice cross platform game engine for a while now, and I have the exact same concerns that you do.<br/>I&#39;d like an engine with a nice scripting system built in (like gosu) but I&#39;d be concerned about releasing a game where the scripts are in plain view. Especially if it were a multiplayer game where cheating by editing scripts could have a negative impact on user experience.<br/><br/>I agree Rubinius seems like a great replacement if we could get it working. I might take a crack at it too. I&#39;d love to hear if you find anything else out.
+</div>
+</div>
+
+<div class='frm pst' id='pid2247' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2247.html#pid2247'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-21 06:34
+</div>
+<div class='ccl'>
+I have some plans in this regards I want to pursue, but I don&#39;t want to promise anything before it works. :P As a Rubinius quick-fix, you might be able to just rename gosu.ruby_1_8.bundle or what it is to gosu.bundle, then change gosu.rb to require that. (All in the &#39;lib&#39; folder of the Gosu gem.)
+</div>
+</div>
+
+<div class='frm pst' id='pid2251' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2251.html#pid2251'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-03-21 13:37
+</div>
+<div class='ccl'>
+Well, I tried the quick fix, but got this error instead:<br/><br/>&#160; &#160; unknown type 0x22 (RuntimeError)<br/><br/>Backtrace:<br/>&#160; &#160; &#160; &#160; &#160;&#160; NativeMethod.load_extension at kernel/common/native_method.rb:26<br/>&#160; &#160; &#160; &#160; &#160;&#160; Requirer::Utils.single_load at kernel/delta/requirer.rb:314<br/>&#160; &#160; &#160; &#160; &#160; Requirer::Utils.unified_load at kernel/delta/requirer.rb:98<br/>&#160; Kernel(Object)#gem_original_require (require) at kernel/common/kernel.rb:725<br/><br/>I&#39;m on OS X Snow Leopard...<br/><br/>Have you gotten Rubinius to run Gosu? If you have, what was the performance like?
+</div>
+</div>
+
+<div class='frm pst' id='pid2255' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2255.html#pid2255'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-22 01:40
+</div>
+<div class='ccl'>
+Oh, for that error I don&#39;t have a solution. No, I don&#39;t even know what the state of things is with Rubinius. I only tried MacRuby a few times, I wish it&#39;d be easier to port to Windows.
+</div>
+</div>
+
+<div class='frm pst' id='pid2454' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2454.html#pid2454'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-05-16 17:29
+</div>
+<div class='ccl'>
+The state of Rubinius is that it just hit 1.0! Time to give your plans a shot? They already support lots of gems/libs that use native extensions... Would be interesting at least to know how difficult it would be to get Gosu running on Rubinius...<br/><br/>In case you haven&#39;t tried Rubinius yet, let me save you a bit of googling and tell you that to install gems you just write: &quot;rbx gem install ...&quot;
+</div>
+</div>
+
+<div class='frm pst' id='pid2460' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2460.html#pid2460'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-17 16:05
+<span class='htt'>Edited</span> 2010-05-17 16:19
+</div>
+<div class='ccl'>
+My personal plans are not related to these two implementations, and I will still keep them for me for a while (until I know they&#39;re either worthwhile or foolish). :P Have you tried it with MacRuby? I don&#39;t have any non-MRI implementation installed right now.
+</div>
+</div>
+
+<div class='frm pst' id='pid2467' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2467.html#pid2467'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2010-05-17 18:51
+<span class='htt'>Edited</span> 2010-05-17 19:06
+</div>
+<div class='ccl'>
+I hope your personal plans involve WebGL then... That&#39;s what I would look into if I was maintaining Gosu... :) It would be so cool to throw Flash down the trash, and deploy web games written in Gosu/JavaScript (or whatever) with full hardware acceleration.<br/><br/>I didn&#39;t know Gosu was supposed to work with MacRuby yet... I just get a LoadError:<br/><br/>irb(main):002:0&gt; require &#39;rubygems&#39;<br/>=&gt; true<br/>irb(main):003:0&gt; require &#39;gosu&#39;<br/>LoadError: no such file to load -- gosu<br/><br/>And of course I have done a &quot;macgem install gosu&quot; first... But it doesn&#39;t seem to find it, the error is the same as before I install the gem.<br/><br/>Hmm... there is no &quot;gosu.for_macruby.bundle&quot; in the gem folder... Do I have to build that myself somehow? Please say no... :P
+</div>
+</div>
+
+<div class='frm pst' id='pid2470' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2470.html#pid2470'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-18 07:05
+</div>
+<div class='ccl'>
+Well, I thought MacRuby supported C extensions now? So I thought maybe the precompiled one might just work. But I guess what is actually true is that C extensions that compile against the ruby.h provided by MacRuby work, sometimes. Which Gosu cannot do right now. I have an idea how to do it though. Need to allocate more time next weekend. :(<br/><br/>Still kind of weird that it does not even find gosu.rb which is a plain Ruby file.
+</div>
+</div>
+
+<div class='frm pst' id='pid2472' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2472.html#pid2472'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2010-05-18 07:41
+</div>
+<div class='ccl'>
+Where can I find the precompiled one? In gosu.rb, you load &quot;gosu.for_macruby.bundle&quot; if NSObject is defined, but there is no &quot;gosu.for_macruby.bundle&quot; in the gem folder with the other bundles. Only the one for Ruby 1.8, and the other one for 1.9.<br/><br/>When testing this in macirb, I managed to get MacRuby to find gosu.rb somehow. I think I tried doing a &quot;gem &#39;gosu&#39;&quot; first, and then &quot;require &#39;gosu&#39;&quot; just do see what happened, and then it actually tried to find &quot;gosu.for_macruby.bundle&quot; which wasn&#39;t in the folder... So if I could just get a hold of a macruby.bundle, I might be able to move a few steps further...
+</div>
+</div>
+
+<div class='frm pst' id='pid2473' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2473.html#pid2473'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-18 07:56
+</div>
+<div class='ccl'>
+No, the precompiled MacRuby one was when it did not support C extensions, it was actually an Objective C bundle. Now it should be able to load something very similar to the for_1_9 bundle, except that I figure it&#39;s only source compatible, not binary compatible with 1.9. I think I might give Rubinius some more priority because I hope to get it working across all platforms with that.
+</div>
+</div>
+
+<div class='frm pst' id='pid2474' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2474.html#pid2474'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2010-05-18 14:17
+</div>
+<div class='ccl'>
+Ok, sounds good. Rubinius isn&#39;t currently working on Windows though, but it&#39;s not far away I think.
+</div>
+</div>
+
+<div class='frm pst' id='pid2475' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2475.html#pid2475'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-18 14:38
+</div>
+<div class='ccl'>
+Oh, good call. If you have a Linux system handy, you can check if Gosu works with Rubinius there.
+</div>
+</div>
+
+<div class='frm pst' id='pid2562' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2562.html#pid2562'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=188.html' >puyo</a>
+<span class='htt'>Date</span> 2010-05-31 02:17
+</div>
+<div class='ccl'>
+$ ruby Tutorial.rb<br/>An exception occurred running Tutorial.rb<br/>&#160; &#160; /home/greg/.rvm/gems/rbx-1.0.0-20100514/gems/gosu-0.7.20/lib/gosu.custom.so: undefined symbol: _ZN4Gosu4Song6updateEv (SystemCallError)<br/><br/>Backtrace:<br/>&#160; Rubinius::NativeMethod.load_extension at kernel/common/native_method.rb:23<br/>&#160; &#160;&#160; Rubinius::CodeLoader#load_library at kernel/delta/codeloader.rb:156<br/>&#160; &#160; &#160; &#160; &#160; Rubinius::CodeLoader#require at kernel/common/codeloader.rb:40<br/>&#160; &#160; &#160; &#160; &#160; Rubinius::CodeLoader.require at kernel/common/codeloader.rb:134<br/>&#160; Kernel(Object)#gem_original_require (require) at kernel/common/kernel.rb:685<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Kernel(Object)#require at lib/rubygems/custom_require.rb:31<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; main.__script__ at /home/greg/.rvm/gems/rbx-1.0.0-20100514<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; /gems/gosu-0.7.20/lib/gosu.rb:12<br/>&#160; &#160; &#160; &#160; &#160; Rubinius::CodeLoader.require at kernel/common/codeloader.rb:139<br/>&#160; Kernel(Object)#gem_original_require (require) at kernel/common/kernel.rb:685<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Kernel(Object)#require at lib/rubygems/custom_require.rb:36<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; main.__script__ at Tutorial.rb:8<br/>&#160; &#160; &#160; Rubinius::CodeLoader#load_script at kernel/delta/codeloader.rb:65<br/>&#160; &#160; &#160; Rubinius::CodeLoader.load_script at kernel/delta/codeloader.rb:88<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Rubinius::Loader#script at kernel/loader.rb:435<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Rubinius::Loader#main at kernel/loader.rb:526<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Rubinius::Loader.main at kernel/loader.rb:552<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Object#__script__ at kernel/loader.rb:564<br/><br/>But for some reason, happily, if I run it like this, it prints the same error but this time it runs, except for sound:<br/><br/> $ rvm ruby Tutorial.rb<br/><br/>rbx-1.0.0-20100514: rubinius 1.0.0 (1.8.7 release 2010-05-14 JI) [i686-pc-linux-gnu] <br/>An exception occurred running Tutorial.rb<br/>&#160; &#160; /home/greg/.rvm/gems/rbx-1.0.0-20100514/gems/gosu-0.7.20/lib/gosu.custom.so: undefined symbol: _ZN4Gosu4Song6updateEv (SystemCallError)<br/><br/>Backtrace:<br/>&#160; Rubinius::NativeMethod.load_extension at kernel/common/native_method.rb:23<br/>&#160; &#160;&#160; Rubinius::CodeLoader#load_library at kernel/delta/codeloader.rb:156<br/>&#160; &#160; &#160; &#160; &#160; Rubinius::CodeLoader#require at kernel/common/codeloader.rb:40<br/>&#160; &#160; &#160; &#160; &#160; Rubinius::CodeLoader.require at kernel/common/codeloader.rb:134<br/>&#160; Kernel(Object)#gem_original_require (require) at kernel/common/kernel.rb:685<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Kernel(Object)#require at lib/rubygems/custom_require.rb:31<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; main.__script__ at /home/greg/.rvm/gems/rbx-1.0.0-20100514<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; /gems/gosu-0.7.20/lib/gosu.rb:12<br/>&#160; &#160; &#160; &#160; &#160; Rubinius::CodeLoader.require at kernel/common/codeloader.rb:139<br/>&#160; Kernel(Object)#gem_original_require (require) at kernel/common/kernel.rb:685<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Kernel(Object)#require at lib/rubygems/custom_require.rb:36<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; main.__script__ at Tutorial.rb:8<br/>&#160; &#160; &#160; Rubinius::CodeLoader#load_script at kernel/delta/codeloader.rb:65<br/>&#160; &#160; &#160; Rubinius::CodeLoader.load_script at kernel/delta/codeloader.rb:88<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Rubinius::Loader#script at kernel/loader.rb:435<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Rubinius::Loader#main at kernel/loader.rb:526<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Rubinius::Loader.main at kernel/loader.rb:552<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Object#__script__ at kernel/loader.rb:564<br/><br/>ruby-1.8.7-p249: ruby 1.8.7 (2010-01-10 patchlevel 249) [i686-linux]
+</div>
+</div>
+
+<div class='frm pst' id='pid2563' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2563.html#pid2563'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=188.html' >puyo</a>
+<span class='htt'>Date</span> 2010-05-31 02:20
+<span class='htt'>Edited</span> 2010-05-31 02:34
+</div>
+<div class='ccl'>
+I think it&#39;s just running with ruby-1.8.7 that was installed by RVM...<br/><br/>Yes. &quot;rvm ruby xyz&quot; runs xyz under all installed rubies.<br/><br/>So it doesn&#39;t work with Rubinius due to the stacktrace above. It says it compiled and installed fine though, which is promising.<br/><br/> $ strings ~/.rvm/gems/rbx-1.0.0-20100514/gems/gosu-0.7.20/lib/gosu.custom.so&#160; | grep _ZN4Gosu4Song6updateEv<br/>_ZN4Gosu4Song6updateEv<br/><br/>It seems to be in there. Any ideas?
+</div>
+</div>
+
+<div class='frm pst' id='pid2564' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2564.html#pid2564'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-31 04:47
+</div>
+<div class='ccl'>
+It seems I actually forgot to implement this method on Linux. I just added an empty method body (as on Windows) and attached a test gem for you. Does this work with Rubinius now? That would be pretty cool, except I&#39;d still have no idea how to do the same for Windows, and for OS X it means some extra work.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/64/2564/gosu-0.7.20.gem.html'>gosu-0.7.20.gem</a>  (309k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2568' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2568.html#pid2568'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=188.html' >puyo</a>
+<span class='htt'>Date</span> 2010-05-31 11:39
+<span class='htt'>Edited</span> 2010-05-31 11:52
+</div>
+<div class='ccl'>
+New exception.<br/><br/>An exception occurred running Tutorial.rb<br/>&#160; &#160; NativeLibrary::load_symbol(): /home/greg/.rvm/gems/rbx-1.0.0-20100514/gems/gosu-0.7.20/lib/gosu.custom.so: undefined symbol: Init_gosu.custom (SystemCallError)<br/><br/>I&#39;ll check out the gosu code and see if I can get it over the line. Any tips on compiling/running gosu tests/examples with minimal fuss? e.g. right out of the working directory?
+</div>
+</div>
+
+<div class='frm pst' id='pid2570' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2570.html#pid2570'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=188.html' >puyo</a>
+<span class='htt'>Date</span> 2010-05-31 12:13
+</div>
+<div class='ccl'>
+I made it work with Rubinus. At least, CptnRuby.rb and Tutorial.rb. Had a few minor issues with the Rakefile (trying to require appscript and ftools, neither of which exist on my machine).<br/><br/>Attaching svn diff.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/70/2570/rubinius.diff'>rubinius.diff</a> - Changes to make it compile and run with Rubinius 1.0.0 (2k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2571' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2571.html#pid2571'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-31 12:24
+</div>
+<div class='ccl'>
+Just for clarity, anyone wanting to try it out needs to apply that diff to the source, then do &#39;GOSU_RELEASE_VERSION=0.7.20 rake linux:gem&#39;, then install the newly generated gem in /public.<br/><br/>Please report all the ups and downs of using it with Rubinius, especially the compilation to bytecode, because I can make it so it works on OS X with Rubinius too—if it&#39;s worth the trouble :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2572' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2572.html#pid2572'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-05-31 12:41
+</div>
+<div class='ccl'>
+puyo what&#39;s the performance like in rubinius versus 1.8 ?
+</div>
+</div>
+
+<div class='frm pst' id='pid2580' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2580.html#pid2580'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-06-02 13:17
+</div>
+<div class='ccl'>
+@jontebol: spam us with the URL to your blog :P<br/><br/>..and just curious, how would you obfuscuate your sourcecode with rubinius? Never even looked at it.. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2581' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2581.html#pid2581'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-06-02 16:29
+</div>
+<div class='ccl'>
+Rubinius compiles Ruby to LLVM bytecode, and I believe this bytecode can be written out to a file similar to Java class files. It&#39;s pretty cool if you ask me—maybe I ought to check it out myself.
+</div>
+</div>
+
+<div class='frm pst' id='pid2668' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2668.html#pid2668'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-14 13:15
+</div>
+<div class='ccl'>
+On the topic of alternative Ruby implementations, just got mailed back with numbers from a Ruby survey. Man, devastating for the poor IronRuby guys, but what happened to Rubinius? People don&#39;t like finished products )or almost finished, in 2009)? :)<br/><br/><a class='url' href='http://survey.hamptoncatlin.com/survey/stats'>http://survey.hamptoncatlin.com/survey/stats</a><br/><br/>But then, Gosu is playing somewhere in a niché 1% of Ruby coders anywhere, so whatever. :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=337.html#tid337'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=337.html#tid337'>Extending Gosu</a> / Gosu and Rubinius
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2246.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

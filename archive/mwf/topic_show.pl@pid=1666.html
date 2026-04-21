@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1666 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>a Viewport feature?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1666' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=254.html#tid254'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=254.html#tid254'>Gosu Exchange</a> / a Viewport feature?
+</div>
+</div>
+
+<div class='frm pst' id='pid1661' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1661.html#pid1661'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=130' >Trebor777</a>
+<span class='htt'>Date</span> 2009-11-01 21:40
+<span class='htt'>Edited</span> 2009-11-01 21:44
+</div>
+<div class='ccl'>
+Hi, I&#39;m kinda new at gosu and I read different post here on 2D cameras and clipping... but I&#39;m not sure if it can help me to do what i want to achieve: Viewports.<br/>That&#39;s how they work:<br/><br/>you have a class Viewport, and an instance is pretty much like a rect, but with Z ordering between other viewports, and some visibility switch, color blending etc...it can be moved and such, but it&#39;s invisible by itself.<br/><br/>and drawable stuff can be attributed to a viewport. or to be exact, a viewport can be attributed to a sprite (kinda like sprite.viewport =&#160; my_viewport_instance )<br/><br/>If so, the coordinates of the picture&#160; are relative to the viewport and not to the main window anymore. If the picture is &quot;getting out&quot; of the viewport, then the part that is out isn&#39;t visible. <br/><br/>Some people here will recognize the Viewport class from the RGSS library from RPG Maker XP or VX. That&#39;s a very convenient class to do different effects. ( like scrollable text etc... ) <br/><br/>So is there anyway to implement that somehow with something using not a lot ressources?<br/><br/>not having this class is pretty much what stops me from moving to something less constraining than RPG Maker.<br/><br/>Thanks for your answers!
+</div>
+</div>
+
+<div class='frm pst' id='pid1662' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1662.html#pid1662'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-11-02 04:21
+</div>
+<div class='ccl'>
+hi,<br/><br/>i can think of a couple of ways to go about this:<br/>(1) In OpenGL it is possible to render to a texture rather than the screen. I&#39;m not entirely sure, but i think FBO (frame buffer objects) are relevant to this. So, a &#39;viewport&#39; would be a blank texture, of whatever size, that you render your stuff to. You could have as many of these as you wanted and place them wherever on the screen you like. Like I said, im not entirely sure this is the best approach to implementing &#39;view ports&#39; but it&#39;s one i&#39;d like to research nonetheless<br/><br/>(2) You could splice images into a blank Gosu::Image using TexPlay. I can think of a few ways to make viewports possible in TexPlay and i think it&#39;d be reasonably performant. The basic idea would be to save the region about to be obscured, draw the object on that region, and then replace the obscured region...I think i should be able to make this reasonably performant and present a nice interface so it&#39;s similar to rendering to the screen.<br/><br/>I will implement (2) for the TexPlay 0.3.0 release but (1) is likely to be a lot faster and a better approach in the long run (IMHO). If someone here with proper OpenGL chops thinks that (1) is the best approach but doesn&#39;t want to implement it themselves, i&#39;d like to try my hand at it as it seems pretty fun :))
+</div>
+</div>
+
+<div class='frm pst' id='pid1663' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1663.html#pid1663'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-02 06:22
+</div>
+<div class='ccl'>
+I think the easiest way will be to subclass Gosu::Image and just add some values to x/y/z in all drawing methods. To get everything in order you could write a viewport class that has a method that takes a block:<br/><br/><code>class Viewport<br/>&#160; # boring stuff<br/><br/>&#160; def draw<br/>&#160; &#160; @window.clip_to(...) do<br/>&#160; &#160; &#160; # tell all images belonging to this viewport to add x/y/z to their coordinates ...<br/>&#160; &#160; &#160; yield<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>...<br/><br/>my_viewport.draw do<br/>&#160; # draw all images that belong to the viewport<br/>end<br/></code><br/><br/>If you don&#39;t want such a block structure, you will have to add the clip_to to every drawing method to get the viewport effect.<br/><br/>I am still not convinced that a Viewport class really makes it a lot easier to write full games, but since it was asked for several times in the last month, if someone can come up with an implementation, it should be posted. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1665' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1665.html#pid1665'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-11-02 17:10
+</div>
+<div class='ccl'>
+Yes, window#clip_to should do exactly what Trebor wants.<br/><br/>Color and Tone might be a little harder to implement though..<br/><br/>Something like <a class='url' href='http://pastebin.com/f5206e89a'>this?</a><br/>Usable by giving every image access to their viewport, and adding vp.x, .y, .ox, .oy, etc. to their normal drawing code..<br/>Or is my logic flawed here? I haven&#39;t even tested it in Gosu yet..<br/><br/>Also, @Trebor.. When the hell did the people at HBGames start using Gosu? :S
+</div>
+</div>
+
+<div class='frm pst' id='pid1666' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1666.html#pid1666'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=130' >Trebor777</a>
+<span class='htt'>Date</span> 2009-11-02 17:42
+</div>
+<div class='ccl'>
+Well I know gosu from some french dev forums, for a few years now. Played a bit with it, and quite enjoyed it for rapid prototyping ^^.<br/>but HBgames is, since it&#39;s renamming from RMXP.org to HBGAMEs, open to any kind of Maker/ game lib projects. And there is a part of the forum dedicated to gosu now.<br/><br/>I&#39;ll have a look at the openGL &quot;render to texture&quot; thing .&#160; :) and if find something useful try to make something with your snippets guys!
+</div>
+</div>
+
+<div class='frm pst' id='pid1667' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1667.html#pid1667'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-11-02 18:18
+</div>
+<div class='ccl'>
+No, you don&#39;t have to look in to OpenGL anymore. You can simply use my snippet:<br/>A demo in the form of a textbox <a class='url' href='http://pastebin.com/f46eb662a'>here</a><br/><br/>Edit: Oh wait, instead of using @position, maybe I should have just increased/decreased Viewport#oy
+</div>
+</div>
+
+<div class='frm pst' id='pid1668' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1668.html#pid1668'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-11-02 19:52
+</div>
+<div class='ccl'>
+I didn&#39;t know about the to_clip method, it looks like the best approach...
+</div>
+</div>
+
+<div class='frm pst' id='pid1679' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1679.html#pid1679'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2009-11-06 00:34
+</div>
+<div class='ccl'>
+The problem I see with FBOs at the moment, other than the higher requirements on the graphics card, is that you would have to patch the source to actually do something like this. I can&#39;t think of a way to actually get gosu to render to an FBO with just an extension.<br/>If you can think of someway, please post it! :) I wanted to use them in my post-processing class too, but didn&#39;t get around to have a closer look at them.<br/><br/>And even if FBOs wont work right now, you can still copy the current framebuffer to an opengl texture and work with this texture as an viewpoint. (But I don&#39;t think this is a solution you would want to depend on, as some hardware might not be able to handle texture sizes as big as the gosu window can be)<br/><br/>AmIMeYets snippet seems good enough for a simple viewpoint if you don&#39;t actually want to manipulate the rendered images (brightness, blending, transparency, hue etc..)
+</div>
+</div>
+
+<div class='frm pst' id='pid1713' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1713.html#pid1713'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=130' >Trebor777</a>
+<span class='htt'>Date</span> 2009-11-13 22:25
+</div>
+<div class='ccl'>
+yeah its snippet is very good :) I added a few simple features to it :) as if it&#39;s hidden, all the associated sprites to it are not drawn.<br/><br/>no the trick i&#39;m a bit worried about, is on Z ordering those viewport, between each others... it&#39;s kinda independent from the sprite Zordering... but that more a matter of organizing well your stuff to make sure it&#39;s at the right place than anything else.
+</div>
+</div>
+
+<div class='frm pst' id='pid1719' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1719.html#pid1719'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-14 06:04
+</div>
+<div class='ccl'>
+As an artefact of how Gosu works, a gl{} block has to flush all the currently queued rendering to the screen. So if you wabt to have everything on which .draw was called rendered to the screen, and start with a new Z-order on top of that, you can just call <code>your_window.window.gl {}</code> :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=254.html#tid254'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=254.html#tid254'>Gosu Exchange</a> / a Viewport feature?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1666.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

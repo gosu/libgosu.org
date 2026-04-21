@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5171 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Resources and readers</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5171' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=668.html#tid668'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=668.html#tid668'>Gosu Exchange</a> / Resources and readers
+</div>
+</div>
+
+<div class='frm pst' id='pid5164' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5164' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5164.html#pid5164'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-11-12 23:56
+</div>
+<div class='ccl'>
+Maybe it&#39;s a silly question but... how resources and readers are used?<br/><br/>Gosu::Reader constructor needs a Resource or no parameters, and Resource needs no parameters. So how it&#39;s used? <br/>Can you create a reader from a file, FILE*, fstream, or something?
+</div>
+</div>
+
+<div class='brn' id='brn5164'>
+<div class='frm pst' id='pid5166' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5171.html#pid5164'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5166' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5166.html#pid5166'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-13 01:45
+</div>
+<div class='ccl'>
+Resource is the base class, Buffer and File are the implementations. Typically, you open a File and then call <code>.frontReader()</code> to read or <code>.backWriter()</code> to append data.<br/><br/>I&#39;d have loved to use ANSI functions for loading files, but they don&#39;t support Unicode and that&#39;s a big no-go on Windows. If you need to, you can easily implement the Resource interface for either FILE or fstream.
+</div>
+</div>
+
+<div class='brn' id='brn5166'>
+<div class='frm pst' id='pid5169' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5171.html#pid5166'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5169.html#pid5169'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-11-13 15:42
+</div>
+<div class='ccl'>
+oh I see...<br/>lol, so knowing that, I think I didn&#39;t need to use libpng to load an image from a file since you can do it with readers hahahaha... well, now I know how to use libPNG :P<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid5170' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5171.html#pid5166'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5170' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5170.html#pid5170'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-11-13 16:47
+<span class='htt'>Edited</span> 2011-11-13 17:10
+</div>
+<div class='ccl'>
+Anyways I have a question since my code doesn&#39;t work reading data from packed files.<br/><br/>I know you can do this:<br/><code>&#160; Gosu::File f(L&quot;song.ogg&quot;);<br/>&#160; Gosu::Reader reader* = new Gosu::Reader(f.frontReader());<br/>&#160; _song.reset(DNEW Gosu::Song(*reader));</code><br/><br/>And even this:<br/><code>&#160; Gosu::File f(L&quot;music.snd&quot;);<br/>&#160; Gosu::Reader* reader = new Gosu::Reader(f.frontReader());<br/>&#160; reader-&gt;setPosition(0);<br/>&#160; _song.reset(DNEW Gosu::Song(*reader));</code><br/><br/>But, if you know you have a .ogg starting at 116th byte of the file &quot;music.snd&quot; can&#39;t you do this?:<br/><code>&#160; Gosu::File f(L&quot;music.snd&quot;);<br/>&#160; Gosu::Reader* reader = new Gosu::Reader(f.frontReader());<br/>&#160; reader-&gt;setPosition(116);<br/>&#160; _song.reset(DNEW Gosu::Song(*reader));</code><br/><br/>because I get an error loading the Gosu::Song from (*reader)<br/>(Unhandled exception at 0x.... in ...exe Microsoft C++ exception: std::reuntime_error at memory location 0x...)<br/><br/><b>EDIT:</b><br/>I was thinking, and maybe the error is because in music.snd there are more than 1 song, and Gosu::Song doesn&#39;t know where to stop reading?<br/>Let&#39;s say the content of the file is something like this:<br/><br/>From byte 0 to 115: metadata<br/>From byte 116 to 2000000: first song<br/>From byte 2000001: second song<br/>and so on.<br/><br/>Is there any way to read data like this?<br/>I read PNG from files like this using libPNG, but I hope there&#39;s a way to avoid using libOGG xDDDD
+</div>
+</div>
+
+<div class='brn' id='brn5170'>
+<div class='frm pst' id='pid5171' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5171.html#pid5170'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5171' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5171.html#pid5171'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-13 22:40
+</div>
+<div class='ccl'>
+Yeah, Gosu was supposed to allow reading from arbitrary readers, but the underlying libraries seldom know where to stop. I guess with some streaming formats, it impossible to know anyway. You are better off to read the section into a Buffer and then read that instead. (Or write a Resource wrapper that will return a truncated size.)<br/><br/>BTW, this is a memory leak:<br/><code>Gosu::Reader* reader = new Gosu::Reader(f.frontReader());</code><br/>It&#39;s way easier :)<br/><code>Gosu::Reader reader = f.frontReader();</code>
+</div>
+</div>
+
+<div class='brn' id='brn5171'>
+<div class='frm pst' id='pid5174' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5171.html#pid5171'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5174.html#pid5174'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-11-14 00:40
+</div>
+<div class='ccl'>
+ok, I&#39;ll think about it :)<br/><br/>And yes, the pointer to reader needs to be freed, but that&#39;s how works a class I have over there ;)<br/>Don&#39;t worry, I was freeing that pointer, but forgot to include it in the example.<br/><br/>So, there&#39;s 3 options: <br/>1 - make a copy to a buffer and then read it<br/>2 - load them from their source files (ogg, m4a, etc.) rather than buffers<br/>3- play with ogg.lib or something like that as I did with PNGs ;)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=668.html#tid668'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=668.html#tid668'>Gosu Exchange</a> / Resources and readers
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5171.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

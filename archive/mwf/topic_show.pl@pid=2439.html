@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2439 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Draw on another window</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2439' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=351.html#tid351'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=351.html#tid351'>Gosu Exchange</a> / Draw on another window
+</div>
+</div>
+
+<div class='frm pst' id='pid2327' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2327#pid2327'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-04-14 12:55
+</div>
+<div class='ccl'>
+Hi :)<br/>I&#39;d like to know if there is a way to get a window by its handel and draw onto it with Gosu::Image#draw.<br/>I am trying to get some multi-core working in Ruby. The first process shall be the main process and calculating everything. It executes a second process when started which shall draw everything on the window.<br/>Is there a way to do this? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2333' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2333.html#pid2333'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-15 11:37
+</div>
+<div class='ccl'>
+No, that does not work at all :)<br/><br/>What you can do to support multiple processors is use Ruby 1.9 with native threads and offload all the calculation into a second thread. All Gosu calls have to be made on the main thread though (i.e. rendering).
+</div>
+</div>
+
+<div class='frm pst' id='pid2341' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2341.html#pid2341'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-04-15 19:29
+</div>
+<div class='ccl'>
+&quot;What you can do to support multiple processors is use Ruby 1.9 with native threads and offload all the calculation into a second thread. All Gosu calls have to be made on the main thread though (i.e. rendering). &quot;<br/><br/>Uhh... what? ^^&#39;<br/>I always thought as Ruby only works only inside the Ruby compiler its threads only use one core?!
+</div>
+</div>
+
+<div class='frm pst' id='pid2342' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2342.html#pid2342'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=95.html' >lobo_tuerto</a>
+<span class='htt'>Date</span> 2010-04-15 20:59
+</div>
+<div class='ccl'>
+Ruby 1.8 used &quot;green&quot; threads, that means they were simulated inside the Ruby process.<br/><br/>Ruby 1.9 on the other hand uses OS threads, so it&#39;s supposed to take advantage of multiple cores.
+</div>
+</div>
+
+<div class='frm pst' id='pid2344' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2344.html#pid2344'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-04-15 22:24
+</div>
+<div class='ccl'>
+I think I am doing something wrong :|<br/><a class='url' href='http://img255.imageshack.us/img255/5381/screenxk.png'>http://img255.imageshack.us/img255/5381/screenxk.png</a><br/><br/>50 % CPU usage (1 of 2 cores) with 3 Threads...
+</div>
+</div>
+
+<div class='frm pst' id='pid2346' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2346.html#pid2346'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-16 17:56
+</div>
+<div class='ccl'>
+Which version of Ruby is this?
+</div>
+</div>
+
+<div class='frm pst' id='pid2347' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2347#pid2347'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-04-16 18:33
+</div>
+<div class='ccl'>
+1.9.1<br/>i386-mingw32
+</div>
+</div>
+
+<div class='frm pst' id='pid2348' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2348.html#pid2348'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-17 04:23
+</div>
+<div class='ccl'>
+Huh. Well, then I think it&#39;s a Ruby problem, not a Gosu problem. Any way, different *processes* require more complex communication than that because they usually don&#39;t share any memory, and if you forced them to, then the two separate garbage collectors would probably cause havok. You would have to use sockets or something painful like that.<br/><br/>I would go look around for a solution to your basic Ruby threading problem first :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2431' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2431#pid2431'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-10 15:07
+</div>
+<div class='ccl'>
+Sorry, for not answering for some time.<br/>I found out that Ruby 1.9.1 is able to support native threads but it only uses one because of the global interpreter lock because some C functions are not thread-safe.<br/>Sadly, there is no alternative for Windows yet, so I just have to wait for a better threading version of Ruby to be released.
+</div>
+</div>
+
+<div class='frm pst' id='pid2432' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2432.html#pid2432'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-05-11 05:59
+<span class='htt'>Edited</span> 2010-05-11 06:02
+</div>
+<div class='ccl'>
+Well, MacRuby has a more sensible threading model (no GIL), and now they are working on support for C extensions, so there&#39;s a chance Gosu would work there—but that won&#39;t help you on any other platform, sadly.<br/><br/>I think jruby supports proper threading also, but I don&#39;t know about C extensions. I think it doesn&#39;t support them—can anybody confirm? There&#39;s Ruby FFI for that, of course, but that won&#39;t help with Gosu. I bet somebody clever could do it, but I&#39;m not <i>that</i> clever. Wouldn&#39;t it be nice if FFI could speak C++? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2433' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2433.html#pid2433'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-11 09:02
+<span class='htt'>Edited</span> 2010-05-11 09:04
+</div>
+<div class='ccl'>
+Wurstinator, are you sure it does not work if you don&#39;t use C functions on another thread? If you just move the Ruby-only game logic to a different thread and let Gosu do its thing in the main thread, it might work. But I have no experience with this.<br/><br/>Gosu is not thread-safe itself right now BTW. There are some #ifdef&#39;d locks in the texture allocation. If you want to allocate textures outside of the main thread to keep the game going, that can be enabled easily. But drawing from several threads is not supported, so even if you get multiple threads working, leave everything Gosu-ish on the main thread please :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2434' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2434.html#pid2434'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-11 20:37
+</div>
+<div class='ccl'>
+@ erisdiscord: Yes, I heard of FFI but as you said, most gems do not support it.<br/><br/>@ jlnr: I nearly know nothing about C so I cannot tell you why something is threadsafe and something other is not.<br/>The problem is, that the developers of Ruby disabled the possibility to use parallel threads with the GIL. So maybe it wouldn&#39;t throw errors your way, but it just can&#39;t be done (only if you modify the interpreter).
+</div>
+</div>
+
+<div class='frm pst' id='pid2435' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2435.html#pid2435'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-12 03:16
+</div>
+<div class='ccl'>
+OK I see, I thought the GIL had been limited to C calls but now that I think about it, nearly everything in Ruby would have been a C call anyway.<br/><br/>Does your game happen to be multiplayer anyway? ;) I know many old id games had the main game running as a server and in singleplayer you basically just connected to yourself. That&#39;s really the way I&#39;d do it with two processes (using sockets).
+</div>
+</div>
+
+<div class='frm pst' id='pid2439' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2439.html#pid2439'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-14 11:49
+</div>
+<div class='ccl'>
+Multiplayer? :o<br/><br/>No, I wanted to use one process / thread for things like AI or pathfinding :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=351.html#tid351'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=351.html#tid351'>Gosu Exchange</a> / Draw on another window
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2439.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 423 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Building gosu with SDL instead of FMOD on OS X and Windows</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d423' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=43.html#tid43'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=43.html#tid43'>Extending Gosu</a> / Building gosu with SDL instead of FMOD on OS X and Windows
+</div>
+</div>
+
+<div class='frm pst' id='pid114' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=114.html#pid114'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-11 03:27
+</div>
+<div class='ccl'>
+(Note, this is for the ruby portion of gosu)<br/>So, I&#39;ve been a little annoyed at FMOD (primarily their weird freeware license that forbids you from accepting donations), and I thought I&#39;d try to compile gosu with SDL instead on OS X. I actually got it to compile, which was pleasing, but then it threw [BUG] Bus Error when I tried to require it, so clearly I&#39;m doing it wrong.<br/><br/>(Incidentally, the way I did it was this: I removed AudioFMOD.cpp from the xcodeproj, added AudioSDL.cpp in it&#39;s place, and then added the SDL frameworks to the project. I got frustrated trying to get the SDL frameworks to behave, so I took them back out, and linked against my UNIX-style SDL installation instead, and added -lSDL and -lSDL_mixer, and added the SDL path to my lib search, etc. At this point, everything built and linked without errors, but it blew up on the require statement.)<br/><br/>Any tips on this? Is it worth my time? Or should I just suck it up and stick with FMOD? It&#39;s not that I actually expect anyone to give me money for my game, it just seems a little ridiculous to me that, for licensing reasons, if someone likes my game and wants to send $5 my way, I have to refuse.
+</div>
+</div>
+
+<div class='frm pst' id='pid116' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=116.html#pid116'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-12-11 20:06
+</div>
+<div class='ccl'>
+Hmmm, you could look at how the Ruby SDL libraries do it. I also try to go with static libraries whenever possible, i.e. directly specifying the libSDL_mixer.a file, so I don&#39;t end up with an obscure .dylib dependency. (And wait until you have to build it for PPC too and link it together using lipo... ;) ) Actually it should work the way you tried it.
+</div>
+</div>
+
+<div class='frm pst' id='pid117' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=117.html#pid117'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-12 04:29
+</div>
+<div class='ccl'>
+Actually, I&#39;m building it for PPC *now*. Building it for Intel means... uh... getting another computer? I&#39;ve never managed to successfully cross-compile anything, that I can think of. I usually don&#39;t bother trying.<br/><br/>Static linking is out, because I&#39;m pretty sure I&#39;d then have to make my source GPL or LGPL. I plan to go open source, but not one of those licenses. Isn&#39;t licensing fun?<br/><br/>So, I started over with a fresh copy of the 0.7.11 source, and it worked like a charm actually. Then I tried altering the build settings to make it build in 1.9, and it compiled and linked fine but threw a bus error on use.<br/><br/>Soo... at the moment it seems that Gosu + OS X + SDL is fine, and Gosu + OS X + Ruby 1.9 is also fine, but Gosu + OS X + SDL + Ruby 1.9 is not as fine.<br/><br/>I tried running it in XCode&#39;s debugger, and it seemed to be crashing with EXEC_BAD_ACCESS in this call stack:<br/>#0&#160; 0x0110eb6c in st_lookup<br/>#1&#160; 0x010c37e4 in rb_intern3<br/>#2&#160; 0x010a5b1c in rb_define_module<br/>#3&#160; 0x0100c120 in Init_gosu<br/>#4&#160; 0x002065ec in dln_load at dln.c:1284<br/>#5&#160; 0x0030198c in rb_vm_call_cfunc at vm.c:1323<br/>#6&#160; 0x002352e8 in rb_require_safe at load.c:553<br/>#7&#160; 0x003026e0 in vm_call_method at vm_insnhelper.c:376<br/>#8&#160; 0x00304f4c in vm_exec_core at insns.def:999<br/>#9&#160; 0x00308e8c in vm_exec at vm.c:1041<br/>#10&#160; 0x00309da8 in eval_string_with_cref at vm_eval.c:737<br/>#11&#160; 0x0030a214 in rb_f_eval at vm_eval.c:820<br/>#12&#160; 0x003026e0 in vm_call_method at vm_insnhelper.c:376<br/>#13&#160; 0x00304f4c in vm_exec_core at insns.def:999<br/>#14&#160; 0x00308e8c in vm_exec at vm.c:1041<br/>#15&#160; 0x0030d1b0 in loop_i at vm.c:487<br/>#16&#160; 0x0023151c in rb_rescue2 at eval.c:614<br/>#17&#160; 0x002fe950 in rb_f_loop at vm_eval.c:560<br/>#18&#160; 0x003026e0 in vm_call_method at vm_insnhelper.c:376<br/>#19&#160; 0x00304f4c in vm_exec_core at insns.def:999<br/>#20&#160; 0x00308e8c in vm_exec at vm.c:1041<br/>#21&#160; 0x0030b3a0 in rb_f_catch at vm.c:487<br/>#22&#160; 0x003026e0 in vm_call_method at vm_insnhelper.c:376<br/>#23&#160; 0x00304f4c in vm_exec_core at insns.def:999<br/>#24&#160; 0x00308e8c in vm_exec at vm.c:1041<br/>#25&#160; 0x0030b3a0 in rb_f_catch at vm.c:487<br/>#26&#160; 0x003026e0 in vm_call_method at vm_insnhelper.c:376<br/>#27&#160; 0x00304f4c in vm_exec_core at insns.def:999<br/>#28&#160; 0x00308e8c in vm_exec at vm.c:1041<br/>#29&#160; 0x00309550 in rb_iseq_eval at vm.c:1246<br/>#30&#160; 0x00231160 in ruby_exec_node at eval.c:205<br/>#31&#160; 0x00233a88 in ruby_run_node at eval.c:233<br/>#32&#160; 0x00002cf8 in main at main.c:35<br/><br/>...but frankly I don&#39;t have a clue how to even use GDB, so I very likely did it wrong.<br/><br/>Frankly, I&#39;m just glad I got anything to work, I was getting rather frustrated. I was quite surprised when it not only didn&#39;t crash, but actually played the music correctly to boot.<br/>Of course, lord knows how I&#39;d do this for the windows version, having absolutely no experience working with Windows build tools whatsoever. <br/><br/>&lt;semi-off-topic&gt;Actually, it continues to amaze me how much of &#39;programming&#39; takes place outside of the code, trying to get the build-environment right, etc. Not just C, Ruby too, since if you ever want to distribute anything to an end user you have to make sure that they&#39;ll meet all the requires and have them in the right places, etc&lt;/semi-off-topic&gt;<br/><br/>Anyway, thanks for your patience. I&#39;ll be sure to note here when the game is ready for other people to see.
+</div>
+</div>
+
+<div class='frm pst' id='pid118' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=118.html#pid118'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-12 17:27
+</div>
+<div class='ccl'>
+I guess there&#39;s a first time for everything. I got was finally (after hours of beating my head on it) able to cross-compile SDL &amp; SDL_mixer for Intel macs, and I grabbed a universal build of ruby-1.8.6 from the OneClickInstaller package (I just grabbed libruby, I didn&#39;t actually install the package), since ruby wouldn&#39;t cross compile (errors about setpgrp). And I built RubyGosu Core, and it worked! In fact, once I had lipoed the dependencies together, I was able to build RubyGosu Core itself as a fat binary right from XCode, rather than building twice and lipoing. And when I got to an Intel mac to test it on, it worked on the first try, so I&#39;m very pleased.<br/><br/>One thing I did notice though: I don&#39;t think the problem I was having with 1.9 has anything to do with 1.9 per se... my 1.9 build of gosu statically linked libruby, which works fine by itself, but when I try to build Gosu with SDL against a statically linked 1.9 *or* 1.8, it blows up. Dynamically linked 1.8 works fine, so I&#39;m going to try building dynamically linked 1.9 when I get home.<br/><br/>Just thought I&#39;d post this follow-up, in case anyone else finds the info useful. If you like, I can post my builds, too.
+</div>
+</div>
+
+<div class='frm pst' id='pid120' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=120.html#pid120'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-13 05:53
+<span class='htt'>Edited</span> 2008-12-13 06:02
+</div>
+<div class='ccl'>
+Ok, so I&#39;ve got a confirmed working universal binary RubyGosu Deployment Template for OS X, linked against SDL instead of FMOD. libSDL and libSDL_mixer are linked dynamically, but included in the bundle, so you get the &#39;it just works&#39; of static linking, and the &#39;drop-in-replace-ability&#39; of dynamic linking. Using 100% open source code, to boot.<br/><br/>Julian, now I have an inkling of why you aim to statically link everything whenever possible. Dealing with the dynamic linker is a pain in the neck.<br/><br/>Anyway, I&#39;m attaching my built deployment template (including built gosu.bundle, libSDL, and libSDL_mixer) here. I&#39;d post my source changes, except I didn&#39;t make any: this was all build-environment trickery.<br/><br/>EDIT: I guess I&#39;m not attaching it here, as it runs up against the 1MB limit and I can&#39;t seem to compress it below 1.2MB. Does anyone want this?<br/><br/>Usage of the template is a tiny bit different from the original RubyGosu Deployment Template: put your scripts in Contents/Resources, but leave gosu.bundle where it is. Also, don&#39;t rename your game&#39;s main script to Main.rb, instead open up the Main.rb already present, and edit the second line to require your own main file (or, get rid of my Main.rb, make your own starting file Main.rb, and add $LOAD_PATH.unshift(&#39;../lib/ruby&#39;) to the very beginning).<br/><br/>Hope this proves useful to someone. Now if someone could do something similar for Windows so I didn&#39;t have to, I&#39;d be very appreciative :p
+</div>
+</div>
+
+<div class='frm pst' id='pid121' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=121.html#pid121'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-12-17 16:47
+</div>
+<div class='ccl'>
+Have you been successful with Ruby 1.9? In any case, you can mail it to julian@raschke.de and upload it. (Or figure out how to raise the upload limit tomorrow, really busy until then :( )
+</div>
+</div>
+
+<div class='frm pst' id='pid122' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=122.html#pid122'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2008-12-18 19:13
+</div>
+<div class='ccl'>
+Actually I&#39;ve been traveling and haven&#39;t had any chance to play with it as far as 1.9 is concerned. I do know that before I can manage a 1.9 universal of gosu or the Deployment Template, I&#39;ll need a universal 1.9, which I don&#39;t have. I can&#39;t try that until I get back home to my computer.<br/><br/>I do have a copy of the built 1.8 version, though, so I can email and/or upload that right now. I think in the end I might re-arrange where I put some of the files to make it simpler/more like yours, but in the mean time, I&#39;ll try sending it to you shortly.
+</div>
+</div>
+
+<div class='frm pst' id='pid123' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=123.html#pid123'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-18 19:17
+</div>
+<div class='ccl'>
+That last post was by me. Now I&#39;ll attempt to upload the file.<br/>EDIT: Nope, hit&#39;s the file size limit. Email it is.
+</div>
+</div>
+
+<div class='frm pst' id='pid125' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=125.html#pid125'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-12-20 02:01
+</div>
+<div class='ccl'>
+OK, thanks! Didn&#39;t have time to fiddle with the forum yet. The template .app is available here for now: <a class='url' href='http://www.raschke.de/julian/temp/RubyGosu-SDL%20Deployment%20Template.zip'>http://www.raschke.de/julian/temp/RubyGosu-SDL%20Deployment%20Template.zip</a> I will probably link it more prominently later :)
+</div>
+</div>
+
+<div class='frm pst' id='pid133' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=133.html#pid133'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-12-27 09:11
+</div>
+<div class='ccl'>
+Can we have a template for Window version too?&#160; Thank you in advance! :)
+</div>
+</div>
+
+<div class='frm pst' id='pid152' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=152.html#pid152'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-01-02 06:15
+</div>
+<div class='ccl'>
+Sorry to bump this but I really need help with not using fmod with gosu on windows :(&#160; Or can someone tell me what I can do with the template provided on the above post?
+</div>
+</div>
+
+<div class='frm pst' id='pid159' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=159.html#pid159'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-01-02 18:10
+</div>
+<div class='ccl'>
+The template provided in the above post will be completely useless to you on Windows, it&#39;s an OS X application package. I plan to try to build a copy of gosu/ruby/windows with SDL when I have a chance, but I have absolutely zero experience with windows software development so I may run into roadblocks very quickly.
+</div>
+</div>
+
+<div class='frm pst' id='pid251' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=251.html#pid251'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-03 03:22
+</div>
+<div class='ccl'>
+I am very happy to say that I&#39;ve managed to compile RubyGosu+SDL... for Windows! There&#39;s been very little testing, but it does work with my game on the machine I compiled it on. It&#39;s built for Ruby 1.8.6, I haven&#39;t had time to play with 1.9 yet. Frankly, the hardest part by far was figuring out how the hell to use Visual Studio 2005 Express C++, given that I a) have never done windows development of any sort before, and b) I have little knowledge of C++.<br/><br/>Anyway, it certainly seems to work, so I&#39;ll be uploading it soon.<br/><br/>(Note of course that instead of including fmod.dll in your source directory, you&#39;d include SDL.dll and SDL_mixer.dll)<br/><br/>(edit: grammar)
+</div>
+</div>
+
+<div class='frm pst' id='pid252' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=252.html#pid252'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-03 09:04
+</div>
+<div class='ccl'>
+Ok, so it seems there is a problem. My Gosu/Windows/1.8/SDL build works on a copy of 1.8 I compiled myself, but not on the version installed by the one-click installer. I believe this has to do with the different version of the Microsoft Visual C Runtime (MSVCRT) that the two rubies are linked against? The version I compiled provides msvcr80-ruby18.lib, on account of being built with Visual Studio 2005, i.e. 8.0. The one-click installer provides msvcrt-ruby18.lib, on account of being built with whatever it was built with, I suppose. I&#39;m a little out of my league here, but the reason I compiled my own copy of ruby to begin with is that when I tried to build gosu linked against the one-click installer, I got a &#39;fatal error MSC version mismatch&#39;, which google said meant I needed to compile ruby with the same compiler I was using for my extension.<br/><br/>The actually process of getting Visual Studio to build *normal* gosu was quite difficult for me, due in part to the fact that I have little C++ experience and less Windows development experience, in part to the fact that I wasn&#39;t willing to shell out money to get the paid version of Visual Studio, and in part to the fact that the only Windows machine I have available for reckless experiments like this is still running Windows 2000. That being said, the number of *additional* steps needed to go from compiling gosu with fmod to compiling gosu with sdl was very small, just three or four steps. I&#39;ll outline them here tomorrow, for the time being I&#39;m going to sleep.<br/><br/>For the record, my last accomplishment before going to bed was getting rubyscript2exe to product a working executable version of my game, which unfortunately revealed a number of &#39;path assumptions&#39; I had made which I need to fix... luckily, that problem lies entirely within the realm of Ruby and is something I expect to have little difficulty with.<br/><br/>A more serious problem looms in that what I&#39;ve read leads me to believe that rubyscript2exe is completely incompatible with ruby 1.9 (indeed everything after a certain patchlevel in ruby 1.8... patchlevel 111 works, patchlevel 287 does not). That being the case, I think I&#39;m going to stick with 1.8 on windows and leave 1.9 to someone else... without the ability to build an exe afterwards, the cost/benefit ratio is far to poor at my skill-level.<br/><br/>...<br/><br/>Goodnight.
+</div>
+</div>
+
+<div class='frm pst' id='pid260' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=260.html#pid260'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-02-04 09:40
+</div>
+<div class='ccl'>
+That&#39;s sad to hear : /&#160; Though, exerb work with the one-click installer, it doesn&#39; compile the resources file like rb2exe does. <br/><br/>Anyway, will you release your built version of 1.8? Just so that if people want to use SDL Mixer then they can have a choice to go with ruby 1.8 :)
+</div>
+</div>
+
+<div class='frm pst' id='pid268' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=268.html#pid268'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-05 07:26
+</div>
+<div class='ccl'>
+OK, I had a revelation today that makes deploying Gosu/OSX/SDL much, *much* simpler. All the nonsense playing with install_name_tool was *completely* unnecessary (though it was educational). As such, it is my pleasure to introduce the simpler Gosu/Ruby1.8/OSX/SDL build, with instructions on how to use it easily and simply:<br/><br/>(Note that this does require compiling something, so you&#39;ll need XCode installed, but the actual effort demanded of you is not high).<br/><br/>For development: <br/>&#160;&#160; 1. Put my modified gosu.bundle anywhere that is appropriate, like you would with normal gosu.<br/>&#160;&#160; 2. Download the SDL source archive (<a class='url' href='http://www.libsdl.org/release/SDL-1.2.13.tar.gz'>http://www.libsdl.org/release/SDL-1.2.13.tar.gz</a>)* , extract it and compile it as follows:<br/>&#160; &#160; &#160;&#160; (open a terminal window and cd to the directory you extracted SDL&#39;s source into)<br/>&#160; &#160; &#160;&#160; $ ./configure<br/>&#160; &#160; &#160;&#160; $ make<br/>&#160; &#160; &#160;&#160; $ sudo make install<br/>&#160;&#160; 3. Do the same thing for SDL_mixer (<a class='url' href='http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.tar.gz'>http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.tar.gz</a>)*<br/>&#160;&#160; 4. SDL and SDL_mixer are now installed in /usr/local/lib/, exactly where gosu expects to find them!.<br/>&#160;&#160; 5. in your ruby app, require &#39;gosu&#39; and proceed merrily along as normal.<br/><br/>For deployment:<br/>&#160; 1. You can use Julian&#39;s RubyGosu Deployment Template, almost completely unmodified! You don&#39;t have to recompile it or anything.<br/>&#160; 2. In the RubyGosu deployment template, put gosu.dylib in the Resources folder like you normally would. <br/>&#160; 3. Put libSDL and libSDL_mixer and libruby in the same folder as gosu.bundle. The only tricky part here is making sure you get the actual dylib, since most of the files in /usr/local/lib will be symlinks pointing to the real dylib. On my machine, the real dylib was called libSDL_1.2.0.11.2.dylib. Rename the dylibs to libSDL-1.2.0.dylib and libSDL_mixer-1.2.0.dylib, or make symlinks with those names pointing to the &#39;real thing&#39;.<br/>&#160; 4. Now the step that makes it all work: Open up Info.plist in Property List Editor and add a key called LSEnvironment, of type Dictionary. As a child of that, add a key called DYLD_LIBRARY_PATH, of type String, whose value is a single &#39;.&#39; (dot). Save the plist. If you are averse to Property List Editor, the XML is <br/>&#160; &#160; &#160; &#160; &lt;key&gt;LSEnvironment&lt;/key&gt;<br/>&#160; &#160; &#160; &#160; &lt;dict&gt;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &lt;key&gt;DYLD_LIBRARY_PATH&lt;/key&gt;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &lt;string&gt;.&lt;/string&gt;<br/>&#160; &#160; &#160; &#160; &lt;/dict&gt;<br/>&#160; 5. Double-click your app and watch it run! Take it to another machine with no SDL, SDL_mixer or ruby and watch it still run. Rejoice!<br/><br/>Ok, in retrospect, this doesn&#39;t *sound* very simple, but it really is. Compared to what I was doing before, this is much better. Primary benefit? You can use the same gosu.bundle for development and distribution. Before, I had one specially set up for the deployment bundle, and if you changed anything you were pretty much doomed.<br/><br/>Also, to get a truly self-contained app, I suppose you could include libruby in your bundle as well, but since all macs ship with libruby I think you should be ok unless your users have actually deleted it off of their machine.<br/><br/>Windows version to come shortly!<br/><br/>* Note that the exact verison number for SDL and SDL_mixer probably don&#39;t matter, as long as it&#39;s 1.2.x. Also, you could probably use MacPorts or Fink instead of compiling it yourself, but I&#39;ve never tried it, and I don&#39;t know if it would work well or not.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/68/268/gosu.bundle.zip'>gosu.bundle.zip</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid282' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=282.html#pid282'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-06 10:38
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; the reason I compiled my own copy of ruby to begin with is that when I tried to build gosu linked against the one-click installer, I got a &#39;fatal error MSC version mismatch&#39;</p></blockquote><br/>That error is the first line I comment out when I install One-Click Ruby *cough* ;) I&#39;d expect that if anything, the resulting DLL shouldn&#39;t be loaded or crash, and so far it seems to work.
+</div>
+</div>
+
+<div class='frm pst' id='pid285' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=285.html#pid285'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-07 02:23
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;&gt;&#160; the reason I compiled my own copy of ruby to begin with is that when I tried to build gosu linked against the one-click installer, I got a &#39;fatal error MSC version mismatch&#39;<br/>&gt;<br/>&gt; That error is the first line I comment out when I install One-Click Ruby *cough* ;) I&#39;d expect that if anything, the resulting DLL shouldn&#39;t be loaded or crash, and so far it seems to work. </p></blockquote><br/>Indeed, figuring that part out thanks to various web searches was crucial to my getting this to work. Without further ado, here is the Windows version!<br/><br/>Again, obviously you have to have SDL.dll and SDL_mixer.dll installed either in your path or in the folder with the gosu.dll. Luckily, you can download them prebuilt for windows rather than having to compile them yourselves. SDL: <a class='url' href='http://www.libsdl.org/release/SDL-1.2.13-win32.zip'>http://www.libsdl.org/release/SDL-1.2.13-win32.zip</a> SDL_mixer: <a class='url' href='http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8-win32.zip'>http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8-win32.zip</a><br/><br/>As for packaging up the game, I&#39;ve got no template because normal Gosu doesn&#39;t either. Rubyscript2exe is, I&#39;ve decided, a pain in the neck to work with, though it *is* the only solution I know of that gives you a truly single-file distributable game. Personally, I&#39;ve so far had good success with exerb, so I recommend that if you don&#39;t mind having your non-ruby files sit outside the executable (gosu.dll gets embedded into the exe, but SDL.dll and SDL_mixer.dll remain outside, which is fine since it makes licensing easier). Crate also looks very promising,&#160; but I didn&#39;t really have time to get into it; it&#39;s not quite as simple to use (from a dev standpoint) as exerb.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/85/285/gosu.so'>gosu.so</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid339' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=339.html#pid339'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-24 02:57
+</div>
+<div class='ccl'>
+Ok, so I&#39;ve been trying a lot of things with Gosu 0.7.12. I have no less than seven separate source trees for it (on OS X), all of which are almost completely identical, but with different libraries being loaded.<br/><br/>Here&#39;s my record so far:<br/><br/>gosu_orig: Original gosu, altered only to point header and library lookup to the correct paths on my machine, and fix a 10.4.x iconv issue. Builds universal and works.<br/><br/>gosu_1.9: gosu_orig, altered to build against ruby-1.9. Builds ppc-only and works. I don&#39;t have a universal copy of 1.9, so I can&#39;t build universal extensions.<br/><br/>gosu_SDL: gosu_orig, altered to use the Unix-style SDL libraries (i.e. libSDL.dylib, libSDL_mixer.dylib). Builds universal and works, has some odd sound quality issues on my machine.<br/><br/>gosu_SDL-framework: gosu_orig, linking against the precompiled SDL.framework[1] and SDL_mixer.framework[2] available from libsdl.org. There were some tricks to getting it to compile, but now it builds universal and works. Sounds better than gosu_SDL on my mac, which means either I did something wrong when I built libSDL and libSDL_mixer, or the precompiled frameworks have been optimized. As a bonus, the frameworks are precompiled downloads, so other people wanting to use gosu with SDL don&#39;t need to compile SDL themselves this way.<br/><br/>gosu_1.9_SDL-framework: The alterations from gosu_SDL-framework and gosu_1.9, combined. Builds and works, but ppc only, for the same reason that gosu_1.9 was.<br/><br/>gosu_static: gosu_orig, but linking against libruby-static.a rather than libruby.dylib. Builds without errors, but crashes on load.<br/><br/>gosu_1.9-static: just like gosu_static, but with ruby 1.9. Same results as gosu_static, builds without errors, but crashes on load.<br/><br/>In summary, using Gosu with SDL on the mac is easier now that I&#39;ve figured out frameworks. Distribution is *way* easier, because the precompiled frameworks available from libsdl.org are already configured for being embedded in a bundle. Just drop them in a RubyGosu Deployment Template.app/Contents/Frameworks and you&#39;re off.<br/><br/>Gosu with SDL and ruby 1.9 is theoretically possible, but I can only get 1.9 to build to PowerPC, and the performance benefits of using 1.9 would be totally overshadowed by the performance penalty of running under Rosetta. Until someone sends me a universal binary copy of at *LEAST* libruby.1.9.1.dylib [3], I can&#39;t make a useful, deployable version of this for 1.9<br/><br/>So... this is kinda long, and short on the info people really want, which is, where&#39;s the updated gosu/sdl bundle, and when is the windows version coming? Answers: Attatched to the next post, and hopefully attached to my next post after that.<br/><br/>----<br/><br/>[1] <a class='url' href='http://www.libsdl.org/release/SDL-1.2.13.dmg'>http://www.libsdl.org/release/SDL-1.2.13.dmg</a><br/><br/>[2] <a class='url' href='http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.dmg'>http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.dmg</a><br/><br/>[3] Or an i386-only version which was built in roughly the same way I built my version, so I can lipo them together without issue. My arguments to ./configure were&#160; &#39;--program-suffix=-1.9&#39; &#39;--with-readline-dir=/usr/local&#39; &#39;--enable-shared&#39;, and I was building on 10.4. If you built yours on 10.5, it&#39;d have to have been using the 10.4u SDK, or it probably won&#39;t be backwards compatible with Tiger, as I think came up in the RMagick thread. The only option I included that&#39;s really critical is --enable-shared. If you don&#39;t include --enable-shared, you won&#39;t get a dylib at all.
+</div>
+</div>
+
+<div class='frm pst' id='pid340' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=340.html#pid340'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-02-24 03:05
+</div>
+<div class='ccl'>
+Here&#39;s gosu.bundle for Gosu 0.7.12 + SDL for OSX!<br/><br/>Use it exactly as you would use the regular gosu.bundle. Make sure you have SDL.framework [1] and SDL_mixer.framework [2] somewhere useful, like /Library/Frameworks/. When using the deployment package, copy the two aforementioned frameworks to RubyGosu Deployment Template.app/Contents/Frameworks/, and put gosu.bundle in the Resources folder of your bundle, as normal.<br/><br/>---<br/><br/>[1] <a class='url' href='http://www.libsdl.org/release/SDL-1.2.13.dmg'>http://www.libsdl.org/release/SDL-1.2.13.dmg</a><br/><br/>[2] <a class='url' href='http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.dmg'>http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.8.dmg</a>
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/40/340/gosu.bundle.zip'>gosu.bundle.zip</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid417' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=417.html#pid417'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-04-01 11:45
+</div>
+<div class='ccl'>
+Hi,<br/><br/>I&#39;m trying to compile a Gosu bundle for OSX (Intel) which works with Ruby 1.9. Any tips on how to do that? In other thread Julian said that Gosu seems to work with Ruby 1.9 if built against correct libraries. Which ones?<br/><br/>I&#39;m totally new to XCode, so I&#39;m really lost with this. Any help would be greatly appreciated.<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid418' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=418.html#pid418'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-04-01 16:29
+<span class='htt'>Edited</span> 2009-04-01 16:46
+</div>
+<div class='ccl'>
+Actually, I just a few days ago got a working universal build of Gosu against both 1.9 and SDL. I was going to wait to post about it until I could put up a windows version too, but I guess I&#39;ve been called out :-p<br/><br/>If you just want to build gosu against ruby-1.9 for your own platform, it should be pretty simple. First, make sure you can build gosu normally. You may have to adjust some paths for libraries and header files if you&#39;ve got things installed in different places than Julian does.<br/><br/>Now, we need to make sure we have a version of 1.9 that is built correctly. The most important part is that it was built with the --enable-shared option passed to &#39;./configure&#39;. If it wasn&#39;t, you won&#39;t get a dylib, only a .a, and I&#39;ve never gotten static linking to work here. You&#39;ll also need to know where your 1.9 libruby is located and what it is called. For instance, my copy of was installed with the default prefix (/usr/local/), and a program-suffix of -1.9, so my libruby file for 1.9 is located at /usr/local/lib/libruby-1.9.1.9.1.dylib, and has a symlink at /usr/local/lib/libruby-1.9.dylib . This will be important later.<br/><br/>At this point, you&#39;re ready to build Gosu against Ruby 1.9. Open your Gosu project in XCode, and set your Active Target to RubyGosu Core. For simplicity of instructions, I&#39;m assuming you have the current build configuration set to &#39;debug&#39;. Go to Project &gt; Edit Active Target &#39;RubyGosu Core&#39;, select the &#39;build&#39; tab, and set the configuration to &#39;Active Configuration (Debug)&#39;.<br/><br/>The following settings need to be changed:<br/>Header Search Paths: Make sure it includes the include path for your ruby 1.9 headers. For me, this is /usr/local/include/ruby-1.9-1.9.1 . I included this as /usr/local/include/ruby-1.9-1.9.1/** to make it go down into subdirectories, IIRC.<br/>Library Search Paths: Make sure it includes the path to libruby.dylib. For me, this was /usr/local/lib<br/>Other Linker Flags: change -lruby to have a suffix appropriate to your copy of 1.9&#39;s libruby. I.e., since I configured libruby with --program-suffix=-1.9, my linker flag was -lruby-1.9.<br/><br/>Those should be the only changes necessary to get an intel-only 1.9 Gosu with otherwise default configuration. Close the Target Settings window and click &#39;build&#39;, you should get a built copy of gosu.bundle linked to ruby 1.9. You can double check the linkage using otool -L /path/to/gosu.bundle from Terminal.<br/><br/>Note that this stuff is somewhat off the top of my head. I&#39;m pretty sure it&#39;s accurate, though.<br/><br/>Edit: the flag is --program-suffix, not --suffix
+</div>
+</div>
+
+<div class='frm pst' id='pid420' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=420.html#pid420'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-04-03 01:02
+</div>
+<div class='ccl'>
+philomory, I just tried similar steps with Ruby 1.9.1 from MacPorts and I&#39;m running into linker trouble with libiconv.<br/><br/>Did you ever run into this? Is this maybe the reason why you dropped static linking (I wanted to give it a try)?
+</div>
+</div>
+
+<div class='frm pst' id='pid421' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=421.html#pid421'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-04-03 20:44
+<span class='htt'>Edited</span> 2009-04-03 22:40
+</div>
+<div class='ccl'>
+Sorry, are you using Tiger or Leopard? The version of libiconv that Apple ships with Tiger has a slightly different API than the one shipped with Leopard (as I understand it). Julian has Leopard, I have Tiger. Your two options are to either a) change four lines of source in Gosu, or b) install an updated version of libiconv. You can find some info in this thread: <br/><br/><a class='url' href='topic_show.pl@pid=27%3Bhl=libiconv.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=27;hl=libiconv</a><br/><br/>EDIT: Whoops, didn&#39;t occur to me that the person I was replying to was, in fact, Julian. Which I guess makes me confused. Perhaps MacPorts has installed for you it&#39;s own copy of the older version of libiconv? This is part of why I don&#39;t use MacPorts or Fink anymore. I used to swear by it, but one day I realized that I had six different installations of Python on my machine, despite never having been a Python programmer.<br/><br/>EDIT AGAIN: And no, I didn&#39;t drop static linking because of linker problems, or at least, not because of overt linker problems, and in particular not in relation to libiconv. Whenever I try to statically link Gosu with libruby-static.a (for any version) rather than libruby.dylib, it builds and links without errors, but trying to require Gosu crashes the ruby interpreter.
+</div>
+</div>
+
+<div class='frm pst' id='pid422' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=422.html#pid422'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-04-04 00:17
+</div>
+<div class='ccl'>
+Ah, not sure what to do with the static Ruby library anyway. My vague plans were to change the RubyGosu Template.app so that it doesn&#39;t need gosu.bundle anymore; so basically I&#39;d statically link Ruby *and* Gosu into one binary.<br/><br/>And no, no idea what messes with iconv again. Depending on the order of headers and libraries, either _iconv or __iconv is missing. Mh, I think that&#39;s why I don&#39;t like MacPorts. As if all the OS X SDKs didn&#39;t contain enough versions already ;) I&#39;ll give it another try some time.
+</div>
+</div>
+
+<div class='frm pst' id='pid423' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=423.html#pid423'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-04-04 12:59
+<span class='htt'>Edited</span> 2009-04-04 20:05
+</div>
+<div class='ccl'>
+Never mind, it was my own bizarre way of including iconv.h that was causing the problems :)<br/><br/>Weird, but somehow typical, that using MacPorts is harder in that regard than a &#39;make &amp;&amp; sudo make install&#39;ed Ruby 1.9, again. Sigh. Now I just hope Fink will play nice with my plans.
+</div>
+</div>
+
+<div class='frm pst' id='pid437' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=437.html#pid437'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-04-14 20:56
+</div>
+<div class='ccl'>
+OK, I uploaded a gosu.bundle file built against MacPorts&#39; Ruby 1.9 that probably only works on Intel Leopard, and maybe only using MacPorts (because it also links against MacPorts&#39; libiconv etc...). Just in case anyone is in the same situation.<br/><br/><a class='url' href='http://raschke.de/julian/temp/gosu.bundle_for_1.9.zip'>http://raschke.de/julian/temp/gosu.bundle_for_1.9.zip</a><br/><br/>(I&#39;ll open a new thread instead of hijacking this one soon :) )
+</div>
+</div>
+
+<div class='frm pst' id='pid492' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=492.html#pid492'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-05-05 13:45
+</div>
+<div class='ccl'>
+Sorry for the delay in my reply, but these past weeks had been very intense in university. I tried what you suggested, but I have some missing frameworks so I cannot compile at all. Thanks anyway!<br/><br/>I will check Julian&#39;s bundle to see if it works.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=43.html#tid43'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=43.html#tid43'>Extending Gosu</a> / Building gosu with SDL instead of FMOD on OS X and Windows
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=423.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

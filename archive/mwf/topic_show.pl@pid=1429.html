@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1429 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>textwrap long words</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1429' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=214.html#tid214'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=214.html#tid214'>Gosu Exchange</a> / textwrap long words
+</div>
+</div>
+
+<div class='frm pst' id='pid1414' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1414.html#pid1414'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=110' >simonj</a>
+<span class='htt'>Date</span> 2009-08-31 04:03
+<span class='htt'>Edited</span> 2009-09-03 00:13
+</div>
+<div class='ccl'>
+i have a text_input and I need to limit the text wrap onto lines for loooong words but the above its not ideal, it works kind of but is not quite, any suggestions.<br/><br/>width is the size of the text box given in draw_quad....<br/>thanks!!<br/><br/>see later post for an example to use...
+</div>
+</div>
+
+<div class='frm pst' id='pid1415' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1415.html#pid1415'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-31 06:32
+</div>
+<div class='ccl'>
+Wow, I think you may be the first one to do that.<br/><br/>It would be easier to just re-render the text using Image#from_text on every change (but more wasteful, resource-wise). But that would also make it harder to draw the caret on the right position. What exactly are the problems with your solution? Can you post a minimal full program to toy around with it? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1416' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1416.html#pid1416'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=110' >simonj</a>
+<span class='htt'>Date</span> 2009-08-31 12:30
+<span class='htt'>Edited</span> 2009-08-31 12:55
+</div>
+<div class='ccl'>
+Thanks Julian<br/><br/>I&#39;ll attach an example for your to see, i cut it down for you to see but it should show you when you select create manager profile from the manin menu<br/><br/>I&#39;;ve got tons of menus to create and lots of input forms, text boxes, of various sizes, shades, colors, but seeing the code uploaded you get the idea when you enter a long string into a box it over runs out side of the box if say someone presses &quot;WWWWWW&quot;&#160; as a name it will over run the size of the box, i want to scroll the text horitizontally or put it on to the next available text line in the box, assuming that I&#39;;ve defined a box big enough to have multiple lines, i;ve also lower the fps on the menu / forms pages to around 15/17 so it is on the CPU, 60 fps isnt really needed<br/><br/>i know its not resourceful the way I do it 
+</div>
+</div>
+
+<div class='frm pst' id='pid1422' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1422.html#pid1422'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=110' >simonj</a>
+<span class='htt'>Date</span> 2009-09-02 06:33
+<span class='htt'>Edited</span> 2009-09-02 08:52
+</div>
+<div class='ccl'>
+ok, got it working nicely!
+</div>
+</div>
+
+<div class='frm pst' id='pid1424' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1424.html#pid1424'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-02 12:59
+</div>
+<div class='ccl'>
+Good to hear! Maybe you can post the final solution for other people to see. I still didn&#39;t even get to fixing the new Snow Leopard bugs, so much to do :(
+</div>
+</div>
+
+<div class='frm pst' id='pid1429' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1429.html#pid1429'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=110' >simonj</a>
+<span class='htt'>Date</span> 2009-09-03 00:11
+<span class='htt'>Edited</span> 2009-09-03 01:31
+</div>
+<div class='ccl'>
+i&#39;ve got to re post it in the morning , soemthing wierd is going on!!
+</div>
+</div>
+
+<div class='frm pst' id='pid1431' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1431.html#pid1431'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=110' >simonj</a>
+<span class='htt'>Date</span> 2009-09-03 03:35
+<span class='htt'>Edited</span> 2009-09-03 11:23
+</div>
+<div class='ccl'>
+here a working version for multil line and looooooooooooooong words....and normal spaced words into a box<br/><br/>#######single line box, only horizontally scroll.....<br/><br/>&#160; def wordwrap_single_line(textinput,width,font,maxsize)<br/>&#160; offset=0<br/>&#160; text=textinput.text<br/>&#160; ##first we are going for opion -1 - scroll the text in the current box until text reaches the maxlength size<br/>&#160; text=text.slice(0,maxsize)<br/>&#160; if font.text_width(text) &gt; width <br/>&#160; &#160; temptext=text<br/>&#160; &#160; while font.text_width(temptext) &gt; width<br/>&#160; &#160; &#160; temptext=text.slice(offset,text.length)<br/>&#160; &#160; &#160; if font.text_width(temptext) &lt; width <br/>&#160; &#160; &#160; &#160; return temptext<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; offset+=1<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; else<br/>&#160; &#160; return text<br/>&#160; end&#160; <br/>&#160; end<br/><br/>##########multi line box with horitonzal and vertical scroll of text to keep it inside the box dimensions - as long as the window.text_input has focus someway...<br/>&#160; def wordwrap_multi_line(textinput,width,font,maxsize,nolines)<br/>&#160; text=textinput.text.slice(0,maxsize)<br/>&#160;&#160; lines=[]<br/>&#160; newlines=[]<br/>&#160; text_length=font.text_width(text) <br/>#&#160; if text.index(&#39; &#39;).nil?<br/>&#160; &#160; if font.text_width(text) &gt; width <br/>&#160; &#160; &#160; store=&#39;&#39;<br/>&#160; &#160; &#160; text.each_char{|char|<br/>&#160; &#160; &#160; &#160; store+=char<br/>&#160; &#160; &#160; &#160; if font.text_width(store)&gt;width -10 # 10 is padding for the box change accordingly!! o<br/>&#160; &#160; &#160; &#160; &#160; lines.push(store)<br/>&#160; &#160; &#160; &#160; &#160; store=&#39;&#39;<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; }<br/>&#160; &#160; &#160; lines.push(store) if store.length &gt; 0 <br/>&#160; &#160; &#160; nolines.times do newlines.push(lines.pop) end<br/>&#160; &#160; &#160; return newlines.compact.reverse<br/>&#160; &#160; else<br/>&#160; &#160; &#160; lines=[text]<br/>&#160; &#160; end&#160; <br/> # else <br/>&#160; #&#160; words = textinput.text.split(&#39; &#39;)<br/>&#160; #&#160; lines = [words.shift]<br/>&#160;&#160; # words.each do |word|<br/>&#160; &#160; &#160; ###issue to be fixed - if a long word has been entered and they then add a space, it needs to chop the word up, TODO<br/>&#160; &#160; #&#160; if font.text_width(&quot;#{lines[-1]} #{word}&quot;) &lt; width<br/>&#160; &#160;&#160; #&#160;&#160; lines[-1] &lt;&lt; &#39; &#39; &lt;&lt; word<br/>&#160; &#160; #&#160; else<br/>&#160; &#160;&#160; #&#160;&#160; lines.push(word)<br/>&#160; &#160; #&#160; end<br/>&#160;&#160; # end<br/>&#160;&#160; # return lines<br/> # end<br/>end<br/><br/>more than likely can be condensed - there can be things done better but it gives the idea for form entries and games that require text input to be limited to a confined space<br/>Brett(SimonJ)
+</div>
+</div>
+
+<div class='frm pst' id='pid1443' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1443.html#pid1443'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=110' >simonj</a>
+<span class='htt'>Date</span> 2009-09-06 07:50
+</div>
+<div class='ccl'>
+still learning but cant work this out <br/><br/>when initialized - @email_address is given from a previous text_input <br/><br/>@email_address=&quot;someverylooooooooooooooooongemailaddress@someverylongdomain.com&quot;, <br/>@img2=Gosu::Image::from_text(window,@email_address, $normal_font,NormalSz,1,50,:center)<br/><br/>then in draw <br/><br/>@img2.draw(20, 50, 0, 1, 1, 0xffffffff)<br/><br/> -this hangs the application in&#160; nasty way - any ideas? doesnt allow me to collect any errors just get an abrupt windows error saying ruby.exe has close, unknown fault( typical MS message)<br/><br/>i can make this work as in the prev post but trying other ways to handle text input for a game so does anyone know how to see what is going wrong? I know the string shouldnt contain spaces, i..e email address for a user.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=214.html#tid214'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=214.html#tid214'>Gosu Exchange</a> / textwrap long words
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1429.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

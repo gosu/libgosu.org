@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 553 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>&quot;QuickRPG&quot; remake</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d553' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=96.html#tid96'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=96.html#tid96'>Gosu Showcase</a> / &quot;QuickRPG&quot; remake
+</div>
+</div>
+
+<div class='frm pst' id='pid389' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=389.html#pid389'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=61' >DivineDominion</a>
+<span class='htt'>Date</span> 2009-03-24 15:25
+<span class='htt'>Edited</span> 2009-08-01 12:55
+</div>
+<div class='ccl'>
+<img class='emi' src='http://divinedominion.art-fx.org/stuff/QuickRPG/qrpg1.jpg' alt=''/> <img class='emi' src='http://divinedominion.art-fx.org/stuff/QuickRPG/qrpg2.jpg' alt=''/><br/><br/>Back in 2001 it took me a week to create an RPG walkaround-demo in Blitz Basic. I never finished anything comparable after that.<br/><br/>It took me 2 days with Ruby and gosu to re-create the engine. I had no original source left, so it took me a while to figure out how I saved the maps, how the scripts worked and such. Still I&#39;m not sure how NPC walking cycles used to be configured.<br/><br/>You can grab the current source from <a class='url' href='http://github.com/DivineDominion/quickrpg-clone'>my github.com project</a> where I put the old Win32 binary -- which shouldn&#39;t run on your PC since it attempts 320x240 in fullscreen mode (!!! what a stupid idea that was ...). 640x480 was supported as well but I lost the binary. The OSX .app is obviously new and works fine.<br/><br/>If you like you could as well modify the contents of this walkaround demo by taking a look at the scripts. Without a map editor it&#39;s not possible to create new maps. Take a look at the project Wiki on github.com where I might explain the .map format in the future.<br/><br/>As of today, 2009-03-24, the code was a lot of &quot;hacking&quot;. Blitz Basic, the game&#39;s initial language, didn&#39;t support OOP so there&#39;s a huge gain of readability and structure. Yet, I just wanted to re-implement every feature possible. Refactoring will be the next item on my to do list right after &quot;figure out how NPC-initialization scripts work&quot; and &quot;time animations (i.e. slow down)&quot;. :)<br/><br/>Comments appreciated, though I doubt you&#39;ll be able to make it through that code just yet.<br/><br/><b>D O W N L O A D</b><br/><br/>From <a class='url' href='http://github.com/DivineDominion/quickrpg-clone/'>github.com project</a> (cutting edge!)<br/>Packed <a class='url' href='http://divinedominion.art-fx.org/stuff/QuickRPG/qrpg.tar.gz'>qrpg.tar.gz</a> (updated regularily but not as often as the github repository)<br/><b>Patch</b> (NEW): FPS.rb missing, 2x movement speed: <a class='url' href='http://divinedominion.art-fx.org/stuff/QuickRPG/patch_v1_speed-and-fps.zip'>patch_v1_speed-and-fps.zip</a><br/><br/><b>Later modifications to this post</b><br/><br/>(2009-03-24)<br/>Okay, download on github.com doesn&#39;t work or so it seems. Added a TAR.GZ archive.<br/><br/>(2009-03-25)<br/>Added two small screenshots of the current app. You can trigger FPS count by hitting &quot;F&quot; and the on-map-debugging-stuff by hitting &quot;D&quot;.<br/>The archive only contains the deployed Mac OS X .app file. To get the sources, please use the link to GitHub.com and download everything from there, seems <br/>to work again.<br/><br/>(2009-03-27)<br/>Translated game content and added NPC movement. They don&#39;t collide, though. I&#39;ll OOP-ify the game further to implement this.<br/><br/>(2009-08-01)<br/>Added a patch for faster char movement and fixed that &#39;fps.rb&#39; was missing in the archive.
+</div>
+</div>
+
+<div class='frm pst' id='pid390' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=390.html#pid390'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-03-24 19:19
+</div>
+<div class='ccl'>
+hey buddy, put up some screenshots or video link too :)
+</div>
+</div>
+
+<div class='frm pst' id='pid409' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=409.html#pid409'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=61' >DivineDominion</a>
+<span class='htt'>Date</span> 2009-03-26 00:42
+</div>
+<div class='ccl'>
+Good point :)<br/><br/><img class='emi' src='http://divinedominion.art-fx.org/stuff/QuickRPG/qrpg1.jpg' alt=''/><br/><img class='emi' src='http://divinedominion.art-fx.org/stuff/QuickRPG/qrpg2.jpg' alt=''/><br/><br/>Please keep in mind that I didn&#39;t translate the texts to English yet (picture #2). They don&#39;t mean anything, though, so don&#39;t worry.<br/><br/>I didn&#39;t point out that the game&#39;s native resolution was 320x240 and I didn&#39;t bother to implement 2x (or more) zoom after rendering just yet. If it&#39;s not playable for you at all (no speed limit might be an issue as well *sigh*) just drop me a line with the reason and I&#39;ll try to fix it soon :)
+</div>
+</div>
+
+<div class='frm pst' id='pid538' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=538.html#pid538'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-11 03:55
+</div>
+<div class='ccl'>
+How do I run the game/demo so I can test it<br/>when&#160; trying to run the main.rb I get the following error<br/><br/><blockquote><p>&gt;ruby main.rb</p></blockquote><br/>C:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in <code>gem_original_require&#39;: no such file to load -- ./fps (LoadError)<br/>&#160; from C:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in </code>require&#39;<br/>&#160; from main.rb:34<br/><br/><blockquote><p>&gt;Exit code: 1</p></blockquote>
+</div>
+</div>
+
+<div class='frm pst' id='pid546' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=546.html#pid546'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-12 15:39
+</div>
+<div class='ccl'>
+Yeah, I had that aswell..<br/>It&#39;s been a while but I think this is the only stuff I changed, to make it work:<br/><br/>1) Open main.rb<br/>2) Go to line 45 and comment out (#) &#39;&#160;&#160; require &#39;./fps&#39;&#160;&#160; &#39;<br/>3) Go to line 88 and comment out (#) &#39;&#160; &#160; FPS::tick milliseconds()&#160; &#160; &#39;<br/>4) Go to line 101 and comment out (#) &#39;&#160;&#160; FPS::draw if $show_fps&#160;&#160; &#39;
+</div>
+</div>
+
+<div class='frm pst' id='pid548' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=548.html#pid548'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-13 01:12
+</div>
+<div class='ccl'>
+Thanks ,Ill give that a try :)
+</div>
+</div>
+
+<div class='frm pst' id='pid550' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=550.html#pid550'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-13 02:09
+</div>
+<div class='ccl'>
+Thanks that worked great,I got the game running now!<br/><br/>any idea on how you would speed the game up??as it is running a little slow
+</div>
+</div>
+
+<div class='frm pst' id='pid553' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=553.html#pid553'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-13 12:43
+</div>
+<div class='ccl'>
+No, not a clue... because I can run it fast enough...<br/>Do you see it lagging or something? Or do you just not like the player&#39;s speed?
+</div>
+</div>
+
+<div class='frm pst' id='pid559' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=559.html#pid559'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-14 13:53
+</div>
+<div class='ccl'>
+No it dont lag,it would good though if the players speed was a little faster ,say 33% faster 
+</div>
+</div>
+
+<div class='frm pst' id='pid562' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=562.html#pid562'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-14 16:51
+</div>
+<div class='ccl'>
+Ah,<br/>Well, I tried it for you, but it failed.. XD
+</div>
+</div>
+
+<div class='frm pst' id='pid572' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=572.html#pid572'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-16 06:44
+</div>
+<div class='ccl'>
+You tryed to speed the game up ,though it didnt work is that what u mean?
+</div>
+</div>
+
+<div class='frm pst' id='pid575' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=575.html#pid575'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-16 09:55
+</div>
+<div class='ccl'>
+Yeah.. it would make a lot of bugs, and when walking you would only walk half a tile at a time
+</div>
+</div>
+
+<div class='frm pst' id='pid576' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=576.html#pid576'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-16 11:00
+</div>
+<div class='ccl'>
+Thanks for trying<br/><br/>yeh it does have a couple of bugs
+</div>
+</div>
+
+<div class='frm pst' id='pid619' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=619.html#pid619'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-18 23:58
+</div>
+<div class='ccl'>
+it may have a few small bugs at the moment,though with a little work it could be a very nice base for a great 2D RPG<br/><br/>you gotta expect a few bugs when it only took 2 days,well done DivineDominion!<br/><br/>any chance DivineDominion you can make it run a bit faster and get rid of the main chr dissappearing when other people walk near him?
+</div>
+</div>
+
+<div class='frm pst' id='pid1173' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1173.html#pid1173'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=61' >DivineDominion</a>
+<span class='htt'>Date</span> 2009-08-01 12:53
+<span class='htt'>Edited</span> 2009-08-01 12:56
+</div>
+<div class='ccl'>
+Sorry mates, vacation was over but now I&#39;ve got time again.&#160; Of course that&#39;s a lame excuse for not supporting you, I&#39;m really sorry for that!<br/><br/>I wonder why I didn&#39;t include the &#39;fps.rb&#39; file in the repository ... that&#39;s really stupid.&#160; I changed the source a lot since then, like implementing event dispatching and sending messages between the various parts of the game logic.&#160; Since then, my &#39;fps.rb&#39; is way too much altered to work with the old GitHub source.&#160; <br/><br/>The new bundle is just not finished yet.&#160; I&#39;ll work on it soon after I finish my last essay for university.<br/><br/>You can <a class='url' href='http://divinedominion.art-fx.org/stuff/QuickRPG/patch_v1_speed-and-fps.zip'>download a 2x-movement-speed patch</a> with fixed main.rb included (same file as further down in this post).<br/><br/>---<br/><br/>Well, <b>speeding up the character</b> really won&#39;t be that easy.&#160; The old code relies on the tiles being 16 pixels in each direction.&#160; Animation takes 16 steps, the character moves 16 pixels during each cycle, the camera scrolls 16 pixels as well when triggered (there&#39;s no direct link between char movement and map scrolling, they just behave the same :)).<br/><br/>When I finish my current setup, it should by far be easier to modify movement speed.<br/><br/>For now, <a class='url' href='http://divinedominion.art-fx.org/stuff/QuickRPG/patch_v1_speed-and-fps.zip'>download the modified files</a> and overwrite the old ones.&#160; The FPS-fix is already included.&#160; The char moves twice as fast then.&#160; I think the real problem is the graphics&#39; sizes and the huge map.&#160; On no console would you find that big a map, it just takes too long to travel and there&#39;s too much space between stuff.&#160; I&#39;ll fix contents when the engine is ready.<br/><br/>---<br/><br/>Here&#39;s the changes to apply manually:<br/><br/><b>REPLACE &#39;player.rb&#39;</b><br/><code>class Player &lt; Char<br/>&#160; def initialize(image)<br/>&#160; &#160; super(0, 0, image)<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; animate! if animating?<br/><br/>&#160; &#160; walk! if walking?<br/>&#160; &#160; <br/>&#160; &#160; if @step &gt;= 16<br/>&#160; &#160; &#160; @step = 0<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @step += 2<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; return [@x, @y]<br/>&#160; end<br/>&#160; <br/>protected<br/>&#160; def walk!<br/>&#160; &#160; raise &quot;not walking&quot; unless walking?<br/>&#160; &#160; <br/>&#160; &#160; if @step &gt;= 16<br/>&#160; &#160; &#160; @walking = false<br/>&#160; &#160; &#160; return :finished<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; # Move on screen<br/>&#160; &#160; case @direction<br/>&#160; &#160; when :up<br/>&#160; &#160; &#160; @y_off -= 2<br/>&#160; &#160; when :down<br/>&#160; &#160; &#160; @y_off += 2<br/>&#160; &#160; when :left<br/>&#160; &#160; &#160; @x_off -= 2<br/>&#160; &#160; when :right<br/>&#160; &#160; &#160; @x_off += 2<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; if @y_off &lt; 0<br/>&#160; &#160; &#160; @y_off += 16<br/>&#160; &#160; &#160; @y -= 1<br/>&#160; &#160; elsif @y_off &gt; 15<br/>&#160; &#160; &#160; @y_off -= 16<br/>&#160; &#160; &#160; @y += 1<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; if @x_off &lt; 0<br/>&#160; &#160; &#160; @x_off += 16<br/>&#160; &#160; &#160; @x -= 1<br/>&#160; &#160; elsif @x_off &gt; 15<br/>&#160; &#160; &#160; @x_off -= 16<br/>&#160; &#160; &#160; @x += 1<br/>&#160; &#160; end<br/>&#160; end<br/>end</code><br/><br/><b>map.rb : ll. 391 -- 409, replace &#39;Map::animate_scrolling&#39;</b><br/><code>&#160; def animate_scrolling<br/>&#160; &#160; if @steps &gt;= TILE_SIZE<br/>&#160; &#160; &#160; @scrolling = false<br/>&#160; &#160; &#160; return :finished<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; case @direction<br/>&#160; &#160; when :up<br/>&#160; &#160; &#160; @scrolled_y -= 2<br/>&#160; &#160; when :down<br/>&#160; &#160; &#160; @scrolled_y += 2<br/>&#160; &#160; when :left<br/>&#160; &#160; &#160; @scrolled_x -= 2<br/>&#160; &#160; when :right<br/>&#160; &#160; &#160; @scrolled_x += 2<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; @steps += 2<br/>&#160; end</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid1174' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1174.html#pid1174'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-08-01 12:57
+</div>
+<div class='ccl'>
+Thanks heaps :) I will have a look 
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=96.html#tid96'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=96.html#tid96'>Gosu Showcase</a> / &quot;QuickRPG&quot; remake
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=553.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

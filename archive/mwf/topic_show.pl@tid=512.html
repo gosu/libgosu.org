@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Multiple Windows</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=512.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=512.html#tid512'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=512.html#tid512'>Gosu Exchange</a> / Multiple Windows
+</div>
+</div>
+
+<div class='frm pst' id='pid3669' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3669' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3669.html#pid3669'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-28 06:02
+</div>
+<div class='ccl'>
+I believe this was being discussed in another thread, but I can&#39;t seem to find that and it was a bit off topic where it was so...<br/><br/>On the topic of multiple windows with Gosu, I personally feel like the core of Gosu should manage the state of the game, and as many windows as one wants can be created to display output.&#160; Thus, #update, #button_up, #button_down, etc would move to something like a Gosu::Game class, with Gosu::Window basically just having #draw.&#160; You could still have #draw in Gosu::Game I suppose, but it would basically just call #draw for every window.&#160; Thus, the programmer would only ever want to override Gosu::Window#draw, as is the current style.<br/><br/>I wanted to bring this up because thought that the core of the engine being a class called Window was a little odd.&#160; This approach might seem more complex to some people, but to me it just makes more sense.&#160; Would this be possible down the road or would this simply be out of the intended scope of Gosu?
+</div>
+</div>
+
+<div class='brn' id='brn3669'>
+<div class='frm pst' id='pid3671' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=512.html#pid3669'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3671' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3671.html#pid3671'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-12-28 06:11
+</div>
+<div class='ccl'>
+Out of the scope of Gosu for a long while.<br/><br/>If you had several windows, what would be a meaningful way to place them? Does every window have a close button? Does every window have the full window chrome or are there palette windows? And suddenly you have 20% of a GUI toolkit. Which leads to the question, what do you want to do with multiple windows? Is GUI toolkit integration maybe a better approach?<br/><br/>My current plans are to move some stuff out of Gosu::Window, like draw_quad etc. This does not break multi-window support in a distant future, because it can only be called in the context of *one* Window#draw callback thanks to single–threading.<br/>However, there are places where this would make stuff more complicated. For example, if there was a global Gosu::mouse_x function, then it could only be relative to *one* window (just like Window#mouse_x right now). Not sure what to do about these corner cases.
+</div>
+</div>
+
+<div class='brn' id='brn3671'>
+<div class='frm pst' id='pid3673' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=512.html#pid3671'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3673' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3673.html#pid3673'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-28 06:17
+</div>
+<div class='ccl'>
+Ah, I hadn&#39;t thought of any of those problems at all... Though I was just kinda asking this out of curiosity, as it&#39;s not really something I&#39;m interested in implementing.&#160; Although I was a bit surprised before that I&#39;ve never seen a game with a multi-window setup like GIMP before.&#160; Perhaps this is why...<br/><br/>Well, thanks for putting an end to my curiosity at least ^_^<br/><br/>Though as for that corner case, you could have Gosu::mouse_x return the position of the mouse relative to the currently active Gosu::Window.&#160; If the currently active window is none of those windows then you could return nil.&#160; Of course, I can think of a couple other ways to implement that myself, so I&#39;m sure you&#39;ve though of that one as well as many others.&#160; Might as well just stop myself right there then.
+</div>
+</div>
+
+<div class='brn' id='brn3673'>
+<div class='frm pst' id='pid3684' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=512.html#pid3673'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3684' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3684.html#pid3684'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-01-02 15:29
+</div>
+<div class='ccl'>
+Multi-window support doesn&#39;t seem that useful to me. Gimp is a pretty annoying implementation for me (regarding multi-windows); I&#39;d much rather have a single system window with tabbed pseudo-windows inside that, which you then have much more control over.<br/><br/>Changing the window makes more sense, but jlnr suggested that allowing a single window to be resized would be better than ensuring that you can close one window and open another to replace it.
+</div>
+</div>
+
+<div class='brn' id='brn3684'>
+<div class='frm pst' id='pid3685' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=512.html#pid3684'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3685' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3685.html#pid3685'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-02 15:51
+</div>
+<div class='ccl'>
+I&#39;ve heard that the multi-window implementation of GIMP is useful if you have a multi-monitor setup.&#160; Also, I personally think it&#39;s less of a hassle if you use OSX or Linux and have multiple virtual desktops.&#160; I normally have one virtual desktop on Ubuntu dedicated to GIMP if and when I have it open.<br/><br/>Still, personally I don&#39;t really see how I would use this in a game, although I am generally bad at thinking up ideas for interfaces anyway.<br/><br/>Allowing one window to be resized would be quite nice.&#160; I never noticed how cool that feature is until I played minecraft, which is the first game I had played which allowed setting the resolution in that manner.&#160; Much more flexible than using a list of pre-determined values for window width and height.
+</div>
+</div>
+
+<div class='brn' id='brn3685'>
+<div class='frm pst' id='pid3686' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=512.html#pid3685'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3686' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3686.html#pid3686'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-01-02 22:10
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I played minecraft</p></blockquote><br/>I&#39;m surprised you&#39;ve still got time for other things. :D
+</div>
+</div>
+
+<div class='brn' id='brn3686'>
+<div class='frm pst' id='pid3687' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=512.html#pid3686'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3687.html#pid3687'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-03 01:22
+</div>
+<div class='ccl'>
+Touche XD<br/><br/>However, I don&#39;t play much anymore.&#160; Got pretty into mulitplayer, but my friends haven&#39;t played in a while so... yeah.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=512.html#tid512'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=512.html#tid512'>Gosu Exchange</a> / Multiple Windows
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=512.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3282 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>RPG like message windows and Gosu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3282' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=463.html#tid463'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=463.html#tid463'>Gosu Exchange</a> / RPG like message windows and Gosu
+</div>
+</div>
+
+<div class='frm pst' id='pid3237' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3237' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3237.html#pid3237'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-09-14 21:35
+</div>
+<div class='ccl'>
+Well, I know how I can create a Font object and display it on screen but I wonder how I could manage to show a message window text slowly not all at once as it&#39;s the case right now with Gosu. Any ideas on how I could achieve this goal of including such a feature in my Gosu game?
+</div>
+</div>
+
+<div class='brn' id='brn3237'>
+<div class='frm pst' id='pid3238' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3237'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3238' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3238.html#pid3238'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2010-09-14 22:32
+<span class='htt'>Edited</span> 2010-09-14 22:35
+</div>
+<div class='ccl'>
+I&#39;m currently working on a class. Basically I&#39;m adding one character at a time.<br/>Here it is. Might give you an idea<br/><br/>#public functions<br/>#TextBox::font &#39;arial&#39;, 14<br/>#TextBox::speed = 0.25<br/>#TextBox::text = &quot;Hello World! This is my append text awesome typewriter thingy. I&#39;m just writing text to test this.&quot;<br/>#TextBox::finish #Just print out the whole thing now<br/><br/>class TextBox<br/>&#160; class &lt;&lt; self&#160; &#160; <br/>&#160; &#160; def font dir, size<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; def update<br/>&#160; &#160; &#160; &#160; &#160; 256.times do<br/>&#160; &#160; &#160; &#160; &#160; &#160; break if @index.to_int &lt; @text_index<br/>&#160; &#160; &#160; &#160; &#160; &#160; break if @text_index &gt;= @text.length<br/>&#160; &#160; &#160; &#160; &#160; &#160; @text_index += 1<br/>&#160; &#160; &#160; &#160; &#160; &#160; @output &lt;&lt; @text[@text_index-1] if @text_index &lt;= @text.length<br/>&#160; &#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; &#160; @index += @speed<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; &#160; @font.draw @output, 10, 10, 0<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; @font = Gosu::Font::new $view, dir, size<br/>&#160; &#160; &#160; <br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; def speed=val<br/>&#160; &#160; &#160; raise ArgumentError, &quot;TextBox: speed should be less than 40&quot; if val &gt; 40<br/>&#160; &#160; &#160; raise ArgumentError, &quot;TextBox: speed should be positive&quot; if val &lt; 0<br/>&#160; &#160; &#160; @speed = val<br/>&#160; &#160; end<br/>&#160; &#160; def text=string<br/>&#160; &#160; &#160; @index = 0<br/>&#160; &#160; &#160; @text_index = 0<br/>&#160; &#160; &#160; @output = &quot;&quot;<br/>&#160; &#160; &#160; @text = string<br/>&#160; &#160; end<br/>&#160; &#160; def finish<br/>&#160; &#160; &#160; @output = @text<br/>&#160; &#160; &#160; @index = @text.length<br/>&#160; &#160; &#160; @text_index = @text.length<br/>&#160; &#160; end<br/>&#160; &#160;&#160; <br/>&#160; end<br/>&#160; <br/>&#160; def initialize; raise ArgumentError, &quot;Cannot initialize TextBox&quot; end<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn3238'>
+<div class='frm pst' id='pid3248' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3238'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3248' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3248.html#pid3248'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2010-09-15 12:44
+</div>
+<div class='ccl'>
+Good for &quot;slow&quot; text is method [] of string class combined with Range<br/>Text[(0...@index)]<br/>It will return part of text from beginning to current char.
+</div>
+</div>
+
+<div class='brn' id='brn3248'>
+<div class='frm pst' id='pid3254' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3248'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3254.html#pid3254'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2010-09-16 07:22
+</div>
+<div class='ccl'>
+definitely more ruby like :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3255' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3238'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3255' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3255.html#pid3255'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-16 11:09
+</div>
+<div class='ccl'>
+I guess the real challenge here would be to implement proper word-wrapping... :)
+</div>
+</div>
+
+<div class='brn' id='brn3255'>
+<div class='frm pst' id='pid3258' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3255'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3258' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3258.html#pid3258'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-16 13:39
+</div>
+<div class='ccl'>
+Many console RPGs don&#39;t have word wrapping! Since the text and its container are static, line breaks are hard coded. Makes editing the text later a pain, though.<br/><br/>The simplest word wrap algorithm is pretty straightforward but it seems like there&#39;s no good way to do it except brute force so your time complexity is probably stuck at O(n); even worse for &quot;prettier&quot; algorithms.
+</div>
+</div>
+
+<div class='brn' id='brn3258'>
+<div class='frm pst' id='pid3265' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3265' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3265.html#pid3265'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-17 21:57
+</div>
+<div class='ccl'>
+You have to read the whole string anyway, so saying that it&#39;s O(n) doesn&#39;t mean much. The dominating cost is probably the calls to text_width - and you should get away with calling it one time for each word in the text. After that, it&#39;s simple number munging, which shouldn&#39;t take too long (even in Ruby ;P ).
+</div>
+</div>
+
+<div class='brn' id='brn3265'>
+<div class='frm pst' id='pid3266' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3265'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3266' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3266.html#pid3266'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-17 22:24
+</div>
+<div class='ccl'>
+Yeah, you&#39;re right, and I doubt an RPG message box is going to need fancy TeX-style O(n**x) wrapping besides. The simple algorithm as I implemented it seems to run fast enough on a standard Lorem Ipsum text and it looks about as good as I&#39;d expect for a game.<br/><br/>The real magic would be getting a fast implementation in Haskell, which I understand is also notoriously slow. ;P
+</div>
+</div>
+
+<div class='brn' id='brn3266'>
+<div class='frm pst' id='pid3270' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3266'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3270' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3270.html#pid3270'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-09-18 17:43
+</div>
+<div class='ccl'>
+If speed is a problem for implementing TeX-word wrapping, couldn&#39;t you just write a script to format the text before it&#39;s used in game? Thus, you could write your dialog into a text file, and then the script would take the text from that file, apply the necessary formatting, and then save it to another file.&#160; This second file would be something that could easily be read back with the proper formatting, whether that be a binary, YAML, or simply another text file.&#160; In this way, could could change the original dialog file.<br/><br/>Hope that makes sense.&#160; Also, on that note, aren&#39;t there ruby bindings for either TeX or LaTeX?&#160; Could those be used for formatting?
+</div>
+</div>
+
+<div class='brn' id='brn3270'>
+<div class='frm pst' id='pid3271' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3270'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3271' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3271.html#pid3271'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-18 19:04
+</div>
+<div class='ccl'>
+Mostly I&#39;m just idly musing. I think it would be overkill to do anything but the simplest word wrapping algorithm in this case unless you&#39;re really, <i>really</i> particular about your game&#39;s typesetting. In which case, Gosu&#39;s Font class is probably not your first choice for text display anyway. :) I wonder what it would take to draw a PDF from OpenGL...<br/><br/>Besides, TeX itself is a massive behemoth of a system. I have the full texlive distribution with installed and it apparently weighs in at a staggering 2.13 GB. The basic version alone is 276.4 MB. I&#39;d hate to inflict that on my audience. :) If I really wanted super-fancy typsetting in my game, I&#39;d definitely do as you suggest and ship it pre-formatted.<br/><br/>As to bindings, I don&#39;t think there is a library interface, but I could be wrong.<br/><br/>On the other hand, you&#39;ve just put some terrible, awesome ideas in my head and now I&#39;m researching PDF rendering.
+</div>
+</div>
+
+<div class='brn' id='brn3271'>
+<div class='frm pst' id='pid3272' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3271'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3272' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3272.html#pid3272'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-09-18 19:31
+<span class='htt'>Edited</span> 2010-09-19 00:46
+</div>
+<div class='ccl'>
+Oh, I didn&#39;t mean PDF rendering, I was assuming that there was some way to get LaTeX to format a string.&#160; Also, you wouldn&#39;t have to ship your program with LaTeX.&#160; You would just have to &quot;compile&quot; your dialog into the typeset format before deployment.&#160; Though, now that I think about it, this would make open-source games annoying, as you would not be able to simply write new dialog (for translation purposes or similar) and expect the proper formatting.<br/><br/>Is there a LaTeX light version for ruby then?<br/><br/>EDIT:<br/>It seems like there are some ruby libraries that should handle the specific task of line wrapping better than a full-blown installation of TeX.&#160; In particular, this one looks promising.<br/><a class='url' href='http://raa.ruby-lang.org/project/text-format/'>http://raa.ruby-lang.org/project/text-format/</a><br/><br/>EDIT 2:<br/>Here&#39;s a regular expression that will allow for word wrapping.<br/><a class='url' href='http://blog.macromates.com/2006/wrapping-text-with-regular-expressions/'>http://blog.macromates.com/2006/wrapping-text-with-regular-expressions/</a><br/><br/>Also, I just realized that the topic of word wrapping is a little off-topic, so I will stop now ^_^;
+</div>
+</div>
+
+<div class='brn' id='brn3272'>
+<div class='frm pst' id='pid3273' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3273.html#pid3273'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-18 21:59
+</div>
+<div class='ccl'>
+Don&#39;t mind me; I&#39;m just letting my imagination go wild here. You might say I&#39;m addicted to bad ideas. :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3274' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3270'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3274' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3274.html#pid3274'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-18 23:21
+</div>
+<div class='ccl'>
+Pre-rendering your text also makes it possible to use fonts that you are not allowed to ship with your game. I have to do this for my current game. Let me know if you get the type-setting any better than Gosu::from_text—I&#39;d be interested too.<br/><br/>Right now, I use Gosu::from_text, then RMagick to apply a color gradient and then a Photoshop batch filter to increase the saturation. Would be awesome to have pro typesetting too. :D
+</div>
+</div>
+
+<div class='brn' id='brn3274'>
+<div class='frm pst' id='pid3275' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3274'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3275' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3275.html#pid3275'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-19 00:25
+</div>
+<div class='ccl'>
+Haha, that sounds like a hell of a workflow and I&#39;m curious what it looks like. Got a screen shot to demonstrate?
+</div>
+</div>
+
+<div class='brn' id='brn3275'>
+<div class='frm pst' id='pid3278' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3275'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3278' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3278.html#pid3278'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-19 17:33
+<span class='htt'>Edited</span> 2010-09-19 17:38
+</div>
+<div class='ccl'>
+Imagine this on black during level load times. I dunno why the gradient doesn&#39;t look good if I just do it with RMagick. Right now it means running a Ruby script to create the PNGs from my YAML level list, then running the Photoshop action, so it&#39;s just two manual steps—still manageable.<br/><br/>The paragraph-formatting would be for the in-game dialogs which are longer, but I don&#39;t have a script for those yet. On a second thought, custom fonts and TeX? I smell trouble…
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=499.html'><img class='amt' src='../../mwf/attachments/78/3278/Flatlands.thb.jpg' title='Flatlands.png (23k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn3278'>
+<div class='frm pst' id='pid3279' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3278'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3279.html#pid3279'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-19 18:49
+</div>
+<div class='ccl'>
+Bahaha, yeah. TeX is big trouble, always. :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3280' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3266'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3280' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3280.html#pid3280'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-21 09:52
+<span class='htt'>Edited</span> 2010-09-21 09:57
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; The real magic would be getting a fast implementation in Haskell, which I understand is also notoriously slow. ;P</p></blockquote><br/>Uhm, where does that understanding come from? Because of static typing, no side effects and no guarantees on execution order, Haskell can be optimized much more aggressively than most languages. According to notoriously subjective <a class='url' href='http://shootout.alioth.debian.org/u32/which-programming-languages-are-fastest.php'>benchmarks</a>, we are talking about &quot;half as fast as C&quot; here. That&#39;s quite a distance to Ruby&#39;s current &quot;40 times slower&quot; standing.<br/><br/>Disclaimer: I&#39;m currently doing a PhD roughly on making Haskell programs go fast, so be careful ;)
+</div>
+</div>
+
+<div class='brn' id='brn3280'>
+<div class='frm pst' id='pid3282' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3280'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3282' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3282.html#pid3282'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-21 14:19
+</div>
+<div class='ccl'>
+A joke, of course. Haskell and Ruby both have reputations for being &quot;too slow&quot; for this and that among people who don&#39;t use them.
+</div>
+</div>
+
+<div class='brn' id='brn3282'>
+<div class='frm pst' id='pid3286' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3282'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3286' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3286.html#pid3286'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-23 12:56
+</div>
+<div class='ccl'>
+Oh, sorry, didn&#39;t spot it. But well, as I said - discussing performance is futile anyway when all you have to do is loop over a few dozen numbers. That&#39;s the whole point behind having a game framework: To have the expensive bits in the library and the fun bits in a language that you can write quickly...
+</div>
+</div>
+
+<div class='brn' id='brn3286'>
+<div class='frm pst' id='pid3287' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3286'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3287' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3287.html#pid3287'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-23 13:07
+</div>
+<div class='ccl'>
+I think the bottleneck in my, and many Ruby games, is the collision detection, and it&#39;s not even easily extractable :(
+</div>
+</div>
+
+<div class='brn' id='brn3287'>
+<div class='frm pst' id='pid3292' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3287'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3292' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3292.html#pid3292'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-24 09:57
+<span class='htt'>Edited</span> 2010-09-24 10:03
+</div>
+<div class='ccl'>
+Hm, isn&#39;t it? Not claiming that it is the best solution - but the Clonk approach is to have objects have bounding boxes, chunk game fields into sections, and then provide a generic &quot;give me all objects overlapping rect X&quot; (plus some) mechanic. Under the assumptions that objects are generally spread out evenly, that takes the O(n^2) out of the equation - for the tunable extra cost of having thousands of tiny object lists everywhere. And you could probably still tune that using quad-trees or something. Would you need more generality?<br/><br/><b>Edit:</b><br/><br/><blockquote><p>&gt; int? double? 2D only, or with a depth?</p></blockquote><br/>Sounds like a case for parameterization... :)
+</div>
+</div>
+
+<div class='brn' id='brn3292'>
+<div class='frm pst' id='pid3293' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3292'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3293' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3293.html#pid3293'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-24 16:10
+</div>
+<div class='ccl'>
+Sounds like spatial hashing? I have used this to great success.
+</div>
+</div>
+
+<div class='brn' id='brn3293'>
+<div class='frm pst' id='pid3295' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3293'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3295' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3295.html#pid3295'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-24 18:03
+<span class='htt'>Edited</span> 2010-09-24 18:05
+</div>
+<div class='ccl'>
+Well, I guess. The question is: Would it be useful to have as a library?
+</div>
+</div>
+
+<div class='brn' id='brn3295'>
+<div class='frm pst' id='pid3296' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3295'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3296.html#pid3296'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-24 18:43
+</div>
+<div class='ccl'>
+Probably not unless you&#39;re making a library for a very specific kind of game world. Chipmunk uses a sparse spatial hash for its broad phase collision detection (and other spatial queries), but obviously the way it&#39;s done doesn&#39;t translate too well to a tile based game unless you&#39;re willing to calculate a set of edges from your tilemap—which is not difficult but neither is it particularly straightforward. And then most tile based games probably don&#39;t want realistic physics, so you&#39;re leaving the major focus of Chipmunk unused then.<br/><br/>Most game logic beyond drawing and input seems to be pretty specialised and general solutions aren&#39;t usually that useful in my experience, but maybe I&#39;m doing it wrong.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3297' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3292'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3297' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3297.html#pid3297'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-25 00:14
+</div>
+<div class='ccl'>
+I agree with using rects usually, if you can have composite objects, but the game map may or may not be a bottleneck too, depending on how complicated its shape is. And game maps are even more a per-game thing :)
+</div>
+</div>
+
+<div class='brn' id='brn3297'>
+<div class='frm pst' id='pid3298' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3297'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3298' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3298.html#pid3298'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-09-25 02:05
+</div>
+<div class='ccl'>
+As of right now, my game map is basically handled in Chipmunk, with a Chipmunk sensor object functioning as the camera.&#160; This allows me to know what objects to render, as well as what arguments to pass to translate().&#160; <br/><br/>Seems to be working pretty well, except that I can&#39;t seem to get the the sensor to actually detect objects.&#160; Strange because my other collisions are working.&#160; But that&#39;s a problem for another thread.&#160; Just wanted to get my two-cents in on how I&#39;m doing the game map.&#160; However, I&#39;m not using a tile-based layout, in favor of something more organic.
+</div>
+</div>
+
+<div class='brn' id='brn3298'>
+<div class='frm pst' id='pid3299' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3298'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3299' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3299.html#pid3299'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-25 05:01
+<span class='htt'>Edited</span> 2010-09-25 05:04
+</div>
+<div class='ccl'>
+Oh, huh, using a sensor to detect which objects need to be drawn is pretty clever, but isn&#39;t there a function to do a bounding box query for that? I mean, I know the C api has <code>cpSpaceBBQuery</code>. The declaration looks like this:<br/><br/><code>void cpSpaceBBQuery(cpSpace *space, cpBB bb, cpLayers layers, cpGroup group, cpSpaceBBQueryFunc func, void *data);</code><br/><br/>It would also be faster than using a rectangular polygon sensor. The only downside is that if you intend to rotate the camera then the BB query is right out—but you can also do shape queries I think? <br/><br/>Come to think of it, I don&#39;t know whether the Ruby bindings actually expose this or not.
+</div>
+</div>
+
+<div class='brn' id='brn3299'>
+<div class='frm pst' id='pid3304' style='margin-left: 42%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3299'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3304' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3304.html#pid3304'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-09-25 17:24
+<span class='htt'>Edited</span> 2010-09-25 17:27
+</div>
+<div class='ccl'>
+The ruby bindings to in fact expose the BB Query method, though due to the object-oriented nature of ruby it&#39;s a little more complicated.&#160; <br/><br/>space.active_shapes_hash.query_by_bb BB.new(0,0,5,5)<br/><br/>This will return an array I believe.<br/>But I do believe that this would be a static query.&#160; By this I mean that the coordinates would not be automatically updated as the space scrolls, like with using a sensor object.&#160; Thus, you would have to compute what to pass to translate() in some other manner.&#160; Thus, I&#39;m not sure that the added performance would be worth it.<br/><br/>I hope my logic makes sense.&#160; Feel free to point out any flaws.
+</div>
+</div>
+
+<div class='brn' id='brn3304'>
+<div class='frm pst' id='pid3306' style='margin-left: 45%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3304'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3306.html#pid3306'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-25 19:16
+</div>
+<div class='ccl'>
+Well, you&#39;d still need to move the sensor object, right? If you&#39;re using a &quot;viewport&quot; or &quot;camera&quot; object then I suppose you could use a CP::BB to hold the scrolling position and do something like this:<br/><br/><code>class Viewport<br/>&#160; <br/>&#160; def scroll_to x, y<br/>&#160; &#160; @bb.l, @bb.t = x, y<br/>&#160; end<br/>&#160; <br/>&#160; def visible_objects space<br/>&#160; &#160; shapes = space.active_shapes_hash.query_by_bb @bb<br/>&#160; &#160; magically_get_objects_from shapes<br/>&#160; end<br/>&#160; <br/>&#160; def apply &amp;draw_block<br/>&#160; &#160; $window.translate -@bb.x, -@bb.y, &amp;draw_block<br/>&#160; end<br/>&#160; <br/>end<br/><br/>class MyWindow &lt; Gosu::Window<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; @viewport.apply do<br/>&#160; &#160; &#160; @viewport.visible_objects(@space).each { |obj| ... }<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>end<br/></code><br/><br/>Perhaps I misunderstand your problem, though!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3261' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3238'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3261' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3261.html#pid3261'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-16 15:00
+<span class='htt'>Edited</span> 2010-09-16 15:08
+</div>
+<div class='ccl'>
+I hacked together a class inspired by yours that has word wrapping and padding. Speed is characters per second. I haven&#39;t actually bothered to enforce height and it will probably hang if you enter a word that&#39;s wider than the box; I haven&#39;t tested it thoroughly.<br/><br/><code>class MessageBox<br/>&#160; <br/>&#160; attr_accessor :speed<br/>&#160; attr_reader :text, :font, :padding<br/>&#160; <br/>&#160; def initialize text, options = {}<br/>&#160; &#160; @x, @y = options[:pos]&#160; || [0, 0]<br/>&#160; &#160; @w, @h = options[:size] || [$window.width, $window.height / 3]<br/>&#160; &#160; <br/>&#160; &#160; @speed = options[:speed] || 40<br/>&#160; &#160; <br/>&#160; &#160; self.padding = options[:padding] || 8<br/>&#160; &#160; self.font&#160; &#160; = options[:font]<br/>&#160; &#160; self.text&#160; &#160; = text<br/>&#160; &#160; <br/>&#160; &#160; @last_update = Gosu.milliseconds / 1000.0<br/>&#160; end<br/>&#160; <br/>&#160; def text= text<br/>&#160; &#160; @reveal = 0<br/>&#160; &#160; @text&#160;&#160; = text<br/>&#160; &#160; calculate_wrap<br/>&#160; end<br/>&#160; <br/>&#160; def font= font<br/>&#160; &#160; if font<br/>&#160; &#160; &#160; @font = font<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @font = Gosu::Font.new $window, Gosu.default_font_name, 16<br/>&#160; &#160; end<br/>&#160; &#160; calculate_wrap<br/>&#160; end<br/>&#160; <br/>&#160; def padding= padding<br/>&#160; &#160; @padding = padding<br/>&#160; &#160; calculate_wrap<br/>&#160; end<br/>&#160; <br/>&#160; def finish<br/>&#160; &#160; @reveal = @text.length<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; old_time, new_time = @last_update, Gosu.milliseconds / 1000.0<br/>&#160; &#160; dt = new_time - old_time<br/>&#160; &#160; @last_update = new_time<br/>&#160; &#160; <br/>&#160; &#160; @reveal += @speed * dt<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; x, y = @x + @padding, @y + @padding<br/>&#160; &#160; @wrap.each do |range|<br/>&#160; &#160; &#160; if range.last &gt; @reveal<br/>&#160; &#160; &#160; &#160; trunc_range = range.first ... @reveal.floor<br/>&#160; &#160; &#160; &#160; @font.draw @text[trunc_range], x, y, Float::INFINITY<br/>&#160; &#160; &#160; &#160; break<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; @font.draw @text[range], x, y, Float::INFINITY<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; y += @font.height<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; protected<br/>&#160; <br/>&#160; def calculate_wrap<br/>&#160; &#160; return unless @font and @text and @padding<br/>&#160; &#160; <br/>&#160; &#160; box_width = @w - @padding * 2<br/>&#160; &#160; @wrap = []<br/>&#160; &#160; <br/>&#160; &#160; first_index = 0<br/>&#160; &#160; last_index&#160; = test_index = @text.index(/\s|$/)<br/>&#160; &#160; <br/>&#160; &#160; while test_index<br/>&#160; &#160; &#160; if @font.text_width(@text[first_index ... test_index]) &gt;= box_width<br/>&#160; &#160; &#160; &#160; @wrap &lt;&lt; (first_index ... last_index)<br/>&#160; &#160; &#160; &#160; first_index = last_index + 1<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; last_index = test_index<br/>&#160; &#160; &#160; test_index = @text.index /\s|$/, last_index + 1<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; @wrap &lt;&lt; (first_index .. last_index)<br/>&#160; &#160; @wrap<br/>&#160; end<br/>&#160; <br/>end</code><br/><br/>Sorry for the lack of comments. Again, quick hack. It&#39;s yours if you want it, although I&#39;d appreciate a small credit in that case. :)
+</div>
+</div>
+
+<div class='brn' id='brn3261'>
+<div class='frm pst' id='pid3262' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3261'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3262.html#pid3262'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-09-16 21:23
+</div>
+<div class='ccl'>
+Well, since I&#39;m just taking a look at the ideas posted here, I don&#39;t think I&#39;ll implement it the same way all of you did but it helps me somewhat indeed. Thank you for your suggestions but keep them coming if there are more!
+</div>
+</div>
+
+<div class='frm pst' id='pid3263' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3261'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3263' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3263.html#pid3263'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2010-09-17 18:35
+<span class='htt'>Edited</span> 2010-09-18 18:38
+</div>
+<div class='ccl'>
+I worked a little further on your message box. I&#39;m sharing it though it&#39;s really messy. I&#39;ll clean it up later. :)<br/>Use X to speed up and continue. Use C to skip through.<br/><br/>Edit: Uploaded a little cleaner version.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/63/3263/RPGMessageBox.zip'>RPGMessageBox.zip</a>  (16k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn3263'>
+<div class='frm pst' id='pid3267' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3263'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3267' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3267.html#pid3267'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-09-17 23:29
+</div>
+<div class='ccl'>
+Oh, thanks but the idea was not to use another scripter&#39;s script but get ideas on how I could do it on my own and check a couple of simple examples. Thanks again for your interest but there&#39;s no need to make the script for me if you don&#39;t have the time to do it. As I said, a couple of examples are more than enough.
+</div>
+</div>
+
+<div class='brn' id='brn3267'>
+<div class='frm pst' id='pid3269' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3282.html#pid3267'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3269.html#pid3269'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2010-09-18 09:38
+</div>
+<div class='ccl'>
+I&#39;m just making it because I&#39;ll use it myself. (Quick! Conquer the thread!)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=463.html#tid463'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=463.html#tid463'>Gosu Exchange</a> / RPG like message windows and Gosu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3282.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

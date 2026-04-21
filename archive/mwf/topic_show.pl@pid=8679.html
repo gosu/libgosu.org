@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8679 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>A little code about collisions</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8679' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1241.html#tid1241'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=1241.html#tid1241'>Gosu Showcase</a> / A little code about collisions
+</div>
+</div>
+
+<div class='frm pst' id='pid8675' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8675' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8675.html#pid8675'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-11-21 15:49
+</div>
+<div class='ccl'>
+Hi, <br/><br/>I coded something today that may help others, so I share it. The basic idea was to create a Shape class, that has some children :<br/>- Point : a position in 2D space<br/>- Segment : finite lines from a point_a to a point_b<br/>- Circle : a Circle class that has a center Point and a radius (thanks jlnr for your drawing code about this !)<br/>- AABB : a class to represent rectangles<br/><br/>The idea was to provide a generic collides?(other) method, that will return true of false if the two shapes are colliding. It&#39;s not perfect, but at least, it works ! I suck at Maths a lot, so it&#39;s basically an adaptation of C++ code, without understanding the calculations so much... Except for the cases that are really simple.<br/><br/>require &#39;gosu&#39;<br/><br/>class CircleGenerator<br/>&#160; attr_reader :columns, :rows&#160; <br/>&#160; def initialize radius<br/>&#160; &#160; @columns = @rows = radius * 2<br/>&#160; &#160; lower_half = (0...radius).map do |y|<br/>&#160; &#160; &#160; x = Math.sqrt(radius**2 - y**2).round<br/>&#160; &#160; &#160; right_half = &quot;#{&quot;\xff&quot; * x}#{&quot;\x00&quot; * (radius - x)}&quot;<br/>&#160; &#160; &#160; &quot;#{right_half.reverse}#{right_half}&quot;<br/>&#160; &#160; end.join<br/>&#160; &#160; @blob = lower_half.reverse + lower_half<br/>&#160; &#160; @blob.gsub!(/./) { |alpha| &quot;\xff\xff\xff#{alpha}&quot;}<br/>&#160; end<br/>&#160; <br/>&#160; def to_blob<br/>&#160; &#160; @blob<br/>&#160; end<br/>end<br/><br/>class Shape&#160; <br/>&#160; def collision_point_point(p1, p2)<br/>&#160; &#160; return (p1.x == p2.x and p1.y == p2.y)<br/>&#160; end<br/>&#160; <br/>&#160; def collision_point_circle(p, c)<br/>&#160; &#160; x, y = p.x, p.y<br/>&#160; &#160; d2 = (x-c.x)*(x-c.x) + (y-c.y)*(y-c.y)<br/>&#160; &#160; return (d2 &lt; c.radius**2)&#160; &#160; <br/>&#160; end<br/>&#160; <br/>&#160; def collision_point_aabb(p, a)<br/>&#160; &#160; x2, y2 = p.x, p.y<br/>&#160; &#160; x, y, w, h = a.x, a.y, a.w, a.h<br/>&#160; &#160; return (x2 &gt;= x and x2 &lt; x + w&#160; and y2 &gt;= y and y2 &lt; y + h)<br/>&#160; end<br/>&#160; <br/>&#160; def collision_aabb_aabb(a, b)<br/>&#160; &#160; return !(a.x &gt;= b.x + b.w or a.x + a.w &lt;= b.x or a.y &gt;= b.y + b.h or a.y + a.h &lt;= b.y)<br/>&#160; end<br/>&#160; <br/>&#160; def collision_circle_circle(c1, c2)<br/>&#160; &#160; d2 = (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y)<br/>&#160; &#160; return !(d2 &gt; (c1.radius + c2.radius) * (c1.radius + c2.radius))<br/>&#160; end<br/>&#160; <br/>&#160; def projection_on_segment(cx, cy, ax, ay, bx, by)<br/>&#160; &#160; acx = cx - ax;&#160; acy = cy - ay<br/>&#160; &#160; abx = bx - ax; aby = by - ay<br/>&#160; &#160; bcx = cx - bx; bcy = cy - by<br/>&#160; &#160; s1 = (acx * abx) + (acy * aby)<br/>&#160; &#160; s2 = (bcx * abx) + (bcy * aby)<br/>&#160; &#160; return (s1 * s2 &gt; 0)<br/>&#160; end<br/>&#160; <br/>&#160; def collision_circle_aabb(c, a)<br/>&#160; &#160; x = c.x - c.radius; y = c.y - c.radius; w = h = c.radius * 2<br/>&#160; &#160; box_cercle = AABB.new(x, y, w, h)<br/>&#160; &#160; return false if !collision_aabb_aabb(box_cercle, a)<br/>&#160; &#160; return true if collision_point_circle(Point.new(a.x, a.y), c) or collision_point_circle(Point.new(a.x, a.y + a.h), c) or collision_point_circle(Point.new(a.x + a.w, a.y), c) or collision_point_circle(Point.new(a.x + a.w, a.y + a.h), c)<br/>&#160; &#160; return true if collision_point_aabb(Point.new(c.x, c.y), a)<br/>&#160; &#160; projection_v = projection_on_segment(c.x, c.y, a.x, a.y, a.x, a.y + a.h)<br/>&#160; &#160; projection_h = projection_on_segment(c.x, c.y, a.x, a.y, a.x + a.w, a.y)<br/>&#160; &#160; if (!projection_v or !projection_h)<br/>&#160; &#160; &#160; return true<br/>&#160; &#160; else<br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def collision_droite_cercle(a, b, c)<br/>&#160; &#160; u = Point.new(b.x - a.x, b.y - a.y)<br/>&#160; &#160; ac = Point.new(c.x - a.x, c.y - a.y)<br/>&#160; &#160; numerateur = u.x * ac.y - u.y * ac.x<br/>&#160; &#160; numerateur = -numerateur if (numerateur &lt; 0)<br/>&#160; &#160; denominateur = Math.sqrt(u.x * u.x + u.y * u.y)<br/>&#160; &#160; ci = numerateur / denominateur<br/>&#160; &#160; if (ci &lt; c.radius)<br/>&#160; &#160; &#160; return true<br/>&#160; &#160; else<br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def collision_droite_segment(a, b, o, p)<br/>&#160; &#160; ab = Point.new(b.x - a.x, b.y - a.y)<br/>&#160; &#160; ap = Point.new(p.x - a.x, p.y - a.y)<br/>&#160; &#160; ao = Point.new(o.x - a.x, o.y - a.y)<br/>&#160; &#160; if ((ab.x * ap.y - ab.y * ap.x) * (ab.x * ao.y - ab.y * ao.x) &lt; 0)<br/>&#160; &#160; &#160; return true<br/>&#160; &#160; else<br/>&#160; &#160; &#160; return false<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def collision_segment_segment(a, b, o, p)<br/>&#160; &#160; return false if !collision_droite_segment(a, b, o, p)<br/>&#160; &#160; return false if !collision_droite_segment(o, p, a, b)<br/>&#160; &#160; return true<br/>&#160; end<br/><br/>&#160; def collision_segment_aabb(a, b, aabb)<br/>&#160; &#160; # top segment<br/>&#160; &#160; return true if collision_segment_segment(a, b, Point.new(aabb.x, aabb.y), Point.new(aabb.x + aabb.w, aabb.y))<br/>&#160; &#160; # bottom segment<br/>&#160; &#160; return true if collision_segment_segment(a, b, Point.new(aabb.x, aabb.y + aabb.h), Point.new(aabb.x + aabb.w, aabb.y + aabb.h))&#160; &#160; <br/>&#160; &#160; # left segment<br/>&#160; &#160; return true if collision_segment_segment(a, b, Point.new(aabb.x, aabb.y), Point.new(aabb.x, aabb.y + aabb.h))&#160; <br/>&#160; &#160; # right segment<br/>&#160; &#160; return true if collision_segment_segment(a, b, Point.new(aabb.x + aabb.w, aabb.y), Point.new(aabb.x + aabb.w, aabb.y + aabb.h))&#160; &#160; &#160; <br/>&#160; &#160; return false<br/>&#160; end<br/>&#160; <br/>&#160; def collision_segment_cercle(a, b, c)<br/>&#160; &#160; return false if !collision_droite_cercle(a, b, c)<br/>&#160; &#160; ab = Point.new(b.x - a.x, b.y - a.y)<br/>&#160; &#160; ac = Point.new(c.x - a.x, c.y - a.y)<br/>&#160; &#160; bc = Point.new(c.x - b.x, c.y - b.y)<br/>&#160; &#160; pscal1 = ab.x * ac.x + ab.y * ac.y<br/>&#160; &#160; pscal2 = (-ab.x) * bc.x + (-ab.y) * bc.y<br/>&#160; &#160; return true if (pscal1 &gt;= 0 and pscal2 &gt;= 0)<br/>&#160; &#160; return true if (collision_point_circle(a, c))<br/>&#160; &#160; return true if (collision_point_circle(b, c))<br/>&#160; &#160; return false<br/>&#160; end<br/><br/>&#160; <br/>&#160; def collides?(other)<br/>&#160; &#160; # Point vs Point<br/>&#160; &#160; if (self.is_a?(Point) and other.is_a?(Point))<br/>&#160; &#160; &#160; collision_point_point(self, other)<br/>&#160; &#160; # Circle vs Point<br/>&#160; &#160; elsif (self.is_a?(Circle) and other.is_a?(Point)) or (other.is_a?(Circle) and self.is_a?(Point))<br/>&#160; &#160; &#160; x = other.is_a?(Point) ? other.x : self.x<br/>&#160; &#160; &#160; y = other.is_a?(Point) ? other.y : self.y<br/>&#160; &#160; &#160; c = other.is_a?(Point) ? self : other<br/>&#160; &#160; &#160; collision_point_circle(Point.new(x, y), c)<br/>&#160; &#160; # AABB vs Point<br/>&#160; &#160; elsif (self.is_a?(Point) and other.is_a?(AABB)) or (self.is_a?(AABB) and other.is_a?(Point))<br/>&#160; &#160; &#160; x2 = other.is_a?(Point) ? other.x : self.x<br/>&#160; &#160; &#160; y2 = other.is_a?(Point) ? other.y : self.y<br/>&#160; &#160; &#160; x = other.is_a?(Point) ? self.x : other.x<br/>&#160; &#160; &#160; y = other.is_a?(Point) ? self.y : other.y<br/>&#160; &#160; &#160; w = other.is_a?(Point) ? self.w : other.w<br/>&#160; &#160; &#160; h = other.is_a?(Point) ? self.h : other.h<br/>&#160; &#160; &#160; collision_point_aabb(Point.new(x2, y2), AABB.new(x, y, w, h))<br/>&#160; &#160; # AABB vs AABB<br/>&#160; &#160; elsif self.is_a?(AABB) and other.is_a?(AABB)<br/>&#160; &#160; &#160; collision_aabb_aabb(self, other)<br/>&#160; &#160; # Circle vs Circle<br/>&#160; &#160; elsif self.is_a?(Circle) and other.is_a?(Circle)<br/>&#160; &#160; &#160; collision_circle_circle(self, other)<br/>&#160; &#160; # Circle vs AABB<br/>&#160; &#160; elsif (self.is_a?(AABB) and other.is_a?(Circle)) or (self.is_a?(Circle) and other.is_a?(AABB))<br/>&#160; &#160; &#160; c1 = self.is_a?(Circle) ? self : other<br/>&#160; &#160; &#160; box1 = self.is_a?(AABB) ? self : other<br/>&#160; &#160; &#160; collision_circle_aabb(c1, box1)<br/>&#160; &#160; # Segment vs Circle<br/>&#160; &#160; elsif (self.is_a?(Segment) and other.is_a?(Circle)) or (self.is_a?(Circle) and other.is_a?(Segment))<br/>&#160; &#160; &#160; a = other.is_a?(Segment) ? other.point_a : self.point_a<br/>&#160; &#160; &#160; b = other.is_a?(Segment) ? other.point_b : self.point_b<br/>&#160; &#160; &#160; c = other.is_a?(Circle) ? other : self<br/>&#160; &#160; &#160; collision_segment_cercle(a, b, c)<br/>&#160; &#160; # Segment vs Segment<br/>&#160; &#160; elsif self.is_a?(Segment) and other.is_a?(Segment)<br/>&#160; &#160; &#160; a = self.point_a; b = self.point_b; o = other.point_a; p = other.point_b<br/>&#160; &#160; &#160; collision_segment_segment(a, b, o, p)<br/>&#160; &#160; # Segment vs AABB<br/>&#160; &#160; elsif (self.is_a?(Segment) and other.is_a?(AABB)) or (self.is_a?(AABB) and other.is_a?(Segment))<br/>&#160; &#160; &#160; a = other.is_a?(Segment) ? other.point_a : self.point_a<br/>&#160; &#160; &#160; b = other.is_a?(Segment) ? other.point_b : self.point_b<br/>&#160; &#160; &#160; aabb = other.is_a?(AABB) ? other : self<br/>&#160; &#160; &#160; collision_segment_aabb(a, b, aabb)<br/>&#160; &#160; else<br/>&#160; &#160; &#160; raise(&quot;no collision handled between #{self.class} and #{other.class}&quot;)<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class Point &lt; Shape<br/>&#160; attr_accessor :x, :y, :z<br/>&#160; def initialize(x, y)<br/>&#160; &#160; @x, @y, @z = x, y, 0<br/>&#160; end<br/>end<br/><br/>class Circle &lt; Shape<br/>&#160; attr_accessor :x, :y, :radius<br/>&#160; def initialize(x, y, radius)<br/>&#160; &#160; @radius = radius<br/>&#160; &#160; @x, @y, @z = x, y, 0<br/>&#160; &#160; @img = Gosu::Image.new(CircleGenerator.new(@radius))<br/>&#160; end<br/>&#160; <br/>&#160; def draw(color = 0xff_ffffff)<br/>&#160; &#160; @img.draw_rot(@x, @y, @z, 0, 0.5, 0.5, 1, 1, color)<br/>&#160; end<br/>end<br/><br/>class AABB &lt; Shape<br/>&#160; attr_accessor :x, :y, :w, :h<br/>&#160; def initialize(x, y, w, h)<br/>&#160; &#160; @x, @y, @w, @h = x, y, w, h<br/>&#160; end<br/>&#160; <br/>&#160; def draw(color = 0xff_ffffff)<br/>&#160; &#160; Gosu::draw_rect(@x, @y, @w, @h, color)<br/>&#160; end<br/>end<br/><br/>class Segment &lt; Shape<br/>&#160; attr_accessor :point_a, :point_b<br/>&#160; def initialize(point_a, point_b)<br/>&#160; &#160; @point_a, @point_b = point_a, point_b<br/>&#160; &#160; @z = 0<br/>&#160; end<br/>&#160; <br/>&#160; def draw(color = 0xff_ffffff)<br/>&#160; &#160; Gosu::draw_line(@point_a.x, @point_a.y, color, @point_b.x, @point_b.y, color, @z) <br/>&#160; end<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn8675'>
+<div class='frm pst' id='pid8677' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8679.html#pid8675'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8677' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8677.html#pid8677'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-11-21 16:24
+</div>
+<div class='ccl'>
+I did something similar: <a class='ura' href='topic_show.pl@tid=989,.html'>https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=989,</a> but without line and point.<br/>Ruby code for collisions is extremely slow (unless you did some optimizations), so I then ported it to Chimpmunk, which required adding only a collisions manager (tried to keep it as simple as possible). Chipmunk approach is 50 times faster.
+</div>
+</div>
+
+<div class='brn' id='brn8677'>
+<div class='frm pst' id='pid8679' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8679.html#pid8677'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8679.html#pid8679'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-11-21 18:01
+</div>
+<div class='ccl'>
+Yes, I saw your code, but the Segment collision was the one I needed most !<br/><br/>I tried Chipmunk, but I found it a little obscure. I would love to understand it better.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1241.html#tid1241'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=1241.html#tid1241'>Gosu Showcase</a> / A little code about collisions
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8679.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Collision detection in a roguelike</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8734' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1252.html#tid1252'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1252.html#tid1252'>Gosu Exchange</a> / Collision detection in a roguelike
+</div>
+</div>
+
+<div class='frm pst' id='pid8734' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8734' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8734.html#pid8734'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2016-01-02 22:36
+</div>
+<div class='ccl'>
+I&#39;m writing a basic roguelike and I can&#39;t figure out collision detection from all four sides. Looking for suggestions.<br/><br/>I&#39;ve been trying this method from the Captain Ruby code:<br/><br/>&#160; &#160;&#160; <code>def solid?(x, y)<br/>&#160; &#160; &#160; @x.between?(x, x + 20) and @y.between?(y, y + 20)<br/>&#160; &#160; end</code><br/><br/>This method is in my Map class. It detects collisions on two of four sides.<br/><br/> If I reverse the instance variable and the method arguments like so:<br/><br/>&#160; &#160; &#160; <code>def solid?(x, y)<br/>&#160; &#160; &#160; &#160; &#160; x.between?(@x, @x + 20) and y.between(@y, @y + 20)<br/>&#160; &#160; &#160; &#160; end</code><br/><br/>It detects collisions on the other 2 of 4 sides. :P<br/><br/>Any suggestions on how to put this into one method?<br/><br/>side note: I really like Gosu. With my modest ruby knowledge I&#39;ve been able to make some real strides on making games. :D
+</div>
+</div>
+
+<div class='brn' id='brn8734'>
+<div class='frm pst' id='pid8735' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8734.html#pid8734'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8735' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8735.html#pid8735'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-01-03 00:02
+</div>
+<div class='ccl'>
+Great to hear that you&#39;re enjoying Gosu! :)<br/><br/>I can&#39;t tell what <code>x/y</code> and <code>@x/@y</code> are from just looking at these two lines, but:<br/><code>x.between?(@x, @x + 20)</code><br/>is not the same as:<br/><code>@x.between?(x, x + 20)</code><br/><br/>In the first case, x ≥ @x. In the second case, x ≤ @x. Or in other words,<br/><br/><code>x.between?(@x, @x + 20)</code><br/>is the same as:<br/><code>@x.between?(x - 20, x)</code><br/><br/>You should be able to put together a combination that works by reversing some parts of the equation :)<br/><br/>But...I wonder if some of these variables should have a different name? If this is in the <code>Map</code> class, then there usually shouldn&#39;t be a @x/@y, just maybe a @width/@height?
+</div>
+</div>
+
+<div class='brn' id='brn8735'>
+<div class='frm pst' id='pid8736' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8734.html#pid8735'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8736.html#pid8736'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2016-01-03 00:14
+</div>
+<div class='ccl'>
+Ha ha!<br/>&#160; <code>@x </code> and <code>@y</code> are the x and y coordinates of the tile in the Map class. Sorry. <br/>Thanks. I didn&#39;t think of this. I&#39;ll give it a try.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8737' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8734.html#pid8734'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8737' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8737.html#pid8737'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1236' >ericathegreat</a>
+<span class='htt'>Date</span> 2016-01-04 01:38
+</div>
+<div class='ccl'>
+I suspect your problem is that you&#39;re getting confused by the difference between points and areas.<br/><br/>In your first example:<br/>@x.between?(x, x + 20) and @y.between?(y, y + 20)<br/><br/>@x is a point. More precisely, it&#39;s probably the point a the far left edge of your sprite. When you check whether it is between those two ranges, you are checking whether that point is inside that range.<br/><br/>However, your sprite is much bigger than a point. It&#39;s probably about 20 px wide, if I were to guess from your code.<br/><br/>Let&#39;s imagine that your solid object is at coordinate 20,20. It&#39;s covering the area:<br/><code>&#160; &#160; &#160; &#160;&#160; 20 ------ 40<br/>&#160; &#160; &#160; &#160; &#160; |<br/>&#160; &#160; &#160; &#160; &#160; |<br/>&#160; &#160; &#160; &#160; &#160; |<br/>&#160; &#160; &#160; &#160;&#160; 40</code><br/><br/>When your moving object&#39;s x is at 0, it does not overlap at all. Its area is:<br/><code> 0 ------ 20<br/> |<br/> |<br/> |<br/>20</code><br/><br/>When your moving object moves 5 pixels to the right, it <i>looks</i> like it should overlap, because the last five pixels overlap with the first five pixels of the solid object.<br/><br/>However, you&#39;re only comparing a point! And the @x value is the far left edge of your moving object, which is still only at pixel 5. That&#39;s not overlapping yet. In fact, it won&#39;t actually overlap until it is completely covering the solid object.<br/><br/>You have two options for this. You can either pick a more meaningful point, or you can compare area to area.<br/><br/>If you&#39;re lucky, you might be able to get away with a more meaningful point. Figure out the distance between 0,0 in your image and, say, the base of the characters feet (if you&#39;re checking for collision with terrain). Or the tip of the sword (if you&#39;re checking for collision with stabby things). Whichever point actually matters in the collision. Add these offsets to your @x and @y values in the calculation and it will trigger when that point enters the collision zone.<br/><br/>More likely though, you need to compare area against area. In that case, you want to do something like this:<br/>( @x.between?(x, x + 20) and @y.between?(y, y + 20) ) || ( (@x+sprite_width).between?(x, x + 20) and (@y+sprite_height).between?(y, y + 20) )
+</div>
+</div>
+
+<div class='brn' id='brn8737'>
+<div class='frm pst' id='pid8738' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8734.html#pid8737'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8738' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8738.html#pid8738'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2016-01-04 14:24
+</div>
+<div class='ccl'>
+Yes, I am comparing points. I think I&#39;m on the right track because my <code>solid?</code> method returns true/false when it&#39;s next to a map tile.<br/>But I&#39;ll try out comparing area to area. See what happens.<br/>Here&#39;s a link to my code:<br/><a class='ura' href='https://github.com/ceejaay/ruby_rogue/blob/master/map.rb#L19-L20'>https://github.com/ceejaay/ruby_rogue/blob/master/map.rb#L19-L20</a><br/><br/>My <code>solid?</code> method is only checking for a map tile in one direction right now.<br/><br/>When I run the program, I get this:<br/><br/><img class='emi' src='http://i.imgur.com/6883y7W.png?1' alt=''/><br/><br/>I&#39;m not sure if it matters, but I&#39;m using text instead of sprites. If I&#39;m correct the X/Y coordinates I&#39;m using start from the top-left corner of the text. <br/><br/>What I&#39;m having trouble with now is checking for which button is being pressed and if the space next to the player is occupied by a map tile.<br/>Plus, I guess I have to check for map tiles in all four directions at the same time. <br/>I think I&#39;m missing a fundamental programming concept. I&#39;m still working through it.<br/>You can see from my code where I&#39;ve tried some things.<br/><a class='ura' href='https://github.com/ceejaay/ruby_rogue/blob/master/map.rb#L21-L36'>https://github.com/ceejaay/ruby_rogue/blob/master/map.rb#L21-L36</a><br/><br/>I&#39;ll show some of my other attempts at solutions later. I have like 4 branches in my code trying to figure this out. :)<br/>Thanks for your response!
+</div>
+</div>
+
+<div class='brn' id='brn8738'>
+<div class='frm pst' id='pid8740' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8734.html#pid8738'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8740' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8740.html#pid8740'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1236' >ericathegreat</a>
+<span class='htt'>Date</span> 2016-01-05 02:37
+</div>
+<div class='ccl'>
+Do you intend to have all movement happen in terms of whole cells? (If you go left, you go left by one whole cell all at once, not gradually moving between tiles?) And the cells are all 20px apart?<br/><br/>If so, the maths for this is actually a <i>lot</i> easier. Just divide @x, @y, x and y by the size of the tiles, and then when you compare the numbers they&#39;ll either be exactly the same (collision) or different (not collision)<br/><br/>if ( @x/20 == x/20 &amp;&amp; <br/>&#160; &#160;&#160; @y/20 == y/20 )<br/># collision, because they&#39;re in the same cell.<br/>else<br/># not a collision, they are in different cells.<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn8740'>
+<div class='frm pst' id='pid8741' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8734.html#pid8740'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8741.html#pid8741'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1232.html' >max_n_ruby</a>
+<span class='htt'>Date</span> 2016-01-05 02:51
+</div>
+<div class='ccl'>
+Yes. In this roguelike the player will move one &#39;square&#39; at a time. In this case, the squares are 20 px high. I&#39;m actually not sure how wide the Gosu::Font class makes things. I&#39;ll look that up.<br/><br/>I&#39;ll try this out. Thanks!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1252.html#tid1252'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1252.html#tid1252'>Gosu Exchange</a> / Collision detection in a roguelike
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8734.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

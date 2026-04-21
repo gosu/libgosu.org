@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9092 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Using Window#needs_redraw?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9092' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1319.html#tid1319'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1319.html#tid1319'>Gosu Exchange</a> / Using Window#needs_redraw?
+</div>
+</div>
+
+<div class='frm pst' id='pid9078' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9078' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9078.html#pid9078'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-13 21:36
+<span class='htt'>Edited</span> 2017-01-13 21:48
+</div>
+<div class='ccl'>
+Hello again.<br/><br/>I&#39;m trying to use the method <code>Window#needs_redraw?</code>. Actually, I don&#39;t use the <code>Window#draw</code> method but a <code>Thread</code> in <code>Window#initialize</code> and I need to &quot;freeze&quot; the drawing of the screen. My first idea was to <code>Gosu#record</code> the screen but since I&#39;m using <code>Gosu#clip_to</code>, that&#39;s not possible.<br/><br/>So I wanted to control if the screen was redrawn or not. I tried this code:<br/><code>def needs_redraw?<br/>&#160; &#160; false<br/>end</code><br/>And it&#39;s working: the screen is not drawn anymore. However, when I tried to implement my function:<br/><code>def needs_redraw?<br/>&#160; &#160; if Graphics.needs_redraw?<br/>&#160; &#160; &#160; &#160; Graphics.needs_redraw = false<br/>&#160; &#160; &#160; &#160; true<br/>&#160; &#160; else<br/>&#160; &#160; &#160; &#160; false<br/>&#160; &#160; end<br/>end</code><br/>Gosu is throwing me an error: <code>/lib/gosu/patches.rb:152:in `tick&#39;: SWIG director type mismatch in output value of type &#39;bool&#39; (RuntimeError)</code><br/><br/>What am I doing wrong ? I don&#39;t get it. I&#39;m returning a <code>bool</code> and I didn&#39;t find any understandable explanation on Google.<br/><br/>Also. Is using a <code>Thread</code> a good idea or should I use something else ?<br/><br/>Thank you for your attention,<br/>NYU.
+</div>
+</div>
+
+<div class='brn' id='brn9078'>
+<div class='frm pst' id='pid9080' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9078'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9080' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9080.html#pid9080'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-15 10:08
+<span class='htt'>Edited</span> 2017-01-15 10:16
+</div>
+<div class='ccl'>
+You are right, it seems that <code>needs_redraw?</code> is currently broken. Oops! I&#39;ve opened a ticket here: <a class='ura' href='https://github.com/gosu/gosu/issues/376'>https://github.com/gosu/gosu/issues/376</a><br/><br/>What is your use case? In general, everything that involves a <code>Thread</code> is usually a bad idea with Ruby/Gosu, unless you use it purely for game logic. The <code>needs_redraw?</code> method doesn&#39;t guarantee that <code>draw</code> will not be called (even though it does that in recent versions of Gosu), it&#39;s just an optimisation hint.
+</div>
+</div>
+
+<div class='brn' id='brn9080'>
+<div class='frm pst' id='pid9081' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9080'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9081' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9081.html#pid9081'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-15 10:52
+</div>
+<div class='ccl'>
+The code I need to use <code>while</code> and a method to update the graphic part inside this while. Since I&#39;m just porting an existing project to Gosu, the Thread was the trick I found to use the previous code. <br/><br/>Here is a little example:<br/><code><br/>class Game &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super<br/>&#160; &#160; @main = Thread.new do<br/>&#160; &#160; &#160; require_relative &#39;some_file.rb&#39;<br/>&#160; &#160; &#160; while true<br/>&#160; &#160; &#160; &#160; # ... Do something ; all the game will be here<br/>&#160; &#160; &#160; &#160; Graphics.update<br/>&#160; &#160; &#160; &#160; break if # ...<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/></code><br/><br/>The point is to call <code>draw</code> only when <code>Graphics.update</code> is called. So, <code>Graphics.update</code> is coded like that:<br/><code><br/>def update<br/>&#160; unless @frozen<br/>&#160; &#160; # Do some stuff<br/>&#160; &#160; @needs_redraw = true<br/>&#160; end<br/>&#160; sleep 1.0/Graphics.fps<br/>end<br/></code><br/><br/>Do you have any suggestion to improve that ?
+</div>
+</div>
+
+<div class='brn' id='brn9081'>
+<div class='frm pst' id='pid9082' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9081'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9082' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9082.html#pid9082'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-15 14:50
+</div>
+<div class='ccl'>
+I see how that could work with <code>record</code>, but not without it. You cannot draw outside of <code>Window#draw</code>, and you can only create Gosu resources (Image etc.) on the main thread currently.<br/><br/>I think there&#39;s a better solution actually, it&#39;s a bit experimental but I added it exactly for this use case: <code>Window#tick</code><br/><br/>Basically, your game would become:<br/><br/><code>class Game &lt; Gosu::Window<br/>&#160; def draw<br/>&#160; &#160; # drawing needs to happen here, but maybe you can call into another function...<br/>&#160; end<br/>end<br/><br/>game = Game.new(...)<br/><br/>while true<br/>&#160; # ... Do something<br/>&#160; game.tick # this will call Window#update and Window#draw<br/>&#160; break if # ...<br/>end</code>
+</div>
+</div>
+
+<div class='brn' id='brn9082'>
+<div class='frm pst' id='pid9083' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9082'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9083' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9083.html#pid9083'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-15 20:23
+<span class='htt'>Edited</span> 2017-01-15 20:41
+</div>
+<div class='ccl'>
+Also, when I stop to call <code>#tick</code>, the game crashes. So. How can I freeze the game ? And so how can I close the window ?<br/><br/>Because I used <code>break unless window.tick</code>, but if I&#39;m freezing the game, it&#39;s not working anymore.
+</div>
+</div>
+
+<div class='brn' id='brn9083'>
+<div class='frm pst' id='pid9086' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9083'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9086' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9086.html#pid9086'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-16 02:50
+</div>
+<div class='ccl'>
+Usually <code>tick</code> is used like this from within <code>Window#show</code>:<br/><br/><code>def show # pseudo-implementation<br/>&#160; while tick<br/>&#160; &#160; sleep 0.016<br/>&#160; end<br/>&#160; # stops when tick returns false<br/>end</code><br/><br/>When <code>tick</code> returns <code>false</code> the game should end, because either <code>Window#close</code> was called, or the user clicked the [x] in the window corner.<br/><br/>If you just keep calling <code>tick</code>, the window will re-appear.<br/><br/>What do you mean by &quot;crashes&quot;? Is there an error? It&#39;s hard to understand if the structure works for you because I don&#39;t know what happens in <code># ... Do something</code> :)
+</div>
+</div>
+
+<div class='brn' id='brn9086'>
+<div class='frm pst' id='pid9089' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9086'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9089' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9089.html#pid9089'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-16 06:44
+</div>
+<div class='ccl'>
+Hum. I see...<br/><br/>By crashes, I mean that the program is not responding if I stop calling <code>tick</code> (to do some expensive calculation and use of MiniMagick -- file conversion, etc. -- and to setup all my objects -- images).<br/><br/>So... The correct alternative would be a <code>#render_to_image</code> method to hide changes on the screen. <code>Ashton </code> allows a render to texture, I think ; but I can&#39;t get it work -- <code>Ruby OpenGL</code> is not compiling.<br/>For another project, I used to work with <a class='url' href='https://github.com/vaiorabbit/ruby-opengl'>this wrapper</a> but I failed to make Ashton compatible with. It&#39;s saying <code>ashton/shader.rb:109:in <code>enable&#39;: undefined method </code>z&#39; for Gosu::Window</code>. And then... I don&#39;t want to use an old version of Ruby just for Ashton.
+</div>
+</div>
+
+<div class='brn' id='brn9089'>
+<div class='frm pst' id='pid9090' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9089'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9090' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9090.html#pid9090'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-16 06:52
+</div>
+<div class='ccl'>
+<code>#render_to_image</code> would only help you if you could use it on a background thread, which I don&#39;t think Ashton allows.<br/><br/>Can you somehow run the expensive MiniMagick file conversions when you build your game, so that it will start fast enough to not appear stuck?
+</div>
+</div>
+
+<div class='brn' id='brn9090'>
+<div class='frm pst' id='pid9091' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9090'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9091.html#pid9091'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-16 06:59
+</div>
+<div class='ccl'>
+The MiniMagick thing is user-dependent: I convert user&#39;s own files.<br/><br/>I can also do the conversion before showing the game. But during the game, I still need to hide some changes on the screen during a moment.<br/>I need Ashton to achieve that or I need to replace <code>Gosu#clip_to</code> to use <code>Gosu#record</code>.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid9092' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9089'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9092' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9092.html#pid9092'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-16 07:20
+</div>
+<div class='ccl'>
+Or, you can keep <code>Gosu::Window</code> running in parallel to your thread, and only interlock when you need to run something on the main thread (create images, read a value from <code>button_down?</code> etc.), and when you want to redraw the screen.<br/><br/><a class='ura' href='https://gist.github.com/jlnr/89953f1199080ccaa5bd8fe6d66ea188'>https://gist.github.com/jlnr/89953f1199080ccaa5bd8fe6d66ea188</a><br/><br/>It relies on <code>needs_redraw?</code>, which mysteriously works on my computer but I&#39;m using a dev version of Gosu, so maybe it&#39;ll be broken for you until 0.11.1 is out. But does that seem like a good workaround?<br/><br/>Feels like a hack, but was fun to write - I don&#39;t usually use Ruby&#39;s threading API :)
+</div>
+</div>
+
+<div class='brn' id='brn9092'>
+<div class='frm pst' id='pid9093' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9092'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9093' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9093.html#pid9093'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-16 08:40
+</div>
+<div class='ccl'>
+That&#39;s a possible workaround, but it&#39;s really laggy and definitely not usable in a game. I will just do my conversions before any <code>Window#tick</code>. :)<br/><br/>However, I still need to &quot;freeze&quot; the game. Is Ashton really broken with Ruby 2.3.x and the last version of Gosu, or did I make a mistake ?<br/><br/>This is what I need for the game:<br/>1) Convert user&#39;s files<br/>2) The game is running<br/>3) Freeze the screen (game is running behind)<br/>4) Transition to the game (with a shader if I get Ashton to work)<br/><br/>But maybe should I create a new subject for Ashton ?
+</div>
+</div>
+
+<div class='brn' id='brn9093'>
+<div class='frm pst' id='pid9094' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9093'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9094.html#pid9094'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-16 15:13
+</div>
+<div class='ccl'>
+Hmm. Why is it laggy? The interlocked threads shouldn&#39;t introduce more than 16ms of delay in the worst case.<br/>If I remove the <code>sleep</code> calls, it runs at 30 FPS, and it&#39;d run at 60 FPS with more careful scheduling of the draw/update blocks, but of course that depends on the game&#39;s actual code.<br/><br/>I want to support render-to-image in Gosu (without Ashton) at some point, but that&#39;s not something that&#39;ll happen in the next months, I&#39;m afraid: <a class='ura' href='https://github.com/gosu/gosu/issues/317'>https://github.com/gosu/gosu/issues/317</a><br/><br/>If the only problem with <code>record {}</code> is that it doesn&#39;t work with <code>clip_to</code>, can you maybe record several macros and remember with which clip rect the macros need to be rendered?
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid9095' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9092'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9095' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9095.html#pid9095'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-16 17:19
+<span class='htt'>Edited</span> 2017-01-16 19:19
+</div>
+<div class='ccl'>
+I don&#39;t know why it&#39;s laggy. And it doesn&#39;t fit really well the rest of the code, even if the way it&#39;s coded is interesting.<br/><br/>Here is what I coded previously, for instance.<br/><br/><code>class Graphics<br/><br/>&#160; @views = [] # An array containing all my views<br/>&#160; @recorded_views = [] # An array containing all my views recorded<br/><br/>&#160; def draw_frozen<br/>&#160; &#160; @recorded_views.each do |v|<br/>&#160; &#160; &#160; v[3].draw v.x, v.y, v.z<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; if @frozen<br/>&#160; &#160; &#160; draw_frozen<br/>&#160; &#160; &#160; return<br/>&#160; &#160; end<br/>&#160; &#160; @views.each do |v|<br/>&#160; &#160; &#160; # Draw here<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def freeze<br/>&#160; &#160; @frozen = true<br/>&#160; &#160; @recorded_views = []<br/>&#160; &#160; @views.each do |v|<br/>&#160; &#160; &#160; @recorded_views &lt;&lt; [v.x, v.y, v.z, Gosu.record(v.width,v.height){ # Draw here }]<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def transition(duration)<br/>&#160; &#160; duration.times do<br/>&#160; &#160; &#160; # I need to find a way to create a transition.<br/>&#160; &#160; &#160; sleep 1<br/>&#160; &#160; end<br/>&#160; &#160; @frozen = false<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; sleep 0.016<br/>&#160; end<br/><br/>end</code><br/><br/><code>class GameWindow &lt; Gosu::Window<br/><br/>&#160; def initialize<br/>&#160; &#160; # Init ...<br/>&#160; &#160; main = Thread.new do<br/>&#160; &#160; &#160; img = Gosu::Image.new &#39;img.png&#39;<br/>&#160; &#160; &#160; while<br/>&#160; &#160; &#160; &#160; # Updating<br/>&#160; &#160; &#160; &#160; Graphics.update<br/>&#160; &#160; &#160; &#160; if #...<br/>&#160; &#160; &#160; &#160; &#160; Graphics.freeze<br/>&#160; &#160; &#160; &#160; &#160; # Change something<br/>&#160; &#160; &#160; &#160; &#160; Graphics.transition(5) # Transition during 5 seconds<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; Graphics.draw<br/>&#160; end<br/><br/>end</code>
+</div>
+</div>
+
+<div class='brn' id='brn9095'>
+<div class='frm pst' id='pid9097' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9095'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9097' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9097.html#pid9097'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-17 04:38
+</div>
+<div class='ccl'>
+Hmm. Then I&#39;m out of ideas, sorry. This structure will likely crash sooner or later because it calls <code>record</code> and <code>Image.new</code> on a background thread, which is not supported by Gosu (yet?). Specifically, <code>Window#draw</code> and <code>record</code> cannot run in parallel right now, they use the same internal data structure.
+</div>
+</div>
+
+<div class='brn' id='brn9097'>
+<div class='frm pst' id='pid9099' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9097'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9099.html#pid9099'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-17 18:50
+</div>
+<div class='ccl'>
+Hum, I see... I think I should code my own engine in OpenGL (or perhaps SDL ?). It will take some time, but I think it&#39;s the more suitable solution.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid9101' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9078'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9101' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9101.html#pid9101'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-20 15:20
+</div>
+<div class='ccl'>
+Some late feedback on the <code>needs_redraw?</code> method: it&#39;s not actually broken, the error message is just extremely misleading.<br/><br/>What is happening is that if an exception is raised in <code>needs_redraw?</code> (e.g. typo in a method name), then this exception will be swallowed by a safety mechanism inside Gosu, and SWIG will print the wrong error message.
+</div>
+</div>
+
+<div class='brn' id='brn9101'>
+<div class='frm pst' id='pid9102' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9101'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9102' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9102.html#pid9102'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-20 15:46
+</div>
+<div class='ccl'>
+I see. However, I think Gosu is not suitable for what I want. Thank you for all, I will continue will a full-OpenGL custom engine.
+</div>
+</div>
+
+<div class='brn' id='brn9102'>
+<div class='frm pst' id='pid9103' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9102'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9103' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9103.html#pid9103'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-20 17:43
+</div>
+<div class='ccl'>
+No worries, I just wanted to report back on this bug while I was fixing it (the error message will be correct in Gosh 0.11.2). Good luck with your custom OpenGL engine, that&#39;s how Gosu started too :)
+</div>
+</div>
+
+<div class='brn' id='brn9103'>
+<div class='frm pst' id='pid9107' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9092.html#pid9103'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9107.html#pid9107'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-23 14:36
+</div>
+<div class='ccl'>
+Thank you. I don&#39;t know yet where I&#39;m going exactly, but I&#39;m going somewhere. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1319.html#tid1319'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1319.html#tid1319'>Gosu Exchange</a> / Using Window#needs_redraw?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9092.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

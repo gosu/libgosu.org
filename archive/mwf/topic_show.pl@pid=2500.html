@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2500 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Image::load_tiles on Gosu::Image</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2500' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=379.html#tid379'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=379.html#tid379'>Gosu Exchange</a> / Gosu::Image::load_tiles on Gosu::Image
+</div>
+</div>
+
+<div class='frm pst' id='pid2492' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2492.html#pid2492'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-05-24 00:48
+</div>
+<div class='ccl'>
+I&#39;m working with the ruby version of Gosu, and I&#39;m making a game where the different elements of a character are stored as separate sprite sheets in different images, and combined together at runtime.<br/><br/>Thus, I want to know if there any way to call Gosu::Image::load_tiles on a Gosu::Image.&#160; The documentation says that it is possible to use Gosu::Image::load_tiles on a RMagick image, but I&#39;m using Texplay to combine two images together (splice) for I have heard this is faster.&#160; <br/><br/>Would I have to convert the Gosu::Image into a RMagick image somehow first? Or Is there some completely different way to go about it?
+</div>
+</div>
+
+<div class='frm pst' id='pid2496' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2496.html#pid2496'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-24 12:19
+</div>
+<div class='ccl'>
+I have no experience with TexPlay, but technically Gosu doesn&#39;t check if the &quot;RMagick image&quot; is really an RMagick image. If you can get TexPlay to respond to to_blob with a binary string of 32-bit ARGB tuples, you are set. ;)<br/><br/>banister? Does TexPlay have a method like that?
+</div>
+</div>
+
+<div class='frm pst' id='pid2497' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2497.html#pid2497'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-05-24 12:32
+<span class='htt'>Edited</span> 2010-05-24 12:39
+</div>
+<div class='ccl'>
+no but Devil does, but it&#39;s a bit laborious:<br/><br/>gosu_image.to_devil.to_blob<br/><br/>but it would be handy to have #to_blob directly on Gosu::Image, i can add this in the next version of TP (someone pls file an issue on the tp github: <a class='url' href='http://github.com/banister/texplay'>http://github.com/banister/texplay</a>)
+</div>
+</div>
+
+<div class='frm pst' id='pid2500' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2500.html#pid2500'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-05-25 03:18
+</div>
+<div class='ccl'>
+ummm,<br/><br/>seems as if i dont&#39; know my own code base anymore. TexPlay already implements an (undocumented) TexPlay#to_blob method. You don&#39;t need Devil to do what you want, it should just work.<br/><br/>Gosu::Image#to_blob should work
+</div>
+</div>
+
+<div class='frm pst' id='pid2508' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2508.html#pid2508'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-05-26 04:52
+</div>
+<div class='ccl'>
+Thanks a lot ^_^ <br/><br/>Unfortunately, this does not seem to work... am I missing something? I get this error.<br/><br/>Test.rb:180:in <code>load_tiles&#39;: Cannot open file&#160; (RuntimeError)<br/>&#160; from Test.rb:180:in </code>initialize&#39;<br/>&#160; from Test.rb:199:in <code>new&#39;<br/>&#160; from Test.rb:199:in </code>&lt;main&gt;&#39;<br/><br/>Here&#39;s the code in question:<br/><br/>@body = Gosu::Image.new(self, &quot;./Sprites/People/Body/1.png&quot;, false)<br/>face = Gosu::Image.new(self, &quot;./Sprites/People/Face/1.png&quot;, false)<br/>hair = Gosu::Image.new(self, &quot;./Sprites/People/Hair/1.png&quot;, false)<br/>footwear = Gosu::Image.new(self, &quot;./Sprites/People/Footwear/shoes1.png&quot;, false)<br/>upper = Gosu::Image.new(self, &quot;./Sprites/People/Upper/shirt1.png&quot;, false)<br/>lower = Gosu::Image.new(self, &quot;./Sprites/People/Lower/pants1.png&quot;, false)<br/>&#160; &#160; &#160; &#160; <br/>@body.splice(face, 0,0, :alpha_blend =&gt; true)<br/>@body.splice(hair, 0,0, :alpha_blend =&gt; true)<br/>@body.splice(footwear, 0,0, :alpha_blend =&gt; true)<br/>@body.splice(upper, 0,0, :alpha_blend =&gt; true)<br/>@body.splice(lower, 0,0, :alpha_blend =&gt; true)<br/>@sprites = Gosu::Image::load_tiles(self, @body.to_blob, 40, 80, false)<br/><br/>That last line is the one which is causing the error.
+</div>
+</div>
+
+<div class='frm pst' id='pid2509' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2509.html#pid2509'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-05-26 05:16
+<span class='htt'>Edited</span> 2010-05-26 05:21
+</div>
+<div class='ccl'>
+you dont need to call #to_blob on it, you just need to pass in the Gosu::Image. But i just remembered that i didn&#39;t implement #rows and #columns methods so it probably still wont work unless you do the following:<br/><br/>class Gosu::Image<br/>&#160; &#160; alias_method :rows, :height<br/>&#160; &#160; alias_method :columns, :width<br/>end<br/><br/>and change your last line to:<br/>@sprites = Gosu::Image::load_tiles(self, @body, 40, 80, false)<br/><br/>Can you try this first and tell me if it works? If it does work, i&#39;ll add it in the next release of TP so this functionality should work out of the box
+</div>
+</div>
+
+<div class='frm pst' id='pid2512' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2512.html#pid2512'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-05-26 07:50
+</div>
+<div class='ccl'>
+Perfect! With that little snippet included it now works with no problems.&#160; Thanks for helping me fix this problem so quickly.&#160; Also, I appreciate that this functionality will be included in the next release of texplay.
+</div>
+</div>
+
+<div class='frm pst' id='pid2652' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2652.html#pid2652'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-13 05:30
+</div>
+<div class='ccl'>
+Gosu 0.7.21 will include Image#to_blob, Image#columns and Image#rows natively, so you can get rid of that after the next release. :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=379.html#tid379'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=379.html#tid379'>Gosu Exchange</a> / Gosu::Image::load_tiles on Gosu::Image
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2500.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

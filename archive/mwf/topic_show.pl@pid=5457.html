@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>GDI+ or FreeImage : Unknow error</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5457' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=698.html#tid698'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=698.html#tid698'>Gosu Exchange</a> / GDI+ or FreeImage : Unknow error
+</div>
+</div>
+
+<div class='frm pst' id='pid5457' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5457' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5457.html#pid5457'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=895' >reecob</a>
+<span class='htt'>Date</span> 2012-01-09 10:33
+</div>
+<div class='ccl'>
+Hi All,<br/><br/>I&#39;ve an error which I tried to fix, but nothing seems to work.<br/><br/>Can you help me please.<br/><br/>Here is the error :<br/><br/>Main.rbw:15:in <code>load_tiles&#39;: Could not load image media/sprite/chipset/main.gif using either GDI+ or FreeImage: Unknown error (RuntimeError)<br/>&#160; from Main.rbw:15:in </code>draw&#39;<br/>&#160; from Main.rbw:23:in `&lt;main&gt;&#39;<br/><br/>And here the source code :<br/><br/>require &#39;gosu&#39;<br/><br/>include Gosu<br/><br/>Dir.chdir<br/>File.basename( __FILE__ )<br/>$sMainCaption&#160; &#160; =&#160; &quot;GAME&quot;<br/><br/>class MainWindow &lt; Window&#160; <br/>&#160; def initialize<br/>&#160; &#160; super( 640, 480, false )<br/>&#160; &#160; self.caption&#160; &#160; =&#160; $sMainCaption<br/>&#160; end<br/>&#160; def draw<br/>&#160; &#160; @iWater&#160; &#160; &#160; &#160; =&#160; Image.new( self, &quot;/media/sprite/chipset/main.png&quot;, true )<br/>&#160; &#160; @iWater.draw( 0, 0, 0 )<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; <br/>&#160; end<br/>end<br/><br/>MainWindow.new.show<br/><br/>Many thanks for your help
+</div>
+</div>
+
+<div class='brn' id='brn5457'>
+<div class='frm pst' id='pid5458' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5457.html#pid5457'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5458.html#pid5458'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-01-09 16:20
+</div>
+<div class='ccl'>
+The problem is that the path to the image is almost certainly not correct. I think you might mean to be using this:<br/><br/><code>@iWater = Image.new( self, &quot;media/sprite/chipset/main.png&quot;, true )</code><br/><br/>Also it is not a good idea to load the image once _every_ frame. Best to load the image in #initialize, rather than #draw.<br/><br/>EDIT: Your error refers to an error in #load_tiles, but your example just loads a single image. Assume that you have the same error in both cases though.
+</div>
+</div>
+
+<div class='frm pst' id='pid5459' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5457.html#pid5457'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5459' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5459.html#pid5459'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-01-09 16:36
+</div>
+<div class='ccl'>
+<code>Dir.chdir<br/>File.basename( __FILE__ )</code><br/><br/>Just double-checking, is this real code? There must be no line break between <code>chdir</code> and <code>File...</code>, otherwise Ruby will interpret it as two unrelated statements.<br/><br/>With regards to Gosu, the error message is vague and terrible. Sorry, I thought I&#39;d fixed that already. Files not being found should be stated as such.
+</div>
+</div>
+
+<div class='brn' id='brn5459'>
+<div class='frm pst' id='pid5464' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5457.html#pid5459'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5464' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5464.html#pid5464'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-01-14 03:18
+</div>
+<div class='ccl'>
+I&#39;m fairly certain this is just bad style, but completely valid code.&#160; Ruby does not care what type of whitespace is used, except in circumstances like block declaration where a newline character must be used.<br/><br/>I would suggest doing what Julian suggested regardless, as it is easier to read that way.
+</div>
+</div>
+
+<div class='brn' id='brn5464'>
+<div class='frm pst' id='pid5465' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5457.html#pid5464'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5465' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5465.html#pid5465'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-01-14 10:55
+</div>
+<div class='ccl'>
+It is valid code, but it is two statements, not one. It is not the same as<br/><code>Dir.chdir(<br/>File.basename( __FILE__ ))</code>
+</div>
+</div>
+
+<div class='brn' id='brn5465'>
+<div class='frm pst' id='pid5466' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5457.html#pid5465'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5466.html#pid5466'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-01-14 16:14
+</div>
+<div class='ccl'>
+Ah.<br/>Should have taken the 3 seconds to test it in IRB apparently.&#160; My apologies.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=698.html#tid698'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=698.html#tid698'>Gosu Exchange</a> / GDI+ or FreeImage : Unknow error
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5457.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7914 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ashton - shaders and framebuffers in Ruby</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7914' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=784#tid784'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=784#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
+</div>
+<div class='bcl'>
+<span class='pln'>
+<a href='topic_show.pl@tid=784%3Bpg=1.html'>1</a>
+<span>2</span>
+<a href='topic_show.pl@tid=784%3Bpg=1.html'><img class='sic sic_nav_prev' src='https://www.libgosu.org/mwf/epx.png' title='Go to previous page' alt='Previous'></a>
+<img class='sic dsb sic_nav_next_d' src='https://www.libgosu.org/mwf/epx.png' title='Go to next page' alt='Next'>
+</span>
+&#160;
+</div>
+</div>
+
+<div class='frm pst' id='pid6167' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6166'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6167' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6167.html#pid6167'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-23 08:20
+</div>
+<div class='ccl'>
+I knew there&#39;s grayscale, but I had to learn how to compile library from GitHub. Now it&#39;s working.<br/>Also, I saw the lighting example and the Y axis seems to be reversed :) (what you probably know)<br/><br/>Edit:<br/>Drawing tiles with shader, lags :(
+</div>
+</div>
+
+<div class='brn' id='brn6167'>
+<div class='frm pst' id='pid6168' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6167'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6168' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6168.html#pid6168'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-23 12:55
+</div>
+<div class='ccl'>
+Oh, I see, I missed your meaning there.<br/><br/>Whether or not I have released a gem is another issue, you can run directly from github, which downloads and compiles for you:<br/><code><br/>&#160; &#160; gem &quot;ashton&quot;, :git =&gt; &quot;git://github.com/spooner/ashton.git&quot;<br/></code><br/>in your Gemfile if you want to run directly from the latest version, without having to build the latest gem. I&#39;m trying to avoid release until I get a few more things settled; quite a few bugs I need to squash before it is useable, I think.<br/><br/>Yeah, that annoying bug in the lighting isn&#39;t as simple to fix as it might appear and I&#39;m a bit stumped as to what is going wrong. It involves a series of shader effects that I&#39;ve converted from someone else&#39;s code. It does, however, look like it will be <i>really </i>nice when it works :)<br/><br/>If you are drawing a lot of things using the same shader, you should do:<br/><code><br/>&#160; &#160; @my_shader.use do<br/>&#160; &#160; &#160; @tiles.each {|t| t.draw x, y, z }<br/>&#160; &#160; end<br/></code><br/>rather than the simpler, but massively slower:<br/><code><br/>&#160; &#160; @tiles.each {|t| t.draw x, y, z, shader: @my_shader }<br/></code><br/>The reason for that is that in the former the shader gets bound and unbound once and in the latter it will be bound and unbound 1000 times. Binding a shader is really slow (it involves loading the compiled shader code and variable state into all the processors on the card). If you need different behaviour for each tile, then you can use uniforms to make the code run differently.<br/><br/>Also, when drawing tiles, you probably either want to render them into a large Texture or use #record (though, in truth, I have no idea if #record is compatible with shaders; something I need to check). Texture#draw is also a lot slower than Image#draw, so you probably should have your tiles as Image, not Texture (Textures can do things that images just can&#39;t do, but if you just need what Image can do, always use those instead since they are much faster).
+</div>
+</div>
+
+<div class='brn' id='brn6168'>
+<div class='frm pst' id='pid6169' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6168'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6169' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6169.html#pid6169'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-23 14:48
+</div>
+<div class='ccl'>
+Looks like I need to separate tiles from other objects. But this grayscale shader appears too dark.<br/><br/>I doubt you didn&#39;t know, but OpenGL uses reversed Y axis, which counts from down (and in Gosu it&#39;s from up). So if you use it for lighting, this might be the problem :)
+</div>
+</div>
+
+<div class='brn' id='brn6169'>
+<div class='frm pst' id='pid6170' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6169'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6170' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6170.html#pid6170'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-23 15:38
+</div>
+<div class='ccl'>
+Shouldn&#39;t be drawing tiles in with other objects anyway, since they are a bit different (they are usually drawn behind everything else and are generally static). The shader code is in lib/ashton/shaders/grayscale.frag - you can copy that and alter it to your liking (but you&#39;ll have to use the full path to your version, not just :grayscale, since it wouldn&#39;t then be an Ashton built-in shader).<br/><br/>Nothing would work in Ashton if I didn&#39;t know about the reversed Y-axis. You&#39;ll also notice that it is reversed only from -45 to +135 degrees, not for all directions (that is, direction of shadow-caster from light source). The light-casting shaders are pretty complex (three shaders are used, one after the other) and are mainly a port of someone else&#39;s shader system. Probably a simple fix to make it work, but I can&#39;t put my finger on it in the algorithms.
+</div>
+</div>
+
+<div class='brn' id='brn6170'>
+<div class='frm pst' id='pid6171' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6170'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6171' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6171.html#pid6171'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-23 18:17
+</div>
+<div class='ccl'>
+OK, I managed to change this shader and instead of using some ratio, it&#39;s now just changing other color channels to one with maximum value.<br/>I also separated tiles and the&#39;re drawing apart from other objects. But I have another problem. <code>shader.use</code> flushes the drawing and now shadered tiles cover everything they shouldn&#39;t. Is there anything I can do?
+</div>
+</div>
+
+<div class='brn' id='brn6171'>
+<div class='frm pst' id='pid6172' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6171'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6172' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6172.html#pid6172'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-23 18:52
+</div>
+<div class='ccl'>
+Nope, just a limitation of how Gosu draws things in order. Just draw the tiles first (that is, in #update or early in #draw) and you&#39;ll be fine.
+</div>
+</div>
+
+<div class='brn' id='brn6172'>
+<div class='frm pst' id='pid6173' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6172'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6173' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6173.html#pid6173'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-23 18:56
+</div>
+<div class='ccl'>
+Oops, no, that only happens when you use Texture#render (it flushes at the start and end; something I can&#39;t avoid because of how Gosu sorts drawing actions). There shouldn&#39;t be any problem with using Shader#use unless you are trying to be tricky :)
+</div>
+</div>
+
+<div class='brn' id='brn6173'>
+<div class='frm pst' id='pid6175' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6173'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6175' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6175.html#pid6175'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-23 19:29
+</div>
+<div class='ccl'>
+But if I want to draw tiles in background and foreground? And there are object below foreground tiles and also above, so with this flushing, I need 4 arrays :/
+</div>
+</div>
+
+<div class='brn' id='brn6175'>
+<div class='frm pst' id='pid6176' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6175'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6176' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6176.html#pid6176'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-23 21:07
+</div>
+<div class='ccl'>
+Yeah, 4 arrays. It isn&#39;t like they&#39;ll change... Not sure why you are putting them all in a single array anyway, when they would just be easier to manage separately (for example, many objects probably need a #update calling on them, but tiles probably don&#39;t, so you are wasting a lot of #update calls that are not necessary).<br/><br/>One option you can use, if this is really painful for you, is rather than using Shader#use, to use Shader#enable(z) and Shader#disable(z), which you&#39;d use like this:<br/><code><br/>&#160; &#160; @tile_shader.enable 1&#160; <br/>&#160; &#160; @tile_shader.enable 1001&#160; &#160; <br/>&#160; &#160; @all_objects_including_tiles.each &amp;:draw # With the tiles drawn at either z=1 or z=1001<br/>&#160; &#160; @tile_shader.disable 1<br/>&#160; &#160; @tile_shader.disable 1001<br/></code><br/><br/>Or keeping things separate (which is probably what I&#39;d suggest to do):<br/><code><br/>&#160; &#160; @tile_shader.use 1 do<br/>&#160; &#160; &#160;&#160; @background_tiles.each &amp;:draw # where z = 1<br/>&#160; &#160; end<br/><br/>&#160; &#160; @background_objects.each &amp;:draw # where z is between 2 and 1000<br/> <br/>&#160; &#160; @tile_shader.use 1001 do<br/>&#160; &#160; &#160;&#160; @foreground_tiles.each &amp;:draw # where z = 1001<br/>&#160; &#160; end<br/><br/>&#160; &#160; @foreground_objects.each &amp;:draw # where z &gt;= 1002<br/></code><br/>As I said earlier, however, I&#39;d recommend just using Window#record (to pre-record) or Texture#render (to pre-render) to _vastly_ accelerate drawing your tiles.
+</div>
+</div>
+
+<div class='brn' id='brn6176'>
+<div class='frm pst' id='pid6177' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6176'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6177' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6177.html#pid6177'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-24 07:30
+</div>
+<div class='ccl'>
+Oh, thanks :) This enabling seems to work<br/><br/>And I have a not-related question: is Window#record fast enough to be used per-frame? I use GlReadPixels and GLDrawPixels to make mirrors and it&#39;s not so fast.
+</div>
+</div>
+
+<div class='brn' id='brn6177'>
+<div class='frm pst' id='pid6179' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6177'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6179.html#pid6179'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-24 13:16
+</div>
+<div class='ccl'>
+No, there is no reason at all to use #record every frame. Recording itself takes about as long as regular drawing, though then drawing of the recorded images will be <i>very </i>fast. If you are going to display something for more than a couple of frames, such as your entire level tilemap (changes every time the level changes) then it is worthwhile.<br/><br/>You are right that glReadPixels and glDrawPixels are not fast, but #record is definitely not your answer. In vanilla Gosu, you would just draw the scene twice, each draw being inside a Window#clip_to and one of those draws being inside a Window#scale -1, 1 block (or Window#scale 1, -1, whichever axis you want to mirror).<br/><br/>A simple and fast Ashton solution would be to #render the scene into a Ashton#Texture, and draw that once normally then draw it mirrored in a Window#scale block (Sorry, I haven&#39;t got around to implementing scaling for Textures yet :$). This is probably as fast as a shader method (mirroring is quite a simple operation), so I wouldn&#39;t bother with the extra complication of using a shader. In any case, it will be significantly faster than your current method.<br/><br/>EDIT: I remember telling you to use TexPlay&#39;s Window#render_to_image, which is a simpler way than manually using glDrawPixels and glReadPixels (since that is what it uses internally). Shame you ignored that suggestion :P Ashton#Texture#render does the same thing, but the pixel data never leaves the graphics card, so it is considerably faster than either method (Window#render_to_image or glReadPixels/glDrawPixels).
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7812' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid6176'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7812' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7812.html#pid7812'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=941.html' >daIT</a>
+<span class='htt'>Date</span> 2014-05-21 00:30
+</div>
+<div class='ccl'>
+Would there be any advantages or disadvantages to using Texture#render over Window#record for this purpose ?
+</div>
+</div>
+
+<div class='brn' id='brn7812'>
+<div class='frm pst' id='pid7813' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7812'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7813.html#pid7813'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2014-05-21 00:36
+</div>
+<div class='ccl'>
+Well, composing the image with Texture#render is going to be faster, since you&#39;d only be rendering a single image (single draw call). Gosu#record is massively faster than manually drawing 1000s of sprites in Ruby, but it is only as fast as C would be at doing that (which is, admittedly, massively faster than Ruby at doing a lot of operations). Both have their place really. Gosu#record possibly uses a little less image memory, since you store just the sprites, which are repeatedly drawn, rather than a full rectangle that encompassed all.<br/><br/>Both are fine and either is vital to getting anything like a reasonable framerate in a non-trivial game.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6253' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=6253.html#pid6253'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-09-25 18:53
+</div>
+<div class='ccl'>
+I think I&#39;ve finally licked the random flipping issues when using Texture#render and post-processing shaders. *fingers crossed*<br/><br/>Also added a global and per-draw control over smoothing/pixelating Textures AND made pixelated textures look better when drawn smaller, so they don&#39;t distort as they do with Gosu::Images. This functionality should really be in Gosu::Image, but the only way to add that would be to hack the Gosu C++ source itself (something I&#39;m not prepared to do). In fact, I wish that all the Texture functionality would appear in Gosu::Image, but I am not terribly hopeful. There are enough things that Texture does, however, that are really needed in Ashton, that I can&#39;t just use Gosu::Images. Shame really!<br/><br/>The main issue now is the broken lighting system, but I think that is a dead loss for the time being!
+</div>
+</div>
+
+<div class='frm pst' id='pid7218' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7218' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7218.html#pid7218'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-09-06 10:56
+</div>
+<div class='ccl'>
+Just bumped this to v0.1.0, since I&#39;m not likely to do any major work on this any time soon. Some advanced bits (lighting/particles) are still as broken as before, but you&#39;ll just have to ignore them for now; most things work just fine (render-to-texture and shaders, for example).
+</div>
+</div>
+
+<div class='brn' id='brn7218'>
+<div class='frm pst' id='pid7220' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7218'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7220' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7220.html#pid7220'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-07 10:38
+</div>
+<div class='ccl'>
+Thanks for bumping! When you&#39;re not working on Gosu-ish things, what is the best way to reach you? github? Just in case I or someone else had contributions to push :)
+</div>
+</div>
+
+<div class='brn' id='brn7220'>
+<div class='frm pst' id='pid7221' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7220'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7221' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7221.html#pid7221'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-09-07 10:45
+</div>
+<div class='ccl'>
+I get notifications from github issues/pull requests. You can probably PM/post me here too, which should notify me, as this post did.
+</div>
+</div>
+
+<div class='brn' id='brn7221'>
+<div class='frm pst' id='pid7910' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7221'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7910' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7910.html#pid7910'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2014-07-17 21:56
+</div>
+<div class='ccl'>
+Hi Spooner, it&#39;s been such a long time !<br/><br/>I&#39;m thinking about using Ashton to create a second FrameBuffer, and your Texture class seems to do the job pretty well. I just have a big issue with it, and I don&#39;t think I did something wrong, so... I&#39;ll just ask you there : using the Ashton::Texture#to_image method, the render is inaccurate. All the pixels that were drawn on that buffer are not in the resulting image.<br/><br/>All drawing operations seem to work, since I&#39;m displaying the Texture on screen, and everything that was added during runtime is on it, without any problem. I can move around the Texture instance, no problem : everything is on it. But when I use the to_image method, there is nothing on the picture. It was easier to see when I called the .save method from the returned Gosu::Image : a blank image is all I got.<br/><br/>And it&#39;s really a pain ! I really need it. The rgba method always returns [0.0, 0.0, 0.0, 0.0], even when on screen there are a lot of colours drawn on those pixels. Can you help me out ? Thanks a lot !
+</div>
+</div>
+
+<div class='brn' id='brn7910'>
+<div class='frm pst' id='pid7911' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7910'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7911' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7911.html#pid7911'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2014-07-17 22:00
+</div>
+<div class='ccl'>
+If the Aston::Texture you create is larger than the maximum image size that Gosu supports, which is probable if the Ashton::Texture is window-sized, then it won&#39;t convert into a Gosu::Image properly.<br/><br/>What do you want to achieve exactly, in converting it to a Gosu::Image? Perhaps I can suggest a method of achieving the overall goal, if not how to convert it to an Image.<br/><br/>Well, if you ABSOLUTELY need it as an image, you could create smaller Textures, render the large texture into each one with an offset, then convert those to images. Really, it seems like a painful way to do it :D
+</div>
+</div>
+
+<div class='brn' id='brn7911'>
+<div class='frm pst' id='pid7912' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7911'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7912' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7912.html#pid7912'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2014-07-17 22:04
+</div>
+<div class='ccl'>
+It was like the fastest answer ever ! :)<br/><br/>What I need is to be able to draw an OpenGL scene into another FrameBuffer. So, what I have in mind is to insert a @texture_buffer.render bloc inside a Gosu::Window#draw gl bloc. And the purpose of that is to be able to use the rgba method you provide to get the pixel color at x,y position into that render.<br/><br/>I hope you understand me, my english is still awful...
+</div>
+</div>
+
+<div class='brn' id='brn7912'>
+<div class='frm pst' id='pid7913' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7912'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7913' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7913.html#pid7913'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2014-07-17 22:22
+</div>
+<div class='ccl'>
+Not sure what that has to do with Ashton::Texture#to_image though.<br/><br/>So anyway, you render into an Ashton::Texture, which displays perfectly with Ashton::Texture#draw(), but Ashton::Texture#rgba doesnt give the result you expect, nor does converting #to_image. Seems the PixelCache object (written in C) associated with the texture is not getting updated (it should lazy-load the pixel data from the GL texture).<br/><br/>Hmm...<br/><br/>Try forcing a refresh of the cache and check different values:<br/><code><br/>texture.refresh_cache<br/>p texture.rgba(10, 15)<br/>p texture.red(10, 15)<br/></code><br/>Note that you can&#39;t access the pixel cache until after the Ashton::Texture#render block (though I assume you realise that).
+</div>
+</div>
+
+<div class='brn' id='brn7913'>
+<div class='frm pst' id='pid7914' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7913'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7914' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7914.html#pid7914'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2014-07-17 22:30
+</div>
+<div class='ccl'>
+My point has nothing to do with the .to_image method, that was just a solution I thought about, because I could use Texplay to read the pixel. But then I saw that there was a rgba method directly inside of the Texture class, which is much better for me.<br/><br/>Anyway, it still doesn&#39;t work :(<br/><br/><a class='ura' href='http://paste.awesom.eu/yJoh&amp;ln'>http://paste.awesom.eu/yJoh&amp;ln</a><br/><br/>I don&#39;t see where the mistake is. You&#39;ll see that I ask for the pixel oustide of the render block.<br/><br/>Result : <br/><br/><blockquote><p>&gt;ruby init.rb</p></blockquote><br/>[0, 0, 0, 0]<br/>0<br/>--<br/><br/><blockquote><p>&gt;Exit code: 0</p></blockquote>
+</div>
+</div>
+
+<div class='brn' id='brn7914'>
+<div class='frm pst' id='pid7915' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7914'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7915' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7915.html#pid7915'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2014-07-17 22:38
+</div>
+<div class='ccl'>
+That is a pretty simple example. Looks fine, though I&#39;d only render to the buffer if the mouse button is down :) So you are able to see the changes to the buffer on-screen, but not via the PixelCache. Not a clue here, I&#39;m afraid - sorry!<br/><br/><code>puts @buffer.rgba(10, 15).inspect</code><br/><br/>can be written more simply as:<br/><br/><code>p @buffer.rgba(10, 15)</code>
+</div>
+</div>
+
+<div class='brn' id='brn7915'>
+<div class='frm pst' id='pid7916' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7914.html#pid7915'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7916.html#pid7916'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2014-07-17 22:43
+</div>
+<div class='ccl'>
+Thanks for the tip, didn&#39;t know about that &quot;p&quot; thing (I always use print or puts).<br/><br/>The example is really simple because I only wanted to see if that would do it or not, into the simplest program possible ! :)<br/><br/>So you don&#39;t know ? :&#39;(<br/>It would really have been great, since I can&#39;t figure out a way to create another buffer using the Ruby binding of OpenGL. I guess I will still have to draw / pick color / clear / redraw each frame. Thanks for your time, anyway ! :)<br/><br/>And I changed my Texture, for a 64*64 one, the rgba method now returns correct values.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=784#tid784'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=784#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
+</div>
+<div class='bcl'>
+<span class='pln'>
+<a href='topic_show.pl@tid=784%3Bpg=1.html'>1</a>
+<span>2</span>
+<a href='topic_show.pl@tid=784%3Bpg=1.html'><img class='sic sic_nav_prev' src='https://www.libgosu.org/mwf/epx.png' title='Go to previous page' alt='Previous'></a>
+<img class='sic dsb sic_nav_next_d' src='https://www.libgosu.org/mwf/epx.png' title='Go to next page' alt='Next'>
+</span>
+&#160;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7914.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3849 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Image blurring when using draw_rot</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3849' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=384.html#tid384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=384.html#tid384'>Gosu Exchange</a> / Image blurring when using draw_rot
+</div>
+</div>
+
+<div class='frm pst' id='pid2549' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2549.html#pid2549'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=187.html' >johanati</a>
+<span class='htt'>Date</span> 2010-05-30 02:37
+</div>
+<div class='ccl'>
+Hello, I&#39;m trying to create a game with a retro look, so I need to be careful that my pixels look crisp.<br/><br/>When I draw an image using Gosu::Image.draw_rot (default parameters, angle 0), there seems to be some blurring/anti-aliasing. Using Gosu::Image.draw, it looks perfect.<br/><br/>I made a quick example using a Mario sprite, see here: <a class='url' href='http://img541.imageshack.us/img541/8573/drawrot.png'>http://img541.imageshack.us/img541/8573/drawrot.png</a><br/><br/>Any tips on what I could do to prevent this blurring, or what would be causing it?<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid2550' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2550.html#pid2550'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-30 02:48
+</div>
+<div class='ccl'>
+Rotation aliasing normally happens when the interpreter tries to render something to imaginary positions (as you only get exact coordinates for 90° rotations normally). Some image processing programs, however, show that aliasing also for exact rotations (90° steps), in which case I guess the exact rotations aren&#39;t excluded from aliasing or whatever...<br/><br/>Either way, what you&#39;re asking for is completely disable rotation aliasing, isn&#39;t it... that would make your sprites look incredibly cluttered, unless you&#39;re using a scaled up image (aka each &quot;pixel&quot; actually has 10x10 pixels, for example). But as aliasing normally adds up to an image&#39;s appearance during rotation, I wouldn&#39;t necessarily deem it an unwanted feature.
+</div>
+</div>
+
+<div class='frm pst' id='pid2551' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2551.html#pid2551'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-30 03:27
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Any tips on what I could do to prevent this blurring, or what would be causing it?</p></blockquote><br/>draw_rot will center the image on x/y, so if you use an odd width or eight, that may just cause it. (Effectively drawing the image at xxx.5 or yyy.5)<br/><br/>Of course, that only applies to angle=0, for other angles, the rotation will still be what OpenGL makes of it. I am not sure how rotations look with the (undocumented ;) ) Gosu::enabled_undocumented_retrofication feature. If they still look too new-school with that, you can only pre-render really oldschool rotations.
+</div>
+</div>
+
+<div class='frm pst' id='pid2552' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2552.html#pid2552'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=187.html' >johanati</a>
+<span class='htt'>Date</span> 2010-05-30 03:35
+</div>
+<div class='ccl'>
+I can see why (and wouldn&#39;t have a problem with) aliasing when there&#39;s some rotation involved, I was hoping that the level of aliasing would be dependant on the amount of rotation though. Ie. 0 rotation = no aliasing, 1 degree rotation = slight amount of aliasing.<br/><br/>I don&#39;t think it&#39;d be good for me to try to switch off aliasing entirely, because as you pointed out, it definitely has its place.
+</div>
+</div>
+
+<div class='frm pst' id='pid2553' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2553.html#pid2553'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=187.html' >johanati</a>
+<span class='htt'>Date</span> 2010-05-30 03:35
+</div>
+<div class='ccl'>
+Thanks jlnr, I&#39;ll take a look at that..
+</div>
+</div>
+
+<div class='frm pst' id='pid2554' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2554.html#pid2554'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=187.html' >johanati</a>
+<span class='htt'>Date</span> 2010-05-30 05:06
+</div>
+<div class='ccl'>
+Just confirming that giving the image even dimensions worked perfectly, problem solved. Thanks, guys.
+</div>
+</div>
+
+<div class='frm pst' id='pid2560' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2560.html#pid2560'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-05-30 19:52
+</div>
+<div class='ccl'>
+Gosu::enabled_undocumented_retrofication&#160; ftw :) .. glad someone else then me needed it too ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2561' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2561' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2561#pid2561'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2010-05-30 22:11
+</div>
+<div class='ccl'>
+ippa:<br/><br/><blockquote><p>&gt; Gosu::enabled_undocumented_retrofication&#160; ftw :) .. <br/>&gt; glad someone else then me needed it too ;)</p></blockquote><br/>I used it too, but implemented it myself at that time :)<br/>What I don&#39;t get is: Why didn&#39;t jlnr already document it? ;)
+</div>
+</div>
+
+<div class='brn' id='brn2561'>
+<div class='frm pst' id='pid3643' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid2561'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3643' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3643.html#pid3643'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=216.html' >kaBOOM</a>
+<span class='htt'>Date</span> 2010-12-18 05:24
+</div>
+<div class='ccl'>
+I want it. Whos willing to share?
+</div>
+</div>
+
+<div class='brn' id='brn3643'>
+<div class='frm pst' id='pid3645' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3643'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3645.html#pid3645'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-12-19 19:04
+</div>
+<div class='ccl'>
+I use it too; I guess he just thinks that he doesn&#39;t want to support it if it goes wrong?
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3646' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid2561'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3646.html#pid3646'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-12-19 23:29
+<span class='htt'>Edited</span> 2010-12-19 23:53
+</div>
+<div class='ccl'>
+The syntax is clearly temporary, as soon as there is a new syntax I&#39;ll document it. But for now I don&#39;t want anyone to depend on the specific way it&#39;s activated.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3786' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3786' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3786.html#pid3786'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=216.html' >kaBOOM</a>
+<span class='htt'>Date</span> 2011-01-26 13:57
+</div>
+<div class='ccl'>
+I really need my retro style graphics... :)<br/>Anyone willling to share? nahpr2@hotmail.com<br/>Thank You
+</div>
+</div>
+
+<div class='brn' id='brn3786'>
+<div class='frm pst' id='pid3826' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3786'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3826' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3826.html#pid3826'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-02-02 20:03
+</div>
+<div class='ccl'>
+In fact, there is an efficient way to prevent ANY BLURY effect to get your pixellate render of choice (which is mine too !). But there is a big drawback.<br/><br/>You have to use OpenGL to setup all your textures, which (this is the drawback) have to be power of two :(<br/>All you have then to do is to add this to your Sprite class initialize method :<br/><br/>glBindTexture(GL_TEXTURE_2D, your_sprite.gl_tex_info.tex_name)<br/>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)<br/>glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)<br/><br/>Then any operation will be full pixels, no blur at all.
+</div>
+</div>
+
+<div class='brn' id='brn3826'>
+<div class='frm pst' id='pid3829' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3826'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3829' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3829.html#pid3829'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-03 03:07
+</div>
+<div class='ccl'>
+That is exactly what the &#39;Gosu::enable_undocumented_retrofication&#39; method is doing. BTW you can do this without power of two textures, no problem. :)
+</div>
+</div>
+
+<div class='brn' id='brn3829'>
+<div class='frm pst' id='pid3834' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3829'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3834' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3834.html#pid3834'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=216.html' >kaBOOM</a>
+<span class='htt'>Date</span> 2011-02-04 05:58
+</div>
+<div class='ccl'>
+Hi. I&#39;m so stupid. Until a couple of days ago, I didn&#39;t realized all I had to do was put &quot;Gosu::enable_undocumented_retrofication&quot; in my code to get the rsults I wanted. I was thinking it was a method with lots of necessary arguments &quot;a la&quot; draw_rot.<br/>Thanks good sir. I love GOSU.
+</div>
+</div>
+
+<div class='brn' id='brn3834'>
+<div class='frm pst' id='pid3839' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3834'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3839' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3839.html#pid3839'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-02-04 19:50
+</div>
+<div class='ccl'>
+I don&#39;t see what Gosu::enable_undocumented_retrofication refers to, I&#39;m no native english and don&#39;t understand what it represents exactly, can you explain it to me ?<br/><br/>BTW, my method didn&#39;t work on textures not power of two because Gosu::Images that are not power of two don&#39;t have a gl_tex_info method.
+</div>
+</div>
+
+<div class='brn' id='brn3839'>
+<div class='frm pst' id='pid3842' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3839'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3842' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3842.html#pid3842'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-04 23:17
+</div>
+<div class='ccl'>
+retrofication is a made up word meaning to make something &quot;retro&quot; in style. That is, pixellated. By not blurring images, it allows for indie-style retro blocky graphics, without forcing the user to use a very low screen resolution .
+</div>
+</div>
+
+<div class='brn' id='brn3842'>
+<div class='frm pst' id='pid3849' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3842'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3849' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3849.html#pid3849'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-02-05 08:25
+</div>
+<div class='ccl'>
+Thanks a lot for the explanation, it&#39;s just a huge method !
+</div>
+</div>
+
+<div class='brn' id='brn3849'>
+<div class='frm pst' id='pid3851' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3849'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3851' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3851.html#pid3851'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-05 09:03
+</div>
+<div class='ccl'>
+Also, it&#39;s supposed to be used in a &quot;rescue&quot; block because it will disappear as soon as there is a proper interface to do the same thing.
+</div>
+</div>
+
+<div class='brn' id='brn3851'>
+<div class='frm pst' id='pid3863' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3851'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3863' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3863.html#pid3863'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-02-06 08:34
+</div>
+<div class='ccl'>
+Could you explain what this method does exactly, after creating the same effect I wrote earlier ? Maybe I&#39;m coding lots of things you took care of with it ! I don&#39;t see this method on Gosu RDoc, usually I&#39;m able to look at those points alone :)
+</div>
+</div>
+
+<div class='brn' id='brn3863'>
+<div class='frm pst' id='pid3865' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3863'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3865' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3865.html#pid3865'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-06 09:35
+</div>
+<div class='ccl'>
+It does exactly what you posted above for all textures. Just use it like that: &quot;begin; Gosu::enable_undocumented_retrofication; rescue; end&quot;. It&#39;s undocumented on purpose because it will be part of the new Image constructors later. You can use it to play around in the meanwhile though.
+</div>
+</div>
+
+<div class='brn' id='brn3865'>
+<div class='frm pst' id='pid4467' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid3865'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4467' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4467.html#pid4467'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-06-26 21:48
+</div>
+<div class='ccl'>
+Hi Julian !<br/><br/>Can you explain how to use this feature ? I don&#39;t want to use Ruby-OpenGL anymore, but I really need pixellate zooms. Please, help ! :)
+</div>
+</div>
+
+<div class='brn' id='brn4467'>
+<div class='frm pst' id='pid4468' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid4467'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4468' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4468.html#pid4468'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-06-27 04:17
+</div>
+<div class='ccl'>
+Just like the code I wrote above. You can call it once after startup, in the Window constructor or directly after <code>require &#39;gosu&#39;</code>.
+</div>
+</div>
+
+<div class='brn' id='brn4468'>
+<div class='frm pst' id='pid4469' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3849.html#pid4468'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4469.html#pid4469'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-06-27 07:02
+</div>
+<div class='ccl'>
+Hi Julian ! I was trying that code into the draw method, which didn&#39;t work. I put it under require &quot;gosu&quot;, now it works ! Perfect !<br/><br/>Thanks a lot !
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=384.html#tid384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=384.html#tid384'>Gosu Exchange</a> / Image blurring when using draw_rot
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3849.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

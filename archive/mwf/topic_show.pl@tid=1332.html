@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Image.subimage and performance</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1332.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1332.html#tid1332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1332.html#tid1332'>Gosu Exchange</a> / Gosu::Image.subimage and performance
+</div>
+</div>
+
+<div class='frm pst' id='pid9167' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9167' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9167.html#pid9167'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2017-03-01 20:26
+</div>
+<div class='ccl'>
+I have not posted in many moons.&#160; Several years.&#160; In that time I&#39;ve created several games and tools using other game toolkits, mainly Unity3D and Monogame.<br/><br/>But Ludum Dare 38 is comin&#39; up, and I&#39;m thinking I need to go back to my first game making love, Gosu.&#160; Monogame and Unity3D are nice, but I&#39;ve come to realize that they&#39;re tanks.&#160; Maybe I just want a sword.<br/><br/>My question is about the performance of using the subimage functionality and its performance vs using an array of vanilla Gosu::Image.&#160; I have a lot of tile sheets that I have accumulated over the years, and they all have a one-pixel border between tiles.&#160; I was about to create a monkey patch that let me Gosu::Image.from_tiles_with_padding, but then I saw it may be easier to setup a solution using Gosu::Image.subimage instead.&#160; I also thought that perhaps if using subimage results in one OpenGL texture instead of many, it may end up more performant regardless.<br/><br/>Though I also am willing to bet that even the craziest Gosu game will not stress a modern GPU with OpenGL textures unless the game author is grossly irresponsible.&#160; Has anyone done any testing to see which is faster?
+</div>
+</div>
+
+<div class='brn' id='brn9167'>
+<div class='frm pst' id='pid9168' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1332.html#pid9167'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9168' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9168.html#pid9168'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-03-02 16:40
+</div>
+<div class='ccl'>
+Good news: <code>Image#subimage</code> is extremely fast. So fast that you could recreate the subimages every tick, draw them once, and then discard them.<br/><br/>The difference between <code>Image#subimage</code> and loading an image via the constructor is that the latter will add padding around the image when copying it to an OpenGL texture. Those pixels will either be translucent (default) or repeat the outermost colour values (<code>tileable: true</code>). That ensures that the image looks good when scaling, rotating etc.<br/><br/>With <code>subimage</code>, it is your responsibility to make sure the images have some padding. (If you use <code>retro: true</code>, this doesn&#39;t matter.)<br/><br/>If you are worried about performance, you can just pre-process the tile sheets with RMagick or another image library, and then either use <code>load_tiles</code> or <code>subimage</code> depending on what suits you better.<br/><br/>By the way: All of the image constructors (including <code>Image.load_tiles</code>) dynamically build a tile atlas on 1024x1024px GL textures. You can observe whether images end up on the same texture internally by comparing <code>image.gl_tex_info.tex_name</code>.
+</div>
+</div>
+
+<div class='brn' id='brn9168'>
+<div class='frm pst' id='pid9169' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1332.html#pid9168'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9169' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9169.html#pid9169'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2017-03-02 19:39
+<span class='htt'>Edited</span> 2017-03-03 03:53
+</div>
+<div class='ccl'>
+<i>By the way: All of the image constructors (including Image.load_tiles) dynamically build a tile atlas on 1024x1024px GL textures. You can observe whether images end up on the same texture internally by comparing image.gl_tex_info.tex_name.</i><br/><br/>The more I read and thought about it I figured this would likely be the case.<br/><br/>I used the .subimage functionality to create a pretty simple yet fully working tilesheet loader that works in a couple situations that the built-in tile loader does not.&#160; It will work if there is padding, if the tiles are not wall-to-wall on the image, or both.&#160; It&#39;s not complex, but that is thanks to the subimage function being so useful.&#160; It would have required a bit more drama if this wasn&#39;t provided.&#160; Likely making a ton of Gosu::Image using the :rect option.&#160; This only hits the disk once as well, which may save memory and IO, depending on how Gosu handles loading images from disk, which I admit I am not familiar with.<br/><br/><a class='url' href='https://gist.github.com/mikezila/ad2a83ed585b4d22f29faf40d358054b'>TileSheet class for Gosu - Gist</a><br/><br/>I would love it if .subimage was made part of the stable api.&#160; The ease at which you can use it to carve up different formatted sprite/tile sheets is a great help.
+</div>
+</div>
+
+<div class='brn' id='brn9169'>
+<div class='frm pst' id='pid9172' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1332.html#pid9169'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9172.html#pid9172'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-03-12 16:33
+</div>
+<div class='ccl'>
+I&#39;ve removed the comment about it being experimental 🎉 It&#39;s now a proper part of Gosu.<br/><br/>A note on your gist: The image does not have to be a power-of-two for subimage to work. Gosu will copy the image to a 1024x1024px texture and use the remaining space for other textures.<br/><br/>But the image must not be larger than 1024x1024px. Beyond that, Gosu will split it up into several 1024x1024px textures automatically, and then <code>subimage</code> will stop working. (This is actually a limitation that I could work around. Hmm. Maybe in a future version...) You could add a check for that in the constructor to prevent surprises.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1332.html#tid1332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1332.html#tid1332'>Gosu Exchange</a> / Gosu::Image.subimage and performance
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1332.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

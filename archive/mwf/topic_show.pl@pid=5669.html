@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5669 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Creating a Gosu/C++ iPhone game</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5669' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=88.html#tid88'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid5'>Gosu</a> / <a href='board_show.pl@tid=88.html#tid88'>Gosu on iPad, iPhone &amp; iPod Touch</a> / Creating a Gosu/C++ iPhone game
+</div>
+</div>
+
+<div class='frm pst' id='pid336' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl336' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=336.html#pid336'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-21 12:39
+<span class='htt'>Edited</span> 2011-11-09 22:42
+</div>
+<div class='ccl'>
+Revised:<br/><br/>• check out Gosu from git<br/>• create new OpenGL ES project<br/>• set up signing stuff as usual<br/>• get rid of main.m and the .nib file; also of the prefix header &amp; its settings if you want<br/>• add <code>CoreGraphics.framework</code>, <code>OpenAL.framework</code>, <code>AudioToolbox.framework</code> and <code>AVFoundation.framework</code> to your project<br/>• comment out the main function, instead implement this global function: <code>Gosu::Window&amp; windowInstance() { static MyWindowSubclass w; return w; }</code><br/><br/>Then follow this explanation, just instead of ˚CorePlot.xcodeproj<code> use </code>GosuTouch.xcodeproj`:<br/><br/><a class='url' href='http://code.google.com/p/core-plot/wiki/UsingCorePlotInApplications'>http://code.google.com/p/core-plot/wiki/UsingCorePlotInApplications</a><br/><br/>Missing: Accelerometer support is not there yet (just like on OS X, sadly), but you can already handle touchesBegan/Moved/Ended as a replacement for buttonDown.<br/><br/>Things to note: Touches&#39; coordinates are in screen coordinates (e.g. 0…480, 0…320 on iPhone &lt;4), same for drawing coordinates. You can change both using the undocumented Graphics::setResolution and Input::setMouseFactors if you need to.
+</div>
+</div>
+
+<div class='brn' id='brn336'>
+<div class='frm pst' id='pid5669' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid336'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5669.html#pid5669'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-03-05 11:19
+</div>
+<div class='ccl'>
+This is what the result should look like.
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=688.html'><img class='amt' src='../../mwf/attachments/69/5669/Bildschirmfoto2012-03-05um19.17.32.thb.jpg' title='Bildschirmfoto2012-03-05um19.17.32.png (201k)' alt=''/></a>
+</div>
+</div>
+
+<div class='frm pst' id='pid5670' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid336'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5670.html#pid5670'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-03-05 11:22
+<span class='htt'>Edited</span> 2013-07-08 00:12
+</div>
+<div class='ccl'>
+Current version numbers: I use Xcode 4.2/4.3, LLVM 3.x compiler, current iOS SDK but Gosu works with OS Deployment Version down to 3.0 (*all* iOS devices ever shipped).
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid357' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=357.html#pid357'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-03-03 17:25
+</div>
+<div class='ccl'>
+Wow this is interesting! I don&#39;t owe a mac but is it possible to use PC to develop a game for iPhone? Maybe through VM or something? 
+</div>
+</div>
+
+<div class='frm pst' id='pid361' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=361.html#pid361'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2009-03-03 21:44
+</div>
+<div class='ccl'>
+Not through means that don&#39;t void the warranty on your iPhone...I could be wrong, but that&#39;s the impression I got when I looked into it. There&#39;s no official SDK for Windows iirc.
+</div>
+</div>
+
+<div class='frm pst' id='pid362' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=362.html#pid362'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-03-04 01:00
+<span class='htt'>Edited</span> 2009-03-04 01:05
+</div>
+<div class='ccl'>
+Officially, the SDK only works on Intel Macs, even cheap used PowerPC Macs can&#39;t be used out of the box. Installing OS X in a VM is supposedly possible but probably illegal in most places in the world (not sure :)), and I have no idea if that or jailbreaking will be a pleasant trip. But if you have some Gosu/C++ code that you&#39;d like to see running on an iPhone/iPod, I can try to package it up and send it back.
+</div>
+</div>
+
+<div class='frm pst' id='pid382' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=382.html#pid382'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-03-20 03:39
+</div>
+<div class='ccl'>
+If it works, that would be SUPER!! :D
+</div>
+</div>
+
+<div class='frm pst' id='pid2719' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2719.html#pid2719'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>Date</span> 2009-03-24 20:19
+</div>
+<div class='ccl'>
+[<a class='irl' href='topic_show.pl@pid=392.html'>topic branch moved</a>]
+</div>
+</div>
+
+<div class='frm pst' id='pid402' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=402.html#pid402'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=63.html' >rolando</a>
+<span class='htt'>Date</span> 2009-03-25 01:06
+</div>
+<div class='ccl'>
+this is my main.mm (had to rename it main.mm in order to put a c++ class there):<br/><br/>#import &lt;UIKit/UIKit.h&gt;<br/>#import &lt;Gosu/Gosu.hpp&gt;<br/><br/>class GameWindow : public Gosu::Window<br/>{<br/>public:<br/>&#160; GameWindow() : Window(480, 320, true)<br/>&#160; {<br/>&#160; }<br/>&#160; <br/>&#160; void update()<br/>&#160; {<br/>&#160; }<br/>&#160; <br/>&#160; void draw()<br/>&#160; {<br/>&#160; }<br/>};<br/><br/>Gosu::Window&amp; windowInstance() {<br/>&#160; static GameWindow w;<br/>&#160; return w;<br/>}<br/><br/>PS: thanks for the great job!!!<br/>Edit: I&#39;m using SDK 2.2, I have installed SDK 3.0 in another directory for testing purposes though.
+</div>
+</div>
+
+<div class='frm pst' id='pid406' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=406.html#pid406'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=63.html' >rolando</a>
+<span class='htt'>Date</span> 2009-03-25 13:54
+<span class='htt'>Edited</span> 2009-03-25 14:27
+</div>
+<div class='ccl'>
+one tip: you can create a &quot;fat&quot; version of the libgosutouch.a with lipo:<br/><br/>$ lipo -create libgosutouch-sim.a libgosutouch.a -output libgosutouch-fat.a<br/>$ file libgosutouch-fat.a <br/>libgosutouch-fat.a: Mach-O universal binary with 2 architectures<br/>libgosutouch-fat.a (for architecture i386):&#160; current ar archive<br/>libgosutouch-fat.a (for architecture cputype (12) cpusubtype (6)):&#160; current ar archive<br/><br/>That way, you only add as libgosutouch-fat.a as an existing framework in you project and don&#39;t need to include the extra linking flags.<br/>r./
+</div>
+</div>
+
+<div class='frm pst' id='pid407' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=407.html#pid407'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-03-25 15:55
+</div>
+<div class='ccl'>
+Hmm, II wonder if I can automate the creation of the fat file with Xcode? Would be very handy.<br/><br/>BTW, I checked and it turns out that Image&#39;s constructor <i>does</i> work with PNG files and even uses UIImage, but only the one that takes a filename. If you want to load PNGs <i>from memory</i>, you&#39;ll need the workaround I mentioned.
+</div>
+</div>
+
+<div class='frm pst' id='pid413' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=413.html#pid413'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=63.html' >rolando</a>
+<span class='htt'>Date</span> 2009-03-26 13:09
+</div>
+<div class='ccl'>
+Regarding the automation of the fat library: I&#39;m almost there, I still don&#39;t know if applescripting a little it could be fully automated. The problem: I don&#39;t know how to tell XCode to change platform.<br/>The approach:<br/>create 3 new targets: 1 for device, 1 for simulator and 1 for the fat version. You have to choose the static library template when creating the new target. For each of the targets (except the fat) add all the sources and required frameworks.<br/>For the fat target, add the simulator and device version to the targets, so they will be compiled before (they are set as a dependency). Add a new build phase -&gt; new run script build phase to the target, and use a script like this (change it to suit your needs):<br/><br/>mkdir -p lib<br/>lipo -create build/$CONFIGURATION-iphoneos/libXXXSimulator.a build/$CONFIGURATION-iphonesimulator/libXXXDevice.a -output lib/libXXX.a<br/><br/>the env variable $CONFIGURATION is set by XCode and can be any of Debug, Release or Distribution.<br/>This would work great if the simulator or device targets kept their platform settings, so the solution here is to compile each target before building the fat library, that way you make sure that the platform is set correctly for each version of the static library.<br/>HTH,<br/>r./
+</div>
+</div>
+
+<div class='frm pst' id='pid414' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=414.html#pid414'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-03-26 21:21
+</div>
+<div class='ccl'>
+Thanks, I will try that.<br/><br/>For now, I&#39;ve fixed PNG loading, and the resolution is 480x320 by default now (it was weirdly stretched before, unless you called graphics().setResolution(...)).
+</div>
+</div>
+
+<div class='frm pst' id='pid894' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=894.html#pid894'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-14 21:30
+</div>
+<div class='ccl'>
+I don&#39;t see the template for an OpenGL ES project. Also I don&#39;t have access to the SVN so I can&#39;t view the touch demo you&#39;re talking about.
+</div>
+</div>
+
+<div class='frm pst' id='pid895' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=895.html#pid895'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-14 21:37
+</div>
+<div class='ccl'>
+Which version of the iPhone SDK do you have installed? And everyone has access to SVN, just see the GoogleCode page under &quot;Source&quot; :)
+</div>
+</div>
+
+<div class='frm pst' id='pid904' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=904.html#pid904'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-16 18:30
+</div>
+<div class='ccl'>
+There&#39;s nothing there about Gosu Touch. Do I have to be a member of Google Code to view anything?
+</div>
+</div>
+
+<div class='frm pst' id='pid905' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=905.html#pid905'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-16 23:23
+</div>
+<div class='ccl'>
+You have to open the Xcode project in the mac folder, select Gosu Touch and build it. There are no prebuilt binaries :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2360' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2360.html#pid2360'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-04-20 01:16
+</div>
+<div class='ccl'>
+Hello, I am trying to use gosu for an iPhone game. I have set everything up according to the instructions, but have hit one final snag. Using rolando&#39;s code above (in my main.mm):<br/><br/>#include &quot;main.h&quot;<br/><br/>#import &lt;UIKit/UIKit.h&gt;<br/>#import &lt;Gosu/Gosu.hpp&gt;<br/><br/>class GameWindow : public Gosu::Window<br/>{<br/>public:<br/>&#160; GameWindow() : Window(480, 320, true)<br/>&#160; {<br/>&#160; }<br/>&#160; <br/>&#160; void update()<br/>&#160; {<br/>&#160; }<br/>&#160; <br/>&#160; void draw()<br/>&#160; {<br/>&#160; }<br/>};<br/><br/>Gosu::Window&amp; windowInstance() {<br/>&#160; static GameWindow w;<br/>&#160; return w;<br/>}<br/><br/>I get the following error about the missing main function, which got replaced by windowInstance()<br/><br/>Undefined symbols:<br/>&#160; &quot;_main&quot;, referenced from:<br/>&#160; &#160; &#160; start in crt1.10.6.o<br/>ld: symbol(s) not found<br/>collect2: ld returned 1 exit status<br/><br/>Any help would be greatly appreciated to aid me on my quest
+</div>
+</div>
+
+<div class='frm pst' id='pid2362' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2362.html#pid2362'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-20 07:21
+</div>
+<div class='ccl'>
+Weird, _main should be included in libgosutouch.a. Did you run into any trouble compiling the Touch version of Gosu? It actually had compilation bugs until later last night. (Or are you even decrescendo from IRC?)
+</div>
+</div>
+
+<div class='frm pst' id='pid2363' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2363.html#pid2363'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-04-20 13:54
+</div>
+<div class='ccl'>
+Ah very close, I am decrescendo&#39;s friend working on the same game. I updated Gosu last night and re-compiled with no errors, but that _main error still appeared. This morning I completely deleted Gosu and checked out a clean copy (just in case I tampered with a file), built just fine but still _main error. Do you think it could be a problem with my project? Should I try and create a new project?
+</div>
+</div>
+
+<div class='frm pst' id='pid2366' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2366.html#pid2366'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-21 06:28
+</div>
+<div class='ccl'>
+Hmmm, maybe you should really create one small project for testing. I can compile and link my iPhone game just fine. :|<br/><br/>Man, Xcode project templates are so hopelessly overdue :(
+</div>
+</div>
+
+<div class='frm pst' id='pid2644' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2644.html#pid2644'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-06-10 20:41
+</div>
+<div class='ccl'>
+Sorry to resurect this thread but it seemed better than starting a new one.<br/><br/>does drawLine(...) not work on the iphone? I think I did read somewhere that openGL ES doesn&#39;t have it, is that right? <br/><br/>Are there any other things that are not supported?
+</div>
+</div>
+
+<div class='frm pst' id='pid2646' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2646.html#pid2646'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-12 03:01
+</div>
+<div class='ccl'>
+drawLine and drawTriangle are hackishly mapped to drawQuad for now.<br/><br/>In the long term, drawLine should be replaced by some drawQuad solution anyway; GL_LINEs are horribly inconsistent across platforms and drivers :(
+</div>
+</div>
+
+<div class='frm pst' id='pid2647' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2647.html#pid2647'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-12 03:38
+</div>
+<div class='ccl'>
+On a completely unrelated note, the &quot;Ruby in App Store&quot; thing keeps being exciting: <a class='url' href='http://www.appleoutsider.com/2010/06/10/hello-lua/'>http://www.appleoutsider.com/2010/06/10/hello-lua/</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2648' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2648.html#pid2648'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-06-12 07:58
+</div>
+<div class='ccl'>
+hmmm, I reckon it will only be for big dev&#39;s like unity. could be wrong, and here&#39;s hoping.<br/><br/>The drawLine draws nothing for me, quads are more suitable for what I&#39;m doing anyway.
+</div>
+</div>
+
+<div class='frm pst' id='pid3937' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3937' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3937.html#pid3937'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2011-02-12 12:08
+</div>
+<div class='ccl'>
+Ok I&#39;m trying to increase the userbase of Gosu Touch by many percent here... by jumping on the wagon...<br/><br/>I&#39;ve followed all of the steps above, and gotten so far as getting the simulator up in debug mode. However... I must be missing something vital, because when the simulator starts my app, it just quits it again immediately... Basically, nothing happens... Xcode just tells me &quot;Debugging terminated&quot; without throwing any errors or anything like that... It&#39;s almost as if I&#39;m missing a game loop or something, as if the program just finishes running, but Gosu::Window should take care of that for me, right?<br/><br/>I&#39;m using the most recent version of the SDK... <br/><br/>I&#39;m practically a complete noob with both XCode, C++ and Iphone dev... I managed to create a small game demo in Objective-C and cocos2d for iphone earlier (like 2 years ago), but since I&#39;m working on a game in Gosu now (in Ruby, currently), I&#39;d love to be able to get it running... <br/><br/>One thing I was unsure of was what to do with Gosu Touch once I&#39;d built it... Does it matter where it lies? I mean, when I built it, it seems to have ended up in a folder called &quot;build&quot; in the source folder of Gosu. I haven&#39;t entered that search path anywhere in my xcode project, so how could it matter that I built it? I&#39;ve just entered the header search path and lib path... Could this be related to my problems? I mean, doesn&#39;t the build need to be included in my project somehow?<br/><br/>Anyways, any help would be greatly appreciated. It would be totally awesome to use Gosu on the IPhone, even if it means I have to learn C++ (which doesn&#39;t seem all that daunting actually)...
+</div>
+</div>
+
+<div class='brn' id='brn3937'>
+<div class='frm pst' id='pid3942' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid3937'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3942' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3942.html#pid3942'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-13 06:54
+</div>
+<div class='ccl'>
+Welcome aboard! ;)<br/><br/><blockquote><p>&gt; One thing I was unsure of was what to do with Gosu Touch once I&#39;d built it</p></blockquote><br/>It should be in &lt;gosuroot&gt;/lib, but it doesn&#39;t really matter as long as you adjust the following step:<br/><br/><blockquote><p>&gt;&gt;• add -lgosutouch to the linker flags for Release, -lgosutouch-sim to the linker flags for Debug, and make sure the &#39;lib&#39; folder of Gosu is in the library search path</p></blockquote><br/>But a missing Gosu library should actually lead to linker errors on build... Can you see the runtime error in the console window (cmd+shift+R)?
+</div>
+</div>
+
+<div class='brn' id='brn3942'>
+<div class='frm pst' id='pid3943' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid3942'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3943' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3943.html#pid3943'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2011-02-13 12:48
+</div>
+<div class='ccl'>
+Thanx! :)<br/><br/>Gee... I&#39;d forgotten about that window. I knew there was important runtime information somewhere... :) Turns out, I just had to delete the reference to the MainWindow-xib file from the plist file in order to get it working. I now have a working Gosu Touch project! Wohoo! Totally awesome actually... :)<br/><br/>I noticed however that changing the screen size doesn&#39;t seem to have any effect whatsoever. I have an IPhone 4 so I&#39;d like to use a resolution of 960x640 but it doesn&#39;t seem to want to do that... Any tips?<br/><br/>Btw, what&#39;s the best way of adding resources to the project? I&#39;ve tried with a png image and got it working just by putting it in the resources folder in XCode... Is that the way to go generally? <br/><br/>Thanks for your help, it&#39;s greatly appreciated! And as always... for the lib itself... :)
+</div>
+</div>
+
+<div class='brn' id='brn3943'>
+<div class='frm pst' id='pid3944' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid3943'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3944.html#pid3944'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-13 18:54
+</div>
+<div class='ccl'>
+Hmmm. You can just call &quot;graphics().setResolution(960, 640)&quot;, but I think this should be the default maybe. But you can rest assured that if you draw something at 0.5, 0.5, this will actually be @ 1, 1 on the iPhone 4. I think this is what Apple is doing with UIKit too.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3956' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid3942'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3956' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3956.html#pid3956'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2011-02-15 22:24
+</div>
+<div class='ccl'>
+Ok, so it seems I must have done some step wrong, because I can&#39;t get it to compile for the device (my Iphone 4)...<br/><br/>These are the errors I get:<br/><br/>Build gosutouchtest of project gosutouchtest with configuration Debug<br/><br/>Ld build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv6/gosutouchtest normal armv6<br/>cd /Users/jonte/dev/iosapps/gosutouchtest<br/>setenv IPHONEOS_DEPLOYMENT_TARGET 4.2<br/>setenv PATH &quot;/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin&quot;<br/>/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/g++-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -L/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -L/Users/jonte/dev/games/gosu-source/lib -F/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -filelist /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv6/gosutouchtest.LinkFileList -dead_strip -lgosutouch-sim -miphoneos-version-min=4.2 -framework Foundation -framework UIKit -framework OpenGLES -framework QuartzCore -framework CoreGraphics -framework OpenAL -framework AudioToolbox -framework AVFoundation -o /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv6/gosutouchtest<br/><br/>ld: warning: in /Users/jonte/dev/games/gosu-source/lib/libgosutouch-sim.a, file was built for unsupported file format which is not the architecture being linked (armv6)<br/>Undefined symbols:<br/>&#160; &quot;_main&quot;, referenced from:<br/>&#160; &#160; &#160; start in crt1.3.1.o<br/>ld: symbol(s) not found<br/>collect2: ld returned 1 exit status<br/><br/>Ld build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv7/gosutouchtest normal armv7<br/>cd /Users/jonte/dev/iosapps/gosutouchtest<br/>setenv IPHONEOS_DEPLOYMENT_TARGET 4.2<br/>setenv PATH &quot;/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin&quot;<br/>/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/g++-4.2 -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -L/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -L/Users/jonte/dev/games/gosu-source/lib -F/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -filelist /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv7/gosutouchtest.LinkFileList -dead_strip -lgosutouch-sim -miphoneos-version-min=4.2 -framework Foundation -framework UIKit -framework OpenGLES -framework QuartzCore -framework CoreGraphics -framework OpenAL -framework AudioToolbox -framework AVFoundation -o /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv7/gosutouchtest<br/><br/>ld: warning: in /Users/jonte/dev/games/gosu-source/lib/libgosutouch-sim.a, file was built for unsupported file format which is not the architecture being linked (armv7)<br/>Undefined symbols:<br/>&#160; &quot;_main&quot;, referenced from:<br/>&#160; &#160; &#160; start in crt1.3.1.o<br/>ld: symbol(s) not found<br/>collect2: ld returned 1 exit status
+</div>
+</div>
+
+<div class='brn' id='brn3956'>
+<div class='frm pst' id='pid3957' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5669.html#pid3956'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3957.html#pid3957'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-16 00:07
+</div>
+<div class='ccl'>
+Oh, is the default for iOS projects to compile for armv6 and armv7 now? I think I only compile my game (and Gosu) for armv6. You can probably either fix it by compiling Gosu for both platforms, or your game for armv6. (Target options, architectures)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=88.html#tid88'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid5'>Gosu</a> / <a href='board_show.pl@tid=88.html#tid88'>Gosu on iPad, iPhone &amp; iPod Touch</a> / Creating a Gosu/C++ iPhone game
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5669.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

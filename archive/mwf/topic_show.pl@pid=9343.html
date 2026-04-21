@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9343 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Issue with Opengl</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9343' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1374.html#tid1374'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1374.html#tid1374'>Gosu Exchange</a> / Issue with Opengl
+</div>
+</div>
+
+<div class='frm pst' id='pid9342' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9342' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9342.html#pid9342'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2018-02-14 18:07
+</div>
+<div class='ccl'>
+Hi guys,<br/><br/>I don&#39;t know why, but I got some issues with Ruby OpenGL lately. I have some weird errors within a glBegin...glEnd block, like the one below :<br/><br/>`glEnd&#39;: invalid operation for glEnd (Gl::Error)<br/><br/>I found something that seems related, but kinda old, on this board :<br/><a class='ura' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=570'>https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=570</a><br/><br/>I went with the minimal code I can get to test it out :<br/>require &#39;gosu&#39;<br/>require &#39;gl&#39;<br/>require &#39;glu&#39;<br/><br/>include Gl, Glu<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; super<br/>&#160; &#160; exit if id == Gosu::KbEscape<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; gl do<br/>&#160; &#160; &#160; begin<br/>&#160; &#160; &#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(10, 10, 0)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(110, 10, 0)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(110, 110, 0)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(10, 110, 0)<br/>&#160; &#160; &#160; &#160; glEnd<br/>&#160; &#160; &#160; rescue; end<br/><br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>Window.new.show<br/><br/>In this case, because of the exception handling, the program doesn&#39;t crash and the quad is displayed on the screen. If I comment the begin...rescue, I get the error I mentionned. <br/><br/>I only get this error on lauching the program, doesn&#39;t seem to occur later. Would someone have an idea ?<br/><br/>Thanks a lot !
+</div>
+</div>
+
+<div class='brn' id='brn9342'>
+<div class='frm pst' id='pid9343' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9343.html#pid9342'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9343' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9343.html#pid9343'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2018-02-18 09:11
+</div>
+<div class='ccl'>
+Actually, don&#39;t mind. I have exactly the same issue with GLUT, so Gosu has just nothing to do with it :)
+</div>
+</div>
+
+<div class='brn' id='brn9343'>
+<div class='frm pst' id='pid9344' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9343.html#pid9343'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9344' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9344.html#pid9344'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2018-02-19 00:32
+</div>
+<div class='ccl'>
+Oh wow, this issue again :) Does the workaround from the linked thread still work (calling glGetError before any other gl method)? Although it would probably be cleaner to find the OpenGL maintainer and figure out the source of this error instead of working around it. I&#39;m not even sure that OpenGL errors are severe enough that they should throw an exception in Ruby.
+</div>
+</div>
+
+<div class='brn' id='brn9344'>
+<div class='frm pst' id='pid9345' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9343.html#pid9344'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9345.html#pid9345'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2018-02-19 17:48
+</div>
+<div class='ccl'>
+I tried first, and no : it doesn&#39;t work.<br/><br/>Anytime you&#39;ll try to glBegin...glEnd something, it will crash at first. At least once... And a Ruby exception is actually thrown. But we have to handle it if we want to be able to use immediate mode...<br/><br/>I even saw someone modifying the opengl.rb file to include the exception block inside it :(
+</div>
+</div>
+
+<div class='frm pst' id='pid9346' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9343.html#pid9344'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9346' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9346.html#pid9346'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1263.html' >kjarrigan</a>
+<span class='htt'>Date</span> 2018-02-20 14:31
+</div>
+<div class='ccl'>
+Well &quot;finding&quot; the opengl maintainer isn&#39;t that hard - it&#39;s my coworker lars: <a class='ura' href='https://github.com/larskanis/opengl'>https://github.com/larskanis/opengl</a> but he doesn&#39;t do anything other than &quot;keep it running&quot; <br/><br/><code>Quote - *Attention*: This project is in maintenance mode. It might receive bug fixes or adjustments for new Ruby versions, but no new features (like support for newer OpenGL versions). </code><br/><br/>But just some days ago he stumbled across a &quot;new&quot; opengl gem: <a class='ura' href='https://github.com/vaiorabbit/ruby-opengl.'>https://github.com/vaiorabbit/ruby-opengl.</a> He alreadys switch some of our company internal gui&#39;s to the new binding and mentioned that it worked quite well. There are less comfort ruby-like functions but the transition was really easy and due to its usage of the Khronos XML API it supports even newer opengl versions. Haven&#39;t really looked into the code yet (just came back from a month long holiday), but he was quite satisfied with this gem so you might give it a try.<br/><br/>Greetings,<br/>Kjarrigan
+</div>
+</div>
+
+<div class='brn' id='brn9346'>
+<div class='frm pst' id='pid9347' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9343.html#pid9346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9347.html#pid9347'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2018-02-20 17:35
+<span class='htt'>Edited</span> 2018-02-20 18:34
+</div>
+<div class='ccl'>
+Works like a charm !!! Thank you so much ! In case some would like to see the differences :<br/><br/>Link : <a class='ura' href='https://github.com/vaiorabbit/ruby-opengl'>https://github.com/vaiorabbit/ruby-opengl</a> (just removed the accidental &quot;.&quot; at the end ;))<br/><br/>gem install opengl-bindings<br/><br/>and then the minimal code :<br/><br/>require &#39;gosu&#39;<br/>require &#39;opengl&#39;<br/>require &#39;glu&#39;<br/><br/>OpenGL.load_lib<br/>GLU.load_lib<br/><br/>include OpenGL, GLU<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; super<br/>&#160; &#160; exit if id == Gosu::KbEscape<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; gl do<br/>&#160; &#160; &#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(10, 10, 0)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(110, 10, 0)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(110, 110, 0)<br/>&#160; &#160; &#160; &#160; &#160; glVertex3f(10, 110, 0)<br/>&#160; &#160; &#160; &#160; glEnd<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>Window.new.show<br/><br/>We have to add those load_lib methods at the very begining. But then, it just works !<br/><br/>JLNR : it&#39;s supposed to support new versions, but for now I can&#39;t get a sample code to display something using modern opengl and Gosu. Maybe I&#39;m wrong somewhere, but would there be some incompatibility around it ?
+</div>
+</div>
+
+<div class='frm pst' id='pid9348' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9343.html#pid9346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9348.html#pid9348'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2018-02-21 10:36
+</div>
+<div class='ccl'>
+Your coworker?! Nice coincidence - say thanks to him for maintaining it :)<br/><br/>I wasn&#39;t aware of the ruby-opengl project. I think an older gem was called ruby-opengl before? I&#39;ll keep an eye on the new version and maybe update the wiki and example. They have a Gosu-focused example, based on tjbladez&#39; example series, which is nice:<br/><br/><a class='ura' href='https://github.com/vaiorabbit/ruby-opengl/blob/master/sample/Gosu/lesson01.rb'>https://github.com/vaiorabbit/ruby-opengl/blob/master/sample/Gosu/lesson01.rb</a><br/><br/>It&#39;s reassuring that it uses libffi. Maybe FFI really is the way to go, after all? The C extension situation on Windows just doesn&#39;t seem to get any better with time.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1374.html#tid1374'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1374.html#tid1374'>Gosu Exchange</a> / Issue with Opengl
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9343.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

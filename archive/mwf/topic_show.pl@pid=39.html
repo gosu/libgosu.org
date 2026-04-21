@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 39 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Scene or GameState system Tutorial?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d39' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=16.html#tid16'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=16.html#tid16'>Gosu Exchange</a> / Scene or GameState system Tutorial?
+</div>
+</div>
+
+<div class='frm pst' id='pid37' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=37.html#pid37'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-11-10 08:55
+</div>
+<div class='ccl'>
+Could somebody please show me how should I write a scene or gamestate system in Gosu? I try having a variable $scene that will store and object such as Scene_Title , Scene_Menu, and in the main loop then I just call $scene.update<br/><br/>But it doesn&#39;t seems to work with rendering font since got this error when I try to draw in the scene class<br/><br/>&quot; in `draw&#39;: While creating a bitmap, the following error occured: Not enough storage is available to process this command.<br/><br/>&#160; &#160; (RuntimeError?) <br/><br/>&quot; <br/><br/>The scene classes are in different .rb file by the way.<br/><br/>Any help or tutorials are appreciate. Thank you in advance!
+</div>
+</div>
+
+<div class='frm pst' id='pid39' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=39.html#pid39'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-10 10:16
+</div>
+<div class='ccl'>
+Thanks for re-posting this here! That sounds like a very interesting message. Is it possible that there is a never-ending recursion in a constructor or so that creates more and more bitmaps? Anyway, it&#39;s beyond me why bitmap resources would run out before OpenGL resources do.<br/><br/>Can you attach a complete example? I&#39;ll add one of my &quot;state system&quot; files too later :)
+</div>
+</div>
+
+<div class='frm pst' id='pid40' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=40.html#pid40'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-11-10 12:38
+<span class='htt'>Edited</span> 2008-11-10 12:41
+</div>
+<div class='ccl'>
+You&#39;re welcome! I think this question will be good for other beginners like me, and since we have forum which is much easier to read&#39;n search, might as well post it here. :D<br/><br/>Anyway, this is weird. I was playing around a bit and then the error&#39;s gone. I even tried undo and turning it back to before I fix it, the error still gone :(&#160; Weird.&#160; In any case, here&#39;s the file so you can see my code. I haven&#39;t done anything except if you press Enter on the first scene, then it change to the second scene. And press ESC on the second scene will terminate the window.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/40/40/TestGosu.rar'>TestGosu.rar</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid45' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=45.html#pid45'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2008-11-11 04:18
+</div>
+<div class='ccl'>
+On an unrelated note, are you hima from CreationAsylum? :&gt;
+</div>
+</div>
+
+<div class='frm pst' id='pid47' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=47.html#pid47'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-11-11 15:15
+</div>
+<div class='ccl'>
+Yup. It&#39;s me hima ! :) 
+</div>
+</div>
+
+<div class='frm pst' id='pid49' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=49.html#pid49'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-14 23:20
+<span class='htt'>Edited</span> 2009-02-02 11:35
+</div>
+<div class='ccl'>
+I wanted to post a minimal system too, but I think I&#39;ll refer to the system I used here: <a class='url' href='topic_show.pl@tid=5.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=5</a> (see the MainWIndow class, the AbstractScreen class and implementations of it like GameScreen or TitleScreen)<br/><br/>It&#39;s actually pretty minimalistic. Sometimes I store the current states/screens/scenes in a stack instead of a single variable so I can have a dialog screen that shows the underlying game. But I still haven&#39;t settled on a perfect design though :( But I hope my source is easy to follow too!
+</div>
+</div>
+
+<div class='frm pst' id='pid69' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=69.html#pid69'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-11-22 15:48
+</div>
+<div class='ccl'>
+Thank you jlnr!&#160; It&#39;s good to see different approach on this same concept. :)&#160;&#160; 
+</div>
+</div>
+
+<div class='frm pst' id='pid218' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=218.html#pid218'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2009-01-22 03:09
+</div>
+<div class='ccl'>
+Yay, adbots.
+</div>
+</div>
+
+<div class='frm pst' id='pid219' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=219.html#pid219'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-22 08:39
+</div>
+<div class='ccl'>
+Still few enough to be able to delete them manually. I would like to keep the board open to unregistered users though. Maybe I can find a hard captcha or so...
+</div>
+</div>
+
+<div class='frm pst' id='pid223' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=223.html#pid223'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-22 13:50
+</div>
+<div class='ccl'>
+don&#39;t know how easy it is to mod this forum but I&#39;ve had great luck implementing invisible captchas. They aren&#39;t even really captchas but implement this concept: <br/><br/><a class='url' href='http://danbenjamin.com/enkoder/form'>http://danbenjamin.com/enkoder/form</a><br/><br/>The above link will have other links to implementing custom stuff-- I just use their form to generate my field/key data and then plug it into the templates and backend logic to make sure there is a match. The quick story on how it works is that rather than mess around getting users to enter hard to read texts (we are just evolving better OCR!) or making humans do simply math (has anyone thought that bots can&#39;t do math? ;)&#160;&#160; ) why not just make sure there is a javascript engine running?&#160; Its a very simple and brilliant concept that I&#39;ve found blocks almost 100% of spam bots.&#160; It works by including a hidden form field that needs to be decoded via browser javascript.&#160; Only really drawback in practice is that users have to have javascript running but you can always have the backend kick back a message that tells them that when they submit the form.&#160; They can enable it and then disable it if they are really security conscious.&#160; Anyway, most people need javascript these days it would seem.&#160; 
+</div>
+</div>
+
+<div class='frm pst' id='pid266' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=266.html#pid266'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2009-02-04 20:33
+</div>
+<div class='ccl'>
+Oh wow.
+</div>
+</div>
+
+<div class='frm pst' id='pid278' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=278.html#pid278'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-05 17:08
+</div>
+<div class='ccl'>
+Now if I knew why the adbots like this topic so much… :)<br/><br/>*goes look at captcha lib requirements*
+</div>
+</div>
+
+<div class='frm pst' id='pid279' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=279.html#pid279'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-02-05 17:38
+</div>
+<div class='ccl'>
+Yay for reCAPTCHA!
+</div>
+</div>
+
+<div class='frm pst' id='pid280' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=280.html#pid280'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=16' >ramenudle</a>
+<span class='htt'>Date</span> 2009-02-05 21:38
+</div>
+<div class='ccl'>
+I heard a theory on another board that bots tend to post in the second forum because the first is usually reserved for news posts...so, top thread + second forum is my guess
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=16.html#tid16'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=16.html#tid16'>Gosu Exchange</a> / Scene or GameState system Tutorial?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=39.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3065 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Texplay Compositing Problem</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3065' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=439.html#tid439'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=439.html#tid439'>Gosu Exchange</a> / Texplay Compositing Problem
+</div>
+</div>
+
+<div class='frm pst' id='pid3043' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3043' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3043.html#pid3043'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-13 21:24
+<span class='htt'>Edited</span> 2010-08-13 21:33
+</div>
+<div class='ccl'>
+I am building a game where the sprite of a character changes to reflect the equipment applied to that character.&#160; To this end, I wanted to store the &quot;pieces&quot; of the character (such as weapons and armor, as well as features like hair and eyes) on different &quot;layers&quot; which are composited at runtime.&#160; I have been using Texplay to composite the images, but there has recently been a problem.&#160; When the images are composited, the colors become altered.<br/><br/>This is basically the code that I am currently using to composite the image.<br/>@spritesheet.splice(subsprite, 0,0, :alpha_blend =&gt; true)<br/><br/>Where @spritesheet represents the image that will eventually hold the composited sprites, while subsprite is the hair, or clothing, or whatever.<br/><br/>The actual code can be seen on github<br/><a class='url' href='http://github.com/RavensKrag/eternity/blob/master/Animations.rb'>http://github.com/RavensKrag/eternity/blob/master/Animations.rb</a><br/><br/>Here&#39;s a picture for reference.&#160; I have drawn both a &quot;precomposited&quot; version assembled in photoshop, as well as the version composited using Texplay. <br/><img class='emi' src='http://i38.tinypic.com/2bv6t2.png' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn3043'>
+<div class='frm pst' id='pid3051' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3043'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3051' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3051.html#pid3051'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-14 10:46
+</div>
+<div class='ccl'>
+hmm, when you say recently a problem do you mean you never had this problem before, and so it&#39;s due to a bug introduced by a recent commit?<br/><br/>Is it possible you could provide a minimal code sample that illustrates this problem, so i can work on that? <br/><br/>thanks :))
+</div>
+</div>
+
+<div class='brn' id='brn3051'>
+<div class='frm pst' id='pid3062' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3051'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3062' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3062.html#pid3062'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-15 06:08
+<span class='htt'>Edited</span> 2010-08-15 06:33
+</div>
+<div class='ccl'>
+EDIT<br/>I&#39;m pretty sure it&#39;s not me now.&#160; So here it is.&#160; I think the problem occurs when you try to call Gosu::Image::load_tiles on an image that has been edited by Texplay.&#160; This error does not occur when calling that method on a image loaded directly from a file.<br/><br/>I think this should be a simple example of what&#39;s going on.<br/><a class='url' href='http://gist.github.com/525155'>http://gist.github.com/525155</a><br/><br/>Just replace the paths to the images with the images here<br/><a class='url' href='http://github.com/RavensKrag/eternity/tree/master/Sprites/People/'>http://github.com/RavensKrag/eternity/tree/master/Sprites/People/</a><br/><br/>Hmm, I looked at my code again and now I think the problem lies somewhere around the part where the spritesheet is split into sprites, not when the layers are composited.&#160; I&#39;ll take a better look to make sure it&#39;s not something I did without realizing it.
+</div>
+</div>
+
+<div class='brn' id='brn3062'>
+<div class='frm pst' id='pid3065' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3062'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3065' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3065.html#pid3065'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2010-08-15 09:42
+<span class='htt'>Edited</span> 2010-08-15 09:58
+</div>
+<div class='ccl'>
+You are right. The problem is with splitting. Just try to draw the sheet before making array and you&#39;ll see.<br/><br/>Tested, working, but bad code for it:<br/><br/>@spritesheet = Image.load_tiles(self, &quot;Body/1.png&quot;, 40, 80, false)&#160; #load body in tiles<br/>id=0 and image=Image.load_tiles(self, &quot;Hair/1.png&quot;, 40, 80, false)&#160; #set id to 0 and pre-load image to splice (it&#39;s needed, don&#39;t know why)<br/>@spritesheet.each{|img| img.splice(image[id], 0,0, :alpha_blend =&gt; true) and id+=1}&#160;&#160; #calling splice for each image in array
+</div>
+</div>
+
+<div class='brn' id='brn3065'>
+<div class='frm pst' id='pid3066' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3065'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3066.html#pid3066'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-15 11:44
+</div>
+<div class='ccl'>
+ok cool.<br/> <br/>unfortunately i wont have time to look at it for a few days, is there an ok workaround in the meantime?
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3067' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3062'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3067' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3067.html#pid3067'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-15 14:44
+<span class='htt'>Edited</span> 2010-08-16 05:33
+</div>
+<div class='ccl'>
+I&#39;m not saying for sure, but i think this isn&#39;t a TexPlay issue but a Gosu::Image#to_blob issue. I tried reverting from Gosu::Image#to_blob to the old TexPlay#to_blob by going: class Gosu::Image; remove_method :to_blob; end&#160;&#160; but im strangely getting segfault (in windows).<br/><br/>EDIT: and in linux everything seems to work ok, i dont get any color distortions and both Gosu::Image#to_blob and TexPlay#to_blob work fine&#160; :/<br/>EDIT EDIT: ok, it is broken in linux too, sorry
+</div>
+</div>
+
+<div class='brn' id='brn3067'>
+<div class='frm pst' id='pid3072' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3067'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3072' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3072.html#pid3072'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-15 16:35
+<span class='htt'>Edited</span> 2010-08-15 16:42
+</div>
+<div class='ccl'>
+I think you are right. I just checked to_blob and it is a little broken, on Windows, at least. I used to_blob and my own <a class='url' href='http://gist.github.com/525668'>from_blob</a> (which just creates a new image with a duck-typed fake image-magick object) to see if there is a change and there was a similar colour-shift. I think I had the same problem when I tried to save a screenshot with Devil, but I assumed it was something else.<br/><br/>Yellow (FFFF00) =&gt; cyan (00FFFF) and vica versa<br/>Red (FF0000) =&gt; Blue (0000FF) and vica versa<br/>Green (00FF00) =&gt; Green (00FF00)<br/>Black =&gt; black<br/><br/>Obviously, red/blue is switching somewhere along the line!
+</div>
+</div>
+
+<div class='brn' id='brn3072'>
+<div class='frm pst' id='pid3074' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3072'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3074' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3074.html#pid3074'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-15 18:28
+</div>
+<div class='ccl'>
+Wow, I think this fix actually makes the code five lines shorter.. Does anyone here happen to build Gosu from source to verify the fix? :)
+</div>
+</div>
+
+<div class='brn' id='brn3074'>
+<div class='frm pst' id='pid3075' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3074'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3075' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3075.html#pid3075'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-15 18:49
+</div>
+<div class='ccl'>
+Wait... everyone said that this was a Windows problem, but I got this error on Ubuntu Linux o_O;&#160; However, I applied the code to remove Gosu::Image#to_blob, and it is now working fine.<br/><br/>As to the code becoming shorter, are you referring to your code, or mine?
+</div>
+</div>
+
+<div class='brn' id='brn3075'>
+<div class='frm pst' id='pid3078' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3075'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3078.html#pid3078'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-16 03:45
+</div>
+<div class='ccl'>
+I&#39;m referring to the code in Gosu::Image#to_blob, or actually Gosu::Texture::asBitmap internally. This code is used on all platforms except PowerPC Mac OS.
+</div>
+</div>
+
+<div class='frm pst' id='pid3080' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3075'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3080' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3080.html#pid3080'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-08-16 05:21
+</div>
+<div class='ccl'>
+ok i take it back, Gosu::Image#to_blob is broken on linux too :( But it looks like jlnr is rolling out a fix soon
+</div>
+</div>
+
+<div class='brn' id='brn3080'>
+<div class='frm pst' id='pid3081' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3080'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3081.html#pid3081'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-16 06:07
+</div>
+<div class='ccl'>
+I plan to publish the current state of Gosu during this week (in time for LD). I just don&#39;t have time to verify the fix. I wish you guys luck though. ;)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3073' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3043'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3073' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3073.html#pid3073'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-15 18:25
+</div>
+<div class='ccl'>
+I am proud to announce that Gosu is the first library with auto-zombification of human characters!
+</div>
+</div>
+
+<div class='brn' id='brn3073'>
+<div class='frm pst' id='pid3084' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3065.html#pid3073'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3084.html#pid3084'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-16 08:44
+</div>
+<div class='ccl'>
+Conversely it auto-humanises zombies! :(
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=439.html#tid439'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=439.html#tid439'>Gosu Exchange</a> / Texplay Compositing Problem
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3065.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

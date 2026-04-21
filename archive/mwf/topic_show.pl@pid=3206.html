@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3206 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.7.23 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3206' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=452.html#tid452'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=452.html#tid452'>Gosu News</a> / Gosu 0.7.23 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=452.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid3162' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3162' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3162.html#pid3162'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-23 09:33
+</div>
+<div class='ccl'>
+Hey folks,<br/><br/>A bit too late for Ludum Dare, but maybe still in time for the wrap-up process for some operating systems, I released Gosu 0.7.23 with the following changelist. Filtered for relevance (at least I hope so) and grouped by similar stuff:<br/><br/>All: Added Window#needs_cursor?/Window::needsCursor() to be able to show the cursor when in editor situations<br/>C++: Added releaseMemory() callback to Gosu::Window that is mainly called on iOS when the OS is low on memory. Proposals for creative uses on other operating systems welcome.<br/>C++: Added Window::loseFocus callback that is mainly called on iOS when the screen is locked.<br/>All: Added Window#flush/Graphics::flush() to flush the current Z queue to OpenGL and start a fresh one. All drawing operations afterwards will inevitably be over the previous ones.<br/>All: Added aroundX, aroundY parameters to Gosu::scale(sx, sy)<br/>C++: Added accelerometerX/Y/Z() methods to Input (returning 0 on non-iPhone platforms), with thanks to PhilCK<br/>Mac: Fixed setMousePos/mouse_x=/mouse_y= on OS X when the window has been shrunk down.<br/>Windows: Removed inappropriate exception when mouseX/Y cannot be refreshed due to locked screen<br/>All: Fixed a channel swapping bug in Image::toBitmap/to_blob.<br/>All: Fixed a crash when formatting a paragraph of text with a word that is wider than the max paragraph width.<br/>All: Fixed an exception when partial formatting strings were rendered.<br/>Mac: Fixed a crash where a USB device would not have a device name (product name)<br/>All: Made clipping operations nestable (also: faster, respects transforms etc.)<br/>All: Added support for negative line spacing, improved some text rendering corners<br/>C++: Finally removed RotFlip completely. If you actually happened to use it: a replacement is available on the forum.<br/>Linux: Fixed MAX_TEXTURE_SIZE, now always 512 (pessimistic value)<br/>C++: Deprecated zImmediate<br/><br/>Of course, the bulk of the work went into the iOS port as with last time, and the first Gosu game has been submitted to the App Store for approval. I hope I can trim the interface down just as much as I had to blow it up in places for smooth iOS coding. :)<br/><br/>Also, if two more people care little enough about their privacy to like Gosu&#39;s Facebook page, it can actually apply for an address that is not as crappy. :)<br/><br/><a class='url' href='http://www.facebook.com/pages/Gosu-Game-Development-Library/126241447411056'>http://www.facebook.com/pages/Gosu-Game-Development-Library/126241447411056</a><br/><br/>Happy Ludum Dare aftermath everyone. ;)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3162)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3162' style='display:none;'>jlnr</span><a href='post_add.pl@pid=3162.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn3162'>
+<div class='frm pst' id='pid3165' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3162'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3165.html#pid3165'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-08-23 09:43
+</div>
+<div class='ccl'>
+oh you submittted your game :)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3165)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3165' style='display:none;'>Basic</span><a href='post_add.pl@pid=3165.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid3168' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3162'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3168' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3168.html#pid3168'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2010-08-23 11:08
+</div>
+<div class='ccl'>
+I have a small problem with this new version. It&#39;s just working slower for me than the previous!
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3168)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3168' style='display:none;'>lol_o2</span><a href='post_add.pl@pid=3168.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn3168'>
+<div class='frm pst' id='pid3169' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3168'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3169.html#pid3169'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-23 16:01
+<span class='htt'>Edited</span> 2010-08-23 16:03
+</div>
+<div class='ccl'>
+Is this on Windows? It is the first version I compiled with MSVC Express. Blame my university or MSDNAA for being ridiculously inept beyond belief :(<br/><br/>If this is the source of the problem, I might try to compile Gosu using MSVC 2010 Pro in the future. MSVC 2008 users would still be able to use the generated .lib files, but couldn&#39;t compile Gosu themselves anymore.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3169)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3169' style='display:none;'>jlnr</span><a href='post_add.pl@pid=3169.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid3206' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3168'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3206.html#pid3206'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-30 16:16
+</div>
+<div class='ccl'>
+Yep- MSVC apparently messed up my optimization settings while upgrading. I fixed it and my game is back to normal speed.<br/><br/>However, I get occasional stutters of around one second that I still need to debug. Has anyone else experienced that?
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3206)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3206' style='display:none;'>jlnr</span><a href='post_add.pl@pid=3206.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3170' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3162'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3170.html#pid3170'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-23 16:12
+</div>
+<div class='ccl'>
+Julian, you read my mind. I was just discovering for myself that clipping didn&#39;t nest and didn&#39;t respect transforms. Thank you! :D<br/><br/>flush and needs_cursor? are nice too! I already have a needs_cursor? callback waiting in my framework for you to release it.<br/><br/>Oh, and I am liking the Facebook page as we speak. My profile is pretty much empty so no real privacy concerns there.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3170)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3170' style='display:none;'>erisdiscord</span><a href='post_add.pl@pid=3170.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid3178' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3162'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3178' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3178.html#pid3178'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-24 06:07
+</div>
+<div class='ccl'>
+Unfortunately, the color bug seems to persist for me...&#160; I am using Ubuntu Linux.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3178)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3178' style='display:none;'>RavensKrag</span><a href='post_add.pl@pid=3178.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn3178'>
+<div class='frm pst' id='pid3179' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3206.html#pid3178'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3179.html#pid3179'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-24 06:25
+</div>
+<div class='ccl'>
+Yeah, I get it in Kubuntu, too. It said &quot;gl.h ... no&quot; or something like that but it only failed in Ruby 1.9.2, Gosu was correctly installed in 1.8.7 and 1.9.1.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(3179)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield3179' style='display:none;'>kyonides</span><a href='post_add.pl@pid=3179.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=452.html#tid452'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=452.html#tid452'>Gosu News</a> / Gosu 0.7.23 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=452.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3206.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

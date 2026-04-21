@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Question about opengl texture coordinates</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1234.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1234.html#tid1234'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1234.html#tid1234'>Gosu Exchange</a> / Question about opengl texture coordinates
+</div>
+</div>
+
+<div class='frm pst' id='pid8638' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8638' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8638.html#pid8638'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-11-04 18:04
+</div>
+<div class='ccl'>
+Hi there !<br/><br/>I have a question about how Gosu handles the textures. For what I understand, you optimize the Gosu::Images into a bigger texture than can take more images than the one I&#39;m loading.<br/><br/>An opengl texture handles coordinates from 0.0 to 1.0, but because you manage images differently, you provide gl_tex_info and variables right, left, top and bottom to help us know the correct coordinates. This is the situation, and as you already know I&#39;m not totally happy with it because :<br/>- I would need texture repetition, using for example &quot;2.0&quot; to double it, which is impossible in current situation<br/>- I would like to specify a cropped section of the texture, which is difficult.<br/><br/>I can deal with the first point, not the second one. Because I would like to use a Gosu::Image directly for 3D models made in a 3D software, in OBJ format to be precise, I really NEED to be able to use real coordinates... And then I started to think about it.<br/><br/>1.0 should be the width, also the height.<br/><br/>For width, I guess we could say that 1.0 could be represented by gl_tex_info.right - gl_tex_info.left, so it should be possible to ask for example for the coordinate 0.5, and it&#39;s easy then to say that it should be self.gl_tex_info.left + 0.5 * (self.gl_tex_info.right - self.gl_tex_info.left).<br/><br/>I didn&#39;t try display yet, but it should work. Replacing &quot;0.5&quot; with any value could work, as long as the value is between 0.0 and 1.0.<br/><br/>The problem I have is about the Y value. I don&#39;t get why the bottom value is bigger than the top value, because OpenGL is supposed to have the origin point on the bottom left corner (0, 0). Can you explain me that ?
+</div>
+</div>
+
+<div class='brn' id='brn8638'>
+<div class='frm pst' id='pid8644' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1234.html#pid8638'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8644' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8644.html#pid8644'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-11-07 15:43
+</div>
+<div class='ccl'>
+Thanks for analysing the issues with <code>gl_tex_info</code>. I am a complete idiot when it comes to OpenGL, so I&#39;m glad that the feature even works as well as it apparently does!<br/>Fixing the first issue would be relatively easy by introducing a <code>:single_texture =&gt; true</code> flag in the <code>Image</code> constructor. (This would also fix the second issue.) I don&#39;t have the time to release a new Gosu version in the next days, though :(<br/>As for the second issue, you are right that Gosu uses inverted Y coordinates - but at least it does so consistently (y=0 is always the top). Here are the calculations for <code>gl_tex_info</code>:<br/><br/><a class='ura' href='https://github.com/gosu/gosu/blob/master/src/Graphics/TexChunk.cpp#L11-L14'>https://github.com/gosu/gosu/blob/master/src/Graphics/TexChunk.cpp#L11-L14</a><br/><br/>If you want to translate the coordinates to a bottom-to-top coordinate system, you can use <code>1 - tex_info.top</code> and <code>1 - tex_info.bottom</code>.<br/><br/>I guess you could even add a few helper methods on <code>Image</code> or <code>GLTexInfo</code> to wrap away all these calculations.
+</div>
+</div>
+
+<div class='brn' id='brn8644'>
+<div class='frm pst' id='pid8645' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1234.html#pid8644'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8645.html#pid8645'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-11-07 15:52
+<span class='htt'>Edited</span> 2015-11-07 17:40
+</div>
+<div class='ccl'>
+Thanks jlnr ! I was sure that was the main &quot;issue&quot; there.<br/><br/>I will try to use the &quot;1.0 - &quot; trick. To be able to use a :single_texture flag would of course solve everything, but we would lose your optimizations, and I don&#39;t want that. Also, I plan to add some new methods, like you suggest, directly for any Gosu user, as long that he / she uses version &gt;= 0.9 (I don&#39;t want to preserve compatibility with the old way of passing Gosu::Window to anything).<br/><br/>I&#39;ll try and let you know.<br/><br/>It will be maybe good to reference my new website as a french tutorial one of these days : <a class='ura' href='http://www.retrorender.net'>http://www.retrorender.net</a><br/>Even if it&#39;s still a really really early release :)<br/><br/>EDIT :<br/><br/>that way, it works : <br/><br/>class Gosu::GLTexInfo<br/>&#160; def tex_coord_2d(x, y)<br/>&#160; &#160; tex_x = self.left + x * (self.right - self.left)<br/>&#160; &#160; tex_y = (self.bottom + y * (self.top - self.bottom))<br/>&#160; &#160; glTexCoord2d(tex_x, tex_y)<br/>&#160; end<br/>&#160; <br/>&#160; def bottom_left;&#160; tex_coord_2d(0.0, 0.0);&#160; end<br/>&#160; def bottom_right;&#160; tex_coord_2d(1.0, 0.0);&#160; end<br/>&#160; def top_left;&#160; tex_coord_2d(0.0, 1.0);&#160; end<br/>&#160; def top_right;&#160; tex_coord_2d(1.0, 1.0);&#160; end<br/>end<br/><br/>class Gosu::Image<br/>&#160; # x, y and z are relative to the center of the image<br/>&#160; def draw_3d(x, y, z, options = {})<br/>&#160; &#160; width, height = self.width, self.height<br/>&#160; &#160; x, y, w, h = 0.0, 0.0, 1.0, 1.0<br/><br/>&#160; &#160; if options.has_key?(:rect)<br/>&#160; &#160; &#160; # rect uses the convention [x, y, w, h], expressed in opengl (from 0.0 to 1.0, origin on bottom-left corner)<br/>&#160; &#160; &#160; x, y, w, h = options[:rect][0].to_f, options[:rect][1].to_f, options[:rect][2].to_f, options[:rect][3].to_f<br/>&#160; &#160; &#160; x = 0.0 if x &lt; 0.0 or x &gt; 1.0<br/>&#160; &#160; &#160; y = 0.0 if y &lt; 0.0 or y &gt; 1.0<br/>&#160; &#160; &#160; w = 0.0 if w &lt; 0.0 or w &gt; 1.0<br/>&#160; &#160; &#160; h = 0.0 if h &lt; 0.0 or h &gt; 1.0<br/>&#160; &#160; &#160; width, height = w * self.width, h * self.height<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, self.gl_tex_info.tex_name)<br/>&#160; &#160; glEnable(GL_ALPHA_TEST)<br/>&#160; &#160; glPushMatrix<br/>&#160; &#160; glTranslate(x, y, z)<br/>&#160; &#160; glScale(width, height, 1.0)&#160; &#160; <br/>&#160; &#160; <br/>&#160; &#160; if options.has_key?(:rot)<br/>&#160; &#160; &#160; # rot uses the convention [x, y, z], expressed in degrees<br/>&#160; &#160; &#160; glRotate(options[:rot][0], 1, 0, 0)<br/>&#160; &#160; &#160; glRotate(options[:rot][1], 0, 1, 0)<br/>&#160; &#160; &#160; glRotate(options[:rot][2], 0, 0, 1)<br/>&#160; &#160; end<br/><br/>&#160; &#160; glBegin(GL_QUADS)<br/>&#160; &#160; &#160; self.gl_tex_info.tex_coord_2d(x, y); glVertex3f(-0.5, -0.5, 0.0)<br/>&#160; &#160; &#160; self.gl_tex_info.tex_coord_2d(x + w, y); glVertex3f(0.5, -0.5, 0.0)<br/>&#160; &#160; &#160; self.gl_tex_info.tex_coord_2d(x + w, y + h); glVertex3f(0.5, 0.5, 0.0)<br/>&#160; &#160; &#160; self.gl_tex_info.tex_coord_2d(x, y + h); glVertex3f(-0.5, 0.5, 0.0)<br/>&#160; &#160; glEnd<br/>&#160; &#160; glPopMatrix<br/>&#160; &#160; glDisable(GL_ALPHA_TEST)<br/>&#160; end<br/>end<br/><br/>So I can pass any value from 0.0 to 1.0 to both x and y in the method tex_coord_2d(x, y), or even use the 4 helpers to directly set the coordinate of one corner :)<br/>So I can draw a Sprite in a 3D environnement, with crop and rotation, directly in one method call :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1234.html#tid1234'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1234.html#tid1234'>Gosu Exchange</a> / Question about opengl texture coordinates
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1234.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>[Solved] Strange image look...</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=864.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=864.html#tid864'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=864.html#tid864'>Gosu Exchange</a> / [Solved] Strange image look...
+</div>
+</div>
+
+<div class='frm pst' id='pid6622' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6622' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6622.html#pid6622'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-06 22:07
+<span class='htt'>Edited</span> 2013-03-08 22:13
+</div>
+<div class='ccl'>
+Hi,<br/><br/>Here a little try with gosu (ruby). When I launch it (test.rbw), I got a awfull result. <br/><br/><img class='emi' src='https://lh4.googleusercontent.com/-8tyt7AHh8QI/UTffDw3VvRI/AAAAAAAAAbI/9kdb-9LOkLo/s640/with%2520png.PNG' alt=''/><br/><br/>As you can see, instead of this : <br/><br/><img class='emi' src='https://lh4.googleusercontent.com/-ZsAISqdXEKY/UTfsd62RTdI/AAAAAAAAAbg/RnZLUC5CNKc/s128/Circle_Curseur_fini2.png' alt=''/><br/><br/>I&#39;ve got a black squarre... Here the code I use (Ruby 1.9.3, Gosu 0.7.45, with more or less other gem) : <br/><br/><code># Encoding: UTF-8<br/>=begin<br/>&#160; Ce fichier rb ne sert qu&#39;à tester des truc.<br/>=end<br/># Appeler Gosu.<br/>require &#39;gosu&#39;<br/># Créer une fenêtre principale.<br/>class GameWindow &lt; Gosu::Window # On crée une classe fille<br/>&#160; def initialize<br/>&#160; &#160; @max_width=512<br/>&#160; &#160; @max_height=300<br/>&#160; &#160; super(@max_width, @max_height, false, 1000/75) # False : pas en plein écran. 1000/75 = 75 FPS. Par défaut : 60.<br/>&#160; &#160; self.caption = &quot;Français&quot; # Titre de la fenêtre.<br/># On charge des images pour les utiliser plus tard.<br/>&#160; &#160; @mouse_pointer = Gosu::Image.new(self, &quot;pictures/Circle_Curseur_fini2.png&quot;, true)<br/>&#160; &#160; @background_image = Gosu::Image.new(self, &quot;pictures/EEE_PC_01_-_Kara_no_Kyoukai.png&quot;, false)<br/>&#160; &#160; @music = Gosu::Song.new(self, &quot;sounds/Devils_Never_Cry.ogg&quot;)<br/>&#160; &#160; @se = Gosu::Sample.new(self, &quot;sounds/flash2.ogg&quot;)<br/>&#160; end<br/>&#160;&#160; def button_down(id)<br/>&#160; &#160; close if id == Gosu::Button::KbEscape<br/>&#160; &#160; @music.play if button_down? char_to_button_id(&quot;m&quot;)<br/>&#160; &#160; @se.play if button_down? char_to_button_id(&quot;s&quot;)<br/>&#160; end<br/># Ici, on gère tout ce qui ce &quot;renouvelle&quot;.<br/>&#160; def update<br/>&#160; &#160; # du code<br/>&#160; end<br/># Par contre, là, on gère l&#39;affichage à proprement parler des images.&#39;<br/>&#160; def draw<br/>&#160; &#160; @background_image.draw_as_quad(0,0,Gosu::Color::WHITE,@max_width,0,Gosu::Color::WHITE\<br/>&#160; &#160; ,0,@max_height,Gosu::Color::WHITE,@max_width,@max_height,Gosu::Color::WHITE,0)<br/>&#160; &#160; @mouse_pointer.draw(mouse_x - @mouse_pointer.width, mouse_y - @mouse_pointer.height, 250)<br/>&#160; end<br/>end<br/># Création de la fenêtre.<br/>window = GameWindow.new<br/># Affichage de la fenêtre.<br/>window.show</code><br/><br/>You can find all the image : <a class='url' href='https://picasaweb.google.com/111382977246918680472/Stock?authuser=0&amp;authkey=Gv1sRgCIOezuHR17L1cw&amp;feat=directlink'>https://picasaweb.google.com/111382977246918680472/Stock?authuser=0&amp;authkey=Gv1sRgCIOezuHR17L1cw&amp;feat=directlink</a><br/>(Note : if OpenGL is alone, that works perfectly [see image on picasa]. When launching Gosu and chipmunks integration, there a strange text in the &quot;dos&quot; window [idem].])<br/><br/>Could you tell is it&#39;s the case for as well ?<br/>(I suspect my Ruby-Gosu installation being the problem, but...)<br/><br/>Thanks !<br/><br/>(By the way, how could I fit to the screen my background image ?)<br/><br/>EDIT 1 : I&#39;v changed the cursor file, but there still the same trouble.<br/>EDIT 2 : Add folders with files are in the zip one in attachment.<br/>EDIT 3 : Swapping the line code of loading part change a little the problem. More details in post below.<br/>EDIT 4 : Listing of my gem (can&#39;t download &quot;ashton&quot; gem, same for &quot;rmagick&quot;) : <br/><br/>&quot;actionmailer, actionpack, active_support, activemodel, activerecord, activeresource, activesupport, activesupport, arel, bigdecimal, builder, bundler, chingu, chipmunk, crack, cri, erubis, faster_xml_simple, gosu, gosu-keyboard, gosu_extensions, hike, httpclient, i18n, io-console, journey, json, libxml-ruby, mail, mime-types, minitest, multi_json, net-github-upload, nokogiri, ocra, opengl, polyglot, rack, rack-cache, rack-ssl, rack-test, rails, railties, rake, rdoc, releasy, rest-client, ruby-opengl, rubygems, sprockets, texplay, thor, tilt, treetop, tzinfo, version.&quot;<br/><br/>EDIT 5 (final) : It was a graphic card problem...
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/22/6622/Files.zip'>Files.zip</a> - Files (6901k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn6622'>
+<div class='frm pst' id='pid6623' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6622'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6623' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6623.html#pid6623'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-03-06 23:37
+</div>
+<div class='ccl'>
+You should only really be using PNG files (and ogg for sounds/music) in Ruby/Gosu. Both work on all platforms that Gosu supports and are much better compressed than the alternatives. [EDIT: But to answer your question, there is probably something odd about your BMP&#39;s format, but PNGs always work so easier to just convert to that format].<br/><br/>You could use Image#draw_as_quad to exactly fill the Window.
+</div>
+</div>
+
+<div class='brn' id='brn6623'>
+<div class='frm pst' id='pid6624' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6623'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6624.html#pid6624'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-07 00:30
+</div>
+<div class='ccl'>
+Great stuff for the full screen ! Thanks. Unfortunatly, still unable to have correct image show.<br/>Note : if I don&#39;t put my backgroung, the image used as pointer (for the mouse) is correctly show. Weird.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6625' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6622'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6625' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6625.html#pid6625'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-03-07 00:48
+</div>
+<div class='ccl'>
+There is a Gosu::Color::BLACK and others, so you don&#39;t have to define several standard colours yourself.<br/><br/>I can&#39;t see anything wrong with your code though.
+</div>
+</div>
+
+<div class='brn' id='brn6625'>
+<div class='frm pst' id='pid6626' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6625'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6626' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6626.html#pid6626'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-07 01:28
+</div>
+<div class='ccl'>
+Anything wrong, ok, but did you tried it ?<br/>Thanks for the color tip, user guide on the net aren&#39;t always up to date.
+</div>
+</div>
+
+<div class='brn' id='brn6626'>
+<div class='frm pst' id='pid6627' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6626'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6627' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6627.html#pid6627'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-03-07 11:05
+</div>
+<div class='ccl'>
+I didn&#39;t try it myself, no.
+</div>
+</div>
+
+<div class='brn' id='brn6627'>
+<div class='frm pst' id='pid6628' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6627'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6628' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6628.html#pid6628'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-07 12:05
+</div>
+<div class='ccl'>
+Hi,<br/><br/>Could you try it, please ?<br/><br/>After I few test, it seems that the problem comes from the loading part. Indeed, when I changed the order of the image, the first to come is the only one who&#39;s correctly show.<br/>Here a new printscreen : <br/><br/><img class='emi' src='https://lh4.googleusercontent.com/-4yi1bTOuaSU/UTiCO10M_YI/AAAAAAAAAb0/CLr2JeBUQyQ/s640/Re-test.PNG' alt=''/><br/><br/>Does anyone knows why it&#39;s acting that weird ?
+</div>
+</div>
+
+<div class='brn' id='brn6628'>
+<div class='frm pst' id='pid6629' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6628'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6629' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6629.html#pid6629'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-07 13:35
+</div>
+<div class='ccl'>
+Wait, is the image really cut off after exactly 256px...? Do other 3D games run on your computer??! :)
+</div>
+</div>
+
+<div class='brn' id='brn6629'>
+<div class='frm pst' id='pid6630' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6629'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6630' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6630.html#pid6630'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-07 14:14
+<span class='htt'>Edited</span> 2013-03-08 12:17
+</div>
+<div class='ccl'>
+Yes (more or less thoses pixels, but always at the down part),&#160; at least, when I can see the background image (first lauch the program with only the background, then with the mouse pointer as well). Others times, I don&#39;t even can see second or third image loaded.<br/><br/>For 3D : herm. Is this test ok ?<br/>This test works perfectly (see in attachment: Nehe_Lesson_36.rbw)<br/>Here what it&#39;s look like on my screen :<br/><br/><img class='emi' src='https://lh6.googleusercontent.com/-2dZGIEoQwUQ/UTfANHtacQI/AAAAAAAAAaI/XZFAxoQFH1Y/s640/Open%2520GL%2520alone.PNG' alt=''/><br/><br/>But, if I launch &quot;OpenGLIntegration.rb&quot; in Gosu exemple, it doesn&#39;t work correctly : <br/><br/><img class='emi' src='https://lh3.googleusercontent.com/-vz4MMrKPlPY/UTif8QlpTKI/AAAAAAAAAcI/RCq0WZ96wZM/s640/OpenGLIntegration.rb.png' alt=''/><br/><br/>A good think to know : there a few years ago, when I first use Gosu (subscribe to this forum), I&#39;d nerver had this kind of problem.<br/>My computer is an EEE pc 1000H.<br/>(Re-installing the properly ruby+gosu+others gems don&#39;t solved the problem.)<br/><br/>So what do you think about it ?
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/30/6630/Nehe_Lesson_36.rbw.html'>Nehe_Lesson_36.rbw</a> - OpenGL (11k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn6630'>
+<div class='frm pst' id='pid6637' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6630'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6637' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6637.html#pid6637'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2013-03-08 12:35
+</div>
+<div class='ccl'>
+I think what jlnr tried to find out is whether there might be graphics card problems involved. Depending on your graphics processor, you might not be able to use certain features of 3D or 3D-driven 2D display (such as textures). I don&#39;t know all that much about it, but when using OpenGL, for example, all your textures have to be square and dimensions have to be 16^n, iirc (i.e. 16, 32, 64, 128, 256, 512, 1024, ...). I often got the error that I cannot work with an image greater than 1024px for one side, which has to do with the amount of memory a texture that size would take, I think.<br/><br/>When saving a PNG image, note that you&#39;re working with an alpha channel for transparency. Different programs handle this different ways, so make sure you&#39;re not using a fishy program that might not have an idea about it, but something like Photoshop, PSP, IrfanView, Paint.net, GIMP, ... there&#39;s a lot more, and really, most programs should know how to do it, just mentioning it for completeness&#39; sake.<br/>If properly saving the image as a png doesn&#39;t work, try saving your sprite with 64x64px, for example, and if that doesn&#39;t work, try it with no transparency - that should most definitely work with whatever graphics card you have.
+</div>
+</div>
+
+<div class='brn' id='brn6637'>
+<div class='frm pst' id='pid6638' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6637'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6638' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6638.html#pid6638'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-08 12:57
+<span class='htt'>Edited</span> 2013-03-08 17:26
+</div>
+<div class='ccl'>
+Great answer ! <br/>If I just use 540p resolution as a max for my background, everything&#39;s ok. Seems that my higher width aivable is lower than 1024. Too bad.<br/><br/>Then, why the 3D game works fine, even with 1024*768 (using a another screen, of course), full screen ?<br/>(For example : BattleField, Starcraft (+add one), Shaiya, Divina, Age of Empire 2, Ragnarok online, etc.) ?<br/><br/>P.S. : Playing with OpenGL (ruby-opengl) meanwhile, why can&#39;t I put UTF-8 characters ?<br/><code><br/>x=&quot;français&quot;<br/>GLUT.CreateWindow(x.unpack(&#39;C*&#39;).pack(&#39;U*&#39;))<br/></code><br/>Doesn&#39;t work, &quot;français&quot; becomes just like this &quot;franÃÂ§ais&quot;.
+</div>
+</div>
+
+<div class='brn' id='brn6638'>
+<div class='frm pst' id='pid6641' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6638'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6641' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6641.html#pid6641'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-09 01:25
+</div>
+<div class='ccl'>
+Maybe because you are taking an UTF-8 string (x), parsing it as an ANSI string (with unpack) and back into UTF-8 (with pack). Does it work if you just pass x by itself?
+</div>
+</div>
+
+<div class='brn' id='brn6641'>
+<div class='frm pst' id='pid6642' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6641'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6642.html#pid6642'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-09 03:02
+</div>
+<div class='ccl'>
+No, it doesn&#39;t. I&#39;ve tried &quot;français&quot;, x.encode(&quot;UTF-8&quot;), ...<br/>None of the 3 worked.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6640' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6630'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6640' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6640.html#pid6640'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-09 01:23
+</div>
+<div class='ccl'>
+BlueScope is right. What could happen is e.g. this: Your GPU can only handle 512x512 textures, but the driver may tell Gosu that 1024x1024 is absolutely okay. Gosu would go ahead and allocate a 1024x1024 texture, place its images on there and parts of them would appear broken.<br/><br/>I&#39;ve looked it up though, your computer has an Intel GMA950 chip and that&#39;s the exact same chip that I&#39;ve developed Gosu on for years (on two Macs) :) So that shouldn&#39;t be a problem. Only <i>very</i> old computers wouldn&#39;t be able to handle 1024x1024 textures anyway.<br/><br/>Maybe all the other games are using Direct3D and not OpenGL, and your OpenGL drivers are outdated? You could try the fix here: <a class='url' href='http://www.minecraftforum.net/topic/354888-fix-for-intel-gma-950-graphics-problems/'>http://www.minecraftforum.net/topic/354888-fix-for-intel-gma-950-graphics-problems/</a>
+</div>
+</div>
+
+<div class='brn' id='brn6640'>
+<div class='frm pst' id='pid6643' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6640'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6643' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6643.html#pid6643'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-09 03:04
+</div>
+<div class='ccl'>
+Maybe so.<br/>I don&#39;t know why, but image bigger than 1024 (width), BMP (with &quot;invisible&quot; color, the pink one), make it bug.<br/>I&#39;ll work with png, lighter, and easy to make with GIMP.<br/><br/>And the solution on the site was a very bad idea. Thus, opengl exemple files works without problem. Only those with Gosu (what a pain).
+</div>
+</div>
+
+<div class='brn' id='brn6643'>
+<div class='frm pst' id='pid6648' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6643'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6648' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6648.html#pid6648'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2013-03-09 11:57
+</div>
+<div class='ccl'>
+For clarification on your question why games work on 1024x768: That&#39;s your output screen size, not your texture size. an output of the dimensions 1024x768 can consist of a single 32x32 texture, scaled up by 32 to fill the viewport entirely. It could also simply show a 32x32 texture somewhere, and show nothing (rgb 0-0-0) for all pixels not filled with a texture.<br/>So, maybe your scenario is that your graphics chip (and monitor, for that matter) support a resolution of up to 1024x768, but a maximum texture size of 512x512... (though jlnr&#39;s explanation below would counter-prove this theory...)<br/>Maybe there&#39;s a software or configuration issue that doesn&#39;t allow bigger textures?<br/><br/>Also, &#39;pink&#39; is not a transparent color - your program might use it as a placeholder to save transparent on output, because it&#39;s impossible to display real transparency on today&#39;s monitors. Photoshop, for example, solves this by displaying a pattern &#39;behind&#39; your workspace.<br/>There&#39;s also differences whether you&#39;re saving your PNGs as 24bit or 32bit (with an included alpha channel). It&#39;s really quite a deep topic and I&#39;m not an expert on it either, all I&#39;m saying is: Make sure you&#39;re not using Paint or something to create your images. :D
+</div>
+</div>
+
+<div class='brn' id='brn6648'>
+<div class='frm pst' id='pid6649' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=864.html#pid6648'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6649.html#pid6649'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=225.html' >Nanaya</a>
+<span class='htt'>Date</span> 2013-03-09 13:17
+<span class='htt'>Edited</span> 2013-03-10 00:42
+</div>
+<div class='ccl'>
+Indeed, the background image texture size that was the limite, not the game windows one (I mean, from what I could noticed during my tests).<br/><br/>PNG from GIMP works fine. There&#39;s no problem with them, &quot;transparency&quot; works (thanks alpha channel).<br/>Guess those are 32bit one.<br/><br/>Thanks a lot everyone.<br/><br/>P.S. : <code>Gosu::Image::load_tiles</code> gives me headaches. If alone, everythings ok, but with other images it doesn&#39;t work at all.<br/>P.P.S. : RGSS lib works fine by the way. Just require my computer to be at last at 1024*768.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=864.html#tid864'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=864.html#tid864'>Gosu Exchange</a> / [Solved] Strange image look...
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=864.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

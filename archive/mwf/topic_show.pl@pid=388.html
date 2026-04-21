@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 388 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>A neat little word-wrap trick.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d388' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=94.html#tid94'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=94.html#tid94'>Gosu Exchange</a> / A neat little word-wrap trick.
+</div>
+</div>
+
+<div class='frm pst' id='pid381' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=381.html#pid381'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-03-20 02:09
+</div>
+<div class='ccl'>
+I spent some time thinking about how to do word-wrap for non-fixed-width fonts, and came up with this. It&#39;s pretty simple, but works well and seems fast enough for me. I thought someone else my like it, too!<br/><br/>Here&#39;s the wordwrap method:<br/>&#160; def wordwrap(message,width,font)<br/>&#160; &#160; word_array = message.split(&#39; &#39;)<br/>&#160; &#160; lines = [word_array.shift]<br/>&#160; &#160; word_array.each do |word|<br/>&#160; &#160; &#160; if font.text_width(&quot;#{lines[-1]} #{word}&quot;) &lt; width<br/>&#160; &#160; &#160; &#160; lines[-1] &lt;&lt; &#39; &#39; &lt;&lt; word<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; lines.push(word)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; return lines<br/>&#160; end<br/><br/>and here&#39;s a demonstration of use:<br/>#!/usr/local/bin/ruby<br/>require &#39;gosu&#39;<br/><br/>class MyWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640,480,false)<br/>&#160; &#160; @font = Gosu::Font.new(self,Gosu::default_font_name,20)<br/>&#160; &#160; @message = &quot;Hello and welcome to my very long text string which is also pretty boring and stupid, but oh well I guess there is a time and a place for lorum ipsum, and this was probably it, but I didn&#39;t have any handy so we get this crap instead, which is too bad really, because Lorem Ipsum is kinda nice, but oh well, what can you do, other than end this damn string already?&quot;<br/>&#160; &#160; @margin = 20<br/>&#160; &#160; body_width = self.width - 2*@margin<br/>&#160; &#160; @lines = wordwrap(@message,body_width,@font)<br/>&#160; end<br/>&#160; def wordwrap(message,width,font)<br/>&#160; &#160; word_array = message.split(&#39; &#39;)<br/>&#160; &#160; lines = [word_array.shift]<br/>&#160; &#160; word_array.each do |word|<br/>&#160; &#160; &#160; if font.text_width(&quot;#{lines[-1]} #{word}&quot;) &lt; width<br/>&#160; &#160; &#160; &#160; lines[-1] &lt;&lt; &#39; &#39; &lt;&lt; word<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; lines.push(word)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; return lines<br/>&#160; end<br/>&#160; def draw<br/>&#160; &#160; @lines.each_with_index do |line,index|<br/>&#160; &#160; &#160; height = @margin + (index * @font.height)<br/>&#160; &#160; &#160; @font.draw(line,@margin,height,0)<br/>&#160; &#160; end<br/>&#160; end<br/>end
+</div>
+</div>
+
+<div class='frm pst' id='pid387' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=387.html#pid387'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-03-23 22:48
+</div>
+<div class='ccl'>
+Of course, by now I&#39;ve discovered that this feature is already available as part of the 7 argument form of Gosu::Image.from_text() . Unfortunately, Gosu::Image.from_text doesn&#39;t work. I&#39;ve filed an issue: <a class='url' href='http://code.google.com/p/gosu/issues/detail?id=60&amp;colspec=ID%20Type%20Status%20Priority%20Owner%20Summary'>issue 60</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid388' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=388.html#pid388'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-03-23 23:55
+</div>
+<div class='ccl'>
+But your version is useful for those cases where you can&#39;t just interrupt the game&#39;s flow with the creation of an Image, something that might be costly (it currently is so on the iPhone and I&#39;m not sure it&#39;s easy to fix) :)<br/><br/>I&#39;ve seen the bug and hope it was really the problem that I put into the comment. That part of SWIG is really tricky and it took me a while to figure it out both times it broke :(
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=94.html#tid94'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=94.html#tid94'>Gosu Exchange</a> / A neat little word-wrap trick.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=388.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

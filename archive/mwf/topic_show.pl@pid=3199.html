@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3199 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>What I learned about callcc, threads and Gosu...</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3199' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=447.html#tid447'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=447.html#tid447'>Gosu Exchange</a> / What I learned about callcc, threads and Gosu...
+</div>
+</div>
+
+<div class='frm pst' id='pid3135' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3135' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3135.html#pid3135'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-21 23:05
+</div>
+<div class='ccl'>
+Well, I figured out this clever trick for game states. Think Chingu if you aren&#39;t sure what I mean by game states.<br/><br/>I wanted to have <code>push_state(state)</code> stop execution of the current state right there and let the new state take over immediately. Then when I call <code>pop_state(return_value)</code>, the original <code>push_state</code> call would return whatever was passed to <code>pop_state</code> to the original game state. Everybody still with me? :)<br/><br/>I hacked something together using callcc to save a continuation and then throw an exception to get out of the current state and move on to the next tick. After popping the top state back off the stack, it would call the continuation and do its magic. It worked beautifully.<br/><br/>Except that it causes a deadlock after the next tick ends because it tries to unlock a mutex that isn&#39;t locked. This is on OS X; it might work on other platforms, but I doubt it. So much for that brilliant idea! Well, callcc is dangerous and yucky anyway.<br/><br/>Then inspiration struck yet again: I would implement it by spawning a new thread and having <code>push_state</code> block until that thread exited. The code to do it this way ended up being much cleaner and didn&#39;t rely on attaching hidden things to my game states that could get lost. I know that drawing on a non-main thread with Gosu causes things to get a little weird, so I made sure that my draw methods would always be called on the main thread. Nobody needs to switch states in draw and they shouldn&#39;t.<br/><br/>This worked beautifully as well. In fact, I was able to load fonts and images in my new threads and do all sorts of neat stuff. Except, actually, no, I can&#39;t load images in secondary threads either. My first game state was the only one loading images and the code that does that was being called on the main thread after all. Oops. So, I just got a segfault after modifying one of my examples in a way that caused images to be loaded on one of those other threads.<br/><br/>Damn and curses—my hopes and dreams are shattered. Hey Julian, any way you could make image loading thread safe? :) I&#39;d try to hack at it myself, but I could never get the Ruby extension to build.
+</div>
+</div>
+
+<div class='brn' id='brn3135'>
+<div class='frm pst' id='pid3136' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3135'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3136' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3136.html#pid3136'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-22 00:40
+<span class='htt'>Edited</span> 2010-08-22 00:42
+</div>
+<div class='ccl'>
+The original Delphi version of Gosu used to be able to do this, and you neither need threads nor continuations, but support from within Gosu. The boring trick to it is recursion, just like Win32 does it actually, basically calling Window::show() from within its own callbacks.<br/><br/>From a (kind of) functional point of view, imagine mainloop() as being a function that takes all the callbacks and runs the main loop. Let&#39;s just assume there&#39;s only draw, update and button_down. Then the main game would run mainloop(game_update_proc, game_draw_proc, game_button_down_proc). At some time, the game_update_proc decides that the user needs to answer a modal confirmation dialog and calls &quot;user_response = query_dialog(&#39;really?&#39;)&quot;.<br/><br/>query_dialog(...) just calls mainloop(msgbox_update_proc, msgbox_draw_proc, msgbox_button_down_proc). While this call to show_window is running, the outer show_window call would just wait while the inner one would consume all system events. The message box gets closed in msgbox_button_down_proc, and breaks out of the loop, e.g. by throwing a symbol, and query_dialog would return which button was pressed. The outer call just resumes the stream of system events.<br/><br/>There are two things that are tricky here imho. First, the interface. Gosu really doesn&#39;t need a Window class with callbacks. Already one might argue that all good games should use states all the time. Why not just use a delegate (state) for the callbacks altogether?<br/>Basically we need 1) some way to specify what kind of window Gosu should open (resolution, fullscreen yes/no, caption...), 2) a runloop() function and 3) a way to break out of it. The runloop() function could be turned into State#run. We could also add State#stop(return_value=nil) for breaking out, similar to Window#close now.<br/><br/>The other thing is the implications for what is safe. Having an in-game msgbox() function that blocks is certainly cool. Now what happens when there are two button_down calls, the first triggering the msgbox()? Should the second one be delivered to the recursed function or to the original loop later on? Is it easy to corrupt anything else when in the middle of button_down, you actually might be calling the same button_down function again? Yay, suddenly things might be reentrant. :)<br/><br/>The original Delphi approach was to supply the system-level handleMessage(); function directly in Gosu, the one you can still peek at in WinUtility.hpp (I think). The dialog box might then do &quot;while not result_stored_somewhere do handleMessage()&quot;, effectively nesting the main loop. But that approach easily ruins all abstraction.
+</div>
+</div>
+
+<div class='brn' id='brn3136'>
+<div class='frm pst' id='pid3137' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3136'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3137' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3137.html#pid3137'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-22 01:18
+</div>
+<div class='ccl'>
+Yeah, I suppose I should just get used to doing things asynchronously. It&#39;s the wave of the future or something. :) It&#39;s just that some things are difficult to do that way.<br/><br/>When it comes time, I&#39;ll probably run high level game logic in a second thread and use a message queue to act on it, but I won&#39;t be interacting with Gosu directly then. This is gonna be fun.<br/><br/>Time to viciously rip the threads from my code! I&#39;ll keep the Worker/Task classes I created, though. :D
+</div>
+</div>
+
+<div class='brn' id='brn3137'>
+<div class='frm pst' id='pid3138' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3137'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3138' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3138.html#pid3138'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-22 02:49
+</div>
+<div class='ccl'>
+Oh, I never meant to point to multi-threading. That is something I avoid until the tiniest target device has at least four cores or something. I think the core control flow should be as easily understandable as possible, and threads won&#39;t help with that. :)
+</div>
+</div>
+
+<div class='brn' id='brn3138'>
+<div class='frm pst' id='pid3140' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3138'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3140.html#pid3140'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-22 04:12
+</div>
+<div class='ccl'>
+Nah, I don&#39;t mean it like that. Think about RAD systems for games and how they tend to have some kind of scripting language that interacts asynchronously with your game objects.<br/><br/>Take RPG Maker &#39;98 or 2000, because a lot of people know them: the event editor allowed you to, say, move the player character ten squares north, rotate counterclockwise, move three squares west and then face south, and you could either wait for that action to complete or start moving another character while that action is still in progress.<br/><br/>That&#39;s what I mean, and it won&#39;t come &#39;till much later if it ever does. Don&#39;t you worry your heart about me getting mired in threads. :D
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3195' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3136'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3195' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3195.html#pid3195'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-08-26 21:04
+</div>
+<div class='ccl'>
+Just remembered that you pointed me to this thread...<br/><br/>Implementing proper continuation support would be rather tempting for my framework, as it would actually be pretty easy. But on the other hand, I share a lot of the doubts.<br/><br/>I mean, what exactly is the class of situations where this useful? The only somewhat neat example I could come up with would be something like this:<br/><code>myGame = do<br/>&#160; intro<br/>&#160; level1<br/>&#160; level2<br/>&#160; credits</code><br/><br/>Could even support loops or detours. Yet with the glaring problem that it&#39;s highly nontrivial to serialize this kind of game state :)<br/><br/>To me, this seems like a bad idea on many levels. Wouldn&#39;t really want to make it easier.
+</div>
+</div>
+
+<div class='brn' id='brn3195'>
+<div class='frm pst' id='pid3197' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3195'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3197' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3197.html#pid3197'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-27 15:57
+</div>
+<div class='ccl'>
+Would also be useful for (as Julian&#39;s example above) implementing dialogs that can be called synchronously. That was the main thing I wanted to do with it, actually. Something like this wholly fictional piece of code:<br/><br/><code>def button_down id<br/>&#160; if user_clicked_set_input_button?<br/>&#160; &#160; @button_map = call_state SetInputState<br/>&#160; else<br/>&#160; &#160; @button_map.do_stuff id<br/>&#160; end<br/>end</code>
+</div>
+</div>
+
+<div class='brn' id='brn3197'>
+<div class='frm pst' id='pid3198' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3197'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3198' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3198.html#pid3198'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-08-27 20:29
+</div>
+<div class='ccl'>
+Yes, I kind-of get the synchronous window part. Such compatible game states must have:<br/>* no side effects,<br/>* ideally no requirements concerning the &quot;pushed up&quot; other game states and<br/>* should never ever get serialised.<br/><br/>That&#39;s pretty hefty requirements. Just about anything bigger than a simple dialog is probably going to violate that. I mean, even showing the frozen prior game state as a background is already potentially unsafe in that it needs the background layer to be in a somewhat consistent state.<br/><br/>At least the first two problems could be solved by doing everything in delayed callbacks that get executed from some defined &quot;safe&quot; environment. If you had that, I could even make the following work:<br/><code>bombActivate bomb = inContinuationStyle $ do<br/>&#160; res &lt;- pushState $ myMessageBox &quot;Blow this up?&quot;<br/>&#160; guard (res = YES)<br/>&#160; blowUp bomb</code><br/><br/>(I hope this is roughly understandable even when using Haskell syntax ;) )<br/><br/>&quot;inContinuationStyle&quot; would here register a callback that gets called after &quot;update&quot; is done - which would then push the message-box state and register a continuation for the rest, again as a callback. This would seem like less of a hack to me, and you could even think about some nice extensions, like having a &quot;wait&quot; command that delays the callback by a few ticks or seconds.<br/><br/>Yet the problem is again serialisation - and that the programmer needs to decide where exactly &quot;safe&quot; is. We wouldn&#39;t want any of such routines to issue callbacks while the main menu is showing, for instance.
+</div>
+</div>
+
+<div class='brn' id='brn3198'>
+<div class='frm pst' id='pid3199' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3198'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3199' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3199.html#pid3199'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-27 21:00
+</div>
+<div class='ccl'>
+I think I get the gist of what you&#39;re doing, but I&#39;m only vaguely familiar with Haskell so it&#39;s not totally transparent. My understanding is that you&#39;re doing the waiting in the callback and the inContinuationStyle function otherwise returns immediately, correct?<br/><br/>The no serialisation requirement wouldn&#39;t be a particular problem for me (at least not as I envision it currently) since I don&#39;t plan to serialise game states directly. The game state is created anew and it loads a map object (and later an entity list) from there. <br/><br/>On the other hand, I&#39;m pursuing another route right now because continuations and two-way thread communication truly are headache fuel. I&#39;m certainly interested to hear your ideas, though. :)
+</div>
+</div>
+
+<div class='brn' id='brn3199'>
+<div class='frm pst' id='pid3208' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3199'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3208.html#pid3208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-01 22:20
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; On the other hand, I&#39;m pursuing another route right now because continuations and two-way thread communication truly are headache fuel. I&#39;m certainly interested to hear your ideas, though. :) </p></blockquote><br/>And I&#39;d find it interesting to hear what your &quot;other route&quot; is ;)<br/><br/>Right now I can&#39;t see anything that I could build into the framework, because every solutions is either specific to a very special problem - or could be built in user code just as well. I wouldn&#39;t like having &quot;pushState&quot; really change the &quot;top-most&quot; control, for example - that sounds unsafe and I feel like you could quickly want something else.<br/><br/>Instead I would propose that the top control passes down a function with which other controls can &quot;push&quot; their desired states on a stack, which then later take priority. The programmer might have to pass this function around a bit, but to me this feels like the design where the programmer has more control over what actually happens.<br/><br/>But okay, I guess I will have to try it sometime. Would also be interesting to know more about what you&#39;re trying to do ;)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3203' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3199.html#pid3135'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3203.html#pid3203'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-08-29 03:45
+</div>
+<div class='ccl'>
+I&#39;ve just remembered that Ruby 1.9 has Fibers, which are kind of like the old green threads but more awesome. <code>Fiber#yield</code> and <code>Fiber#resume</code> seem to do exactly what I wanted my <code>push_state</code> and <code>pop_state</code> methods to do. Hmmmmm, I might have to poke around.<br/><br/>I doubt I&#39;ll end up using this, but who knows. :)
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=447.html#tid447'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=447.html#tid447'>Gosu Exchange</a> / What I learned about callcc, threads and Gosu...
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3199.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

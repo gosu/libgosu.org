@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1272 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>button_down? too fast</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1272' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=195.html#tid195'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=195.html#tid195'>Gosu Exchange</a> / button_down? too fast
+</div>
+</div>
+
+<div class='frm pst' id='pid1259' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1259.html#pid1259'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-14 09:38
+</div>
+<div class='ccl'>
+Hi everyone!<br/><br/>Im trying to make a title menu for my &quot;game&quot; (is more like a template) and the menu have 3 options selectables with the keyboard arrows, the problem is that if I use button_down? to move the index, it move too fast and is imposible to choose the 2º option, is like:<br/><br/>-New Game<br/>-Continue<br/>-Exit<br/><br/>the problem is that you cant select continue due at index speed (which is moved by button_down?), i tried using a variable @pause to detect the keys only certain time, but have bad responde.<br/><br/>Gosu dont have different type of buttons detection?<br/><br/>I worked with other library (RGSS) and it have 3:<br/>-trigger<br/>-repeat<br/>-press<br/><br/>Press is what button_down? make in gosu, trigger only return the first frame pressed and repeat alternates returning true and false.<br/>is hard to implement this to the library?<br/>thanks :3
+</div>
+</div>
+
+<div class='frm pst' id='pid1262' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1262.html#pid1262'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-14 12:22
+</div>
+<div class='ccl'>
+It&#39;s all there, just overload the &quot;button_down&quot; method of Window (no question mark), just like in the tutorial game :)<br/><br/>button_down is the callback that you use for one-time events, button_down? is the check that you use in your logic for holding keys down. You can also combine both, i.e. shoot on the first button_down and then count the ticks from then on, repeating the fire after every 10, etc.
+</div>
+</div>
+
+<div class='frm pst' id='pid1266' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1266.html#pid1266'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-14 12:33
+</div>
+<div class='ccl'>
+cool, my problem now is this(another one wee):<br/><br/>My &quot;game&quot; is divided in scenes (like the rest of RPGs), and the update is in the actual scene, the window update only have a $scene.update<br/>and the method button_down/button_up is from and only for the Window class, so i cant use it or overwrite it in the sub-updates.<br/>Im using a miserly method to try to remedy it (a case in window class, to know what scene is and lock button_down in that mode) but Im looking for a better solution ;o;<br/><br/>Cant add a module or something for input? leaving away the Window class :S
+</div>
+</div>
+
+<div class='frm pst' id='pid1271' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1271.html#pid1271'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-08-14 16:18
+</div>
+<div class='ccl'>
+If I understand your last problem correctly...<br/><br/>Either just:<br/><br/>Game &lt; Gosu::Window<br/>&#160; def button_up(id)<br/>&#160; &#160; $scene.button_up(id)<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; $scene.button_down(id)<br/>&#160; end<br/>end<br/><br/>Then you can use button_down/up the same way in a scene as in the main window.<br/><br/>What you want is probably a full game state system.<br/><br/>Actually over the summer I&#39;ve worked on framework for ruby gosu (called Chingu) which includes stack-based (push/pop) game states among other things. You could check it out @ <a class='url' href='http://github.com/ippa/chingu/tree/master'>http://github.com/ippa/chingu/tree/master</a> if you want, it&#39;s starting get in usable shape.<br/><br/>Here&#39;s an example of how Chingu adds easy handling of game states and inputs:<br/><a class='url' href='http://github.com/ippa/chingu/blob/d2cb90d1efee6a7637a7a0a8a784f399a93d2a8b/examples/example4.rb'>http://github.com/ippa/chingu/blob/d2cb90d1efee6a7637a7a0a8a784f399a93d2a8b/examples/example4.rb</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid1272' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1272.html#pid1272'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2009-08-14 16:47
+</div>
+<div class='ccl'>
+thanks!!!<br/>i love you :3<br/><br/>the game states are not a problem, im already using a sub-loops systems and works fine, only needs fades between scenes, but that can wait.<br/><br/>One of these days ill post the project, maybe someone want a RPG template &quot;easy&quot; to use ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid1278' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1278.html#pid1278'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=95.html' >lobo_tuerto</a>
+<span class='htt'>Date</span> 2009-08-15 01:11
+</div>
+<div class='ccl'>
+Ahh! nice code there!<br/><br/>I&#39;m working on something very similar (about routing the inputs and stuff to a &quot;state&quot; of sorts), and your app will help me to flesh out some stuff! :D
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=195.html#tid195'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=195.html#tid195'>Gosu Exchange</a> / button_down? too fast
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1272.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

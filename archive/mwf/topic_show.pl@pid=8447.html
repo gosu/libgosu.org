@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8447 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ubuntu 14.04 quick start</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8447' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1137#tid1137'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1137#tid1137'>Gosu Exchange</a> / Ubuntu 14.04 quick start
+</div>
+</div>
+
+<div class='frm pst' id='pid8023' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8023' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8023.html#pid8023'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1160' >webdevdude</a>
+<span class='htt'>Date</span> 2014-09-16 13:21
+<span class='htt'>Edited</span> 2014-09-16 13:31
+</div>
+<div class='ccl'>
+This was tested on an AMD 64, Ubuntu 14.04, apt-get updates as of date of this post.<br/><br/><b>All-in-one:</b><br/><br/>sudo apt-get update<br/>sudo apt-get upgrade<br/>\curl -sSL <a class='ura' href='https://get.rvm.io'>https://get.rvm.io</a> | bash -s stable --rails<br/>rvm install ruby 1.9 --default<br/>sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libpango1.0-dev libgl1-mesa-dev libfreeimage-dev libopenal-dev libsndfile-dev libiconv-hook-dev libxml2-dev freeglut3 freeglut3-dev ImageMagick libmagickwand-dev<br/>gem install faster_xml_simple<br/>gem install gosu releasy texplay ashton gamebox chipmunk ruby-opengl rmagick<br/><br/>***<br/><br/><b>Step-by-step:</b><br/><br/>First and foremost, make sure you have updated core software:<br/><br/><blockquote><p>&gt;: sudo apt-get update<br/>&gt;: sudo apt-get upgrade</p></blockquote><br/>If there are no ruby/rails installed (rails is <b>entirely</b> optional)<br/><br/>First get RVM (w/rails):<br/><br/><blockquote><p>&gt;: \curl -sSL <a class='ura' href='https://get.rvm.io'>https://get.rvm.io</a> | bash -s stable --rails</p></blockquote><br/>Without rails:<br/><br/><blockquote><p>&gt;: \curl -sSL <a class='ura' href='https://get.rvm.io'>https://get.rvm.io</a> | bash -s stable --ruby</p></blockquote><br/>Then install ruby 1.9.&#160; Having ruby 2+ is ok, <i>relax</i> you&#39;ll probably want it eventually. But for now, install and set your default to 1.9:<br/><br/><blockquote><p>&gt;: rvm install ruby 1.9 --default</p></blockquote><br/>You&#39;ll need some build tools and sort out some dependencies<br/><br/><blockquote><p>&gt;: sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libpango1.0-dev libgl1-mesa-dev libfreeimage-dev libopenal-dev libsndfile-dev libiconv-hook-dev libxml2-dev freeglut3 freeglut3-dev ImageMagick libmagickwand-dev</p></blockquote><br/>An odd thing happens and you need a gem that fails to install. It looks like a broken source link in another gem that depends on faster_xml_simple.<br/><br/><blockquote><p>&gt;: gem install faster_xml_simple</p></blockquote><br/>Then install Gosu and the currently maintained extensions. After Gosu, the rest are optional, but they should all work at this point.<br/><br/><blockquote><p>&gt;: gem install gosu releasy texplay ashton gamebox chipmunk ruby-opengl rmagick</p></blockquote><br/>***<br/><br/>That&#39;s it! That should get anyone from zero to ruby+gosu game development very quickly on Ubuntu 14.04, but if anything fails on x86, or elsewhere, please comment and let me know.<br/><br/>Hope this helps anyone on Ubuntu,<br/><br/><b>~wdd</b>
+</div>
+</div>
+
+<div class='brn' id='brn8023'>
+<div class='frm pst' id='pid8025' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8023'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8025' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8025.html#pid8025'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-09-16 22:20
+</div>
+<div class='ccl'>
+Thanks for the write-up :) I have also linked it right from the wiki page: <a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a>
+</div>
+</div>
+
+<div class='brn' id='brn8025'>
+<div class='frm pst' id='pid8027' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8025'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8027.html#pid8027'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1160' >webdevdude</a>
+<span class='htt'>Date</span> 2014-09-17 09:25
+</div>
+<div class='ccl'>
+Cool!
+</div>
+</div>
+
+<div class='frm pst' id='pid8050' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8025'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8050#pid8050'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-29 15:32
+</div>
+<div class='ccl'>
+As a note for anyone who comes here in the future from the wiki, and wonders why they would want to go through the trouble of installing ruby this way (using RVM) rather than the &quot;standard way&quot; (installing the package through using apt-get):<br/><br/>RVM allows you to install multiple versions of Ruby in a sane way. For example, If you want to start with 1.9, and then move to 2.0 later, then RVM may be a cleaner solution than using the packages in Ubuntu&#39;s repository.<br/><br/>Why? Because Ubuntu&#39;s packages (as well as the Debian packages they are derived from) pack different versions of Ruby under different packages. This means that you would call <code>ruby19</code> or <code>ruby20</code> rather than just calling <code>ruby</code>.&#160; If you would rather not have to think about the version number every time, using RVM is a good choice.<br/><br/>RVM will also change out the gems for you, so when you switch to using 1.9, one set of gems will be active, and when you use 2.0 (or some other version) a separate set with be used. This is especially useful when you try to upgrade to a newer version of Ruby, only to realize that the gems you need aren&#39;t updated yet. With RVM, it&#39;s super easy to just go back to using your old setup.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8051' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8023'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8051' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8051.html#pid8051'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-29 15:34
+</div>
+<div class='ccl'>
+I think you may have to install <code>curl</code>. I don&#39;t think that comes standard with Ubuntu, but sometimes you end up installing things that list <code>curl</code> as a dependency, end up having it when you need it (especially when you do a lot of programming)<br/><br/>if you need it, just grab it through apt:<br/><br/><blockquote><p>&gt;: sudo apt-get install curl</p></blockquote>
+</div>
+</div>
+
+<div class='brn' id='brn8051'>
+<div class='frm pst' id='pid8056' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8051'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8056#pid8056'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1160' >webdevdude</a>
+<span class='htt'>Date</span> 2014-09-29 16:41
+</div>
+<div class='ccl'>
+Nope, it is one of the default packages for 14.04 LTS<br/><br/><a class='ura' href='http://packages.ubuntu.com/trusty/web/'>http://packages.ubuntu.com/trusty/web/</a><br/><br/><blockquote><p>&gt;curl (7.35.0-1ubuntu2.1) [security]<br/>&gt;&#160; &#160; command line tool for transferring data with URL syntax</p></blockquote>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8439' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8023'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8439' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8439.html#pid8439'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-12 07:15
+</div>
+<div class='ccl'>
+Hello there, <br/> <b>I need help, I tried installing gosu on my ubuntu 14.04 it came up with this error..&#160; </b><br/><br/>amulya@SHAHI:~$ gem install gosu<br/>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; /home/amulya/.rvm/rubies/ruby-2.2.0/bin/ruby -r ./siteconf20150712-1819-nvwpk3.rb extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>checking for TTF_RenderUTF8_Blended() in -lSDL2_ttf... no<br/>checking for FreeImage_ConvertFromRawBits() in -lfreeimage... no<br/>checking for main() in -lopenal... no<br/>creating Makefile<br/><br/>make &quot;DESTDIR=&quot; clean<br/><br/>make &quot;DESTDIR=&quot;<br/>compiling gosu_wrap.cxx<br/>In file included from ../../Gosu/Gosu.hpp:21:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from gosu_wrap.cxx:2175:<br/>../../Gosu/Input.hpp:20:22: fatal error: X11/Xlib.h: No such file or directory<br/> #include &lt;X11/Xlib.h&gt;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>compilation terminated.<br/>make: *** [gosu_wrap.o] Error 1<br/><br/>make failed, exit code 2<br/><br/>Gem files will remain installed in /home/amulya/.rvm/gems/ruby-2.2.0/gems/gosu-0.9.2 for inspection.<br/>Results logged to /home/amulya/.rvm/gems/ruby-2.2.0/extensions/x86_64-linux/2.2.0/gosu-0.9.2/gem_make.out<br/>amulya@SHAHI:~$ <br/><br/>--------------------------------------------------------------------------------------------------------------------------------=========================================================================<br/><br/><b>So I updated and then upgraded, since I already have rails installed .. ..<br/><br/>I tried this... .</b><br/><br/>amulya@SHAHI:~$ sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libpango1.0-dev libgl1-mesa-dev libfreeimage-dev libopenal-dev libsndfile-dev libiconv-hook-dev libxml2-dev freeglut3 freeglut3-dev ImageMagick libmagickwand-dev<br/>[sudo] password for amulya: <br/>Reading package lists... Done<br/>Building dependency tree&#160; &#160; &#160;&#160; <br/>Reading state information... Done<br/>Note, selecting &#39;libsndfile1-dev&#39; instead of &#39;libsndfile-dev&#39;<br/>build-essential is already the newest version.<br/>imagemagick is already the newest version.<br/>Some packages could not be installed. This may mean that you have<br/>requested an impossible situation or if you are using the unstable<br/>distribution that some required packages have not yet been created<br/>or been moved out of Incoming.<br/>The following information may help to resolve the situation:<br/><br/>The following packages have unmet dependencies:<br/> libcogl15 : Depends: libegl1-mesa-drivers<br/> libmagickwand-dev : Depends: libmagickcore-dev (= 8:6.7.7.10-6ubuntu3) but it is not going to be installed<br/> libpango1.0-dev : Depends: libpango-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpangocairo-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpangoft2-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpangoxft-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: gir1.2-pango-1.0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libglib2.0-dev (&gt;= 2.34.0) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libxft-dev but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libfontconfig1-dev (&gt;= 2.10.91) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libharfbuzz-dev (&gt;= 0.9.9) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libcairo2-dev (&gt;= 1.12.10) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Recommends: debhelper but it is not going to be installed<br/> libsdl2-dev : Depends: libegl1-mesa-dev<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libgles2-mesa-dev<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpulse-dev but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libudev-dev but it is not going to be installed<br/>E: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.<br/>amulya@SHAHI:~$ <br/><br/><b><i>Thanks..</i></b>
+</div>
+</div>
+
+<div class='brn' id='brn8439'>
+<div class='frm pst' id='pid8440' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8439'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8440' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8440#pid8440'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-07-12 10:57
+</div>
+<div class='ccl'>
+Ooops, thank you for reporting this! I&#39;ve left a few references to unused libraries in Gosu 0.8+. I&#39;ve committed a fix right now, and Gosu 0.9.3 will not try to <code>#include &lt;X11/Xlib.h</code> anymore. Sorry for the trouble.<br/><br/>In the meantime, does the top answer here solve the problem for you?<br/><br/><a class='ura' href='http://stackoverflow.com/questions/5299989/x11-xlib-h-not-found-in-ubuntu'>http://stackoverflow.com/questions/5299989/x11-xlib-h-not-found-in-ubuntu</a>
+</div>
+</div>
+
+<div class='brn' id='brn8440'>
+<div class='frm pst' id='pid8443' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8440'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8443' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8443.html#pid8443'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-13 05:43
+</div>
+<div class='ccl'>
+<b>thank you.. !!</b><br/><br/><b>I have already tried the above updates and installations.. </b><br/><br/>It did not..<br/><br/>=============================<br/>Then I tried after updating the bundler..<br/>&#160; &#160; &#160; &#160; and then when I tried&#160; =&gt;&#160; sudo apt-get install gosu<br/><br/>it came up with&#160; this &gt;<br/><br/>amulya@SHAHI:~$ sudo apt-get install gosu<br/>Reading package lists... Done<br/>Building dependency tree&#160; &#160; &#160;&#160; <br/>Reading state information... Done<br/>E: Unable to locate package gosu<br/>amulya@SHAHI:~$ <br/><br/>Thanks..!!
+</div>
+</div>
+
+<div class='brn' id='brn8443'>
+<div class='frm pst' id='pid8445' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8443'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8445' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8445#pid8445'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-07-13 07:21
+</div>
+<div class='ccl'>
+Gosu is not in <code>apt-get</code> (yet ;) ). Please try <code>gem install gosu</code> instead.<br/><br/>Has the error message changed after <code>sudo apt-get install libx11-dev</code> (from StackOverflow)?
+</div>
+</div>
+
+<div class='brn' id='brn8445'>
+<div class='frm pst' id='pid8447' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8445'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8447' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8447.html#pid8447'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-14 06:11
+</div>
+<div class='ccl'>
+<b>Thanks... when tried &quot;gem install gosu&quot;&#160; it came up with this error</b><br/><br/>amulya@SHAHI:~$ gem install gosu<br/>Fetching: gosu-0.9.2.gem (100%)<br/>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; /home/amulya/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20150714-5173-1680r2l.rb extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>checking for TTF_RenderUTF8_Blended() in -lSDL2_ttf... no<br/>checking for FreeImage_ConvertFromRawBits() in -lfreeimage... no<br/>checking for main() in -lopenal... no<br/>creating Makefile<br/><br/>make &quot;DESTDIR=&quot; clean<br/><br/>make &quot;DESTDIR=&quot;<br/>compiling gosu_wrap.cxx<br/>In file included from ../../Gosu/Gosu.hpp:21:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from gosu_wrap.cxx:2175:<br/>../../Gosu/Input.hpp:20:22: fatal error: X11/Xlib.h: No such file or directory<br/> #include &lt;X11/Xlib.h&gt;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>compilation terminated.<br/>make: *** [gosu_wrap.o] Error 1<br/><br/>make failed, exit code 2<br/><br/>Gem files will remain installed in /home/amulya/.rvm/gems/ruby-2.2.1/gems/gosu-0.9.2 for inspection.<br/>Results logged to /home/amulya/.rvm/gems/ruby-2.2.1/extensions/x86_64-linux/2.2.0/gosu-0.9.2/gem_make.out<br/>amulya@SHAHI:~$ <br/><br/><b>then I tried </b><br/><br/>amulya@SHAHI:~$ sudo apt-get install build-essential libsd12-dev libsd12-ttf-dev libpango1.0-dev libgl1-mesa-dev libfreeimage-dev libopenal-dev libsndfile1-dev<br/>Reading package lists... Done<br/>Building dependency tree&#160; &#160; &#160;&#160; <br/>Reading state information... Done<br/>E: Unable to locate package libsd12-dev<br/>E: Unable to locate package libsd12-ttf-dev<br/>amulya@SHAHI:~$ <br/><br/><i><b>Thanks in advance</b></i>
+</div>
+</div>
+
+<div class='brn' id='brn8447'>
+<div class='frm pst' id='pid8449' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8447'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8449' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8449#pid8449'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-07-15 01:15
+</div>
+<div class='ccl'>
+In case you haven&#39;t noticed yet, it&#39;s actually &quot; libsd<b>l</b>2&quot; not &quot; libsd<b>1</b>2&quot; (i.e. it&#39;s a lowercase &quot;L&quot;, not a &quot;one&quot;).
+</div>
+</div>
+
+<div class='brn' id='brn8449'>
+<div class='frm pst' id='pid8450' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8449'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8450.html#pid8450'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-15 05:05
+</div>
+<div class='ccl'>
+<b>Hey thanks for correcting that for me.. </b><br/><br/><i><b>now its coming up this </b></i><br/><br/>amulya@SHAHI:~$ sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libpango1.0-dev libgl1-mesa-dev libfreeimage-dev libopenal-dev libsndfile-dev libiconv-hook-dev libxml2-dev freeglut3 freeglut3-dev ImageMagick libmagickwand-dev<br/>Reading package lists... Done<br/>Building dependency tree&#160; &#160; &#160;&#160; <br/>Reading state information... Done<br/>Note, selecting &#39;libsndfile1-dev&#39; instead of &#39;libsndfile-dev&#39;<br/>build-essential is already the newest version.<br/>imagemagick is already the newest version.<br/>Some packages could not be installed. This may mean that you have<br/>requested an impossible situation or if you are using the unstable<br/>distribution that some required packages have not yet been created<br/>or been moved out of Incoming.<br/>The following information may help to resolve the situation:<br/><br/>The following packages have unmet dependencies:<br/> libcogl15 : Depends: libegl1-mesa-drivers<br/> libmagickwand-dev : Depends: libmagickcore-dev (= 8:6.7.7.10-6ubuntu3) but it is not going to be installed<br/> libpango1.0-dev : Depends: libpango-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpangocairo-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpangoft2-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpangoxft-1.0-0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: gir1.2-pango-1.0 (= 1.36.3-1ubuntu1) but 1.36.3-1ubuntu1.1 is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libglib2.0-dev (&gt;= 2.34.0) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libxft-dev but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libfontconfig1-dev (&gt;= 2.10.91) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libharfbuzz-dev (&gt;= 0.9.9) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libcairo2-dev (&gt;= 1.12.10) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Recommends: debhelper but it is not going to be installed<br/> libsdl2-dev : Depends: libegl1-mesa-dev<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libgles2-mesa-dev<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libpulse-dev but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libudev-dev but it is not going to be installed<br/>E: Error, pkgProblemResolver::Resolve generated breaks, this may be caused by held packages.<br/>amulya@SHAHI:~$ <br/><br/><i>Thanks ..</i>
+</div>
+</div>
+
+<div class='frm pst' id='pid8452' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8449'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8452#pid8452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-15 06:50
+</div>
+<div class='ccl'>
+Thanks boss..<br/><br/><b>I did it on another ubuntu window..</b>
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8448' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8445'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8448.html#pid8448'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-14 06:15
+</div>
+<div class='ccl'>
+ooh... Thanks..
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8451' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8440'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8451#pid8451'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1205.html' >Amulya Shahi</a>
+<span class='htt'>Date</span> 2015-07-15 06:48
+</div>
+<div class='ccl'>
+Thank you..!!<br/><br/><b><br/>I managed to install gosu on another OS..</b><br/><br/>Looks like there was some package issue on the OS, I was trying to install gosu..<br/><br/>Thankss...;)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8459' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8023'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8459' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8459.html#pid8459'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1206' >dorje</a>
+<span class='htt'>Date</span> 2015-07-27 10:01
+</div>
+<div class='ccl'>
+<b>help me </b><br/><b>trying install gosu on ubuntu 14.10 </b><br/><b>error occur while installing pakages..</b><br/><br/>the following packages have unmet dependencies:<br/> libgl1-mesa-dev : Depends: mesa-common-dev (= 10.3.2-0ubuntu0.1) but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libgl1-mesa-glx (= 10.3.2-0ubuntu0.1) but 10.6~git1504161930.94aab6~gd~u is to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libdrm-dev (&gt;= 2.4.52) but it is not going to be installed<br/> libsdl2-dev : Depends: libegl1-mesa-dev but it is not going to be installed<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; Depends: libgles2-mesa-dev but it is not going to be installed<br/> libsndfile1-dev : Depends: libvorbis-dev (&gt;= 1.2.3) but it is not going to be installed<br/>E: Unable to correct problems, you have held broken packages.
+</div>
+</div>
+
+<div class='brn' id='brn8459'>
+<div class='frm pst' id='pid8460' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8459'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8460.html#pid8460'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-07-27 10:16
+</div>
+<div class='ccl'>
+Sorry, but that doesn&#39;t look like a Gosu-related issue. I have never seen these messages on a fresh installation of Ubuntu 14.10, so something must have gone wrong before you even started installing Gosu&#39;s dependencies.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8845' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8447.html#pid8023'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8845#pid8845'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1250.html' >cnr</a>
+<span class='htt'>Date</span> 2016-03-03 08:20
+<span class='htt'>Edited</span> 2016-03-03 09:07
+</div>
+<div class='ccl'>
+On Ubuntu 14.04, RVM and Ruby 2.3.0 you should also add <i>libgmp-dev</i> package to the <i>sudo apt-get install...</i> list.<br/><br/>Instead you&#39;ll keep getting <i>Failed to build gem native extension</i> while trying to install gosu, faster_xml_simple and other gems. In extension build log there will be error:<br/>...<br/>/usr/bin/ld: cannot find -lgmp<br/>collect2: error: ld returned 1 exit status<br/>...
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1137#tid1137'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1137#tid1137'>Gosu Exchange</a> / Ubuntu 14.04 quick start
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8447.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

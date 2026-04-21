@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3785 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Mac App Store / gosu and Macruby</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3785' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=536.html#tid536'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=536.html#tid536'>Extending Gosu</a> / Mac App Store / gosu and Macruby
+</div>
+</div>
+
+<div class='frm pst' id='pid3784' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3784' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3784.html#pid3784'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=170.html' >jontebol</a>
+<span class='htt'>Date</span> 2011-01-25 22:27
+</div>
+<div class='ccl'>
+Am I the only one who thinks the Mac App Store would be an awesome way of distributing gosu games? :)<br/><br/>And am I incorrect in thinking that if we could only get gosu working with MacRuby, that shouldn&#39;t be so difficult?<br/><br/>Anyways, I thought I&#39;d just try it and see if it worked, so I downloaded the latest version of MacRuby, and did a &quot;macgem install gosu&quot;. So far so good. <br/><br/>But then it looks for a &quot;gosu.bundle&quot; which it couldn&#39;t find, so I got a LoadError... So I just tried putting a symlink there to the &quot;gosu.for_1_9.bundle&quot; bundle... since MacRuby is based on Ruby 1.9.<br/><br/>What I got was this: <br/><br/>dlopen(/Library/Frameworks/MacRuby.framework/Versions/0.8/usr/lib/ruby/Gems/1.9.2/gems/gosu-0.7.26.1-universal-darwin/lib/gosu.bundle, 9): no suitable image found.&#160; Did find:<br/>&#160; /Library/Frameworks/MacRuby.framework/Versions/0.8/usr/lib/ruby/Gems/1.9.2/gems/gosu-0.7.26.1-universal-darwin/lib/gosu.bundle: GC capability mismatch - /Library/Frameworks/MacRuby.framework/Versions/0.8/usr/lib/ruby/Gems/1.9.2/gems/gosu-0.7.26.1-universal-darwin/lib/gosu.bundle (LoadError)<br/><br/>Ok, so that bundle obviously wasn&#39;t prepared for MacRuby... The question is, how difficult would it be to make one?
+</div>
+</div>
+
+<div class='brn' id='brn3784'>
+<div class='frm pst' id='pid3785' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3785.html#pid3784'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3785.html#pid3785'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-26 06:54
+</div>
+<div class='ccl'>
+I don&#39;t think it&#39;d be very hard, and I agree that MacRuby would be a good match.<br/><br/>Right now, Gosu uses a &quot;standard&quot; extconf.rb file on Linux, and a binary bundle precompiled from an Xcode project on OS X.<br/><br/>I think the easiest way would be to change the extconf.rb so that it will still build all the X11/Linux files on Linux, but the Mac files on OS X. So basically just a &quot;if RUBY_PLATFORM ~= /Darwin/ ...&quot; around the file list, and then using the files from the Xcode project on OS X. Then you can build the gem with &quot;rake linux:gem&quot; and install it locally. All Ruby implementations that can handle binary C extensions should be able to install this gem, so Rubinius users would be happy too.<br/><br/>Just outlining this because I am busy with other tasks for the next week(s), if anyone wants to give it a try I&#39;d gladly accept a patch after some quick testing :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid4048' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=4048.html#pid4048'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-03-02 11:17
+</div>
+<div class='ccl'>
+Has there been any progress with this?
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=536.html#tid536'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=536.html#tid536'>Extending Gosu</a> / Mac App Store / gosu and Macruby
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3785.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

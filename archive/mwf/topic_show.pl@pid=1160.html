@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1160 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Speed issue with gosu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1160' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=181.html#tid181'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=181.html#tid181'>Gosu Exchange</a> / Speed issue with gosu
+</div>
+</div>
+
+<div class='frm pst' id='pid1159' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1159.html#pid1159'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=97.html' >di3go</a>
+<span class='htt'>Date</span> 2009-07-26 19:53
+</div>
+<div class='ccl'>
+Anyone get issue speed with gosu and ruby drawing more than 1000 simples objects on screen?<br/><br/>Its just a image, 100x100 px, that i draw 1000 times on screen<br/><br/>Im using Ubuntu with Atlhon X2 3ghz, when i open the System Monitor, one cpu its 100% loaded with gosu and the fps is about 45/50<br/><br/>This issue was not in my game, was just a performance test that i maked, but, in the game im making, im not gonna have all this objects on screen all the time, but some times i could have this value or even more <br/><br/>Have any way to improve performance?<br/><br/>Maybe change ruby 1.8 to 1.9, gosu internally use threads? opengl to render? format my computer, hehe?<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid1160' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1160.html#pid1160'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=25.html' >benko</a>
+<span class='htt'>Date</span> 2009-07-26 20:23
+</div>
+<div class='ccl'>
+Do you really think that rendering 1000 sprites and getting 50 fps is an &quot;issue&quot;? O__o <br/><br/>Anyway, Ruby 1.9 is much faster than Ruby 1.8, you could try and see how many fps you get...
+</div>
+</div>
+
+<div class='frm pst' id='pid1161' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1161.html#pid1161'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-07-26 20:45
+</div>
+<div class='ccl'>
+Ruby 1.8 to 1.9 will bring the performance up by a good factor usually, but it mostly affect your Ruby code, not the actual Gosu rendering.<br/><br/>There are two general ways around these sort of scaling problems. The first one is to use a good data structure, for example by organizing the objects into several sectors and only drawing and updating the currently visible ones. Or generally, preferring a 2D tilemap over a loose set of objects for the map, things like that. At the same time, you should still not use a complicated set of classes, prefer Fixnums over Floats etc., to keep the Ruby code simple. Sorry if all that is obvious :)<br/><br/>The other way is to avoid having so many individual objects on the Ruby side in general, and instead grouping things by any means possible (which keeps the Garbage Collector runs short too). One example would be ippa&#39;s game &quot;A Tiny World&quot;, where he used TexPlay to add blood stains to the leg by using TexPlay instead of redrawing them every frame. Maybe you can prerender parts of the map on the development machine using RMagick. And if a lot of objects don&#39;t move relative to each other, functionality is in development that will allow you to &#39;record&#39; a lot of drawing operations into a new Gosu::Image that will then draw all the original images, except much faster.<br/><br/>Both methods strongly depend on the way the game works, but I hope this helps.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=181.html#tid181'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=181.html#tid181'>Gosu Exchange</a> / Speed issue with gosu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1160.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

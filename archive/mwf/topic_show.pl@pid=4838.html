@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4838 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.7.37 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4838' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=639.html#tid639'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=639.html#tid639'>Gosu News</a> / Gosu 0.7.37 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=639.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid4837' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4837' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4837.html#pid4837'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-09-12 04:46
+</div>
+<div class='ccl'>
+I have pushed this update sooner rather than later because some people had trouble running 0.7.36 on Linux. It also includes two new features though.<br/><br/>• Linux: Using X11 <code>Expose</code> event instead of crashy <code>XDamage</code> event (thanks Jamer)<br/>• All: Added <code>Gosu::language()</code> that retrieves the user&#39;s current language<br/>• All: Added <code>Font::setImage</code>/<code>Font#[]=(char, image)</code> to set up a custom image for a character<br/><br/><code>Gosu::language</code> is useful for localization systems. Just do a case-insensitive comparison on the first two letters of it and be prepared to have a fallback. In Ruby, you can use this to set up e.g. the <code>r18n</code> gem.<br/><br/><code>my_font[&#39;a&#39;] = some_image</code> - this allows developers to load custom bitmap fonts, while automatically having a fallback to normal Font functionality. Let me know if this does the trick for you in practice. I wanted to load my old bitmap font, but I lost the file. :(
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(4837)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield4837' style='display:none;'>jlnr</span><a href='post_add.pl@pid=4837.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn4837'>
+<div class='frm pst' id='pid4838' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4838.html#pid4837'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4838.html#pid4838'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=130.html' >Trebor777</a>
+<span class='htt'>Date</span> 2011-09-12 09:40
+</div>
+<div class='ccl'>
+yeeees ! Love you Jlnr for the font thingie!! <br/>Let&#39;s have some pretty effects on screen!! <br/><br/>Nice one for the language :P would probably help me avoid the &quot;select language&quot; screen on my project!<br/>I&#39;ll have to try it out!
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(4838)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield4838' style='display:none;'>Trebor777</span><a href='post_add.pl@pid=4838.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid4839' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4838.html#pid4837'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4839.html#pid4839'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=156.html' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-09-12 23:59
+</div>
+<div class='ccl'>
+About Gosu::language, if anyone is interested, some months ago I wrote a tutorial about internationalization of projects using Gettext, which is the most common way of translating projects. You can find it here: <a class='url' href='http://rodin.uca.es:8081/xmlui/bitstream/handle/10498/10772/gettext.pdf?sequence=1'>http://rodin.uca.es:8081/xmlui/bitstream/handle/10498/10772/gettext.pdf?sequence=1</a> (however, it&#39;s in spanish).
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(4839)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield4839' style='display:none;'>TheOm3ga</span><a href='post_add.pl@pid=4839.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=639.html#tid639'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=639.html#tid639'>Gosu News</a> / Gosu 0.7.37 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=639.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4838.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Can’t compile under linux. LibX11 error …</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=591.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=591.html#tid591'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=591.html#tid591'>Gosu Exchange</a> / Can’t compile under linux. LibX11 error …
+</div>
+</div>
+
+<div class='frm pst' id='pid4346' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4346' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4346.html#pid4346'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=844.html' >ICEM4N</a>
+<span class='htt'>Date</span> 2011-05-17 19:24
+<span class='htt'>Edited</span> 2011-05-18 05:14
+</div>
+<div class='ccl'>
+Hi, i&#39;m trying to compile gosu (well, the examples) under Linux Mint Debian (Based on Debian Testing). I&#39;m using the C++ option (instead of Ruby)<br/><br/>Every packed seemed to be installed ok, but I&#39;m getting this error : <br/><br/><code><br/><br/>conejo@madriguera ~/devkitpro/cosas/jlnr-gosu-6ffa49f/linux $ make<br/>if [ \! -d ../bin ]; then mkdir ../bin; fi<br/>if [ \! -d ../lib ]; then mkdir ../lib; fi<br/>if [ \! -d Graphics ]; then mkdir Graphics; fi<br/>if [ \! -d Sockets ]; then mkdir Sockets; fi<br/>if [ \! -d Audio ]; then mkdir Audio; fi<br/>g++ /home/conejo/devkitpro/cosas/jlnr-gosu-6ffa49f/linux/../examples/Tutorial.cpp -o /home/conejo/devkitpro/cosas/jlnr-gosu-6ffa49f/linux/../examples/Tutorial -fPIC -I.. -I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT -Wall -pthread -I/usr/include/pango-1.0 -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -DHAVE_SYS_STAT_H -DNDEBUG -O3 -pipe -fomit-frame-pointer -I/usr/include/SDL -L -lX11 -pthread -lpangoft2-1.0 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0&#160;&#160; -L/usr/lib -lSDL -lSDL_mixer -lpng -lstdc++ -lGL -lSDL_ttf -lfreeimage&#160; ../lib/libgosu.a<br/>In file included from ../Gosu/Gosu.hpp:13:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from /home/conejo/devkitpro/cosas/jlnr-gosu-6ffa49f/linux/../examples/Tutorial.cpp:1:<br/>../Gosu/Fwd.hpp:10:11: warning: attribute ignored in declaration of ‘struct Gosu::Audio’<br/>../Gosu/Fwd.hpp:10:11: warning: attribute for ‘struct Gosu::Audio’ must follow the ‘struct’ keyword<br/>/home/conejo/devkitpro/cosas/jlnr-gosu-6ffa49f/linux/../examples/Tutorial.cpp: In constructor ‘Player::Player(Gosu::Graphics&amp;, Gosu::Audio&amp;)’:<br/>/home/conejo/devkitpro/cosas/jlnr-gosu-6ffa49f/linux/../examples/Tutorial.cpp:75:52: warning: ‘Gosu::Sample::Sample(Gosu::Audio&amp;, const std::wstring&amp;)’ is deprecated (declared at ../Gosu/Audio.hpp:100)<br/>/usr/bin/ld: ../lib/libgosu.a(WindowX.o): undefined reference to symbol &#39;XAllocSizeHints&#39;<br/>/usr/bin/ld: note: &#39;XAllocSizeHints&#39; is defined in DSO //usr/lib/libX11.so.6 so try adding it to the linker command line<br/>//usr/lib/libX11.so.6: could not read symbols: Invalid operation<br/>collect2: ld returned 1 exit status<br/>make: *** [/home/conejo/devkitpro/cosas/jlnr-gosu-6ffa49f/linux/../examples/Tutorial] Error 1<br/></code><br/><br/>In fact, the library seemed to be compiled OK. If I removed the examples folder, it compiled and installed perfectly, but trying to compile the examples (or any other code with gosu C++) gives the same error, for example : <br/><br/><code><br/><br/>conejo@madriguera ~/devkitpro/omegote/linux/Parte 1 $ make<br/>Compiling... main.cpp<br/>Linking binary...<br/>/usr/bin/ld: /usr/local/lib/libgosu.a(WindowX.o): undefined reference to symbol &#39;XAllocSizeHints&#39;<br/>/usr/bin/ld: note: &#39;XAllocSizeHints&#39; is defined in DSO //usr/lib/libX11.so.6 so try adding it to the linker command line<br/>//usr/lib/libX11.so.6: could not read symbols: Invalid operation<br/>collect2: ld returned 1 exit status<br/>make: *** [programa] Error 1<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn4346'>
+<div class='frm pst' id='pid4350' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4350' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4350.html#pid4350'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-18 07:11
+</div>
+<div class='ccl'>
+To be honest, I have absolutely no idea what the Linux autotools setup is doing and how and why :) What does the generated makefile look like? Does it link against -LX11?
+</div>
+</div>
+
+<div class='brn' id='brn4350'>
+<div class='frm pst' id='pid4353' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4350'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4353.html#pid4353'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=844.html' >ICEM4N</a>
+<span class='htt'>Date</span> 2011-05-18 13:07
+</div>
+<div class='ccl'>
+Solved,<br/><br/>Need to add this to the Makefile : <br/><br/>-lX11 -ldl -lXext<br/><br/>Then, everything works as expected
+</div>
+</div>
+
+<div class='frm pst' id='pid4354' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4350'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4354' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4354.html#pid4354'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=790.html' >beoran</a>
+<span class='htt'>Date</span> 2011-05-20 06:01
+</div>
+<div class='ccl'>
+Then perhaps you should use a different build system *cough*CMake*cough*? :)
+</div>
+</div>
+
+<div class='brn' id='brn4354'>
+<div class='frm pst' id='pid4355' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4355' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4355.html#pid4355'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-20 16:17
+</div>
+<div class='ccl'>
+The C++ Linux port is not exactly my favorite part of Gosu ;) I only ever use it to test if it still works.<br/><br/>I love how the Ruby gem works so much better with so much less fugliness. Contributions (github forks) are very welcome, if the CMake setup would be as clean as the extconf.rb.
+</div>
+</div>
+
+<div class='brn' id='brn4355'>
+<div class='frm pst' id='pid4356' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4355'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4356' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4356.html#pid4356'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=790.html' >beoran</a>
+<span class='htt'>Date</span> 2011-05-20 19:22
+</div>
+<div class='ccl'>
+Well, I don&#39;t actually use Gosu as have my own C game library, &quot;Gari&quot;, but I&#39;ll see what I can do. <br/>Cmake, is useful on windows and mac too, it generates native files for visual C++, etc.
+</div>
+</div>
+
+<div class='brn' id='brn4356'>
+<div class='frm pst' id='pid4357' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4356'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4357' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4357.html#pid4357'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-20 22:04
+</div>
+<div class='ccl'>
+I feel CMake is not that great either. The Xcode projects it creates are structured oddly and it&#39;s nearly impossible to trace the source of a library error in its Makefile output. I&#39;ve always had terrible luck with it. :C<br/><br/>I&#39;d like to see something akin to Ant, but without all the verbosity of XML. Build systems that just generate files for other build systems are lame.
+</div>
+</div>
+
+<div class='brn' id='brn4357'>
+<div class='frm pst' id='pid4359' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=591.html#pid4357'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4359.html#pid4359'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=790.html' >beoran</a>
+<span class='htt'>Date</span> 2011-05-21 12:46
+</div>
+<div class='ccl'>
+Unfortunately, most build systems for C do just that. I think that from all the build systems I know, CMake is currently the open source build system that sucks the least. But if you know any better alternatives, I&#39;d love to hear about them, though. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=591.html#tid591'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=591.html#tid591'>Gosu Exchange</a> / Can’t compile under linux. LibX11 error …
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=591.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

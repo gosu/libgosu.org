@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9321 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Slowdown during state switching step</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9321' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1361.html#tid1361'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1361.html#tid1361'>Gosu Exchange</a> / Slowdown during state switching step (locked)
+</div>
+</div>
+
+<div class='frm pst' id='pid9275' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9275' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9275.html#pid9275'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+ <img class='sic sic_topic_l' src='https://www.libgosu.org/mwf/epx.png' title='' alt=''> <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-10-07 18:14
+</div>
+<div class='ccl'>
+I have been using my own state switching solution in my game project, the thing is that switching between two menus is fast, I rarely find and issue. The story gets a horrible twist whenever the map spriteset is involved, it freezes for a few seconds and then continues loading the new map or menu depending on the case. My transition state draws simple rectangles and waterdrops on screen, plus setups the new state then. It first displays the previous state and then lets it get replaced by the second state. At some point all black rectangles and waterdrops freeze abruptly for over 15 seconds before finishing and letting the player walk all around the current map or navigate through the current menu. I thought I had to make the setup and drawing run in a parallel process... so I used a new Thread only to find out that concurrence was a wacky idea after all.<br/><br/>What should I do then?
+</div>
+</div>
+
+<div class='brn' id='brn9275'>
+<div class='frm pst' id='pid9276' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9275'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9276.html#pid9276'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-10-07 21:47
+</div>
+<div class='ccl'>
+15 seconds? How big is your map? I never had to load anything longer than few seconds, so maybe your code can be optimized somehow. Drawing in parallel thread doesn&#39;t work AFAIK, however you can do some important calculations if you do anything other than drawing. And make sure that you don&#39;t do any redundant calls, to speed up loading. Caching things helps too.
+</div>
+</div>
+
+<div class='frm pst' id='pid9277' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9275'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9277' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9277.html#pid9277'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-10-08 08:23
+</div>
+<div class='ccl'>
+You could try using a profiler to see what it is that keeps Ruby busy.<br/><br/>Rendering can only ever happen on the main thread. Even image loading is limited to the main thread right now: <a class='ura' href='https://github.com/gosu/gosu/issues/294.'>https://github.com/gosu/gosu/issues/294.</a><br/><br/>It could be the garbage collector. If you create lots of temporary objects (usually tiny arrays and hashes) there might be stutter, but usually only a few 100 milliseconds.
+</div>
+</div>
+
+<div class='brn' id='brn9277'>
+<div class='frm pst' id='pid9278' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9277'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9278' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9278.html#pid9278'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+ <img class='sic sic_topic_l' src='https://www.libgosu.org/mwf/epx.png' title='' alt=''> <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-10-10 14:02
+</div>
+<div class='ccl'>
+I tried to cache sprites by creating hashes to store them in order to avoid loading them every single time I needed them so I thought it would help improve my game&#39;s response but... My map aren&#39;t really large, one is only a bit larger than a 800x600 window, 960 pixels wide at most... It only sports 4 events on map plus the player&#39;s sprite and its four companions...
+</div>
+</div>
+
+<div class='brn' id='brn9278'>
+<div class='frm pst' id='pid9279' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9278'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9279' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9279.html#pid9279'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-10-10 19:01
+</div>
+<div class='ccl'>
+Hard to tell without seeing the code then. Maybe there&#39;s some nasty loop that takes too many iterations. Or you are doing too many operations (e.g. you use auto-tiles and check each tile too many times). Or you load tile graphics from file for each tile. Or you load map inside a loop and it loads multiple times due to missing break. There&#39;s something definitely wrong, because such map as you said should load in few milliseconds.
+</div>
+</div>
+
+<div class='brn' id='brn9279'>
+<div class='frm pst' id='pid9286' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9279'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9286.html#pid9286'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+ <img class='sic sic_topic_l' src='https://www.libgosu.org/mwf/epx.png' title='' alt=''> <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-11-21 04:09
+<span class='htt'>Edited</span> 2018-01-08 21:44
+</div>
+<div class='ccl'>
+Well, this time I&#39;ll show you the code concerning the logic update stuff, the most basic part, just in case you may found out why it&#39;s been so head-breaking lately...<br/><br/>* Removed the code to help readers find my latest post here *
+</div>
+</div>
+
+<div class='frm pst' id='pid9311' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9279'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9311' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9311.html#pid9311'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+ <img class='sic sic_topic_l' src='https://www.libgosu.org/mwf/epx.png' title='' alt=''> <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2018-01-05 22:33
+</div>
+<div class='ccl'>
+Well, this time I will attach a few Ruby files in case anybody can point out what&#39;s the actual root cause for my project&#39;s slowdown.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/11/9311/additions.rb'>additions.rb</a> - Addditions (5k)</div>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/11/9311/gamemodule.rb'>gamemodule.rb</a> - Game module (6k)</div>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/11/9311/input.rb'>input.rb</a> - Input mods (4k)</div>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/11/9311/mapmodule.rb'>mapmodule.rb</a> - Map module (1k)</div>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/11/9311/scenes.rb'>scenes.rb</a> - Scenes scripts (63k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn9311'>
+<div class='frm pst' id='pid9318' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9311'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9318' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9318.html#pid9318'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2018-01-17 04:53
+</div>
+<div class='ccl'>
+Since it is evident that this topic does not catch people&#39;s attention, I request a moderator to close it. I do not think it should be deleted so closing sounds like a better choice, or it could be moved to some forgotten or old topics hidden subforum.
+</div>
+</div>
+
+<div class='brn' id='brn9318'>
+<div class='frm pst' id='pid9320' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9318'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9320' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9320.html#pid9320'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2018-01-18 00:19
+</div>
+<div class='ccl'>
+I&#39;m not a fan of looking at bare code and figuring out what might be wrong. If you&#39;d care to post whole your game, so I could run it and test myself, it would be easier to see what&#39;s wrong.<br/><br/>btw, this forum is supposed to be dead XD You might have more luck on <a class='url' href='https://www.reddit.com/r/gosu/'>reddit</a>.
+</div>
+</div>
+
+<div class='brn' id='brn9320'>
+<div class='frm pst' id='pid9321' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9320'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9321' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9321.html#pid9321'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2018-01-20 13:37
+</div>
+<div class='ccl'>
+The reddit is newer, but I don&#39;t think it really succeeded in replacing this forum. Some people seem to prefer message boards (me included), some people prefer subreddits, but neither is active enough that I feel like shutting down the other. There&#39;s actually a third place :D - StackOverflow, sometimes I see some Gosu questions over there.<br/><br/>Anyway, I&#39;m closing this thread per kyonides&#39; request. If you change your mind and want to post your full game or a minimal version that exhibits the problem, PM me and I&#39;ll unlock it.
+</div>
+</div>
+
+<div class='brn' id='brn9321'>
+<div class='frm pst' id='pid9324' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9321.html#pid9321'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9324.html#pid9324'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2018-01-25 04:59
+</div>
+<div class='ccl'>
+The game have been uploaded months ago, it was named KUnits Gosu...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1361.html#tid1361'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1361.html#tid1361'>Gosu Exchange</a> / Slowdown during state switching step (locked)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9321.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 614 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Disable &#39;close&#39; button [WINDOWS]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d614' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=123.html#tid123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=123.html#tid123'>Extending Gosu</a> / Disable &#39;close&#39; button [WINDOWS]
+</div>
+</div>
+
+<div class='frm pst' id='pid590' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=590.html#pid590'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-17 13:02
+<span class='htt'>Edited</span> 2009-05-18 18:41
+</div>
+<div class='ccl'>
+&quot;Is your game troubled by that pesky close button at the top? Well, not anymore, with my DisableCloseButton-izer Gold Deluxe Special edition, you can disable it in an instant!&quot;<br/>-That&#39;s what it would sound like if I where one of those annoying salesmen on tv.<br/><br/>Now, this snippet might not be of use to everyone, but for my current project (improving my MapEditor), I really needed it.<br/>What this does is disable/gray out the close-button&#39;s from your window&#39;s titlebar, the titlebar&#39;s context-menu, and the taskbar&#39;s context-menu..<br/><br/>(See attachment)<br/><br/>Remember, people can still close your window by pressing ALT+F4, or going into the task-manager.<br/>You ofcourse always have the option to close it with gosu&#39;s &#39;close&#39; method.<br/><br/>All you have to do, is add my snippet (the bottom of the post) to your window class, and call it in your initialize method.<br/>Another important thing is to change self.caption at least once BEFORE calling disable_close_button.<br/>If you don&#39;t do this, the snippet won&#39;t be able to recognize the game-window.<br/><br/>=====<br/><br/>&#160; def disable_close_button<br/>&#160; &#160; case Config::CONFIG[&#39;host_os&#39;]<br/>&#160; &#160; when /mswin|windows/i<br/>&#160; &#160; &#160; @getWindow = Win32API.new(&#39;user32&#39;,&#39;FindWindowEx&#39;,&#39;%w(l,l,p,p)&#39;,&#39;L&#39;)<br/>&#160; &#160; &#160; @wnd = @getWindow.call(0,0,&quot;Gosu::Window&quot;,self.caption)<br/>&#160; &#160; &#160; @getMenu = Win32API.new(&#39;user32&#39;,&#39;GetSystemMenu&#39;,&#39;%w(p,p)&#39;,&#39;L&#39;)<br/>&#160; &#160; &#160; @menu = @getMenu.call(@wnd,0)<br/>&#160; &#160; &#160; @enable = Win32API.new(&#39;user32&#39;,&#39;EnableMenuItem&#39;,&#39;%w(p,i,i)&#39;,&#39;L&#39;)<br/>&#160; &#160; &#160; @enable.call(@menu,0xf060,0x0001)<br/>&#160; &#160; when /linux/i<br/>&#160; &#160; &#160; p &quot;DISABLE CLOSE: sorry, linux is not supported for this method&quot;<br/>&#160; &#160; when /sunos|solaris/i<br/>&#160; &#160; &#160; p &quot;DISABLE CLOSE: sorry, solaris is not supported for this method&quot;<br/>&#160; &#160; else<br/>&#160; &#160; &#160; p &quot;DISABLE CLOSE: sorry, your operating system is not supported for this method&quot;<br/>&#160; &#160; end<br/>&#160; end
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='attach_show.pl@aid=54.html'>disable_close_screenshot.png</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid591' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=591.html#pid591'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-17 15:34
+</div>
+<div class='ccl'>
+Nice snippet :)<br/>A more advanced method would be to subclass the Gosu window with a new WndProc and provide a new can_close? callback that is called on WM_CLOSE(?). This one can then ask for confirmation using MessageBox(). My old WinAPI tools always did something like that that. If I ever find the time to integrate Gosu with a windowing toolkit, I&#39;ll make sure that this is possible in a cleaner way.<br/><br/>What saddens me though is that you check for Solaris, but not for OS X ;) Maybe the same is possible there using RubyCocoa, but I couldn&#39;t find a nice looking API at a quick skimming over the instance and delegate methods.
+</div>
+</div>
+
+<div class='frm pst' id='pid595' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=595.html#pid595'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-17 19:50
+<span class='htt'>Edited</span> 2009-05-18 14:18
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;A more advanced method would be to subclass the Gosu window with a new WndProc and provide a new can_close? callback that is called on WM_CLOSE(?). This one can &gt;then ask for confirmation using MessageBox(). My old WinAPI tools always did something like that that. If I ever find the time to integrate Gosu with a windowing toolkit, I&#39;ll make &gt;sure that this is possible in a cleaner way.</p></blockquote><br/>Yeah, I&#39;d like it if you would do_it/look_into_it sometime .. because I have no idea how to do what you just said..<br/><br/>I&#39;ve read about the WM_CLOSE notification and stuff, but I have no idea how to ever implement this in the window class.<br/>I also wondered what a window could ever do to stop the window from closing... .. .. oh wait, I just read [url=http://msdn.microsoft.com/en-us/library/ms632617(VS.85).aspx]<a class='url' href='http://msdn.microsoft.com/en-us/library/ms632617(VS.85'>http://msdn.microsoft.com/en-us/library/ms632617(VS.85</a>).aspx[/url] again..<br/>So how would one override the WndProc (the equivalent to the msdn callback stuff right) ? What would be it&#39;s content?<br/><br/><blockquote><p>&gt;What saddens me though is that you check for Solaris, but not for OS X ;) Maybe the same is possible there using RubyCocoa, but I couldn&#39;t find a nice looking API at a quick &gt;skimming over the instance and delegate methods.</p></blockquote><br/>Yeah sorry, I ripped that case statement from some other site :)<br/>I also thought about OS(X) API&#39;s, but I don&#39;t know ANYTHING about that. Couldn&#39;t even find any relevant documentation.<br/><br/>Edit: Oh god, noooOO! Rubygame has stuff for this ! :(<br/>Rubygame is Gosu&#39;s enemy, right?<br/><br/>Ah well, off to bed
+</div>
+</div>
+
+<div class='frm pst' id='pid598' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=598.html#pid598'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-17 22:46
+</div>
+<div class='ccl'>
+I don&#39;t know how, but you would have to create a WndProc callback and retrieve the current one, then do the check in yours and pass everything else to the old WndProc. This is so common that I bet the Win32 extension has something to support that.<br/><br/>And the Rubygame guys are onle the bad ones when we&#39;re in the mid of a Ruby Weekend competition ;)<br/><br/>BTW, this board supports e-mail style quoting using &quot;&gt; &quot; :)
+</div>
+</div>
+
+<div class='frm pst' id='pid611' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=611.html#pid611'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-18 15:11
+</div>
+<div class='ccl'>
+Can you tell me a bit about how you spawn the gosu window?<br/>I think the answer lies there.. or didn&#39;t you have to specify any WindowProc?<br/><br/>I think the only way to do it, for me, is to use some dll.. but I really don&#39;t want to.
+</div>
+</div>
+
+<div class='frm pst' id='pid612' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=612.html#pid612'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-18 16:26
+</div>
+<div class='ccl'>
+The C++ file for that is:<br/><br/><a class='url' href='http://gosu.googlecode.com/svn/trunk/GosuImpl/WindowWin.cpp'>http://gosu.googlecode.com/svn/trunk/GosuImpl/WindowWin.cpp</a><br/><br/>But you shouldn&#39;t have to know about my WndProc to put your own one in :)
+</div>
+</div>
+
+<div class='frm pst' id='pid613' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=613.html#pid613'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-18 17:32
+<span class='htt'>Edited</span> 2009-05-18 17:38
+</div>
+<div class='ccl'>
+Wow, Gosu has a public source? .. too bad I don&#39;t know C++<br/>Therefore I don&#39;t have a clue how to insert a custom WindowProc.<br/><br/>Any chance of you implementing some kind of handle for me real quick? :D<br/>Hahah.. no rush, no rush<br/><br/>Also, can I deduce (?) that &quot;Gosu::Window&quot; is&#160; the name of the window class? (To improve my the reason_for_this_topic-snippet thing)<br/><br/>Also, I saw image-icon.. does Gosu support this?
+</div>
+</div>
+
+<div class='frm pst' id='pid614' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=614.html#pid614'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-18 18:05
+</div>
+<div class='ccl'>
+Oh right, the Window class is and always has been &quot;Gosu::Window&quot;. Of course, a totally gosu Gosu user could have several of them open at once ;)<br/><br/>Gosu will use the first icon resource it can find in the current EXE file. So if you want to give your game an icon, you can use ResourceHacker to hack it in there. Maybe should be part of the DeploymentOnWindows page or what it&#39;s called :) This is a rather new feature though.
+</div>
+</div>
+
+<div class='frm pst' id='pid615' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=615.html#pid615'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-18 19:11
+<span class='htt'>Edited</span> 2009-05-18 19:19
+</div>
+<div class='ccl'>
+Ah, yes, I updated the code with @getWindow.call(0,0,&quot;Gosu::Window&quot;,self.caption).<br/><br/>About the icon, so you would basically NEED RubyScript2Exe? :D<br/><br/>So, any chance of implementation of &lt;@attachement&gt;?<br/>Edit: In the screenshot: &quot;hook? close&quot; (and minimize) should be &quot;hook?(rb_close)&quot;, where rb_ means it&#39;s a users ruby code
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='attach_show.pl@aid=96.html'>wndproc.png</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid616' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=616.html#pid616'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-18 20:30
+</div>
+<div class='ccl'>
+Well, no EXE, no icon :)<br/><br/>And the attached proposal is exactly what could be done by overriding the WndProc. Maybe I&#39;ll give that a try later. I don&#39;t want to extend Gosu&#39;s interface in any direction before I touch Shoes :)
+</div>
+</div>
+
+<div class='frm pst' id='pid6872' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=6872.html#pid6872'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1019' >carno</a>
+<span class='htt'>Date</span> 2013-06-06 06:46
+</div>
+<div class='ccl'>
+I know it&#39;s been years but it would be nice to actually have this feature implemented :P
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=123.html#tid123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=123.html#tid123'>Extending Gosu</a> / Disable &#39;close&#39; button [WINDOWS]
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=614.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

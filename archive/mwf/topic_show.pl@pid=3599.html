@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3599 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu load_tiles into RMagick images?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3599' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=505.html#tid505'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=505.html#tid505'>Gosu Exchange</a> / Gosu load_tiles into RMagick images?
+</div>
+</div>
+
+<div class='frm pst' id='pid3598' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3598' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3598.html#pid3598'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=217.html' >Musfuut</a>
+<span class='htt'>Date</span> 2010-12-09 16:10
+<span class='htt'>Edited</span> 2010-12-10 02:48
+</div>
+<div class='ccl'>
+Hi, I&#39;ve been battling with trying to get something to work for the past couple days.<br/><br/>I&#39;m loading a series of tiles using Gosu::Image::load_tiles, this works perfectly. However I&#39;ve been trying different combination&#39;s of image.to_blob and Magick::Image.from_blob to try to convert the Gosu images into RMagick ones without an ounce of success. I was using TexPlay however I&#39;m trying to generate tiled images exceeding TexPlay size limits so I need to use RMagick for this.<br/><br/>To reiterate I&#39;d like to take a Gosu::Image and convert it to an Magick::Image.<br/><br/>Is this possible? Or do I need to make my own load_tiles method for RMagick and use that to load the image instead of Gosu?<br/><br/>Any help or advice is much appreciated!<br/><br/>Update:<br/>Well I have finally figured out a way to do it. However it requires converting each sub-pixel of data from the blob into an array.<br/><br/>rmagick_img = Magick::Image.constitute(4, 4, &quot;RGBA&quot;, @gosu_source_image.to_blob.split(//).map {|x| x[0]})<br/><br/>Any other solutions that I may be missing?<br/><br/>Update 2:<br/>I think I figured out a better way. Anyone can let me know if this is a stupid way to do this, but it works.<br/><br/>width, height = @gosu_image.columns, @gosu_image.rows<br/>rmagick_image = Magick::Image.new(width, height).import_pixels(0, 0, width, height, &quot;RGBA&quot;, @gosu_image.to_blob, Magick::CharPixel)<br/><br/>Seems to work like a charm. So now that I&#39;m not pulling my hair out let me just say, thank you for making, supporting, and promoting gosu :) Cheers!
+</div>
+</div>
+
+<div class='brn' id='brn3598'>
+<div class='frm pst' id='pid3599' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3599.html#pid3598'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3599.html#pid3599'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-12-10 12:39
+</div>
+<div class='ccl'>
+Hello,<br/><br/>I have used this snippet recently:<br/><br/><code><br/>class Gosu::Image<br/>&#160; def to_rmagick<br/>&#160; &#160; this = self<br/>&#160; &#160; Magick::Image.from_blob(to_blob) do<br/>&#160; &#160; &#160; self.format = &#39;RGBA&#39;<br/>&#160; &#160; &#160; self.depth = 8<br/>&#160; &#160; &#160; self.size = &quot;#{this.width}x#{this.height}&quot;<br/>&#160; &#160; end.first<br/>&#160; end<br/>end<br/></code><br/><br/>Good that you asked, now I had an opportunity to post it somewhere :)
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=505.html#tid505'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=505.html#tid505'>Gosu Exchange</a> / Gosu load_tiles into RMagick images?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3599.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

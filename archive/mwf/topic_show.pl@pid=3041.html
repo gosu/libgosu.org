@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3041 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Controlling Image Transparency</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3041' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=434.html#tid434'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=434.html#tid434'>Gosu Exchange</a> / Controlling Image Transparency
+</div>
+</div>
+
+<div class='frm pst' id='pid2967' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2967' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2967.html#pid2967'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-05 19:23
+</div>
+<div class='ccl'>
+Is there any way to control the transparency of a Gosu::Image object in Ruby?&#160; I&#39;m thinking of something analogous to the way layers of an image can be made more transparent in programs like photoshop or the GIMP.&#160; <br/><br/>As for a use case, I&#39;m trying to make a wall turn semi-transparent when the player&#39;s character walks behind it, thus allowing the player to maintain sight of his or her character.
+</div>
+</div>
+
+<div class='brn' id='brn2967'>
+<div class='frm pst' id='pid2969' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid2967'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2969' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2969.html#pid2969'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-08-05 20:17
+</div>
+<div class='ccl'>
+I think you can push the alpha into when you draw<br/><br/>image.draw(x, y, z, factor_x, factor_y, colour)<br/><br/>colour is by default 0xffffffff the first two &#39;ff&#39;s control the alpha (and the factors are 1 by default)<br/>so you could do<br/><br/>image.draw(x, y, z, 1, 1, 0x33ffffff)<br/>image.draw_rot(x, y, z, 0.5, 0.5, 1, 1, 0x33ffffff)<br/><br/>which would give you a semi transparent look.
+</div>
+</div>
+
+<div class='brn' id='brn2969'>
+<div class='frm pst' id='pid2970' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid2969'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2970' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2970.html#pid2970'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-05 20:39
+</div>
+<div class='ccl'>
+Thank you so much.&#160; Here I was, thinking I&#39;d have to do some complex trick with Texplay to get this to work.&#160; Classic example of over thinking I suppose ^_^; Yes, this is exactly what I was looking for.&#160; Thanks again for such a speedy reply.
+</div>
+</div>
+
+<div class='brn' id='brn2970'>
+<div class='frm pst' id='pid2973' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid2970'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2973' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2973.html#pid2973'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-05 23:38
+</div>
+<div class='ccl'>
+Note that you can even draw each corner of an image with a different alpha value by using #draw_as_quad. This makes it possible to add some smoothness to your effect if you are drawing the wall using a lot of tiles. Of course, the computation can be a bit ugly and even slow (in Ruby).
+</div>
+</div>
+
+<div class='brn' id='brn2973'>
+<div class='frm pst' id='pid3018' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid2973'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3018' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3018.html#pid3018'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-11 18:27
+</div>
+<div class='ccl'>
+What about this process makes it &quot;ugly and even slow&quot; in ruby.&#160; I assume that by singling out the ruby version, the problem does not occur in C++.&#160; Would it be possible to replace some part with a native ruby gem to make the process go faster?<br/><br/>(Side note, I really need to figure out how to do that, the more I think of it, the more useful it seems to be able to write native gems...)
+</div>
+</div>
+
+<div class='brn' id='brn3018'>
+<div class='frm pst' id='pid3019' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3018'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3019.html#pid3019'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-08-11 18:46
+</div>
+<div class='ccl'>
+I think the the &quot;ugly and slow&quot; refers the fact that game logic in ruby can sometimes get a little out of hand when it comes to games. Its quite amazing how nice ruby is when making a website, and goes quite mental in other areas.<br/><br/>If you are going to the hassle to make ruby gems for your game you may as well do the game in C++ :) Well just my opinion.
+</div>
+</div>
+
+<div class='frm pst' id='pid3022' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3018'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3022' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3022.html#pid3022'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-12 04:21
+</div>
+<div class='ccl'>
+If you want things to fade out smoothly in front of the player, depending on a tile&#39;s distance to them, you&#39;d need to use four transparency values per tile (four corners). You&#39;d have to calculate one transparency value per tile if you are good with reusing them.<br/><br/>It&#39;s not that the C++ code would be more beautiful, but my gut feeling says the Ruby code might take some CPU cycles while the C++ one won&#39;t. As soon as you start to have lots of loops and mathematical calculations, things usually get more dangerous.<br/><br/>That said, a smart Ruby implementation will probably be fast enough on common PCs, so I don&#39;t want to be too negative. Integrating Ruby with C++, on the other hand, is so ugly that it&#39;s worth avoiding IMHO :)
+</div>
+</div>
+
+<div class='brn' id='brn3022'>
+<div class='frm pst' id='pid3024' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3022'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3024' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3024.html#pid3024'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 11:21
+</div>
+<div class='ccl'>
+Yeah, that would probably be slow in Ruby, but you could cut the Gordian knot and just draw a big image over the tiles, centred on the player, which was transparent in the centre and fading to black at the edges. This would use more memory, to store the image, but it would remove the need for complex Ruby code. Whether it would actually be a lot faster is another question though. The secret to optimising Ruby, I think, is to offload everything you can to C using the _fewest_ Ruby commands, even if you wouldn&#39;t actually implement it that way in actual C because it would be inefficient. While you are there, why draw all your tiles every frame if you can draw them into a buffer image and only redraw when needed? Again, sacrificing memory for speed, but that might be a sacrifice that is worth making depending on what spec machine you are aiming for.<br/><br/>I also think it isn&#39;t a bad idea to program in Ruby and drop to C/C++ when you need to. A significant chunk of game code (e.g. options screens, saving the game, configuration, any stuff that just calls a binary gem to do all the work) probably isn&#39;t even processor limited, so why write all that in C when you can write it in Ruby and only drop down for actual bottlenecks?<br/><br/>Stuff like <a class='url' href='http://www.zenspider.com/ZSS/Products/RubyInline/Readme.html'>RubyInline</a> make integration about as easy as it can get, I expect.<br/><br/>Disclaimer: Although I have often considered dropping to C, I have never actually needed it <i>enough</i> to get it working :$
+</div>
+</div>
+
+<div class='brn' id='brn3024'>
+<div class='frm pst' id='pid3025' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3024'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3025' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3025.html#pid3025'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-13 12:25
+<span class='htt'>Edited</span> 2010-08-13 12:29
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; which was transparent in the centre and fading to black at the edges</p></blockquote><br/>If the surroundings are really only black, then this would be *much* better in terms of performance and even looks! If the player is behind a textured wall stuff gets uglier though, even in C with OpenGL.<br/><br/><blockquote><p>&gt; While you are there, why draw all your tiles every frame if you can draw them into a buffer image and only redraw when needed?</p></blockquote><br/>Gosu contains undocumented code for recording all sorts of rendering code into a single macro (vertex array). Advantage being that you can actually still rotate and resize the resulting Image seamlessly, kind of like a vector image. The speed-up factor for drawing large tiled map is 1 to 100 or something like that even in C++. The problem is that it only works if all images happen to be placed on the same internal OpenGL texture. I wish I could finish this but I have some game content to churn out first :)
+</div>
+</div>
+
+<div class='brn' id='brn3025'>
+<div class='frm pst' id='pid3026' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3025'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3026' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3026.html#pid3026'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 13:20
+</div>
+<div class='ccl'>
+Yeah, if objects that shouldn&#39;t be faded are behind objects that should be then my optimisation does go very wrong of course, as it would if you wanted line-of-sight shading in a 2D maze. Still, the point was that there are tricks to massively optimise things that aren&#39;t immediately obvious and/or that seem more complex than the &quot;slow&quot; method on first appearances.<br/><br/>I assume that undocumented code is just usable in C++, not Ruby? Hmm, if the OpenGL texture Gosu currently uses is arbitrary, then I guess it is mostly useless in a real app (you could check via tex_info if images shared the same texture, but if they didn&#39;t, I suppose you couldn&#39;t do anything to fix it). I have done a little raw OpenGL in the distant past, so I remember utilising nested macros to render complex object hierarchies and I did wonder if not macroing stuff was a major reason frameworks like Gosu/SDL were relatively slow.
+</div>
+</div>
+
+<div class='brn' id='brn3026'>
+<div class='frm pst' id='pid3027' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3026'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3027' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3027.html#pid3027'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-13 13:36
+<span class='htt'>Edited</span> 2010-08-13 13:38
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Still, the point was that there are tricks to massively optimise things that aren&#39;t immediately obvious and/or that seem more complex than the &quot;slow&quot; method on first appearances.</p></blockquote><br/>That is most definitely true! Also, those tricks are mad fun. If the wall would be single-colored, you could clip_to() the cutout field of view and make the illusion perfect.<br/><br/><blockquote><p>&gt; I assume that undocumented code is just usable in C++, not Ruby? Hmm, if the OpenGL texture Gosu currently uses is arbitrary, then I guess it is mostly useless in a real app (you could check via tex_info if images shared the same texture, but if they didn&#39;t, I suppose you couldn&#39;t do anything to fix it).</p></blockquote><br/>It is available in Ruby as Window#record { arbitrary_rendering_code_here; }, which returns a Gosu::Image, an interface of which I am very proud. ;) If you have less than 512x512 pixels of map tiles, you can just load your map tiles first and try it out (they should all be on texture 0).<br/><br/><blockquote><p>&gt; if not macroing stuff was a major reason frameworks like Gosu/SDL were relatively slow</p></blockquote><br/>There&#39;s only so much you can macro in 2D gamedev. All the objects, often simple quads, move relative to each other. People also animate or change tiles. Macro&#39;ing the (static parts of the) map is a huge boost for Ruby games but not a massive improvement for a common C++ platformer. Especially OpenGL ES seems to be a pretty bad match for 2D games to me. Then again, 3D HW is unavoidable, and I think Gosu and other libs are doing pretty well at working *with* rather than *against* OpenGL. The SDL is the oddball example though, because its interface just doesn&#39;t suit any common hardware anymore :)
+</div>
+</div>
+
+<div class='brn' id='brn3027'>
+<div class='frm pst' id='pid3029' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3027'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3029' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3029.html#pid3029'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 14:04
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; If the wall would be single-colored, you could clip_to() the cutout field of view and make the illusion perfect.</p></blockquote><br/>Sorry, I don&#39;t understand why the wall would need to be single-coloured to be affected by being darkened by blitting semi-transparent black on top. I do that at the moment, though you could argue it isn&#39;t precisely the same effect you can get by altering the corner colours when rendering a quad. I&#39;m just using flat black though, in order to fade out stuff in the background (Oops, I suddenly realised I could just alter the draw colour of each thing that is faded out and get the same effect!).<br/><br/><blockquote><p>&gt; If you have less than 512x512 pixels of map tiles, you can just load your map tiles first and try it out (they should all be on texture 0).</p></blockquote><br/>Unfortunately, my assets are user-edited, so quite arbitrary in number and sizes. Nice to know the option is there for other projects though (or the original poster). Hmm, just thought: Can I macro drawing commands as well? They don&#39;t use textures, do they? So texture-sharing wouldn&#39;t matter, would it?<br/><br/><blockquote><p>&gt;&#160; All the objects, often simple quads, move relative to each other.</p></blockquote><br/>Actually, that would suit me, since each of my moving objects is made up of multiple non-animating images (essentially, each discrete object is made up of an arbitrary number of image layers; so a man would be head layer, body layer, arms layer, etc). I was planning to cache the combined image and render that to speed things up. Still, since the user can make up an object out of an arbitrary number of layers of arbitrary size, no guarantee they would fit on a single GL texture even if it could be made to work that way.
+</div>
+</div>
+
+<div class='brn' id='brn3029'>
+<div class='frm pst' id='pid3036' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3029'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3036' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3036.html#pid3036'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-13 19:15
+<span class='htt'>Edited</span> 2010-08-13 19:18
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Sorry, I don&#39;t understand why the wall would need to be single-coloured to be affected by being darkened by blitting semi-transparent black on top.</p></blockquote><br/>I understood that the OP wanted to make an existing foreground wall transparent, not darker, when the player moves behind it. Without any smooth-ness, that&#39;s no problem. If the wall is single-colored, you could use your idea and just draw a same-colored texture with a round, smooth cutout over the player and clip it to the old wall&#39;s boundaries. At least that&#39;s how I understood the idea :)<br/><br/><blockquote><p>&gt; Can I macro drawing commands as well? They don&#39;t use textures, do they? So texture-sharing wouldn&#39;t matter, would it?</p></blockquote><br/>Hmmm, I think they do not work yet. Since they *require* that no texture is selected, they will have the same texturing problem: they don&#39;t mix with anything else. I was thinking about putting a small white pixel on every texture so I can use that to do single-colored primitives no matter which texture is currently selected.
+</div>
+</div>
+
+<div class='brn' id='brn3036'>
+<div class='frm pst' id='pid3037' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3036'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3037.html#pid3037'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 19:23
+</div>
+<div class='ccl'>
+Oops, yes, I had completely forgotten what the original post was about on the way. Sorry for adding confusion!<br/><br/>Adding a white pixel could make sense to allow draw macros; it wouldn&#39;t help me a massive amount, but I could see it being very useful in certain situations.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3038' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3029'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3038' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3038.html#pid3038'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-13 19:30
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I was planning to cache the combined image and render that to speed things up. </p></blockquote><br/>Most of your discussion on this topic has gone way over my head in the last 5 posts or so ^_^; However, I am using much the same system in my game, having the different parts of a person exist on different &quot;layers&quot; that are composited at runtime.&#160; Though, mine are of a set size, so caching the composite image as a separate Gosu::Image using Texplay works fine for me.<br/><br/><blockquote><p>&gt;&gt; which was transparent in the centre and fading to black at the edges<br/>&gt;<br/>&gt;If the surroundings are really only black, then this would be *much* better in terms of performance and even looks! If the player is behind a textured wall stuff gets &gt;uglier though, even in C with OpenGL.</p></blockquote><br/>Would this process be merely ugly in Ruby? or would it be slow as well? I&#39;m making a 2D game both in order to reduce computational complexity, as well as allow the game to be played to &quot;decent&quot; hardware.&#160; By this I mean anything with an integrated graphics card that has been released relatively recently.&#160; <br/><br/>Also, I would like to use textured walls, if at all possible.&#160; In light of this, would it be better to just use #draw_as_quad or the image-which-fades-to-black method?
+</div>
+</div>
+
+<div class='brn' id='brn3038'>
+<div class='frm pst' id='pid3039' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3039' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3039.html#pid3039'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 19:50
+</div>
+<div class='ccl'>
+My suggestion was answering a different question, because my ability to read and comprehend is lacking , so you can safely ignore it. I&#39;d somehow convinced myself you were trying to draw the background darker away from the player, such as if they were carrying a lamp in a dungeon. Don&#39;t ask...<br/><br/>Actually, I just had an epiphany, which was to draw everything normally, then draw the player a second time on top of everything at half normal alpha! This would have no effect when out in the open, but would make the player appear to be showing through the occluding wall. Oh well, just another option, though it wouldn&#39;t make the foreground object look transparent properly (you&#39;d see the player through it, but not the background).<br/><br/><blockquote><p>&gt; Though, mine are of a set size, so caching the composite image as a separate Gosu::Image using Texplay works fine for me.</p></blockquote><br/>I could do that too, but either I have the problem of having a lot of very large images created at the start and take a hit to FPS to render them at full size even if the actual object is 10x10 pixels or create the required size images when they are needed which, due to Texplay image creation being very slow, would slow down level changes significantly. Oh well, I&#39;ll work something out, I&#39;m sure.
+</div>
+</div>
+
+<div class='brn' id='brn3039'>
+<div class='frm pst' id='pid3042' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3039'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3042' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3042.html#pid3042'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-13 21:00
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; due to Texplay image creation being very slow</p></blockquote><br/>It is painfully slow isn&#39;t it? Glad it&#39;s not just me.&#160; I have to find away around creating so many images in my game (that part is unrelated to this but... whatever).&#160; It&#39;s so bad the framerate drops to 5fps in the worst case.<br/><br/><blockquote><p>&gt; such as if they were carrying a lamp in a dungeon.</p></blockquote><br/>Actually, I might do that later, so thank you for that suggestion.<br/><br/><blockquote><p>&gt; Actually, I just had an epiphany, which was to draw everything normally, <br/>&gt; then draw the player a second time on top of everything at half normal alpha!</p></blockquote><br/>This sounds cool, though it may or may not work for me.&#160; I&#39;ll consider it, at least.&#160; Thank you.<br/><br/><blockquote><p>&gt; ...I have the problem of having a lot of very large images created at the start...</p></blockquote><br/>Can&#39;t you do some sort of amortized cost thing and spread out the creation of images? Or you could cache them on the hard drive if you&#39;re going to use them on subsequent runs of the application.&#160; I&#39;m sure you&#39;ve already though of this, but I thought I&#39;d mention it just in case.
+</div>
+</div>
+
+<div class='brn' id='brn3042'>
+<div class='frm pst' id='pid3048' style='margin-left: 42%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3042'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3048.html#pid3048'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-14 08:57
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Can&#39;t you do some sort of amortized cost thing and spread out the creation of images? Or you could cache them on the hard drive if you&#39;re going to use them on subsequent runs of the application.</p></blockquote><br/>The problem with caching them on the disk is that once you use Texplay in your app, all creation of images is slowed down to cache the image ready for Texplay manipulation, whether they are created as blank images or loaded from the disk. I could disable caching on loaded images though, via a bit of Texplay monkey-patching, since they wouldn&#39;t be being further composited. Another problem comes when new level data is sent over the wire, since I&#39;d need to send all the composited images as well as the layer images, rather than just send the layers and composite in a new image at the client-side (bandwidth goes up significantly then). Think I&#39;ll start up another thread about this issue of slow image creation/loading...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3040' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3040' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3040.html#pid3040'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-13 20:47
+</div>
+<div class='ccl'>
+I wonder if you ever tried to save the composite player image or sprite in a file after the player selected his or her favorite combination so the game only needs to read the file to display it on screen.
+</div>
+</div>
+
+<div class='brn' id='brn3040'>
+<div class='frm pst' id='pid3041' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3041.html#pid3040'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3041.html#pid3041'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-08-13 20:58
+</div>
+<div class='ccl'>
+That&#39;s the next step for me, actually.&#160; But I&#39;m having a problem during image compositing.&#160; Still, that&#39;s a problem for another thread, so I think I&#39;ll go start another one.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=434.html#tid434'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=434.html#tid434'>Gosu Exchange</a> / Controlling Image Transparency
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3041.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

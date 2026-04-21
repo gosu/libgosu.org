@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2748 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Input on iOS</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2748' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=408.html#tid408'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid5'>Gosu</a> / <a href='board_show.pl@tid=408.html#tid408'>Gosu on iPad, iPhone &amp; iPod Touch</a> / Input on iOS
+</div>
+</div>
+
+<div class='frm pst' id='pid2730' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2730' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2730.html#pid2730'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-18 07:13
+<span class='htt'>Edited</span> 2010-07-16 17:08
+</div>
+<div class='ccl'>
+The current model for input is now like this:<br/><br/>Gosu::Input::currentTouches returns a vector of the touches currently on the surface.<br/><br/>Gosu::Window::touchBegan/touchMoved/touchEnded(Gosu::Touch touch) are the callback functions where you can handle touches. They are like buttonDown and buttonUp, except they don&#39;t take a Gosu::Button but a Gosu::Touch.<br/><br/>Gosu::Touch contains coordinates and a &quot;void* id&quot; flag. This is used to identify touches while they last, i.e. the same finger will get the same &quot;id&quot; until it is released. Use this to remember which touch started when and where if you need it.<br/><br/>For example, a use case might be writing a button. The button has a boost::optional&lt;Gosu::Touch&gt; member variable.<br/>• In touchBegan, if there is no current touch, you check if the touch is over the button. If so, the button remembers it by copying the Gosu::Touch into the member.<br/>• In touchMoved, you check if the id of the touch is the same as the remembered one. If so, you update the stored Touch.<br/>• In touchEnded, you compare the id against that of the remembered touch. If it is the same, you clear out the member variable. If the touch was close enough to the button when releasing, you trigger an event.<br/>• In the button&#39;s rendering code, you can check if there is a touch and it is still close enough to determine whether the button should be drawn pressed down.<br/><br/>Gosu::Input::setMouseFactors (actually undocumented) sets two factors that will also be applied to all touches. You can use this, and the similarly undocumented Gosu::Graphics::setResolution to virtually scale and existing game down to iPhone size. They both might be replaced by matrices soon, though.
+</div>
+</div>
+
+<div class='brn' id='brn2730'>
+<div class='frm pst' id='pid2731' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2730'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2731.html#pid2731'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-18 07:14
+<span class='htt'>Edited</span> 2010-06-18 07:40
+</div>
+<div class='ccl'>
+Note that touchBegan only takes a single touch (Touch touch) now. A couple commits ago it took a vector of touches (const Touches&amp; touches).<br/><br/>THIS SILENTLY BREAKS CODE. Your touchesBegan function in Window is not going to be called anymore. Blame C++ for not having an &quot;override&quot; keyword that complains when the base class removes a virtual function. :|
+</div>
+</div>
+
+<div class='frm pst' id='pid2732' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2730'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2732' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2732.html#pid2732'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-06-18 08:51
+</div>
+<div class='ccl'>
+ah this makes a lot more sense to me. My iPad arrives sometime today so I can give this a shot tonight or on the weekend.
+</div>
+</div>
+
+<div class='brn' id='brn2732'>
+<div class='frm pst' id='pid2733' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2732'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2733.html#pid2733'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-18 14:51
+</div>
+<div class='ccl'>
+Grats :) If your game needs to differentiate between iPhone, iPad and iPhone4, you can already use Gosu::screenWidth() and Gosu::screenHeight() which should work as expected.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid2747' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2730'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2747' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2747.html#pid2747'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-06-20 06:10
+</div>
+<div class='ccl'>
+I&#39;ll get there in the end with this.<br/><br/>calling windowInstance().input().currentTouches(); brings back the error &quot;class Gosu::Input has no member named &#39;currentTouches&#39;<br/><br/>am I calling this wrong?
+</div>
+</div>
+
+<div class='brn' id='brn2747'>
+<div class='frm pst' id='pid2748' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2747'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2748' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2748.html#pid2748'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-06-20 07:54
+</div>
+<div class='ccl'>
+I got it I had not updated the Gosu.framework, so the headers where all wrong.<br/><br/>however in doing so I got another error complaining about Gosu/Version.hpp not existing called from Gosu.hpp. I just commented the line out and it all works fine now.
+</div>
+</div>
+
+<div class='brn' id='brn2748'>
+<div class='frm pst' id='pid2749' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2748'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2749.html#pid2749'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-20 10:44
+</div>
+<div class='ccl'>
+Oops—I updated the Xcode project so that Version.hpp should now be included if anyone should ever need it for any weird compatibility workarounds. :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid2801' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2730'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2801' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2801.html#pid2801'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-07-16 15:01
+</div>
+<div class='ccl'>
+Dear huge Gosu Touch userbase :D,<br/><br/>Any objections towards kicking out the touchMoved event? I really don&#39;t see the point. You might as well just poll in a Gosu-based application.
+</div>
+</div>
+
+<div class='brn' id='brn2801'>
+<div class='frm pst' id='pid2803' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2801'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2803' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2803.html#pid2803'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-07-16 15:51
+</div>
+<div class='ccl'>
+erm, well I dont mind :D
+</div>
+</div>
+
+<div class='brn' id='brn2803'>
+<div class='frm pst' id='pid2804' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2803'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2804' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2804.html#pid2804'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-07-16 16:51
+<span class='htt'>Edited</span> 2010-07-16 17:08
+</div>
+<div class='ccl'>
+Never mind. I actually realized I had an elegant way to use it somewhere in my codebase. Documented how I do buttons as an example—I actually like the touchMoved method for that.
+</div>
+</div>
+
+<div class='brn' id='brn2804'>
+<div class='frm pst' id='pid2806' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2748.html#pid2804'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2806.html#pid2806'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-07-16 18:49
+</div>
+<div class='ccl'>
+ok, we like that method now :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=408.html#tid408'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid5'>Gosu</a> / <a href='board_show.pl@tid=408.html#tid408'>Gosu on iPad, iPhone &amp; iPod Touch</a> / Input on iOS
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2748.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

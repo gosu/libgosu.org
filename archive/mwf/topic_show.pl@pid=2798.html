@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2798 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Post processing effects for Ruby</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2798' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=236.html#tid236'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=236.html#tid236'>Extending Gosu</a> / Post processing effects for Ruby
+</div>
+</div>
+
+<div class='frm pst' id='pid1572' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1572.html#pid1572'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2009-09-20 17:50
+</div>
+<div class='ccl'>
+Here&#39;s my effort at porting mathias_&#39; <a class='url' href='topic_show.pl@tid=125.html'>PostProcessing</a> library from C++ to Ruby. Here is some example code:<br/><br/><code>require &#39;gosu&#39;<br/>require &#39;shader&#39;<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; ...<br/>&#160; &#160; <br/>&#160; &#160; @blur = Shader.new(self, &#39;shader/radialblur.fs&#39;)<br/>&#160; &#160; <br/>&#160; &#160; @blur[&#39;BlurFactor&#39;] = 0.15<br/>&#160; &#160; @blur[&#39;BrightFactor&#39;] = 1.0<br/>&#160; &#160; @blur[&#39;origin_x&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;origin_y&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;passes&#39;] = 16<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; ...<br/>&#160; &#160; <br/>&#160; &#160; @blur.apply<br/>&#160; end<br/>end</code><br/><br/>Unfortunately, there seem to be some bugs, possibly related to OS X. That&#39;s why I&#39;d like you to try out some of the example scripts I&#39;ve attached and post any errors along with your OS and Ruby version. I hope to be fixing those issues soon but atm I feel kinda clueless.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/72/1572/gosu-shader.zip'>gosu-shader.zip</a>  (9k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1573' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1573.html#pid1573'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=112' >deps</a>
+<span class='htt'>Date</span> 2009-09-20 19:55
+</div>
+<div class='ccl'>
+This sounds awesome, but sadly I can&#39;t try it out. My ruby setup is a bit broken after upgrading to osx 10.6, and I have some problems reinstalling the ruby-opengl gem. I don&#39;t get any errors during the reinstall, but when I try to run one of the examples, it complains that it can&#39;t find a compatible gl.bundle, or something along those lines...<br/>(Also, I had to add require &#39;rubygems&#39; to the top of the example to run it. It looks like you don&#39;t have to. What&#39;s the secret? ;))
+</div>
+</div>
+
+<div class='frm pst' id='pid1575' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1575.html#pid1575'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-21 01:47
+</div>
+<div class='ccl'>
+As a quick workaround, you can maybe try to run the examples with that arch thingie:<br/><br/><a class='url' href='topic_show.pl@pid=1425.html#pid1425'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1425#pid1425</a><br/><br/>Also, I guess Ruby 1.9 doesn&#39;t need the rubygems require anymore, but I also have to retype it every time, still being on 1.8.6 by default ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid1577' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1577.html#pid1577'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2009-09-21 07:03
+</div>
+<div class='ccl'>
+I&#39;m on Ruby 1.8.6 on Windows and I&#39;ve never needed the <code>require &#39;rubygems&#39;</code> for Gosu/OpenGL to work. As apparently everyone else does, I&#39;ve added it to the examples now.
+</div>
+</div>
+
+<div class='frm pst' id='pid1578' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1578.html#pid1578'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-09-21 08:30
+</div>
+<div class='ccl'>
+-AmIMeYet here-<br/><br/>It all depends on where you place your files..<br/><br/>I have my shared .rb&#39;s and .so as &#39;&lt;ruby lib dir&gt;/site_ruby/1.9.1/file.ext&#39;. If you use rubygems, they get placed as &#39;&lt;ruby lib dir&gt;/gems/file.ext&#39; or something.<br/>You can also place them in the apps working directory ofcourse.<br/><br/>Everything I compile from source is automatically placed in site_ruby, and that&#39;s where I put those that aren&#39;t automagically placed (like Gosu, if I recall correctly) too.<br/><br/>Is this not the same as 1.8.6?.. I thought it was.. anyone willing to try? :D
+</div>
+</div>
+
+<div class='frm pst' id='pid1579' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1579.html#pid1579'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=112' >deps</a>
+<span class='htt'>Date</span> 2009-09-21 11:13
+</div>
+<div class='ccl'>
+Using arch I got test_pixelate to work, but the other two didn&#39;t. They got this error:<br/><br/>deps$ arch -i386 ruby test_multiple.rb <br/>./shader.rb:60:in <code>glUseProgram&#39;: invalid operation (Gl::Error)<br/>&#160; from ./shader.rb:60:in </code>[]=&#39;<br/>&#160; from ./shader.rb:59:in <code>gl&#39;<br/>&#160; from ./shader.rb:59:in </code>[]=&#39;<br/>&#160; from test_multiple.rb:34:in <code>initialize&#39;<br/>&#160; from test_multiple.rb:91:in </code>new&#39;<br/>&#160; from test_multiple.rb:91<br/><br/>I&#39;m on a macbook with intel graphics, so I&#39;m not really surprised if something isn&#39;t supported. :P<br/>Ruby 1.8.7
+</div>
+</div>
+
+<div class='frm pst' id='pid1580' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1580.html#pid1580'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-09-21 12:48
+</div>
+<div class='ccl'>
+im on linux using ruby 1.9.1 and i get this error, for all examples:<br/><br/>$ ruby19 test_pixelate.rb <br/>/home/john/ruby/tests/gosu-shader/shader.rb:87:in <code>glTexImage2D&#39;: wrong argument type String (expected Struct) (TypeError)<br/>&#160; from /home/john/ruby/tests/gosu-shader/shader.rb:87:in </code>create_canvas&#39;<br/>&#160; from /home/john/ruby/tests/gosu-shader/shader.rb:23:in <code>initialize&#39;<br/>&#160; from test_pixelate.rb:36:in </code>new&#39;<br/>&#160; from test_pixelate.rb:36:in <code>initialize&#39;<br/>&#160; from test_pixelate.rb:79:in </code>new&#39;<br/>&#160; from test_pixelate.rb:79:in `&lt;main&gt;&#39;
+</div>
+</div>
+
+<div class='frm pst' id='pid1581' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1581.html#pid1581'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=115' >adamsanderson</a>
+<span class='htt'>Date</span> 2009-09-22 23:20
+</div>
+<div class='ccl'>
+Hey thanks for making this, I&#39;ve really been wanting something along these lines.
+</div>
+</div>
+
+<div class='frm pst' id='pid1582' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1582.html#pid1582'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=115' >adamsanderson</a>
+<span class='htt'>Date</span> 2009-09-23 15:17
+</div>
+<div class='ccl'>
+@deps:&#160; I&#39;m on a macbook pro, on the stock ruby 1.8.7 with a GeForce 8600M GT and I get a similar results.&#160; For what it&#39;s worth I needed to install the ruby-opengl gem to get it up and running.
+</div>
+</div>
+
+<div class='frm pst' id='pid1583' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1583.html#pid1583'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2009-09-23 16:45
+</div>
+<div class='ccl'>
+Thank you for your error reports so far. As my Macbook Pro will arrive in two days (yay :D), I&#39;ll hopefully be able to reproduce the bug and look into it then.<br/><br/>Interestingly, a friend of mine running Win XP with Ruby 1.8.6 installed through the one-click installer (like me) had no problems running all three examples. So, maybe it&#39;s the one-click installer&#39;s fault. On the other hand, I installed Ruby 1.9.1 on Win Vista along with fresh gosu and ruby-opengl Gems, and also had no problems.
+</div>
+</div>
+
+<div class='frm pst' id='pid1584' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1584.html#pid1584'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2009-09-23 17:06
+</div>
+<div class='ccl'>
+Hey, this is theoretically totally awesome. OK, in practice it&#39;s awesome too, but I&#39;ve got the same problem as deps above when running <code>test_multiple.rb</code> and&#160; <code>test_contrast.rb</code>. <code>test_pixelate.rb</code> runs with no complaints.<br/><br/>My setup is Ruby 1.9.1 revision 24175 from MacPorts, ruby-opengl 0.60.1 (freshly updated just five minutes ago) and Mac OS X 10.6.1. Everything is compiled for x86_64.<br/><br/>I have no problems with Gosu and doing raw OpenGL calls has worked for me as well. I&#39;m on a MacBook Pro with one of those fancy GPUs with, like, its memory and stuff, so I don&#39;t think the hardware should be a problem. Actually, OS X emulates unsupported calls on the less capable GPUs with dynamically loaded LLVM routines, so even there it shouldn&#39;t be a problem (except maybe poor performance).<br/><br/>Edited for formatting. My brain was in Markdown mode.
+</div>
+</div>
+
+<div class='frm pst' id='pid1587' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1587.html#pid1587'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2009-09-26 16:31
+</div>
+<div class='ccl'>
+Apparently, the shader files get compiled differently depending on the platform and bindings (C++ or Ruby). For example, on my Macbook Pro, I got the contrast shader to work after changing<br/><code>vec4 color = texture2D(tex, gl_TexCoord[0]);</code><br/>to<br/><code>vec4 color = texture2D(tex, gl_TexCoord[0].xy);</code><br/><br/>For the radialblur shader, I needed to add some typecasts, that apparently worked implicitly before, i.e.:<br/><code>float scale = 1.0 - BlurFactor * (float(i) / (passes - 1));</code><br/>because passes is an int, needed to be changed to<br/><code>float scale = 1.0 - BlurFactor * (float(i) / float(passes - 1));</code><br/><br/>I successfully tested the fixed shaders so far with Ruby 1.8.7 on my MPB with Snow Leopard, as well with Ruby 1.8.6 on Windows Vista. If you&#39;d like to give it a try, you can download the updated attachment from my <a class='url' href='topic_show.pl@pid=1572.html#pid1572'>original post</a>. I&#39;m still very confused as why the shaders are compiled differently between platforms.
+</div>
+</div>
+
+<div class='frm pst' id='pid2208' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2208.html#pid2208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-03-12 18:24
+</div>
+<div class='ccl'>
+Hi,<br/>is it possible to create something like Adobe Pixel Bender on the base of this?<br/>For those who don&#39;t know: Pixel Bender is a tool for creating image effects in Adobe Flash.<br/>You write a small script with certain parameters and your image will be rendered. For example &quot;Invert RGB&quot;:<br/><br/>/*****************************************************************************<br/> *<br/> * Copyright (C) 2008 Adobe Systems Incorporated<br/> * All Rights Reserved.<br/> *<br/> * NOTICE:&#160; All information contained&#160; herein is,&#160; and remains the property of<br/> * Adobe Systems Incorporated and its suppliers, if any.&#160; The intellectual and<br/> * technical&#160; concepts&#160; contained&#160; herein&#160; are&#160; proprietary&#160; to&#160; Adobe Systems<br/> * Incorporated&#160; and&#160; its suppliers&#160; and may&#160; be covered&#160; by U.S.&#160; and Foreign<br/> * Patents, patents in process, and are protected by trade secret or copyright<br/> * law.&#160; Dissemination of this information or reproduction of this material is<br/> * strictly forbidden&#160; unless prior&#160; written permission is obtained from Adobe<br/> * Systems Incorporated.<br/> *<br/> *****************************************************************************/<br/><br/>&lt;languageVersion: 1.0;&gt;<br/> <br/>// invertRGB: A simple example to demonstrate how to invert the RGB color <br/>//&#160; &#160; &#160; &#160; &#160; &#160; space.<br/>kernel invertRGB<br/>&lt;&#160;&#160; namespace : &quot;AIF&quot;;<br/>&#160; &#160; vendor : &quot;Adobe Systems, Inc.&quot;;<br/>&#160; &#160; version : 2;<br/>&#160; &#160; description : &quot;Invert the Red, Green and Blue channels of an image&quot;; &gt;<br/>{<br/>&#160; &#160; input image4 src;<br/>&#160; &#160; output float4 dst;<br/>&#160; &#160; <br/>&#160; &#160; // evaluatePixel(): The function of the filter that actually does the <br/>&#160; &#160; //&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; processing of the image.&#160; This function is called once <br/>&#160; &#160; //&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; for each pixel of the output image.<br/>&#160; &#160; void<br/>&#160; &#160; evaluatePixel()<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; // Obtain the input pixel color<br/>&#160; &#160; &#160; &#160; float4 inputColor = sampleNearest(src, outCoord());<br/><br/>&#160; &#160; &#160; &#160; // Calculate (1 - channel) for each of the RGB channels<br/>&#160; &#160; &#160; &#160; dst.rgb = float3(1.0, 1.0, 1.0) - inputColor.rgb;<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; // set the alpha value equal to the alpha of the input<br/>&#160; &#160; &#160; &#160; dst.a = inputColor.a;<br/>&#160; &#160; }<br/>}<br/><br/>I&#39;d try to do this on my own but I don&#39;t know anything about OpenGL and I don&#39;t know a tutorial about it (in Ruby).
+</div>
+</div>
+
+<div class='frm pst' id='pid2209' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2209.html#pid2209'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-12 20:44
+</div>
+<div class='ccl'>
+Yeah, I would saw from a quick glance that Adobe Pixel Bender is a thin layer on shader hardware.
+</div>
+</div>
+
+<div class='frm pst' id='pid2210' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2210.html#pid2210'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-03-12 21:35
+</div>
+<div class='ccl'>
+So this means &quot;yes&quot;? :)<br/>Is there a tutorial for opengl in gosu or do I have to wait for someone satisfying my wish? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2213' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2213.html#pid2213'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-13 03:23
+</div>
+<div class='ccl'>
+Well, you could use the very library posted in this thread, the language for shaders is well-documented outside of Gosu (GLSL etc.). Gosu has an example for OpenGL integration in <code>examples/OpenGLIntegration.rb</code> though.
+</div>
+</div>
+
+<div class='frm pst' id='pid2214' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2214.html#pid2214'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-03-13 10:30
+</div>
+<div class='ccl'>
+I know the OpenGL example but it is not a tutorial. There is not a single comment explaining OpenGL&#39;s functions and the online doc doesn&#39;t really help me.
+</div>
+</div>
+
+<div class='frm pst' id='pid2215' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2215.html#pid2215'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2010-03-13 11:31
+</div>
+<div class='ccl'>
+Hi,<br/><br/>actually, this is what the Post Processing effects are already using! If you take a look at the .fs files that come with the library, you&#39;ll see that all effects are described using a scripting language (apparently very similar to Adobe Pixel Bender) called GLSL. This enables you to create your own Post Processing effects. GLSL&#39;s syntax is C-like and fairly simple; I&#39;m sure you&#39;ll find some good tutorials online or find out by toying around with the existing .fs scripts.
+</div>
+</div>
+
+<div class='frm pst' id='pid2216' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2216.html#pid2216'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-03-13 15:01
+</div>
+<div class='ccl'>
+Okay... I tried a blur filter now but all I get is a screen full in black :/<br/>uniform sampler2D tex;<br/>uniform int radius;<br/><br/>void main(void)<br/>{<br/>&#160; if (radius == 0) {<br/>&#160; &#160; gl_FragColor = texture2D(tex, gl_TexCoord[0]);<br/>&#160; &#160; return;<br/>&#160; }<br/>&#160; float x = gl_TexCoord[0].x;<br/>&#160; float y = gl_TexCoord[0].y;<br/>&#160; vec4 color = vec4(0.0, 0.0, 0.0, 0.0);<br/>&#160; int i = 0;<br/>&#160; for (int n = int(x)-radius; n &lt; (int(x)+radius); n++) {<br/>&#160; &#160; for (int m = int(y)-radius; m &lt; (int(y)+radius); m++) {<br/>&#160; &#160; &#160; color += texture2D(tex, vec2(n, m));<br/>&#160; &#160; &#160; i++;<br/>&#160; &#160; }<br/>&#160; }<br/>&#160; gl_FragColor = color / i;<br/>}<br/><br/>Where is my mistake?
+</div>
+</div>
+
+<div class='frm pst' id='pid2221' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2221.html#pid2221'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2010-03-14 13:50
+</div>
+<div class='ccl'>
+The Gosu pixel-related coordinates are not used in the shader programs. Rather, they are given as floats where (0.0, 0.0) is the bottom left and (1.0, 1.0) is the top right corner of the screen. If you want pixel-accurate operations, you&#39;ll need to convert between screen and shader coords. So, maybe you&#39;ll want to pass your screen dimensions to the shader program through unities, or just hard-code them in for better performance.
+</div>
+</div>
+
+<div class='frm pst' id='pid2222' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2222.html#pid2222'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-03-14 15:46
+</div>
+<div class='ccl'>
+uniform sampler2D tex;<br/>uniform float radius;<br/>uniform float width;<br/>uniform float height;<br/><br/>void main(void)<br/>{<br/>&#160; if (radius == 0.0) {<br/>&#160; &#160; gl_FragColor = texture2D(tex, gl_TexCoord[0]);<br/>&#160; &#160; return;<br/>&#160; }<br/>&#160; float x = gl_TexCoord[0].x;<br/>&#160; float y = gl_TexCoord[0].y;<br/>&#160; vec4 color = vec4(0.0, 0.0, 0.0, 0.0);<br/>&#160; float wradius = radius/width;<br/>&#160; float hradius = radius/height;<br/>&#160; int i = 0;<br/>&#160; for (float n = x-wradius; n &lt; x+wradius; n++) {<br/>&#160; &#160; for (float m = y-hradius; m &lt; y+hradius; m++) {<br/>&#160; &#160; &#160; color += texture2D(tex, vec2(n, m));<br/>&#160; &#160; &#160; i++;<br/>&#160; &#160; }<br/>&#160; }<br/>&#160; gl_FragColor = color / i;<br/>}<br/><br/>I still have an error somewhere :(
+</div>
+</div>
+
+<div class='frm pst' id='pid2223' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2223.html#pid2223'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2010-03-14 22:39
+</div>
+<div class='ccl'>
+I think your error is that <code>n</code> and <code>m</code> are still incremented by whole number values. This code works for me:<br/><br/><code>uniform sampler2D tex;<br/>uniform int radius;<br/>uniform int width;<br/>uniform int height;<br/><br/>void main(void) {<br/>&#160; vec4 color = 0.0;<br/>&#160; int i = 0;<br/>&#160; for(int x = -radius; x &lt;= radius; x++) {<br/>&#160; &#160; for(int y = -radius; y &lt;= radius; y++) {<br/>&#160; &#160; &#160; vec2 offset = vec2(float(x)/width, float(y)/height);<br/>&#160; &#160; &#160; color += texture2D(tex, gl_TexCoord[0] + offset);<br/>&#160; &#160; &#160; i++;<br/>&#160; &#160; }<br/>&#160; }<br/>&#160; gl_FragColor = color / i;<br/>}</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid2233' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2233.html#pid2233'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-03-16 17:38
+</div>
+<div class='ccl'>
+Thanks, it works :)<br/>I think I can do some other filters on my own now... if I can&#39;t I&#39;ll ask you :p<br/>One last question, is it possible to &quot;shader&quot; just a certain image and not the full screen?
+</div>
+</div>
+
+<div class='frm pst' id='pid2235' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2235.html#pid2235'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2010-03-16 18:30
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;is it possible to &quot;shader&quot; just a certain image and not the full screen?</p></blockquote><br/>Currently, no; it&#39;s on my ToDo. It is possible to layer shaders and Image.draw&#39;s, though, for example<br/>- draw game scene<br/>- apply post processing<br/>- draw HUD (remains unaltered by the shader)
+</div>
+</div>
+
+<div class='frm pst' id='pid2797' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2797' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2797.html#pid2797'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=192.html' >youpi</a>
+<span class='htt'>Date</span> 2010-07-16 08:30
+</div>
+<div class='ccl'>
+Hi! I&#39;ve been trying out Gosu for a few days, and I&#39;ll proceed to bother you fine gentlemen with all the issues I&#39;ll encounter, starting with this one. <br/>So, I&#39;ve tried this script. Nifty! Pretty! Crashy :(<br/><br/>[WORKS] Mac OS X 10.6.4 Intel - Stock ruby 1.8 install<br/>ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]<br/><br/>[WORKS] Linux Jolicloud (Ubuntu-based) eeepc 1101HA - Ruby 1.9.0 from ubuntu repos<br/>ruby 1.9.0 (2008-06-20 revision 17482) [i486-linux]: Appears to work. (At 3 FPS, but the current state of GMA500 linux drivers is an unfunny joke, so it&#39;s normal).<br/><br/>[ERROR] Mac OS X 10.5.8 PPC - ruby built from source<br/>ruby 1.9.1p378 (2010-01-10 revision 26273) [powerpc-darwin9.8.0]<br/><br/><code>$ ruby ./shader-testcase.rb <br/>/Users/Arnaud/Dropbox/gosu-shader/shader.rb:85:in <code>glTexImage2D&#39;: invalid value (Gl::Error)<br/>&#160; from /Users/Arnaud/Dropbox/gosu-shader/shader.rb:85:in </code>create_canvas&#39;<br/>&#160; from /Users/Arnaud/Dropbox/gosu-shader/shader.rb:23:in <code>initialize&#39;<br/>&#160; from ./shader-testcase.rb:14:in </code>new&#39;<br/>&#160; from ./shader-testcase.rb:14:in <code>initialize&#39;<br/>&#160; from ./shader-testcase.rb:30:in </code>new&#39;<br/>&#160; from ./shader-testcase.rb:30:in <code>&lt;main&gt;</code><br/><br/>[ERROR] Windows XP - Installer from official website<br/>ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-mingw32]<br/>same error:<br/><br/><code>C:\Documents and Settings\Owner\My Documents\My Dropbox\gosu-shader&gt;ruby ./shade<br/>r-testcase.rb<br/>C:/Documents and Settings/Owner/My Documents/My Dropbox/gosu-shader/shader.rb:85<br/>:in </code>glTexImage2D&#39;: invalid value (Gl::Error)<br/>&#160; &#160; &#160; &#160; from C:/Documents and Settings/Owner/My Documents/My Dropbox/gosu-shader<br/>/shader.rb:85:in <code>create_canvas&#39;<br/>&#160; &#160; &#160; &#160; from C:/Documents and Settings/Owner/My Documents/My Dropbox/gosu-shader<br/>/shader.rb:23:in </code>initialize&#39;<br/>&#160; &#160; &#160; &#160; from ./shader-testcase.rb:14:in <code>new&#39;<br/>&#160; &#160; &#160; &#160; from ./shader-testcase.rb:14:in </code>initialize&#39;<br/>&#160; &#160; &#160; &#160; from ./shader-testcase.rb:30:in <code>new&#39;<br/>&#160; &#160; &#160; &#160; from ./shader-testcase.rb:30:in </code>&lt;main&gt;&#39;</code><br/><br/>Here is the minimal testcase I&#39;ve used, hoping to isolate the bug: <br/><br/><code># encoding: utf-8<br/><br/>begin<br/>&#160; require &#39;rubygems&#39;<br/>rescue<br/>end<br/>require &#39;gosu&#39;<br/>require &#39;shader&#39;<br/><br/>class TestWindow &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; super(400, 400, false)<br/>&#160; &#160; @blur = Shader.new(self, &#39;shader/radialblur.fs&#39;)<br/>&#160; &#160; @blur[&#39;BlurFactor&#39;] = 0.15<br/>&#160; &#160; @blur[&#39;BrightFactor&#39;] = 1.0<br/>&#160; &#160; @blur[&#39;origin_x&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;origin_y&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;passes&#39;] = 16<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; end<br/>&#160; <br/>end<br/><br/>TestWindow.new.show</code><br/><br/>I wanted to poke around to find a fix, but unfortunately I can&#39;t even begin to guess in which general direction to poke.<br/>I hope someone will have a clue what&#39;s going wrong.<br/><br/>Another question about this script: what&#39;s the license?<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='brn' id='brn2797'>
+<div class='frm pst' id='pid2798' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2798.html#pid2797'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2798' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2798.html#pid2798'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2010-07-16 09:40
+</div>
+<div class='ccl'>
+Hey, first of all, thanks for the extended test reports! To me, this sounds like some of your GPUs don&#39;t support non-power-of-two texture sizes. As the shader lib just generates a canvas texture the same size as the window, this could be the cause of Gl complaining.<br/><br/>Could you just add these lines somewhere to your test case:<br/><code>puts Gl.extension_supported?(&quot;GL_ARB_texture_non_power_of_two&quot;)<br/>puts Gl.version_supported?(2.0)</code><br/>and check the output on those systems where it doesn&#39;t work?
+</div>
+</div>
+
+<div class='brn' id='brn2798'>
+<div class='frm pst' id='pid2799' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2798.html#pid2798'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2799' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2799.html#pid2799'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=192.html' >youpi</a>
+<span class='htt'>Date</span> 2010-07-16 10:01
+</div>
+<div class='ccl'>
+Running those statements in all the environments I described (including those that work, running them from the testcase or from irb) generally resulted in segfaults or in hangs...<br/>But anyway, you were right: changing the window size to 256*256 make them throw a much more useful error: <code>OpenGL version 2.0 is not available on this system (NotImplementedError)</code>. <br/>Problem solved, then, thanks!<br/><br/>(BTW, about the usage terms for the script?)
+</div>
+</div>
+
+<div class='brn' id='brn2799'>
+<div class='frm pst' id='pid2800' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2798.html#pid2799'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2800.html#pid2800'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<span class='htt'>Date</span> 2010-07-16 10:07
+</div>
+<div class='ccl'>
+The script is free to use without any need for attribution (didn&#39;t bother putting it under a license yet, I&#39;ll do that for the next version(TM), which then hopefully also checks for shader availability ;) )
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=236.html#tid236'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=236.html#tid236'>Extending Gosu</a> / Post processing effects for Ruby
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2798.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

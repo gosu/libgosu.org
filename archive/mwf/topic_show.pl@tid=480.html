@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Font#text_width erratic with non-standard characters (Ruby)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=480.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=480.html#tid480'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=480.html#tid480'>Gosu Exchange</a> / Font#text_width erratic with non-standard characters (Ruby)
+</div>
+</div>
+
+<div class='frm pst' id='pid3419' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3419' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3419.html#pid3419'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-22 15:34
+</div>
+<div class='ccl'>
+Non-standard English character width seems to sometimes give an incorrect result for characters that are rendered correctly with Font#draw. &#39;A-Z0-9&#39; and punctuation are fine, but I&#39;m having problems with non-English characters. In one font, &#39;ö&#39; is 1.5 times wider than &#39;o&#39; and in another it is 2 times wider (when in both it should be exactly the same width). The rendering of these characters is fine; it is purely the result of Font#text_width that is confusing me.<br/><br/>Anyone else had this problem or have I just been unlucky enough to find two broken fonts?
+</div>
+</div>
+
+<div class='brn' id='brn3419'>
+<div class='frm pst' id='pid3420' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3419'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3420' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3420.html#pid3420'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-22 16:00
+</div>
+<div class='ccl'>
+If you&#39;re on Mac OS X, I believe it uses Unicode normalisation form D, where accented characters are stored as the base letter itself followed by combining forms of, e.g., ´, ¨, ˚, etc.. In this case, <code>Font#text_width</code> (or the underlying library) might be incorrectly calculating the width by adding the &quot;width&quot; of the combining characters, giving you a too wide result.<br/><br/>Not that this is going to help you much, but it&#39;s a possible explanation. Probably something for Julian to look into.
+</div>
+</div>
+
+<div class='brn' id='brn3420'>
+<div class='frm pst' id='pid3421' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3420'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3421' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3421.html#pid3421'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-22 16:38
+</div>
+<div class='ccl'>
+I&#39;m on Win7x64, but that does sound like a reasonable explanation.
+</div>
+</div>
+
+<div class='brn' id='brn3421'>
+<div class='frm pst' id='pid3422' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3421'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3422' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3422.html#pid3422'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-22 16:57
+</div>
+<div class='ccl'>
+Hmm. I get the impression that Windows prefers one of the composed forms, but ostensibly it supports all of them. I haven&#39;t found any resources that actually say for sure which is the preferred form, though!<br/><br/>What happens when you write <code>&quot;\u00F6&quot;</code> in a string literal instead of typing ö directly? What about <code>&quot;o\u0308&quot;</code>? These are equivalent in Unicode, but one is precomposed and the other is not.
+</div>
+</div>
+
+<div class='brn' id='brn3422'>
+<div class='frm pst' id='pid3423' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3422'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3423' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3423.html#pid3423'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-22 17:13
+</div>
+<div class='ccl'>
+This is based on typing them in via the Gosu TextInput (using alt+0246, because I just have a UK keyboard). Maybe I should try with a different keyboard layout?<br/><br/>However, I haven&#39;t set the encoding in my ruby app. That may be a contributing factor? I&#39;ll try setting UTF-8 everywhere and see if it helps.<br/><br/>OK, I&#39;ll get back to you to see if either of those or the suggestion you made works. Thanks for the explanations!
+</div>
+</div>
+
+<div class='brn' id='brn3423'>
+<div class='frm pst' id='pid3424' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3423'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3424' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3424.html#pid3424'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-22 19:09
+</div>
+<div class='ccl'>
+OK, UTF-8ed everything.<br/><br/>Tried &quot;\u00F6&quot; displays correctly, Font#text_width value is too wide, and when edited in a TextInput, crashes Gosu (I assume it is editing in 8-bit, so you end up with a null if you delete the F6 part).<br/><br/>Tried &quot;o\u0308&quot; and get instant crash when trying to display it (or maybe when I try Font#text_width?).<br/><br/>Tried &quot;ö&quot; (entered in Ruby string), gets error: &quot;invalid multibyte char (UTF-8)&quot;<br/><br/>Tried &quot;ö&quot; (alt+0246 entered into TextInput) displays correctly, Font#text_width value is too wide, editing OK.<br/><br/>Tried &quot;\224&quot; which works in IRB, but shows a vertical line in Gosu :(<br/><br/>The key problem, however, is that I need to read/write these from a TextInput, so I have to live with the codes it give me. Hmm, its strings are returned as &quot;ASCII-8BIT&quot;, so maybe I should use that.<br/><br/>I tried the tests again in &quot;ASCII-8bit&quot; and that had slightly different failures. I think I&#39;m missing something crucial here...<br/><br/>i18n is a pain!
+</div>
+</div>
+
+<div class='brn' id='brn3424'>
+<div class='frm pst' id='pid3425' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3424'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3425' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3425.html#pid3425'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-22 21:54
+</div>
+<div class='ccl'>
+It turns out that <code>&quot;ö&quot;</code> and <code>&quot;\u00F6&quot;</code> display and calculate correctly on OS X; the decomposed form, <code>&quot;o\u0308&quot;</code>, renders an o followed by a blank space and calculates the width &quot;correctly&quot; for that incorrect rendering. Your problem with <code>Font#text_width</code> might be a Windows specific bug at any rate.<br/><br/>To run your script with a literal ö you&#39;ll need to invoke Ruby with <code>-KUTF-8</code>, otherwise you get that invalid multibyte sequence error.<br/><br/>I haven&#39;t tried these with TextInput yet.
+</div>
+</div>
+
+<div class='brn' id='brn3425'>
+<div class='frm pst' id='pid3426' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3425'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3426.html#pid3426'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-22 22:51
+</div>
+<div class='ccl'>
+I&#39;m using the &quot;# encoding: UTF-8&quot; setting in Ruby 1.9.2 (I am not trying to be compatible with other versions). As I say, the issue is that the text being edited by the TextInput is in ASCII-8bit encoding and that is what I need to measure. It won&#39;t be a problem for the base game unless someone writes more i18n files, which is unlikely :P<br/><br/>jlnr said he&#39;d look into it (IRC), so I&#39;m going to stay hopeful of that working out.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3510' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3419'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3510' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3510.html#pid3510'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-10 16:07
+</div>
+<div class='ccl'>
+Can you post your exact editor, operating system and Ruby version? I tried my best to reproduce this on Windows but couldn&#39;t. I used Notepad++ and saved as &quot;UTF-8 with no BOM&quot;, and both characters in the source files as well as characters entered via TextInput have the expected width.
+</div>
+</div>
+
+<div class='brn' id='brn3510'>
+<div class='frm pst' id='pid3513' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3510'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3513' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3513.html#pid3513'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-11-10 16:48
+</div>
+<div class='ccl'>
+The encoding that the .rb file is saved in is irrelevant, as far as I&#39;m aware, since it is loaded up into Ruby and all strings are converted to Ruby&#39;s default encoding unless you specify an encoding at the top of the file (&quot;# encoding: whatever&quot;).<br/><br/>This example is saved in standard ANSI, but uses ascii-8bit so I can write the characters in the editor. I&#39;m using Ruby 1.9.2 with win7 x64. When I use the standard Ruby encoding (second file in gist) it works fine.<br/><br/><a class='url' href='https://gist.github.com/671052'>https://gist.github.com/671052</a><br/><br/>Hmm, thinking further, however, I realise I don&#39;t actually need to put non-English characters in my ruby file (I&#39;m using i18n gem) so it is sort of irrelevant in real usage. Sorry! Still, some understanding of why this fails might help...
+</div>
+</div>
+
+<div class='brn' id='brn3513'>
+<div class='frm pst' id='pid3515' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3513'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3515' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3515.html#pid3515'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-11-10 18:27
+<span class='htt'>Edited</span> 2010-11-10 19:39
+</div>
+<div class='ccl'>
+Right, think I&#39;ve got this down.<br/><br/>The string returned from TextInput.text is encoded as ASCII-8-bit, even though it is actually a UTF-8 string. Thus, when I #each_char it, it gives me every byte, which is not what I want and gives me a spurious width. So, I used TextInput.text.force_encoding(&#39;UTF-8&#39;) which then works correctly with #text_width (&quot;ö&quot; iterates to &quot;\u00F6&quot; which is correct and text_input is happy with that).<br/><br/>I&#39;d suggest that you manually specify the encoding of the string as UTF-8 at your end (inside TextInput class somewhere), since that it what it is, not what it is encoded as.<br/><br/>EDIT: Apparently, caret_pos also treats the string as ASCII-8bit, since if I _just_ type &#39;ö&#39;, caret_pos goes from 0 to 2! When I then press left or right, the caret_pos moves from 0&lt;-&gt;2. I&#39;ll leave you to work out why, though I&#39;m sure it would fix itself if the string is in UTF-8 encoding :)
+</div>
+</div>
+
+<div class='brn' id='brn3515'>
+<div class='frm pst' id='pid3516' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=480.html#pid3515'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3516.html#pid3516'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-10 21:39
+</div>
+<div class='ccl'>
+Ah, ok. Yeah, the last bit is intentional because this is the only way it can reasonably work in 1.8, but it needs to to behave differently in 1.9. Good&#160; thing they&#39;re two binary gems and I can change that bit easily. Thanks, I&#39;ll give it a try. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=480.html#tid480'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=480.html#tid480'>Gosu Exchange</a> / Font#text_width erratic with non-standard characters (Ruby)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=480.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

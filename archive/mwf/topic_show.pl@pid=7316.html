@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7316 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Nokogiri xpath suitable every frame</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7316' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=955.html#tid955'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=955.html#tid955'>Gosu Exchange</a> / Nokogiri xpath suitable every frame
+</div>
+</div>
+
+<div class='frm pst' id='pid7202' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7202' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7202.html#pid7202'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-08-30 15:40
+</div>
+<div class='ccl'>
+So I&#39;m making a Pirate RPG game called Vortex Voyager (github.com/chase4926/VortexVoyager) and one of our project goals is to be very moddable. So for our main menu, we&#39;re using an xml file to &quot;style&quot; it, and in doing so, are making xpath calls every frame.<br/><br/>Is this reasonable?<br/>When myself and the other person on the team run it, we get a smooth 60, but is this going to be a serious problem when we get into things other than the main menu?<br/><br/>Also I should note:<br/>I have a specific need for Nokogiri due to it&#39;s searching ability, which prevents me from using something a little more efficient like xml-simple (which simply converts an XML file into a hash).
+</div>
+</div>
+
+<div class='brn' id='brn7202'>
+<div class='frm pst' id='pid7204' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7202'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7204.html#pid7204'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2013-08-31 21:13
+</div>
+<div class='ccl'>
+I&#39;m not quite sure I understand how you&#39;re using nokogiri every frame, but I would recommend using yaml (xml is so heavy and nasty to work with). You should be able to load/parse your configs (xml or yaml) only once, store what you need and build your menus from that. After that you wouldn&#39;t need to parse any xml/yaml again. An example of using yaml to style GUIs can be found at my discontinued Rubygoo project here: <a class='urs' href='https://github.com/shawn42/rubygoo/blob/master/themes/default/config.yml'>https://github.com/shawn42/rubygoo/blob/master/themes/default/config.yml</a><br/><br/>hope that helps,
+</div>
+</div>
+
+<div class='frm pst' id='pid7205' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7202'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7205' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7205.html#pid7205'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-01 10:23
+<span class='htt'>Edited</span> 2013-09-02 07:13
+</div>
+<div class='ccl'>
+Well, you can always benchmark it and see how much time you&#39;re consuming. As long as even old machines can stay under 16ms for a frame, you&#39;re fine :)<br/><br/>But I have to second the suggestion to use something like YAML which maps very naturally to Ruby, where you can then use standard <code>Enumerable</code> methods to perform your lookup logic.
+</div>
+</div>
+
+<div class='brn' id='brn7205'>
+<div class='frm pst' id='pid7208' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7205'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7208.html#pid7208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-02 01:41
+</div>
+<div class='ccl'>
+Just spend about an hour converting it all to YAML.<br/><br/>Enumerable::select is what I needed, didn&#39;t use it before today.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7306' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7202'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7306' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7306.html#pid7306'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-09-28 19:18
+</div>
+<div class='ccl'>
+Hey I just cloned VortexVoyager and tried running it. I executed &quot;ruby main.rb&quot; from the /src folder, and I got the following error:<br/><br/>/VortexVoyager/src/engine.rb:7:in <code>initialize&#39;: uninitialized constant ControllerObject::Queue (NameError)<br/>&#160; from /VortexVoyager/src/menu.rb:7:in </code>initialize&#39;<br/>&#160; from /VortexVoyager/src/engine.rb:32:in <code>new&#39;<br/>&#160; from /VortexVoyager/src/engine.rb:32:in </code>initialize&#39;<br/>&#160; from /VortexVoyager/src/engine.rb:162:in <code>new&#39;<br/>&#160; from /VortexVoyager/src/engine.rb:162:in </code>initialize&#39;<br/>&#160; from main.rb:42:in <code>new&#39;<br/>&#160; from main.rb:42:in </code>&lt;main&gt;&#39;<br/><br/>Any suggestions?... I&#39;m just interested in getting a peek at the project.
+</div>
+</div>
+
+<div class='brn' id='brn7306'>
+<div class='frm pst' id='pid7307' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7306'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7307.html#pid7307'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-28 19:37
+</div>
+<div class='ccl'>
+My friend also had this issue, no idea what&#39;s causing it but there&#39;s an easy solution:<br/><br/>require &#39;thread&#39;
+</div>
+</div>
+
+<div class='frm pst' id='pid7308' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7306'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7308' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7308.html#pid7308'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-28 19:38
+</div>
+<div class='ccl'>
+Also on the title screen, the konami code followed by enter may or may not activate an easter egg.
+</div>
+</div>
+
+<div class='brn' id='brn7308'>
+<div class='frm pst' id='pid7310' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7308'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7310.html#pid7310'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-09-29 19:21
+</div>
+<div class='ccl'>
+Hey thanks, I&#39;ll give it another whirl.
+</div>
+</div>
+
+<div class='frm pst' id='pid7312' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7308'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7312' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7312.html#pid7312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-09-29 21:26
+<span class='htt'>Edited</span> 2013-09-29 21:33
+</div>
+<div class='ccl'>
+Wow, &quot;require &#39;thread&#39;&quot; took care of everything! I love it when things work! Looks like the project is coming along nicely, with a solid, robust core. I won&#39;t provide any unsolicited feedback as this is clearly at the early development stage - except to say thanks for sharing - I will be able to learn a lot from studying this code, especially as the game moves further along. I scrolled around and looked at the world a bit.<br/><br/>I&#39;m still trying to figure out what &quot;the konami code&quot; is.... I guess I&#39;ll have to dig around in the source for it...<br/><br/>If you are interested in having another contributor, sign me up! I&#39;m pretty (very) novice at programming, but I can certainly take orders and help with creating graphics and animations and those kinds of things.<br/><br/>Thanks again for sharing!
+</div>
+</div>
+
+<div class='brn' id='brn7312'>
+<div class='frm pst' id='pid7313' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7313' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7313.html#pid7313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-29 21:37
+</div>
+<div class='ccl'>
+Work is suspended as of a few weeks ago, I&#39;ll most likely continue work sometime soon though.<br/><br/>Also: <a class='urs' href='http://en.wikipedia.org/wiki/Konami_Code'>http://en.wikipedia.org/wiki/Konami_Code</a>
+</div>
+</div>
+
+<div class='brn' id='brn7313'>
+<div class='frm pst' id='pid7316' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7316.html#pid7313'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7316.html#pid7316'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-03 03:12
+</div>
+<div class='ccl'>
+Just tried it out - the Easter Egg is AWESOME!<br/><br/>And here I always thought that was the &quot;Contra Code&quot;...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=955.html#tid955'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=955.html#tid955'>Gosu Exchange</a> / Nokogiri xpath suitable every frame
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7316.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

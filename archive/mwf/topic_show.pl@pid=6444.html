@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6444 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Nebular Demo - Feedback Please.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6444' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=835.html#tid835'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=835.html#tid835'>Gosu Showcase</a> / Nebular Demo - Feedback Please.
+</div>
+</div>
+
+<div class='frm pst' id='pid6432' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6432' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6432.html#pid6432'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=979.html' >moriarty</a>
+<span class='htt'>Date</span> 2013-01-07 04:22
+</div>
+<div class='ccl'>
+I spent the weekend creating the following demo/game. I&#39;m currently using Ruby 1.9.3, Gosu, and Chingu.<br/><br/>I would enjoy creating a&#160; 2d space/trader/combat like <a class='url' href='http://www.ambrosiasw.com/games/evn/'>http://www.ambrosiasw.com/games/evn/</a><br/><br/>Any ideas or experiences making something similar would be much appreciated. <br/><br/><b>Video</b><br/><a class='url' href='http://www.youtube.com/watch?v=-hgmW7Sw99A&amp;feature=player_embedded'>http://www.youtube.com/watch?v=-hgmW7Sw99A&amp;feature=player_embedded</a><br/><br/><b>Images</b><br/><img class='emi' src='http://s3.amazonaws.com/telos_development/app/public/ckeditor_assets/attachments/26/screen_shot_2013-01-05_at_9_34_27_pm.png?1357382404' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn6432'>
+<div class='frm pst' id='pid6442' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6432'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6442' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6442.html#pid6442'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-01-07 23:40
+</div>
+<div class='ccl'>
+FPS seems quite low. I&#39;d recommend only updating the caption bar once per second or using a Font#draw at the top of the screen. I am amazed how expensive the bar update is!<br/><br/>350 objects seems a lot for Chingu to manage. For dense particle effects, I&#39;d highly recommend looking at my Ashton gem rather than manage your particles in Ruby, which is crazy-slow - just use the latest version on github rather than the old --pre release (yeah, I know I really need to sort that out). Obviously the bullets themselves would need to be objects, but the various trails are better as dumb particles.<br/><br/>You might want to look at Chipmunk for managing your physics and collision detection; again, something that is relatively slow in Chingu (but fine for simple games without a lot of simultaneous objects to collide).<br/><br/>Not sure how you are managing the radar (closed source is evil :D), but if you are drawing sprites, pixel editing with TexPlay or an Ashton::Texture would probably manage it faster for you (assuming you are happy with coloured pixels rather than full sprites).<br/><br/>Other than that, don&#39;t see any reason why you can&#39;t expand it into a game as you reference, or something like SPAZ. Good luck!
+</div>
+</div>
+
+<div class='brn' id='brn6442'>
+<div class='frm pst' id='pid6444' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6442'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6444' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6444.html#pid6444'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=979.html' >moriarty</a>
+<span class='htt'>Date</span> 2013-01-09 10:16
+</div>
+<div class='ccl'>
+Thanks Spooner. <br/><br/>I do need to find a more efficient way to manage particles. I&#39;m looking into Ashton right now.<br/><br/>The radar is just some draw rects. I could cache the radar and update it periodically.<br/><br/>I really need to profile the loop to work out what optimisations I need to prioritise.
+</div>
+</div>
+
+<div class='brn' id='brn6444'>
+<div class='frm pst' id='pid6446' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6444'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6446.html#pid6446'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-01-09 10:26
+</div>
+<div class='ccl'>
+Yeah, caching the radar would make sense (with Ashton::Texture#render) as would directly writing pixels in TexPlay (Gosu::Image#set_pixel x, y, color: whatever)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6443' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6432'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6443' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6443.html#pid6443'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-08 10:48
+</div>
+<div class='ccl'>
+I think a game like this depends a lot on immersing the player into the environment (space), maybe this helps - <a class='url' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=826'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=826</a><br/><br/>Parallaxing the nebula would look good IMHO, and you could add lighting to the ships. E.g. a coloured light source might make an impression on ships passing by as in this wallpaper (red light source):<br/><br/><a class='url' href='http://evilgenius180.files.wordpress.com/2011/07/yesterdaysheraclesa.jpg'>http://evilgenius180.files.wordpress.com/2011/07/yesterdaysheraclesa.jpg</a>
+</div>
+</div>
+
+<div class='brn' id='brn6443'>
+<div class='frm pst' id='pid6445' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6443'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6445' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6445.html#pid6445'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=979.html' >moriarty</a>
+<span class='htt'>Date</span> 2013-01-09 10:20
+</div>
+<div class='ccl'>
+Thanks jlnr.<br/><br/>Parallaxing the nebula is a great idea.<br/><br/>I&#39;ll look into the light source idea. <br/><br/>I believe I could do it for a 3d game but I&#39;m not so sure&#160; with 2d. Would I need some sort of light/height map for my sprites?
+</div>
+</div>
+
+<div class='brn' id='brn6445'>
+<div class='frm pst' id='pid6447' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6445'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6447' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6447.html#pid6447'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-09 11:41
+</div>
+<div class='ccl'>
+There are many ways to do it. For example, you could add a second, mostly transparent image to each spaceship that only contains white areas where the starship is reflective. Then usually you draw this image with a colour modifier of transparent white (<code>0x00_ffffff</code>) but as you get closer to light sources, you slowly increase the opacity of the image and adjust its RGB values. Or you can even give each corner of the overlay image a different colour modifier if you draw it with <code>Image#draw_as_rect</code>.<br/><br/>Or you could use Ashton and shaders to colour the starships. I&#39;m sure there are many creative ways of doing it with shaders alone ... :)<br/><br/>Or you could even use a 3D model indeed and draw it using a <code>gl</code> block.
+</div>
+</div>
+
+<div class='brn' id='brn6447'>
+<div class='frm pst' id='pid6449' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6447'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6449.html#pid6449'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-01-09 23:31
+<span class='htt'>Edited</span> 2013-01-09 23:37
+</div>
+<div class='ccl'>
+Yeah, you could additively draw a semi-transparent disc with Ashton&#39;s stencil shader, so you only draw the glow directly over the ship underneath (it would look bad if you also lit up the background).<br/><br/>EDIT: But I&#39;d worry about gameplay and overall fun a long time before worrying about spiffy lighting effects.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6448' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6432'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6448' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6448.html#pid6448'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2013-01-09 12:25
+</div>
+<div class='ccl'>
+Other than the scrollable parallax jlnr already mentioned, I&#39;d say make the ships a bit more plastic. Now going 3D for this might be overshooting it, but you might be able to get away pretty beautifully with a 3-frame animation for leaning in a certain direction, or something along the lines of <a class='url' href='http://www.lostgarden.com/2007/01/some-random-artwork.html'>the space graphics in this article</a>, which is also just a fraction of the work a real 3D engine would take. Either way will inject life into your game, and while not necessarily making it more juicy, it will make it seem &#39;more flawless&#39; - yay for term invention :D<br/><br/>Then, the trail - as impressive as it is - seems off. Maybe it&#39;s too long, or the gradient curve isn&#39;t right, but it just seems like it&#39;d need to be less apparent than it currently is... well, to me - anyone else? ^^&quot;<br/><br/>Also, from a graphic designer&#39;s point of view, I have to add that personally, the saturation seems way too high. Maybe it&#39;s personal preferrence only, but if I play a space game, I want everything but &#39;suns&#39; to be cold, color-wise distant and pale. That would also help with some highlights such as lighting on the ship that could be more saturated in contrast.<br/>Either way, use your own judgement by all means - just giving input :)
+</div>
+</div>
+
+<div class='brn' id='brn6448'>
+<div class='frm pst' id='pid6450' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6448'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6450' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6450.html#pid6450'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-10 06:45
+</div>
+<div class='ccl'>
+I have tried to fake a little 3D in 2D in a one-off space shooter, including stacking 2D graphics with a direction: <a class='url' href='http://www.ludumdare.com/compo/2009/04/19/starferret-48h-final/'>http://www.ludumdare.com/compo/2009/04/19/starferret-48h-final/</a><br/><br/>You can actually see it on the screenshot, the two ships are both composed from the same two 2D <code>Gosu::Image</code>s with a little offset and rotation. It looks 3D-ish in action.
+</div>
+</div>
+
+<div class='brn' id='brn6450'>
+<div class='frm pst' id='pid6451' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6450'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6451.html#pid6451'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2013-01-11 11:44
+</div>
+<div class='ccl'>
+That&#39;s also a very cool solution! :D It&#39;s really interesting what just 2 images with a grain of imagination are capable of.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6452' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6444.html#pid6448'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6452.html#pid6452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=979.html' >moriarty</a>
+<span class='htt'>Date</span> 2013-01-12 09:09
+</div>
+<div class='ccl'>
+Thanks for the feedback BlueScope. I couldn&#39;t agree more. <br/><br/>I&#39;m more of a &quot;plumber&quot; than a &quot;painter&quot; so the aesthetics are always difficult for me.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=835.html#tid835'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=835.html#tid835'>Gosu Showcase</a> / Nebular Demo - Feedback Please.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6444.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

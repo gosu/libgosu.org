@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3340 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Trying to implement Gosu::Window#to_blob</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3340' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=469.html#tid469'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=469.html#tid469'>Gosu Exchange</a> / Trying to implement Gosu::Window#to_blob
+</div>
+</div>
+
+<div class='frm pst' id='pid3307' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3307' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3307.html#pid3307'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-25 21:32
+<span class='htt'>Edited</span> 2010-09-25 21:45
+</div>
+<div class='ccl'>
+I&#39;m using the code below - but it does not work. It also causes the screen to flicker:<br/><br/>static VALUE<br/>gosu_window_to_blob(VALUE self, VALUE x, VALUE y, VALUE width, VALUE height)<br/>{<br/>&#160; &#160; int rb_x = FIX2INT(x);<br/>&#160; &#160; int rb_y = FIX2INT(y);<br/>&#160; &#160; int rb_width = FIX2INT(width);<br/>&#160; &#160; int rb_height = FIX2INT(height);<br/><br/>&#160; &#160; VALUE blob = rb_str_new(NULL, 4 * rb_width * rb_height);<br/><br/>&#160; &#160; glReadPixels(rb_x, rb_y, rb_width, rb_height, GL_RGBA, GL_UNSIGNED_BYTE,&#160; &#160; &#160;&#160; <br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; RSTRING_PTR(blob));<br/><br/>&#160; &#160; return blob;<br/>}<br/><br/>Note that the following Ruby code *does* work; what must I do so the C code works like the following Ruby:<br/><br/>data = nil<br/>self.gl do<br/>&#160; &#160; &#160; &#160; data = glReadPixels(0, 0, self.width, self.height, GL_RGBA, GL_UNSIGNED_BYTE)<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn3307'>
+<div class='frm pst' id='pid3308' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3307'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3308' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3308.html#pid3308'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-25 23:39
+</div>
+<div class='ccl'>
+I suggested looking at the code from beginGL() and endGL() in Gosu that presumably usually wrap the call:<br/><br/><a class='url' href='http://www.google.com/codesearch/p?hl=en#TkUzYEJjlVA/trunk/GosuImpl/Graphics/Graphics.cpp&amp;q=gl%20package:http://gosu%5C.googlecode%5C.com&amp;d=1'>http://www.google.com/codesearch/p?hl=en#TkUzYEJjlVA/trunk/GosuImpl/Graphics/Graphics.cpp&amp;q=gl%20package:http://gosu%5C.googlecode%5C.com&amp;d=1</a>
+</div>
+</div>
+
+<div class='brn' id='brn3308'>
+<div class='frm pst' id='pid3310' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3308'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3310' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3310.html#pid3310'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-26 02:31
+</div>
+<div class='ccl'>
+i kinda got it working (with a few caveats). jlnr said to call Window#flush and glFinish();prior to running the C code above....it kinda works.... (a tiny bug im still figuring out, but pretty much 90% usable at present)
+</div>
+</div>
+
+<div class='brn' id='brn3310'>
+<div class='frm pst' id='pid3311' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3310'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3311.html#pid3311'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-26 08:17
+</div>
+<div class='ccl'>
+Excellent! I just hope I can use it effectively as a cheap &quot;render to texture&quot; system :$ I&#39;m sure it would be useful for a lot of people for that and making regular screenshots, though.<br/><br/>Thanks very much for your efforts!
+</div>
+</div>
+
+<div class='frm pst' id='pid3312' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3310'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3312' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3312.html#pid3312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-26 09:56
+<span class='htt'>Edited</span> 2010-09-26 09:58
+</div>
+<div class='ccl'>
+Are you planning to add this to texplay perhaps? Because I&#39;d prefer this a whole lot over using DevIL to capture the window!<br/><br/>And this is great for blur-effects or even fake bloom :D
+</div>
+</div>
+
+<div class='brn' id='brn3312'>
+<div class='frm pst' id='pid3313' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3313' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3313.html#pid3313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-26 15:32
+</div>
+<div class='ccl'>
+Hmm, I&#39;d think it would be pretty slow to do that every frame. Your best bet for bloom and blur would probably be to use a shader.
+</div>
+</div>
+
+<div class='brn' id='brn3313'>
+<div class='frm pst' id='pid3318' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3313'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3318' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3318.html#pid3318'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-26 21:21
+<span class='htt'>Edited</span> 2010-09-26 22:34
+</div>
+<div class='ccl'>
+I am quite sure this isn&#39;t actually useful for bloom/blur and we (banister &amp; I) didn&#39;t suggest it was (you can fake bloom nicely with :additive drawing mode as I did in my LD entry, though I suppose that was more like simple lighting than true bloom :). How exactly would it be done?
+</div>
+</div>
+
+<div class='brn' id='brn3318'>
+<div class='frm pst' id='pid3320' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3318'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3320.html#pid3320'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-26 21:37
+</div>
+<div class='ccl'>
+See the comment I was responding to for a mention of bloom and blur; I&#39;m not sure how it would be done with this, just that it was mentioned. :P
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3323' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3313'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3323' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3323.html#pid3323'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-27 20:48
+</div>
+<div class='ccl'>
+Well for the blur I actually meant a static blur. So for example when you pull up the menu, the game would freeze, and then a blurred version would fade in, and with it, the menu. I love effects like that :)<br/><br/>And yeah, that bloom might be a bit silly, I&#39;ll admit that. For one, the UI would burn right in the screen.. ..
+</div>
+</div>
+
+<div class='brn' id='brn3323'>
+<div class='frm pst' id='pid3324' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3323'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3324.html#pid3324'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-27 21:22
+</div>
+<div class='ccl'>
+Ohh, that makes more sense. Actually, yeah, that would be a really cool effect.
+</div>
+</div>
+
+<div class='frm pst' id='pid3325' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3323'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3325' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3325.html#pid3325'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-28 00:20
+</div>
+<div class='ccl'>
+Yes, I suppose you could draw the regular images to build up the screen, import the blob into Devil and use blur, then render the Devil image back into the screen.Faster than splicing the images with texplay, then importing into Devil then doing the same thing. Obviously significantly slower than using opengl effects, but in some situations you could probably get away with it and you wouldn&#39;t need to delve into real opengl (especially if the screen was small and/or you didn&#39;t care that you needed a strong PC to run it).
+</div>
+</div>
+
+<div class='brn' id='brn3325'>
+<div class='frm pst' id='pid3326' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3325'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3326' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3326.html#pid3326'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-28 07:19
+</div>
+<div class='ccl'>
+Well actually I&#39;m trying to use as little dependencys as possible, so that&#39;s why I don&#39;t use DevIL or OpenGL. They can be hard to set up, decreasing the chance of anyone bothering to try my game.<br/><br/>And although using texplay for blur won&#39;t exactly be fast, I hope I can get away with it. ;)
+</div>
+</div>
+
+<div class='brn' id='brn3326'>
+<div class='frm pst' id='pid3327' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3326'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3327' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3327.html#pid3327'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-28 07:36
+</div>
+<div class='ccl'>
+ill write a fast blur if there&#39;s demand for it
+</div>
+</div>
+
+<div class='brn' id='brn3327'>
+<div class='frm pst' id='pid3328' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3327'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3328' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3328.html#pid3328'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-28 08:36
+</div>
+<div class='ccl'>
+There is now! :)<br/><br/>Although I&#39;ll get back to you on that; I first want to try it out myself with a ruby-based blur on a sample game image, and if that works you won&#39;t have to go through the trouble of adding it..
+</div>
+</div>
+
+<div class='brn' id='brn3328'>
+<div class='frm pst' id='pid3329' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3328'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3329' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3329.html#pid3329'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-28 11:02
+</div>
+<div class='ccl'>
+There already is a ruby-based blur developed by devgomes <a class='url' href='topic_show.pl@pid=1590%3Bhl=blurring.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1590;hl=blurring</a>
+</div>
+</div>
+
+<div class='brn' id='brn3329'>
+<div class='frm pst' id='pid3331' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3329'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3331' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3331.html#pid3331'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-28 18:54
+</div>
+<div class='ccl'>
+Okay that went way too slow: a full (640x480) image takes 66 seconds to blur! (50 for vertical and 20 for horizontal)<br/><br/>Count me in for c-based blur!
+</div>
+</div>
+
+<div class='brn' id='brn3331'>
+<div class='frm pst' id='pid3332' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3331'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3332' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3332.html#pid3332'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-28 19:42
+</div>
+<div class='ccl'>
+hahaha, i think there were a couple of blurs in that post, you could try the other and see if it has better performance&#160; :)<br/><br/>But yeah you&#39;re right, blurring is definitely not ruby-friendly :)
+</div>
+</div>
+
+<div class='brn' id='brn3332'>
+<div class='frm pst' id='pid3334' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3334.html#pid3334'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-28 20:38
+</div>
+<div class='ccl'>
+Haha Snae/devgomes&#39;s old version is 317 seconds (although the result looks better ;) )!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3336' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3326'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3336' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3336.html#pid3336'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-29 12:25
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Well actually I&#39;m trying to use as little dependencys as possible, so that&#39;s why I don&#39;t use<br/>&gt; DevIL or OpenGL. They can be hard to set up, decreasing the chance of anyone bothering<br/>&gt; to try my game.</p></blockquote><br/>Actually, if you are distributing via Ocra, you can include the Devil dlls and there is absolutely no barrier to use. Admittedly, slightly more trouble on Linux (just need to do a simple &quot;sudo apt-get install libdevil-dev&quot;) though potentially a lot more trouble on OS X (The gosu .app file doesn&#39;t include Devil). If you can get an OpenGL gem to install properly on your machine then you have a similar situation, but I&#39;ve not been able to do that.<br/><br/>I really wouldn&#39;t discount these two libraries, as long as you don&#39;t need easy Mac distribution.
+</div>
+</div>
+
+<div class='brn' id='brn3336'>
+<div class='frm pst' id='pid3340' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3336'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3340.html#pid3340'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-29 19:23
+</div>
+<div class='ccl'>
+Oh, alright then. I&#39;ll reconsider use of them.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3314' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3314' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3314.html#pid3314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-26 17:49
+</div>
+<div class='ccl'>
+yeah it&#39;s already in the 0.2.983 pre-release version. It was Spooner&#39;s&#160; idea to put this in...it&#39;s pretty cool actually -- using a combination of Window#to_blob(x,y,width,height) and TexPlay.from_blob()&#160; you can generate your own Gosu::Image&#39;s directly from the framebuffer. Not sure about performance, but i think for reasonably small screen grabs it may be OK. I&#39;m sure spooner will let us know. :)
+</div>
+</div>
+
+<div class='brn' id='brn3314'>
+<div class='frm pst' id='pid3315' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3314'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3315' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3315.html#pid3315'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-26 19:38
+</div>
+<div class='ccl'>
+Can you make it so it will update directly to an existing image instead of creating a new one? That should be a tiny bit faster.
+</div>
+</div>
+
+<div class='brn' id='brn3315'>
+<div class='frm pst' id='pid3316' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3316' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3316.html#pid3316'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-09-26 20:50
+</div>
+<div class='ccl'>
+yeah i could i guess....but i think it&#39;d be really rare someone wouldn&#39;t want to stick it in a new image? not sure
+</div>
+</div>
+
+<div class='brn' id='brn3316'>
+<div class='frm pst' id='pid3317' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3316'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3317' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3317.html#pid3317'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-26 21:20
+</div>
+<div class='ccl'>
+Depends on what you&#39;re doing I guess. For the aforementioned effects, updating an existing image would be faster. But I&#39;m not sure if it&#39;d be fast enough in the first place :)
+</div>
+</div>
+
+<div class='brn' id='brn3317'>
+<div class='frm pst' id='pid3321' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3317'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3321' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3321.html#pid3321'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-26 22:38
+</div>
+<div class='ccl'>
+glCopyTexImage2D to an existing image, rather than using the blob intermediary (via lots of Ruby objects) would be a lot faster, as jlnr suggested (<a class='url' href='http://nehe.gamedev.net/data/lessons/lesson.asp?lesson=36'>http://nehe.gamedev.net/data/lessons/lesson.asp?lesson=36</a>).
+</div>
+</div>
+
+<div class='brn' id='brn3321'>
+<div class='frm pst' id='pid3322' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3321'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3322.html#pid3322'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-09-27 06:16
+</div>
+<div class='ccl'>
+Could you perhaps have both...? I don&#39;t really know much about this stuff, but it seems like there would be advantages to having it both ways.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3319' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3340.html#pid3307'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3319.html#pid3319'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-26 21:25
+<span class='htt'>Edited</span> 2010-09-26 21:31
+</div>
+<div class='ccl'>
+For my purposes, I want to compose a number of objects from small images for several purposes:<br/><br/>1) So I can cache these composed images and just draw them faster than I could otherwise.<br/>2) So I can save those composed images to disk (which are then cached for the next run of the app).<br/>3) So when I draw the composed images semi-transparently, they don&#39;t look terrible where the images they are composed from overlap (the user gets to build the objects themselves, so I can&#39;t avoid overlaps).<br/>4) So I can show the user lots of thumbnails of the objects, without having to redraw all the full size objects all the time (this would also require my trailing all over my rather large database too, so would take forever).<br/><br/>I can do it in texplay, but it is relatively slow since it is using raw CPU rather than GPU to do the composition. I do need to do it a fair bit, every so many seconds, though not each frame. As long as doing it doesn&#39;t stutter the application too much, it doesn&#39;t matter if it takes a bit longer than a normal frame.<br/><br/>It could also be of general use...for taking and saving screenshots when the user presses a key. This is more convenient than using print-screen or using a separate application to take the screenshots.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=469.html#tid469'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=469.html#tid469'>Gosu Exchange</a> / Trying to implement Gosu::Window#to_blob
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3340.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

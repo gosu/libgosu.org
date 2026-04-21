@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6109 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Wrong window size</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6109' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=794#tid794'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=794#tid794'>Gosu Exchange</a> / Wrong window size
+</div>
+</div>
+
+<div class='frm pst' id='pid6103' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6103' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6103.html#pid6103'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=953.html' >Drowad</a>
+<span class='htt'>Date</span> 2012-08-01 21:57
+<span class='htt'>Edited</span> 2012-08-01 22:31
+</div>
+<div class='ccl'>
+Hi,<br/><br/>First of all, thanks for all the work :)<br/><br/>I have a really annoying problem : I want to use a window of 1024x768, but the problem is that the window created was a lot smaller, but for 800x600 it&#39;s work normally.<br/>I&#39;m using ruby 1.9.3, the last gem of gosu, and Window 7 professional.<br/><br/>To make a better view of the problem, I&#39;ve make an example :<br/><br/><code>require &#39;Win32API&#39;<br/>require &#39;gosu&#39;<br/><br/>def test_window_size(width, height)<br/>&#160; window = Gosu::Window.new(width, height, false)<br/>&#160; handle = Win32API.new(&#39;user32&#39;, &#39;FindWindow&#39;, &#39;PP&#39;, &#39;I&#39;).call(&quot;Gosu::Window&quot;, &quot;&quot;)<br/>&#160; rect = [0, 0, 0, 0].pack(&quot;I*&quot;)<br/>&#160; Win32API.new(&#39;user32&#39;, &#39;GetClientRect&#39;, &#39;IP&#39;, &#39;I&#39;).call(handle, rect)<br/>&#160; puts &quot;Gosu Size : #{[window.width, window.height]} - Real Size : #{rect.unpack(&quot;I*&quot;)[2..3]}&quot;<br/>end<br/><br/>test_window_size(800, 600) # =&gt; Gosu Size : [800, 600] - Real Size : [800, 600]<br/>test_window_size(1024, 768) # =&gt; Gosu Size : [1024, 768] - Real Size : [819, 614]<br/>test_window_size(Gosu.screen_width, Gosu.screen_height) # =&gt; Gosu Size : [1366, 768] - Real Size : [1092, 614]</code><br/><br/>It&#39;s only works on Windows, I use GetClientRect to get the &quot;real&quot; client size. As you can see, the window was a lot smaller than expected.<br/>So what I can do ? If this question was already answered, I&#39;m really sorry because I have done some research before posting.<br/><br/>Another question, there is a way to get the gosu window handle on Windows ? Because I want to add some &quot;extra-features&quot; for the Windows users :D<br/><br/>Thanks, and please forgive my english :)
+</div>
+</div>
+
+<div class='brn' id='brn6103'>
+<div class='frm pst' id='pid6104' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6103'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6104' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6104#pid6104'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-02 00:07
+</div>
+<div class='ccl'>
+Gosu automatically prevents you from having a window close to the size of the screen, to prevent it covering your task bar, so it will resize it and scale it for you (which can be annoying because the margin it decides to use is incredibly conservative :D). This is hard-coded in Gosu and there is nothing we can do about it.<br/><br/>If you want to fill the screen properly, use full-screen mode.
+</div>
+</div>
+
+<div class='brn' id='brn6104'>
+<div class='frm pst' id='pid6107' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6104'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6107' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6107.html#pid6107'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=953.html' >Drowad</a>
+<span class='htt'>Date</span> 2012-08-02 09:50
+</div>
+<div class='ccl'>
+Thanks !<br/><br/>Well, fullscreen isn&#39;t an option for me, I want to be able to use the taskbar.<br/>I&#39;ve look into the gosu source code to understand how it&#39;s work, I&#39;ve never seen this kind of protection before :D<br/><br/>Anyway, I think I&#39;ve found a solution that suits me :<br/><code>width, height = (Gosu.screen_width * 0.9).round, (Gosu.screen_height * 0.8).round</code><br/>Will give the maximum size without gosu resize/scale my window :)
+</div>
+</div>
+
+<div class='brn' id='brn6107'>
+<div class='frm pst' id='pid6108' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6107'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6108' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6108#pid6108'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-02 10:08
+</div>
+<div class='ccl'>
+Yes, it is a very lazy (lazy bad, not lazy good :D) system in Gosu to limit it like that. Hopefully it will try to ask the system about the taskbar one day (probably non-trivial to do all all OSes consistently) or just trust us to either make a sensibly sized window or just ask the user to configure the window size. And yes, jlnr, I&#39;m talking to you about this *angry face*
+</div>
+</div>
+
+<div class='brn' id='brn6108'>
+<div class='frm pst' id='pid6109' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6108'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6109' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6109.html#pid6109'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-02 10:30
+</div>
+<div class='ccl'>
+Before I&#39;ve added my check, oversized windows would minimizes themselves on startup and you couldn&#39;t click them to get them out of the taskbar. Absolutely bizarre behavior. Being even one pixel too big will make the game absolutely unusable, that&#39;s why I&#39;m so conservative.<br/><br/>I&#39;m not sure if I&#39;ll try to make the check more sophisticated. I think if I&#39;d just make the window resizable, Windows and other systems would take care of this themselves - a much nicer solution.
+</div>
+</div>
+
+<div class='brn' id='brn6109'>
+<div class='frm pst' id='pid6110' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6110#pid6110'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-02 10:34
+</div>
+<div class='ccl'>
+Thanks, I&#39;ll look forward to it in 0.8, some time in 2020 :)
+</div>
+</div>
+
+<div class='frm pst' id='pid6134' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6134.html#pid6134'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2012-08-08 17:06
+</div>
+<div class='ccl'>
+Is it possible to add a parameter in the Window constructor so you can ignore that limit? So you can take care about that problem by yourself.<br/><br/>Something like this<br/><code>Window (unsigned width, unsigned height, bool fullscreen, double updateInterval=16.666666,<b> bool ignoreConstraint=false</b>)</code><br/><br/>It would be very useful for the next release, and it&#39;s something easy to do, I think :)
+</div>
+</div>
+
+<div class='frm pst' id='pid6136' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6136' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6136.html#pid6136'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-08-14 11:19
+</div>
+<div class='ccl'>
+An improved way to handle different screen sizes (or be able to respond to them at all) would indeed be very desireable. I talked about how the lack of a proper fullscreen feature really impedes many game ideas with a buddy yesterday night, and having a resizeable window (which I assume includes maximizing) would be a great thing to look forward to, and depending on the game at hand even more desireable than fullscreen (which seems to be the case here).
+</div>
+</div>
+
+<div class='brn' id='brn6136'>
+<div class='frm pst' id='pid6137' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6136'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6137' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6137.html#pid6137'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-14 22:25
+</div>
+<div class='ccl'>
+Full-screen borderless window would also be preferable to &quot;true&quot; fullscreen too.
+</div>
+</div>
+
+<div class='brn' id='brn6137'>
+<div class='frm pst' id='pid6138' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6137'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6138' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6138.html#pid6138'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-08-15 10:50
+</div>
+<div class='ccl'>
+While I definately agree there, it seems that this would need the same fix jlnr mentioned in his first post here, whereas the window would minimize itself automatically otherwise. Now, of course I really have no clue of all that OS window management stuff, but I imagine that to be quite hard with multiple target operating systems in mind...<br/><br/>But yeah, borderless fullscreen is on my humble wishlist as well, however a resizeable window solution that comes in the near future and should work on all systems is preferred to a borderless fullscreen solution that likely comes way after and might be buggy... no?
+</div>
+</div>
+
+<div class='brn' id='brn6138'>
+<div class='frm pst' id='pid6139' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6138'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6139' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6139.html#pid6139'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-15 12:18
+</div>
+<div class='ccl'>
+Borderless fullscreen is the only fullscreen supported in Ray, works flawlessly, so it is perfectly possible cross-platform, but it doesn&#39;t have the same legacy obsession as Gosu (which is both a good and bad feature of Gosu ;) ).<br/><br/>The problem with run-time resizing is that you need an extra chunk lot of code to handle it in your game.<br/><br/>I do worry a bit about pixelated games, that can&#39;t really operate at fractional zooms (e.g. in Z&amp;G, I think the game runs at something like 160x120 internally, so is fine at 640x480, but would look terrible at, say, 800x500). For this popular use-case, we really need the ability to resize in code, rather than resize arbitrarily with maximise buttons or manual dragging of the edges. Not saying I don&#39;t want it, but it is important that it is, by default, disabled.
+</div>
+</div>
+
+<div class='brn' id='brn6139'>
+<div class='frm pst' id='pid6140' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6139'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6140' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6140.html#pid6140'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-15 15:29
+</div>
+<div class='ccl'>
+There&#39;s no legacy problem in rewriting the fullscreen code to make it use a fullscreen window. It&#39;s just a matter of missing time. (i.e. contributions welcome ;))
+</div>
+</div>
+
+<div class='brn' id='brn6140'>
+<div class='frm pst' id='pid6141' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6140'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6141#pid6141'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-15 15:56
+</div>
+<div class='ccl'>
+Fair enough; I assumed it was something that would be difficult before the glfw transition (without any real knowledge of what is involved :D)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6142' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6139'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6142.html#pid6142'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-08-15 18:13
+</div>
+<div class='ccl'>
+Again, I&#39;m sure I&#39;m being more optimistic on this than I should be, but I don&#39;t see the extra effort if you&#39;re not trying to resize what&#39;s displayed. If you&#39;re just trying to display more of the same scene upon resizing, it shouldn&#39;t make much of a difference.<br/>Of course, you would need a way to access the current width/height of the window to do stuff such as HUD drawing or certain camera actions properly... but there might be something like that already, and I just missed it :)
+</div>
+</div>
+
+<div class='frm pst' id='pid6190' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6139'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6190#pid6190'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-08-25 22:53
+</div>
+<div class='ccl'>
+Runtime resizing, similar to the way Minecraft works, is a part of GLFW. Depending on how much of GLFW gosu ends up using, it might not be too hard to implement.<br/><br/>There are of course still some considerations about how the game should scale when the window is resized that would have to be handled by individual game code.&#160; However, the base functionality would be there, at least.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6373' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6136'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6373.html#pid6373'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-11-25 19:18
+</div>
+<div class='ccl'>
+I started a (probably redundant) issue about this topic: <a class='url' href='https://github.com/jlnr/gosu/issues/158'>https://github.com/jlnr/gosu/issues/158</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6381' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6381' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6381.html#pid6381'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-12-10 08:02
+</div>
+<div class='ccl'>
+I actually ran into a new-to-me window sizing problem, that however I&#39;m sure other people have had in the past.<br/><br/>What I&#39;m doing is I&#39;m making a game with a target resolution of 360x200 (which is just slightly wider than a ratio of 16:9). Now, that is neither working in fullscreen mode (modern monitors don&#39;t support such small resolutions, and the ratio is not a regular ratio either) nor in regular mode, which simply looks way too small on a 1920x1080 screen.<br/><br/>So, I was wondering if there is or could be something like an internal scaling factor... let&#39;s say I&#39;m doing something like <i>Window.new(width, height, fullscreen, update_interval = 16.666666, scale = 1.0)</i><br/>I could imagine there already being something like that, because on the automatic window resize that&#39;s been talked about previously, this is exactly what happens: The whole viewport is scaled down to match the new window&#39;s size.<br/><br/>Alternatively, I once programmed a script to go with RPG Maker VX to automatically detect the screen size of the user and scale the window to full increments (1x, 2x, 4x, ...) of the original solution as long as it still fits their screen. Of course, that was a WinAPI solution, so again, not sure about multi-platform...<br/><br/>The only other way I can think of is something like a @scale variable to be used in every draw... and I really don&#39;t want to go there...
+</div>
+</div>
+
+<div class='brn' id='brn6381'>
+<div class='frm pst' id='pid6382' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6381'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6382' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6382.html#pid6382'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-12-10 11:25
+</div>
+<div class='ccl'>
+The easiest way is to wrap your <code>Window#draw</code> method in <code>scale(2) do ... end</code>, and to scale down <code>mouse_x</code> and <code>mouse_y</code> wherever you use them. Not pretty, but one of the smaller pain points with Gosu. :)
+</div>
+</div>
+
+<div class='brn' id='brn6382'>
+<div class='frm pst' id='pid6383' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6382'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6383.html#pid6383'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-12-10 12:15
+</div>
+<div class='ccl'>
+Alright, that actually would make it rather convenient, especially since I don&#39;t use the cursor at all... now, if screen_width and screen_height work the way I imagine it, that would make the auto-scaling quite easy again! :D<br/>I&#39;m going to fiddle with that the second I get home from work... but thanks already, as I don&#39;t see why it wouldn&#39;t work :)
+</div>
+</div>
+
+<div class='frm pst' id='pid6384' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6382'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6384' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6384#pid6384'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-12-10 17:44
+<span class='htt'>Edited</span> 2012-12-10 18:28
+</div>
+<div class='ccl'>
+Okay, there actually is the aliasing &#39;problem&#39; that for a pixelated-style game, that just looks very untidy. Is there a way to influence that, as in change it to repeating pixels?<br/><br/>I&#39;ve also been wondering about the Window.scale function... when I try to use it with self.scale(2, 2, 0, 0), it returns <i>no block given (LocalJumpError)</i>. Any clues on how to use this properly (or if it even is what I&#39;m looking for)? ^^
+</div>
+</div>
+
+<div class='brn' id='brn6384'>
+<div class='frm pst' id='pid6389' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6389' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6389.html#pid6389'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-12-11 01:51
+</div>
+<div class='ccl'>
+<code>scale</code> expects a block with the code that will scale...<br/><br/><code>scale(2) do&#160; # passing 2 is the same as 2, 2, 0, 0 :)<br/>&#160; image3.draw(1,2,3)<br/>end</code><br/><br/>You can stack and combine these transforms.<br/><br/>For pixelated-style games, use <code>Gosu::enable_undocumented_retrofication</code> (sic)
+</div>
+</div>
+
+<div class='brn' id='brn6389'>
+<div class='frm pst' id='pid6391' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6389'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6391' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6391.html#pid6391'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-12-11 20:10
+</div>
+<div class='ccl'>
+Ah, that was a mistake on my part then... I suspected the Window.scale function seperated from what you suggested - the draw block I managed to get by myself luckily :D<br/><br/>That undocumented feature is a true gem, though... glad to know about it, as I think the &#39;default&#39; way Gosu renders sprites is rather bad-looking... but that might be because I never usually work with sprite zooming (except clean increments such as 50% or 200%)...<br/><br/>Oh, one more thing that I found interesting: The scale function works different than I expected. What I&#39;m doing is drawing a sprite with 50% it&#39;s original size. It&#39;s then wrapped in the scale(4) function, which scales it up to a total amount of 200%.<br/><img class='emi' src='http://files.blueshack.net/images/gosu-sprite-zooming.jpg' alt=''/><br/>Gosu (left image) renders it altogether, instead of the step-wise execution I expected to happen (right). Of course this makes more sense, I just mention it because I thought it might be interesting to some :)<br/>(by the way, the sprite is for displaying purposes only... grabbed it from Google a second ago. So, sadly, no fighting game from me any time soon :D )
+</div>
+</div>
+
+<div class='brn' id='brn6391'>
+<div class='frm pst' id='pid6392' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6391'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6392' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6392#pid6392'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-12-11 23:02
+</div>
+<div class='ccl'>
+That is because scaling doesn&#39;t do any rendering. All it does it alter the transformation matrix used when the image is finally rendered.<br/><br/>If you wanted the latter effect in Gosu, you&#39;d need to scale down and render to a small texture (Ashton::Texture#render or something with TexPlay), then render that small texture larger onto the screen.
+</div>
+</div>
+
+<div class='brn' id='brn6392'>
+<div class='frm pst' id='pid6395' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6392'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6395.html#pid6395'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-12-12 13:20
+</div>
+<div class='ccl'>
+Yeah, I figured that&#39;s what was going on... it was more of a &quot;Aha!&quot; post than a &quot;How do I fix it?&quot; one :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6393' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6393' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6393#pid6393'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2012-12-12 05:44
+</div>
+<div class='ccl'>
+It&#39;s also a good idea to <code>floor</code> your drawing coordinates if your game uses floats for positioning and stuff. Even with smoothing disabled, drawing a sprite at 0.5, 0.5 is going to have the &quot;pixels&quot; misaligned.<br/><br/><code>@image.draw @x.floor, @y.floor, @z</code><br/><br/>or whatever.
+</div>
+</div>
+
+<div class='brn' id='brn6393'>
+<div class='frm pst' id='pid6394' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6109.html#pid6393'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6394.html#pid6394'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2012-12-12 13:19
+</div>
+<div class='ccl'>
+That&#39;s a very nice hint, I probably would&#39;ve missed that.<br/>(What I&#39;m working on atm only draws to integer coordinates, though... still incredibly useful to know!)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=794#tid794'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=794#tid794'>Gosu Exchange</a> / Wrong window size
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6109.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

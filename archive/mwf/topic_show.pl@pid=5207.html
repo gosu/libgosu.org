@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5207 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.7.40 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5207' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=671.html#tid671'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=671.html#tid671'>Gosu News</a> / Gosu 0.7.40 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=671.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid5199' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5199' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5199.html#pid5199'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-19 22:27
+<span class='htt'>Edited</span> 2011-11-19 23:01
+</div>
+<div class='ccl'>
+Hotfix release:<br/><br/>• All: Fixed interaction between recording and transforms<br/>• Linux: <code>screenWidth</code>/<code>screenHeight</code> also returns the size of the primary screen only (thanks again, JayThirtySeven)<br/>• Linux/Ruby: Fixed linking error<br/><br/>The only things <code>record</code> cannot handle now are lines, triangles, clipping and custom GL, and the resulting image cannot generally be drawn with <code>draw_rot</code> or <code>draw_as_quad</code>/<code>getData().draw(...)</code>.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5199)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5199' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5199.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5199'>
+<div class='frm pst' id='pid5201' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5199'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5201' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5201.html#pid5201'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-11-20 09:16
+</div>
+<div class='ccl'>
+Perhaps it&#39;s time to refactor slightly: new base class (Drawable) that is inherited by Image and Macro. That way there&#39;s no worrying whether an image is actually an image, right? C:<br/><br/>At least once all the draw methods work for recorded macros.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5201)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5201' style='display:none;'>erisdiscord</span><a href='post_add.pl@pid=5201.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5201'>
+<div class='frm pst' id='pid5202' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5201'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5202' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5202.html#pid5202'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-20 10:02
+<span class='htt'>Edited</span> 2011-11-21 22:07
+</div>
+<div class='ccl'>
+Spooner brought this up too, but I am not convinced yet. With a shared base class, the interfaces of Image and Macro would be the same, except Macro wouldn&#39;t have <code>#to_blob</code> and <code>#insert</code> (the new interface for things like Texplay). <code>#gl_tex_info</code> could be there, but return <code>nil</code> as large Images already do. Or maybe BigImage could be a third class, but then calling <code>Image.new</code> to create it would be weird.<br/><br/>Or I could actually implement&#160; <code>#to_blob</code> and <code>#update</code> for Macro. (<code>#to_blob</code> would require render-to-texture to be there, <code>#update</code> is easy.) That would probably take the same amount of time and keep the class count down.<br/><br/>The annoying thing is that all the differences lie in the arguments to the methods, so it would actually be more correct if Macro had an interface that is <i>similar</i> but technically unrelated to Image, with the <code>color</code> and <code>mode</code> arguments missing because they won&#39;t ever work accurately. Usually they&#39;re at the end of the argument list...except for <code>#draw_as_quad</code>. So that wouldn&#39;t be super clean either.<br/><br/>Weird, weird, weird. :)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5202)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5202' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5202.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5202'>
+<div class='frm pst' id='pid5204' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5202'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5204' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5204.html#pid5204'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-20 13:22
+</div>
+<div class='ccl'>
+In 0.8 the arguments would be hashes, so the &quot;missing parameter&quot; argument is a terribly short-lived one :).
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5204)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5204' style='display:none;'>Spooner</span><a href='post_add.pl@pid=5204.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5204'>
+<div class='frm pst' id='pid5205' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5204'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5205' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5205.html#pid5205'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-20 16:16
+</div>
+<div class='ccl'>
+The hashes are only coming for constructors in 0.8, not <code>Image#draw</code> and friends. I haven&#39;t had time to do benchmarks yet either, but it seems we could have a modular drawing thing at the same performance cost. (<code>img.rotate(6).scale(2).draw(x, y, z)</code>, which I scheduled for 0.9 :P)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5205)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5205' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5205.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5205'>
+<div class='frm pst' id='pid5206' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5205'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5206' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5206.html#pid5206'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-20 16:22
+</div>
+<div class='ccl'>
+Oh, sorry, I thought we were getting img.draw x, y, z, scale: 2, rotate: 45, mode: :add in 0.8. I think I remember you mentioning you liked the idea of method chains though :(<br/><br/>The issue I have with img.rotate(6).scale(2).draw(x, y, z) is the probably performance issue of lots of ruby method calls every time I draw something (maybe not that important; sometimes it is hard to judge real CPU impact). However, if I can do manipulated_image =&#160; img.rotate(6).scale(2).translate(x, y) and then manipulated_image.translate(1, 0) and then manipulated_image.draw() at a later date, then I feel I am really winning :)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5206)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5206' style='display:none;'>Spooner</span><a href='post_add.pl@pid=5206.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5206'>
+<div class='frm pst' id='pid5207' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5206'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5207' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5207.html#pid5207'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-20 17:26
+</div>
+<div class='ccl'>
+Since I cannot stop you Ruby guys from keeping a reference to the &quot;manipulated&quot; image, that&#39;s the only way it&#39;d make sense. But it&#39;d also mean a new allocated object for every step in the chain. :( I will benchmark all the possibilities once I get there.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5207)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5207' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5207.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5207'>
+<div class='frm pst' id='pid5208' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5207'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5208' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5208.html#pid5208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-20 17:29
+</div>
+<div class='ccl'>
+Not really. The standard way to manage chains like that is only to calculate when required by something like a draw (treat it something like a ruby iterator?).
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5208)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5208' style='display:none;'>Spooner</span><a href='post_add.pl@pid=5208.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5208'>
+<div class='frm pst' id='pid5209' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5208'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5209.html#pid5209'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-20 21:20
+</div>
+<div class='ccl'>
+I guess it depends on whether <code>rotate</code> and <code>scale</code> are mutating methods or not. Since they won&#39;t mutate the underlying Image at least, I would&#39;ve expected them to always be non-mutating. I think your middle code bit should be <code>manipulated_image.translate!(1, 0)</code>. So for efficiency&#39;s sake, one could make it clear as <code>img.rotate(6).scale!(2).draw(...)</code>, meh. :/
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5209)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5209' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5209.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5285' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5199'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5285' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5285.html#pid5285'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-11-25 15:37
+</div>
+<div class='ccl'>
+Just updated to 0.7.40.<br/><br/>Not totally sure what&#39;s wrong, but it&#39;s broken for me.&#160; Sorry to be helpful and unhelpful at the same time, but I got a deadline to meet.&#160; Well, more of a personal milestone, but still.&#160; I&#39;ll try to post more detailed information later.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5285)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5285' style='display:none;'>RavensKrag</span><a href='post_add.pl@pid=5285.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5285'>
+<div class='frm pst' id='pid5287' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5285'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5287' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5287.html#pid5287'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-25 19:03
+</div>
+<div class='ccl'>
+Yeah, that would be awesome. :D Linux, right? I haven&#39;t exactly tested it a lot in my VM before releasing.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5287)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5287' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5287.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5287'>
+<div class='frm pst' id='pid5337' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5287'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5337' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5337.html#pid5337'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-13 04:37
+</div>
+<div class='ccl'>
+Ok, finally got around to it.&#160; Here&#39;s the error.<br/><br/><code> ruby: ../GosuImpl/Graphics/DrawOpQueue.hpp:128: void Gosu::DrawOpQueue::popTransform(): Assertion </code>individualTransforms.size() &gt; 1&#39; failed.<br/>Aborted `
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5337)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5337' style='display:none;'>RavensKrag</span><a href='post_add.pl@pid=5337.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5337'>
+<div class='frm pst' id='pid5339' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5337'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5339' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5339.html#pid5339'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-13 10:02
+</div>
+<div class='ccl'>
+Do you use <code>flush()</code> somewhere? Up to the upcoming .41, <code>flush()</code> can only be used outside of clipping and transformations :(
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5339)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5339' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5339.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5339'>
+<div class='frm pst' id='pid5340' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5339'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5340' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5340.html#pid5340'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-13 10:50
+</div>
+<div class='ccl'>
+So it&#39;s supposed to work past .41 then? Strange, as it works in .38, just not in .40.<br/><br/>Ah well, I&#39;ll shuffle the code around a bit for the time being, although it results in a bit of a performance hit.&#160; My code is by no means optimized though, so I&#39;m sure I could stand to eek out some efficiency elsewhere.&#160; I look forward to .41, it sounds like that&#39;s gonna be&#160; good one.<br/><br/>For those interested, here&#39;s what I&#39;m doing.&#160; It&#39;s intended to draw gamestates in different &quot;layers,&quot; such that each state has it&#39;s own z-index ordering.<br/><br/><code>@window.translate *@camera.offset do<br/>&#160; @stack[ACTIVE].each do |gamestate|<br/>&#160; &#160; if gamestate.visible?<br/>&#160; &#160; &#160; gamestate.draw @camera.zoom<br/>&#160; &#160; &#160; @window.flush<br/>&#160; &#160; end<br/>&#160; end<br/>end</code>
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5340)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5340' style='display:none;'>RavensKrag</span><a href='post_add.pl@pid=5340.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn5340'>
+<div class='frm pst' id='pid5342' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5207.html#pid5340'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5342.html#pid5342'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-13 18:28
+</div>
+<div class='ccl'>
+I am also flushing between states - it&#39;s nice to have reusable states that don&#39;t Z-collide with the game. But I was lucky enough to only scroll in one of the states. :)<br/><br/>Yes, it is already fixed, I just need to package a release again. (Soon, Ludum Dare is impending after all!)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(5342)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield5342' style='display:none;'>jlnr</span><a href='post_add.pl@pid=5342.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=671.html#tid671'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=671.html#tid671'>Gosu News</a> / Gosu 0.7.40 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=671.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5207.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

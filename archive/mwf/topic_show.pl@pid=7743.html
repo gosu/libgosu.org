@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7743 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>list display modes</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7743' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1030.html#tid1030'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1030.html#tid1030'>Gosu Exchange</a> / list display modes
+</div>
+</div>
+
+<div class='frm pst' id='pid7531' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7531' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7531.html#pid7531'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2013-11-28 17:10
+</div>
+<div class='ccl'>
+Is it possible in ruby/gosu to list all available display modes? (<a class='url' href='http://www.love2d.org/wiki/love.graphics.getModes'>like in love2d</a>?)
+</div>
+</div>
+
+<div class='brn' id='brn7531'>
+<div class='frm pst' id='pid7534' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7743.html#pid7531'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7534.html#pid7534'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-11-29 15:27
+</div>
+<div class='ccl'>
+I don&#39;t know. You can use Gosu.screen_height and Gosu.screen_width to get the screen resolution, eg. so you can set the game full screen with the systems resolution.
+</div>
+</div>
+
+<div class='frm pst' id='pid7743' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7743.html#pid7531'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7743' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7743.html#pid7743'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2014-02-25 15:38
+<span class='htt'>Edited</span> 2014-02-25 15:53
+</div>
+<div class='ccl'>
+I managed to do it (on Windows) with a third-party program <a class='url' href='http://www.softpedia.com/get/Multimedia/Video/Other-VIDEO-Tools/QRes.shtml'>QRes 1.1</a>. It&#39;s a 5KB console app that is capable of listing and changing display modes. Just copy qres.exe to your folder of choice and do something like:<br/><code>modes = %x(qres.exe /L).each_line.to_a.drop(3)<br/>modes.each_index do |n|<br/>&#160; x = modes[n].match(/[^x]*/)[0]<br/>&#160; y = modes[n].match(/(?&lt;=x)(.*)(?=,)/)[0]<br/>&#160; c = modes[n].match(/(?&lt;=, )(.*)(?= bits)/)[0]<br/>&#160; f = modes[n].match(/(?&lt;=@ )(.*)(?= Hz)/)[0]<br/>&#160; modes[n] = { :x =&gt; x, :y =&gt; y, :c =&gt; c, :f =&gt; f }<br/>end<br/>puts modes</code><br/>I&#39;m not very good with regexes, but it works good enough.<br/><br/>A word of advice - apparently you get the list of modes supported by your GPU, not the monitor, so if you try to change to one of them, you might (and should) give user a prompt if he can see anything (and some kind of timeout in case he couldn&#39;t).
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/43/7743/qres.exe'>qres.exe</a> - QRes 1.1 (5k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn7743'>
+<div class='frm pst' id='pid7744' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7743.html#pid7743'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7744' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7744.html#pid7744'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2014-02-26 00:46
+<span class='htt'>Edited</span> 2014-02-26 00:52
+</div>
+<div class='ccl'>
+Here is a nicer version:<br/><br/><code><br/>PATTERN = /(?&lt;width&gt;\d+)x(?&lt;height&gt;\d+)<br/>&#160; &#160; &#160; &#160; &#160;&#160; ,\s<br/>&#160; &#160; &#160; &#160; &#160;&#160; (?&lt;color_depth&gt;\d+)\sbits<br/>&#160; &#160; &#160; &#160; &#160;&#160; \s@\s<br/>&#160; &#160; &#160; &#160; &#160;&#160; (?&lt;refresh_rate&gt;\d+)\sHz<br/>&#160; &#160; &#160; &#160; &#160; /x<br/><br/>modes = %x(qres.exe /L).each_line.drop(3).map do |line|<br/>&#160; match = line.match(PATTERN)<br/><br/>&#160; {<br/>&#160; &#160; width: match[:width].to_i,<br/>&#160; &#160; height: match[:height].to_i,<br/>&#160; &#160; color_depth: match[:color_depth].to_i,<br/>&#160; &#160; refresh_rate: match[:refresh_rate].to_i,<br/>&#160; }<br/>end<br/><br/>puts modes<br/>puts<br/>puts modes.select {|x| x[:color_depth] == 32 }.sort_by {|x| [x[:width], x[:height]] }<br/></code><br/><br/>You can get this info via opengl reasonably easily. Maybe this functionality should be in Ashton if jlnr doesn&#39;t want to add it to Gosu itself?<br/><br/>EDIT: Fixed dumb bug in the code ;)
+</div>
+</div>
+
+<div class='brn' id='brn7744'>
+<div class='frm pst' id='pid7745' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7743.html#pid7744'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7745.html#pid7745'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-02-26 21:51
+</div>
+<div class='ccl'>
+I&#39;m still convinced that I should kick the resolution-changing fullscreen code out of Gosu. :) The SDL2 offers &quot;fake fullscreen&quot; now, a desktop-sized window where I can just scale everything in OpenGL. Even if I can&#39;t use the SDL2 as the base for Gosu on all platforms, I&#39;m still planning to use that bit of code. (The Linux port of Gosu already works like this.)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1030.html#tid1030'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1030.html#tid1030'>Gosu Exchange</a> / list display modes
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7743.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

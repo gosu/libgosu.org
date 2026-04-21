@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1287 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>creating blank images in gosu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1287' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=196#tid196'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=196#tid196'>Gosu Exchange</a> / creating blank images in gosu
+</div>
+</div>
+
+<div class='frm pst' id='pid1279' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1279.html#pid1279'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=55' >awright</a>
+<span class='htt'>Date</span> 2009-08-15 08:34
+</div>
+<div class='ccl'>
+is there a way i can create blank images in gosu? i want to specify an arbitrary height and width
+</div>
+</div>
+
+<div class='frm pst' id='pid1280' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1280#pid1280'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-15 09:16
+</div>
+<div class='ccl'>
+Yes. You can fake being an RMagick image. When you do not pass a String as the filename argument to Image.new, Gosu will send #cols and #rows to the object, and then #to_blob to get a String of cols*rows*4 bytes of data. This can actually be used to build all kinds of simple generators.
+</div>
+</div>
+
+<div class='frm pst' id='pid1287' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1287.html#pid1287'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-08-16 18:08
+</div>
+<div class='ccl'>
+You can see exactly this method used in OperationLambda:<br/><br/>EmptyImageStub.rb:<br/><code>module OperationLambda<br/>&#160; module ImageManager<br/>&#160; &#160; <br/>&#160; &#160; # EmptyImageStub is based on an idea Julian Raschke suggested in #gosu<br/>&#160; &#160; # on IRC. It provides empty RMagic::Image-like objects which, when<br/>&#160; &#160; # passed to Gosu::Image&#39;s constructor, have their to_blob method called,<br/>&#160; &#160; # to provide RGBA data. This allows the easy creation of new Gosu::Image<br/>&#160; &#160; # objects without accessing the filesystem, which can then be drawn into<br/>&#160; &#160; # with TexPlay.<br/>&#160; &#160; class EmptyImageStub<br/>&#160; &#160; &#160; def initialize(w,h)<br/>&#160; &#160; &#160; &#160; @w, @h = w, h;<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; def to_blob<br/>&#160; &#160; &#160; &#160; &quot;\0&quot; * @w * @h * 4<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; def rows<br/>&#160; &#160; &#160; &#160; @h<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; def columns<br/>&#160; &#160; &#160; &#160; @w<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end</code><br/><br/>Usage (from ImageManager class):<br/><code>def empty(w,h)<br/>&#160; stub = EmptyImageStub.new(w,h)<br/>&#160; return Gosu::Image.new(MainWindow.instance,stub,true)<br/>end</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid1301' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1301#pid1301'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-08-19 03:45
+</div>
+<div class='ccl'>
+this is a very cool trick...<br/><br/>im just wondering, are the string wrapped arrays returned by #to_blob in the same format as the arrays returned from glGetTexImage() ?<br/><br/>I am trying to create a new image but with data from another image (a Gosu::Image#dup).<br/><br/>It&#39;s not working particularly well at present which is either due to a bug in my code (quite likely) or a discrepancy in the image formats...
+</div>
+</div>
+
+<div class='frm pst' id='pid1302' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1302.html#pid1302'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-19 04:09
+</div>
+<div class='ccl'>
+Hmm, I think you will have to try around a bit to find out which format this is in, but you should be able to get the right format out of glGetTexImage(). Then someone should test if it also works on a big-endian PowerPC machine :)<br/><br/>What I do is:<br/><br/><code><br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; unsigned rgba = *rgbaIter; /* next four bytes */<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; result.setPixel(x, y, Gosu::Color(rgba).abgr()); // swap R and B<br/></code><br/><br/>Not a very accurate comment I fear ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid1359' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1359#pid1359'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-08-25 17:26
+</div>
+<div class='ccl'>
+heya,<br/><br/>I&#39;ve been using the technique discussed in the awright thread to generate new images, however this method is very slow. Is it possible to add a new method to Gosu to _quickly_ generate new Gosu Images of a given width and height ? or do you know of a faster method using the current setup?
+</div>
+</div>
+
+<div class='frm pst' id='pid1362' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1362.html#pid1362'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-26 06:40
+</div>
+<div class='ccl'>
+What do you mean by slow? Too slow to do it inbetween frames, or really slow? How are you creating the strings?
+</div>
+</div>
+
+<div class='frm pst' id='pid1364' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1364#pid1364'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-08-26 12:19
+<span class='htt'>Edited</span> 2009-08-26 13:30
+</div>
+<div class='ccl'>
+im creating the strings using memset so it should be very fast:<br/>&#160; &#160; int size = width * height * 4;<br/>&#160; &#160; char buf[size];<br/>&#160; &#160; memset(buf, 0, size);&#160; &#160; &#160; &#160; <br/>&#160; &#160; return rb_str_new(buf, size);<br/><br/>So im assuming the RMagick functions that take the string and convert to an image are what&#39;s causing the delay. <br/><br/>I want to be able to make the creation of blank images of arbitrary size and then manipulating them with texplay in _real_time_ a feasible possibilty. I was experimenting with a damage system for a game im writing where on collision chunks of the<br/>image are separated from the main craft and sent flying across the screen. I was doing this by creating a blank texture of a certain size and then splicing pieces from the source image into it. However it was just too slow, and identified the bottleneck was in the creation of the blank Image. :(&#160; Would it be too hard to add a very fast Gosu::Image::create_blank_image(window, width, height) function ? :)) Or do you know another way of doing it? 
+</div>
+</div>
+
+<div class='frm pst' id='pid1366' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1366.html#pid1366'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-26 22:00
+</div>
+<div class='ccl'>
+Hmmm, no idea. Using the C++ API would be faster of course, but I guess you are trying stay on the Ruby side of things (<code>Gosu::Bitmap bmp; bmp.resize(w, h);</code> then create an Image from that). I don&#39;t think I&#39;m doing anything completely wasteful in the progress, but updating textures, creating new textures, etc., is all something that can cause weird lags due to particular gfx drivers. (For example, changing a texture on the iPhone is almost a no-go, as far as I can see.) Does the RMagick game work smoothly for you?
+</div>
+</div>
+
+<div class='frm pst' id='pid1368' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1368#pid1368'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-08-27 02:42
+</div>
+<div class='ccl'>
+yep the RMagick example is fine. If I use Gosu::Image::new() and load just an empty image file (a blank .png) it is very fast, of course, and I may just resort to this (though it seems a bit weird to carry around a blank .png file just for splicing things into, but not really a big deal). I guess I was hoping that creating a blank image using the to_blob() trick would be just as fast as loading a blank .png from a file. <br/><br/>If I was to use the c++ API i&#39;d have to dynamically link to the gosu.so file, which seems a bit weird to me...unless I&#39;ve got that wrong?
+</div>
+</div>
+
+<div class='frm pst' id='pid1370' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1370.html#pid1370'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-27 12:22
+</div>
+<div class='ccl'>
+To be honest, I have no idea how the C++ thing would work :(<br/><br/>And this is really weird. Does it get better if you cache the string? Because loading from a PNG should be WAY slower than creating an image the way you did. Is this with 1.9? Does it maybe do fancy multibyte stuff?
+</div>
+</div>
+
+<div class='frm pst' id='pid1401' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1401.html#pid1401'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-08-28 17:42
+</div>
+<div class='ccl'>
+you were right, i did some benchmarking, loading from a string is alot faster than loading from a file. there was just something screwy with my code :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=196#tid196'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=196#tid196'>Gosu Exchange</a> / creating blank images in gosu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1287.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

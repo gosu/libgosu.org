@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9491 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Image drawing performance</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9491' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1408.html#tid1408'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1408.html#tid1408'>Gosu Exchange</a> / Image drawing performance
+</div>
+</div>
+
+<div class='frm pst' id='pid9490' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9490' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9490#pid9490'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1329.html' >antm</a>
+<span class='htt'>Date</span> 2019-03-24 15:42
+</div>
+<div class='ccl'>
+I&#39;ve just started playing around with Gosu and I really like it but I am having an issue with the performance of image drawing that I hope somebody might be able to help me with.<br/><br/>I&#39;ve set up a very basic prototype that creates a non-full screen window and draws a single 1024x768 png image each cycle.&#160; <br/><br/>When I run this under Windows 10, I get a frame rate of about 18 fps.&#160; However if I run the same code on the same machine under Linux (via an Ubuntu 18.04 Live CD) I get a consistent 60 fps.<br/><br/>Back in Windows, if I run an equivalent C implementation using the SDL2 library directly, I get about 300 fps.<br/><br/>I&#39;m running this on a Intel Core i7 620 M which has an integrated Intel HD Graphics adaptor.&#160; It&#39;s pretty elderly so I expect it doesn&#39;t support the more recent versions of OpenGL.&#160; Initially I thought this might be the issue but the Linux and C/SDL tests indicate that it should be capable of more.&#160; I&#39;m guessing that when running under Windows, Gosu is resorting to some sort of software rendering which is impacting the performance.<br/><br/>Windows tells me I&#39;ve got the latest video drivers available and I can&#39;t find anything later that looks to be compatible on the Intel site.<br/><br/>Ruby version is ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]<br/><br/>Gosu version is 0.14.5<br/><br/>Is there anything I can do to improve the frame rate, or at least try to work out what is happening?<br/><br/>Thanks.
+</div>
+</div>
+
+<div class='brn' id='brn9490'>
+<div class='frm pst' id='pid9491' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9490'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9491' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9491.html#pid9491'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2019-03-25 15:29
+</div>
+<div class='ccl'>
+Do you use OpenGL in the equivalent SDL 2 code as well? I think they have this &quot;renderer&quot; library that uses OpenGL under the hood, but is easier than using raw OpenGL. If it works from C but not via Ruby -&gt; Gosu -&gt; SDL 2, then that&#39;s really curious.<br/><br/>This is what Gosu does: <a class='ura' href='https://github.com/gosu/gosu/blob/master/src/Window.cpp#L37-L47'>https://github.com/gosu/gosu/blob/master/src/Window.cpp#L37-L47</a><br/><br/>Usually these kinds of issues are solved by reinstalling drivers or windows or whatever, but that&#39;s obviously not a great solution. :/ OpenGL 2.1 (what your chip supposedly supports) should be good enough as well.
+</div>
+</div>
+
+<div class='brn' id='brn9491'>
+<div class='frm pst' id='pid9492' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9491'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9492' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9492.html#pid9492'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1329.html' >antm</a>
+<span class='htt'>Date</span> 2019-03-25 19:08
+</div>
+<div class='ccl'>
+Thanks for the reply.<br/><br/>Directly interfacing with OpenGL is a bit beyond my knowledge level at the moment so I was making use of the SDL renderer in the C++ implementation.<br/><br/>For reference, this is the C++ code with the error checking etc stripped out:<br/><br/><code>#include &quot;SDL.h&quot;<br/>#include &quot;SDL_image.h&quot;<br/>#include &lt;iostream&gt;<br/><br/>int main(int argc, char* args[])<br/>{<br/>&#160; SDL_Init(SDL_INIT_VIDEO);<br/>&#160; IMG_Init(IMG_INIT_PNG);<br/><br/>&#160; SDL_Window* window = nullptr;<br/>&#160; SDL_Renderer* renderer = nullptr;<br/>&#160; SDL_CreateWindowAndRenderer(1024, 768, 0, &amp;window, &amp;renderer);<br/>&#160; SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);<br/><br/>&#160; SDL_Surface* surface = IMG_Load(&quot;background.png&quot;);<br/>&#160; SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);<br/>&#160; SDL_FreeSurface(surface);<br/><br/>&#160; int dt = 0;<br/>&#160; int frames = 0;<br/>&#160; bool running = true;<br/>&#160; uint32_t ticks = SDL_GetTicks();<br/>&#160; SDL_Event event;<br/><br/>&#160; while (running) {<br/>&#160; &#160; while (SDL_PollEvent(&amp;event)) {<br/>&#160; &#160; &#160; if (event.type == SDL_QUIT) {<br/>&#160; &#160; &#160; &#160; running = false;<br/>&#160; &#160; &#160; }<br/>&#160; &#160; }<br/><br/>&#160; &#160; ++frames;<br/>&#160; &#160; dt = SDL_GetTicks() - ticks;<br/>&#160; &#160; if (dt &gt;= 1000) {<br/>&#160; &#160; &#160; std::cout &lt;&lt; frames / (dt / 1000.0) &lt;&lt; &#39;\n&#39;;<br/>&#160; &#160; &#160; ticks += dt;<br/>&#160; &#160; &#160; frames = 0;<br/>&#160; &#160; }<br/><br/>&#160; &#160; SDL_RenderClear(renderer);<br/>&#160; &#160; SDL_RenderCopy(renderer, texture, NULL, NULL);<br/>&#160; &#160; SDL_RenderPresent(renderer);<br/>&#160; }<br/><br/>&#160; SDL_DestroyTexture(texture);<br/>&#160; SDL_DestroyWindow(window);<br/>&#160; SDL_DestroyRenderer(renderer);<br/>&#160; SDL_Quit();<br/><br/>&#160; return 0;<br/>}</code><br/><br/>This is what I am trying in Ruby:<br/><br/><code>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize(*args)<br/>&#160; &#160; super<br/>&#160; &#160; @background = Gosu::Image.new(&#39;background.png&#39;)<br/>&#160; &#160; @frames = 0<br/>&#160; &#160; @ticks = Gosu.milliseconds<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; @frames += 1<br/>&#160; &#160; dt = Gosu.milliseconds - @ticks<br/>&#160; &#160; return unless dt &gt;= 1000<br/><br/>&#160; &#160; puts @frames / (dt / 1000.0)<br/>&#160; &#160; @ticks += dt<br/>&#160; &#160; @frames = 0<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @background.draw(0, 0, 0)<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; case id<br/>&#160; &#160; when Gosu::KbEscape<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; end&#160; <br/>end<br/><br/>window = Window.new(1024, 768)<br/>window.show</code><br/><br/>The image is a 1024x768 PNG, nothing special that I am aware of.<br/><br/>My C++ is very limited but I&#39;ll have a look through the code you&#39;ve linked to see if I can put together a more fair comparison.<br/><br/>Thanks again, it&#39;s a great library and I hope to get some good use out of it.
+</div>
+</div>
+
+<div class='brn' id='brn9492'>
+<div class='frm pst' id='pid9493' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9492'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9493' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9493.html#pid9493'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2019-03-26 10:53
+</div>
+<div class='ccl'>
+Thanks for trying this and posting the code. It seems that SDL_Renderer does not necessarily use OpenGL on Windows, so maybe SDL 2 works better because it uses Direct3D.<br/><br/>Can you please try calling SDL_CreateWindow and SDL_CreateRenderer separately as in this example:<br/><br/><a class='ura' href='https://wiki.libsdl.org/SDL_CreateRenderer'>https://wiki.libsdl.org/SDL_CreateRenderer</a><br/><br/>I guess you could try different indices for the renderer (0, 1, 2 instead of -1) and then print the name of the renderer using this function:<br/><br/><a class='ura' href='https://wiki.libsdl.org/SDL_GetRenderDriverInfo'>https://wiki.libsdl.org/SDL_GetRenderDriverInfo</a><br/><br/>If either the OpenGL or OpenGL ES driver works better than what Gosu does, then I could fix it. But adding a Direct3D backend to Gosu itself would be too much :(
+</div>
+</div>
+
+<div class='brn' id='brn9493'>
+<div class='frm pst' id='pid9494' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9493'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9494' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9494.html#pid9494'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1329.html' >antm</a>
+<span class='htt'>Date</span> 2019-03-26 19:37
+</div>
+<div class='ccl'>
+Looks like you were right regarding SDL2 using a Direct3D driver.<br/><br/>While running Windows, if I use the SDL_CreateWindowAndRenderer function, SDL_GetRenderDriverInfo shows the resulting renderer as &#39;direct3d&#39;, with the flags SDL_RENDERER_ACCELERATED and SDL_RENDERER_TARGETTEXTURE set.<br/><br/>If I create the renderer separately with no flags passed, it again results in a &#39;direct3d&#39; renderer with SDL_RENDERER_ACCELERATED and SDL_RENDERER_TARGETTEXTURE set.&#160; This combination results in a FPS around the 475 mark.<br/><br/>If I set the SDL_RENDERER_SOFTWARE flag, I get a &#39;software&#39; renderer and performance around the 265 FPS mark.<br/><br/>If I use <code>SDL_SetHint(SDL_HINT_RENDER_DRIVER, &quot;opengl&quot;)</code>, I get an &#39;opengl&#39; renderer with SDL_RENDERER_ACCELERATED and SDL_RENDERER_TARGETTEXTURE set.&#160; This results in about 275 FPS.<br/><br/>Repeating the exercise under Ubuntu (again using a Live CD on the same machine), the default renderer is &#39;opengl&#39; and I get a frame rate around 215 FPS.<br/><br/>Still a bit confused as to why I get such different frame rates when running the same Ruby script under Windows (18/19 FPS) than Linux (60 FPS).&#160; Possibly the drivers used by Ubuntu are better than what is on available on my Windows 10 build?<br/><br/>Thanks for taking the time to reply anyway.&#160; Guess I might have to treat myself to some hardware with a better graphics card :-)
+</div>
+</div>
+
+<div class='brn' id='brn9494'>
+<div class='frm pst' id='pid9495' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9494'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9495' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9495#pid9495'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2019-04-01 12:54
+</div>
+<div class='ccl'>
+Hey, where did my reply go? :C<br/><br/>Thanks for digging into this! These OpenGL issues on Windows come up from time to time and it would be really good to know if there&#39;s anything I can do in Gosu to fix them. Your &quot;opengl&quot; renderer with 275 FPS and SDL_RENDERER_ACCELERATED doesn&#39;t sound like it&#39;s just software?!<br/><br/>Can you please try a &quot;pure OpenGL&quot; game like Super Tux Kart to see if it runs acceptably on your PC? Gosu is something between 15 and 20 years old, so your GPU really shouldn&#39;t be the problem. I&#39;ve just recently added the first non-OpenGL 1.0 call, and it&#39;s an optional feature (<code>render</code>-to-texture) :)
+</div>
+</div>
+
+<div class='brn' id='brn9495'>
+<div class='frm pst' id='pid9496' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9495'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9496' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9496.html#pid9496'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1329.html' >antm</a>
+<span class='htt'>Date</span> 2019-04-02 19:01
+</div>
+<div class='ccl'>
+I had a quick go with Super Tux Kart.&#160; It complained that Open GL 3.1 wasn&#39;t available but did allow me to play.&#160; If I&#39;m interpreting the FPS information it showed correctly, it was getting around 25 FPS when run in a 1024x768 window.<br/><br/>Not sure it helps much but I also downloaded a utility called GpuTest and when running the plot3D benchmark/module I was getting about 3 FPS.&#160; Happy to run some other tests if there is any thing else you want me to try.<br/><br/>I&#39;ve tried removing and re-installing the video driver but it doesn&#39;t seem to make any difference.
+</div>
+</div>
+
+<div class='brn' id='brn9496'>
+<div class='frm pst' id='pid9497' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9491.html#pid9496'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9497#pid9497'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2019-04-04 07:07
+</div>
+<div class='ccl'>
+Thanks for testing. Hm! If Super Tux Kart can manage 25 FPS, then Gosu should run way faster than 18 FPS?! If I can find the time I&#39;ll look at their OpenGL code. Maybe there&#39;s some flag that I set that makes the Intel drivers unhappy.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1408.html#tid1408'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1408.html#tid1408'>Gosu Exchange</a> / Image drawing performance
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9491.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

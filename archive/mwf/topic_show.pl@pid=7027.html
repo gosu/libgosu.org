@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7027 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Why can&#39;t I draw a clean looking button?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7027' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=923.html#tid923'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=923.html#tid923'>Gosu Exchange</a> / Why can&#39;t I draw a clean looking button?
+</div>
+</div>
+
+<div class='frm pst' id='pid7015' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7015' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7015#pid7015'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1036.html' >mjbellantoni</a>
+<span class='htt'>Date</span> 2013-07-21 09:58
+</div>
+<div class='ccl'>
+I&#39;m trying to create a clickable button and I&#39;m having a hard time getting it to look the way I want.&#160; What I want is a filled rectangle with a tidy one pixel border.&#160; I&#39;ve tried a couple of different approaches both without success.&#160; Specifically, I have a light grey background, a light blue button, and a dark blue border for the button.&#160; There are no gradients.<br/><br/>Approach #1: Draw it using quads.&#160; The colors are correct, but I can&#39;t reliably get the bottom border to show up.&#160; The way I do this is to draw a dark blue quad and then on top draw a light blue quad which is two pixels skinnier and shorter.<br/><br/>Approach #2: Draw it using images. The borders show up, but the leftmost one is too light.&#160; In fact, all of the colors in the button have different RGB values than the original.&#160; Also, a slight gradient is introduced between the light blue fill of the button and the dark blue border. Here&#39;s the code for that:<br/><br/>&#160; &#160; @blue_button = Gosu::Image.new(@window , &quot;assets/blue-button.png&quot;, true)<br/>&#160; &#160; @blue_button.draw(@x, @y, 100, 1, 1, 0xffffffff, :default)<br/><br/>Any ideas on the best way to do this or any thoughts about what I&#39;m doing wrong?<br/><br/>Thank you!
+</div>
+</div>
+
+<div class='brn' id='brn7015'>
+<div class='frm pst' id='pid7016' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7015'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7016' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7016.html#pid7016'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-07-21 10:50
+</div>
+<div class='ccl'>
+looks good in general.<br/>the only thing that i can think of is that your x and y are not integers, then some interpolation is bound to happen, causing odd stuff :)<br/><br/>another way would be a light blue box and then manually draw 4 lines on the sides.<br/>but then again, drawing lines is odd, too, since it sometimes looses pixels at the beginning or end.
+</div>
+</div>
+
+<div class='brn' id='brn7016'>
+<div class='frm pst' id='pid7020' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7016'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7020#pid7020'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1036.html' >mjbellantoni</a>
+<span class='htt'>Date</span> 2013-07-21 15:01
+</div>
+<div class='ccl'>
+I tried the quad-and-four-lines approach but those results were also problematic.&#160; Specifically, I one of the corners was missing a pixel.&#160; I&#39;ve verified that my x and y are integers.&#160; Thanks for the good thoughts though!
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7017' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7015'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7017' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7017.html#pid7017'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-21 12:38
+</div>
+<div class='ccl'>
+I don&#39;t think I&#39;ve seen a machine where the quad approach wouldn&#39;t work. Does this look right on your computer?<br/><br/><code><br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def draw_rect x, y, w, h, c<br/>&#160; &#160; draw_quad x, y, c,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x + w, y, c,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x, y + h, c,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x +w, y + h, c, 0<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; draw_rect 100, 100, 200, 200, Gosu::Color::RED<br/>&#160; &#160; draw_rect 100+1, 100+1, 200-2, 200-2, Gosu::Color::GREEN<br/>&#160; end<br/>end<br/>Window.new(400, 400, false).show<br/></code><br/><br/>Are you maybe opening a window that is so large that is has to be scaled down to fit your screen? That could explain the missing bottom border.
+</div>
+</div>
+
+<div class='brn' id='brn7017'>
+<div class='frm pst' id='pid7019' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7017'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7019' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7019#pid7019'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1036.html' >mjbellantoni</a>
+<span class='htt'>Date</span> 2013-07-21 14:58
+</div>
+<div class='ccl'>
+The code you just provided (thank you!) works, but when I use the same code in my own project (included) I get the results you see here:<br/><br/><img class='emi' src='https://dl.dropboxusercontent.com/u/60419063/bad-button.png' alt=''/><br/><br/>As you can see, the line on the bottom is missing.&#160; Here&#39;s my code:<br/><br/><code><br/>class GameControlView<br/><br/>&#160; def initialize(options)<br/>&#160; &#160; @area = options[:area]<br/>&#160; &#160; @window = options[:window]<br/>&#160; &#160; @outline_color = Gosu::Color.from_rgba_quad(229, 229, 229)<br/>&#160; &#160; @background_color = Gosu::Color.from_rgba_quad(241, 241, 241)<br/>&#160; end<br/><br/>&#160; def draw_rect_g x, y, w, h, c<br/>&#160; &#160; @window.draw_quad x, y, c,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x + w, y, c,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x, y + h, c,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x +w, y + h, c, 0<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; # Draw the panel<br/>&#160; &#160; @window.fill_rect(@area, @background_color)<br/>&#160; &#160; @window.draw_line(<br/>&#160; &#160; &#160; @area.left,&#160; @area.top, @outline_color,<br/>&#160; &#160; &#160; @area.right, @area.top, @outline_color)<br/><br/>&#160; &#160; draw_rect_g @area.left + 10, @area.top + 10, 50, 50, Gosu::Color::RED<br/>&#160; &#160; draw_rect_g @area.left + 10 + 1, @area.top + 10 + 1, 50-2, 50-2, Gosu::Color::GREEN<br/>&#160; end<br/><br/>end<br/></code><br/><br/><code>@area</code> is a <code>Chingu::Rect</code> and the values for left and top are 0 and 700.&#160; The background color is RGBA (241, 241, 241, 255).&#160; This is sitting in a 1280x800 window that fits easily onto my MacBook&#39;s screen.<br/><br/><img class='emi' src='https://dl.dropboxusercontent.com/u/60419063/bad-button-screen.png' alt=''/><br/><br/>Thanks for the help!
+</div>
+</div>
+
+<div class='brn' id='brn7019'>
+<div class='frm pst' id='pid7022' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7019'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7022' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7022.html#pid7022'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-21 20:26
+</div>
+<div class='ccl'>
+The quad in your screenshot is only 44x44px, are you sure the window is not being scaled down to fit your screen? What is your resolution? Maybe Gosu is being too conservative (v0.7.47+ should have fixed that).
+</div>
+</div>
+
+<div class='brn' id='brn7022'>
+<div class='frm pst' id='pid7026' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7022'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7026#pid7026'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1036.html' >mjbellantoni</a>
+<span class='htt'>Date</span> 2013-07-22 12:12
+</div>
+<div class='ccl'>
+My window was being scaled by Gosu!&#160; Shrinking the window from 1280x800 (which is my Mac&#39;s screen size) to 1024x68 solves the problem.&#160; I had incorrectly assumed that Gosu would just create a larger-than-screen window instead of scaling the window to fit onto the screen.<br/><br/>Thanks for the help!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7024' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7015'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7024' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7024.html#pid7024'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-21 20:53
+</div>
+<div class='ccl'>
+I use a single white pixel Image for this sort of thing. By altering its color and scale (in Image#draw), I can draw pixel perfect rectangles of any size and colour.
+</div>
+</div>
+
+<div class='brn' id='brn7024'>
+<div class='frm pst' id='pid7025' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7027.html#pid7024'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7025.html#pid7025'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-21 21:44
+</div>
+<div class='ccl'>
+That comes down to almost the same GL code, ± <code>glEnable(GL_TEXTURE_0)</code> :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7027' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=7027.html#pid7027'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1036.html' >mjbellantoni</a>
+<span class='htt'>Date</span> 2013-07-22 12:13
+</div>
+<div class='ccl'>
+The mystery has been solved.&#160; Thanks, everyone!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=923.html#tid923'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=923.html#tid923'>Gosu Exchange</a> / Why can&#39;t I draw a clean looking button?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7027.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

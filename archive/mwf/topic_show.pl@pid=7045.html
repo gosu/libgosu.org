@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7045 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Game code layout</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7045' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=927.html#tid927'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=927.html#tid927'>Gosu Exchange</a> / Game code layout
+</div>
+</div>
+
+<div class='frm pst' id='pid7038' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7038' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7038.html#pid7038'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-07-26 19:21
+</div>
+<div class='ccl'>
+I&#39;m starting to get better at making games using Ruby and Gosu, and I think I&#39;m coming up on a wall I&#39;d like advice on getting over.&#160; I think I need to improve the way I handle my objects, and how I get them to talk to each other.&#160; Let me use an example:<br/><br/>In most of my games&#39; main file, I notice myself doing this:<br/><br/><code>def update<br/>&#160; player.update<br/>&#160; bullets.update<br/>&#160; enemies.update<br/>&#160; hud.update<br/>end<br/><br/>def draw<br/>&#160; player.draw<br/>&#160; bullets.draw<br/>&#160; enemies.draw<br/>&#160; hud.draw<br/>end</code><br/><br/>Seems reasonable, but when it comes time for these objects to interact, what should handle what?&#160; Take the bullets class I mention above.&#160; It has a function called fire, that I use to spawn a new shot object, which is stored in an array, and then all the bullets in the array are looped over and drawn/moved with each draw/update cycle.&#160; Works great.&#160; But who should check if a bullet hits an enemy?&#160; Should each bullet check to see if it&#39;s hit an enemy? To do that I&#39;ll need to pass the enemies array to the bullets class, so that each bullet can iterate over the enemies and tell if it&#39;s hit one, then mark itself as spent and destroy that enemy.&#160; Sounds good, works well.&#160; What about when the enemy goes to shoot back?&#160; I can&#39;t reuse the bullets class, because I had to pass enemies to the bullets class, so the enemies class is already created.&#160; I have thought of a few approaches that might solve my problem.<br/><br/>I could use a lazy linking method, like this<br/><code><br/>@enemies = Enemies.new<br/>@bullets = Bullets(@enemies)<br/>@enemies.link(@bullets)</code><br/><br/>That would give enemies access to bullets.&#160; This seems really stupid, and makes it look like I&#39;m totally defeating the point of objects.&#160; I feel like I end up passing all my objects to nearly all the other objects.&#160; I&#39;m worried I&#39;m missing an easier way.<br/><br/>What seems more sensible, and just struck me as I was writing this, is to make a less specific bullets class, and make two classes that extend it, one for the player, and one for enemies.&#160; Each enemy wouldn&#39;t need it&#39;s own, since the way my bullets class works bullets can be spawned from anywhere, and can head in any direction.&#160; It would be enough to have one allied array of bullets and one hostile one.&#160; Anyway, I digress.<br/><br/>How do you normally handle the structure of your game&#39;s logic?&#160; Do you pack all of the logic into the objects the logic involves, do you use dedicated classes for controlling the game, or something I haven&#39;t thought of?&#160; I love Ruby dearly, so I&#39;m trying to learn to do this the sensible, Ruby way, instead of just a way that works.&#160; Any advice?
+</div>
+</div>
+
+<div class='brn' id='brn7038'>
+<div class='frm pst' id='pid7039' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7045.html#pid7038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7039.html#pid7039'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-07-26 20:22
+</div>
+<div class='ccl'>
+My solution was to group objects in few arrays. Structure looks like this <code>@entities = [ [] , [] , [] ]</code><br/>@entities is array of arrays of objects. Every object is pushed in the first array (@entities[0]) and all objects in this array are passed update and draw.<br/>Then, we can push the same object in another array (like @entities[1]) grouping objects of the same type. Interacting is checking objects only from this group array, not the one where are objects are.<br/><br/>For bullets, my latest solutions was to use one Projectile class with all necessary logic etc. but giving it also something like @enemy instance variable.<br/>Every bullet is being updated, making its logic the same way, but there&#39;s a condition on the end/beginning of bullets update method. It looks like this:<br/><code>if @enemy<br/>&#160; ..check collision with player...<br/>else<br/>&#160; ...check collision with enemies...<br/>end</code><br/>So you can use the same class for player and enemy bullets and the key is this condition.<br/><br/>My whole system is more complex (like using inheritance for basic management methods for each object), all you can find here: <a class='ura' href='https://github.com/KoBeWi/Sapphire'>https://github.com/KoBeWi/Sapphire</a> Sorry, but for now it may be difficult to use for newbies.<br/><br/>Hope it helps. Somehow.
+</div>
+</div>
+
+<div class='frm pst' id='pid7040' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7045.html#pid7038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7040' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7040.html#pid7040'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-26 21:06
+<span class='htt'>Edited</span> 2013-07-26 21:14
+</div>
+<div class='ccl'>
+I&#39;ve always stuck to my standard recipe for Ruby games, and it&#39;s certainly sufficient for smaller games… :)<br/><br/>• The game is divided into several &quot;states&quot;, which have a similar interface to the <code>Gosu::Window</code> class. The window delegates all callbacks to the current state.<br/>• There is a <code>GameState</code> class which has an <code>attr_reader :map</code> and <code>attr_reader :objects</code>. The latter is an array of <i>all</i> objects in the game.<br/>• All game object classes are a subclass of <code>GameObject</code>. <code>GameObject</code> has a constructor that takes and saves a reference to a <code>GameState</code>, so that all game objects can access the map and the object list via <code>self.game.…</code><br/>* The game object also introduces a <code>deleted?</code> flag that can be set to mark that an object should be discarded ASAP<br/>• <code>Window::update</code> calls <code>GameState::draw</code>, which basically does: <code>@map.draw; @objects.each &amp;:draw</code>; each object knows how to draw itself.<br/>• <code>Window::update</code> calls <code>GameState::update</code>, which then does <code>@objects.each &amp;:update; @objects.reject! &amp;:deleted?</code> (it removes all objects from the list that should be deleted)<br/>• Objects interact by calling callbacks on all other objects; for example, a Bomb class can apply it&#39;s damage by iterating over the array as such: <code>self.game.objects.each { |obj| obj.bomb_damage_at(self.x, self.y) }</code>; the <code>GameObject</code> class defines a standard implementation for each callback to avoid <code>MethodError</code>s<br/><br/>So basically all my objects are created equal :) Exception: For objects that cannot work in a general way, e.g. objects that actively follow the (only) player, I usually keep a reference to the player in the <code>GameState</code> class. Enemies would then follow <code>self.game.player</code>.
+</div>
+</div>
+
+<div class='brn' id='brn7040'>
+<div class='frm pst' id='pid7041' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7045.html#pid7040'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7041.html#pid7041'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-07-26 21:46
+</div>
+<div class='ccl'>
+So your approach is to have <i>all</i> objects in one array, and then be specific in your method calls on those objects, instead of using general method names on many specialized arrays of objects.&#160; This seems pretty simple.&#160; I have not tried using any kind of gamestates yet at all, so this might be a good time to look into that as well.&#160; I also haven&#39;t tried extending general classes (gameobject) into more specific classes (the player, enemies, etc).&#160; I think the gameobject approach is pretty good.<br/><br/>I remember considering things like this when I was reading about Chingu, as it implements some of them, but thinking I needed to get some experience before I tried to use something similar.&#160; I think I&#39;ve gotten to that point.&#160; Time to experiment I guess!<br/><br/>Thanks a bunch!
+</div>
+</div>
+
+<div class='frm pst' id='pid7044' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7045.html#pid7040'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7044' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7044.html#pid7044'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-07-28 15:51
+</div>
+<div class='ccl'>
+This approach is actually working pretty well.&#160; I&#39;ve also taken a page from Unity3D and given each gameobject subclass an array call &quot;tags&quot; that I use to help when I do my method calls.&#160; Like I tag any &quot;Shot &lt; GameObject&quot; that a player makes as &quot;playerfire&quot; and any an enemy makes as &quot;enemyfire&quot;, I can also tag enemy bullets and ships as &quot;hurt&quot;, and then when I check for collisions, I can just check all the objects, if if I encounter one with the tag &quot;hurt&quot;, I know to take damage.&#160; Working much better than my old approach.<br/><br/>One thing I&#39;m still kind of confused about is how to cleanly forward button_down? data to the current gamestate.&#160; button_down is easy, but to forward button_down? I&#39;ve had to just make a function in each gamestate for all of the buttons I use, and then reassign them that way.<br/><br/>in Game &lt; Window<br/><br/><code>def update<br/>if button_down? blah<br/>&#160; @gamestate.blah<br/>end</code><br/><br/>then in my gamestate<br/><br/><code>def blah<br/>puts &#39;foo&#39;<br/>end</code>
+</div>
+</div>
+
+<div class='brn' id='brn7044'>
+<div class='frm pst' id='pid7045' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7045.html#pid7044'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7045.html#pid7045'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-07-28 18:40
+</div>
+<div class='ccl'>
+I usually forward this to the window and use the chance to translate &quot;logical&quot; buttons into physical ones; for example<br/><br/><code><br/>class Game<br/>&#160; ..<br/>&#160; def button_down? btn<br/>&#160; &#160; case btn<br/>&#160; &#160; when :jump<br/>&#160; &#160; &#160; self.window.button_down? KbUp or self.window.button_down? GpUp<br/>&#160; &#160; ..<br/>&#160; end<br/>&#160; ..<br/>end</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid7060' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7045.html#pid7044'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7060.html#pid7060'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-08-01 18:25
+</div>
+<div class='ccl'>
+You may want to consider taking advantage of Ruby&#39;s dynamic features instead of using a tagging system.&#160;&#160; Tagging is Unity&#39;s only option, because it relies on static typing, but there are other options.<br/><br/>Rather than have a &quot;hurt&quot; tag, you can simply define a method #hurt? and check based on that. More of a duck-typing approach.<br/><br/>For example:<br/><code>class GameObject<br/>&#160; def initialize<br/>&#160; &#160; @health = 5<br/>&#160; end<br/>&#160; <br/>&#160; def hurt?<br/>&#160; &#160; return true if @health &lt;= 0<br/>&#160; end<br/>end<br/><br/>g = GameObject.new<br/>if g.hurt?<br/>&#160; # Do whatever is necessary with the gameobject<br/>end</code><br/><br/>If not all objects are going to implement #hurt?, you can check if that method exists, similarly to how you can check if an object is of a particular class.&#160; To carry on the previous example, you could use<br/><code>g.respond_to? :hurt?</code>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=927.html#tid927'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=927.html#tid927'>Gosu Exchange</a> / Game code layout
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7045.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

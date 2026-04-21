@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2014 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>windows touch screen?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2014' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=303.html#tid303'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=303.html#tid303'>Gosu Exchange</a> / windows touch screen?
+</div>
+</div>
+
+<div class='frm pst' id='pid1996' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1996.html#pid1996'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-04 05:19
+<span class='htt'>Edited</span> 2010-01-04 05:33
+</div>
+<div class='ccl'>
+Hi, <br/><br/>I&#39;m trying to use one of my Ruby/Gosu apps with a touchscreen running windows 7 and I&#39;m having some problems with mouse click events <br/><br/>button_down?(MsLeft) will only evaluate as true when I&#39;m doing a drag-click and but not when the &quot;mouse pointer&quot; is still<br/><br/>Since Gosu uses DirectInput, I&#39;m guessing this is just something minor in InputWin.cpp.&#160; Any ideas what&#39;s going on before I get in to that?<br/><br/>Thank you!
+</div>
+</div>
+
+<div class='frm pst' id='pid1997' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1997.html#pid1997'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-04 05:38
+</div>
+<div class='ccl'>
+I am not sure... As far as I can tell, I just get events for button 1, 2 and 3 of the mouse. If the touch screen does not send a click without dragging as a left click, then I don&#39;t know how to detect it. Maybe the touchscreen&#39;s drivers are not suitable for DirectInput?<br/><br/>I guess it DOES work without DirectInput, and using the &quot;usual&quot; WM_CLICK messages. You could check in windowProc (or something like that) in WindowWin.cpp if you still get those, even though I subscribe to DirectInput data. If so, you could cheat for a start and just call input().onButtonDown(msLeft) in that case. ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid1998' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1998.html#pid1998'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-04 05:51
+</div>
+<div class='ccl'>
+Yeah, I think I incorrectly assumed that microsoft designed their touch screen api to use DirectInput...I&#39;ll look in to it.&#160; Thank you!
+</div>
+</div>
+
+<div class='frm pst' id='pid1999' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1999.html#pid1999'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-04 05:56
+</div>
+<div class='ccl'>
+They apparently do...a bit...because dragging works? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2001' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2001.html#pid2001'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-04 06:18
+</div>
+<div class='ccl'>
+Yeah, that&#39;s true... the mouse button 0 (case DIMOFS_BUTTON0:) block in InputWin.cpp... that&#39;s actually being called on a regular left click and works fine with the touch screen.&#160; The problem is somewhere after that.&#160; I&#39;ll keep debugging tomorrow.&#160; Thanks again for your help
+</div>
+</div>
+
+<div class='frm pst' id='pid2009' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2009.html#pid2009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-05 02:52
+</div>
+<div class='ccl'>
+Everything in c++ gosu is working fine with the touch screen.&#160; I&#39;ve moved on to the Ruby extension.&#160; In the generated file RubyGosu_wrap.cxx, I added debug statements to this method<br/><br/>SWIGINTERN VALUE_wrap_Window_button_down(int argc, VALUE *argv, VALUE self)<br/><br/>and it&#39;s working fine as well<br/><br/>So it&#39;s going awry somewhere between there and the calls to button_down? in Ruby... <br/><br/>any guesses? unfortunately, i have almost no knowledge of SWIG.&#160; anyway, i&#39;ll keep looking but if you happen to see this post ( and are really bored :) ), where would you look next?<br/><br/>Thank you again
+</div>
+</div>
+
+<div class='frm pst' id='pid2012' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2012.html#pid2012'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-05 04:08
+</div>
+<div class='ccl'>
+Just to make sure, you are not confusing button_down and button_down?, are you? :) How are you detecting the clicks?<br/><br/>If you use button_down? to check for them, then it might be that the touch screen indeed sends a click, but immediately afterwards releases it. That would make button_down? always return false, but it would still trigger a button_down callback.
+</div>
+</div>
+
+<div class='frm pst' id='pid2013' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2013.html#pid2013'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-05 04:54
+</div>
+<div class='ccl'>
+yep, that&#39;s it.&#160; <br/><br/>the touch screen seems to do a button_up automatically like you said except when drag clicked, even if the finger/pen is held down in place. <br/><br/>thanks again for bearing with me.
+</div>
+</div>
+
+<div class='frm pst' id='pid2014' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2014.html#pid2014'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-05 09:02
+</div>
+<div class='ccl'>
+Bearing with you? ;) I have never seen Gosu in action with a touchscreen, even though I heard at least a couple of people are doing it. Please document whatever gadget you&#39;re building :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2018' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2018.html#pid2018'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-05 16:36
+</div>
+<div class='ccl'>
+Yeah, for sure. (It&#39;s pretty cool). :)&#160; Also, it&#39;s in my plans to add Windows 7 multitouch support to Gosu although there are more essential features that I need to work on first.
+</div>
+</div>
+
+<div class='frm pst' id='pid2021' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2021.html#pid2021'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-01-06 14:47
+</div>
+<div class='ccl'>
+Gosu already supports multi-touch on the iPhone via the very Apple-esque touchesBegan, touchesMoved, touchesEnded events- if that interface matches your needs, that would be very convenient. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2059' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2059.html#pid2059'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=125.html' >treetrouble</a>
+<span class='htt'>Date</span> 2010-01-16 20:43
+</div>
+<div class='ccl'>
+yeah, I&#39;ll aim to use that as a template
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=303.html#tid303'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=303.html#tid303'>Gosu Exchange</a> / windows touch screen?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2014.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

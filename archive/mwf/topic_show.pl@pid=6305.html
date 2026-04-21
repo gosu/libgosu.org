@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6305 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Problem with linker in windows c++</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6305' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=817.html#tid817'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=817.html#tid817'>Gosu Exchange</a> / Problem with linker in windows c++
+</div>
+</div>
+
+<div class='frm pst' id='pid6266' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6266' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6266.html#pid6266'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-09-27 21:16
+</div>
+<div class='ccl'>
+Hi all!<br/><br/>I am here because I need some help with the library, I use windows 7 and Visual C++ 2008. I did all the things displayed in the &quot;Getting Started on Windows&quot; but when I press &quot;play&quot;, the linker do some errors and I do not know why (I have put the &quot;Multithreaded Debug&quot; in &quot;Runtime Library&quot;):<br/><br/><code>1&gt;GosuDebug.lib(WindowWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(WindowWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(WinUtility.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(WinUtility.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(InputWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(InputWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Graphics.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Graphics.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(AudioOpenAL.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(AudioOpenAL.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(TimingWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(TimingWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(TextInputWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(TextInputWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Color.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Color.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Transform.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Transform.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Texture.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Texture.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BitmapUtils.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BitmapUtils.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(LargeImageData.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(LargeImageData.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Bitmap.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Bitmap.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(IO.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(IO.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(FileWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(FileWin.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Math.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Math.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BlockAllocator.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BlockAllocator.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(TexChunk.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(TexChunk.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BitmapGDIplus.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BitmapGDIplus.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Utility.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Utility.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BitmapColorKey.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_MSC_VER=1600&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(BitmapColorKey.obj) : warning LNK4229: se encontró la directiva &#39;/FAILIFMISMATCH:_ITERATOR_DEBUG_LEVEL=2&#39; no válida; se omitió<br/>1&gt;GosuDebug.lib(Utility.obj) : error LNK2019: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver al que se hace referencia en la función &quot;public: void __thiscall std::basic_string&lt;wchar_t,struct std::char_traits&lt;wchar_t&gt;,class std::allocator&lt;wchar_t&gt; &gt;::_Eos(unsigned int)&quot; (?_Eos@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXI@Z)<br/>1&gt;GosuDebug.lib(TextInputWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(BitmapUtils.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(FileWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(BitmapGDIplus.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(WindowWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(WinUtility.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(InputWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(AudioOpenAL.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xout_of_range(char const *)&quot; (?_Xout_of_range@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(BitmapColorKey.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(BlockAllocator.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(TexChunk.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(BitmapGDIplus.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(Utility.obj) : error LNK2019: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver al que se hace referencia en la función &quot;public: class std::_Vector_iterator&lt;class std::_Vector_val&lt;char,class std::allocator&lt;char&gt; &gt; &gt; __thiscall std::_Vector_iterator&lt;class std::_Vector_val&lt;char,class std::allocator&lt;char&gt; &gt; &gt;::operator+(int)const &quot; (??H?$_Vector_iterator@V?$_Vector_val@DV?$allocator@D@std@@@std@@@std@@QBE?AV01@H@Z)<br/>1&gt;GosuDebug.lib(LargeImageData.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(Bitmap.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(IO.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(FileWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(AudioOpenAL.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(TextInputWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(Texture.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(BitmapUtils.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(WindowWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(WinUtility.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(InputWin.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(Graphics.obj) : error LNK2001: símbolo externo &quot;void __cdecl std::_Xlength_error(char const *)&quot; (?_Xlength_error@std@@YAXPBD@Z) sin resolver<br/>1&gt;GosuDebug.lib(InputWin.obj) : error LNK2019: símbolo externo &quot;struct std::_Smanip&lt;__int64&gt; __cdecl std::setw(__int64)&quot; (?setw@std@@YA?AU?$_Smanip@_J@1@_J@Z) sin resolver al que se hace referencia en la función &quot;public: static void __cdecl Gosu::Input::Impl::throwError(char const *,long)&quot; (?throwError@Impl@Input@Gosu@@SAXPBDJ@Z)<br/>1&gt;GosuDebug.lib(InputWin.obj) : error LNK2001: símbolo externo &quot;__int64 const std::_BADOFF&quot; (?_BADOFF@std@@3_JB) sin resolver<br/>1&gt;GosuDebug.lib(InputWin.obj) : error LNK2019: símbolo externo &quot;class std::error_category const &amp; __cdecl std::iostream_category(void)&quot; (?iostream_category@std@@YAABVerror_category@1@XZ) sin resolver al que se hace referencia en la función &quot;class std::error_code __cdecl std::make_error_code(enum std::io_errc::io_errc)&quot; (?make_error_code@std@@YA?AVerror_code@1@W4io_errc@31@@Z)<br/>1&gt;GosuDebug.lib(InputWin.obj) : error LNK2019: símbolo externo &quot;private: static void __cdecl std::locale::facet::_Facet_Register(class std::locale::facet *)&quot; (?_Facet_Register@facet@locale@std@@CAXPAV123@@Z) sin resolver al que se hace referencia en la función &quot;public: void __thiscall std::locale::facet::_Register(void)&quot; (?_Register@facet@locale@std@@QAEXXZ)<br/>1&gt;C:\Users\Richy\Documents\Visual Studio 2008\Projects\Gosu\Debug\Gosu.exe : fatal error LNK1120: 6 externos sin resolver<br/>1&gt;El registro de compilación se guardó en el &quot;file://c:\Users\Richy\Documents\Visual Studio 2008\Projects\Gosu\Gosu\Debug\BuildLog.htm&quot;<br/>1&gt;Gosu - 31 errores, 42 advertencias<br/>========== Generar: 0 correctos, 1 incorrectos, 0 actualizados, 0 omitidos ==========</code>
+</div>
+</div>
+
+<div class='brn' id='brn6266'>
+<div class='frm pst' id='pid6269' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6266'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6269' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6269.html#pid6269'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-27 23:35
+</div>
+<div class='ccl'>
+Ouch - sorry. :( I forgot to update the docs, the last version of Gosu is built for Visual C++ 2010. Is it feasible for you to update? 2010 has much better C++11 support.<br/><br/>If you don&#39;t feel like messing with MSVC right now, you can go one or two versions back - these were still built with/for MSVC 2008.
+</div>
+</div>
+
+<div class='brn' id='brn6269'>
+<div class='frm pst' id='pid6270' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6269'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6270' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6270.html#pid6270'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-09-28 07:54
+</div>
+<div class='ccl'>
+Hi again! Thanks by the help, that was usefull, but I have another problem right now with visual c++ 2010. I press &quot;play&quot; and display to me this errors at the same order that I put here (I press &quot;retry&quot; (reintentar) or &quot;continuous&quot; (continuar) in all case, if I do not press retry or continuous the program broke and fail) at the end, I can see the windows how I programmed before. By the way, I do not know where I can download the latests versions of the Gosu. Thanks for the help again and sorry for my english :) :<br/><br/><img class='emi' src='http://i.imgur.com/EaEa0.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/40KXx.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/xi9YG.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/q7HWt.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/KBBtt.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/wtryp.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/63TNj.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/65pFW.jpg' alt=''/><br/><img class='emi' src='http://i.imgur.com/67r6y.jpg' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn6270'>
+<div class='frm pst' id='pid6271' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6270'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6271' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6271.html#pid6271'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-28 15:15
+</div>
+<div class='ccl'>
+This is a weird error - can you paste the code of your program? Is it the one from the wiki page? Hmm...<br/><br/>The latest version of Gosu is always somewhere in <a class='url' href='../../downloads/index.html'>http://www.libgosu.org/downloads/</a>
+</div>
+</div>
+
+<div class='brn' id='brn6271'>
+<div class='frm pst' id='pid6272' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6271'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6272' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6272.html#pid6272'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-09-29 00:33
+</div>
+<div class='ccl'>
+I meant old versions, sorry :P, and yeah, is the same code from the wiki page I will put it anyway. I prove compile the code on other computer and work fine, maybe I must install something on the first computer :/ :<br/><br/><code>#include &lt;Gosu/AutoLink.hpp&gt;<br/>#include &lt;Gosu/Window.hpp&gt;<br/><br/>class MyWindow : public Gosu::Window<br/>{<br/>public:<br/>&#160; &#160; MyWindow()<br/>&#160; &#160; :&#160;&#160; Window(640, 480, false, 20)<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; setCaption(L&quot;Hello World!&quot;);<br/>&#160; &#160; }<br/>};<br/><br/>int main()<br/>{<br/>&#160; &#160; MyWindow window;<br/>&#160; &#160; window.show();<br/>}</code>
+</div>
+</div>
+
+<div class='brn' id='brn6272'>
+<div class='frm pst' id='pid6273' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6273' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6273.html#pid6273'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-29 01:46
+</div>
+<div class='ccl'>
+I think it&#39;s a bug in Gosu&#39;s handling of the command line. Is there any non-ASCII-character in the path of the program? A ñ or ç or something like that?
+</div>
+</div>
+
+<div class='brn' id='brn6273'>
+<div class='frm pst' id='pid6277' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6273'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6277' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6277.html#pid6277'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-10-01 16:17
+</div>
+<div class='ccl'>
+The path was a non-ASCII-character like you said it (º), so I move the directory to other side and work. But I have another problem with &quot;examples&quot;,&#160; when I press &quot;play&quot; the &quot;Tutorial.cpp&quot; code, the visual studio display an error: &quot;Excepción no controlada en 0x75f8b9bc en Gosu.exe: 0xC06D007E: Module not found&quot;. And mark me &quot;return dli.pfnCur;&quot;
+</div>
+</div>
+
+<div class='brn' id='brn6277'>
+<div class='frm pst' id='pid6280' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6277'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6280' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6280.html#pid6280'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-10-02 11:28
+</div>
+<div class='ccl'>
+If you continue, or try to run the compiled EXE outside of Visual C++, does it say which &quot;module&quot; it is missing?<br/><br/>I suspect that the OpenAL32.dll cannot be found. It should come inside the Gosu ZIP archive, try moving it next to your game&#39;s EXE file and opening it then.
+</div>
+</div>
+
+<div class='brn' id='brn6280'>
+<div class='frm pst' id='pid6281' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6280'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6281.html#pid6281'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-10-02 13:29
+</div>
+<div class='ccl'>
+Thank you very much, all is ok now =). I just needed move the OpenAl32.dll and libsndfile.dll next to my EXE file.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6293' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6277'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6293' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6293.html#pid6293'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-10-07 14:43
+</div>
+<div class='ccl'>
+Ouch, one week too late - but I have compiled Gosu with the fix for running inside a non-ASCII path now. Can you please try to run your game again from the path containing &quot;°&quot;, but this time using the attached <code>.lib</code> files? Thanks.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/93/6293/gosupreview.zip'>gosupreview.zip</a>  (9447k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn6293'>
+<div class='frm pst' id='pid6297' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6293'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6297' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6297.html#pid6297'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-10-09 09:37
+</div>
+<div class='ccl'>
+Here I left you my new error with the news .libs, I put .dll next to my exe file:<br/><br/><img class='emi' src='http://img193.imageshack.us/img193/9153/sinttulohl.jpg' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn6297'>
+<div class='frm pst' id='pid6305' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6297'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6305' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6305.html#pid6305'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-10-11 07:42
+</div>
+<div class='ccl'>
+Ouch! Can you press &quot;Interrumpir&quot; to see where it&#39;s happening?
+</div>
+</div>
+
+<div class='brn' id='brn6305'>
+<div class='frm pst' id='pid6325' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6305'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6325.html#pid6325'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-10-16 09:40
+</div>
+<div class='ccl'>
+When I press &quot;Interrumpir&quot; the windows closes and nothing happens
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6274' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6274' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6274.html#pid6274'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-29 07:20
+</div>
+<div class='ccl'>
+I think it was my fault, and that it is fixed. I cannot provide new library right now though, I am not at my Windows machine. :( I&#39;ll make a note to upload them here on Monday.
+</div>
+</div>
+
+<div class='brn' id='brn6274'>
+<div class='frm pst' id='pid6275' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6305.html#pid6274'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6275.html#pid6275'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=970' >Richy</a>
+<span class='htt'>Date</span> 2012-09-29 10:06
+</div>
+<div class='ccl'>
+I do not remember if the path have a any non-ASCII-character, I could tell you that on Monday.<br/><br/>Thanks you very much for the awesome work how developer and I will tell you if all is running fine on Monday then :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=817.html#tid817'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=817.html#tid817'>Gosu Exchange</a> / Problem with linker in windows c++
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6305.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

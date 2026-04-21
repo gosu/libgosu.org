@@ -1,0 +1,660 @@
+<?xml version='1.0' encoding='utf-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:slash='http://purl.org/rss/1.0/modules/slash/' xml:base='http://www.libgosu.org'>
+  <id>http://www.libgosu.org/cgi-bin/mwf/forum.pl</id>
+  <link rel='self' href='http://www.libgosu.org/mwf/attachments/xml/board5.atom10.xml'/>
+  <link rel='alternate' href='http://www.libgosu.org/cgi-bin/mwf/forum.pl'/>
+  <title>Gosu Forums - Gosu on iPad, iPhone &amp; iPod Touch</title>
+  <subtitle>Gosu Forum Feed</subtitle>
+  <updated>2019-08-09T21:37:03Z</updated>
+  <generator version='2.29.7' uri='http://www.mwforum.org/'>mwForum</generator>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9505</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=9505'/>
+    <title>Google Mobile Ads Integration With motion-gosu</title>
+    <author><name>lalz</name></author>
+    <published>2019-08-09T17:45:35Z</published>
+    <updated>2019-08-09T17:45:35Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>0</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;ve been trying to implement GoogleMobileAds into an iOS app I&#39;ve been developing using RubyMotion motion-gosu. I&#39;ve implemented the part that allows the interstitial type Google ad to be created and loaded, but I&#39;ve been having problems trying to get the ad to actually appear on the screen. <br/><br/>I&#39;ve been following these guides to implement the interstitial ad:<br/><a class='ura' href='https://developers.google.com/admob/ios/quick-start'>https://developers.google.com/admob/ios/quick-start</a><br/><a class='ura' href='https://github.com/googleads/googleads-mobile-ios-examples/blob/master/Objective-C/admob/InterstitialExample/InterstitialExample/ViewController.m'>https://github.com/googleads/googleads-mobile-ios-examples/blob/master/Objective-C/admob/InterstitialExample/InterstitialExample/ViewController.m</a><br/><br/>The method I&#39;ve created to create and load the interstitial ad goes as follows:<br/><br/><b>def create_and_load_interstitial<br/>&#160; &#160; @interstitial = GADInterstitial.alloc.initWithAdUnitID(&#39;ca-app-pub-3940256099942544/4411468910&#39;)<br/>&#160; &#160; request = GADRequest.request()<br/>&#160; &#160; request.testDevices = [&#39;device_id&#39;]<br/>&#160; &#160; @interstitial.loadRequest(request)<br/>end</b><br/><br/>By looking at the Google Mobile Ad&#39;s GADInterstitial.h framework file, the method that would allow me to display the interstitial ad after it has been created and loaded is this method:<br/><br/><b>/// Presents the interstitial ad which takes over the entire screen until the user dismisses it.<br/>/// This has no effect unless isReady returns YES and/or the delegate&#39;s interstitialDidReceiveAd:<br/>/// has been received.<br/>///<br/>/// Set rootViewController to the current view controller at the time this method is called. If your<br/>/// application does not use view controllers pass in nil and your views will be removed from the<br/>/// window to show the interstitial and restored when done. After the interstitial has been removed,<br/>/// the delegate&#39;s interstitialDidDismissScreen: will be called.<br/>- (void)presentFromRootViewController:(nonnull UIViewController *)rootViewController;</b><br/><br/>And so the code I tried was:<br/><br/><b>if @interstitial.isReady<br/>&#160; &#160;&#160; @interstitial.presentFromRootViewController(self)<br/>else<br/>&#160; &#160;&#160; puts &quot;Ad wasn&#39;t ready.&quot;<br/>end</b><br/><br/><b>self</b> in the code above represents <b>Window &lt; Gosu::Window</b><br/><br/>The <b>present</b> method above states that if there aren&#39;t any view controllers that are being used, then pass in <b>nil</b> which I&#39;ve tried. I&#39;m not quite sure how this works in conjunction with the motion-gosu development framework as <b>draw</b> needs to be used to actually get something to appear on the screen.<br/><br/>Any help with this will be much appreciated. Thanks in advance. <br/><br/>P.S - I&#39;ve also directly messaged you via the RubyMotion Slack channel. I&#39;ve sent the information above over Slack as well.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8954</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8954'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>mobgamegraph</name></author>
+    <published>2016-06-19T02:03:34Z</published>
+    <updated>2016-06-19T02:03:34Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[I don&#39;t think about this one. It was a pretty simple way of creating. From the installation until the end. I like how simple processing that they made. But i will do some research about this one. I am not really believe yet this.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8953</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8953'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>mobgamegraph</name></author>
+    <published>2016-06-19T01:57:39Z</published>
+    <updated>2016-06-19T01:57:39Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Will review this one. Hope i can get more info here. But anyway thanks for your effort. because i feel so really empty about the gosu.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8952</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8952'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>jlnr</name></author>
+    <published>2016-06-17T17:32:51Z</published>
+    <updated>2016-06-17T17:32:51Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Hmm, kind of, but only for OS X: <a class='ura' href='https://github.com/gosu/motion-gosu'>https://github.com/gosu/motion-gosu</a><br/><br/>I guess I should turn this into a &quot;Getting Started with RubyMotion&quot; page in the main Gosu wiki. It&#39;s on the To Do list, let&#39;s hope my three days off will be enough to get to it :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8951</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8951'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>jlnr</name></author>
+    <published>2016-06-17T17:24:28Z</published>
+    <updated>2016-06-17T17:24:28Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Oh wow, I didn&#39;t know about this tutorial :) The version numbers look a little ancient though, and the last commits on gosu_android have happened years ago: <a class='ura' href='https://github.com/Garoe/gosu-android'>https://github.com/Garoe/gosu-android</a><br/><br/>But if you are going to give it a try, let me know how it goes. I will probably give RubyMotion&#39;s implementation of Ruby a try first, because I have heard quite a few bad things about Ruboto&#39;s startup time.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8948</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8948'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>kjarrigan</name></author>
+    <published>2016-06-17T08:55:08Z</published>
+    <updated>2016-06-17T08:55:08Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[<i>Android is not supported right now.</i><br/><br/>Thats not true, I think?! A few days ago I finally was motivated enough to do some Android App stuff. As I don&#39;t like Java that much I found <b>Ruboto</b> and in the examples a topic about running Gosu.<br/><br/><a class='urs' href='https://github.com/ruboto/ruboto/wiki/Tutorial%3A-write-a-gosu-game'>https://github.com/ruboto/ruboto/wiki/Tutorial%3A-write-a-gosu-game</a><br/><br/>Is this a real thing. Did someone has experiences with that?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8947</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8947'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>mobgamegraph</name></author>
+    <published>2016-06-16T10:10:24Z</published>
+    <updated>2016-06-16T10:10:24Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Thank you for your response and very well explain. But one thing is, do you have tutorial with this from the beginning to the end?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8946</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8946'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>jlnr</name></author>
+    <published>2016-06-15T09:20:42Z</published>
+    <updated>2016-06-15T09:36:25Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Good question. I&#39;d probably cut my rate to something like 40€/h because I&#39;m working on Open Source, yay! (But not lower because I expect JNI/GC debugging to be painful :))<br/><br/>Considering that my own macOS/iOS RubyMotion game is only half finished and no one else has ever used RubyMotion with Gosu on an App Store, I&#39;m wary of making any guarantees. A good first step would be to compile your game for RubyMotion on iOS, I think you can even deploy on device now with the free edition? That might give you (and me!) an idea of how stable that part of Gosu is right now.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8945</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8945'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>ericathegreat</name></author>
+    <published>2016-06-14T06:29:11Z</published>
+    <updated>2016-06-14T06:29:11Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Hypothetically speaking, what would the cost be for your 7-ish days be to get a working Android Rubymotion version? Do you have contract rates for that sort of stuff?<br/><br/>I&#39;m not really ready to go mobile on any of my projects at the moment, but I&#39;d be interested to know. :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8944</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8944'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>jlnr</name></author>
+    <published>2016-06-12T11:31:46Z</published>
+    <updated>2016-06-12T11:31:46Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[If by mobile you mean iPhone and iPad:<br/><br/>The C++ version works the same way it works on OS X, by creating a new Xcode project and importing Gosu via CocoaPods: <a class='ura' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-OS-X'>https://github.com/gosu/gosu/wiki/Getting-Started-on-OS-X</a><br/><br/>The Ruby version can be used on iOS with RubyMotion, which is free if you can live with a branded splash-screen. This (woefully incomplete/ugly) board game on GitHub has an example project in the <code>ios</code> folder: <a class='ura' href='https://github.com/jlnr/Trikus'>https://github.com/jlnr/Trikus</a><br/><br/>I honestly don&#39;t even know where to start documenting either process, so feel free to just ask questions on this board and I might turn the answers into Wiki pages.<br/><br/>Android is not supported right now. I guess it&#39;d take one weekend to get the C++ version running smoothly on Android, and then a full week to wrap it for RubyMotion.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8943</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8943'/>
+    <title>How&#39;s Gosu Work In Mobile Game</title>
+    <author><name>mobgamegraph</name></author>
+    <published>2016-06-12T09:17:22Z</published>
+    <updated>2016-06-12T09:17:22Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Hi,<br/><br/>I am wondering how gosu work in game development for mobile games?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8920</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8920'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>jlnr</name></author>
+    <published>2016-05-21T09:02:56Z</published>
+    <updated>2016-05-21T09:02:56Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[If anyone is still finding this thread via Google - Gosu has supported RubyMotion for a while now, check out this example project: <a class='ura' href='https://github.com/jlnr/Trikus'>https://github.com/jlnr/Trikus</a><br/><br/>It&#39;s a normal MRI project, and there are RubyMotion wrapper projects in <code>osx/</code> and <code>ios/</code>. They use the RubyMotion-CocoaPods bridge to install C++ Gosu. (No Android, sorry...)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8309</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8309'/>
+    <title>How to compile tutorial?</title>
+    <author><name>magichat</name></author>
+    <published>2015-03-09T15:57:49Z</published>
+    <updated>2015-03-09T15:57:49Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>4</slash:comments>
+    <content type='html'>
+      <![CDATA[Yeah, it compiled successfully and game has started. Now we&#39;re able to start iOS developing... Thank you for your time!!!<br/><br/>Sincerely,]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8307</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8307'/>
+    <title>How to compile tutorial?</title>
+    <author><name>jlnr</name></author>
+    <published>2015-03-07T09:57:18Z</published>
+    <updated>2015-03-07T09:57:18Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>4</slash:comments>
+    <content type='html'>
+      <![CDATA[So much for &quot;this month&quot; - sorry about that. I&#39;ve fixed a bunch of different issues, the Tutorial-Touch example works for me now after I run <code>pod install</code>.<br/><br/>My own C++ game still has some scaling issues on iOS, but I hope they&#39;re not bugs in Gosu...]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8285</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8285'/>
+    <title>How to compile tutorial?</title>
+    <author><name>magichat</name></author>
+    <published>2015-02-16T08:42:12Z</published>
+    <updated>2015-02-16T08:42:12Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>4</slash:comments>
+    <content type='html'>
+      <![CDATA[Thanks for advice. I checked 0.7.50 and now it gets <code>clang: error: invalid deployment target for -stdlib=libc++ (requires iOS 5.0 or later)</code><br/>It seems difficult to fix for me. I wait for your fixes.<br/><br/>Anyway, have a good trip jlnr!]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8284</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8284'/>
+    <title>How to compile tutorial?</title>
+    <author><name>jlnr</name></author>
+    <published>2015-02-16T01:16:45Z</published>
+    <updated>2015-02-16T01:16:45Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>4</slash:comments>
+    <content type='html'>
+      <![CDATA[One thing you can try is to check out the latest 0.7.x tag. I am still working on fixing all the build files in Gosu 0.8.x. Sorry for the delay, I&#39;m traveling now, but I&#39;ll look into it at some point this month.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8283</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8283'/>
+    <title>How to compile tutorial?</title>
+    <author><name>magichat</name></author>
+    <published>2015-02-14T14:21:07Z</published>
+    <updated>2015-02-14T14:21:07Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>4</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;d love to know how can I start a new project with iPhone. I&#39;ve installed CocoaPods and opened with example/Tutorial/Tutorial-Touch. <br/>and it returned so many errors. How do I get start? Any help would be appreciated.<br/><br/>[my environment]<br/>xcode 6.1.1<br/>osx 10.10]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7180</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7180'/>
+    <title>Experimenting with mruby</title>
+    <author><name>misbehavens</name></author>
+    <published>2013-08-25T20:55:48Z</published>
+    <updated>2013-08-25T20:55:48Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Shawn, Joybox has given me examples of class names and code samples. Their documentation is really nice. Not necessarily something I will imitate but just another perspective. I have played with Chingu, Metro, and Gamebox (which I know is yours =] ) and appreciate the work that has been done, but don&#39;t feel that they work exactly how I would like my game framework to work. Also, I don&#39;t think that any of them are built to be modular. My idea is to create a framework of individual components (like how Rails split ActiveSupport into its own gem) so you can pick and choose the gems that you want to use in your own project.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7156</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7156'/>
+    <title>Experimenting with mruby</title>
+    <author><name>shawn42</name></author>
+    <published>2013-08-24T15:45:44Z</published>
+    <updated>2013-08-24T15:45:44Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;ve been watching Joybox for a bit and it looks really nice. I&#39;m curious what the ideas are? Maybe you could put your efforts toward improving&#160; Gamebox, Chingu, or Metro (some of the bigger frameworks that are already written).]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7155</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7155'/>
+    <title>Experimenting with mruby</title>
+    <author><name>shawn42</name></author>
+    <published>2013-08-24T15:41:49Z</published>
+    <updated>2013-08-24T15:41:49Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[One thing to note is that mruby is missing a lot of standard Ruby features / libraries and adheres to the official Ruby standard (based off of 1.8.7).]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7147</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7147'/>
+    <title>Experimenting with mruby</title>
+    <author><name>misbehavens</name></author>
+    <published>2013-08-22T23:35:07Z</published>
+    <updated>2013-08-22T23:35:07Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I imagine that mruby has come a long way since you last tried it. It&#39;s under very active development. I&#39;m interested in how it lets you compile and obfuscate your ruby source code. I think it could be useful in creating games that you don&#39;t want to open-source.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7146</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7146'/>
+    <title>Experimenting with mruby</title>
+    <author><name>misbehavens</name></author>
+    <published>2013-08-22T23:26:55Z</published>
+    <updated>2013-08-22T23:26:55Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[RubyMotion is a dream come true. It&#39;s pretty awesome. There&#39;s a pretty cool library for creating games in RubyMotion called JoyBox. Obviously not cross-platform like Gosu, but the JoyBox API has given me some ideas while working on a new Ruby game framework of my own.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7138</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7138'/>
+    <title>Experimenting with mruby</title>
+    <author><name>jlnr</name></author>
+    <published>2013-08-21T13:14:13Z</published>
+    <updated>2013-08-21T13:14:13Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[You&#39;re right, I&#39;ve done a small &quot;proof of concept&quot; on iOS. It was just after the mruby announcement, and it was both crashy at runtime and frustrating to compile. I actually want to try RubyMotion next to see if it&#39;s any better - I can&#39;t imagine that mruby is stable by now :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7136</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7136'/>
+    <title>Experimenting with mruby</title>
+    <author><name>misbehavens</name></author>
+    <published>2013-08-21T04:52:25Z</published>
+    <updated>2013-08-21T04:52:25Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Hello. I was just wondering if anyone has tried experimenting with Gosu and mruby. I&#39;m excited to see a smaller, faster, embeddable Ruby but don&#39;t have any experience with C (or C++ for that matter), I&#39;m interested to hear what people have learned about it, or created any interesting demos. I thought I saw someone made an iOS game using mruby, but I could be remembering wrong.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6410</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6410'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>shawn42</name></author>
+    <published>2012-12-20T17:56:03Z</published>
+    <updated>2012-12-20T17:56:03Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[This looks like a more &quot;RubyMotion&quot; approach that may give us some better performance than ruboto: <a class='url' href='https://github.com/headius/fastruby'>https://github.com/headius/fastruby</a>]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6296</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6296'/>
+    <title>So how well is gosu doing for iOS development?</title>
+    <author><name>erisdiscord</name></author>
+    <published>2012-10-08T20:12:08Z</published>
+    <updated>2012-10-08T20:12:08Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[It&#39;s AAC or nothin&#39;.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6295</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6295'/>
+    <title>So how well is gosu doing for iOS development?</title>
+    <author><name>Maverick</name></author>
+    <published>2012-10-08T19:17:33Z</published>
+    <updated>2012-10-08T19:17:33Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[What&#39;s the <i>free</i> alternative to OGG files then?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6268</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6268'/>
+    <title>So how well is gosu doing for iOS development?</title>
+    <author><name>jlnr</name></author>
+    <published>2012-09-27T23:33:48Z</published>
+    <updated>2012-09-27T23:33:48Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[Resolution selection is very limited - I think it supports landscape orientation only, and hasn&#39;t been tested on the iPhone 5. (Maybe I have hard-coded a &#39;480&#39; somewhere!) This is nothing that can&#39;t be fixed with a few hours of playing around.<br/><br/>Custom OpenGL is not supported.<br/><br/>You should not use OGG music because it&#39;s not hardware accelerated.<br/><br/>These are the technical limitations I can think of, the rest is lack of documentation, but I read this board every day.<br/><br/>I think as far as C++ and iOS are concerned, it&#39;s not a bad deal :)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6267</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6267'/>
+    <title>So how well is gosu doing for iOS development?</title>
+    <author><name>Omegas7</name></author>
+    <published>2012-09-27T22:25:47Z</published>
+    <updated>2012-09-27T22:25:47Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>3</slash:comments>
+    <content type='html'>
+      <![CDATA[There&#39;s a bit of discussion about gosu on iOS development, but I would like to hear from you straightforwardly: Is Gosu good or great for iOS game development at the moment? What limitations are there?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6221</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6221'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>jlnr</name></author>
+    <published>2012-09-13T02:08:11Z</published>
+    <updated>2012-09-13T02:08:11Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[I have an Android 4 phone and some NDK experience, so I might be able to help with a port (via this forum and github - I still check both - but I don&#39;t have time for more right now). I think it would be easiest to port over iOS Gosu to the NDK, then wrap it up for Ruboto. The alternative would be to rewrite all of Gosu in Java, but it&#39;d be slower and impossible to maintain in the long run.<br/><br/>The biggest &quot;AAAAHHH!!!!!!!&quot; moment is that Android does not come with OpenAL, and OpenSL ES is pure insanity. But maybe someone has compiled and packaged OpenAL by now.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6219</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6219'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>RunnerPack</name></author>
+    <published>2012-09-11T18:53:26Z</published>
+    <updated>2012-09-11T18:53:26Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[I have no idea if it&#39;s directly related, but I found this (from 2008): <a class='url' href='http://code.google.com/p/jruby-jogl-applet-launcher/'>http://code.google.com/p/jruby-jogl-applet-launcher/</a><br/><br/>I tried to run it and (after a LOOONG wait) got this:<br/><br/>[code]<br/>load: class org.jdesktop.applet.util.JNLPAppletLauncher not found.<br/>java.lang.ClassNotFoundException: org.jdesktop.applet.util.JNLPAppletLauncher<br/>&#160; at sun.plugin2.applet.Applet2ClassLoader.findClass(Unknown Source)<br/>&#160; at sun.plugin2.applet.Plugin2ClassLoader.loadClass0(Unknown Source)<br/>&#160; at sun.plugin2.applet.Plugin2ClassLoader.loadClass(Unknown Source)<br/>&#160; at sun.plugin2.applet.Plugin2ClassLoader.loadClass(Unknown Source)<br/>&#160; at java.lang.ClassLoader.loadClass(Unknown Source)<br/>&#160; at sun.plugin2.applet.Plugin2ClassLoader.loadCode(Unknown Source)<br/>&#160; at sun.plugin2.applet.Plugin2Manager.createApplet(Unknown Source)<br/>&#160; at sun.plugin2.applet.Plugin2Manager$AppletExecutionRunnable.run(Unknown Source)<br/>&#160; at java.lang.Thread.run(Unknown Source)<br/>Exception: java.lang.ClassNotFoundException: org.jdesktop.applet.util.JNLPAppletLauncher<br/>[/code]<br/><br/>I <i>really</i> want Ruby+Gosu on Android (preferably in a compact form that can be uploaded to the Marketplace).]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6218</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6218'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>bigtunacan</name></author>
+    <published>2012-09-10T16:21:04Z</published>
+    <updated>2012-09-10T16:21:04Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[I know this is an old thread, but I was looking to see if anyone had tested with RubyMotion and came across this...<br/><br/>On the Android front I wonder if Gosu would possibly work with Ruboto.&#160; <a class='url' href='https://github.com/ruboto'>https://github.com/ruboto</a> It is an implementation of Ruby on Android running on JRuby.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5871</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5871'/>
+    <title>Retina Support</title>
+    <author><name>Basic</name></author>
+    <published>2012-05-22T08:17:01Z</published>
+    <updated>2012-05-22T08:17:01Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Altered the title.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5870</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5870'/>
+    <title>Retina Support</title>
+    <author><name>RunnerPack</name></author>
+    <published>2012-05-22T02:07:42Z</published>
+    <updated>2012-05-22T02:07:42Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;m not trying to be a jerk. I just thought, for the sake of those searching later, there should be a post in this thread which actually contains the word &quot;retina&quot; spelled correctly. Sorry to bother you; carry on.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5828</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5828'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>Basic</name></author>
+    <published>2012-05-06T15:52:07Z</published>
+    <updated>2012-05-06T15:52:07Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Oh, curious do you expect any problems with it?<br/><br/>A friend of mine was asking me this last week, about getting Gosu working on Chorme (Native Client) and Android.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5827</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5827'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>jlnr</name></author>
+    <published>2012-05-06T04:24:33Z</published>
+    <updated>2012-05-06T04:24:33Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Gosu uses OpenGL ES, OpenAL and libsndfile which are all perfectly portable. I actually have an HTC One X at home now, just waiting for a chance to toy around with it. Hope the SDK is not too much of a hassle. :(]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5826</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5826'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>RavensKrag</name></author>
+    <published>2012-05-05T04:31:53Z</published>
+    <updated>2012-05-05T04:31:53Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Nice! Now all we need it this for android.&#160; Though, that would be much more difficult I imagine.&#160; Not like Gosu would really work in that environment anyway =/]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5825</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5825'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>jlnr</name></author>
+    <published>2012-05-05T02:15:33Z</published>
+    <updated>2012-05-05T02:15:33Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[I&#39;ll let you know once I find out, but anyone else is welcome to beat me to it.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5824</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5824'/>
+    <title>Retina Support</title>
+    <author><name>jlnr</name></author>
+    <published>2012-05-05T02:14:32Z</published>
+    <updated>2012-05-05T02:14:32Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[I think it is simply <code>[[UIDevice currentDevice] scale] &gt; 1</code>.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5823</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5823'/>
+    <title>Crash on iOS 4.x</title>
+    <author><name>jlnr</name></author>
+    <published>2012-05-05T02:07:09Z</published>
+    <updated>2012-05-05T02:07:09Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[I think it is more a documentation issue with Gosu. If you create a new OpenGL app, it links to GLKit (required, not optionally). iOS 4 has no GLKit as far as I know, so it crashes. If you just remove GLKit from the project, you should be fine.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5821</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5821'/>
+    <title>Gosu + RubyMotion?</title>
+    <author><name>jontebol</name></author>
+    <published>2012-05-04T11:19:45Z</published>
+    <updated>2012-05-04T11:19:45Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>9</slash:comments>
+    <content type='html'>
+      <![CDATA[Ok, so this sounds pretty exciting: <a class='url' href='http://www.rubymotion.com/'>http://www.rubymotion.com/</a><br/><br/>If that could be made to work with Gosu (or perhaps it already does?!), writing games in Ruby + Gosu for iOS would be a reality... <br/><br/>What say you Gosu-gurus, can it be done?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5819</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5819'/>
+    <title>Crash on iOS 4.x</title>
+    <author><name>Basic</name></author>
+    <published>2012-05-03T11:23:04Z</published>
+    <updated>2012-05-03T11:23:04Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>1</slash:comments>
+    <content type='html'>
+      <![CDATA[I got this crash on iPad with iOS 4.x<br/><br/> dyld: Library not loaded: /System/Library/Frameworks/GLKit.framework/GLKit<br/>&#160; Referenced from: /var/mobile/Applications/60CD176E-557E-4FBF-81AD-17803CEA3026/iPadTest.app/iPadTest<br/>&#160; Reason: image not found<br/><br/>Works fine with iPad 5.x<br/><br/>This isn&#39;t a problem for me I just swapped iPad&#39;s, but just thought I&#39;d mention it. I don&#39;t have the iOS 4 SDK to try and compile under that, but a quick google seems to reveal the framework is in a different place.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5818</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5818'/>
+    <title>Retina Support</title>
+    <author><name>Basic</name></author>
+    <published>2012-05-03T08:38:16Z</published>
+    <updated>2012-05-03T08:38:16Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Thanks jlnr, I was actually doing something like that last night to test.<br/><br/>I think the problem is figuring out if I am on Retinia or not.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5815</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5815'/>
+    <title>Retina Support</title>
+    <author><name>jlnr</name></author>
+    <published>2012-05-03T06:37:38Z</published>
+    <updated>2012-05-03T06:37:38Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Idea: You could hack the scale factor right into Gosu::Image by subclassing ImageData and just returning half the width and height. You cannot extend the constructor of Gosu::Image, but you could add a global helper function for that. Then <code>image(&quot;foo&quot;)</code> would return a Gosu::Image proper.<br/><br/>You might even want to consider having foo.png, foo@2x.png (iPhone4+, iPad 1/2), foo@4x.png (iPad 3) depending on how your game scales up. That is what I am going to do with Terava.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5814</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5814'/>
+    <title>Retina Support</title>
+    <author><name>jlnr</name></author>
+    <published>2012-05-03T06:35:45Z</published>
+    <updated>2012-05-03T06:35:45Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Gosu does not follow the @2x convention. You have to build that functionality yourself, including the factor on the images. :( I built a wrapper around that myself for Terava, but it&#39;s too specific to share it here.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5812</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5812'/>
+    <title>Retina Support</title>
+    <author><name>Basic</name></author>
+    <published>2012-05-02T21:13:54Z</published>
+    <updated>2012-05-02T21:13:54Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>6</slash:comments>
+    <content type='html'>
+      <![CDATA[Is there?<br/><br/>I suffixed my files @2x but this didn&#39;t see to do anything. Building with 5.x SDK and Targeting 3.2.<br/><br/>Is there something I&#39;m missing?]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5670</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5670'/>
+    <title>Creating a Gosu/C++ iPhone game</title>
+    <author><name>jlnr</name></author>
+    <published>2012-03-05T11:22:08Z</published>
+    <updated>2013-07-08T00:12:39Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>30</slash:comments>
+    <content type='html'>
+      <![CDATA[Current version numbers: I use Xcode 4.2/4.3, LLVM 3.x compiler, current iOS SDK but Gosu works with OS Deployment Version down to 3.0 (*all* iOS devices ever shipped).]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5669</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5669'/>
+    <title>Creating a Gosu/C++ iPhone game</title>
+    <author><name>jlnr</name></author>
+    <published>2012-03-05T11:19:46Z</published>
+    <updated>2012-03-05T11:19:46Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>30</slash:comments>
+    <content type='html'>
+      <![CDATA[This is what the result should look like.]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3957</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3957'/>
+    <title>Creating a Gosu/C++ iPhone game</title>
+    <author><name>jlnr</name></author>
+    <published>2011-02-16T00:07:43Z</published>
+    <updated>2011-02-16T00:07:43Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>30</slash:comments>
+    <content type='html'>
+      <![CDATA[Oh, is the default for iOS projects to compile for armv6 and armv7 now? I think I only compile my game (and Gosu) for armv6. You can probably either fix it by compiling Gosu for both platforms, or your game for armv6. (Target options, architectures)]]>
+    </content>
+  </entry>
+  <entry>
+    <id>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3956</id>
+    <link href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3956'/>
+    <title>Creating a Gosu/C++ iPhone game</title>
+    <author><name>jontebol</name></author>
+    <published>2011-02-15T22:24:06Z</published>
+    <updated>2011-02-15T22:24:06Z</updated>
+    <category term='Gosu on iPad, iPhone &amp; iPod Touch'/>
+    <slash:comments>30</slash:comments>
+    <content type='html'>
+      <![CDATA[Ok, so it seems I must have done some step wrong, because I can&#39;t get it to compile for the device (my Iphone 4)...<br/><br/>These are the errors I get:<br/><br/>Build gosutouchtest of project gosutouchtest with configuration Debug<br/><br/>Ld build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv6/gosutouchtest normal armv6<br/>cd /Users/jonte/dev/iosapps/gosutouchtest<br/>setenv IPHONEOS_DEPLOYMENT_TARGET 4.2<br/>setenv PATH &quot;/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin&quot;<br/>/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/g++-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -L/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -L/Users/jonte/dev/games/gosu-source/lib -F/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -filelist /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv6/gosutouchtest.LinkFileList -dead_strip -lgosutouch-sim -miphoneos-version-min=4.2 -framework Foundation -framework UIKit -framework OpenGLES -framework QuartzCore -framework CoreGraphics -framework OpenAL -framework AudioToolbox -framework AVFoundation -o /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv6/gosutouchtest<br/><br/>ld: warning: in /Users/jonte/dev/games/gosu-source/lib/libgosutouch-sim.a, file was built for unsupported file format which is not the architecture being linked (armv6)<br/>Undefined symbols:<br/>&#160; &quot;_main&quot;, referenced from:<br/>&#160; &#160; &#160; start in crt1.3.1.o<br/>ld: symbol(s) not found<br/>collect2: ld returned 1 exit status<br/><br/>Ld build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv7/gosutouchtest normal armv7<br/>cd /Users/jonte/dev/iosapps/gosutouchtest<br/>setenv IPHONEOS_DEPLOYMENT_TARGET 4.2<br/>setenv PATH &quot;/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin&quot;<br/>/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/g++-4.2 -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk -L/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -L/Users/jonte/dev/games/gosu-source/lib -F/Users/jonte/dev/iosapps/gosutouchtest/build/Debug-iphoneos -filelist /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv7/gosutouchtest.LinkFileList -dead_strip -lgosutouch-sim -miphoneos-version-min=4.2 -framework Foundation -framework UIKit -framework OpenGLES -framework QuartzCore -framework CoreGraphics -framework OpenAL -framework AudioToolbox -framework AVFoundation -o /Users/jonte/dev/iosapps/gosutouchtest/build/gosutouchtest.build/Debug-iphoneos/gosutouchtest.build/Objects-normal/armv7/gosutouchtest<br/><br/>ld: warning: in /Users/jonte/dev/games/gosu-source/lib/libgosutouch-sim.a, file was built for unsupported file format which is not the architecture being linked (armv7)<br/>Undefined symbols:<br/>&#160; &quot;_main&quot;, referenced from:<br/>&#160; &#160; &#160; start in crt1.3.1.o<br/>ld: symbol(s) not found<br/>collect2: ld returned 1 exit status]]>
+    </content>
+  </entry>
+</feed>

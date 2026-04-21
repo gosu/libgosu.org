@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8103 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Upgrading to Gosu 0.8.x and SDL2</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8103' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1152.html#tid1152'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1152.html#tid1152'>Gosu Exchange</a> / Upgrading to Gosu 0.8.x and SDL2
+</div>
+</div>
+
+<div class='frm pst' id='pid8101' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8101' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8101.html#pid8101'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1172.html' >p8952</a>
+<span class='htt'>Date</span> 2014-11-09 00:16
+</div>
+<div class='ccl'>
+I&#39;m having issues with Gosu 0.8.x (Or SDL2) running under Gentoo Linux. After upgrading Gosu from 0.7.x and SDL from libsdl to libsdl2 Gosu fails to draw windows. Interestingly games still run, you can hear sounds, and it will print statements put in the update loop.<br/><br/>Looking at strace and comparing to Gosu 0.7.x &amp; SDL1 I&#39;ve noticed this: <a class='ura' href='http://sprunge.us/AdGX'>http://sprunge.us/AdGX</a><br/><br/>Gosu 0.8.x does a lot of setup and after loading the last font on the system (DejaVuSans-Bold) it goes into a loop of mostly &quot;-1 EAGAIN (Resource temporarily unavailable)&quot; messages.<br/><br/>Gosu 0.7.x does the same setup, but after loading fonts it sets up a video device and starts polling it. There are the same &quot;-1 EAGAIN (Resource temporarily unavailable)&quot; messages so I&#39;d guess these are not errors in 0.8.x<br/><br/>Just that for some reason the video device is not setup in 0.8.x. Why might this be? Any tips on where to look to get more information?<br/><br/>Thanks in advance,<br/><br/>Peter
+</div>
+</div>
+
+<div class='brn' id='brn8101'>
+<div class='frm pst' id='pid8102' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8103.html#pid8101'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8102.html#pid8102'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-11-09 02:49
+</div>
+<div class='ccl'>
+Do other SDL 2-based games work? I don&#39;t really know any, but I would guess that the SDL actually gives us a useful error message and Gosu just throws it away.<br/><br/>I&#39;ve just double-checked and the new SDL-based <code>Window.cpp</code> is lacking error checking in two key places. Oops. I&#39;ll add it and come back with a new <code>.gem</code> file.
+</div>
+</div>
+
+<div class='frm pst' id='pid8103' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8103.html#pid8101'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8103' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8103.html#pid8103'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-11-09 06:46
+</div>
+<div class='ccl'>
+I have pushed a new preview gem that actually looks at the return value of <code>SDL_CreateWindow</code> and <code>SDL_GL_CreateContext</code>; can you please <code>gem install gosu --pre</code> and see if you see an exception now?
+</div>
+</div>
+
+<div class='brn' id='brn8103'>
+<div class='frm pst' id='pid8104' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8103.html#pid8103'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8104' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8104.html#pid8104'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1172.html' >p8952</a>
+<span class='htt'>Date</span> 2014-11-09 13:10
+</div>
+<div class='ccl'>
+Thanks, that made it throw an exception.<br/><br/><code><br/>Tutorial.rb:84:in </code>initialize&#39;: Could not open window: No OpenGL support in video driver (RuntimeError)<br/>&#160; from Tutorial.rb:84:in <code>initialize&#39;<br/>&#160; from Tutorial.rb:130:in </code>new&#39;<br/>&#160; from Tutorial.rb:130:in <code>&lt;main&gt;&#39;<br/></code><br/><br/>Which is resolved by compiling libsdl2 with opengl support. I&#39;ve updated the wiki page for Gentoo Linux to reflect this: <a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>Out of interest, does this mean Gosu 0.8.x/SDL2 no longer support software rendering and require OpenGL?<br/><br/>Thanks again,<br/><br/>Peter
+</div>
+</div>
+
+<div class='brn' id='brn8104'>
+<div class='frm pst' id='pid8106' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8103.html#pid8104'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8106' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8106.html#pid8106'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-11-09 15:48
+</div>
+<div class='ccl'>
+Ah, thanks for fixing the wiki!<br/><br/>Gosu has always used OpenGL - in fact, I wrote the library because I couldn&#39;t find a good 3D-accelerated 2D library at the time. (Before 0.8, Gosu only used SDL 1.x for its TTF support, the window was custom X11 code + OpenGL.) So if anything, Gosu 0.8 should be <i>more</i> portable :) It just seems that distributions still need to catch up with SDL 2 - the OpenGL flag should really be mandatory IMHO.
+</div>
+</div>
+
+<div class='brn' id='brn8106'>
+<div class='frm pst' id='pid8107' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8103.html#pid8106'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8107.html#pid8107'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1172.html' >p8952</a>
+<span class='htt'>Date</span> 2014-11-10 00:30
+</div>
+<div class='ccl'>
+That explains why SDL 1 worked without OpenGL flags then :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1152.html#tid1152'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1152.html#tid1152'>Gosu Exchange</a> / Upgrading to Gosu 0.8.x and SDL2
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8103.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5345 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Passing around the window variable</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5345' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=683.html#tid683'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=683.html#tid683'>Gosu Exchange</a> / Passing around the window variable
+</div>
+</div>
+
+<div class='frm pst' id='pid5338' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5338' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5338.html#pid5338'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=888' >oxymoron</a>
+<span class='htt'>Date</span> 2011-12-13 06:44
+</div>
+<div class='ccl'>
+This is more of a Ruby question, but it is relevant to Gosu.<br/><br/>I&#39;m working on a clone of Zelda 2, and I want to reduce the hassle of passing a window variable between methods. Originally, I used a global variable to do this, but recently I modularized my code by splitting it into several files and now I need a way to pass that variable around. I&#39;m a lazy programmer, so I only want to load this variable once per file and then use its reference variable. That is, I set <code>W = (window variable)</code> and then I call <code>W</code> where needed.<br/><br/>My current solution is to have an empty module named CommonValues (in a file Shared.rb) which is written to using Ruby&#39;s built-in <code>#const_set</code>, <code>#instance_variable_set</code>, and related methods. If a file needs to access these variables, I put <code>required_relative &#39;Shared&#39;</code> at the start of the file, then load a variable as needed. I&#39;m not only doing this for the window variable, but for quest and media folders as well.<br/><br/>The problem with this approach is that it creates a lookup up loop with all the <code>require_relative</code> operations. I&#39;m not sure if I can work around this, or if this approach to sharing variables is itself flawed. (Ruby is my first real language and I&#39;ve been coding for two months now.)<br/><br/>Here&#39;s my code.<br/><br/>In StageArea.rb<br/><code>05&gt; require_relative &#39;Shared&#39;<br/><br/>08&gt; module StageArea<br/>12&gt;&#160;&#160; W = CommonValues::WINDOW<br/>13&gt;&#160;&#160; STAGES_FOLDER = File.join CommonValues::QUEST_FOLDER, &#39;Graphics/Stages&#39;<br/><br/>104&gt; end</code><br/><br/>In Quest.rb<br/><code>07&gt; require_relative &#39;Shared&#39;<br/>08&gt; require_relative &#39;StageArea&#39;<br/><br/>11&gt; module Quest<br/><br/>13&gt;&#160;&#160; QUEST_FOLDER&#160; &#160; = File.join &#39;../Quests&#39;,&#160; &#39;Original Quest&#39;<br/>14&gt;&#160;&#160; CHEATS_FOLDER&#160;&#160; = File.join QUEST_FOLDER, &#39;Cheats&#39;<br/>15&gt;&#160;&#160; DATA_FOLDER&#160; &#160;&#160; = File.join QUEST_FOLDER, &#39;Data&#39;<br/>16&gt;&#160;&#160; FONTS_FOLDER&#160; &#160; = File.join QUEST_FOLDER, &#39;Fonts&#39;<br/>17&gt;&#160;&#160; GRAPHICS_FOLDER = File.join QUEST_FOLDER, &#39;Graphics&#39;<br/>18&gt;&#160;&#160; MUSIC_FOLDER&#160; &#160; = File.join QUEST_FOLDER, &#39;Music&#39;<br/>19&gt;&#160;&#160; SCENES_FOLDER&#160;&#160; = File.join QUEST_FOLDER, &#39;Scenes&#39;<br/>20&gt;&#160;&#160; SCRIPTS_FOLDER&#160; = File.join QUEST_FOLDER, &#39;Scripts&#39;<br/>21&gt;&#160;&#160; SOUNDS_FOLDER&#160;&#160; = File.join QUEST_FOLDER, &#39;Sound Effects&#39;<br/>22&gt;&#160;&#160; VOICE_FOLDER&#160; &#160; = File.join QUEST_FOLDER, &#39;Voice Effects&#39;<br/><br/>24&gt;&#160;&#160; CommonValues.const_set(:QUEST_FOLDER, QUEST_FOLDER)<br/><br/>48&gt; end</code><br/><br/>In z2e.rb<br/><code>15&gt; require &#39;rubygems&#39;<br/>16&gt; require &#39;gosu&#39;<br/><br/>20&gt; require_relative &#39;Shared&#39;<br/>21&gt; require_relative &#39;Quest&#39;<br/><br/>28&gt; class Main &lt; Gosu::Window<br/>29&gt;&#160;&#160; def initialize<br/>32&gt;&#160; &#160;&#160; CommonValues.const_set(:WINDOW, self)<br/>33&gt;&#160; &#160;&#160; CommonValues.const_set(:FRAME_RATE, (1000/self.update_interval).round.to_f)<br/><br/>41&gt;&#160;&#160; end<br/>79&gt; end</code><br/><br/>The error message I get is:<br/><code>User@COMPUTER ~/Game Engine <br/>$ z2e.rb<br/>~/Game Engine/StageArea.rb:12:in <code>&lt;module:StageArea&gt;&#39;: uninitialized constant CommonValues::WINDOW (NameError)<br/>&#160; &#160; &#160; &#160; from ~/Game Engine/StageArea.rb:8:in </code>&lt;top (required)&gt;&#39;<br/>&#160; &#160; &#160; &#160; from ~/Game Engine/Quest.rb:8:in <code>require_relative&#39;<br/>&#160; &#160; &#160; &#160; from ~/Game Engine/Quest.rb:8:in </code>&lt;top (required)&gt;&#39;<br/>&#160; &#160; &#160; &#160; from ./z2e.rb:21:in <code>require_relative&#39;<br/>&#160; &#160; &#160; &#160; from ./z2e.rb:21:in </code>&lt;main&gt;&#39;</code><br/><br/>So <code>Main</code> requires <code>Quest</code>, which requires <code>StageArea</code>, which tries to call two variables from <code>CommonValues</code> that are set in <code>Main</code>. Since <code>Main</code> sets these variables before they are ever called, the error must relate to the peculiarities of <code>require_relative</code>. To make sure of this, I placed a <code>binding.pry</code> (pry is an alternative interactive ruby interpreter to irb) on line 11 of StageArea.rb and injected <code>CommonValues.const_set(:WINDOW, &quot;window&quot;)</code>. I then successfully called <code>CommonValues::WINDOW</code> and received <code>&quot;window&quot;</code>. So it seems the parsing of <code>W = CommonValues::WINDOW</code> happens before <code>CommonValues.const_set(:WINDOW, self)</code> in <code>Main.rb</code> is actually run.<br/><br/>I know Gosu will be phasing out the window variable, but I&#39;ll get the same problem from the other variables as well. Is this a good way to tackle the problem, or is there a better solution? I appreciate any alternative ideas :) .
+</div>
+</div>
+
+<div class='brn' id='brn5338'>
+<div class='frm pst' id='pid5341' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5338'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5341' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5341.html#pid5341'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-12-13 13:43
+</div>
+<div class='ccl'>
+Why can&#39;t you use a global variable?
+</div>
+</div>
+
+<div class='brn' id='brn5341'>
+<div class='frm pst' id='pid5365' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5341'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5365.html#pid5365'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=888' >oxymoron</a>
+<span class='htt'>Date</span> 2011-12-17 13:06
+</div>
+<div class='ccl'>
+I made a bad assumption. When I first split my code into several files, I was getting uninitialized variable errors for $WINDOW. So I looked up the exact scope of globals and read that they can be called anywhere within the program. Well, I assumed &quot;program&quot; meant program file (i.e. only in main.rb) and so tried to implement this other method. Plus, I always hear how bad globals are, so I thought I better just forget about them. But after hearing some more thoughts on it, a global window variable doesn&#39;t sound too bad. As for the other folder variables, I changed my approach and just hard-coded them into <code>Shared.rb</code> for now, instead of spreading them over several files which would have become confusing later anyhow.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5343' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5338'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5343' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5343.html#pid5343'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-13 18:30
+</div>
+<div class='ccl'>
+You can take a look at <code>require &#39;gosu/preview&#39;</code>, which is a preview of how the interface will look soon- many methods are now on the module level, such as <code>draw_quad</code>, and constructors don&#39;t need <code>window</code> arguments anymore.
+</div>
+</div>
+
+<div class='brn' id='brn5343'>
+<div class='frm pst' id='pid5345' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5343'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5345' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5345.html#pid5345'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-12-14 01:55
+</div>
+<div class='ccl'>
+Ooh, when did that happen? I missed the news somehow. :D
+</div>
+</div>
+
+<div class='brn' id='brn5345'>
+<div class='frm pst' id='pid5346' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5345'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5346' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5346.html#pid5346'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-14 09:04
+</div>
+<div class='ccl'>
+I&#39;m still not sure about color constants and wanted to make it ONE BIG STEP. <code>0xff0000</code> being solid red and all, <code>0xff_ff0000</code> being the invisibly transparent one. Backwards compatibility for that is a big, fun puzzle. One approach would be to make things constructed with the <code>window</code> argument flip all colors internally. %)
+</div>
+</div>
+
+<div class='brn' id='brn5346'>
+<div class='frm pst' id='pid5348' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5348' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5348.html#pid5348'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-12-14 21:03
+</div>
+<div class='ccl'>
+ARGB is not as standard an ordering as RGB/RGBA, but it is a hell of a lot better than TRGB. Although TRGB allows stuff like 0xff0000 for red, it really isn&#39;t that much better, I don&#39;t think, and it is just as likely to confuse people, just in a different way. Ruby people can be using the Color.rgb, Color.rgba, and Color.argb to do it however they want, so I don&#39;t think we matter in the argument :D.
+</div>
+</div>
+
+<div class='brn' id='brn5348'>
+<div class='frm pst' id='pid5350' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5348'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5350.html#pid5350'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-14 21:36
+</div>
+<div class='ccl'>
+TRGB, if anything, is supposed to be the exception. My design would be based on the assumption that 90% of color constants have full alpha.<br/><br/>But yeah, and to make it even better, Ruby has 0xff_ff000 for red. Even when I still used monospaced fonts, I often got lost in eight hex digits. But C++11 makes it possible to have &quot;ff0000&quot;_rgb now, so maybe I&#39;ll just go with that and deprecate the implicit conversion altogether.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5358' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5358' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5358.html#pid5358'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-17 00:39
+</div>
+<div class='ccl'>
+Eventually, changes will have to break backwards compatibility in the name of progress, no? Best to do it now, before too many people get really invested in Gosu.&#160; It feels like more and more people use this engine all the time ^__^
+</div>
+</div>
+
+<div class='brn' id='brn5358'>
+<div class='frm pst' id='pid5359' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5358'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5359' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5359.html#pid5359'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-17 02:11
+</div>
+<div class='ccl'>
+But silently breaking all current games would probably scare all current users, me included, off forever. :( This would be hell to debug.
+</div>
+</div>
+
+<div class='brn' id='brn5359'>
+<div class='frm pst' id='pid5360' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5359'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5360' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5360.html#pid5360'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-12-17 02:25
+</div>
+<div class='ccl'>
+But with bundler etc, is this really a problem? They could always just install the older version of Gosu and use that.<br/><br/>Though I will admit that subsequent builds of Gosu which break my game makes me hesitant to upgrade, so it&#39;s not a simple thing.
+</div>
+</div>
+
+<div class='brn' id='brn5360'>
+<div class='frm pst' id='pid5361' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5360'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5361.html#pid5361'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-17 03:05
+</div>
+<div class='ccl'>
+But how would I upgrade my larger projects when the time comes? I could only go over every occurence of <code>0x...</code> and hope to catch everything. If I forgot one place, I wouldn&#39;t notice unless I paid lots of attention while test playing. :(
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5364' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5343'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5364.html#pid5364'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=888' >oxymoron</a>
+<span class='htt'>Date</span> 2011-12-17 12:55
+</div>
+<div class='ccl'>
+Thanks. I saw that file before but didn&#39;t look into using it. But I think I will now. :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5349' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5338'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5349' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5349.html#pid5349'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-12-14 21:14
+</div>
+<div class='ccl'>
+You do seem to be overengineering. Most people (e.g. Chingu and I&#39;ve seen it other places too) use &quot;$window = self&quot; in the initializer to have global access to the window, although as jlnr says, this is now unnecessary. They could equally have used &quot;@@instance = self&quot; and made an accessor on the class to access it (&quot;Main.instance&quot;). Use of const_set is really a bad smell - it is critical in certain meta-programming, but that doesn&#39;t mean it should generally be used for this sort of thing. A bit like global variables - you should never use them unless the alternative is impossible or incredibly messy (&quot;Never use globals&quot; is rather too dogmatic!).
+</div>
+</div>
+
+<div class='brn' id='brn5349'>
+<div class='frm pst' id='pid5366' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5345.html#pid5349'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5366.html#pid5366'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=888' >oxymoron</a>
+<span class='htt'>Date</span> 2011-12-17 13:13
+</div>
+<div class='ccl'>
+Thanks, that sounds reasonable. I keep telling myself, &quot;Make something that works first instead of making something perfect,&quot; because I know that I&#39;ll never get anything accomplished otherwise. And what I know now will probably seem stupid to me later. Those folder variables are really only defined once, so it doesn&#39;t make sense for them to be created all over the place. I put them all in <code>Shared.rb</code> for now and later will be retrieving them from a external file.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=683.html#tid683'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=683.html#tid683'>Gosu Exchange</a> / Passing around the window variable
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5345.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

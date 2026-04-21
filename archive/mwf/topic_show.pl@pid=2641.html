@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2641 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Built-in scrolling and transformations in general</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2641' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=359.html#tid359'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=359.html#tid359'>Gosu Exchange</a> / Built-in scrolling and transformations in general
+</div>
+</div>
+
+<div class='frm pst' id='pid2387' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2387.html#pid2387'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-04-28 20:59
+<span class='htt'>Edited</span> 2010-06-08 13:52
+</div>
+<div class='ccl'>
+It would be nice and convenient and probably faster for games that require screen scrolling if Gosu&#39;s drawing code did something like this:<br/><br/><code>glPushMatrix();<br/>glTranslatef(pimpl-&gt;scrollX, pimpl-&gt;scrollY, 0.0);<br/>/* Gosu&#39;s drawing magic here */<br/>glPopMatrix();</code><br/><br/>The Graphics object (or Window in Ruby) would present functions for getting and setting the X and Y scroll offsets and drawing code built on top of Gosu would not need to concern itself with additional arithmetic to handle screen scrolling. Of course, monkey patching on the Ruby side could do this for me, but it seems like a glTranslatef-based approach would be faster. Comments?<br/><br/>[ I tried implementing it myself, but I can&#39;t for the life of me get Gosu to build cleanly on my system. After unpacking Ruby 1.9&#39;s source into the appropriate location and running <code>rake mac:gem</code>, it still fails spectacularly during the xcode build. I&#39;ll ask for help with this problem later. :) ]<br/><br/>(Took the liberty to rename this topic as it evolved—jlnr)
+</div>
+</div>
+
+<div class='frm pst' id='pid2388' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2388.html#pid2388'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-29 06:46
+<span class='htt'>Edited</span> 2010-04-29 06:50
+</div>
+<div class='ccl'>
+I whole-heartedly agree. As for how the interface should look like: I don&#39;t trust solutions that assign to global state (or window-local state, which is the same thing). Having to remember resetting flags is error-prone. Also, one pair of scrolling variables may work for some games, but is not general, think parallax layers or non-sidescrollers, etc. etc.<br/><br/>I secretly planned to add <code>translate(scroll_x, scroll_y) do ... end</code>, same for rotate, scale and a generic matrix translation.<br/><br/>I am working on making the &quot;building for Ruby 1.9&quot; thing a bit better right now because I can&#39;t even get it to build myself anymore. I am stalled on trying to get rvm to install ppc builds. Time spent on Gosu is generally maybe 2% for writing actual code, 98% for plumbing like the rvm stuff. Did I mention Linux compilation in the presence of rvm is broken too? Or Windows compilation with MSVC 2010? etc. etc.<br/><br/>Sorry, I just had to rant because the situation pains me. I really missed this feature myself during the last Ludum Dare compo, and its absence uglifies all my existing games too.
+</div>
+</div>
+
+<div class='frm pst' id='pid2389' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2389.html#pid2389'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-04-29 08:20
+</div>
+<div class='ccl'>
+It appears to me as that&#39;d be a break of the base concept though, wouldn&#39;t it? Providing only the basic framework is a bit less advanced than providing a built-in translate feature...<br/><br/>Basically, I believe that it wouldn&#39;t hurt, however, it&#39;s currently neither hard nor cluttery to include scrolling into games...
+</div>
+</div>
+
+<div class='frm pst' id='pid2390' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2390.html#pid2390'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-29 08:40
+<span class='htt'>Edited</span> 2010-04-29 08:42
+</div>
+<div class='ccl'>
+Well, one could argue that I should only include <code>applying_matrix(...) do ... end</code>, because that would only add one function for a lot of new possibilities. Translate and rotate etc. could easily be built on top of that.<br/><br/>Right now you have to manually do the math for all the scrolling, which is actually *slow*. No framework built on top of Gosu could ever provide this at the same performance as using a matrix internally could. Also, rotations especially are incredibly annoying to do by hand. At least for translations in 90° steps, I already had real-life use cases too :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2391' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2391.html#pid2391'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-04-29 12:05
+</div>
+<div class='ccl'>
+I agree with the global state philosophy in general, but I couldn&#39;t think of a clean way to implement it. I haven&#39;t delved too far into the code, but it&#39;s my understanding that Gosu sorts drawing operations by Z order and draws back to front, correct? I&#39;m not an expert on OpenGL, but I seem to recall that this has to be done for the scene to look right.<br/><br/>Given that, how would the translation effect be pulled off? I suppose you could add a translation parameter to the drawing ops, but then that would add unneeded complexity and you&#39;d still be doing the translation math (albeit hardware accelerated matrix math) for each draw, and then that wouldn&#39;t take into account arbitrary translations. Flush the drawing cache after each block? Then you&#39;d have Z ordering issues. Of course, this stuff is why I prefer to use your framework rather than using SDL or OpenGL directly. :D<br/><br/>I&#39;m definitely aware of people&#39;s problems building the library. I blame Xcode on the Mac side—it&#39;s a decent tool but the level of complexity available for project configurations is problematic. I think I&#39;ve traced my problem to not having the 10.4 SDK installed, but we&#39;ll see!
+</div>
+</div>
+
+<div class='frm pst' id='pid2395' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2395.html#pid2395'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-30 09:04
+</div>
+<div class='ccl'>
+Well, using <code>applying_matrix do…</code> you would assume that every user only has a small number of matrices. I think I will just have all those ready and for every draw op store the index of the matrix that it needs. Then pop/push when two DrawOps have different transformations applied. For the simplest use case, moving all game content but not the UI on top of it (z-wise), this should work very well.<br/><br/>Re Xcode: Actually no, the most blocking issue for me right now is that Ruby is just horrible to work with from a dev perspective. I actually moved the source files from Ruby 1.9 out of their Makefile hell into an Xcode project because that made it EASIER to just get the damn thing to compile for more than the system&#39;s current architecture. From Ruby itself down to Rubygems, nothing is really documented either.
+</div>
+</div>
+
+<div class='frm pst' id='pid2397' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2397.html#pid2397'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-04-30 14:51
+</div>
+<div class='ccl'>
+Ouch, yeah, the GNU build system is a horrible monster that needs to die. We need a new cross-platform build system that isn&#39;t and I haven&#39;t found one yet. :( I&#39;ll spare the rant about where Xcode has burned me because it is an adorable kitten with a nice UI in comparison.<br/><br/>Now that I have the 10.4 SDK, I&#39;ve traced my build problems to SWIG. Mine is generating different (but still <i>wrong</i>!) code from yours so the patch is failing and I&#39;m getting a bunch of crazy errors (including &quot;void pointer used in arithmetic&quot;) where the patch corrections have missed. I can&#39;t apply the patch by hand because the code looks so different that I can&#39;t really tell where the fixes should go and what I should erase. My SWIG is version 1.3.31 and it&#39;s in <code>/usr/bin</code> so I think it came with the system. I don&#39;t install things there.
+</div>
+</div>
+
+<div class='frm pst' id='pid2398' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2398.html#pid2398'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-30 17:17
+</div>
+<div class='ccl'>
+Oh, I always just install swig from hand, because in a move of sudden intelligence, its whole make hell builds into /usr/local by default. If you don&#39;t want to install it, just disable that Xcode build step, because I always check in the file generated here anyway.
+</div>
+</div>
+
+<div class='frm pst' id='pid2399' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2399.html#pid2399'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-04-30 18:11
+<span class='htt'>Edited</span> 2010-05-01 01:01
+</div>
+<div class='ccl'>
+Aha, thank you. I will try disablng that step as soon as I get a chance to try it. I&#39;ll whine at you some more if I hi another snag. :) I may yet come to fully appreciate Xcode!<br/><br/>UPDATE: Yes, I&#39;ve managed to get it to build. Had to add <code>/usr/local/include/ruby-1.9.1</code> and a subdirectory to the include paths and turn off i386 and ppc (since I don&#39;t have a universal Ruby 1.9). Builds cleanly now that I&#39;ve done all that and disabled the SWIG step, though.<br/><br/>As for me, I have been using Homebrew for a package manager lately and it seems to keep out of my business pretty well. Linking to system libraries where available (unlike, say, MacPorts) is a kindness unheard of in the world of package management.
+</div>
+</div>
+
+<div class='frm pst' id='pid2408' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2408.html#pid2408'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-02 08:07
+</div>
+<div class='ccl'>
+I think I just finished the RubyGosu App.app template and RubyGosu itself.<br/><br/>If you want to try building it from source, you can get the correct Ruby 1.9 installed by extracting the source of 1.9.2pre1 into mac/Ruby/source and then running &quot;rake ruby19:build&quot; from the root. After that, the Xcode projects should just pick up the libs and includes from that. It will not pollute your system.
+</div>
+</div>
+
+<div class='frm pst' id='pid2616' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2616.html#pid2616'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-06-08 08:44
+</div>
+<div class='ccl'>
+I dug into Gosu&#39;s source again and added a rudimentary sort of transformations system to the C++ side. Graphics has two new functions: beginTransform(Gosu::Transform) and endTransform. The Transform class basically wraps an arbitrary OpenGL matrix and provides helper methods to generate rotation, translation and scaling in two dimensions.<br/><br/>As it&#39;s implemented, DrawOpQueue maintains a list of transformations and each DrawOp gets a snapshot of that list when it goes into the queue. It&#39;s copy-heavy and does glPushMatrix and glPopMatrix for each transformation, so it could probably be optimised a lot. I probably should also have named the class Matrix and made it act like one.<br/><br/>I have made no attempt at Ruby bindings. Or rather, I attempted and got frustrated with Swig and gave up. :)<br/><br/>Here&#39;s a patch that I made against the GitHub repository at revision 7ab7a0cc7a1442a88c259448c491d5ba2c738545. I did this all while I should have been sleeping (it&#39;s 4:43 here now), so please go easy on me!<br/><br/>Oh yeah, and the patch doesn&#39;t include changes to the Xcode project file or anything else really. I&#39;ll get on that after I&#39;ve caught up on lost sleep.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/16/2616/gosu-transform.diff'>gosu-transform.diff</a> - Gosu transformations patch (4k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2618' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2618.html#pid2618'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-08 13:40
+<span class='htt'>Edited</span> 2010-06-08 13:50
+</div>
+<div class='ccl'>
+Awesome—I just came back from traveling and that is the next feature I wanted to tackle! I&#39;ll put a deadline on it for this weekend.<br/><br/>Not sure about using a dedicated class vs. using an array, somehow I am afraid of introducing a Matrix class. Sounds like a gazillion operators and design decisions to waste time on to make it perfect… (You forgot the Transform class anyway ;) )<br/><br/>Question: Does anyone know a vector/matrix math library for Ruby? As long as Gosu is easy to use with popular libraries, I&#39;m for using arrays :)<br/>Question 2: <code>transform(foo) do…end</code>? Also, helper methods that return matrices or directly have <code>rotate(a) do…end</code> (same for scale, translate) as shortcuts? I think <code>rotate(45) { level.draw }</code> looks pretty sweet in terms of readability.
+</div>
+</div>
+
+<div class='frm pst' id='pid2621' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2621.html#pid2621'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-06-08 15:50
+<span class='htt'>Edited</span> 2010-06-08 16:06
+</div>
+<div class='ccl'>
+Oh crap, see, I forgot to even add it to the git repository. Here it is, but it&#39;s nothing spectacular. I resorted to using friend class ugliness to restrict the begin and end methods from the user. I can&#39;t say C++ is my strong point. :)<br/><br/>As for Ruby, I&#39;m pretty sure there are Matrix and Vector classes in the standard library, and both of them can be had by a simple <code>require &#39;matrix&#39;</code>. Ruby matrices are row-major and OpenGL matrices are column-major, so this will have to be accounted for either in your code or ours.<br/><br/>Meanwhile, If you&#39;re going to offer dedicated rotate, translate &amp;c operations on the Ruby side, you should still offer a generic transform method that accepts arbitrary transformation matrices also; I&#39;m sure someone will find something awesome to do with that. :)
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/21/2621/Transform.hpp'>Transform.hpp</a> - Gosu/Transform.hpp (1k)</div>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/21/2621/Transform-1.cpp'>Transform-1.cpp</a> - GosuImpl/Graphics/Transform.cpp (1k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2641' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2641.html#pid2641'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-10 04:59
+<span class='htt'>Edited</span> 2010-06-19 14:04
+</div>
+<div class='ccl'>
+I just committed it. I replaced the Transform class by a typedef to boost::array&lt;16, double&gt;. That makes it pretty clear that everyone looking for matrix math should consult another library for that :)<br/><br/>In Ruby, it works as<br/><code><br/>class Window<br/>&#160; &#160; # Rotates everything drawn in the block around (0, 0).<br/>&#160; &#160; def rotate(angle, around_x = 0, around_y = 0, &amp;drawing_code); end<br/>&#160; &#160; <br/>&#160; &#160; # Scales everything drawn in the block by a factor.<br/>&#160; &#160; def scale(factor, &amp;drawing_code); end<br/>&#160; &#160; <br/>&#160; &#160; # Scales everything drawn in the block by a factor for each dimension.<br/>&#160; &#160; def scale(factor_x, factor_y, &amp;drawing_code); end<br/>&#160; &#160; <br/>&#160; &#160; # Moves everything drawn in the block by an offset in each dimension.<br/>&#160; &#160; def translate(x, y, &amp;drawing_code); end<br/>&#160; &#160; <br/>&#160; &#160; # Applies a free-form matrix rotation to everything drawn in the block.<br/>&#160; &#160; def transform(m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, &amp;drawing_code); end<br/>end<br/></code><br/><br/>In C++, there is a pushTransform/popTransform method pair in Window and three helper functions Gosu::scale, Gosu::translate and Gosu::rotate, which return a Gosu::Transform that can be passed.<br/><br/>I also changed the way it works internally, now Gosu remembers all matrices that have been used during rendering for each DrawOp and only pushes/pops it when necessary. That should actually make Gosu *faster* in the long run because I scale stuff by hand in a number of places, that can be done by a matrix (OpenGL) now. I hope that&#39;s going to be noticeable on the iPhone.<br/><br/>Thanks again. :)<br/><br/>Edit, future note: These will be free functions in module Gosu rather than Window methods later, when the dependency on the Window has been moved to Gosu&#39;s internals. Backwards compatibility will be there for a long time though.
+</div>
+</div>
+
+<div class='frm pst' id='pid2642' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2642.html#pid2642'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-06-10 17:14
+</div>
+<div class='ccl'>
+Julian, you, sir, are a god among men. This will make my life a lot easier when I want to make composite objects too. Thanks for adding it. :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=359.html#tid359'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=359.html#tid359'>Gosu Exchange</a> / Built-in scrolling and transformations in general
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2641.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

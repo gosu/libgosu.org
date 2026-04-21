@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 473 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Tron 3000</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d473' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=109#tid109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=109#tid109'>Gosu Showcase</a> / Tron 3000
+</div>
+</div>
+
+<div class='frm pst' id='pid467' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=467.html#pid467'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=73.html' >jose</a>
+<span class='htt'>Date</span> 2009-05-01 10:58
+</div>
+<div class='ccl'>
+I&#39;ve developed a game using this great library. Thanks Julian for developing Ruby Gosu.<br/><br/>Its name is Tron 3000, and it&#39;s available at <a class='url' href='http://tron3000.eltorbellino.com'>http://tron3000.eltorbellino.com</a> for Windows, Mac &amp; Linux.<br/><br/>This is a deathmatch-style remake of classic Tron game, for multiple players on the same computer, or for playing against artificial intelligence players. Controls are so simple. There are lots of items to pick up, which make the game very addictive:<br/>&#160; - Green bubbles provide weapons, which can be used using the &quot;fire&quot; button. There are missiles available, and so on.<br/>&#160; - Red bubbles provide temporal skills, such as high speed.<br/>&#160; - Blue bubbles have immediate effects, such as cleaning the screen.<br/>Everytime an opponent is killed, you get one point, but if you kill yourself, you&#39;ll lose one point! The player with more points wins.<br/><br/>As the game starts, a demo game is played background. You can change video resolution and go fullscreen in the &quot;options&quot; menu. In order to play, you have to create some players in the &quot;players&quot; menu, either human or AI players. Then you&#39;re ready to start a new game!<br/><br/>For the geeks, the game allows creating new weapons or AI profiles by including new extensions under the &#39;extensions&#39; folder, such as:<br/>- tron3000<br/>&#160; - extensions<br/>&#160; &#160; - new_extension&#160; &#160; &#160; &#160; &#160;&#160; (name for the extension)<br/>&#160; &#160; &#160; - art<br/>&#160; &#160; &#160; &#160; - audio<br/>&#160; &#160; &#160; &#160; &#160; * new_item.wav&#160; &#160; &#160; (sound played when picking the item -- optional)<br/>&#160; &#160; &#160; &#160; - graphics<br/>&#160; &#160; &#160; &#160; &#160; * new_item.png&#160; &#160; &#160; (icon for the item -- optional)<br/>&#160; &#160; &#160; - code<br/>&#160; &#160; &#160; &#160; - items<br/>&#160; &#160; &#160; &#160; &#160; * new_item.rb&#160; &#160; &#160;&#160; (code for the item)<br/><br/>Items are quite easy to code. The following example defines a skill which removes the trail that is left after a player (by redefining the &quot;trail&quot; method that Motorbike class uses):<br/><br/>Skill do<br/>&#160; def trail; end<br/>end<br/><br/>The next example creates an action which clears all the screen. Like in the previous one, code is executed under the Motorbike class:<br/><br/>Action do<br/>&#160; def pick_action<br/>&#160; &#160; @game.arena.clear_all<br/>&#160; end<br/>end<br/><br/>Check more items under tron3000/code/items. If you also want to add a new AI profile to your extension, just create it like tron3000/extensions/new_extensions/code/bots/my_new_killer_bot.rb and you&#39;ll be able to select it when creating new players during the game. Check the existing AI profile at tron3000/code/bots/machine.rb. After you have created an extension, you can activate it in the &quot;extensions&quot; menu of the game.<br/><br/>A frequently asked question about Gosu is how to draw on textures, so you can check my implementation at tron3000/code/core/arena.rb, although it is pure OpenGL for some reasons. Game performance is just OK, so I hope Ruby 1.9 improves it, though I&#39;ve not tried it yet. So Gosu for Ruby 1.9 would be very appreciated :) Also, the Linux version doesn&#39;t work on my Ubuntu since the day I added sound support... maybe there&#39;s a problem with SDL library.<br/><br/>I hope you like the game.<br/><br/>Enjoy it!!
+</div>
+<div class='ccl pat'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=401'><img class='amt' src='../../mwf/attachments/67/467/tron3000.thb.jpg' title='tron3000.png (287k)' alt=''/></a>
+</div>
+</div>
+
+<div class='frm pst' id='pid468' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=468#pid468'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-01 14:22
+</div>
+<div class='ccl'>
+This looks really awesome. Extendable AI? Very, very cool.
+</div>
+</div>
+
+<div class='frm pst' id='pid469' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=469.html#pid469'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-01 15:02
+</div>
+<div class='ccl'>
+Incidentally, for what it&#39;s worth, using Ruby 1.9 approximately doubles my frame rate.
+</div>
+</div>
+
+<div class='frm pst' id='pid470' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=470#pid470'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=73.html' >jose</a>
+<span class='htt'>Date</span> 2009-05-01 15:18
+</div>
+<div class='ccl'>
+Thanks, philomory! Regarding Ruby 1.9, I&#39;ve been forced to reduce computations in the AI to optimize speed. Ruby 1.9 would allow building more complex behaviour and cleverer enemies :)
+</div>
+</div>
+
+<div class='frm pst' id='pid473' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=473.html#pid473'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-03 09:32
+</div>
+<div class='ccl'>
+Amazing stuff! Very very polished. Will need to look at the source code in places :)<br/><br/>And I just downloaded Ruby 1.9.1 to give my &quot;universal&quot; RubyGem another try.
+</div>
+</div>
+
+<div class='frm pst' id='pid490' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=490#pid490'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-05 01:48
+</div>
+<div class='ccl'>
+You should be able to test your game with Ruby 1.9 using the files from this posting (gosu.so for Windows, .app wrapper for OS X):<br/><br/><a class='url' href='topic_show.pl@pid=489.html#pid489'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=489#pid489</a><br/><br/>I wanted to test it on Windows with your game, but I couldn&#39;t get the ruby-opengl gem installed :(<br/><br/>(Still looking forward to testing the computer enemies, with only two human players it&#39;s too easy to just keep firing :) )
+</div>
+</div>
+
+<div class='frm pst' id='pid500' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=500.html#pid500'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=73.html' >jose</a>
+<span class='htt'>Date</span> 2009-05-06 08:22
+</div>
+<div class='ccl'>
+Thanks Julian!! I&#39;ll try the Ruby 1.9 version as soon as I can. Anyway, right now you should already be able to play against computer players. In the game, just go to the &quot;players&quot; menu, pick a player to edit it, and switch from &quot;human&quot; to &quot;machine&quot;. You can play against 3 computer players. Ruby 1.9 will just allow to develop more complex enemies, with more calculations (I hope).<br/><br/>Also, regarding the code, for your interest there are two files that could be used in other games quite easily:<br/>&#160; - code/core/attributes.rb: an extension of whytheluckystiff&#39;s Dwemthy&#39;s array. It allows to declare classes with attributes quite cleanly.<br/>&#160; - code/core/behaviours.rb: allows to dynamically include and deinclude modules in an object (not just a class), which is quite useful in games in which players can pick up items which change their skills.<br/> <br/>Attributes<br/>----------<br/>Allows easily defining attributes through an initial constant or a block of code that is run to initialize the object. When defining an attribute x, the following methods are added:<br/>- accessor methods x and x=<br/>- initial_x, which returns the value of x when the object was created<br/>- default_x, which returns the value of x that is set by default to objects of its class<br/><br/>Some examples:<br/><br/>class Enemy<br/>&#160; include Attributes&#160;&#160; # just include this line to enable the module on any class<br/><br/>&#160; health&#160; 100&#160; &#160; &#160; &#160; &#160; # define some attributes for our enemy. health, health=, initial_health and default_health, attack, atack=, ... are defined<br/>&#160; attack&#160; 10<br/>&#160; defense 10<br/>end<br/><br/>enemy = Enemy.new<br/>enemy.health&#160; &#160; &#160; &#160; &#160; # =&gt; 100<br/>enemy.health -= 5&#160; &#160;&#160; # =&gt; 95<br/>enemy.health&#160; &#160; &#160; &#160; &#160; # =&gt; 95<br/>enemy.initial_health&#160; # =&gt; 100<br/><br/>wounded_enemy = Enemy.new :health=&gt;70&#160; &#160; # Initial attributes can be set at creation time<br/>wounded_enemy.default_health&#160; # =&gt; 100&#160;&#160; # but the defaults don&#39;t change<br/>wounded_enemy.initial_health&#160; # =&gt; 70&#160; &#160; # Only the initial value changes<br/>wounded_enemy.health -= 5&#160; &#160;&#160; # =&gt; 65<br/><br/>Attributes&#39; default values can be changed in subclasses:<br/>class Monster &lt; Enemy<br/>&#160; attack&#160; &#160; 15<br/>&#160; defense { rand(20) }&#160; # in this case, a block of code is passed, which will go to &quot;default_defense&quot; method<br/>end<br/><br/>monster = Monster.new<br/>monster.default_defense&#160;&#160; # =&gt; 5<br/>monster.default_defense&#160;&#160; # =&gt; 13&#160; (the default defense is random!)<br/>monster.initial_defense&#160;&#160; # =&gt; 14<br/>monster.initial_defense&#160;&#160; # =&gt; 14&#160;&#160; (but the initial defense was set when the monster was born)<br/>monster.defense&#160; &#160; &#160; &#160; &#160;&#160; # =&gt; 14<br/>monster.defense -= 5&#160; &#160; &#160; # =&gt; 9<br/><br/>Also, including Attributes also allows to include any module in the class by just typing its name, without the &quot;include&quot; word (e.g, just &quot;mod&quot; instead of &quot;include Mod&quot;).<br/><br/>All this together, here&#39;s an example of a homing missile in Tron 3000, available at code/items/missile_pack.rb:<br/><br/>class HomingMissile &lt; Entity<br/>&#160; homing&#160; &#160; &#160; # Same as &quot;include Homing; include Explosive; include Projectile&quot;<br/>&#160; explosive<br/>&#160; projectile&#160; # This is quite a natural definition: a homing missile is just a homing explosive projectile<br/><br/>&#160; image&#160;&#160; :missile<br/>&#160; sound&#160;&#160; :missile<br/>&#160; factor&#160; 0.75<br/>&#160; flare { Flare.new :follow=&gt;self, :factor=&gt;0.5 }<br/><br/>&#160; def update<br/>&#160; &#160; @speed += 1 if @speed &lt; 30&#160;&#160; # Adds some acceleration to the projectile. Note that &quot;speed&quot; attribute was defined in &quot;projectile&quot;<br/>&#160; &#160; super<br/>&#160; end<br/>end<br/><br/>Behaviours<br/>----------<br/>Allows to dynamically include and deinclude modules in objects (not just classes). This is nice in games in which players can pick up items that add skills or change their behaviour.<br/><br/>To enable it, just include the Behaviours module in the class whose objects require dynamic changes:<br/><br/>class Enemy<br/>&#160; include Behaviours<br/>&#160; include Attributes<br/><br/>&#160; health 100<br/>&#160; attack 10<br/>&#160; defense 10<br/>end<br/><br/>module Strength<br/>&#160; def attack<br/>&#160; &#160; super * 2<br/>&#160; end<br/>end<br/><br/>enemy = Enemy.new<br/>enemy.attack&#160;&#160; # =&gt; 10<br/><br/># Now pick an item that improves attack<br/>enemy.extend(Strength) # =&gt; #&lt;Module:0x12d552c&gt;<br/>enemy.attack&#160;&#160; # =&gt; 20<br/><br/># Drop the item and go back to normal state<br/>enemy.unextend(Strength)&#160; # =&gt; [&quot;attack&quot;]<br/>enemy.attack&#160;&#160; # =&gt; 10<br/><br/>It&#39;s great that Ruby allows these things :)<br/><br/>I hope this is useful stuff, cheers! 
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=109#tid109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=109#tid109'>Gosu Showcase</a> / Tron 3000
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=473.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

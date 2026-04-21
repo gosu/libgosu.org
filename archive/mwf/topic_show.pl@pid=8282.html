@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8282 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.8.7(.2) released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8282' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1173.html#tid1173'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=1173.html#tid1173'>Gosu News</a> / Gosu 0.8.7(.2) released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=1173.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid8265' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8265' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8265.html#pid8265'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-01-18 23:28
+</div>
+<div class='ccl'>
+This is a minor Ruby-only release while I keep working on the CMake build system for C++.<br/><br/>Two fixes:<br/>• All: Improve gamepad support by using the SDL_GameController API<br/>• Windows: Fix LoadError in Ruby 2.1.x x64 gem<br/><br/>SDL_GameController provides a streamlined interface for accessing common gamepads. For example, the Xbox 360 controller reports six axes (plural of axis, not ax…) when you query it over USB: x/y of each analog joystick, plus both analog shoulder buttons. The D-Pad is reported not as a single &quot;hat&quot;, but as four completely unrelated buttons. This doesn&#39;t match Gosu&#39;s heuristic which maps axes and hats to the four directions, and buttons to <code>GpButton0</code> through <code>GpButton15</code>.<br/><br/>SDL_GameController knows about common gamepads and maps them to sane values. In the case of the Xbox 360 controller, both analog sticks and the D-Pad are translated into the four directions, and only actual buttons are mapped to the <code>GpButton*</code> constants.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8265)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8265' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8265.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8265'>
+<div class='frm pst' id='pid8281' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8282.html#pid8265'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8281' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8281.html#pid8281'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2015-02-09 19:02
+</div>
+<div class='ccl'>
+So, is there a way to directly access the input from the controller now? I do use a 360 Gamepad, and getting the x/y data for the 3 &quot;sticks&quot; would be handy, if only to get actual 360° movement and not &quot;just&quot; 8 directions. I don&#39;t know about others, but personally, a simple method to access values (such as gamepad_input[1][3], with buttons returning true/false and triggers and sticks the respective value) would be perfectly sufficient.<br/><br/>All in all though, this works much better than in previous versions already, I have to say. I&#39;ve been experimenting with gamepads a bit now (I finally have 2 360s, so I can do some shenanigans), and I&#39;m glad there&#39;s been some development in that :)
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8281)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8281' style='display:none;'>BlueScope</span><a href='post_add.pl@pid=8281.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8281'>
+<div class='frm pst' id='pid8282' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8282.html#pid8281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8282.html#pid8282'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-02-09 20:40
+</div>
+<div class='ccl'>
+There isn&#39;t - but I agree that Gosu&#39;s <code>button_id</code> model too simplistic. :) Rewriting Gosu&#39;s input interface has always been on my long-term wish list, but I didn&#39;t have a good plan for it, and gamepads have generally been a mess back then (USB gamepads from various no-name vendors).<br/>Thankfully, SDL 2 has added support for high-level &quot;Game Controllers&quot;, and Gosu can simply provide a thin wrapper around their interface. Yay! Less thinking and more grunt work for me. I don&#39;t have a time line, but contributions are welcome.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8282)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8282' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8282.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8347' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8282.html#pid8265'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8347' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8347.html#pid8347'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2015-05-16 21:17
+</div>
+<div class='ccl'>
+Hello, just to say that <code>gem install gosu</code> on OSX10.10 produces an error for me.<br/><br/>In file included from Audio-AudioOpenAL.cpp:1:<br/>In file included from ./../../src/Audio/AudioOpenAL.mm:1:<br/>In file included from ./../../src/Audio/AudioOpenAL.cpp:2:<br/>./../../src/Audio/OggFile.hpp:6:10: fatal error: &#39;vorbis/vorbisfile.h&#39; file not found<br/>#include &lt;vorbis/vorbisfile.h&gt;<br/>&#160; &#160; &#160; &#160;&#160; ^<br/>2 warnings and 1 error generated.<br/>make: *** [Audio-AudioOpenAL.o] Error 1
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8347)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8347' style='display:none;'>?</span><a href='post_add.pl@pid=8347.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8347'>
+<div class='frm pst' id='pid8348' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8282.html#pid8347'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8348' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8348.html#pid8348'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-05-16 21:25
+</div>
+<div class='ccl'>
+Gosu 0.8.0 and later are not self-contained (sadly) - see this wiki page for a list of required libraries:<br/><br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X</a>
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8348)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8348' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8348.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8348'>
+<div class='frm pst' id='pid8362' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8282.html#pid8348'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8362.html#pid8362'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2015-05-19 05:15
+</div>
+<div class='ccl'>
+Thanks for that.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8362)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8362' style='display:none;'>?</span><a href='post_add.pl@pid=8362.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1173.html#tid1173'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=1173.html#tid1173'>Gosu News</a> / Gosu 0.8.7(.2) released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=1173.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8282.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 16 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Clipping and a generally new drawing syntax [from wiki]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d16' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=9.html#tid9'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=9.html#tid9'>Gosu Exchange</a> / Clipping and a generally new drawing syntax [from wiki]
+</div>
+</div>
+
+<div class='frm pst' id='pid14' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=14.html#pid14'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-09 04:06
+<span class='htt'>Edited</span> 2008-11-09 04:19
+</div>
+<div class='ccl'>
+(This thread of discussion originated on the wiki but has since been moved to the forums.)<br/><br/><b>Comment by christoffer.lerno, Dec 20, 2007</b><br/>Almost done with creating a scrollbox. There&#39;s just one problem: I need some sort of clipping. Is there some way of simulating clipping, say on an image I created with Gosu::Image.from_text?<br/><br/><b>Comment by julianraschke, Dec 20, 2007</b><br/>Not really, except drawing a cutout over it ;) Clipping is scheduled for 0.8.x, and the basic problem is how to fit it into the interface. Setting a rect on Image or Window before those specific calls would be rather error-prone (I think - I don&#39;t like having too much state). Having it as even more draw parameters would be totally confusing. This needs some thought :(<br/><br/><b>Comment by christoffer.lerno, Dec 21, 2007</b><br/>You actually both would like to have an image to act as the clipping mask, as well as being able to specify the rect itself. In addition, are we supposing that the clipping mask rotates with the image or not? That would make quite a difference.<br/><br/>I was thinking of being able to create a clip, either through <code>Clip.new(image)</code> or <code>Clip.new(x, y, width, height)</code><br/><br/>Then you draw by passing it through the mask method, like this:<br/><br/><code>image.draw(x, y, ...)</code> becomes:<br/><code>clip.draw_clipped(image, x, y, ...)</code><br/>When creating a clip, you probably want to be able to create the inverted version of it as well.<br/><br/>This code could draw characters that let the background shine through:<br/><br/><code>text_image = Image.from_text(window, &quot;some text&quot;, ...)<br/>clip = Clip.new(text_image).inverse (or Clip.new(text_image, :inverse)<br/>clip.draw_clipped(Image.new(window, &quot;background.png&quot;), x, y, 0)</code><br/><br/>Another way to display it would be to use chaining, basically you could chain the clipping after the draw method.<br/><br/><code>image.draw(x, y, ...)</code> with clipping would be:<br/><br/><code>image.draw(x, y, ...).clip(x, y, width, height)</code><br/><br/>Or the example above with the image<br/><br/><code>text_image = Image.from_text(window, &quot;some text&quot;, ...)<br/>background = Image.new(window, &quot;background.png&quot;)<br/>background.draw(x, y, 0).clip(text_image, x, y, :inverse)</code><br/><br/>Depending on the way the drawing method is written, the reverse semantic might be more appropriate i.e.:<br/><br/><code>text_image = Image.from_text(window, &quot;some text&quot;, ...)<br/>background = Image.new(window, &quot;background.png&quot;)<br/>background.clip(text_image, x, y, :inverse).draw(x, y, 0)</code><br/><br/>Any of these would be fine with me.<br/><br/><b>Comment by julianraschke, Dec 26, 2007</b><br/>christoffer, as for Images acting as clipping masks, I would have to double-check that OpenGL supports this :) But generally I see that it would be a good addition to Gosu. I actually thought a lot about chaining, not just for clipping, but also for rotations, stretching etc. to get rid of all those unnamed arguments, ideally arriving at:<br/><br/><code>image.rot(90).stretch_x(5).clip(0, 0, 100, 100).draw</code><br/><br/>This would also eliminate the question whether the clipping mask rotates with the object or not, and whether the stretching is applied before or after the rotation etc. It would be possible to implement this in C++, but I don&#39;t really trust this to work efficiently enough in Ruby, as each call would create a new, GC&#39;ed, object. I wonder if one could just make all this build up a sequence in Image itself and clear that in Image#draw, so it wouldn&#39;t create new objects. But if there&#39;s something I am afraid of, then it&#39;s giving objects too much state. The problem with the current API is that for adding clip(), I would need to duplicate all the draw... methods in one way or another. It is on the ToDo, but I will have to get my hands on tying up all the plans for Gosu::Input until 0.8.0. After that, I will focus on graphics again.<br/><br/><b>Comment by masonhale, Jan 28, 2008</b><br/>First -- kudos to julian! I found gosu yesterday and have spent the last several hours building games with my kids ages 6 to 13. It has been terrific fun. Gosu makes it so easy and efficient. Every bit of code goes into making the game better. Gosu is a remarkably elegant piece of work. Thank you for making it.<br/><br/>Thinking about this suggested bit of code (from above):<br/><br/><code>image.rot(90).stretch_x(5).clip(0, 0, 100, 100).draw</code><br/><br/>I really like this approach and syntax. Although I prefer full method names to abbreviations for the sake of clarity (e.g. &#39;rotate&#39; instead of &#39;rot&#39;). You mentioned not wanting objects to carry too much state, and also not wanting to generate an object to be GC&#39;d after each method.<br/><br/>Perhaps it would help to introduce an <code>ImageTransform</code> class? Such that the series of calls above builds a chain of transforms, which retain the order of the transformation operations, but defers applying those transforms until the draw method, and at that point all the transforms are applied in one operation.<br/><br/>I&#39;m thinking that <code>Image#scale(x, y)</code> would return an <code>ImageTransform</code> object instead of an image. Something like:<br/><br/><code>class ImageTransform<br/>&#160; attr_accessor :transforms<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; @transorms = []<br/>&#160; end<br/>&#160; <br/>&#160; def scale(x_factor, y_factor, hard_borders = false)<br/>&#160; &#160; @transforms &lt;&lt; [:scale, x_factor, y_factor, hard_borders]<br/>&#160; &#160; self<br/>&#160; end<br/>&#160; <br/>&#160; def rotate(angle, x_center = 0.5, y_center = 0.5)<br/>&#160; &#160; @transforms &lt;&lt; [:rotate, angle, x_center, y_center]<br/>&#160; &#160; self<br/>&#160; end<br/>&#160; <br/>&#160; def clip(x1, y1, x2, y2)<br/>&#160; &#160; @transforms &lt;&lt; [:clip, x1, y1, x2, x2]<br/>&#160; &#160; self<br/>&#160; end<br/>&#160; <br/>&#160; def color(a_color)<br/>&#160; &#160; @transforms &lt;&lt; [:color, a_color]<br/>&#160; &#160; self<br/>&#160; end<br/>end<br/><br/>class SingleImageTransform &lt; ImageTransform<br/>&#160; attr_accessor :image<br/>&#160; <br/>&#160; def initialize(image)<br/>&#160; &#160; @image = image<br/>&#160; end<br/>&#160; <br/>&#160; def apply<br/>&#160; &#160; @image.apply(self)<br/>&#160; end<br/>&#160; <br/>&#160; def draw(x, y, z = 0)<br/>&#160; &#160; self.apply<br/>&#160; &#160; @image.draw(x, y, z)<br/>&#160; end<br/>end<br/><br/>class Image<br/><br/>&#160; ...<br/>&#160; <br/>&#160; def scale(x_factor, y_factor, hard_borders = false)<br/>&#160; &#160; SingleImageTransform.new(self).scale(x_factor, y_factor, hard_borders)<br/>&#160; end<br/>&#160; <br/>&#160; def rotate(angle, x_center = 0.5, y_center = 0.5)<br/>&#160; &#160; SingleImageTransform.new(self).rotate(angle, x_center, y_center)<br/>&#160; end<br/>&#160; <br/>&#160; def clip(x1, y1, x2, y2)<br/>&#160; &#160; SingleImageTransform.new(self).clip(x1, y1, x2, y2)<br/>&#160; end<br/>&#160; <br/>&#160; def color(a_color)<br/>&#160; &#160; SingleImageTransform.new(self).color(a_color)<br/>&#160; end<br/>&#160; <br/>&#160; def apply(transform)<br/>&#160; &#160; # apply transforms passed in<br/>&#160; end<br/>&#160; <br/>&#160; def draw(x, y, z = 0)<br/>&#160; &#160; # normal draw<br/>&#160; end<br/><br/>end<br/><br/># simple syntax<br/># developer doesn&#39;t need to be aware of ImageTranform<br/>img = Image.new(&#39;path/file.png&#39;)<br/>img.scale(2.0, 2.0).rotate(-90.0).draw(200, 300)<br/><br/># advanced syntax<br/># developer can build a transform and apply to multiple images<br/>transform = ImageTransform.new<br/>transform.scale(0.5, 0.5)<br/>transform.rotate(45.0)<br/><br/>img1 = Image.new(&#39;path/file1.png&#39;)<br/>img2 = Image.new(&#39;path/file2.png&#39;)<br/><br/>img1.apply(transform)<br/>img1.draw(200, 300)<br/>img2.apply(transform)<br/>img2.draw(150, 450, 1)</code><br/><br/>The other advantage I can see to this approach is that if you wanted to apply the same series of transformations to more than one image, you could create the <code>ImageTransform</code> object independently, and apply the same transform (really a series of transforms) to each image. The <code>SingleImageTransform</code> simply provides some syntactic sugar to make the simple syntax possible, concealing from the developer the complexity of the <code>ImageTransform</code> class.<br/><br/>One thing I didn&#39;t add is support for height and width. I&#39;d suggest those values don&#39;t get adjusted in Image until after &#39;apply&#39; has been called. And <code>SingleImageTransform</code> could calculate those easy enough before the tranform is applied, if necessary.<br/><br/><b>Comment by julianraschke, Jan 28, 2008</b><br/>Thanks a lot!! Cool to hear you enjoyed using Gosu. As always, if you have any minigames coming from this, feel free to post them :)<br/><br/>I&#39;m still not happy with <code>img.apply(transform)</code>, but for the rest, I&#39;ll give it a try when 0.8.0 is out!<br/><br/><b>Comment by masonhale, Jan 28, 2008</b><br/>Thanks a lot!! Cool to hear you enjoyed using Gosu. As always, if you have any minigames coming from this, feel free to post them :)<br/>I will once something is closer to &#39;done&#39;. We&#39;ve made a game from the media assets used in Tutorial.rb that is closer to something like Galaga -- with a fixed angle on the spaceship and some firepower.<br/><br/><blockquote><p>&gt; I&#39;m still not happy with img.apply(transform), but for the rest, I&#39;ll give it a try when 0.8.0 is out!</p></blockquote><br/>Another possibility may be to pass the <code>ImageTransform</code> object as an optional parameter to the <code>Image#draw</code> method.<br/><br/><code>transform = ImageTransform.new<br/>transform.scale(0.5, 0.5)<br/>transform.rotate(45.0)<br/><br/>img1 = Image.new(&#39;path/file1.png&#39;)<br/>img2 = Image.new(&#39;path/file2.png&#39;)<br/><br/>img1.draw(200, 300, 0, transform)<br/>img2.draw(150, 450, 1, transform)</code><br/><br/>I guess it depends on whether or not in the underlying code transformation and drawing happen separately or simultaneously.<br/><br/><b>Comment by goo...@boombuler.de, Yesterday (36 hours ago)</b><br/>For your chaining issue let me offer you the following code:<br/><br/><code>class Chain<br/>&#160; attr_reader :parent<br/>&#160; def initialize(parent)<br/>&#160; &#160; @parent = parent<br/>&#160; &#160; @vals = []<br/>&#160; end<br/>&#160; <br/>&#160; def &lt;&lt;(value)<br/>&#160; &#160; @vals &lt;&lt; value<br/>&#160; &#160; self<br/>&#160; end<br/>&#160; <br/>&#160; def method_missing(meth, *args)<br/>&#160; &#160; args ||= []<br/>&#160; &#160; args &lt;&lt; self<br/>&#160; &#160; parent.send(meth, *(args.flatten))<br/>&#160; end<br/>&#160; <br/>&#160; def each(&amp;block)<br/>&#160; &#160; @vals.each &amp;block<br/>&#160; end<br/>end<br/><br/>class ChainEntry<br/>&#160; attr_reader :operation, :parameters<br/>&#160; def initialize(aOperation, aParams)<br/>&#160; &#160; @operation = aOperation<br/>&#160; &#160; @parameters = aParams<br/>&#160; end<br/>end<br/><br/>class Image<br/><br/>&#160; def scale(x,y, chain = nil)<br/>&#160; &#160; chain ||= Chain.new(self)<br/>&#160; &#160; chain &lt;&lt; (ChainEntry.new(:Scale, {:x=&gt; x, :y=&gt;y}))<br/>&#160; end<br/>&#160; <br/>&#160; def rotate(angle, chain = nil)<br/>&#160; &#160; chain ||= Chain.new(self)<br/>&#160; &#160; chain &lt;&lt; (ChainEntry.new(:Rotate, {:angle =&gt; angle}))<br/>&#160; end<br/>&#160; <br/>&#160; def flip(chain = nil)<br/>&#160; &#160; chain ||= Chain.new(self)<br/>&#160; &#160; chain &lt;&lt; (ChainEntry.new(:Flip, {}))<br/>&#160; end<br/><br/>&#160; def draw(chain = nil)<br/>&#160; #puts chain<br/>&#160; &#160; chain.each do |entry|<br/>&#160; &#160; &#160; puts &quot;Operation: #{entry.operation} Parameters: #{entry.parameters.inspect}&quot;<br/>&#160; &#160; end<br/><br/>&#160; end<br/>end<br/><br/>i = Image.new<br/>i.scale(1,2).rotate(40).flip().scale(3,4).draw()</code><br/><br/>So you dont have to add states to your images... and the chain can be also saved and reused... and (with some modifications) it can also be used on other images...<br/><br/>Regards Florian<br/><br/>Btw: Thank you for your work
+</div>
+</div>
+
+<div class='frm pst' id='pid16' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=16.html#pid16'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-09 04:42
+</div>
+<div class='ccl'>
+(Clipping has been added in the meantime, however as a method of Gosu::Window so it can clip lines and eveything too.)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=9.html#tid9'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=9.html#tid9'>Gosu Exchange</a> / Clipping and a generally new drawing syntax [from wiki]
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=16.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

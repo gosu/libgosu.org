@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8215 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Problems installing: &quot;SDL2/SDL_ttf.h: No such file&quot;</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8215' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1165.html#tid1165'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1165.html#tid1165'>Gosu Exchange</a> / Problems installing: &quot;SDL2/SDL_ttf.h: No such file&quot;
+</div>
+</div>
+
+<div class='frm pst' id='pid8214' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8214' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8214.html#pid8214'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1183.html' >shadowfirebird</a>
+<span class='htt'>Date</span> 2014-12-31 17:33
+</div>
+<div class='ccl'>
+Trying to get this working with Ruby.&#160; I&#39;m getting an error that suggests the install is looking for the right file in the wrong place. Anyone have any ideas?<br/><br/>Debian Wheezy (well, CrunchBang 11 - the one is based off the other). Ruby 1.9.3-p547.<br/><br/>apt-get install &lt;all the dependencies&gt;, but specifically libsdl-ttf2.0, see below. <br/><br/>gem install gosu (well, bundle install, with gosu in the Gemfile)<br/><br/>Output ends as follows:<br/><code>In file included from Text-TextUnix.cpp:1:0:<br/>../../src/Text/TextUnix.cpp:8:26: fatal error: SDL2/SDL_ttf.h: No such file or directory<br/>compilation terminated.</code><br/><br/>I checked the files provided by libsdl-ttf2.0, and I see /usr/include/SDL/SDL_ttf.h -- so, right file, wrong place?<br/><br/>I&#39;ve just run a nice simple &#39;gem install gosu&#39;; here&#39;s the output:<br/><code>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; &#160; &#160; /home/shadowfirebird/.rbenv/versions/1.9.3-p547/bin/ruby extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>checking for TTF_RenderUTF8_Blended() in -lSDL2_ttf... no<br/>checking for FreeImage_ConvertFromRawBits() in -lfreeimage... yes<br/>checking for FreeImage.h... yes<br/>checking for main() in -lopenal... yes<br/>checking for AL/al.h... yes<br/>creating Makefile<br/><br/>make<br/>compiling gosu_wrap.cxx<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>gosu_wrap.cxx: In function ‘void Gosu::loadBitmap(Gosu::Bitmap&amp;, VALUE)’:<br/>gosu_wrap.cxx:2298:56: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>gosu_wrap.cxx: In function ‘void Gosu_Window_transform(Gosu::Window*, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double)’:<br/>gosu_wrap.cxx:2802:9: warning: missing braces around initializer for ‘std::tr1::array&lt;double, 16ul&gt;::value_type [16] {aka double [16]}’ [-Wmissing-braces]<br/>gosu_wrap.cxx: In member function ‘virtual void SwigDirector_Window::update()’:<br/>gosu_wrap.cxx:2890:9: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]<br/>gosu_wrap.cxx: In member function ‘virtual void SwigDirector_Window::draw()’:<br/>gosu_wrap.cxx:2897:9: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]<br/>gosu_wrap.cxx: In member function ‘virtual void SwigDirector_Window::loseFocus()’:<br/>gosu_wrap.cxx:2934:9: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]<br/>gosu_wrap.cxx: In member function ‘virtual void SwigDirector_Window::releaseMemory()’:<br/>gosu_wrap.cxx:2941:9: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]<br/>gosu_wrap.cxx: In member function ‘virtual void SwigDirector_Window::buttonDown(Gosu::Button)’:<br/>gosu_wrap.cxx:2949:9: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]<br/>gosu_wrap.cxx: In member function ‘virtual void SwigDirector_Window::buttonUp(Gosu::Button)’:<br/>gosu_wrap.cxx:2963:9: warning: variable ‘result’ set but not used [-Wunused-but-set-variable]<br/>compiling Graphics-LargeImageData.cpp<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>In file included from ../../src/Graphics/LargeImageData.cpp:2:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from Graphics-LargeImageData.cpp:1:<br/>../../src/Graphics/Common.hpp: In function ‘void Gosu::multiplyBitmapAlpha(Gosu::Bitmap&amp;, Gosu::Color::Channel)’:<br/>../../src/Graphics/Common.hpp:104:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>../../src/Graphics/Common.hpp:105:43: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>In file included from Graphics-LargeImageData.cpp:1:0:<br/>../../src/Graphics/LargeImageData.cpp: In member function ‘virtual Gosu::Bitmap Gosu::LargeImageData::toBitmap() const’:<br/>../../src/Graphics/LargeImageData.cpp:123:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>../../src/Graphics/LargeImageData.cpp:124:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>../../src/Graphics/LargeImageData.cpp: In member function ‘virtual void Gosu::LargeImageData::insert(const Gosu::Bitmap&amp;, int, int)’:<br/>../../src/Graphics/LargeImageData.cpp:131:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>../../src/Graphics/LargeImageData.cpp:132:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]<br/>In file included from ../../Gosu/ImageData.hpp:7:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from ../../src/Graphics/LargeImageData.hpp:5,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from ../../src/Graphics/LargeImageData.cpp:1,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from Graphics-LargeImageData.cpp:1:<br/>../../Gosu/Color.hpp: In function ‘Gosu::Color {anonymous}::ipl(Gosu::Color, Gosu::Color, double)’:<br/>../../Gosu/Color.hpp:101:43: warning: ‘result.Gosu::Color::rep’ is used uninitialized in this function [-Wuninitialized]<br/>In file included from Graphics-LargeImageData.cpp:1:0:<br/>../../src/Graphics/LargeImageData.cpp:72:21: note: ‘result.Gosu::Color::rep’ was declared here<br/>compiling Math.cpp<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>compiling DirectoriesUnix.cpp<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>compiling IO.cpp<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>compiling Input-TextInput.cpp<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>compiling Text-TextUnix.cpp<br/>cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]<br/>cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]<br/>In file included from Text-TextUnix.cpp:1:0:<br/>../../src/Text/TextUnix.cpp:8:26: fatal error: SDL2/SDL_ttf.h: No such file or directory<br/>compilation terminated.<br/>make: *** [Text-TextUnix.o] Error 1<br/><br/>Gem files will remain installed in /home/andy/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/gosu-0.8.6 for inspection.<br/>Results logged to /home/andy/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/gosu-0.8.6/ext/gosu/gem_make.out<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn8214'>
+<div class='frm pst' id='pid8215' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8215.html#pid8214'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8215' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8215.html#pid8215'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-12-31 18:28
+</div>
+<div class='ccl'>
+It looks like it&#39;s looking for &quot;SDL<b>2</b>/SDL_ttf.h&quot;, and you only have &quot;<b>SDL</b>/SDL_ttf.h&quot; (unless that was a typo in your message).
+</div>
+</div>
+
+<div class='brn' id='brn8215'>
+<div class='frm pst' id='pid8216' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8215.html#pid8215'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8216' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8216.html#pid8216'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1183.html' >shadowfirebird</a>
+<span class='htt'>Date</span> 2014-12-31 20:39
+<span class='htt'>Edited</span> 2014-12-31 22:17
+</div>
+<div class='ccl'>
+Gaah. I missed that, many thanks. I installed libsdl-ttf not libsdl2-ttf ... which does not appear to be in the repositories for Debian Wheezy.<br/><br/>I&#39;ll either have to compile libsdl2 from source or, presumably, wind back my gosu version until I find one compatible with Wheezy.&#160; Can anyone tell me what version I need, since that would be simpler?<br/><br/>EDIT: No need, I seem to have managed to install it from Sid, which is a bit of a surprise...&#160; Thanks RunnerPack...
+</div>
+</div>
+
+<div class='brn' id='brn8216'>
+<div class='frm pst' id='pid8217' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8215.html#pid8216'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8217.html#pid8217'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-12-31 22:31
+</div>
+<div class='ccl'>
+Any time, shadowfirebird. I was about to post that (I think) 0.8.0 was the first version using SDL2, and that 0.7.50 would be worth a try. Maybe that&#39;ll help someone else, if they&#39;re unable to install SDL2.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1165.html#tid1165'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1165.html#tid1165'>Gosu Exchange</a> / Problems installing: &quot;SDL2/SDL_ttf.h: No such file&quot;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8215.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

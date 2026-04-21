@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9544 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Converting Ruby Gosu Gem into Executable</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9544' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1422.html#tid1422'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1422.html#tid1422'>Gosu Exchange</a> / Converting Ruby Gosu Gem into Executable
+</div>
+</div>
+
+<div class='frm pst' id='pid9539' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9539' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9539.html#pid9539'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2020-08-21 05:58
+</div>
+<div class='ccl'>
+I was wondering if any of you guys would know effective ways to achieve such a goal with relative ease.<br/>As of late I&#39;m working on a different machine so I no longer have access to my old testing code. Still, I do recall I had issues with this project because I couldn&#39;t manage to display every single sprite on the game window as intended because some of them disappeared at random Z coordinates. I thought that the only way was to keep the loop inside the C executable that would replace the gem and still use all the usual Ruby code.<br/>Since that doesn&#39;t seem to be a nice way to deal with this issue, how would you do it?<br/>By the way, I&#39;m working on a Linux box.
+</div>
+</div>
+
+<div class='brn' id='brn9539'>
+<div class='frm pst' id='pid9540' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9544.html#pid9539'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9540.html#pid9540'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2020-08-26 23:33
+<span class='htt'>Edited</span> 2020-08-27 01:56
+</div>
+<div class='ccl'>
+I&#39;m still working on this executable but I was wondering if I didn&#39;t explain myself clearly. I&#39;d prefer to think none of you hate me for unknown reasons. :P<br/><br/>EDIT<br/><br/>Here&#39;s a piece of C++ code that lets me intercommunicate between both CRuby and C++ portions of code.<br/><br/><b><a class='url' href='https://hastebin.com/ejomifagug.cpp'>Code on HasteBin</a></b><br/><br/>Any suggestions or corrections would be appreciated.<br/><br/>I also got rid of the tick-ish loop because it bothered me how Ruby didn&#39;t stay in control because of that inner loop. :S
+</div>
+</div>
+
+<div class='frm pst' id='pid9541' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9544.html#pid9539'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9541' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9541.html#pid9541'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2020-09-03 23:04
+</div>
+<div class='ccl'>
+Well, I&#39;ve pretty much ready to get some features work without SWIG&#39;s interference but I managed to change the scale of all drawables by changing some specific value... the very same one I don&#39;t recall and I can&#39;t find it even if I&#39;ve checked the source code several times already. :P<br/><br/>So jlnr or anybody else, you could please remind me of where in the original C++ code is the factor or scale that doubles the size of all images from the very beginning?<br/>I should have documented it on my own but forgot to do it. :)
+</div>
+</div>
+
+<div class='brn' id='brn9541'>
+<div class='frm pst' id='pid9542' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9544.html#pid9541'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9542' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9542.html#pid9542'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2020-09-04 18:41
+</div>
+<div class='ccl'>
+Hey, I had this thread open in a tab but didn&#39;t really understand the CRuby parts. If you want every image to be twice the size, then the most pragmatic approach would be to subclass or monkey-patch Gosu::Image to apply a factor to the scale_x/scale_y arguments. If you want to scale all coordinates, not just image sizes, then you can put a <code>Gosu.scale(2) do ... end</code> block around your Window#draw implementation.<br/><br/>If you want to do the same by modifying the Gosu source code, then multiplying scale_x/scale_y in Image::draw would be one simple way (plus draw_rot probably).
+</div>
+</div>
+
+<div class='brn' id='brn9542'>
+<div class='frm pst' id='pid9543' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9544.html#pid9542'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9543' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9543.html#pid9543'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2020-09-05 04:05
+</div>
+<div class='ccl'>
+Thanks jlnr, but that&#39;s EXACTLY what I wanna avoid. It&#39;s not even necessary to do it, you know. If I included a bug in the source code I was modifying, while I was trying to do something else, now sprites look as dwarves or sprites in the mythological sense. XD This means it can be done by default with a few additions. I know, I&#39;ve already used a variable to let it change but that&#39;s only a disguised bug, so to say. Nope, it wasn&#39;t a Gosu::Image.scale_x or scale_y call, I&#39;ve already discarded it. The window remained as big as originally intended.<br/><br/>Don&#39;t you recall where in the gosu code there was a place that was multiplied by some value that enlarged sprites displayed on screen?<br/><br/>I do remember we once discussed something on the discord channel about images being slightly enlarged by default in gosu, you&#39;d said back then they&#39;d look kind of tiny otherwise. Where&#39;s that part of the code? That part contains the key to implementing a &quot;fake&quot; scaling effect without needing the Gosu.scale(params) method call.
+</div>
+</div>
+
+<div class='brn' id='brn9543'>
+<div class='frm pst' id='pid9544' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9544.html#pid9543'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9544' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9544.html#pid9544'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2020-09-25 08:19
+</div>
+<div class='ccl'>
+Hmm, sorry, not sure what place in the code you mean specifically. All the high-level scaling happens in Window::resize, which also keeps the scaling of graphics and mouse input in sync.
+</div>
+</div>
+
+<div class='brn' id='brn9544'>
+<div class='frm pst' id='pid9576' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9544.html#pid9544'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9576.html#pid9576'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2022-02-25 01:05
+</div>
+<div class='ccl'>
+I see, still, I do think you might have forgotten the time when you told me all images were actually displayed scaled to 110% or 1.1 of its actual size...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1422.html#tid1422'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1422.html#tid1422'>Gosu Exchange</a> / Converting Ruby Gosu Gem into Executable
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9544.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

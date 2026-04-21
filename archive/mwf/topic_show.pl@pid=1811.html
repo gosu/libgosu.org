@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1811 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>New User + Questions</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1811' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=281.html#tid281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=281.html#tid281'>Gosu Exchange</a> / New User + Questions
+</div>
+</div>
+
+<div class='frm pst' id='pid1810' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1810#pid1810'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-11-30 09:25
+</div>
+<div class='ccl'>
+Greetings to the GOSU forum users.<br/><br/>I am an indie game developer who has been using the FlatRedBall game engine for the last few years (I recently finished a game with the FRB engine) and am considering moving to a different game engine.<br/>Although I am very pleased with the FRB engine the need for MacOS support has started this search for a new engine.<br/><br/>My next game will be a 2.5d side-scroller. (I&#39;d like the characters to be 2d, the game play 2d, but have the background and the terrain be 3d (boxes, pyramids etc.) or more speifically speaking have a 3d effect).<br/><br/>I read a bit about GOSU in the wiki but I have a few questions which I&#39;d like to ask.<br/><br/>Here goes:<br/>1. To create a game for several platforms (specifically Windows, Mac, Linux &amp; IPhone) can I use the same source code or do I need to rewrite the code with a different plugin for each targeted OS?<br/>2. What is the meaning of &quot;no 3d rendering&quot;? Does this mean that you can only place sprites at a 90 degrees angle from the camera? I suppose not but I didn&#39;t quite understand.<br/>3. Does the engine use directx? Can it? (For several reasons I prefer using directx graphics over OpenGL)<br/>4. How can I use the engine with C++ code (it is easier for me)<br/>5. Have any 2.5d games used the GOSU engine?<br/>6. How do I create menus and different screens wit hthe engine?<br/><br/>Thanks in advance, I look forward to creating games with this engine.<br/>Ogga
+</div>
+</div>
+
+<div class='frm pst' id='pid1811' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1811.html#pid1811'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-11-30 09:56
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; 1. To create a game for several platforms (specifically Windows, Mac, Linux &amp; IPhone) can I use the same source code or do I need to rewrite the code with a different plugin for each targeted OS?</p></blockquote><br/>If you want to target the iPhone too, you need to use the C++ version. Deployment on all platforms isn&#39;t automatic, you still have to use the proper IDE on each platform and compile/package your game. Specifically on the iPhone, you need to handle completely different callbacks than on the desktop.<br/><br/>The iPhone version is also still not very well-documented. In short, targeting all these platforms EXCEPT the iPhone, using Ruby/Gosu, is easier. I have no idea about your performance requirements :)<br/><br/><blockquote><p>&gt; 2. What is the meaning of &quot;no 3d rendering&quot;? Does this mean that you can only place sprites at a 90 degrees angle from the camera? I suppose not but I didn&#39;t quite understand.</p></blockquote><br/>Gosu only has rectangular images (think textures, even though this is simplified). You also have a method to draw such images with four arbitrary given coordinates, so in theory you can do whatever 3D calculations you want to and ten draw the image at that point. If you want to do real 3D, you can do it using OpenGL.<br/><br/><blockquote><p>&gt; 3. Does the engine use directx? Can it? (For several reasons I prefer using directx graphics over OpenGL)</p></blockquote><br/>No. Gosu switched to OpenGL on all platforms. Otherwise, you couldn&#39;t have portable 3D bits in your code.<br/><br/><blockquote><p>&gt; 4. How can I use the engine with C++ code (it is easier for me)</p></blockquote><br/>Yes. The engine is all C++. Ruby is just a wrapped version.<br/><br/><blockquote><p>&gt; 5. Have any 2.5d games used the GOSU engine?</p></blockquote><br/>I didn&#39;t yet use custom OpenGL but I sometimes add some basic fake 3D effects, like in StarFerret 48h: <a class='url' href='topic_show.pl@tid=118.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=118</a><br/><br/>There is a complete 3D game which will not help you any because it uses oldschool rendering: <a class='url' href='topic_show.pl@tid=119.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=119</a><br/><br/><blockquote><p>&gt; 6. How do I create menus and different screens wit hthe engine?</p></blockquote><br/>There is nothing premade for this in Gosu (there are add-on libraries for the Ruby version). You have to be creative or get some inspiration from all the games on the showcase, most of them being open source.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=281.html#tid281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=281.html#tid281'>Gosu Exchange</a> / New User + Questions
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1811.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

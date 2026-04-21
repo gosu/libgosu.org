@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Compiling Gosu 2D with MinGw on Windows</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=581.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=581.html#tid581'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=581.html#tid581'>Gosu Exchange</a> / Compiling Gosu 2D with MinGw on Windows
+</div>
+</div>
+
+<div class='frm pst' id='pid4245' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4245' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4245.html#pid4245'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=698.html' >sanyaade</a>
+<span class='htt'>Date</span> 2011-04-16 20:22
+</div>
+<div class='ccl'>
+Hello everybody,<br/><br/>I planned to use Gosu with my Students on the BTEC Nationals (A&#39; Level) class. They already using CodeBlocks for the C/C++ Development,<br/>so I wanted to extend the class to cover 2D games in the course using Gosu since it has SDL embedded and abstracted.<br/><br/>Anyway I have try to compile Gosu usin CodeBlocks but with error messages. I have also try it with MinGW from command line which<br/>also fails. I need your help and advice. <br/>My question is:<br/><br/>1.)&#160; --&gt; Is Gosu only tied down to Visual Studio Environment?<br/>2.) ---&gt; Has anybody compile Gosu with either CodeBlocks or with MinGW on Windows? If so please advice me on what to do.<br/><br/>I will be happy if I could get Gosu compile with MinGW on Windows as I love everything I have seen and learned about it.<br/><br/>It will be a joy! Please help!!!<br/><br/>God blesses!!!<br/><br/>Best regards,<br/>Sanyaade
+</div>
+</div>
+
+<div class='brn' id='brn4245'>
+<div class='frm pst' id='pid4249' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4245'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4249' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4249.html#pid4249'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-04-17 05:47
+</div>
+<div class='ccl'>
+Wow, educational use always makes me feel honored!<br/><br/>Gosu is not intentionally tied down, but I only have time to maintain the Visual C++ projects (not even all possible versions). I take extra care that it works with the free versions though, which I use myself. I think there are tools that convert VC projects to Makefiles, maybe you can try one of these? Gosu is not doing anything exotic really.<br/><br/>(BTW, Gosu does not use SDL :) )
+</div>
+</div>
+
+<div class='brn' id='brn4249'>
+<div class='frm pst' id='pid4251' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4251.html#pid4251'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=698.html' >sanyaade</a>
+<span class='htt'>Date</span> 2011-04-17 23:15
+</div>
+<div class='ccl'>
+@jlnr,<br/><br/>Thank you for your reply. I will search for the tool you mention in your reply --&gt; google it hopefully.<br/><br/>I will get back to you on my outcome and if I need more of your help.<br/><br/>God blesses!!!<br/><br/>Best regards,<br/>Sanyaade
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid4443' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4245'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4443' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4443.html#pid4443'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=202' >seisatsu</a>
+<span class='htt'>Date</span> 2011-06-17 08:29
+</div>
+<div class='ccl'>
+I took a whack at this, but unfortunately, Gosu seems to be using some Windows API calls that have been depreciated since the late 90s. Visual C++ allows it; MinGW does not.<br/><br/>(See: SHGetSpecialFolderPath (added to Windows API with IE 4.0), possibly others.)
+</div>
+</div>
+
+<div class='brn' id='brn4443'>
+<div class='frm pst' id='pid4444' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4443'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4444.html#pid4444'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-06-17 12:17
+<span class='htt'>Edited</span> 2011-06-17 14:57
+</div>
+<div class='ccl'>
+Working on it. I would also be happy to include the resulting build files.
+</div>
+</div>
+
+<div class='frm pst' id='pid4446' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4443'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4446' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4446.html#pid4446'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-06-17 14:56
+</div>
+<div class='ccl'>
+I replaced the superceded SHGetSpecialFolderPath by the deprecated SHGetFolderPath. Can you pull &amp; retry?
+</div>
+</div>
+
+<div class='brn' id='brn4446'>
+<div class='frm pst' id='pid4451' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4446'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4451' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4451.html#pid4451'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-06-17 20:21
+</div>
+<div class='ccl'>
+I&#39;m not an expert on Windows, but shouldn&#39;t you be using the non-deprecated, non-superseded <a class='url' href='http://msdn.microsoft.com/en-us/library/bb762188(v=vs.85).aspx'><code>SHGetKnownFolderPath</code></a> instead?
+</div>
+</div>
+
+<div class='brn' id='brn4451'>
+<div class='frm pst' id='pid4452' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4451'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4452' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4452.html#pid4452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-06-17 20:58
+</div>
+<div class='ccl'>
+That one needs Vista, and XP still looks too alive around me (and on my machine, actually) :) - SHGetFolderPath sounds like a pretty safe deprecated function to use too.
+</div>
+</div>
+
+<div class='brn' id='brn4452'>
+<div class='frm pst' id='pid4453' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4452'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4453.html#pid4453'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-06-17 21:00
+</div>
+<div class='ccl'>
+Haha, oops. I kinda missed the compatibility table there. Mistakes happen!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4455' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4446'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4455' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4455.html#pid4455'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=202' >seisatsu</a>
+<span class='htt'>Date</span> 2011-06-18 02:40
+</div>
+<div class='ccl'>
+God you&#39;re fast.<br/><br/>I&#39;ll pull and retry. There&#39;s probably some other nasty landmines hiding in there, so I&#39;ll tell you when I hit them.<br/><br/>If I get it to compile I&#39;ll give you my MinGW makefile.
+</div>
+</div>
+
+<div class='brn' id='brn4455'>
+<div class='frm pst' id='pid4456' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4455'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4456.html#pid4456'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2011-06-18 05:11
+</div>
+<div class='ccl'>
+Jules is the fastest guy in the world. He coined the phrase &quot;in a blink of an eye&quot;.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4457' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4443'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4457' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4457.html#pid4457'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=202' >seisatsu</a>
+<span class='htt'>Date</span> 2011-06-18 11:08
+</div>
+<div class='ccl'>
+I added MinGW support and sent the patch to jlnr.
+</div>
+</div>
+
+<div class='brn' id='brn4457'>
+<div class='frm pst' id='pid4799' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4457'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4799' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4799.html#pid4799'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 13:26
+</div>
+<div class='ccl'>
+Could you elaborate a bit on the steps to compile using mingw?
+</div>
+</div>
+
+<div class='brn' id='brn4799'>
+<div class='frm pst' id='pid4800' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4799'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4800' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4800.html#pid4800'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-27 14:21
+</div>
+<div class='ccl'>
+I would guess that it is just a &#39;make&#39; inside the &#39;windows&#39; subdirectory - does that generate any errors so far?
+</div>
+</div>
+
+<div class='brn' id='brn4800'>
+<div class='frm pst' id='pid4801' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4800'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4801' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4801.html#pid4801'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 14:31
+</div>
+<div class='ccl'>
+It does not seem to be that simple. So far I&#39;ve been able to create the libgosu.a file. For this, I had to hardcode the path to the DirectX SDK in the Makefile, and also had to download FreeImage, SDL and SDL_Mixer<br/><br/><code>DXINCLUDE = &quot;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include&quot;<br/><br/>CXXFLAGS&#160; = -g -I. -I$(DXINCLUDE) -DUNICODE -D_UNICODE -DMINGW<br/>CXXFLAGS += -IFreeImage/Dist -ISDL/include/SDL -ISDL_mixer/include</code><br/><br/>Now, I&#39;m trying to compile a simple test file, I&#39;m getting lots of undefined references, basically because I don&#39;t know which libraries to link against. So far I have this command:<br/><code>g++ -o programa test.cpp lib/libgosu.a -lopengl32 -lglu32 -LSDL_mixer/lib -lSDL_mixer -LFreeImage/Dist -lfreeimage -LSDL/lib -llibsdl</code><br/><br/>And the remaining undefined references seem to be related to DirectX or something:<br/><br/><code>lib/libgosu.a(WindowWin.o): In function <code>windowClass&#39;:<br/>c:\gosu/GosuImpl/WindowWin.cpp:163: undefined reference to </code>CreateSolidBrush@4&#39;<br/>lib/libgosu.a(WindowWin.o): In function <code>Window&#39;:<br/>c:\gosu/GosuImpl/WindowWin.cpp:239: undefined reference to </code>ChoosePixelFormat@8&#39;<br/>c:\gosu/GosuImpl/WindowWin.cpp:241: undefined reference to <code>SetPixelFormat@12&#39;<br/>lib/libgosu.a(WindowWin.o): In function </code>ZN4Gosu6Window13handleMessageEjjl&#39;:<br/>c:\gosu/GosuImpl/WindowWin.cpp:484: undefined reference to <code>SwapBuffers@4&#39;<br/>lib/libgosu.a(InputWin.o): In function </code>Input&#39;:<br/>c:\gosu/GosuImpl/InputWin.cpp:288: undefined reference to <code>IID_IDirectInput8W&#39;<br/>c:\gosu/GosuImpl/InputWin.cpp:288: undefined reference to </code>DirectInput8Create@20&#39;<br/>c:\gosu/GosuImpl/InputWin.cpp:306: undefined reference to <code>GUID_SysKeyboard&#39;<br/>c:\gosu/GosuImpl/InputWin.cpp:310: undefined reference to </code>c_dfDIKeyboard&#39;<br/>c:\gosu/GosuImpl/InputWin.cpp:324: undefined reference to <code>GUID_SysMouse&#39;<br/>c:\gosu/GosuImpl/InputWin.cpp:328: undefined reference to </code>c_dfDIMouse&#39;<br/>lib/libgosu.a(InputWin.o): In function <code>ZN4Gosu5Input4Impl15gamepadCallbackEPK17DIDEVICEINSTANCEWPv@8&#39;:<br/>c:\gosu/GosuImpl/InputWin.cpp:120: undefined reference to </code>c_dfDIJoystick&#39;<br/>lib/libgosu.a(TimingWin.o): In function <code>resetTGT&#39;:<br/>c:\gosu/GosuImpl/TimingWin.cpp:14: undefined reference to </code>timeEndPeriod@4&#39;<br/>lib/libgosu.a(TimingWin.o): In function <code>ZN4Gosu12millisecondsEv&#39;:<br/>c:\gosu/GosuImpl/TimingWin.cpp:23: undefined reference to </code>timeBeginPeriod@4&#39;<br/>c:\gosu/GosuImpl/TimingWin.cpp:30: undefined reference to `timeGetTime@0&#39;</code><br/><br/>I think I&#39;m quite close to do it, but looks like I&#39;m lacking a final library to link.
+</div>
+</div>
+
+<div class='brn' id='brn4801'>
+<div class='frm pst' id='pid4802' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4801'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4802' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4802.html#pid4802'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 14:42
+</div>
+<div class='ccl'>
+One more step: adding <code>-lgdi32</code> resolves the undefined references in WindowWin.cpp. Now only the ones in InputWin and TimingWin remain. Come on! We gotta do it! :D
+</div>
+</div>
+
+<div class='brn' id='brn4802'>
+<div class='frm pst' id='pid4803' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4802'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4803' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4803.html#pid4803'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 14:59
+</div>
+<div class='ccl'>
+Finally, looking at the dependences in the VS project file, I managed to wonder what the remaining ones were:<br/>g++ -o programa prueba.cpp -I. lib/libgosu.a -lopengl32 -lglu32 -LSDL_mixer/lib -lSDL_mixer -LFreeImage/Dist -lfreeimage -LSDL/lib -llibsdl -lgdi32 -lwinmm -mwindows -ldxguid -lws2_32 -ldinput8
+</div>
+</div>
+
+<div class='brn' id='brn4803'>
+<div class='frm pst' id='pid4804' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4803'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4804' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4804.html#pid4804'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-27 15:17
+</div>
+<div class='ccl'>
+Does it work too? I think whatever is required to get it working should be copied into the &quot;Getting Started on Windows&quot; wiki page.
+</div>
+</div>
+
+<div class='brn' id='brn4804'>
+<div class='frm pst' id='pid4805' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4804'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4805.html#pid4805'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 15:47
+</div>
+<div class='ccl'>
+So far it works - more or less. I&#39;ve been able to compile freegemas (<a class='url' href='http://freegemas.googlecode.com'>http://freegemas.googlecode.com</a>) and run it. The main menu and help section works, but the normal gameplay launches a runtime exception, I think it&#39;s related to the sound.
+</div>
+</div>
+
+<div class='frm pst' id='pid4806' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4804'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4806' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4806.html#pid4806'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 16:26
+</div>
+<div class='ccl'>
+Definitely, the sound is broken somewhere when trying to compile with MinGW. Whenever there&#39;s a Gosu::Sample, I get this error<i> &quot;This application has requested the Runtime to terminate it in an unusual way. Please contact the application&#39;s support team for more information&quot;</i>.<br/><br/>The rare thing is that, neither the compilation of libgosu nor the compilation of the test.cpp file requested anything related to OpenAL, no include or lib files.
+</div>
+</div>
+
+<div class='brn' id='brn4806'>
+<div class='frm pst' id='pid4807' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4806'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4807.html#pid4807'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-27 16:47
+</div>
+<div class='ccl'>
+That is weird for sure. I know that Gosu is linked against OpenAL32.lib/OpenAL32.dll in MSVC. It also uses libsndfile.dll, _BUT_ I load that one on demand, for complicated reasons.<br/><br/>Have you put both DLLs next to your .exe? Maybe it&#39;s already somehow requiring them.
+</div>
+</div>
+
+<div class='frm pst' id='pid4808' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4806'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4808' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4808.html#pid4808'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-27 16:52
+</div>
+<div class='ccl'>
+Okay, so Seisatsu mentioned on IRC that they are using MSVC for now. I think OpenAL support may simply be missing from the makefile. Maybe it&#39;s just a simple fix that you can port over from the MSVC project... :S
+</div>
+</div>
+
+<div class='brn' id='brn4808'>
+<div class='frm pst' id='pid4809' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4808'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4809' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4809.html#pid4809'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 18:32
+</div>
+<div class='ccl'>
+YEAAHH I did it! Full fledged compilation, sound included!<br/><br/>I&#39;m gonna try to write an article in the wiki trying to explain all the steps, which are a few.
+</div>
+</div>
+
+<div class='brn' id='brn4809'>
+<div class='frm pst' id='pid4810' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4809'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4810' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4810.html#pid4810'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-08-27 19:16
+</div>
+<div class='ccl'>
+There you got it: <br/><a class='url' href='https://github.com/jlnr/gosu/wiki/Compiling-in-Windows-using-MinGW'>https://github.com/jlnr/gosu/wiki/Compiling-in-Windows-using-MinGW</a>
+</div>
+</div>
+
+<div class='brn' id='brn4810'>
+<div class='frm pst' id='pid4811' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4810'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4811.html#pid4811'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-08-28 02:51
+</div>
+<div class='ccl'>
+Thanks, wonderful :) Front page link incoming soon.<br/><br/>BTW, I think you must only be using .ogg files? Because Gosu uses &quot;libsndfile&quot; for all others. I&#39;m going to add it to the wiki.
+</div>
+</div>
+
+<div class='frm pst' id='pid4812' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4810'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4812.html#pid4812'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=698.html' >sanyaade</a>
+<span class='htt'>Date</span> 2011-08-28 11:01
+</div>
+<div class='ccl'>
+Hello jnr and TheOm3ga,<br/><br/>Many thanks your efforts on Gosu and for the MinGW port. This is a commendable achievement and brilliant input.<br/><br/>I will be using your steps to try and compile it on my machine and I may be asking for help&#160; :)<br/><br/>I planned to use it in my programming classes from september 2011 -- hope it went well and be ready?<br/><br/>Once again amny thanks!!!<br/><br/>God blesses!!!<br/><br/>Best regards,<br/>Sanyaade
+</div>
+</div>
+
+<div class='frm pst' id='pid6421' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid4810'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6421' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6421.html#pid6421'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-12-31 19:26
+</div>
+<div class='ccl'>
+With a few changes to the makefile and source, I got the library to build using the Ruby Installer Devkit (<a class='url' href='http://rubyinstaller.org/'>http://rubyinstaller.org/</a>). Once I get it working fully (including the Ruby wrapper) I&#39;ll attempt to update the wiki page.<br/><br/>I can also build the library in MSVC 2010 Express, but (I&#39;m assuming) I need to build it using mingw in order to build the Ruby wrapper, which has to be built with mingw to work with the Ruby Installer binaries (which are built with mingw).<br/><br/>Right now, I&#39;m stuck while trying to build the Ruby wrapper in the Devkit (mingw). I can&#39;t figure out, from the MSVC project, what exactly needs compiled/linked along with the generated wrapper code. Do I compile it according to the &quot;Compiling your project&quot; section of the wiki page?<br/><br/>Attempting to compile the wrapper (RubyGosu_wrap.cxx), I get the following:<br/><br/><code>$ gcc -o RubyGosu_wrap.o RubyGosu_wrap.cxx -I/c/Ruby/include/ruby-1.9.1/ -I.. -I. -I/c/RubyDK/include/<br/>In file included from ../Gosu/Gosu.hpp:13:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from RubyGosu_wrap.cxx:2267:<br/>RubyGosu_wrap.cxx: In function &#39;void Gosu::requireFreeImageFor(const char*)&#39;:<br/>RubyGosu_wrap.cxx:2329:9: error: expected &#39;catch&#39; before &#39;__except&#39;<br/>RubyGosu_wrap.cxx:2329:9: error: expected &#39;(&#39; before &#39;__except&#39;<br/>RubyGosu_wrap.cxx:2329:9: error: expected type-specifier before &#39;__except&#39;<br/>RubyGosu_wrap.cxx:2329:18: error: expected &#39;)&#39; before &#39;(&#39; token<br/>RubyGosu_wrap.cxx:2329:18: error: expected &#39;{&#39; before &#39;(&#39; token<br/>RubyGosu_wrap.cxx:2329:37: error: &#39;GetExceptionCode&#39; was not declared in this scope<br/>RubyGosu_wrap.cxx:2330:9: error: expected &#39;;&#39; before &#39;{&#39; token</code><br/><br/>I even built my own copy of SWIG in mingw and generated the wrapper again...<br/><br/>Any help will be appreciated. Also, Happy 2013, everyone!
+</div>
+</div>
+
+<div class='brn' id='brn6421'>
+<div class='frm pst' id='pid6423' style='margin-left: 42%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=581.html#pid6421'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6423.html#pid6423'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-03 07:06
+<span class='htt'>Edited</span> 2013-01-03 07:13
+</div>
+<div class='ccl'>
+Oh, that is because I use an MSVC-specific feature in that place. <code>__except</code> is a Microsoft extension that MinGW likely doesn&#39;t support. Basically, I try to open a DLL file and if a Windows-internal exception is raised, I have a backup plan.<br/><br/>BTW-<br/><br/><blockquote><p>&gt; I need to build it using mingw in order to build the Ruby wrapper, which has to be built with mingw to work with the Ruby Installer binaries (which are built with mingw).</p></blockquote><br/>This is correct in theory, but I have always happily used the MinGW Ruby with my MSVC-built Gosu. After all, Gosu is just a DLL file with a single exported C function. I wonder if you might run into trouble with different dynamically linked versions of the C/C++ runtime library though.<br/><br/>I also use the MinGW-built Ruby Installer to test Gosu releases on my machine, so if nothing broke in the last months, you should be able to just use the MSVC-compiled gem.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=581.html#tid581'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=581.html#tid581'>Gosu Exchange</a> / Compiling Gosu 2D with MinGw on Windows
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=581.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

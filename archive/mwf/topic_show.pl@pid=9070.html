@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9070 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Need Help Actually Releasing a Game</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9070' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1315.html#tid1315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1315.html#tid1315'>Gosu Exchange</a> / Need Help Actually Releasing a Game
+</div>
+</div>
+
+<div class='frm pst' id='pid9068' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9068' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9068.html#pid9068'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1279.html' >gardrek</a>
+<span class='htt'>Date</span> 2016-12-12 14:01
+<span class='htt'>Edited</span> 2016-12-12 14:34
+</div>
+<div class='ccl'>
+I&#39;m developing on Linux (using Ruby) and I&#39;ve been trying recently to find a way to release Windows builds of my game (Mac OSX would be nice, too). I&#39;ve looked into Traveling Ruby, but it doesn&#39;t support native extensions. I&#39;ve looked at Releasy, but it uses Ruby 1.9 (which is no longer supported), and it hasn&#39;t been updated in years. I&#39;ve heard of someone using OCRA, a but I don&#39;t want to have to install a bunch of Ruby stuff on a Windows partition I don&#39;t use just to release a Windows build of my game, and of course that doesn&#39;t help with OSX at all. If OCRA proves to be the only option, I guess I&#39;m using it.<br/><br/>So, my main question is: What software are people using to release Gosu games, and is it available for Linux?<br/><br/>(P.S: My game isn&#39;t quite finished, but it&#39;s hard to muster the spoons to work on something most people won&#39;t see because they don&#39;t have Ruby experience.)
+</div>
+</div>
+
+<div class='brn' id='brn9068'>
+<div class='frm pst' id='pid9069' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9070.html#pid9068'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9069' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9069.html#pid9069'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-12-12 14:44
+</div>
+<div class='ccl'>
+This is the canonical macOS wrapper for Ruby/Gosu code: <a class='ura' href='https://github.com/gosu/ruby-app'>https://github.com/gosu/ruby-app</a><br/><br/>Moving code into Ruby.app should work just fine on Linux, as long as you are careful not to lose the executable bit on <code>Ruby.app/Contents/MacOS/Ruby</code> (which can happen if you create a ZIP archive). Just move your code in there, edit <code>Info.plist</code>, create a tarball and mail it to your Mac friends. They&#39;ll probably have to right-click and then &#39;Open&#39; it because the .app isn&#39;t code-signed.<br/><br/>Ocra is the most common solution for Windows, but Releasy has another solution that is supposed to work from Linux:<br/><br/><a class='ura' href='https://github.com/Spooner/releasy/blob/master/lib/releasy/windows_wrapper_maker.rb'>https://github.com/Spooner/releasy/blob/master/lib/releasy/windows_wrapper_maker.rb</a><br/><br/>As far as I can tell, it bundles your game with the contents of a RubyInstaller package, and then creates a tiny EXE stub that runs <code>rubyw.exe &lt;your_game.rb&gt;</code>? You could give it a try - even though Releasy&#39;s README is outdated, that part of the code might still work with the current version of everything.
+</div>
+</div>
+
+<div class='brn' id='brn9069'>
+<div class='frm pst' id='pid9070' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9070.html#pid9069'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9070.html#pid9070'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1279.html' >gardrek</a>
+<span class='htt'>Date</span> 2016-12-12 15:17
+</div>
+<div class='ccl'>
+Thanks for the response! The MacOS wrapper seems really easy to use. As for the Windows wrapper, I&#39;m a little foggy, but I&#39;m assuming rubyw.exe is just the standard Windows Ruby interpreter and I&#39;ll need a Gosu DLL or something in there too. At least the script seems to be well-commented about where to put everything. Thanks again for the help.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1315.html#tid1315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1315.html#tid1315'>Gosu Exchange</a> / Need Help Actually Releasing a Game
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9070.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2448 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Color &amp; Tone</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2448' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=371#tid371'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=371#tid371'>Gosu Exchange</a> / Color &amp; Tone
+</div>
+</div>
+
+<div class='frm pst' id='pid2440' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2440.html#pid2440'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-14 13:11
+</div>
+<div class='ccl'>
+Hi :3<br/>I&#39;d like to request another thing ( :D )<br/>Ruby Game Scripting System has a nice feature of so called &quot;colors&quot; and &quot;tones&quot;.<br/>Color = Red, Green, Blue, Alpha<br/>Tone = Red, Green, Blue, Gray<br/>They are applied when the image (Sprite) is drawn<br/>I made some examples:<br/>Image without any effects:<br/><a class='url' href='http://img140.imageshack.us/img140/2891/nonep.png'>http://img140.imageshack.us/img140/2891/nonep.png</a><br/>Tone (255, 0, 0, 0):<br/><a class='url' href='http://img248.imageshack.us/img248/3278/tonem.png'>http://img248.imageshack.us/img248/3278/tonem.png</a><br/>Color (0, 100, 255, 130):<br/><a class='url' href='http://img97.imageshack.us/img97/4575/colormd.png'>http://img97.imageshack.us/img97/4575/colormd.png</a><br/>Tone (255, 0, 0, 0) and Color (0, 100, 255, 130):<br/><a class='url' href='http://img413.imageshack.us/img413/6145/both.png'>http://img413.imageshack.us/img413/6145/both.png</a><br/>Tone (200, 0, 0, 200):<br/><a class='url' href='http://img375.imageshack.us/img375/9825/tone.png'>http://img375.imageshack.us/img375/9825/tone.png</a><br/>Color (0, 50, 0, 255) (with or without Tone, is the same here):<br/><a class='url' href='http://img32.imageshack.us/img32/5354/colorou.png'>http://img32.imageshack.us/img32/5354/colorou.png</a><br/><br/>The algorithm is pretty easy. For each pixel the following is done:<br/>R, G and B of the tone are added to R, G and B of the pixel.<br/>The saturation (HSV) is reduced by the tone&#39;s gray value.<br/>The color is &quot;overlayed&quot; ((color.alpha / 255.0) * color.red + (1 - (color.alpha / 255.0)) * pixel.red)<br/><br/>Yes... and that&#39;s what I&#39;d like to rebuild in gosu :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2441' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2441#pid2441'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2010-05-14 14:28
+</div>
+<div class='ccl'>
+Find a way on how to do it with pure opengl commands (any maybe even supply a working patch for it) and I will guarantee you julian will implement it. If there is no way with pure opengl, I don&#39;t think you have a chance of it getting implemented in gosu (Maybe you can do it with texplay?)
+</div>
+</div>
+
+<div class='frm pst' id='pid2444' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2444.html#pid2444'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-05-15 02:52
+</div>
+<div class='ccl'>
+I like this idea. Does anyone know whether shaders can be applied per-texture? I&#39;m not too well versed in OpenGL beyond the basic drawing primitives. It would be cool to see an API in place for per-draw and fullscreen shaders instead of having a ton of different parameters or calls for operations that could be done using that one shader call.<br/><br/>Of course, I&#39;m also not sure how backwards-compatible Julian wants to be nor how widely available shaders are.
+</div>
+</div>
+
+<div class='frm pst' id='pid2445' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2445#pid2445'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-15 03:59
+</div>
+<div class='ccl'>
+I think you could enable a shader, then do your image.draw, then call &quot;gl{}&quot; which will flush the one rendering operation to the screen (with the shader applied), then disable the shader again. But that effectively disables Z ordering. :(<br/><br/>Putting custom things in the Z queue is on my list of things that would be awesome though.
+</div>
+</div>
+
+<div class='frm pst' id='pid2446' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2446.html#pid2446'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-15 12:18
+</div>
+<div class='ccl'>
+First of all, the hue feature isn&#39;t a RGSS, but a RPG Maker feature. As shown in the pictures provided, it doesn&#39;t really create quality results, and while working for simple sprites like the tutorials star sprite, I wouldn&#39;t use it for monster sprites like the one you provided. I&#39;m not saying it&#39;s a useless feature, however, it&#39;s a tool that encourages game makers to create non-quality results (as the feature in RPG Maker proves).<br/><br/>I tried to fight that difficulty a while ago myself though, creating a script that works on a pixel-by-pixel basis, being my <a class='url' href='http://www.hbgames.org/forums/viewtopic.php?f=11&amp;t=60412'>Bitmap Remapping script</a> posted on .org - it creates quality results by ensuring control over ever pixel remapped with a specific color, and also encourages the use of palettes throughout the game (which, my fellow game designers, is a very appealing detail to games). In my opinion, it renders a Tone feature obsolete within reason, and it should be fairly easy translateable to to Gosu/Ruby without the need for a source implementation (however, speeding it up would be something useful).<br/><br/>For clarification: I don&#39;t say a Tone feature wouldn&#39;t be worth implementing.
+</div>
+</div>
+
+<div class='frm pst' id='pid2447' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2447#pid2447'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-05-15 14:13
+</div>
+<div class='ccl'>
+Well, I think that Color and Tone are definitely features of RGSS, seeing as how there are classes for them, and the RPG Maker events actually only have a set of properties, where the interpreter creates Tones and Colors for. At least, that&#39;s what I think it was. It&#39;s been a while since I worked with RPG Maker, and my EventScripter project specifically (which could be used to create new events at runtime), so my memory is a bit rusty.. My own documentation isn&#39;t really helpful either, to be honest, so now I&#39;m not even sure if I&#39;m correct at all. I don&#39;t have RMVX installed anymore, so I&#39;m unable to access my EventScripter script, it&#39;s notes, and the default scripts. Unfortunate.<br/><br/>The thing about the provided pictures is that they don&#39;t quite do justice to the Tones and Colors. They are best used within whole maps, as a way of creating atmosphere. Best of all, it&#39;s completely dynamic, so you can smoothly flow from one tone to another.<br/><br/>Your Bitmap Remapping is also a valuable idea, although there of course isn&#39;t such a feature like set_pixel in Gosu. Should work great with Texplay though!
+</div>
+</div>
+
+<div class='frm pst' id='pid2448' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2448.html#pid2448'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-15 16:30
+</div>
+<div class='ccl'>
+@jlnr: Disabling z is not good :(<br/><br/>@BlueScope: Tone != Hue<br/>And of course, tone, color and hue are all features of RGSS. The RMXP without RGSS would have nothing to do with Ruby.<br/><br/>@ AmIMeYet: I already thought about texplay but as you said it should be smoothly used with maps. A map contains maybe 25 sprites. With 60 FPS and normal RMXP-32x48 images that means 25 * 60 * 32 * 48 = 2304000 pixels each second have to be rendered.
+</div>
+</div>
+
+<div class='frm pst' id='pid2449' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2449#pid2449'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-15 23:53
+</div>
+<div class='ccl'>
+If Tone is an RGSS feature, everything is an RGSS feature... most of the features are controlled via a GUI interface, but have an RGSS background, such as Tone. To me, stuff like the modules (Input, Cache, ...) are RGSS features, as they&#39;re mainly accessed with/through RGSS, while stuff like Tone is a non-RGSS-feature, as the scripted side (that naturally has to be there) is merely the background of the feature meant to be used from the event commands or submenus.<br/>As not of that really is of any importance, I suggest to drop the topic, though ^^&quot;<br/><br/>@AmIMeYet: If you&#39;re talking about changing the tone/hue for the whole screen, then yes, that makes sense. I was focussed on setting stuff for single sprites because of the provided pictures though ^^&quot; in which case, imo, it doesn&#39;t.<br/><br/>@Wurstinator: My script clearly isn&#39;t meant to be executed each frame, but stored in a cached image, so no matter if you change a sprite in appearance or not, the performance will be the same after a single process.
+</div>
+</div>
+
+<div class='frm pst' id='pid2459' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2459.html#pid2459'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-17 16:03
+</div>
+<div class='ccl'>
+Anyway, even with cache, it would be way to slow the first time.<br/>And also, it would fastly use up all available RAM.
+</div>
+</div>
+
+<div class='frm pst' id='pid2465' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2465.html#pid2465'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-17 17:00
+</div>
+<div class='ccl'>
+Well, I guess that depends on the sprite dimensions and actual pixels to be remapped... My tests with basic RPG Maker sprites (24x32 or 32x48, if I&#39;m not mistaken) and an average of 100 pixels remapped per update, I had no problems with doing for up to 6 sprites at a time... and I have to mention that wasn&#39;t for cached sprites. Therefore, I can clearly imagine getting an insane amount of sprites remapped that way without serious loss of time or processing power (which isn&#39;t unusual during loading times anyway) if actually executed while caching and ran from the Gosu source, as in written in C rather than in actual Ruby. However, I&#39;m aware it&#39;s a very exhaustive method, so yeah... it was just a side note anyway, not a replacement ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid2499' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2499.html#pid2499'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-24 17:09
+</div>
+<div class='ccl'>
+For some sprites it may fit but a full map has about<br/>20 characters (128 * 192) +<br/>400 tiles (32 * 32)<br/>= over 900000 pixels each frame.<br/><br/>So, I need a method written in C.
+</div>
+</div>
+
+<div class='frm pst' id='pid2514' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2514.html#pid2514'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-05-27 00:19
+<span class='htt'>Edited</span> 2010-05-27 03:59
+</div>
+<div class='ccl'>
+If you can explain precisely what you mean by this:<br/><br/>&quot;The saturation (HSV) is reduced by the tone&#39;s gray value.&quot;<br/><br/>and this:<br/><br/>&quot;The color is &quot;overlayed&quot; ((color.alpha / 255.0) * color.red + (1 - (color.alpha / 255.0)) * pixel.red)&quot;<br/><br/>I can implement &#39;tones&#39; in TP.<br/><br/>Bear in mind I don&#39;t know anything about HSV and HSV is not currently supported by TP.<br/><br/>If you could also give API suggestions that would be appreciated :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2515' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2515.html#pid2515'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-05-27 06:41
+</div>
+<div class='ccl'>
+banister wrote:<br/><br/><blockquote><p>&gt; If you can explain precisely what you mean by this:<br/>&gt;<br/>&gt; &quot;The saturation (HSV) is reduced by the tone&#39;s gray <br/>&gt; value.&quot;</p></blockquote><br/>Here&#39;s what I think is happening (for each pixel):<br/><br/>1. Convert the source pixel&#39;s and the tone&#39;s RGB colors into HSL (HSV?)<br/>2. Replace the source pixel&#39;s hue with the tone&#39;s hue.<br/>3. Alpha-blend the tone&#39;s saturation onto the source&#39;s (using the tone&#39;s fourth element as alpha).<br/>4. Convert the HSL back to RGB.<br/><br/>I could be totally wrong, though :P<br/><br/><blockquote><p>&gt; and this:<br/>&gt;<br/>&gt; &quot;The color is &quot;overlayed&quot; ((color.alpha / 255.0) * <br/>&gt; color.red + (1 - (color.alpha / 255.0)) * <br/>&gt; pixel.red)&quot;</p></blockquote><br/>It&#39;s just a standard alpha blending, right? This could be done by making a solid-color image the size of the &quot;source&quot; and blending it on top... it would just use more memory :P<br/><br/><blockquote><p>&gt; I can implement &#39;tones&#39; in TP.<br/>&gt;<br/>&gt; Bear in mind I don&#39;t know anything about HSV and <br/>&gt; HSV is not currently supported by TP.</p></blockquote><br/><a class='url' href='http://en.wikipedia.org/wiki/HSL_and_HSV'>http://en.wikipedia.org/wiki/HSL_and_HSV</a><br/><br/><blockquote><p>&gt; If you could also give API suggestions that would <br/>&gt; be appreciated :)</p></blockquote><br/>Doesn&#39;t SDL have some HSV/HSL stuff? It&#39;s been a while since I&#39;ve used it... Otherwise, there are nice, fairly efficient color space conversion algorithms all over the place. Probably even some OpenGL (or at least GPU-accelerated) ones, too.<br/><br/>I&#39;m not begging for this one, but it might be interesting (and I /know/ you could implement it ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2516' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2516.html#pid2516'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-27 07:25
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Doesn&#39;t SDL have some HSV/HSL stuff?</p></blockquote><br/>I have no experience with the SDL, but Gosu does ;) Color.from_hsv, Color.hue, Color.saturation, Color.value (or .h .s .v? I forgot), even with individual setters. Since the internal representation is still A8R8G8B8, you can get rounding errors if you set and get the hue though.
+</div>
+</div>
+
+<div class='frm pst' id='pid2541' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2541.html#pid2541'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-05-29 12:28
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; &quot;The saturation (HSV) is reduced by the tone&#39;s gray value.&quot;</p></blockquote><br/>As RunnerPack said it is converted to HSV, saturation is reduced and then back to RGB.<br/>Anyway, this can be done also without conversion:<br/>class Color<br/>&#160; def grayscale(percent = 1.0)<br/>&#160; &#160; average = (self.red + self.green + self.blue) / 3<br/>&#160; &#160; r = (average - self.red) * percent<br/>&#160; &#160; g = (average - self.green) * percent<br/>&#160; &#160; b = (average - self.blue) * percent<br/>&#160; &#160; return Color.new(self.red + r, self.green + g, self.blue + b, self.alpha)<br/>&#160; end<br/>end<br/><br/>A small code I have written for RGSS. It should be clear how it works :)<br/><br/><blockquote><p>&gt; &quot;The color is &quot;overlayed&quot; ((color.alpha / 255.0) * color.red + (1 - (color.alpha / 255.0)) * pixel.red)&quot;</p></blockquote><br/>Standard alpha blending :)<br/><br/><blockquote><p>&gt; I can implement &#39;tones&#39; in TP.</p></blockquote><br/>That would be nice but as TP changes the Images themselves and does not only modify the draw method of Gosu it might also come to a problem of performance :|
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=371#tid371'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=371#tid371'>Gosu Exchange</a> / Color &amp; Tone
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2448.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5317 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>clipping</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5317' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=680#tid680'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=680#tid680'>Gosu Exchange</a> / clipping
+</div>
+</div>
+
+<div class='frm pst' id='pid5306' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5306' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5306.html#pid5306'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-03 15:28
+</div>
+<div class='ccl'>
+Just a quick question:<br/><br/>Settings from beginClipping(x,y,w,h) are reseted in each draw() call right?<br/>I mean, you need to call beginClipping everytime you draw in the screen, or can you set it only once?<br/><br/><code>void draw() {<br/>&#160; graphics().beginClipping(x,y,w,h);<br/>&#160; // draw things...<br/>&#160; graphics().endClipping();<br/>}<br/></code><br/>vs<br/><code><br/>init:<br/>graphics().begginClipping(x,y,w,h);<br/><br/>void draw() {<br/>&#160; // draw things...<br/>}<br/><br/>before exit:<br/>graphics().endClipping();</code>
+</div>
+</div>
+
+<div class='brn' id='brn5306'>
+<div class='frm pst' id='pid5308' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5306'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5308' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5308.html#pid5308'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-04 15:22
+</div>
+<div class='ccl'>
+Right now, clipping and transforms can only happen inside of <code>draw()</code>. I have plans for a global transform, but not for a clipping rect yet. What is the use case for a global clipping rect?
+</div>
+</div>
+
+<div class='brn' id='brn5308'>
+<div class='frm pst' id='pid5311' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5308'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5311' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5311#pid5311'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-05 11:53
+</div>
+<div class='ccl'>
+Adding cinema bars to the screen.<br/><br/>You know, black horizontal bars in the top and bottom of the screen to keep a constant drawable area ratio (16:9) regardless of the screen resolution.
+</div>
+</div>
+
+<div class='brn' id='brn5311'>
+<div class='frm pst' id='pid5312' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5311'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5312' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5312.html#pid5312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-05 14:25
+</div>
+<div class='ccl'>
+Oh good. That use case should be built into Gosu anyway. :) My test program already has comments indicating how it should behave.<br/><br/>I think OS X will even automatically do this if you request fullscreen in a different aspect ratio.
+</div>
+</div>
+
+<div class='brn' id='brn5312'>
+<div class='frm pst' id='pid5313' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5313' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5313.html#pid5313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-05 14:53
+</div>
+<div class='ccl'>
+well, it&#39;s not a problem adding it in each draw() call, I just wanted to know ;)<br/><br/>But other thing related to this, if I want to keep a constant aspect rate, I have to use the factorX and factorY parameters in the image drawing, right?<br/>I have a problem calculating thos resize factors, because I need the actual window size when not in fullscreen, and not the virtual size. Is there any way to get it?<br/>With MSVC debugger I know the graphics() object has physWidth and physHeight properties, but width() and height() only return the virtual ones.<br/><br/>And which way is better to use? pushTransform() or factor parameters in draw functions?
+</div>
+</div>
+
+<div class='brn' id='brn5313'>
+<div class='frm pst' id='pid5314' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5313'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5314' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5314.html#pid5314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-05 14:58
+</div>
+<div class='ccl'>
+<code>pushTransform</code>.<br/><br/>You can use fullscreen at the desktop resolution by passing <code>screenWidth()</code>/<code>screenHeight()</code> for the window size. Then you know that your window is the same resolution as the physical screen. Also, your game will look better that way. :)
+</div>
+</div>
+
+<div class='brn' id='brn5314'>
+<div class='frm pst' id='pid5315' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5314'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5315' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5315.html#pid5315'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-05 15:11
+</div>
+<div class='ccl'>
+Yes, the window created with that size will have the same aspect ratio that the desktop, but not the same size (due to window decorator borders restrictions).<br/>For example, I have 1920x1080 desktop (16:9), but If I create a window with that size, the physical size would be 1536x864, wich is 16:9, but I&#39;m basing my graphics on 1280x720, so the resize factor in this case will be 1,5 (1920/1280) and graphics will be bigger than they should be.<br/>The correct resize factor would be 1920/1536, so how can I know the physical size of the screen?
+</div>
+</div>
+
+<div class='brn' id='brn5315'>
+<div class='frm pst' id='pid5316' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5316' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5316.html#pid5316'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-05 15:19
+</div>
+<div class='ccl'>
+If you open it in fullscreen it should not have window decorations - does it?
+</div>
+</div>
+
+<div class='brn' id='brn5316'>
+<div class='frm pst' id='pid5317' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5316'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5317' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5317.html#pid5317'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-05 15:21
+</div>
+<div class='ccl'>
+Yeah, fullscreen works fine. There&#39;s no problem with that.<br/><br/>The problem is when creating a window (no fullscreen) with a bigger size than allowed.
+</div>
+</div>
+
+<div class='brn' id='brn5317'>
+<div class='frm pst' id='pid5318' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5317'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5318' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5318.html#pid5318'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-05 15:36
+</div>
+<div class='ccl'>
+Oh, if Gosu resizes your window then it also sets up scaling. So if you apply a factor of 1,5, Gosu should apply another factor that makes it work. If not, this is a bug.
+</div>
+</div>
+
+<div class='brn' id='brn5318'>
+<div class='frm pst' id='pid5319' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5318'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5319' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5319#pid5319'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-05 16:04
+</div>
+<div class='ccl'>
+Well, I can see in the graphics().queues[0].individualTransforms the matrix with the value 0.8 (1920/1536), but I&#39;m not sure it&#39;s working as supossed, because my graphics are bigger than they should be...
+</div>
+</div>
+
+<div class='brn' id='brn5319'>
+<div class='frm pst' id='pid5320' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5319'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5320' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5320.html#pid5320'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-05 16:37
+</div>
+<div class='ccl'>
+Oh, so it looks different across fullscreen and windowed mode? That would be a bug, unless you are using the undocumented <code>Graphics::setResolution</code> member function (this might mess with windowed mode).<br/><br/>I will try to reproduce this in a minimal ruby script.
+</div>
+</div>
+
+<div class='brn' id='brn5320'>
+<div class='frm pst' id='pid5321' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5320'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5321#pid5321'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2011-12-05 17:42
+</div>
+<div class='ccl'>
+no I&#39;m not using setResolution.<br/>Anyway I&#39;m using W7 and C++ :)<br/>If you want me to test any code, just tell me ^^
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5322' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5319'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5322' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5322.html#pid5322'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=863' >Jamer</a>
+<span class='htt'>Date</span> 2011-12-06 21:53
+</div>
+<div class='ccl'>
+This sounds similar to another issue I&#39;m facing where the initial transform set by Gosu is forgotten. Do you think it could be related, jlnr?
+</div>
+</div>
+
+<div class='brn' id='brn5322'>
+<div class='frm pst' id='pid5323' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5317.html#pid5322'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5323.html#pid5323'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-12-06 22:33
+</div>
+<div class='ccl'>
+You are right, this is almost certainly the same issue. Doh! :) Expect 0.7.41 to clean up soon.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=680#tid680'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=680#tid680'>Gosu Exchange</a> / clipping
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5317.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

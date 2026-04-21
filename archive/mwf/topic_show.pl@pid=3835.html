@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Window::needsCursor is not working</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3835' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=545.html#tid545'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=545.html#tid545'>Gosu Exchange</a> / Window::needsCursor is not working
+</div>
+</div>
+
+<div class='frm pst' id='pid3835' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3835' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3835.html#pid3835'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-02-04 14:57
+</div>
+<div class='ccl'>
+Hi.<br/><br/>Looks like Window::needsCursor is not working (using Gosu 0.7.27 under Ubuntu 10.04 64bits, also tried on Ubuntu 10.10 32bits). The cursor will always show regardless of what needsCursor returns.<br/><br/>The solution is simple. Basically, open GosuImpl/WindowX.cpp, go to line 161, where you will find:<br/><br/><code><br/>&#160; &#160; &#160; &#160; if (showingCursor &amp;&amp; !window-&gt;needsCursor())<br/><br/>&#160; &#160; &#160; &#160; {<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; XUndefineCursor(display, this-&gt;window);<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; showingCursor = false;<br/><br/>&#160; &#160; &#160; &#160; }<br/><br/>&#160; &#160; &#160; &#160; else if (!showingCursor &amp;&amp; window-&gt;needsCursor())<br/><br/>&#160; &#160; &#160; &#160; {<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; XDefineCursor(display, this-&gt;window, emptyCursor);<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; showingCursor = true;<br/><br/>&#160; &#160; &#160; &#160; }</code><br/><br/>You just have to change that for:<br/><code><br/>&#160; &#160; &#160; &#160; if (showingCursor &amp;&amp; !window-&gt;needsCursor())<br/>&#160; &#160; &#160; &#160; {<br/>&#160; &#160; &#160; XDefineCursor(display, this-&gt;window, emptyCursor);<br/>&#160; &#160; &#160; &#160; &#160; &#160; showingCursor = false;<br/>&#160; &#160; &#160; &#160; }<br/>&#160; &#160; &#160; &#160; else if (!showingCursor &amp;&amp; window-&gt;needsCursor())<br/>&#160; &#160; &#160; &#160; {<br/>&#160; &#160; &#160; XUndefineCursor(display, this-&gt;window);<br/>&#160; &#160; &#160; &#160; &#160; &#160; showingCursor = true;<br/>&#160; &#160; &#160; &#160; }<br/></code><br/><br/>That&#39;s it.
+</div>
+</div>
+
+<div class='brn' id='brn3835'>
+<div class='frm pst' id='pid3836' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3835.html#pid3835'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3836.html#pid3836'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-04 17:15
+</div>
+<div class='ccl'>
+Nice find; this has been affecting me in the Ruby version for a while (Kubuntu 10.04 x64 VM)! Not new in 0.7.27, that is.
+</div>
+</div>
+
+<div class='frm pst' id='pid3846' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3835.html#pid3835'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3846.html#pid3846'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-05 06:00
+</div>
+<div class='ccl'>
+Thanks! Will give it a try in a second.
+</div>
+</div>
+
+<div class='frm pst' id='pid3871' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3835.html#pid3835'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3871.html#pid3871'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-07 07:48
+</div>
+<div class='ccl'>
+Re-reading the patch, that was a pretty stupid oversight. In SVN now, hopefully out in the wild later today.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=545.html#tid545'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=545.html#tid545'>Gosu Exchange</a> / Window::needsCursor is not working
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3835.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

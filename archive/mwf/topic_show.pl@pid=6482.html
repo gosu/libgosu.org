@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6482 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Help with Jruby</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6482' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=842.html#tid842'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=842.html#tid842'>Extending Gosu</a> / Help with Jruby
+</div>
+</div>
+
+<div class='frm pst' id='pid6481' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6481' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6481#pid6481'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=985.html' >onnoowl</a>
+<span class='htt'>Date</span> 2013-01-23 13:12
+<span class='htt'>Edited</span> 2013-01-23 13:54
+</div>
+<div class='ccl'>
+Hello, I&#39;m trying to get gosu working on jruby. It does not seem to be working.<br/>This is what happens:<br/><br/>I run the command: <code>jgem install gosu</code><br/><br/><code>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; &#160; &#160; &#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; &#160; &#160; c:/jruby-1.7.2/bin/jruby.exe extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='url' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>c:/jruby-1.7.2/lib/ruby/shared/mkmf.rb:14: Use RbConfig instead of obsolete and<br/>deprecated Config.<br/>Errno::ENOENT: No such file or directory - uname<br/>&#160; &#160; &#160;&#160; <code> at file:/C:/jruby-1.7.2/lib/jruby.jar!/jruby/kernel/jruby/process_manag<br/>er.rb:24<br/>&#160; &#160; &#160;&#160; </code> at file:/C:/jruby-1.7.2/lib/jruby.jar!/jruby/kernel/jruby/process_manag<br/>er.rb:49<br/>&#160; (root) at extconf.rb:66<br/>*** extconf.rb failed ***<br/>Could not create Makefile due to some reason, probably lack of<br/>necessary libraries and/or headers.&#160; Check the mkmf.log file for more<br/>details.&#160; You may need configuration options.<br/><br/>Provided configuration options:<br/>&#160; &#160; &#160; &#160; --with-opt-dir<br/>&#160; &#160; &#160; &#160; --without-opt-dir<br/>&#160; &#160; &#160; &#160; --with-opt-include<br/>&#160; &#160; &#160; &#160; --without-opt-include=${opt-dir}/include<br/>&#160; &#160; &#160; &#160; --with-opt-lib<br/>&#160; &#160; &#160; &#160; --without-opt-lib=${opt-dir}/lib<br/>&#160; &#160; &#160; &#160; --with-make-prog<br/>&#160; &#160; &#160; &#160; --without-make-prog<br/>&#160; &#160; &#160; &#160; --srcdir=.<br/>&#160; &#160; &#160; &#160; --curdir<br/>&#160; &#160; &#160; &#160; --ruby=c:/jruby-1.7.2/bin/jruby<br/><br/>Gem files will remain installed in c:/jruby-1.7.2/lib/ruby/gems/shared/gems/gosu<br/>-0.7.45 for inspection.<br/>Results logged to c:/jruby-1.7.2/lib/ruby/gems/shared/gems/gosu-0.7.45/linux/gem<br/>_make.out</code>
+</div>
+</div>
+
+<div class='brn' id='brn6481'>
+<div class='frm pst' id='pid6482' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6482.html#pid6481'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6482' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6482.html#pid6482'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-23 15:03
+</div>
+<div class='ccl'>
+The only Gosu gem that works on Windows is the precompiled gem for Ruby 1.8/1.9 (MRI). The gem you are trying to install is the source code gem, which does not contain source files for Windows (only Linux and OS X).<br/><br/>Further, it seems that your installation of JRuby cannot handle source code gems at all. Can you please try installing other binary gems like <code>texplay</code> or <code>chipmunk</code>? If these indeed work, I can build a gem for you that may or may not work with JRuby.
+</div>
+</div>
+
+<div class='brn' id='brn6482'>
+<div class='frm pst' id='pid6483' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6482.html#pid6482'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6483' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6483.html#pid6483'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=985.html' >onnoowl</a>
+<span class='htt'>Date</span> 2013-01-24 00:38
+</div>
+<div class='ccl'>
+Rather unfortunately, i got quite a similar error when trying to install texplay... <br/>Is there something wrong with my jruby installation?<br/>I got the windows installer, ran it, and added it to my path.<br/>The only odd thing is i followed some advice that one of the errors gave me...<br/>It told me to run something like this:<br/><b><code>set JRUBY_OPTS=-Xcext.enabled=true</code></b><br/><br/>Anyways, this is what i got from installing texplay:<br/><code><b>jgem install texplay</b></code><br/><code>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing texplay:<br/>&#160; &#160; &#160; &#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; &#160; &#160; c:/jruby-1.7.2/bin/jruby.exe extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='url' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>c:/jruby-1.7.2/lib/ruby/shared/mkmf.rb:14: Use RbConfig instead of obsolete and<br/>deprecated Config.<br/>Errno::ENOENT: No such file or directory - uname<br/>&#160; &#160; &#160;&#160; <code> at file:/C:/jruby-1.7.2/lib/jruby.jar!/jruby/kernel/jruby/process_manag<br/>er.rb:24<br/>&#160; &#160; &#160;&#160; </code> at file:/C:/jruby-1.7.2/lib/jruby.jar!/jruby/kernel/jruby/process_manag<br/>er.rb:49<br/>&#160; (root) at extconf.rb:66<br/>*** extconf.rb failed ***<br/>Could not create Makefile due to some reason, probably lack of<br/>necessary libraries and/or headers.&#160; Check the mkmf.log file for more<br/>details.&#160; You may need configuration options.<br/><br/>Provided configuration options:<br/>&#160; &#160; &#160; &#160; --with-opt-dir<br/>&#160; &#160; &#160; &#160; --without-opt-dir<br/>&#160; &#160; &#160; &#160; --with-opt-include<br/>&#160; &#160; &#160; &#160; --without-opt-include=${opt-dir}/include<br/>&#160; &#160; &#160; &#160; --with-opt-lib<br/>&#160; &#160; &#160; &#160; --without-opt-lib=${opt-dir}/lib<br/>&#160; &#160; &#160; &#160; --with-make-prog<br/>&#160; &#160; &#160; &#160; --without-make-prog<br/>&#160; &#160; &#160; &#160; --srcdir=.<br/>&#160; &#160; &#160; &#160; --curdir<br/>&#160; &#160; &#160; &#160; --ruby=c:/jruby-1.7.2/bin/jruby<br/><br/>Gem files will remain installed in c:/jruby-1.7.2/lib/ruby/gems/shared/gems/gosu<br/>-0.7.45 for inspection.<br/>Results logged to c:/jruby-1.7.2/lib/ruby/gems/shared/gems/gosu-0.7.45/linux/gem<br/>_make.out</code>
+</div>
+</div>
+
+<div class='brn' id='brn6483'>
+<div class='frm pst' id='pid6484' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6482.html#pid6483'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6484#pid6484'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-24 07:08
+</div>
+<div class='ccl'>
+I know next to nothing about either JRuby or building C extensions on Windows :) So this is probably more of a question for a JRuby board... and once simple C extensions work, I can help with getting Gosu to work (or at least give it a try).
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6729' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6482.html#pid6481'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6729' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6729.html#pid6729'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2013-04-04 14:25
+</div>
+<div class='ccl'>
+Sorry for posting on an old thread, but I think this is probably the best place to put this since it&#39;s still on the first page.<br/><br/>As of JRuby 1.7, native extension support is disabled by default, and it will be removed in future. So getting Gosu running on JRuby is not going to happen this way.<br/><br/>SWIG can generate bindings to Java, however, so in theory, it may be possible to create a Java version of Gosu and then access it using JRuby. I don&#39;t know whether or not anyone has tried this or how far they got.
+</div>
+</div>
+
+<div class='brn' id='brn6729'>
+<div class='frm pst' id='pid6730' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6482.html#pid6729'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6730#pid6730'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-04-04 14:54
+</div>
+<div class='ccl'>
+Ouch. That&#39;s bad news!<br/><br/>The SWIG file is not entirely language-neutral: The RubyGosu.swg file contains some Ruby C API code that throws around <code>VALUE</code>s. After that, I patch the resulting <code>cxx</code> file to work around a really old bug in SWIG. And THEN I still patch lots of stuff in pure Ruby :)<br/><br/>If SWIG&#39;s Java output is of the same quality, then that would be theoretically possible, but it might not be much more fun than hand-writing a wrapper around Gosu...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=842.html#tid842'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=842.html#tid842'>Extending Gosu</a> / Help with Jruby
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6482.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

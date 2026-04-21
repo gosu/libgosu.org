@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8625 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Problem with Delta-Time Physics in a windowed Gosu (Ruby)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8625' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1232.html#tid1232'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1232.html#tid1232'>Gosu Exchange</a> / Problem with Delta-Time Physics in a windowed Gosu (Ruby)
+</div>
+</div>
+
+<div class='frm pst' id='pid8624' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8624' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8624.html#pid8624'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1224.html' >bardolos</a>
+<span class='htt'>Date</span> 2015-10-14 20:32
+</div>
+<div class='ccl'>
+While developing a simple physics engine to integrate with a Gosu game I&#39;m hammering together, I noticed an issue that might compromise Delta-Time systems.<br/><br/>The current implementation of my simple system is very efficient and can run particle collisions and so on.<br/>The problem is that when I click and drag the window, the Gosu engine pauses, but the <i>Gosu::milliseconds()</i> counter keeps going up. This makes sense since it should &quot;return the number of milliseconds elapsed&quot; since the Gosu started running.<br/><br/>However, for time-sensitive applications - especially a physics engine handling collisions - this means that certain features may be skipped.<br/><br/>An an example, imagine a free-falling object at position <i>(0,0)</i>, that follows this equation(<a class='url' href='https://github.com/gosu/gosu/wiki/Window-Main-Loop'>source</a>):<br/><br/><i>position += speed*dt</i><br/><br/>And it is supposed to hit the ground at, say position <i>(0,100)</i>. With very small <b>dt</b>&#39;s, as a result of being called in a healthy update loop, this object&#39;s animation is very smooth and can easily find the floor at <i>(0,100)</i> by successional approaching and correcting its trajectory.<br/><br/>However, when I hold and drag the window the updates stop, meaning &quot;<i>position += speed*dt</i>&quot; is not computed until I let go of the window.<br/>When I do let go though, I will have a very large <b>dt</b>, as a result of using <i>Gosu::milliseconds()</i> to get that time delta between that update cycle and the previous one.<br/>Eventually, for sensitive trajectories such as the one mentioned above, this new king-sized <b>dt</b> can blast the object&#39;s position to <i>(0,9456)</i> for example, which would take it way below the floor without ever having the opportunity to check for a collision.<br/><br/>I tried looking for a solution but it yielded no results.<br/>I was wondering if anyone had looked into this before and was willing to provide some insight. I thought there may be a way of monkey-patching the window class to forbid dragging (which is a solid option in my case), or some kind of lower-level approach that keeps the game loop running even during the window dragging operation.<br/><br/>Any help is appreciated.<br/>Thanks a lot.
+</div>
+</div>
+
+<div class='brn' id='brn8624'>
+<div class='frm pst' id='pid8625' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8625.html#pid8624'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8625' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8625.html#pid8625'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-10-15 00:31
+</div>
+<div class='ccl'>
+I&#39;ve done some research on physics engines, and most of them treat fast moving objects as lines, rather than points, for collision purposes. I.e., you take the imaginary line segment from the object&#39;s last position to its current position, test for the first collision between that line and the rest of your geometry (the floor, in this case), clip the object to that point, and calculate the appropriate collision response.<br/><br/>BTW, I ported some geometry intersection code to Ruby a while back. If it&#39;s useful, feel free to use it: <a class='ura' href='https://github.com/runnerpack/intersect'>https://github.com/runnerpack/intersect</a> (be sure to click the link to the project from which I ported it!)<br/><br/>Another idea would be to simply detect extremely long dt&#39;s, and reject them (maybe save the last dt and reuse it for one cycle).<br/><br/>Finally... what about just using full-screen mode? Do you <i>have</i> to use a draggable window?
+</div>
+</div>
+
+<div class='brn' id='brn8625'>
+<div class='frm pst' id='pid8626' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8625.html#pid8625'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8626' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8626.html#pid8626'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1224.html' >bardolos</a>
+<span class='htt'>Date</span> 2015-10-15 16:37
+</div>
+<div class='ccl'>
+Hi, thanks for replying. The idea of using lines was more or less the direction I was headed. My implementation is based on a &quot;two-step discrete simulation&quot; of sorts, where the current position (which is safe) is used for drawing and the &quot;next position&quot; is used for computations and hypothetical collision checking. These two points make the imaginary line segment, except I don&#39;t consider the line itself. For most cases this is fine, but for small particles and fast moving objects, like you said, using the full line should yield much better results.<br/><br/>I will implement this soon and will take a look at your code and the project you ported it from. I don&#39;t have the time to do this at this exact moment so I&#39;ll probably come back with an opinion some time from now.<br/><br/>And sadly, I do have to use a window :(<br/>The current project is meant to be a sort of companion app to assist in level development, and the user is expected to work with multiple other windows. The ideal case would be for the loop to keep running and drawing even during the dragging operation, but if that&#39;s not possible, the window should at least have a &quot;lock&quot; or something that can enable or disable dragging at will (so I can condition the user&#39;s control flow).<br/><br/>Thanks.
+</div>
+</div>
+
+<div class='brn' id='brn8626'>
+<div class='frm pst' id='pid8627' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8625.html#pid8626'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8627.html#pid8627'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-10-15 18:12
+</div>
+<div class='ccl'>
+You can also measure time in frames. Each frame is like 16-17 milliseconds, so make a global frame counter and multiply it by milliseconds for your calculations. The advantage is that this time is more accurate on lags and hangs. When using real-time milliseconds you risk that your in-game time will differ from your calculations. However I don&#39;t know how does this apply to physics.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8628' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8625.html#pid8624'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8628.html#pid8628'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-10-18 09:51
+</div>
+<div class='ccl'>
+This also happens when the user closes their laptop and opens it up on the next day. I think limiting dt is the way to go, but to be honest I haven&#39;t ever built a dt based game.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1232.html#tid1232'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1232.html#tid1232'>Gosu Exchange</a> / Problem with Delta-Time Physics in a windowed Gosu (Ruby)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8625.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

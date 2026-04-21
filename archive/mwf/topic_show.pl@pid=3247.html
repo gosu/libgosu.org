@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3247 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>WHY would you require multiple audio libraries?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3247' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=464.html#tid464'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=464.html#tid464'>Gosu Exchange</a> / WHY would you require multiple audio libraries?
+</div>
+</div>
+
+<div class='frm pst' id='pid3239' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3239' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3239.html#pid3239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=202' >seisatsu</a>
+<span class='htt'>Date</span> 2010-09-14 23:13
+</div>
+<div class='ccl'>
+The only thing currently keeping me from jumping on Gosu for my project is disgust at the requirement of a different audio library for every platform. FMOD for Windows, SDL_Mixer for Linux, OpenAL for Macintosh. Not only do both SDL_Mixer and OpenAL work on all three platforms, Gosu for Windows is not open source, due to including the proprietary FMOD. I cannot think of any possible reason for these ridiculous conditional dependencies.<br/><br/>I want a very, very good reason. Why would the Gosu development team make such a seemingly stupid and pointless decision, that makes Gosu so unappealing?
+</div>
+</div>
+
+<div class='brn' id='brn3239'>
+<div class='frm pst' id='pid3242' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3247.html#pid3239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3242' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3242.html#pid3242'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-15 06:22
+<span class='htt'>Edited</span> 2010-09-15 06:33
+</div>
+<div class='ccl'>
+Gosu itself *is* open source no matter how many closed-source libraries it uses, be it FMOD, Win32 or DirectInput. The problem that I can see is that FMOD&#39;s licensing is a nuisance. It&#39;s a long-standing To Do item, but more in the sense of &quot;get rid of FMOD&quot;, not necessarily &quot;unify everything&quot;. And there are already constructive threads on getting rid of FMOD around here.<br/><br/>Practically speaking, even FMOD&#39;s licensing is just the software equivalent of a &quot;non-commercial/attribution required&quot; dependency. But I can understand that it is annoying for quick freeware games, donation/ad-ware etc.<br/><br/>The history is pretty easy. Gosu was using FMOD everywhere in the beginning (= 9 years ago) because it&#39;s easy, fast and powerful. And stable, I don&#39;t remember one problem ever. The original Linux port switched to SDL_mixer because that&#39;s what&#39;s common and easy on Linux. The Mac port used OpenAL because it&#39;s more powerful than SDL_mixer *and* OS X comes with proprietary system libraries to easily feed common files into OpenAL. And you forgot the fourth platform, which is iOS and shares some code with the OS X part. Not all code, because music playing on iOS should happen through special libraries that use HW acceleration.<br/><br/>One replacement candidate for FMOD on Windows is in fact Audiere, not used on any other platform. OpenAL and SDL_mixer do work on all platforms but the former includes only minimal WAV loading, the latter includes a random set of working file formats per distribution. OpenAL+libogg, with support for only WAV and OGG would work, I guess. Does it really matter if its two or three different libraries in the end? As soon as OGG and WAV work on all platforms without licensing worries, what is the problem?
+</div>
+</div>
+
+<div class='brn' id='brn3242'>
+<div class='frm pst' id='pid3247' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3247.html#pid3242'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3247.html#pid3247'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-09-15 12:12
+</div>
+<div class='ccl'>
+I agree; as long as the Gosu interface is consistent across the platforms, I don&#39;t care what is used at the back-end. The fact you can&#39;t make a cross-platform game donation-ware (or similar low-income system) because the Windows version would need to buy a $3000 &quot;budget&quot; licence is a bit annoying, of course, but I&#39;m in no rush to make $7.47 a year in donations :$.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3243' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3247.html#pid3239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3243.html#pid3243'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-15 08:18
+</div>
+<div class='ccl'>
+Insulting the developer isn&#39;t the best way to get what you want, sir. ;)<br/><br/>I don&#39;t see why it matters that the dependencies are different across platforms. I feel this is roughly equivalent to bitching about Transmission requiring Gtk and using Gnome desktop notifications on Linux, but using Cocoa and Growl on OS X, where each is the optimal solution for its respective platform but not for the other.<br/><br/>In the end, the goal is to have just that—the best for each platform. High-level feature parity is a nice plus, but having a common base is the big goal. How would it benefit <i>you</i> personally if the dependencies were the same everywhere? Libraries need to be handled separately for each platform anyway.
+</div>
+</div>
+
+<div class='frm pst' id='pid3244' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3247.html#pid3239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3244' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3244.html#pid3244'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-09-15 10:14
+</div>
+<div class='ccl'>
+&quot; Why would the Gosu development team make such a seemingly stupid and pointless decision,&quot;<br/>There&#39;s a team?<br/><br/>If you only issue is the fact that its closed source then I wouldn&#39;t worry about making games on Windows, Mac, or iOS.<br/><br/>If you want to use SDL_Mixer then go for it there is nothing stopping you :D
+</div>
+</div>
+
+<div class='brn' id='brn3244'>
+<div class='frm pst' id='pid3245' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3247.html#pid3244'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3245.html#pid3245'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-15 10:31
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; There&#39;s a team?</p></blockquote><br/>The initial SDL_mixer port was actually written by Jan Lücker, when he did first port Gosu to Linux. He(?) also started an OpenAL Linux backend way before I touched OpenAL later. Not sure what the problem was back then.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=464.html#tid464'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=464.html#tid464'>Gosu Exchange</a> / WHY would you require multiple audio libraries?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3247.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

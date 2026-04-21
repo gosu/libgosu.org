@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7337 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu collision classes</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7337' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=989.html#tid989'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=989.html#tid989'>Gosu Exchange</a> / Gosu collision classes
+</div>
+</div>
+
+<div class='frm pst' id='pid7334' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7334' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7334.html#pid7334'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2013-10-12 12:51
+<span class='htt'>Edited</span> 2013-10-29 19:00
+</div>
+<div class='ccl'>
+When making a game, many problems come from collisions of objects. Most of games use simple bounding boxes, but they are not useful in all situations.<br/>Well, what I&#39;m showing here are not pixel-perfect colliders, but still they are pretty useful. To standard bounding box I added a circular collision, but this would be too simple. So I made the boxes rotating.<br/><br/>I based on this: <a class='ura' href='http://www.gamedev.net/page/resources/_/technical/game-programming/2d-rotated-rectangle-collision-r2604'>http://www.gamedev.net/page/resources/_/technical/game-programming/2d-rotated-rectangle-collision-r2604</a><br/>And this: <a class='ura' href='http://www.migapro.com/circle-and-rotated-rectangle-collision-detection/'>http://www.migapro.com/circle-and-rotated-rectangle-collision-detection/</a><br/>So our rectangles and circles can now collide with themselves upon any angle. They are just helper classes to attach to object and then check if they intersect.<br/><br/>The code is here: <a class='ura' href='http://pastebin.com/Yxu9NTEy'>http://pastebin.com/Yxu9NTEy</a><br/>Just copy it to your project and use the classes.<br/>Example is attached to post.<br/><br/><code>initialize</code> method of <b>Collision_Box </b>takes x, y, width, height and angle of box in degrees<br/>And <b>Collision_Ball</b> takes x,y and radius<br/>Both classes provide methods called <code>set</code> for setting position of collider and <code>move</code> which moves collider (well, rather useless one)<br/>And of course, to check collision, you use <code>collides?</code> method passing another collider as argument.<br/><br/>Well, enjoy.<br/><br/>EDIT:<br/>I forgot to mention that boxes can be rotated only around center.<br/><br/>EDIT2:<br/>Added Collision_Group. Shapes in Collision_Group move relatively to group and any of them triggers collision of whole group.<br/><br/>EDIT3:<br/>Now all objects from group rotate around group origin.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/34/7334/Collision_Test.zip'>Collision_Test.zip</a>  (3k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn7334'>
+<div class='frm pst' id='pid7335' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7334'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7335' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7335.html#pid7335'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-10-12 15:05
+</div>
+<div class='ccl'>
+I suspect it would be more efficient without the <code>Vector</code> class - especially on 64-bit versions of Ruby 2.0.0 where Floats &quot;immediate&quot; :)
+</div>
+</div>
+
+<div class='brn' id='brn7335'>
+<div class='frm pst' id='pid7336' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7335'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7336' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7336.html#pid7336'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2013-10-13 10:03
+</div>
+<div class='ccl'>
+First I wanted to use simple arrays, but besides looking quite confusing, would they be more efficient? I&#39;m not such expert in optimisations.
+</div>
+</div>
+
+<div class='brn' id='brn7336'>
+<div class='frm pst' id='pid7337' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7336'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7337' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7337.html#pid7337'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-10-13 12:53
+</div>
+<div class='ccl'>
+No, that would still be a burden on the GC. Using the <code>Float</code>s directly should be the fastest way to do it in pure Ruby.<br/><br/>Of course, this library is a prime candidate to be turned into a C extension, if performance is ever an issue :) That would easily beat optimised Ruby.
+</div>
+</div>
+
+<div class='brn' id='brn7337'>
+<div class='frm pst' id='pid7341' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7337'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7341' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7341.html#pid7341'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2013-10-15 13:54
+</div>
+<div class='ccl'>
+Ok, I removed vectors and it still works. The code is updated, but not the example.<br/>I also added some simple Collision_Group class.
+</div>
+</div>
+
+<div class='brn' id='brn7341'>
+<div class='frm pst' id='pid7352' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7341'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7352.html#pid7352'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-17 06:09
+</div>
+<div class='ccl'>
+This sounds very exciting - especially the rotating rectangular collisions. I am looking forward to trying it out soon.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7443' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7334'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7443' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7443.html#pid7443'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-10-29 11:55
+</div>
+<div class='ccl'>
+Just curious, but why are you implementing your own system instead of just using Chipmunk?
+</div>
+</div>
+
+<div class='brn' id='brn7443'>
+<div class='frm pst' id='pid7445' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7443'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7445' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7445.html#pid7445'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2013-10-29 14:52
+</div>
+<div class='ccl'>
+Using your own code gives more control and my way it&#39;s easier to use than Chipmunk.<br/>Anyway, I never used Chipmunk, but instead some inconvenient simple equations. I was looking for some rotated collisions for XNA, found these articles and one day I just wanted them to port into Gosu.
+</div>
+</div>
+
+<div class='brn' id='brn7445'>
+<div class='frm pst' id='pid7477' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7445'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7477' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7477.html#pid7477'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-11-05 16:34
+</div>
+<div class='ccl'>
+I suppose by &quot;easier to use&quot; you mean it&#39;s easier to get the sort of motion you desire?<br/><br/>I find the syntax of Chimpunk (at least through Ruby) to be really nice,<br/>but I do agree that using a physics engine to do character movement or something can be tricky.<br/><br/>(Though I think if you set velocities instead of using forces it&#39;s exactly the same as rolling your own thing (I&#39;ve never actually done that... but I&#39;m considering it for my next project))
+</div>
+</div>
+
+<div class='brn' id='brn7477'>
+<div class='frm pst' id='pid7481' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7477'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7481' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7481.html#pid7481'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2013-11-05 20:09
+</div>
+<div class='ccl'>
+I don&#39;t know exactly how is it in Chipmunk, but my collision classes are simple &#39;attachments&#39;. You don&#39;t need any special &#39;space&#39; nor any forces or velocities. You move your character in your own way then only update the position of box/circle to follow it. And collision testing is as simple as calling method of Collider A while passing Collider B as argument.
+</div>
+</div>
+
+<div class='brn' id='brn7481'>
+<div class='frm pst' id='pid7488' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7481'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7488.html#pid7488'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-11-07 00:38
+</div>
+<div class='ccl'>
+I like the concept of a Space, because that way you have a collection where all the physics stuff is.&#160; You can&#39;t figure out things like &quot;which object are in this area&quot; without looping over a bunch of collision classes.&#160; Might as well store them all in a collection which can optimize queries by breaking up the game world into smaller bits. (Avoids looping over ALL objects every query).<br/><br/>Velocities are just changes in position over time, which is almost the same as moving a position by a certain amount each frame.&#160; The main difference is that you can move to thinking in real time units, instead of game ticks.<br/><br/>-----<br/><br/>For collision testing between two objects, Chipmunk allows you to set up callbacks, which fire when objects collide.<br/>I prefer callbacks over having to manually poll the system<br/>(I do input parsing in Gosu::Window#button_down rather than using #button_down? as well)<br/>but I will concede that is simply a matter of personal taste.<br/><br/>I think callbacks make it easier to organize code, allowing you to split up different types of collisions into separate files.<br/>(Chipmunk callbacks are also tied to objects, so you can use inheritance if you want to :D)<br/><br/>Also, having a system to compute collision pairs for you removes the need to check if you&#39;re currently testing<br/>&quot;A1 with B1&quot; or &quot;B1 with A1&quot;<br/>both of which are the same collision, and you only want to process that collision once.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7997' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7997' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7997.html#pid7997'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2014-09-02 19:50
+</div>
+<div class='ccl'>
+I know this topic is very old (the time just flies, lol).<br/>The classes I made seemed to be good, until I used them in game. Then they proved to be useless, because more complex game needs more than 10 colliding objects at once.<br/>So, following the suggestion by RavensKrag and the popularity of my lighting helper I posted some time ago (7 downloads, wow), I&#39;m sharing the &#39;ultimate closure&#39; to this topic.<br/>This means I used Chipmunk to make automated collision manager. It sets the space for you and manages colliders. It works almost like my previous classes, but the objects are now dependent on the manager. This adds 1 additional argument to each of objects&#39; constructor (or none, if you make manager global) and 3 lines of code to your game, so it&#39;s still simple.<br/>But the most important: efficiency. It easily manages 500+ objects with 60 FPS. It would be much more, but drawing in the example is not optimized.<br/><br/>Download it <a class='url' href='http://db.orangedox.com/8fn2Bz5h2tXf7NTcih/collisions_for_gosu_chipmunk.zip'><b>HERE</b></a>.<br/>Hope someone finds it useful.
+</div>
+</div>
+
+<div class='brn' id='brn7997'>
+<div class='frm pst' id='pid8000' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid7997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8000' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8000.html#pid8000'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-09-02 23:53
+</div>
+<div class='ccl'>
+Hey, this is great! Thanks for sharing!<br/><br/>Tiny suggestion: Add one argument to pass a Gosu::Window to Collision_Manager&#39;s constructor, and use its #update_interval instead of hard-coding the delta-time. It could also be used for &quot;debug drawing&quot;, if one wanted to add that (it would be pretty easy to convert your existing example code).<br/><br/>Also, I noticed some references to &quot;lights&quot; in the readme, which was a little confusing at first (copy/paste error?)
+</div>
+</div>
+
+<div class='brn' id='brn8000'>
+<div class='frm pst' id='pid8001' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8000'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8001' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8001.html#pid8001'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2014-09-03 09:00
+</div>
+<div class='ccl'>
+Delta time uses only one constant, but maybe it&#39;s better to change it, since everyone would just use the FPS value.<br/>I&#39;m not sure about the debug drawing, because you have no access to the shape&#39;s vertices (as far as I know), so you need additional variables.<br/>And the mistake in readme is because I copied the content from my previous light helper. Sorry :)<br/><br/>Updated the file.
+</div>
+</div>
+
+<div class='brn' id='brn8001'>
+<div class='frm pst' id='pid8055' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8055' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8055.html#pid8055'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-29 16:08
+</div>
+<div class='ccl'>
+You can get the vertices of any <code>CP::Shape::Poly</code> object by using <code>#vert(i)</code>, where <code>i</code> is the index of the vert you want to retrieve. You can see how many verts there are by using <code>#num_verts</code>.<br/><br/>This interface is taken directly from the C API, and as such is very clunky and extremely un-Ruby-like.<br/><br/>I plan to submit a patch to the Chipmunk repo eventually with my interface modification to make this much more pleasant<br/>(but don&#39;t hold your breath :P I think I&#39;ve been saying that for at least a year now)<br/><br/>If you want some clean interface goodness RIGHT NOW feel free to use this monkeypatch:<br/><a class='ura' href='https://gist.github.com/RavensKrag/f64eae75de5e4eb68378'>https://gist.github.com/RavensKrag/f64eae75de5e4eb68378</a><br/><br/>That&#39;s the code I wrote, and have been using in my projects.<br/>It defines various names for iterators over the vertices in a Poly object.<br/><br/>Feel free to use whatever interface feels the most natural to you.
+</div>
+</div>
+
+<div class='brn' id='brn8055'>
+<div class='frm pst' id='pid8058' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8055'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8058' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8058.html#pid8058'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2014-09-29 17:12
+</div>
+<div class='ccl'>
+Provided method returns only absolute position of vertices (same as initial ones). I have to add body position and calculate rotations, so it doesn&#39;t do anything new :/ Your method is probably the same?
+</div>
+</div>
+
+<div class='brn' id='brn8058'>
+<div class='frm pst' id='pid8060' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8058'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8060' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8060.html#pid8060'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-29 22:37
+</div>
+<div class='ccl'>
+Yes, my code is just a interface tweak over the raw functionality.<br/><br/>However, you can turn local-space coordinates to world-space ones using CP::Body#local_to_world(vec). This will take into account the position and rotation of the body. Totally already part of Chipmunk :D<br/><br/>(I should probably at least consider adding iteration over the world-space coordinates as well.)
+</div>
+</div>
+
+<div class='brn' id='brn8060'>
+<div class='frm pst' id='pid8064' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8060'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8064' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8064.html#pid8064'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2014-09-30 12:42
+</div>
+<div class='ccl'>
+Actually it&#39;s <code>#local2world(vec)</code>, but thanks anyway.
+</div>
+</div>
+
+<div class='brn' id='brn8064'>
+<div class='frm pst' id='pid8065' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8064'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8065.html#pid8065'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-30 13:24
+</div>
+<div class='ccl'>
+oh derp. I could have sworn I double-checked that before posting.<br/><br/>Yes, you are right. I always mess that up.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8054' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8000'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8054' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8054.html#pid8054'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-29 15:59
+</div>
+<div class='ccl'>
+Chipmunk expects a fixed timestep, and the simulation can degrade rapidly if the timestep is not fixed.<br/><br/>This is related to the compounding error of the integration solver. The Euler method assumes that the error will level out when taking fixed steps of small size. But when the steps start to get large (which is possible when the timestep is not fixed) then things can get weird.<br/><br/>This is the canonical article on the subject, but it can indeed be a bit confusing.<br/><a class='ura' href='http://gafferongames.com/game-physics/fix-your-timestep/'>http://gafferongames.com/game-physics/fix-your-timestep/</a><br/><br/>The takeaway as I understand it is that you should think about how the physics system will degrade as the game starts to lag, and not just about how the game will run in the best case.
+</div>
+</div>
+
+<div class='brn' id='brn8054'>
+<div class='frm pst' id='pid8057' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8054'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8057' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8057.html#pid8057'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-09-29 17:01
+</div>
+<div class='ccl'>
+My point wasn&#39;t to give the game the ability to alter the time-step &quot;on the fly&quot;. I just thought it would be better to have the time-step match whatever the programmer already chose for Gosu&#39;s update rate. This way, there is only one place to make the change, so they will always match.<br/><br/>Thanks for that bit of insight into physics engines, though.
+</div>
+</div>
+
+<div class='brn' id='brn8057'>
+<div class='frm pst' id='pid8061' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7337.html#pid8057'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8061.html#pid8061'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-09-29 22:40
+</div>
+<div class='ccl'>
+Ah, sorry, my mistake. I guess I didn&#39;t understand how #update_interval works as well as I thought I did. Yes, that sounds like a fine idea.<br/><br/>(Sounds like my post was still somewhat useful, so at least there&#39;s that.)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=989.html#tid989'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=989.html#tid989'>Gosu Exchange</a> / Gosu collision classes
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7337.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

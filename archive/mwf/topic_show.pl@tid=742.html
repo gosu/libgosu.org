@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby Gosu unknown file format for playing song?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=742.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=742.html#tid742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=742.html#tid742'>Gosu Exchange</a> / Ruby Gosu unknown file format for playing song?
+</div>
+</div>
+
+<div class='frm pst' id='pid5740' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5740' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5740.html#pid5740'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-04-14 20:14
+</div>
+<div class='ccl'>
+<code>class GameWindow &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; super(1000,650,false)<br/>&#160; &#160; self.caption = $system.title<br/>&#160; &#160; @music = Gosu::Song.new(self, &quot;Resources/Despondent.mp3&quot;)<br/>&#160; &#160; @music.play<br/>&#160; end<br/><br/>end</code><br/><br/>And throws this error:<br/><br/><code>&gt;ruby Game.rb<br/>C:/Ruby192/lib/ruby/gems/1.9.1/gems/gosu-0.7.43-x86-mingw32/lib/gosu/patches.rb:36:in <code>initialize&#39;: File contains data in an unknown format. (RuntimeError)<br/>&#160; from C:/Ruby192/lib/ruby/gems/1.9.1/gems/gosu-0.7.43-x86-mingw32/lib/gosu/patches.rb:36:in </code>initialize&#39;<br/>&#160; from Game.rb:18:in <code>new&#39;<br/>&#160; from Game.rb:18:in </code>initialize&#39;<br/>&#160; from Game.rb:31:in <code>new&#39;<br/>&#160; from Game.rb:31:in </code>&lt;main&gt;&#39;<br/><br/></code><br/><blockquote><p>&gt;Exit code: 1</p></blockquote><br/>It is a .mp3 file, and I believe the path is correct (I have my images in that Resources folder too, and they load fine).<br/><br/>I am running through SciTe script editor.
+</div>
+</div>
+
+<div class='brn' id='brn5740'>
+<div class='frm pst' id='pid5741' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid5740'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5741' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5741.html#pid5741'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-04-14 21:15
+<span class='htt'>Edited</span> 2012-04-14 22:50
+</div>
+<div class='ccl'>
+Gosu can play only .wav or .ogg.<br/><br/>MP3&#39;s decryption has a copy-write to pay for and since Gosu is a free-to-use library, using MP3&#39;s didn&#39;t end up being a feature.<br/><br/>However, to get around this, download and use Audacity. You can convert your .mp3 file to either .wav or .ogg. :)
+</div>
+</div>
+
+<div class='brn' id='brn5741'>
+<div class='frm pst' id='pid5742' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid5741'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5742' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5742.html#pid5742'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-04-14 22:51
+</div>
+<div class='ccl'>
+I see. Is the quality kept the same or is it affected by the conversion?
+</div>
+</div>
+
+<div class='brn' id='brn5742'>
+<div class='frm pst' id='pid5745' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid5742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5745.html#pid5745'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-04-14 23:38
+</div>
+<div class='ccl'>
+More or less, yes. You can alter the quality under preferences. The higher the conversion quality for .ogg, the bigger the file. The smaller the quality, the smaller the file (but most people may not notice the differences!)
+</div>
+</div>
+
+<div class='frm pst' id='pid5750' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid5742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5750.html#pid5750'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2012-04-15 10:14
+</div>
+<div class='ccl'>
+OggVorbis is usually regarded as a better format for audio than MP3, but converting between them will result in some loss of quality because they both chuck out some data to keep file sizes down.
+</div>
+</div>
+
+<div class='frm pst' id='pid5771' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid5742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5771.html#pid5771'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-04-20 07:38
+</div>
+<div class='ccl'>
+OGG uses compression, just like MP3.&#160; The difference in quality (compared to say, FLAC) comes from which portion of the spectrum the compression chooses to favor.&#160; IIRC, OGG tends to favor pitches in the range of human voices, while MP3 is equally compressed throughout.<br/><br/>I could be totally wrong though.&#160; I remember reading an article online about it a while back, but I can&#39;t seem to find it right now.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6463' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid5741'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6463' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6463.html#pid6463'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2013-01-16 03:17
+</div>
+<div class='ccl'>
+By the way, how come other free libraries like cocos2d-iphone can run .mp3 files anyway?
+</div>
+</div>
+
+<div class='brn' id='brn6463'>
+<div class='frm pst' id='pid6464' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=742.html#pid6463'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6464.html#pid6464'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-16 03:48
+</div>
+<div class='ccl'>
+Gosu can play MP3 on iOS (just like Cocos2D) because it uses the iOS system APIs. (Using OGG on the iPhone is a very bad idea, because OGG decoding is not hardware-accelerated.)<br/><br/>I honestly don&#39;t understand the exact licensing scheme for MP3. If I could get each operating system&#39;s APIs to decode MP3 files for me, I would support it for development purposes alone. (Just like Gosu supports loading from PSD files and it makes prototyping nicer - probably - I haven&#39;t tried it a lot yet)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=742.html#tid742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=742.html#tid742'>Gosu Exchange</a> / Ruby Gosu unknown file format for playing song?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=742.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7897 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Alternate Solutions to Multiple Windows?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7897' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1109.html#tid1109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1109.html#tid1109'>Gosu Exchange</a> / Alternate Solutions to Multiple Windows?
+</div>
+</div>
+
+<div class='frm pst' id='pid7853' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7853' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7853.html#pid7853'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1144' >FireThestrak</a>
+<span class='htt'>Date</span> 2014-06-16 22:01
+</div>
+<div class='ccl'>
+I&#39;ve been kicking around the forum a bit trying to find a solution for this, but I decided to go ahead and ask straight out.<br/><br/>I&#39;m trying to make a simple launcher using Gosu. Akin to, though not as complicated as, Minecraft.<br/>I&#39;ve got a fullscreen window in which the game is played in (currently just one level), and I want to add a launcher (600x800, not fullscreen) that has level-select capabilities.<br/><br/>I&#39;ve seen around the forums that multiple windows would be a pain to implement and is therefore not supported. But is there a way to swap between two screen resolutions and fullscreen?
+</div>
+</div>
+
+<div class='brn' id='brn7853'>
+<div class='frm pst' id='pid7854' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7853'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7854' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7854.html#pid7854'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2014-06-17 08:25
+<span class='htt'>Edited</span> 2014-06-17 08:38
+</div>
+<div class='ccl'>
+AFAIK dynamic resolution change is impossible, but from what I understand, you just need 2 Gosu::Window classes, e.g. <code>Launcher &lt; Gosu::Window</code> and <code>Game &lt; Gosu::Window</code>. First you create and show the Launcher window, and inside you need a method that will call <code>Game.new.show</code> and <code>close</code> (in this order) after some event (e.g. key pressed).<br/><br/>If you need an existing example, check <a class='url' href='https://github.com/Jahmaican/jcaster/blob/master/launcher.rb'>this one</a>.<br/><br/>And frankly, I never tried it, but if you needed multiple windows at once, I don&#39;t see how this would be a pain. You&#39;d just need an observer to pass data between them, or even go wild and use global variables (but then you will be judged).
+</div>
+</div>
+
+<div class='brn' id='brn7854'>
+<div class='frm pst' id='pid7857' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7857.html#pid7857'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-06-17 20:04
+</div>
+<div class='ccl'>
+It probably works on some platforms but it&#39;s not officially supported (yet). :(
+</div>
+</div>
+
+<div class='frm pst' id='pid7860' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7860.html#pid7860'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1144' >FireThestrak</a>
+<span class='htt'>Date</span> 2014-06-18 03:13
+</div>
+<div class='ccl'>
+Ah, I see what you are doing. I got that working, but what I really wanted to do was bring the launcher back after the game window closed so that the player wouldn&#39;t need to relaunch the application from the level select screen. But when I do things get... weird. Like the draw method breaks or something. I haven&#39;t had the time for a proper debug.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7858' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7853'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7858' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7858.html#pid7858'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-06-17 20:07
+</div>
+<div class='ccl'>
+I don&#39;t think that&#39;s &quot;officially&quot; possible right now. However I am in the process of moving most <code>Gosu::Window</code> implementations on top of SDL2, and I think that&#39;ll make it easier to add support for resolution changing soon. For now the only thing that&#39;s guaranteed to work is to have two executables/apps (depending on your OS) and closing the first while launching the second.
+</div>
+</div>
+
+<div class='brn' id='brn7858'>
+<div class='frm pst' id='pid7859' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7858'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7859.html#pid7859'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2014-06-17 22:15
+</div>
+<div class='ccl'>
+There is a way to change screen resolution without having 2+ separate Gosu::Window implementations. I&#39;ve done it in my game, for switching between fullscreen and windowed mode (but it works with resolution as well - checked that). Basically you either create global variables with size ($game_width, $game_height), or add arguments to GameWindow &lt; Gosu::Window initialize. When you create a window, make it global too, so when you first create it, you do it like that:<br/><code>$window = GameWindow.new(800,600) #w,h<br/>$window.show<br/><br/># GameWindow&#39;s initialize method:<br/>def initialize(width, height)<br/>super(width, height, false)<br/>...<br/>end</code><br/>Then, let&#39;s say in your options menu, you have the option to change the resolution to 1024x768. To make it work, you can simply use this:<br/><code>$window.close<br/>$window = GameWindow.new(1024,768)<br/>$window.show</code><br/><br/>And it will restart your window with new size. You may further alter it to open with certain things on, ie. in Die Erlösung I made the window to take one argument - target (a Symbol), and depending on the target, we&#39;re sent to either a Intro/Splash, Title screen or Settings screen. So there&#39;s plenty of possibilities.
+</div>
+</div>
+
+<div class='frm pst' id='pid7861' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7858'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7861' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7861.html#pid7861'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1144' >FireThestrak</a>
+<span class='htt'>Date</span> 2014-06-18 03:21
+</div>
+<div class='ccl'>
+Oh, yeah, SDL2 would be sweet.<br/><br/>I quickly tried the following:<br/><br/><code>require &#39;./lib/engine.rb&#39;<br/>require &#39;./lib/home.rb&#39;<br/><br/>loop do<br/>&#160; home_window = HomeWindow.new<br/>&#160; home_window.show<br/>&#160; home_window.close<br/>&#160; break if home_window.exit<br/><br/>&#160; game_window = GameWindow.new<br/>&#160; game_window.show<br/>&#160; game_window.close<br/>end</code><br/><br/>Which after the first iteration starts to freak out. Looks like the <code>draw</code> method is stuck on the same frame (may be an issue with <code>update</code>...) and flopping back and forth between the frame and a black window.<br/>I haven&#39;t done any real digging yet... But trying unofficial things leads to unofficial bugs.
+</div>
+</div>
+
+<div class='brn' id='brn7861'>
+<div class='frm pst' id='pid7863' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7861'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7863' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7863.html#pid7863'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2014-06-18 07:31
+</div>
+<div class='ccl'>
+Unofficial bugs are the best bugs! Your attitude is wrong though. Someone tells you something is impossible, you should try and prove him wrong. This is how lots of crazy stuff is done.<br/><br/>I&#39;m sincerely suprised fiddling around with windows can be this nondeterministic. Shame that I don&#39;t have much time recently, because I&#39;d love to do some more research on this matter.<br/><br/>Although, I guess the problems would be OS dependant, so if you make it work in your environment and don&#39;t mind targeting only the platform you&#39;re using, there&#39;s a good chance it&#39;ll be okay for most users too.
+</div>
+</div>
+
+<div class='brn' id='brn7863'>
+<div class='frm pst' id='pid7865' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7863'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7865.html#pid7865'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-06-18 21:41
+</div>
+<div class='ccl'>
+Right, usually this ends up in bug reports where everything works fine on Windows but suddenly the Mac port crashes, etc. :)<br/><br/>If it works on one platform and that&#39;s good enough, there&#39;s no reason not to rely on it, as far as I&#39;m concerned.
+</div>
+</div>
+
+<div class='frm pst' id='pid7869' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7863'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7869.html#pid7869'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1144' >FireThestrak</a>
+<span class='htt'>Date</span> 2014-06-22 19:54
+</div>
+<div class='ccl'>
+Believe me, if I had time I&#39;d love to mess around with this, but my project ends in eight days. So if it requires digging, I&#39;m just going to skip it for now.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7897' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7897.html#pid7853'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7897.html#pid7897'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2014-07-12 18:28
+<span class='htt'>Edited</span> 2014-07-12 18:34
+</div>
+<div class='ccl'>
+I found a mac specific solution that should be portable to other platforms. The idea is that I created two Ruby Gosu applications. One for the launcher and one for the game. In ruby you can call a command in a subshell using the &quot;system&quot; method. In Launcher.app I use the system command to start Game.app and if it opens successfully then I close the launcher window.<br/><br/>You can download the working example here: <a class='ura' href='https://github.com/Aerotune/gosu_mac_game_launcher'>https://github.com/Aerotune/gosu_mac_game_launcher</a><br/><br/>I&#39;m using mac and to open an application I can enter &quot;open -a /path/to/game.app&quot; in the terminal. This is system specific and you would need to find out how you would do it on Windows and Linux.<br/><br/><b>Mac specific example for a Launcher.app&#39;s main.rb:</b><br/><code><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super 400, 300, false<br/><br/>&#160; &#160; self.caption = &quot;Game Launcher!&quot;<br/>&#160; &#160; @font = Gosu::Font.new(self, &quot;Arial&quot;, 16)<br/>&#160; &#160; @message = &quot;Game Launcher! Press Enter to start game!&quot;<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; x = self.width / 2 - @font.text_width(@message)/2.0<br/>&#160; &#160; y = self.height / 2 - 8<br/>&#160; &#160; @font.draw @message, x, y, 0<br/>&#160; end<br/>&#160; <br/>&#160; def button_down id<br/>&#160; &#160; case id<br/>&#160; &#160; when Gosu::KbReturn<br/>&#160; &#160; &#160; game_path = &quot;/path/to/Game.app&quot;<br/>&#160; &#160; &#160; if system &quot;open -a #{game_path}&quot;<br/>&#160; &#160; &#160; &#160; # successfully opened the game!<br/>&#160; &#160; &#160; &#160; close<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; @message = &quot;Failed to open the game!&quot;<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>Window.new.show<br/></code><br/> <br/><br/>Documentation for Ruby &#39;system&#39; method<br/><a class='ura' href='http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-system'>http://www.ruby-doc.org/core-1.9.3/Kernel.html#method-i-system</a><br/><br/>Documentation for Mac &#39;open&#39; command<br/><a class='ura' href='https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/open.1.html'>https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/open.1.html</a><br/><br/>Edit: If you have trouble parsing what level to load to the game from the launcher I could help out with how you could do it.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1109.html#tid1109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1109.html#tid1109'>Gosu Exchange</a> / Alternate Solutions to Multiple Windows?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7897.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

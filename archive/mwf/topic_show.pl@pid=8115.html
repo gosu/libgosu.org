@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8115 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Calculating collision with isometric tiles</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8115' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1153.html#tid1153'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1153.html#tid1153'>Gosu Exchange</a> / Calculating collision with isometric tiles
+</div>
+</div>
+
+<div class='frm pst' id='pid8108' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8108' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8108.html#pid8108'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1169.html' >Naoya</a>
+<span class='htt'>Date</span> 2014-11-10 12:35
+</div>
+<div class='ccl'>
+So, I&#39;ve been quite lost in this matter for a few days and hoped someone can clarify this thing for me as my math sucks :x<br/><br/>Here is a screenshot of a game I&#39;m making to learn about gosu:<br/><br/><img class='emi' src='http://www.victoryam.com.br/isoprototype.jpg' alt=''/><br/><br/>The numbers on the tiles are X / Y of their coordinates in an array[y][x] that describes each tile passability (I did not draw the map by tiles, I just loaded an image).<br/><br/>The blue boxes around the player are his collision boxes (for the sake of this post just consider the light blue one).<br/><br/>The pink tiles are the ones I&#39;m testing the collisions, you can disregard them.<br/><br/>After hours and hours of suffering I could make the code that detects if the player (or any entity) had collided with an specific tile. Setting aside the fact that my way is certainly not the most effective way of doing it, I have two problems:<br/><br/>1. I need to know the axis in which the player collided with the tile (so I can block his movement just on this axis).<br/>2. I need to know in which tile (or which tiles) the player is in so I can calculate the collision with adjacent tiles in the event of his movement.<br/><br/>Also I&#39;m using a rectangular collision box for the player which I&#39;m not certain if is the most efficient way of doing it.<br/><br/>If anyone have an idea on how to do it, please share with me :)
+</div>
+</div>
+
+<div class='brn' id='brn8108'>
+<div class='frm pst' id='pid8109' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8115.html#pid8108'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8109' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8109.html#pid8109'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-11-10 19:06
+</div>
+<div class='ccl'>
+You&#39;re making a lot of unnecessary work for yourself trying to do collision testing in &quot;screen-space&quot;. Just keep the player&#39;s position in the same, rectangular coordinate system you&#39;re using for the map (the &quot;0/0&quot;, etc.), test for collisions with simple array operations, then project the player&#39;s position to screen-space for drawing, afterward.
+</div>
+</div>
+
+<div class='brn' id='brn8109'>
+<div class='frm pst' id='pid8110' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8115.html#pid8109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8110' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8110.html#pid8110'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1169.html' >Naoya</a>
+<span class='htt'>Date</span> 2014-11-10 19:08
+</div>
+<div class='ccl'>
+I&#39;m not sure I understood, that would mean that a player is always occupying one square (and when it moves it moves one square at a time)?
+</div>
+</div>
+
+<div class='brn' id='brn8110'>
+<div class='frm pst' id='pid8115' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8115.html#pid8110'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8115.html#pid8115'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-11-11 00:25
+</div>
+<div class='ccl'>
+Well, obviously there will have to be some kind of coordinate scaling involved, or you could use floats to hold the sprite positions, and just truncate (floor) to get the integer tile coordinate (and, when projecting to the screen, multiply by how many pixels &quot;wide&quot; a tile is; i.e. from one side to its parallel side, not from corner to corner).<br/>If you want to (or have to) work with sprite positions in pixels, you could reverse-project the pixel position (i.e. the center of the bottom edge of the light-blue rectangle) back to the map coordinates for testing (which will also require some scaling/truncation).
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8119' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8115.html#pid8108'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8119.html#pid8119'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-11-11 05:49
+</div>
+<div class='ccl'>
+I agree with RunnerPack. This will become very messy if you want to check for collisions between straight and &quot;diamond&quot; boxes.<br/><br/>To block movement, I would not move the player and then check for collisions afterwards. Instead, if the player is moving left at 4px per frame, you could basically do:<br/><br/><code>4.times do<br/>&#160; self.x -= 1<br/>&#160; if self.blocked?<br/>&#160; &#160; self.x += 1<br/>&#160; &#160; # ...hit something to the left...<br/>&#160; &#160; break<br/>&#160; end<br/>end</code><br/><br/>...and this for all four directions. Not super efficient, but at least easy to understand :) And the easiest way to implement this would be to make the player a single point. Whether that works depends on the game, I guess:<br/><br/><code>def blocked?<br/>&#160; game.map.solid_at? self.x, self.y<br/>end</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid8123' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8115.html#pid8108'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8123' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8123.html#pid8123'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1169.html' >Naoya</a>
+<span class='htt'>Date</span> 2014-11-11 22:33
+</div>
+<div class='ccl'>
+Hmm I got it. But one of the things I&#39;m having difficulty is how to come up with the math to convert pixel coordinates to my isometric tile coordinates (knowing which pixel belong to which tile).<br/><br/>With square tiles is easy you only have to divide the x for the tile width and the y for the tile height, but the isometric grid is kinda different on the format and organization of the tiles :/<br/><br/>Sorry to bother with such a newbie question, by the way D: It&#39;s more of a problem with algebra than gosu itself
+</div>
+</div>
+
+<div class='brn' id='brn8123'>
+<div class='frm pst' id='pid8153' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8115.html#pid8123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8153.html#pid8153'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-12-04 08:11
+</div>
+<div class='ccl'>
+Having problems with isometric coordinates is a pretty common thing, and I&#39;m rather frustrated that there&#39;s not one super solid tutorial that I can just refer people to in times like this.<br/><br/>However, there are a handful of different articles linked here<br/><a class='ura' href='http://www-cs-students.stanford.edu/~amitp/gameprog.html'>http://www-cs-students.stanford.edu/~amitp/gameprog.html</a><br/>and maybe reading one or more of those will help you to understand.<br/><br/>I personally thought that this one in particular was pretty good:<br/><a class='ura' href='http://gamedevelopment.tutsplus.com/tutorials/creating-isometric-worlds-a-primer-for-game-developers--gamedev-6511'>http://gamedevelopment.tutsplus.com/tutorials/creating-isometric-worlds-a-primer-for-game-developers--gamedev-6511</a>
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1153.html#tid1153'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1153.html#tid1153'>Gosu Exchange</a> / Calculating collision with isometric tiles
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8115.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

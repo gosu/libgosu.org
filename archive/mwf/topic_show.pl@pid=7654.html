@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7654 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>draw_rectangle vs image for bullet</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7654' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=855.html#tid855'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=855.html#tid855'>Gosu Exchange</a> / draw_rectangle vs image for bullet
+</div>
+</div>
+
+<div class='frm pst' id='pid6559' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6559' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6559.html#pid6559'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=996.html' >mydoghasworms</a>
+<span class='htt'>Date</span> 2013-02-19 10:38
+</div>
+<div class='ccl'>
+Hi guys!<br/><br/>Firstly, let may say a HUGE thanks for this project! Finally I am able to write a game in my favorite language (Ruby)!<br/><br/>I am writing a Space Invaders game where I am drawing bullets on the screen, which will basically be a 10x2px monochrome stripe on the screen, and will only face one direction.<br/><br/>What is quicker: calling draw_rectange or using a 2x10 image?<br/><br/>Thanks!
+</div>
+</div>
+
+<div class='brn' id='brn6559'>
+<div class='frm pst' id='pid6560' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7654.html#pid6559'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6560.html#pid6560'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-02-19 11:51
+</div>
+<div class='ccl'>
+I&#39;m not sure if there&#39;s much difference, but if you want to use image, remember to load it only once for all bullets.
+</div>
+</div>
+
+<div class='frm pst' id='pid6562' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7654.html#pid6559'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6562.html#pid6562'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-02-19 14:50
+</div>
+<div class='ccl'>
+I would go with images for everything. Makes it easier to add any kind of effect later on too (e.g. glow).<br/><br/>Glad you enjoy Gosu :)
+</div>
+</div>
+
+<div class='frm pst' id='pid7615' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7654.html#pid6559'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7615' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7615.html#pid7615'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1074.html' >Donna111</a>
+<span class='htt'>Date</span> 2013-12-31 07:34
+</div>
+<div class='ccl'>
+HI there<br/>Here is a code for that:<br/>&#160; &#160; &#160; &#160; public static void Test()<br/>&#160; &#160; &#160; &#160; {<br/>&#160; &#160; &#160; &#160; &#160; &#160; try<br/>&#160; &#160; &#160; &#160; &#160; &#160; {<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; RectangleAnnotation obj = new RectangleAnnotation();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; // set annotation size <br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.X = 60.0F;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.Y = 45.0F;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.Width = 561.0F;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.Height = 228.0F;<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; //set annotation edge property<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.OutLine = new LinePen();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.OutLine.Width = 5.0F;//set annotation edge width<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.OutLine.Brush = new AnnotationBrush();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.OutLine.Brush.FillType = RasterEdge.<a class='url' href='http://www.rasteredge.com/how-to/csharp-imaging/image-annotating/'>Imaging Annotation</a>.FillType.Solid;//set annotation edge style<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.OutLine.Brush.Solid_Color = Color.Blue;//set annotation edge color<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; //set the property of filled shape<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.Fill = new AnnotationBrush();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.Fill.FillType = RasterEdge.Imaging.Annotation.FillType.Solid;//set filled shape style<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.Fill.Solid_Color = Color.Gray;//set filled shape color<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; //set the property of shadow<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.ShadowFill = new AnnotationBrush();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.ShadowFill.FillType = RasterEdge.Imaging.Annotation.FillType.Solid;//set shadow style<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.ShadowFill.Solid_Color = Color.DarkGreen;//set shadow color<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.ShadowX = 10.0F;//set shadow position<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.ShadowY = 12.0F;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; obj.ShowShadow = true;//show shadow or not<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; string folderName = &quot;C:/&quot;;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Bitmap img = obj.<a class='url' href='http://www.rasteredge.com/how-to/csharp-imaging/image-annotating-rectangle/'>Create Rectangel Annotation</a>();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; img.Save(folderName + &quot;RectangleAnnotation.png&quot;);<br/>&#160; &#160; &#160; &#160; &#160; &#160; }<br/>&#160; &#160; &#160; &#160; &#160; &#160; catch (Exception ex)<br/>&#160; &#160; &#160; &#160; &#160; &#160; {<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Debug.WriteLine(ex.Message);<br/>Hope to help you.
+</div>
+</div>
+
+<div class='brn' id='brn7615'>
+<div class='frm pst' id='pid7654' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7654.html#pid7615'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7654.html#pid7654'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=948' >IgorJorobus</a>
+<span class='htt'>Date</span> 2014-01-08 16:02
+</div>
+<div class='ccl'>
+Think he said ruby...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=855.html#tid855'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=855.html#tid855'>Gosu Exchange</a> / draw_rectangle vs image for bullet
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7654.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

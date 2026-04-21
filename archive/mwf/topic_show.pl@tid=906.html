@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>A more stable OpenGL ruby implementation ?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=906.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=906.html#tid906'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=906.html#tid906'>Gosu Exchange</a> / A more stable OpenGL ruby implementation ?
+</div>
+</div>
+
+<div class='frm pst' id='pid6888' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6888' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6888.html#pid6888'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-22 08:31
+</div>
+<div class='ccl'>
+Hi all ! It&#39;s been a long time ! <br/><br/>I have an annoying problem which causes an OpenGL error when I&#39;m drawing something in 3D using the deprecated way of immediate drawing (glBegin...glEnd).<br/>For an unknown reason, when I&#39;m using variables to draw, in something like :<br/><br/>glBegin(GL_QUADS)<br/>&#160; glVertex3f(0.0, 0.0, 0.0)<br/>&#160; glVertex3f(@width, 0.0, 0.0)<br/>&#160; glVertex3f(@width, @height, 0.0)<br/>&#160; glVertex3f(0.0, @height, 0.0)<br/>glEnd<br/><br/>the program happens to crash with an OpenGL error exception. It&#39;s not something that happens anytime, but really sometimes... I read a lot about it, it seems to be the exception that OpenGL throws when you&#39;re doing another OpenGL call inside the glBegin...glEnd block. I&#39;m not sure about this, but it seems that using a variable in Ruby OpenGL is sometimes considered as calling another OpenGL function.<br/><br/>I never had this problem when I used OpenGL in a C or C++ environnement, and this crash does not even occur everytime I launch my program. <br/><br/>I tried to intercept it using a begin rescue structure, which makes the program running quite nice with a rare black &quot;splash&quot; screen with a 1 frame duration, then the scene is back to normal. Sometimes (even more rare) the program still crashes.<br/><br/>This is really a pain ! Since this is totally random, I don&#39;t think my way of coding this drawing is in cause. Since Ruby OpenGL is not that used, I can&#39;t find any help and trust me : I looked into it a lot. <br/><br/>Can someone help me with this ?<br/><br/>Thanks a lot !<br/>Guigui
+</div>
+</div>
+
+<div class='brn' id='brn6888'>
+<div class='frm pst' id='pid6889' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=906.html#pid6888'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6889' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6889.html#pid6889'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-06-22 09:49
+</div>
+<div class='ccl'>
+Can you log these variables every time before you feed them into <code>glVertex3f</code>? I wouldn&#39;t be surprised if the OpenGL gem causes errors and crashes when you accidentally pass <code>nil</code> in, or some other value that it doesn&#39;t expect.
+</div>
+</div>
+
+<div class='brn' id='brn6889'>
+<div class='frm pst' id='pid6890' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=906.html#pid6889'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6890.html#pid6890'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-22 10:01
+<span class='htt'>Edited</span> 2013-06-22 11:56
+</div>
+<div class='ccl'>
+I&#39;ll try. The hard issue here is to reproduce this problem, as it seems random like I said earlier. I&#39;ll try to create this context is a smaller program and report here, thanks for this idea it might actually be the problem ;)<br/><br/>EDIT : I tried to use a nil value directly, I get this error :&#160; `glVertex3f&#39;: no implicit conversion to float from nil (TypeError)<br/>which is not the GL::Error I usually get with the &quot;bug&quot; (GL_INVALID_OPERATION).<br/><br/>Maybe it&#39;s time for me to use Vertex Arrays instead... Seems to work quite good.<br/><br/>EDIT 2 : if it can be useful to anybody or if something seems odd, here is my first OBJ FILE loader using vertex arrays. It only supports one texture and no color, because I needed that and nothing more.<br/><br/>require &quot;scanf&quot;<br/><br/>class GLTexture<br/>&#160; def initialize(p_win, filename)<br/>&#160; &#160; filename.is_a?(Gosu::Image) ? gosu_image = filename : gosu_image = Gosu::Image.new(p_win, filename, true)<br/>&#160; &#160; array_of_pixels = gosu_image.to_blob<br/>&#160; &#160; @texture_id = glGenTextures(1)<br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, @texture_id[0])<br/>&#160; &#160; glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, gosu_image.width, gosu_image.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, array_of_pixels)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)<br/>&#160; &#160; gosu_image = nil<br/>&#160; end<br/><br/>&#160; def get_id<br/>&#160; &#160; return @texture_id[0]<br/>&#160; end<br/>end<br/><br/>class ObjModel<br/>&#160; def initialize(filename)<br/>&#160; &#160; @v, @vt, @vn = Array.new, Array.new, Array.new<br/>&#160; &#160; v, vt, vn = Array.new, Array.new, Array.new<br/>&#160; &#160; File.open(filename).readlines.each do |line|<br/>&#160; &#160; &#160; if line.include?(&quot;v&#160; &quot;)<br/>&#160; &#160; &#160; &#160; v &lt;&lt; line.chomp.scanf(&quot;v&#160; %f %f %f&quot;)<br/>&#160; &#160; &#160; elsif line.include?(&quot;vt&#160; &quot;)<br/>&#160; &#160; &#160; &#160; vt &lt;&lt; line.chomp.scanf(&quot;vt&#160; %f %f %f&quot;)<br/>&#160; &#160; &#160; &#160; vt.last[1] = 1.0 - vt.last[1] # vertical mirror fix<br/>&#160; &#160; &#160; elsif line.include?(&quot;vn&#160; &quot;)<br/>&#160; &#160; &#160; &#160; vn &lt;&lt; line.chomp.scanf(&quot;vn&#160; %f %f %f&quot;)<br/>&#160; &#160; &#160; elsif line.include?(&quot;f &quot;)<br/>&#160; &#160; &#160; &#160; t = line.chomp.scanf(&quot;f %d/%d/%d %d/%d/%d %d/%d/%d&quot;)<br/>&#160; &#160; &#160; &#160; @v += v[t[0] - 1]; @v += v[t[3] - 1]; @v += v[t[6] - 1]<br/>&#160; &#160; &#160; &#160; @vt += vt[t[1] - 1]; @vt += vt[t[4] - 1]; @vt += vt[t[7] - 1]<br/>&#160; &#160; &#160; &#160; @vn += vn[t[2] - 1]; @vn += vn[t[5] - 1]; @vn += vn[t[8] - 1]<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def draw(texture)<br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, texture.get_id)<br/>&#160; &#160; glEnableClientState(GL_VERTEX_ARRAY)<br/>&#160; &#160; glEnableClientState(GL_TEXTURE_COORD_ARRAY)<br/>&#160; &#160; glEnableClientState(GL_NORMAL_ARRAY)<br/>&#160; &#160; glVertexPointer(3, GL_FLOAT, 0, @v)<br/>&#160; &#160; glTexCoordPointer(3, GL_FLOAT, 0, @vt)<br/>&#160; &#160; glNormalPointer(GL_FLOAT, 0, @vn)<br/>&#160; &#160; glDrawArrays(GL_TRIANGLES, 0, @v.size / 3)<br/>&#160; end<br/>end
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=906.html#tid906'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=906.html#tid906'>Gosu Exchange</a> / A more stable OpenGL ruby implementation ?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=906.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

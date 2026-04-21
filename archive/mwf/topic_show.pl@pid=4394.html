@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4394 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Disabling antialiasing for Gosu::Font</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4394' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=594.html#tid594'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=594.html#tid594'>Gosu Exchange</a> / Disabling antialiasing for Gosu::Font
+</div>
+</div>
+
+<div class='frm pst' id='pid4384' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4384' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4384.html#pid4384'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=845.html' >thePapacy</a>
+<span class='htt'>Date</span> 2011-05-25 05:05
+</div>
+<div class='ccl'>
+Is there a way to disable antialiasing when using Gosu::Font and Gosu::Image.from_text()? I&#39;ve hand-drawn a pixel font which is intended to be completely sharp, but as it is, I can&#39;t use the font without relying on pre-rendered images.<br/><img class='emi' src='http://dl.dropbox.com/u/2827486/Screen%20shot%202011-05-24%20at%209.50.24%20PM.png' alt=''/><br/>vs.<br/><img class='emi' src='http://dl.dropbox.com/u/2827486/Screen%20shot%202011-05-24%20at%209.47.30%20PM.png' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn4384'>
+<div class='frm pst' id='pid4385' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4385' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4385.html#pid4385'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-25 13:29
+</div>
+<div class='ccl'>
+No way that I know of. I&#39;m pretty sure Gosu uses different text renderers depending on the platform, anyway, so some renderers may not even support it.<br/><br/>If you aren&#39;t dealing with dynamic text, you might be better off using static images anyway. It&#39;s faster and guaranteed to be consistent across platforms (well, as consistent as any other image drawing) at the cost of increased distribution size.<br/><br/>On the other hand, if you&#39;re using a lot of dynamic text, implementing a simple bitmap font class isn&#39;t too difficult and you can add features that Gosu::Font doesn&#39;t support, like word wrapping. I&#39;ve got such a class lying around somewhere, if I can find it.
+</div>
+</div>
+
+<div class='brn' id='brn4385'>
+<div class='frm pst' id='pid4386' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4385'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4386' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4386.html#pid4386'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-05-25 14:48
+</div>
+<div class='ccl'>
+I made a bitmap font class for one of my games. I can give it here if you want.
+</div>
+</div>
+
+<div class='brn' id='brn4386'>
+<div class='frm pst' id='pid4387' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4386'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4387.html#pid4387'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-25 19:15
+</div>
+<div class='ccl'>
+I actually found mine a while ago, so I added support for rendering to an image for the hell of it. I&#39;m about to post it. :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4388' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4388.html#pid4388'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-25 19:26
+</div>
+<div class='ccl'>
+As for custom bitmap font classes, here&#39;s the one I wrote. It should be more-or-less usable as a drop-in replacement for Gosu::Font, although it doesn&#39;t hook into <code>Gosu::Image.from_text</code>. Instead, I&#39;ve added a <code>render</code> method that accepts the same arguments. The <code>render</code> method requires TexPlay, but everything else should work with just Gosu.<br/><br/>Beware that rendering to an image is slow, so you&#39;ll probably want to do it at some kind of loading screen rather than on the fly. I&#39;m not sure how to solve that since TexPlay doesn&#39;t natively support splice-and-scale as far as I know. The way I&#39;ve done it is a dirty hack. :)<br/><br/>As for licensing, consider it under the same license as Gosu.<br/><br/><code>require &#39;gosu&#39;<br/>require &#39;json&#39;<br/>require &#39;weakref&#39;<br/><br/>class BitmapFont<br/>&#160; <br/>&#160; WORD_BREAK&#160; &#160;&#160; = /\s|\b-|$/<br/>&#160; CHARSET_RANGE&#160; = 0x20..0x7f<br/>&#160; <br/>&#160; def initialize window, filename, height = nil<br/>&#160; &#160; properties = File.open(filename) { |io| JSON.load io }<br/>&#160; &#160; <br/>&#160; &#160; # probably shouldn&#39;t hold onto this, but...<br/>&#160; &#160; @window = WeakRef.new window<br/>&#160; &#160; <br/>&#160; &#160; @name = properties[&#39;name&#39;] || File.basename(filename).sub(/\.[^\.]+$/, &#39;&#39;)<br/>&#160; &#160; <br/>&#160; &#160; # font metrics<br/>&#160; &#160; @width&#160; = Integer properties[&#39;width&#39;]<br/>&#160; &#160; @height = Integer properties[&#39;height&#39;] || @width<br/>&#160; &#160; @scale&#160; = height ? height.to_f / @height : 1<br/>&#160; &#160; <br/>&#160; &#160; @exceptions = properties[&#39;exceptions&#39;] || { }<br/>&#160; &#160; <br/>&#160; &#160; # images<br/>&#160; &#160; image_filename = if properties.include? &#39;image&#39;<br/>&#160; &#160; &#160; File.expand_path properties[&#39;image&#39;], File.dirname(filename)<br/>&#160; &#160; else<br/>&#160; &#160; &#160; filename.sub /\.[^\.]+$/, &#39;.png&#39;<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; tile_width&#160; = properties[&#39;tile_width&#39;]&#160; || @width<br/>&#160; &#160; tile_height = properties[&#39;tile_height&#39;] || @height<br/>&#160; &#160; <br/>&#160; &#160; @images = *Gosu::Image.load_tiles(window,<br/>&#160; &#160; &#160; image_filename, tile_width, tile_height, false)<br/>&#160; end # initialize<br/>&#160; <br/>&#160; def height<br/>&#160; &#160; @height * @scale<br/>&#160; end<br/>&#160; <br/>&#160; def text_width text, factor_x = 1<br/>&#160; &#160; text.each_char.inject(0) { |width, ch| width + char_width(ch) } * factor_x<br/>&#160; end<br/>&#160; <br/>&#160; def draw string, x, y, z, factor_x = 1, factor_y = 1, color = 0xffffffff, mode = :default<br/>&#160; &#160; x_off = 0<br/>&#160; &#160; @window.scale factor_x, factor_y, x, y do<br/>&#160; &#160; &#160; string.each_char do |ch|<br/>&#160; &#160; &#160; &#160; image = char_image(ch)<br/>&#160; &#160; &#160; &#160; image.draw x + x_off, y, z, @scale, @scale, color, mode if image<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; x_off += char_width(ch)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end # draw<br/>&#160; <br/>&#160; def draw_rel text, x, y, z, rel_x, rel_y, factor_x = 1, factor_y = 1, color = 0xffffffff, mode = :default<br/>&#160; &#160; draw_width&#160; = text_width(text, factor_x)<br/>&#160; &#160; draw_height = height * factor_y<br/>&#160; &#160; @window.translate(-draw_width * rel_x, -draw_height * rel_y) do<br/>&#160; &#160; &#160; draw text, x, y, z, factor_x, factor_y, color, mode<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def draw_rot text, x, y, z, angle, factor_x = 1, factor_y = 1, color = 0xffffffff, mode = :default<br/>&#160; &#160; @window.translate(x, y) do<br/>&#160; &#160; &#160; @window.rotate(angle) do<br/>&#160; &#160; &#160; &#160; draw_rel text, 0, 0, z, 0.5, 0.5, factor_x, factor_y, color, mode<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def render text, line_spacing, max_width, align<br/>&#160; &#160; raise NotImplementedError,<br/>&#160; &#160; &#160; &quot;Rendering to an image requires TexPlay to be installed&quot;, caller \<br/>&#160; &#160; &#160; unless defined? ::TexPlay<br/>&#160; &#160; <br/>&#160; &#160; lines = word_wrap(text, max_width)<br/>&#160; &#160; <br/>&#160; &#160; draw_width&#160; = max_width<br/>&#160; &#160; draw_height = (height + line_spacing).floor * lines.count<br/>&#160; &#160; <br/>&#160; &#160; canvas = TexPlay.create_image @window.__getobj__, draw_width, draw_height,<br/>&#160; &#160; &#160; :caching =&gt; false<br/>&#160; &#160; <br/>&#160; &#160; y_off = 0<br/>&#160; &#160; lines.each do |line|<br/>&#160; &#160; &#160; render_line canvas, line, y_off, align<br/>&#160; &#160; &#160; y_off += (height + line_spacing).floor<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; canvas<br/>&#160; end # render<br/>&#160; <br/>&#160; private<br/>&#160; <br/>&#160; def parse_characters spec<br/>&#160; &#160; case spec<br/>&#160; &#160; when Enumerable<br/>&#160; &#160; &#160; spec.inject([]) { |charset, subspec|<br/>&#160; &#160; &#160; &#160; charset += parse_characters(subspec) }<br/>&#160; &#160; when /^(.)-(.)$/<br/>&#160; &#160; &#160; ($1..$2).to_a<br/>&#160; &#160; else<br/>&#160; &#160; &#160; spec.characters<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def char_image ch<br/>&#160; &#160; if CHARSET_RANGE.include? ch.ord<br/>&#160; &#160; &#160; index = ch.ord - CHARSET_RANGE.begin<br/>&#160; &#160; &#160; @images[index]<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def char_width ch<br/>&#160; &#160; if @exceptions.include? ch<br/>&#160; &#160; &#160; @exceptions[ch] * @scale<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @width * @scale<br/>&#160; &#160; end<br/>&#160; end # char_width<br/>&#160; <br/>&#160; def word_wrap text, max_width<br/>&#160; &#160; lines = [ ]<br/>&#160; &#160; <br/>&#160; &#160; first_index = 0<br/>&#160; &#160; last_index&#160; = test_index = text.index(WORD_BREAK)<br/>&#160; &#160; <br/>&#160; &#160; while test_index<br/>&#160; &#160; &#160; if text_width(text[first_index ... test_index]) &gt;= max_width<br/>&#160; &#160; &#160; &#160; lines &lt;&lt; text[first_index ... last_index]<br/>&#160; &#160; &#160; &#160; first_index = last_index + 1<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; last_index = test_index<br/>&#160; &#160; &#160; test_index = text.index WORD_BREAK, last_index + 1<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; lines &lt;&lt; text[first_index .. last_index]<br/>&#160; &#160; lines<br/>&#160; end # word_wrap<br/>&#160; <br/>&#160; def render_line canvas, line, y_off, align<br/>&#160; &#160; x_off = case align<br/>&#160; &#160; &#160; &#160; &#160; &#160; when :left&#160;&#160; then&#160; 0<br/>&#160; &#160; &#160; &#160; &#160; &#160; when :center then (canvas.width - text_width(line)) / 2<br/>&#160; &#160; &#160; &#160; &#160; &#160; when :right&#160; then&#160; canvas.width - text_width(line)<br/>&#160; &#160; &#160; &#160; &#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; line.each_char do |ch|<br/>&#160; &#160; &#160; image&#160; &#160; &#160;&#160; = char_image(ch)<br/>&#160; &#160; &#160; draw_width&#160; = char_width(ch)<br/>&#160; &#160; &#160; draw_height = height.floor<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; canvas.rect x_off, y_off, x_off + draw_width, y_off + draw_height,<br/>&#160; &#160; &#160; &#160; :color =&gt; :white,<br/>&#160; &#160; &#160; &#160; :fill&#160; =&gt; true,<br/>&#160; &#160; &#160; &#160; :color_control =&gt; proc { |src, dst, x, y|<br/>&#160; &#160; &#160; &#160; &#160; image.get_pixel(((x - x_off) / @scale).floor,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ((y - y_off) / @scale).floor) || src || :none }<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; x_off += draw_width<br/>&#160; &#160; end<br/>&#160; end # render_line<br/>&#160; <br/>end # BitmapFont<br/><br/>begin<br/>&#160; require &#39;texplay&#39;<br/>rescue LoadError<br/>&#160; $stderr.puts(&#39;TexPlay is not available; BitmapFont rendering will be &#39; +<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; &#39;unavailable&#39;) if $DEBUG<br/>end</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid4389' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4389' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4389.html#pid4389'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-26 15:28
+</div>
+<div class='ccl'>
+It seems that the height at which you have drawn your font and the height at which it is rendered differ (slightly). If Gosu would disable AA, the letters may still be distorted.<br/><br/>Gosu::Font is nothing but a simple bitmap font too BTW. It simply uses Image.from_text to render every letter and then pieces them together. (It got a bit more complicated with the recent &lt;b&gt; &lt;u&gt; &lt;c=...&gt; support, but does anyone use that? :()<br/>Nothing wrong with rolling your own (or using the one above) :)
+</div>
+</div>
+
+<div class='brn' id='brn4389'>
+<div class='frm pst' id='pid4390' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4389'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4390' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4390.html#pid4390'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-05-26 17:03
+</div>
+<div class='ccl'>
+I&#39;m using &lt;c=...&gt; if you need to know :)
+</div>
+</div>
+
+<div class='brn' id='brn4390'>
+<div class='frm pst' id='pid4391' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4390'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4391' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4391.html#pid4391'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-26 20:06
+</div>
+<div class='ccl'>
+That is indeed good to know :)
+</div>
+</div>
+
+<div class='brn' id='brn4391'>
+<div class='frm pst' id='pid4397' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4391'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4397.html#pid4397'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-05-27 20:05
+</div>
+<div class='ccl'>
+I would have used it, if I&#39;d realised it was there :$
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4392' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4389'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4392' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4392.html#pid4392'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-27 00:31
+</div>
+<div class='ccl'>
+Well, there <i>might</i> be something wrong with using mine (needs more error checks, could be faster) but... :)<br/><br/>Hey, since Gosu&#39;s apparently generating bitmap fonts from truetype fonts anyway, would it be possible to add support for loading characters from a sprite sheet like this? :)
+</div>
+</div>
+
+<div class='brn' id='brn4392'>
+<div class='frm pst' id='pid4393' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4392'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4393' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4393.html#pid4393'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-27 08:43
+</div>
+<div class='ccl'>
+Hmmm, I guess I could add a <code>Font#[]=</code> method that would replace the internal Image for any letter by a given image (Gosu, RMagick, blob, ...). That would be possible without messing with the rest of Font and would imply that there will always be a fallback for characters that are left undefined by the Bitmap font. Thoughts?
+</div>
+</div>
+
+<div class='brn' id='brn4393'>
+<div class='frm pst' id='pid4394' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4393'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4394' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4394.html#pid4394'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-27 15:10
+</div>
+<div class='ccl'>
+That actually sounds pretty good! I think leaving the specifics of loading non-standard fonts up to us is probably best since, for instance, my BitmapFont wouldn&#39;t be suitable for people who need unicode support.<br/><br/>It would be most useful if paired with a constructor that creates an empty font, of course. <code>Gosu::Font.new(window, height)</code>?
+</div>
+</div>
+
+<div class='brn' id='brn4394'>
+<div class='frm pst' id='pid4403' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4394'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4403' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4403.html#pid4403'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-05-31 11:13
+</div>
+<div class='ccl'>
+I like the sound of this entire sub-thread!<br/><br/>Here&#39;s a semi-related idea I had:<br/><br/>Add a new method in the &quot;Font#draw&quot; family (Font#draw_each, perhaps) that yields each character&#39;s Gosu::Image, x, and y to a block, rather than drawing them. It would allow modifying the position, rotation, color, etc. of each character before drawing it. It could be used for cool typography effects like those used in the dialog boxes in the Paper Mario series of games, among others.
+</div>
+</div>
+
+<div class='brn' id='brn4403'>
+<div class='frm pst' id='pid4404' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4403'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4404.html#pid4404'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-05-31 11:20
+</div>
+<div class='ccl'>
+Great idea. I can just check for <code>block_given?</code> in <code>Font#draw</code>. The C++ interface will probably not look as pretty though.
+</div>
+</div>
+
+<div class='frm pst' id='pid4405' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4403'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4405.html#pid4405'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-05-31 14:05
+<span class='htt'>Edited</span> 2011-05-31 14:11
+</div>
+<div class='ccl'>
+That does it. I am adding this to my bitmap font class.<br/><br/>Extremely simple git patch for the file I posted above:<br/><br/><code>diff --git a/bitmap_font.rb b/bitmap_font.rb<br/>index 9a11368..08b9370 100644<br/>--- a/bitmap_font.rb<br/>+++ b/bitmap_font.rb<br/>@@ -49,7 +49,12 @@ class BitmapFont<br/>&#160; &#160;&#160; @window.scale factor_x, factor_y, x, y do<br/>&#160; &#160; &#160;&#160; string.each_char do |ch|<br/>&#160; &#160; &#160; &#160;&#160; image = char_image(ch)<br/>-&#160; &#160; &#160; &#160; image.draw x + x_off, y, z, @scale, @scale, color, mode if image<br/>+&#160; &#160; &#160; &#160; <br/>+&#160; &#160; &#160; &#160; if block_given?<br/>+&#160; &#160; &#160; &#160; &#160; yield image, x + x_off, y<br/>+&#160; &#160; &#160; &#160; else<br/>+&#160; &#160; &#160; &#160; &#160; image.draw x + x_off, y, z, @scale, @scale, color, mode if image<br/>+&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160;&#160; <br/>&#160; &#160; &#160; &#160;&#160; x_off += char_width(ch)<br/>&#160; &#160; &#160;&#160; end</code>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4406' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4384'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4406' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4406.html#pid4406'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-05-31 17:35
+</div>
+<div class='ccl'>
+An alternative method, suggested by jlnr, is to create the font larger than you need, then scale down, which will minimise anti-aliasing. In this monkey-patch, I extend Gosu::Font to store the font at twice the size, then render it scaled to half the size. The net result is text that is the same size as before, but less blurred.<br/><br/>If you want even less blurring, you could use a factor of 4: <br/>Gosu::Font.factor_stored = 4 # How much larger is it stored as a font.<br/>Gosu::Font.factor_rendered = 0.25 # How much smaller it is rendered.<br/><br/><a class='url' href='https://gist.github.com/1000398'>https://gist.github.com/1000398</a><br/><br/>Sadly, this is pretty horrid. I find that the amount of aliasing for pixelly fonts is very dependent on the rendered font size in relation to the actual size in the ttf file. So, it might render cleanly at 15px, but blur a lot at 12px.
+</div>
+</div>
+
+<div class='brn' id='brn4406'>
+<div class='frm pst' id='pid4409' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4406'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4409' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4409.html#pid4409'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-06-01 09:41
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; rendered font size in relation to the actual size in the ttf file</p></blockquote><br/>I want to hijack this sentence to point out that TTF/OTF/… is a vector file format that is usually printed to paper or rendered given a point size, not a pixel height. If something has a true and only proper pixel height, it should not be in a vector file :) Your approach makes a whole lot of sense for &quot;normal&quot; fonts in a stretched environment though.
+</div>
+</div>
+
+<div class='brn' id='brn4409'>
+<div class='frm pst' id='pid4410' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4394.html#pid4409'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4410.html#pid4410'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-06-01 11:54
+</div>
+<div class='ccl'>
+Ah, yes, sorry. My system does seem to work, though, and I definitely did <i>see </i>more anti-aliasing artefacts at some pixel sizes and not at others when I was initially experimenting. Whatever the reason for that!<br/><br/>Since you make them into bitmaps before you render them, my comments do make sense regarding scaling at run-time (that is, scaling in Font#draw).
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=594.html#tid594'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=594.html#tid594'>Gosu Exchange</a> / Disabling antialiasing for Gosu::Font
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4394.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

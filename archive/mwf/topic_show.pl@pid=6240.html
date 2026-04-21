@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6240 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Drawing only a portion of a Texture using rmagick</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6240' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=813.html#tid813'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=813.html#tid813'>Extending Gosu</a> / Drawing only a portion of a Texture using rmagick
+</div>
+</div>
+
+<div class='frm pst' id='pid6237' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6237' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6237.html#pid6237'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=967' >JosephAustin</a>
+<span class='htt'>Date</span> 2012-09-21 23:22
+</div>
+<div class='ccl'>
+Hey everyone. I am trying to make a game that implements multiple views of a single image at the same time. Clearly this is hard in Gosu but I found a way. Because I used a large texture (you&#39;ll need to supply your own panorama.jpg for this snippet to work) I could not get TexPlay to work, however rmagick did a fine job. It&#39;s a little bit of a dirty process: you keep a Gosu::Image canvas the size of the image in the view and a Magick::Image version of the background itself loaded into memory. Then you use rmagick&#39;s cropping ability to paste it onto your canvas, before using it. Here it is... sorry if the comments aren&#39;t right, I&#39;m still getting used to Ruby and this is just a bit I wanted to share.<br/><br/><code><br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/>require &#39;RMagick&#39;<br/><br/># Extension to the image class so we can easily convert to rmagick<br/>class Gosu::Image<br/>&#160; def to_rmagick<br/>&#160; &#160; this = self<br/>&#160; &#160; Magick::Image.from_blob(to_blob) do<br/>&#160; &#160; &#160; self.format = &#39;RGBA&#39;<br/>&#160; &#160; &#160; self.depth = 8<br/>&#160; &#160; &#160; self.size = &quot;#{this.width}x#{this.height}&quot;<br/>&#160; &#160; end.first<br/>&#160; end<br/>end<br/><br/># A class that holds a single background image and handles cropping it<br/>class Scene<br/>&#160; &#160; #&#160; rmbg - rmagick image representing the background of the scene<br/>&#160; &#160; def initialize(rmbg)<br/>&#160; &#160; &#160; &#160; @rmbg = rmbg<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; # Pass in a Gosu::Image for a canvas and describe the section of the background to copy into it<br/>&#160; &#160; def crop(canvas,&#160; x, y, w, h)<br/>&#160; &#160; &#160; &#160; canvas.insert(@rmbg.excerpt(x, y, w, h),&#160; 0, 0)<br/>&#160; &#160; end<br/>end<br/><br/># A class which views an image at some position without using up the entire screen<br/>class View<br/>&#160; &#160; # Define the geometry of the view within the main window. It must be given a Scene object to show<br/>&#160; &#160; def initialize(win,&#160; scene,&#160; x,&#160; y,&#160; w,&#160; h)<br/>&#160; &#160; &#160; &#160; @scene = scene<br/>&#160; &#160; &#160; &#160; @canvas = Gosu::Image.new(win,&#160; Magick::Image.new(640, 480),&#160;&#160; false)<br/>&#160; &#160; &#160; &#160; @x = x<br/>&#160; &#160; &#160; &#160; @y = y<br/>&#160; &#160; &#160; &#160; @w = w<br/>&#160; &#160; &#160; &#160; @h = h<br/>&#160; &#160; &#160; &#160; @camera_x = 0<br/>&#160; &#160; &#160; &#160; @camera_y = 0<br/>&#160; &#160; end<br/>&#160; &#160; # Draws the camera position of the scene into the view space<br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; @scene.crop(@canvas, @camera_x, @camera_y, @w, @h)<br/>&#160; &#160; &#160; &#160; @canvas.draw(@x,&#160; @y,&#160; 1.0,&#160; 1.0)<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; # Use these to set the camera position<br/>&#160; &#160; def cameraX(x)<br/>&#160; &#160; &#160; &#160; @camera_x = x<br/>&#160; &#160; end<br/>&#160; &#160; def cameraY(y)<br/>&#160; &#160; &#160; &#160; @camera_y = y<br/>&#160; &#160; end<br/>end<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>super 640, 480, false<br/>&#160; &#160; self.caption = &quot;Multiview test&quot;<br/>&#160; &#160; @i = 0<br/>&#160; &#160; @scene = Scene.new(Gosu::Image.new(self,&#160; &#39;panorama.jpg&#39;, false).to_rmagick)<br/>&#160; &#160; @viewa = View.new(self,&#160; @scene,&#160; 0, 0, 319, 480)<br/>&#160; &#160; @viewb = View.new(self,&#160; @scene,&#160; 321, 0, 319, 480)<br/>&#160; end<br/>&#160; <br/>&#160; # Move the two views on the scene<br/>&#160; def update<br/>&#160; &#160; @i = @i + 1<br/>&#160; &#160; @viewa.cameraX(@i)<br/>&#160; &#160; @viewa.cameraY(@i)<br/>&#160; &#160; @viewb.cameraY(@i)<br/>&#160; end<br/>&#160; <br/>&#160; # Just draw the views<br/>&#160; def draw<br/>&#160; &#160; @viewa.draw<br/>&#160; &#160; @viewb.draw<br/>&#160; end<br/>end<br/><br/>window = GameWindow.new<br/>window.show<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn6237'>
+<div class='frm pst' id='pid6238' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6237'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6238' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6238.html#pid6238'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-22 04:27
+</div>
+<div class='ccl'>
+As long as the portion you want to draw is rectangular, you can use <code>Window#clip_to</code> and it&#39;ll be a gazillion times faster :)
+</div>
+</div>
+
+<div class='brn' id='brn6238'>
+<div class='frm pst' id='pid6239' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6238'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6239.html#pid6239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=967' >JosephAustin</a>
+<span class='htt'>Date</span> 2012-09-22 04:40
+</div>
+<div class='ccl'>
+o.o Oh goodness I didnt spot that in the API!
+</div>
+</div>
+
+<div class='frm pst' id='pid6240' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6238'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6240' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6240.html#pid6240'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=967' >JosephAustin</a>
+<span class='htt'>Date</span> 2012-09-22 04:44
+</div>
+<div class='ccl'>
+... and that would be because i was looking inside the image class and didnt think about the window. Dagnabbit xD
+</div>
+</div>
+
+<div class='brn' id='brn6240'>
+<div class='frm pst' id='pid6241' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6240'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6241' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6241.html#pid6241'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-22 04:48
+</div>
+<div class='ccl'>
+Some time in the future (maybe to celebrate the colonization of Mars), I will move it into the <code>Gosu</code> module as a free function. Would that have helped? It doesn&#39;t fit into <code>Image</code> because it also affects <code>Font</code> and <code>draw_quad</code> etc...
+</div>
+</div>
+
+<div class='brn' id='brn6241'>
+<div class='frm pst' id='pid6242' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6241'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6242.html#pid6242'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=967' >JosephAustin</a>
+<span class='htt'>Date</span> 2012-09-22 04:52
+</div>
+<div class='ccl'>
+No, actually you&#39;re right to put it where you did. It makes logical sense for the window to control windowing, it just didn&#39;t hit me. I was thinking in terms of having an image draw a portion of itself to a rect on the main window, but that is in fact backwards. Thank you so much for your response, the speed of this is lightning fast.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6258' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6238'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6258' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6258.html#pid6258'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-09-26 00:33
+<span class='htt'>Edited</span> 2012-09-26 00:51
+</div>
+<div class='ccl'>
+Is there any way to use load part of a Gosu::Image as another one? I know you can load blob data into a Gosu::Image, and then specify source x,y, and dimensions, but it seems like there should be simple enough to create an Image from another one, without having to go through the #to_blob interface.&#160; Parsing the blob data is rather slow, but it seems like all that needs to be done is change a few properties on the glTextureInfo thing.<br/><br/>Though from the current train of discussion, it seems that&#39;s not the case.<br/><br/>Would doing it that way be any better than just macroing a clip_to?
+</div>
+</div>
+
+<div class='brn' id='brn6258'>
+<div class='frm pst' id='pid6260' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6260' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6260.html#pid6260'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-09-26 01:44
+</div>
+<div class='ccl'>
+But #clip_to works fine already...<br/><br/>You shouldn&#39;t really need to use a blob within Gosu code since there is no reason to duplicate an image in vanilla Gosu (there is no way to modify it).<br/><br/>To efficiently copy an image, what <i>should </i>happen is that the original sprite should just be drawn onto the new one in replace mode (How I do it in Gosu::Image#to_texture and Ashton::Texture#dup), but since the only way to create an image is by giving it a blob, you don&#39;t gain anything doing it that way!
+</div>
+</div>
+
+<div class='brn' id='brn6260'>
+<div class='frm pst' id='pid6262' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6260'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6262' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6262.html#pid6262'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-09-26 03:40
+</div>
+<div class='ccl'>
+I was just worried about efficiency, but I think it&#39;s actually a non-issue.&#160; It takes more time to clip than not, but the additional time is probably so small, that in ruby, for a 2D game, it doesn&#39;t matter.
+</div>
+</div>
+
+<div class='brn' id='brn6262'>
+<div class='frm pst' id='pid6263' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6262'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6263' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6263.html#pid6263'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-26 04:34
+</div>
+<div class='ccl'>
+FWIW, I could never get the FPS to drop when using clipping, even on the old iPhone 3G. Seems like OpenGL is always clipping (to the window) anyway and doesn&#39;t care what the exact boundaries are.<br/>Setting/unsetting the clipping will take some time, of course.
+</div>
+</div>
+
+<div class='brn' id='brn6263'>
+<div class='frm pst' id='pid6264' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6263'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6264' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6264.html#pid6264'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-09-26 14:36
+</div>
+<div class='ccl'>
+Don&#39;t worry about anything happening inside Gosu. In a real game, your Ruby code will be using 90% of the CPU and Gosu will be using 10% of the potential of your graphics card. What you do, not what Gosu does, is the limit in real games (assuming you use stuff like Window#record and don&#39;t do daft things).
+</div>
+</div>
+
+<div class='brn' id='brn6264'>
+<div class='frm pst' id='pid6265' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6264'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6265.html#pid6265'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-27 08:31
+</div>
+<div class='ccl'>
+Right. And I couldn&#39;t even get the FPS to drop in pure C++. :) Clipping is basically free.<br/><br/>One thing where Gosu can still bring a computer to its silicon knees is <code>Font#draw</code>. The implementation of <code>&lt;b&gt;</code> and other codes is really inefficient for long strings. That&#39;s the only thing a Ruby coder might have to be careful about.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6261' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6261.html#pid6261'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-09-26 02:57
+</div>
+<div class='ccl'>
+<code>clip_to</code> does not work inside of <code>record</code>. It would be easy to add <code>Image#sub_image(x, y, w, h)</code> that returns an <code>Image</code> by itself. My main worry about it is that it messes with the whole <code>tileability</code> thing. Gosu usually adds a pixel of padding around images, duplicating pixels for tileable things, adding transparent pixels for everything else. This prevents bleeding when rotating or stretching, and <code>sub_image</code> couldn&#39;t do this (or would have to make a copy).
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6243' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6237'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6243' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6243.html#pid6243'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-09-22 15:49
+</div>
+<div class='ccl'>
+RMagick/TexPlay really are too slow to use per-frame in a game, although they are fine for setting up graphics when loading the game or a new level. Please avoid RMagick if you can, because it has external dependencies which are fiddly for the end-user to install for a game; it is more intended to be used on Rails servers where the client end doesn&#39;t need to install it ;)<br/><br/>You might want to look at my <a class='url' href='topic_show.pl@tid=784.html'>Ashton gem</a>, which allows supports rendering to large Textures and stencilling (so you don&#39;t have to be limited to clipping to a rectangle :D ). Needs a bit more work to be properly released, but will hopefully obsolete most of what TexPlay does and is certainly fast enough for complex graphical manipulations every frame.
+</div>
+</div>
+
+<div class='brn' id='brn6243'>
+<div class='frm pst' id='pid6244' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6240.html#pid6243'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6244.html#pid6244'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=967' >JosephAustin</a>
+<span class='htt'>Date</span> 2012-09-22 21:14
+</div>
+<div class='ccl'>
+Ooh that does sound neat. Of course, jlnr&#39;s approach helped big time, but per-frame manipulations are a good feature to have.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=813.html#tid813'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=813.html#tid813'>Extending Gosu</a> / Drawing only a portion of a Texture using rmagick
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6240.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

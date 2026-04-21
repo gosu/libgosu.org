@@ -1,0 +1,42 @@
+require 'gosu'
+
+class Window < Gosu::Window
+  
+  def initialize
+    super 480, 240, false
+    
+    @message = "Curse this alpha!"
+    @font = Gosu::Font.new self, 'Helvetica', 16
+    
+    @macro = record do
+      @font.draw @message, 0, 0, 0
+    end
+    
+    self.use_macro = true
+  end
+  
+  def use_macro?; !!@use_macro end
+  
+  def use_macro= flag
+    if @use_macro = flag
+      self.caption = "macro drawing"
+    else
+      self.caption = "normal drawing"
+    end
+  end
+  
+  def button_down id
+    self.use_macro = !use_macro? if id == Gosu::KbSpace
+  end
+  
+  def draw
+    if use_macro?
+      @macro.draw 64, 64, 0
+    else
+      @font.draw @message, 64, 64, 0
+    end
+  end
+  
+end
+
+Window.new.show

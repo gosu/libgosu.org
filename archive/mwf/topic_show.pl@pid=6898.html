@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6898 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How could I create a Flashlight effect ?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6898' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=908.html#tid908'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=908.html#tid908'>Gosu Exchange</a> / How could I create a Flashlight effect ?
+</div>
+</div>
+
+<div class='frm pst' id='pid6896' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6896' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6896.html#pid6896'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-27 08:03
+<span class='htt'>Edited</span> 2013-06-27 08:12
+</div>
+<div class='ccl'>
+Hello there !<br/><br/>Yesterday I created that thing bellow (all 2D using only Gosu drawing methods) :<br/> <br/><img class='emi' src='http://img15.hostingpics.net/pics/950163render.png' alt=''/><br/><br/>The idea is that the background is rendered illuminated, then the player is drawn and a torchlight sprite is drawn on top of it. The noise effect is another layer drawn on top of everything. The torchlight is made like this :<br/><br/><img class='emi' src='http://img15.hostingpics.net/pics/438235test.png' alt=''/><br/><br/>The surrounding black is partially transparent and the &quot;light part&quot; is even more transparent. The sprite is drawn using Gosu::Image.draw_rot. I created a method that draws the corners so that when the sprite is rotated, the global image is still a rectangle. The fill color for the edges is the same partially transparent black used before. Finally, from this englobing rectangle, 4 rectangles are drawn the same color to cover the entire screen. <br/><br/>Things are working great, there are some frames where I see glitches, really one or two frames a minute, randomly, which is annoying but I can live with that.<br/><br/>The only problem here is that I can&#39;t use this technique if I want to add other &quot;light layers&quot;. It works here because everything is dark except the torlight area, but I would like to add other light sources and it would be really hard to use the same technique, taking care of other rectangles intersecting the ones drawn for the torchlight.<br/><br/>Is there another way to create this effect ? I would really like to use only Gosu drawing techniques. Thanks for your precious help.
+</div>
+</div>
+
+<div class='brn' id='brn6896'>
+<div class='frm pst' id='pid6897' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6896'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6897' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6897.html#pid6897'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-06-27 08:35
+</div>
+<div class='ccl'>
+good job.<br/><br/>instead of drawing many textures i advise to make your light rectangle even bigger so it&#39;ll cover the whole screen in any rotation and position. then you&#39;d get rid of the glitches.<br/>or you could slightly overlap the corners of your rectangles to prevent light spots from appearing (in the dark part you&#39;d have dark lines, which would be less noticable than bright glitches)<br/><br/>for drawing multiple layers you&#39;d need some kind of render to texture feature with your method. you&#39;d draw all your lights, create an image from that, clear the screen, draw all your objects, draw the light image over the objects. This could be done easily by abusing the various possible screenshot methods (search this board for some of them). of course, this might not be very performant.
+</div>
+</div>
+
+<div class='brn' id='brn6897'>
+<div class='frm pst' id='pid6898' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6898' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6898.html#pid6898'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-27 08:47
+</div>
+<div class='ccl'>
+Thanks for your reply :)<br/><br/>I thought about creating a big image first, but since I&#39;m used to create the smallest files possibles, I considered it would be better to go the way I did for performance issues, even if I know that it&#39;s not good to optimize anything until an issue is detected, and I don&#39;t know if drawing multiple rects is really faster than one huge one.<br/><br/>Using the Gosu::Window#record could be an option then. But still : if the background is rendered to a texture using whatever method available, the black part of my torchlight would overide lighted areas from the &quot;screenshot&quot;. Then what I would really need to achieve that effect is that only the light from the torchlight is rendered, kinda used as an alpha mask. It&#39;s this effect that I couldn&#39;t get that got me to code this tricky way to draw it.
+</div>
+</div>
+
+<div class='brn' id='brn6898'>
+<div class='frm pst' id='pid6899' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6898'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6899' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6899.html#pid6899'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-06-27 11:40
+</div>
+<div class='ccl'>
+I don&#39;t think you can achieve that using <code>record</code>, and rendering all lights to a texture every frame sounds slow too… I think your best bet is to look at Spooner&#39;s Ashton gem, which even contains a small (very different) lighting system.
+</div>
+</div>
+
+<div class='brn' id='brn6899'>
+<div class='frm pst' id='pid6900' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6900' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6900.html#pid6900'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-27 11:47
+</div>
+<div class='ccl'>
+I agree with you that Ashton would be the better choice :)<br/>I don&#39;t know anything about shaders, my point was to create something looking cool using only Gosu primitive drawing methods. The lights would be set once for all, I don&#39;t want any other &quot;dynamic light&quot; than the torchlight itself... I&#39;ll think about it some more ;)
+</div>
+</div>
+
+<div class='brn' id='brn6900'>
+<div class='frm pst' id='pid6901' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6900'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6901.html#pid6901'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-06-27 12:26
+</div>
+<div class='ccl'>
+well… if you don&#39;t mind some loss in colour you can create 3 layers: background, background light, flashlight<br/><br/>then try playing around with different alphamodes (additive vs multiplicative) for the light layers, different amounts of alpha for the darkness and different orders of application of the light layers
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6902' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6902' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6902.html#pid6902'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-06-27 12:29
+</div>
+<div class='ccl'>
+actually in my use cases gosu is very fast when screencapping stuff and when updating textures every frame.<br/>i have stuff like 1000fps when drawing an array to a texture every frame and drawing that texture (on my crappy notebook!)<br/>note: that texture wasn&#39;t very big, only 128x128 iirc
+</div>
+</div>
+
+<div class='brn' id='brn6902'>
+<div class='frm pst' id='pid6903' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6902'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6903' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6903.html#pid6903'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-27 12:44
+</div>
+<div class='ccl'>
+I tried to replace my light image with a gigantic one. There is no lag at all, and that prevents me to draw all that maths corrections with rotation and rectangular fill. This hurts because it was not that easy to code for me.<br/><br/>I have an idea mixing all your ideas. I should maybe seperate my black layer part of the lamp and the highlight in the center, that way I could :<br/>- render to Z = 0 the background that should be affected by darkness<br/>- render to Z = 2 the background that shouldn&#39;t be affected by darkness (where there is already lights)<br/>- render to Z = 1 the black mask of the light image<br/>- render to Z = 3 the light part of my mask<br/><br/>That could do the trick. I&#39;ll try it out.
+</div>
+</div>
+
+<div class='brn' id='brn6903'>
+<div class='frm pst' id='pid6904' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6903'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6904' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6904.html#pid6904'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<span class='htt'>Date</span> 2013-06-27 15:10
+</div>
+<div class='ccl'>
+hmm i don&#39;t really see how that&#39;ll work (better?), but i might be misinterpreting what you&#39;re doing, let us know how it goes.<br/><br/>anyway, try drawing a white circle with multiplicative alpha over a part that&#39;s already darkened, it should brighten up dark spots (with colour loss)
+</div>
+</div>
+
+<div class='brn' id='brn6904'>
+<div class='frm pst' id='pid6905' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6904'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6905.html#pid6905'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-27 18:14
+<span class='htt'>Edited</span> 2013-06-27 19:35
+</div>
+<div class='ccl'>
+<img class='emi' src='http://bestguigui.free.fr/gosu/shooter/render.png' alt=''/><br/><a class='urs' href='http://bestguigui.free.fr/gosu/shooter/shooter.rar'>http://bestguigui.free.fr/gosu/shooter/shooter.rar</a><br/><br/>I&#39;m playing with my idea. For now, the basic effect will do it. I&#39;m looking for a way to the gameplay I have in mind.<br/><br/>WASD to move<br/>Mouse : right click (light ON / OFF), up / down (aim), left / right (change direction, may need some improvement).<br/><br/>The character will walk faster forward and slower if he walks backwards and / or diagonally.<br/><br/>The left click will able to shoot, but not yet :)<br/>Collisions are not handled yet, I&#39;m not sure how I&#39;ll create my maps for now.<br/><br/>EDIT : you can &quot;shoot&quot; using the left click (only a muzzle flash and a sound effect for now, it gives an idea). I added some sound effect to try out an ambiance. The character is temporary.
+</div>
+</div>
+
+<div class='frm pst' id='pid6906' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6904'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6906' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6906.html#pid6906'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-06-27 18:38
+</div>
+<div class='ccl'>
+As far as I know, multiplicative mode works in the 0..1 range, so multiplying with white = 1 will not brighten up anything.
+</div>
+</div>
+
+<div class='brn' id='brn6906'>
+<div class='frm pst' id='pid6907' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6906'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6907' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6907.html#pid6907'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-27 19:34
+</div>
+<div class='ccl'>
+Thanks ! I&#39;ll use that info when I decide how I create my maps. I have an idea with this &quot;game&quot;, but it&#39;s not easy ;)
+</div>
+</div>
+
+<div class='brn' id='brn6907'>
+<div class='frm pst' id='pid6908' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6908' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6908.html#pid6908'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-06-27 23:37
+</div>
+<div class='ccl'>
+I found the best lighting effect was from using multiply. 1 will show the graphics &quot;normally&quot; and fractions will put it into darkness.<br/><br/>@jlnr: Sadly, my lighting engine is broken. Would be great if it did work though (as it so nearly does, but the maths is broken somewhere and I haven&#39;t a clue where)!<br/><br/>EDIT: additive tends to wash out colours and just drawing dark grey (using default blending) over it tends to make everything too grey.
+</div>
+</div>
+
+<div class='brn' id='brn6908'>
+<div class='frm pst' id='pid6909' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6908'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6909' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6909.html#pid6909'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2013-06-28 07:40
+</div>
+<div class='ccl'>
+When you say &quot;1&quot;, do you mean pure white, or pure opaque alpha ?
+</div>
+</div>
+
+<div class='brn' id='brn6909'>
+<div class='frm pst' id='pid6917' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6898.html#pid6909'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6917.html#pid6917'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-01 13:27
+</div>
+<div class='ccl'>
+I mean white rgba(255, 255, 255, 255), sorry. That will not affect the underlying image when multiplied (since it is x1). The darkest part of the room should be rgba(255, 255, 255, 0). so that it multiplies the background by x0 so it is effectively removed.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=908.html#tid908'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=908.html#tid908'>Gosu Exchange</a> / How could I create a Flashlight effect ?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6898.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Upgrading Ubuntu absolutely destroyed performance.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=761.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=761.html#tid761'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=761.html#tid761'>Gosu Exchange</a> / Upgrading Ubuntu absolutely destroyed performance.
+</div>
+</div>
+
+<div class='frm pst' id='pid5838' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5838' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5838.html#pid5838'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=923.html' >hextheory</a>
+<span class='htt'>Date</span> 2012-05-10 21:09
+</div>
+<div class='ccl'>
+I recently upgraded to Ubuntu 12 and, having changed nothing manually, even the most minimal Gosu program now crawls. I imagine it&#39;s an OpenGL issue, but any ideas as to where to look to better debug the situation would be greatly appreciated.
+</div>
+</div>
+
+<div class='brn' id='brn5838'>
+<div class='frm pst' id='pid5839' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5838'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5839' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5839.html#pid5839'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=863' >Jamer</a>
+<span class='htt'>Date</span> 2012-05-11 05:03
+</div>
+<div class='ccl'>
+To begin your quest, you may consult the glxinfo program.<br/><br/><code>$ glxinfo | grep &quot;direct rendering&quot;</code><br/><br/>If this prints out &quot;no,&quot; you&#39;re in trouble.<br/><br/><code>$ glxinfo | grep &quot;rendering string&quot;</code><br/><code>$ glxinfo | grep &quot;vendor string&quot;</code><br/><br/>These should print info about your OpenGL pipeline. If they say LLVMpipe or Mesa, instead of Nvidia, ATI, or Intel, you&#39;re in trouble.<br/><br/>You might also want to try running another OpenGL program. Depening on the power of your computer, Nexuiz might be a good test, and would be in the Ubuntu repos.
+</div>
+</div>
+
+<div class='brn' id='brn5839'>
+<div class='frm pst' id='pid5840' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5839'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5840' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5840.html#pid5840'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=923.html' >hextheory</a>
+<span class='htt'>Date</span> 2012-05-11 05:54
+</div>
+<div class='ccl'>
+Thank you for taking the time to respond, Jamer. Alas, glxinfo is not presently on my machine nor, seemingly, in the repository. Gosu does run, though, just very, very slowly. I&#39;m guessing that my not having glxinfo is the first bad sign. As for testing another OpenGL program, I would of course be happy to, but Nexuiz is an extra gB of space I&#39;d rather not use up.<br/><br/>I&#39;ve reinstalled Gosu to no avail. I&#39;ve also made sure that I have all of the necessary libraries in place, and it seems that I do. However, every single one of them is &quot;set to manually installed&quot;. Do you know if this is a result of them initially being compiled during initial installation of Gosu?
+</div>
+</div>
+
+<div class='brn' id='brn5840'>
+<div class='frm pst' id='pid5841' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5840'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5841' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5841.html#pid5841'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-05-11 12:40
+</div>
+<div class='ccl'>
+This is quite unfortunate, but at least now I know this issue does not just affect me.<br/><br/>I am fairly certain this issue is either in Ruby or Gosu, as Minecraft does not seem to run any worse than it did before.&#160; I don&#39;t normally get 60fps in Minecraft though, so that may not be the best benchmark.&#160; However, I&#39;ve programmed some things in Java using JOGL for a class, and those do not seem to be running any slower.&#160; Even so, that&#39;s just my personal opinion, I don&#39;t have data to back it up with, as is the case with the Gosu/Ruby regression.
+</div>
+</div>
+
+<div class='brn' id='brn5841'>
+<div class='frm pst' id='pid5843' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5841'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5843' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5843.html#pid5843'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-05-11 15:42
+</div>
+<div class='ccl'>
+Ouch. The worst part is that I can&#39;t really debug this issue in my VM which does not have OGL acceleration to begin with. :(
+</div>
+</div>
+
+<div class='brn' id='brn5843'>
+<div class='frm pst' id='pid5844' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5843'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5844' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5844.html#pid5844'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-05-11 21:49
+</div>
+<div class='ccl'>
+Let me know if there&#39;s some data I can give you which would help D:<br/><br/>I really feel like it should be Ruby&#39;s fault more than yours though.
+</div>
+</div>
+
+<div class='brn' id='brn5844'>
+<div class='frm pst' id='pid5846' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5844'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5846' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5846.html#pid5846'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-05-12 06:37
+</div>
+<div class='ccl'>
+Oh, you could actually verify if your last statement is correct :) You only need to make (not install) Gosu for C++ to give it a try: <a class='url' href='http://libgosu.org/downloads/gosu-linux-0.7.43.tar.gz'>http://libgosu.org/downloads/gosu-linux-0.7.43.tar.gz</a><br/><br/>If I had to guess, I&#39;d say the X11 code in Gosu does not use the latest and greatest in X11 extensions :(
+</div>
+</div>
+
+<div class='brn' id='brn5846'>
+<div class='frm pst' id='pid5847' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=761.html#pid5846'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5847.html#pid5847'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-05-13 04:48
+</div>
+<div class='ccl'>
+ah, I forgot to mention this important bit:<br/><br/>The problem seems to affect me only when I&#39;m scaling to particular resolutions using Gosu::Window#scale.&#160; Thus, I suspect some issue with mipmapping.<br/><br/>Starting to think my issue (if it&#39;s not just a personal problem) is different from the OP.&#160; I will file an official github issue report if I can narrow down the cause of the problem.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=761.html#tid761'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=761.html#tid761'>Gosu Exchange</a> / Upgrading Ubuntu absolutely destroyed performance.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=761.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

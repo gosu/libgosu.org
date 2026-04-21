@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Drawing animation until it&#39;s completed</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=997.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=997.html#tid997'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=997.html#tid997'>Gosu Exchange</a> / Drawing animation until it&#39;s completed
+</div>
+</div>
+
+<div class='frm pst' id='pid7364' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7364' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7364.html#pid7364'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1066' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-18 01:54
+</div>
+<div class='ccl'>
+What is a good way to draw a particular animation without repeating the sequence?&#160; Think of like a spell effect or an explosion sequence.<br/><br/>In the example with Gosu:<br/><br/><code>@cur_image = @animation[Gosu::milliseconds / @delay % @animation.size]</code><br/><br/>This causes an animation to repeat, assuming that you keep drawing the object.&#160; So the approach I took in the source I&#39;ve linked to was to establish a time-to-live (ttl) value for the lightning bolt I&#39;m drawing.&#160; I specify a 100 millisecond delay (if I understand the formula right) and multiply that by the number of frames (@animation.size).&#160; Then, when I first create the object that represents the lightning bolt - I capture the <i>Gosu::milliseconds</i> value.&#160; Each time I call my update() method on the lightning bolt, i check if <i>Gosu::milliseconds</i> minus the start time is greater than my calculated time-to-live value.&#160; What I&#39;m having happen is the lightning bolt ends up repeating some of the first few frames before it stops being drawn.<br/><br/>A few questions:<br/>1) I&#39;m assuming I misunderstand how the formula I&#39;ve pasted here works - if my animation is repeating a bit.&#160; Can you help me identify what I can improve here so the animation only draws each frame once and then leaves?<br/><br/>2)&#160; Is there a better way to do this?&#160; I know Chingu has a way to tell the animation not to repeat, but I&#39;m still trying to learn how to do it myself before adopting too many tools.<br/><br/>Here is a link to my Github for this test-program:&#160; <a class='url' href='https://github.com/wanderinweezard/wweezgosutest'>Github Link</a>
+</div>
+</div>
+
+<div class='brn' id='brn7364'>
+<div class='frm pst' id='pid7365' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7364'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7365.html#pid7365'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-10-18 03:03
+</div>
+<div class='ccl'>
+I haven&#39;t checked out your code, but instead of trying to change the formula above, you could just use this:<br/><br/><code># object initialisation<br/>@tick = 0<br/><br/># update<br/>@tick += 1<br/>somehow_remove_object if @tick &gt;= @animation.size<br/><br/># drawing<br/>@cur_image = @animation[@tick].draw</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid7366' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7364'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7366.html#pid7366'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2013-10-18 19:09
+</div>
+<div class='ccl'>
+You can take a look at how Gamebox handles it in its <a class='url' href='https://github.com/shawn42/gamebox/blob/master/lib/gamebox/behaviors/animated.rb#L30-L37'>animation behavior</a>.<br/><br/>hope that helps
+</div>
+</div>
+
+<div class='frm pst' id='pid7367' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7364'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7367.html#pid7367'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1066' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-19 00:46
+</div>
+<div class='ccl'>
+Thanks for the feedback - I&#39;ll give these a shot.
+</div>
+</div>
+
+<div class='frm pst' id='pid7368' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7364'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7368' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7368.html#pid7368'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-19 02:17
+</div>
+<div class='ccl'>
+Hey I just cloned the git repo and tried it out. Looks really good. Nicely done on the manually-created collision detection system.<br/><br/>I&#39;m going to take some time to look at the code and try to figure it out. On a quick test run, here&#39;s what I tried:<br/><br/>&#160; if elapsed_time &gt; @ttl then<br/>&#160; &#160; @draw_me = false<br/>&#160; &#160; puts elapsed_time<br/>&#160; &#160; puts @ttl<br/>&#160; end<br/><br/>@ttl and elapsed_time seem to be off by 2 to 10ish each time - just a few milliseconds.<br/><br/>Holding space while moving creates an interesting effect.<br/><br/>As to why the numbers are off, I&#39;ll take a look at it and try to figure it out. I think the solution suggested by jlnr ought to be able get the job done.
+</div>
+</div>
+
+<div class='brn' id='brn7368'>
+<div class='frm pst' id='pid7369' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7368'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7369' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7369.html#pid7369'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1066' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-19 09:51
+</div>
+<div class='ccl'>
+Thanks for checking it out.&#160; I did just push another update.&#160; Visually - I&#39;m getting the desired behavior now and I think the bolts that are finished drawing are being removed from the array of bolts.&#160; This should mean the object will get cleared by the garbage collector at some point, right?
+</div>
+</div>
+
+<div class='brn' id='brn7369'>
+<div class='frm pst' id='pid7370' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7369'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7370' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7370.html#pid7370'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-19 21:27
+<span class='htt'>Edited</span> 2013-10-19 21:41
+</div>
+<div class='ccl'>
+Ya, it&#39;s working even better now. Before the bolts were all showing the same animation at the same time, and it was starting in the middle of the animation sometimes. Now each bolt has its own animation. I added a print message to check if the bolts are getting destroyed, and it looks like they are. I could be wrong, but I think this bit of code is taking care of getting rid of the old ones:<br/><br/>@bolts.reject! do |bolt|<br/>&#160; if bolt.done == true then<br/>&#160; &#160; true<br/>&#160; else<br/>&#160; &#160; false<br/>&#160; end<br/>end<br/><br/>Depending on the effect you&#39;re going for, it might be good to add a short cool down period, so that it fires only one bolt at a time. Right now it&#39;s hard to fire only one -- you have to press the spacebar very quickly.<br/><br/>P.S. You could try something like this:<br/><br/>(initialize)<br/>@cool_down = 0<br/><br/>(update)<br/>if button_down? Gosu::KbSpace then<br/>&#160; if @cool_down == 0<br/>&#160; &#160; @bolts.push(Bolt.new(self, @player.x + 50, @player.y + (@player.height / 2)))<br/>&#160; &#160; @cool_down = 20<br/>&#160; end<br/>end<br/><br/>if @cool_down &gt; 0<br/>&#160; @cool_down -= 1<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn7370'>
+<div class='frm pst' id='pid7371' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7370'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7371' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7371.html#pid7371'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1066' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-20 01:24
+</div>
+<div class='ccl'>
+Great idea on the cooldown.&#160; I wasn&#39;t sure why the bolt looked unusual - i guess it was because it was drawing so many.
+</div>
+</div>
+
+<div class='brn' id='brn7371'>
+<div class='frm pst' id='pid7372' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7371'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7372.html#pid7372'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-10-20 01:49
+</div>
+<div class='ccl'>
+Holding down space while moving the character gives a sense of what&#39;s going on.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7390' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7370'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7390' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7390.html#pid7390'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2013-10-22 18:10
+</div>
+<div class='ccl'>
+You can clean the reject code up a bit:<br/><br/>@bolts.reject! &amp;:done<br/><br/>;)<br/><br/>Keep up the good work.
+</div>
+</div>
+
+<div class='brn' id='brn7390'>
+<div class='frm pst' id='pid7396' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7390'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7396' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7396.html#pid7396'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1066' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-24 00:24
+</div>
+<div class='ccl'>
+Can you explain the <code>&amp; :done</code> bit please?&#160; Still pretty new to Ruby
+</div>
+</div>
+
+<div class='brn' id='brn7396'>
+<div class='frm pst' id='pid7397' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7396'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7397' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7397.html#pid7397'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2013-10-24 01:53
+</div>
+<div class='ccl'>
+I was interested too, so I looked it up:<br/><br/><a class='ura' href='http://stackoverflow.com/questions/1961030/ruby-ampersand-colon-shortcut'>http://stackoverflow.com/questions/1961030/ruby-ampersand-colon-shortcut</a>
+</div>
+</div>
+
+<div class='brn' id='brn7397'>
+<div class='frm pst' id='pid7405' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7397'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7405.html#pid7405'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1066' >wanderinweezard</a>
+<span class='htt'>Date</span> 2013-10-24 09:45
+</div>
+<div class='ccl'>
+Thanks for the link! I&#39;ll check it out
+</div>
+</div>
+
+<div class='frm pst' id='pid7440' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7397'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7440.html#pid7440'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2013-10-28 16:49
+</div>
+<div class='ccl'>
+Yeah, that link sums it up nicely. (Basically calling #to_proc on the symbol)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7444' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=997.html#pid7370'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7444.html#pid7444'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-10-29 12:21
+</div>
+<div class='ccl'>
+Alternatively, you could check if a certain amount of time has past since the last bolt:<br/><br/><code><br/>def initialize<br/>&#160; @time_between_shots = 100<br/><br/>&#160; @time = 0<br/>end<br/><br/>def update<br/>&#160; @time += Gosu::milliseconds<br/><br/>&#160; if button_down? Gosu::KbSpace<br/>&#160; &#160; if @time &gt;= @time_between_shots<br/>&#160; &#160; &#160; # put code to fire off more bolts here<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; @time = 0<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/></code><br/><br/>Same principle, but this way makes more sense to me personally.<br/>This method is also framerate independent, because it uses the millisecond timer, instead of counting game ticks.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=997.html#tid997'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=997.html#tid997'>Gosu Exchange</a> / Drawing animation until it&#39;s completed
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=997.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

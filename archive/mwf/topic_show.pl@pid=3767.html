@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3767 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Image-level Rect Clipping</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3767' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=534.html#tid534'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=534.html#tid534'>Gosu Exchange</a> / Image-level Rect Clipping
+</div>
+</div>
+
+<div class='frm pst' id='pid3765' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3765' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3765#pid3765'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-01-18 22:41
+</div>
+<div class='ccl'>
+What is the preferred way of rendering a sprite from a spritesheet? Looking at the API, it would appear to be to load the file with Gosu::Image.load_tiles so you have many separate Images. What if that&#39;s not a good idea, because for example you want to load a huge image once (with 10,000 tiles)? Or if you weren&#39;t sure about the tile size until after it was loaded (tile size proportional to the size of the image)?<br/><br/>What I would like is a function in Gosu::Image that can draw from a source rectangle, like Gosu::Image.draw_rect(dest_x, dest_y, src_x, src_y, src_width, src_height). It would be even more awesome to have the :draw_rot arguments in there too. Am I missing something? Is there a better way? I wouldn&#39;t think that using &quot;@window.clip_to(dest_x, dest_y, src_width, src_height) { @image.draw(-src_x, -src_y) }&quot; would be a good idea, because wouldn&#39;t that try to draw the whole image? Is this what the &quot;tileable&quot; flag is for that I haven&#39;t been able to find any reference to?
+</div>
+</div>
+
+<div class='brn' id='brn3765'>
+<div class='frm pst' id='pid3767' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3765'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3767.html#pid3767'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-19 00:39
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; What is the preferred way of rendering a sprite from a spritesheet?</p></blockquote><br/>Either load_tiles, or splitting the spritesheet up with another library such as RMagick, preferrably on the dev machine.<br/><br/><blockquote><p>&gt; Or if you weren&#39;t sure about the tile size until after it was loaded (tile size proportional to the size of the image)?</p></blockquote><br/>For that particular use case, you can give negative numbers to load_tiles, i.e. -4, -3 will load 4x3 tiles, no matter how large the image is.<br/><br/><blockquote><p>&gt; Gosu::Image.draw_rect(dest_x, dest_y, src_x, src_y, src_width, src_height)</p></blockquote><br/>The drawing functions have plenty of arguments and I wouldn&#39;t want to overload them with four more again. Also, you are on the right track with tileability:<br/><br/><a class='url' href='http://libgosu.org/rdoc/files/reference/Tileability_rdoc.html'>http://libgosu.org/rdoc/files/reference/Tileability_rdoc.html</a><br/><br/>What happens internally is that Gosu will pad the loaded images on the texture, so you can stretch and rotate them without worries. This breaks when you can specify a source rectangle.<br/><br/>There are several possible use cases for source rectangles. For example, if you had 10,000 tiles, then you still wouldn&#39;t want to keep them all in memory and draw_rect portions of the whole sheet. What&#39;s the best solution depends on the concrete problem.
+</div>
+</div>
+
+<div class='frm pst' id='pid3772' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3765'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3772' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3772.html#pid3772'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-19 10:05
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; What if that&#39;s not a good idea, because for example you want to load a huge image once (with 10,000 tiles)?</p></blockquote><br/>I believe it is documented that #load_tiles can take either a filename or a RMagick instance.&#160; However, I believe that in Gosu RMagick instances and Gosu::Image instances are interchangeable.&#160; Thus, you can load the whole spritesheet into memory first and then split it.<br/><br/>The code would be something like this.<br/>spritesheet = Gosu::Image.new($window, path_to_file, false)<br/>sprite_array = Gosu::Image::load_tiles($window, spritesheet, width, height, false)<br/><br/>I can confirm that this works, as it is how I am doing it.&#160; However, I&#39;m only doing it this way because I need to composite multiple images into a single spritesheet, and divide the resultant image into tiles.<br/><br/>However, if you&#39;re loading that much into memory at once, I would say that you have a problem.&#160; I would suggest loading only what you need into memory, and thus storing the spritesheet in smaller chunks.&#160; However, reading from the disk is quite slow... so I guess it&#39;s more of a personal choice.&#160; I personally don&#39;t like it when apps take more memory than then need though.&#160; I imagine that 10,000 tiles would take up a good deal of memory, however.<br/><br/>Once you get used to the flow of Gosu I believe you will see that it is better (ie more intuitive) to chop up an image into sprites/tiles and draw those.&#160; I am assuming you&#39;re new to the engine as you are new to the forum.&#160; Please excuse me if I am mistaken.<br/><br/><blockquote><p>&gt; I wouldn&#39;t think that using ... would be a good idea</p></blockquote><br/>Yeah, I would advise against that as it looks unwieldy, and it is probably going to be slow.&#160; However, if you really want a similar feel, you could take the array generated from #load_tiles and parse the elements into a hash with the keys being related to the position of the tile in the overall spritesheet.&#160; Although honestly, like I said before, I really don&#39;t understand why you would want to do it that way.&#160; Feel free to explain it to me though, I am genuinely interested.
+</div>
+</div>
+
+<div class='brn' id='brn3772'>
+<div class='frm pst' id='pid3773' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3773' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3773#pid3773'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-01-19 16:44
+</div>
+<div class='ccl'>
+I think I may end up loading tiles from an existing image, even though that would seem to take up 2x as much memory. I could just load tiles to start with, but I&#39;m trying to preserve a familiar interface. I could imagine only loading the tiles I need, but there doesn&#39;t seem to be an interface for that unless I accept loading one tile at a time, opening the file separately each time.<br/><br/>In the spirit of the familiar interface, I would also need the ability to grab from an arbitrary source rectangle. Since I don&#39;t anticipate huge files for this purpose, right now I plan on using Texplay to generate a blank image of the right size and splice the right part onto it. Would this be faster or slower than using :clip_to, and if it depends on the image size, about how big would it have to be before it&#39;s slower?<br/><br/>Assuming 32-bit color values (RGBA), a 10,000 tile image with 32x32 tiles would take up 40mb.<br/><br/>I&#39;ve also been wondering if there&#39;s any way to free the memory of an unused image. There doesn&#39;t seem to be an explicit :free or :dispose function.
+</div>
+</div>
+
+<div class='brn' id='brn3773'>
+<div class='frm pst' id='pid3774' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3773'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3774' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3774.html#pid3774'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-01-19 23:53
+</div>
+<div class='ccl'>
+the image will be garbage collected when no references to it exist.
+</div>
+</div>
+
+<div class='brn' id='brn3774'>
+<div class='frm pst' id='pid3776' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3774'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3776#pid3776'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-20 06:54
+</div>
+<div class='ccl'>
+I was just about to mention this.&#160; Although, I have heard that ruby&#39;s gc is slow, it doesn&#39;t seem to matter (speaking anecdotally) unless you do it really frequently.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3775' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3773'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3775' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3775.html#pid3775'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-20 05:25
+</div>
+<div class='ccl'>
+Have you benchmarked load_tiles on a 10,000 tile image so that we know how huge of a problem it is right now?<br/><br/>I really think splitting the file up ahead of time is the way to go. Once you have, say, 100 tiles per image, the actual image file parsing will be more neglectable. It&#39;s all about heuristics for the actual, concrete use case though; for example, the tiles on the spritesheet may or may not be ordered in a sane way, keeping related tiles close to each other.
+</div>
+</div>
+
+<div class='brn' id='brn3775'>
+<div class='frm pst' id='pid3777' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3775'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3777.html#pid3777'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-20 07:25
+</div>
+<div class='ccl'>
+Totally agree about slicing up the image.&#160; Though I would argue that if your tiles are not organized in a &quot;sane way, keeping related tiles close to each other&quot; that your tiles need to be rearranged.&#160; Though, if you&#39;re chopping the image up anyway, it shouldn&#39;t be that big of a deal.<br/><br/>Well, that&#39;s a bit of an oversimplification... ^_^; but still.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3778' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3773'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3778' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3778.html#pid3778'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-20 07:26
+</div>
+<div class='ccl'>
+I&#39;m still not so sure why you&#39;re so intent on preserving this interface.&#160; If you&#39;re worried about the efficiency at a low-level, wouldn&#39;t it be more efficient to cut the image into tiles, so that way you don&#39;t have to compute the coordinates of which image to use every frame?
+</div>
+</div>
+
+<div class='brn' id='brn3778'>
+<div class='frm pst' id='pid3779' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3778'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3779' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=3779#pid3779'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-01-20 23:13
+</div>
+<div class='ccl'>
+I guess that&#39;s one part of what I was asking, whether it would be more efficient to calculate the drawing rect each time it is drawn or just have lots of tiles floating around. Ignoring any calculations for source rect, would it be more efficient to store one really large image or many small tiles of that one image?<br/><br/>As for preserving the interface, if I can use an existing Gosu::Image in place of an RMagick image, I can create a cached image using Gosu::Image.new($window, @image, rect[0], rect[1], rect[2], rect[3]) instead of using Texplay. For my own use I will redesign the interface to be more efficient, but I&#39;m hoping to have a drop-in replacement for a certain proprietary graphics library that I can share.
+</div>
+</div>
+
+<div class='brn' id='brn3779'>
+<div class='frm pst' id='pid3780' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3767.html#pid3779'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3780.html#pid3780'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-21 03:34
+</div>
+<div class='ccl'>
+I believe it would be the classic memory for speed trade off, but the amount of space would probably be negligible.&#160; Why don&#39;t you try it yourself and benchmark it, then let us know? I&#39;d be interested in how that works out myself.<br/><br/>Ah, ok, well if you already have a graphics library, then I suppose it might be a bit of a pain to retool... err, I suppose that&#39;s more like refactoring? idk.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=534.html#tid534'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=534.html#tid534'>Gosu Exchange</a> / Image-level Rect Clipping
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3767.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

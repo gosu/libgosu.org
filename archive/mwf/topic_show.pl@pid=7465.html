@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ground in game</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7465' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1010.html#tid1010'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1010.html#tid1010'>Gosu Exchange</a> / Ground in game
+</div>
+</div>
+
+<div class='frm pst' id='pid7465' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7465' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7465.html#pid7465'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1068.html' >zhzhussupovkz</a>
+<span class='htt'>Date</span> 2013-11-02 12:56
+<span class='htt'>Edited</span> 2013-11-02 13:04
+</div>
+<div class='ccl'>
+Hello world! I write a simple platformer where mouse eat cheeses from platforms. My code for mouse<br/><br/><b>1. Player class:</b><br/><br/>#class Player<br/>class Player<br/><br/>&#160; def initialize window, x, y, left, right<br/>&#160; &#160; @x, @y = x, y<br/>&#160; &#160; @left = Gosu::Image.new(window, left, false)<br/>&#160; &#160; @right = Gosu::Image.new(window, right, false)<br/>&#160; &#160; @face_left = true<br/>&#160; end<br/><br/>&#160; attr_reader :x, :y<br/><br/>&#160; #move left<br/>&#160; def move_left<br/>&#160; &#160; @face_left = true<br/>&#160; &#160; @x -= 5.0<br/>&#160; &#160; @x = 1.0 if @x &lt;= 1.0<br/>&#160; end<br/>&#160; <br/>&#160; #move right<br/>&#160; def move_right<br/>&#160; &#160; @face_left = false<br/>&#160; &#160; @x += 5.0 if @x &lt;= 595.0<br/>&#160; end<br/>&#160; <br/>&#160; #up<br/>&#160; def up<br/>&#160; &#160; @y -= 7.0 if @y &gt;= 17.0<br/>&#160; end<br/><br/>&#160; #move down<br/>&#160; def down<br/>&#160; &#160; @y += 2.5 if @y &lt;= 372.5<br/>&#160; end<br/>&#160; <br/>&#160; #move<br/>&#160; def move<br/>&#160; &#160; @x %= 640<br/>&#160; &#160; @y %= 480<br/>&#160; end<br/><br/>&#160; #draw<br/>&#160; def draw<br/>&#160; &#160; if @face_left<br/>&#160; &#160; &#160; @left.draw(@x, @y, 1)<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @right.draw(@x, @y, 1)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>end<br/><br/><b>2.Mouse class:</b><br/><br/>#class Mouse - main player<br/>class Mouse &lt; Player<br/><br/>&#160; def initialize window, x, y<br/>&#160; &#160; super window, x, y, &quot;images/mouse.png&quot;, &quot;images/mouse-r.png&quot;<br/>&#160; &#160; @score, @lives = 0, 3<br/>&#160; &#160; @heart = Gosu::Image.new(window, &quot;images/heart.png&quot;, false)<br/>&#160; &#160; @ui = Gosu::Font.new(window, &#39;Monaco&#39;, 25)<br/>&#160; &#160; puts &quot;Create mouse...&quot;<br/>&#160; &#160; @on_ground = false<br/>&#160; end<br/><br/>&#160; attr_reader :lives, :score<br/>&#160; attr_accessor :on_ground<br/><br/>&#160; #draw mouse<br/>&#160; def draw<br/>&#160; &#160; super<br/>&#160; &#160; @ui.draw(&quot;Score: #{@score}&quot;, 10, 450, 2)<br/>&#160; &#160; @heart_x = 0<br/>&#160; &#160; @lives.times do<br/>&#160; &#160; &#160; @heart.draw(600-@heart_x, 450, 2)<br/>&#160; &#160; &#160; @heart_x += 24<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; #move down<br/>&#160; def down<br/>&#160; &#160; @y += 2.5 if @y &lt;= 372.5<br/>&#160; end<br/><br/>&#160; #dead<br/>&#160; def dead<br/>&#160; &#160; @lives -= 1<br/>&#160; &#160; @lives = 0 if @lives &lt;= 0<br/>&#160; end<br/><br/>&#160; def dead?<br/>&#160; &#160; return @lives == 0<br/>&#160; end<br/><br/>&#160; #add score<br/>&#160; def add_score<br/>&#160; &#160; @score += 100<br/>&#160; end<br/><br/>end<br/><br/><b>3.Level class:</b><br/>#class Level<br/>class Level<br/><br/>&#160; def initialize window<br/>&#160; &#160; @window, @num = window, 0<br/>&#160; &#160; @cheeses = []<br/>&#160; &#160; @bricks = []<br/>&#160; &#160; @ui = Gosu::Font.new(@window, &#39;Monaco&#39;, 25)<br/>&#160; &#160; puts &quot;Initialize levels...&quot;<br/>&#160; end<br/><br/>&#160; attr_reader :ui, :num<br/>&#160; attr_accessor :bricks, :cheeses<br/><br/>&#160; #starting level<br/>&#160; def start<br/>&#160; &#160; @num += 1<br/>&#160; &#160; (2+@num).times do<br/>&#160; &#160; &#160; @x_cord = rand(10..550)<br/>&#160; &#160; &#160; @y_cord = rand(50..325)<br/>&#160; &#160; &#160; @cheeses &lt;&lt; Cheese.new(@window, @x_cord, @y_cord)<br/>&#160; &#160; &#160; @bricks &lt;&lt; Brick.new(@window, @x_cord - 10, @y_cord + 36)<br/>&#160; &#160; end<br/>&#160; &#160; puts &quot;Starting level #{@num}.&quot;<br/>&#160; &#160; puts &quot;Go!&quot;<br/>&#160; end<br/><br/>&#160; #draw<br/>&#160; def draw<br/>&#160; &#160; @cheeses.each do |e| e.draw end<br/>&#160; &#160; @bricks.each do |e| e.draw end<br/>&#160; &#160; @ui.draw(&quot;Level:#{@num}&quot;, 10, 425, 2)<br/>&#160; end<br/><br/>&#160; #max scores in level<br/>&#160; def total_scores<br/>&#160; &#160; (2*@num + 0.5 * @num * (@num+1))*100<br/>&#160; end<br/><br/>&#160; #end level<br/>&#160; def end_level<br/>&#160; &#160; @cheeses = []<br/>&#160; &#160; @bricks = []<br/>&#160; end<br/><br/>end<br/><br/><b>4.Main window:</b><br/>#main window<br/>class MyWindow &lt; Gosu::Window<br/><br/>&#160; def initialize<br/>&#160; &#160; puts &quot;Start environment...&quot;<br/>&#160; &#160; super 640, 480, false<br/>&#160; &#160; self.caption = &#39;Mouse Game&#39;<br/>&#160; &#160; @bg = Gosu::Image.new(self, &#39;images/bg.png&#39;, true);<br/>&#160; &#160; @music = Gosu::Song.new(self, &#39;sounds/music.ogg&#39;)<br/>&#160; &#160; puts &quot;Create game music...&quot;<br/>&#160; &#160; @music.play(looping = true)<br/>&#160; &#160; @mouse = Mouse.new(self, 520, 375)<br/>&#160; &#160; @level = Level.new(self)<br/>&#160; &#160; @level.start<br/>&#160; end<br/><br/>&#160; #game logic<br/>&#160; def update<br/>&#160; &#160; if @mouse.score == @level.total_scores<br/>&#160; &#160; &#160; @level.end_level<br/>&#160; &#160; &#160; @level.start<br/>&#160; &#160; end<br/>&#160; &#160; @mouse.move_left if button_down? Gosu::KbLeft<br/>&#160; &#160; @mouse.move_right if button_down? Gosu::KbRight<br/>&#160; &#160; @mouse.up if button_down? Gosu::KbUp or button_down? Gosu::KbSpace<br/>&#160; &#160; @mouse.down if @mouse.on_ground == false<br/>&#160; &#160; @mouse.move<br/>&#160; &#160; @level.cheeses.each do |e|<br/>&#160; &#160; &#160; if (e.x - @mouse.x).abs &lt;= 15.0 &amp;&amp; (e.y - @mouse.y).abs &lt;= 15.0<br/>&#160; &#160; &#160; &#160; e.drawing = false<br/>&#160; &#160; &#160; &#160; e.x = e.y = -1<br/>&#160; &#160; &#160; &#160; @mouse.add_score<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @level.draw<br/>&#160; &#160; @mouse.draw<br/>&#160; &#160; @bg.draw(0, 0, 0)<br/>&#160; end<br/><br/>&#160; def button_down(key)<br/>&#160; &#160; case key<br/>&#160; &#160; when Gosu::KbEscape<br/>&#160; &#160; &#160; @music.stop<br/>&#160; &#160; &#160; close<br/>&#160; &#160; &#160; puts &quot;Exit.&quot;<br/>&#160; &#160; end<br/>&#160; end<br/><br/>end<br/><br/><b>How can I create logic:</b><br/>Stop falling down mouse if he standing in platform and fall down if he jump from platform?<br/>I try when mouse intersects by x and y with platform but he fall down always<br/><br/>Thanks for all, and sorry for my English! (I&#39;m novice in game development)
+</div>
+</div>
+
+<div class='brn' id='brn7465'>
+<div class='frm pst' id='pid7470' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7465.html#pid7465'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7470' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7470.html#pid7470'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-11-04 06:21
+</div>
+<div class='ccl'>
+Hey, looks really good. If you can upload your project to github, I will take a closer look at it and let you know my thoughts (for what they&#39;re worth)...
+</div>
+</div>
+
+<div class='brn' id='brn7470'>
+<div class='frm pst' id='pid7485' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7465.html#pid7470'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7485.html#pid7485'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1068.html' >zhzhussupovkz</a>
+<span class='htt'>Date</span> 2013-11-06 15:50
+</div>
+<div class='ccl'>
+Thanks. <a class='ura' href='https://github.com/zhzhussupovkz/mouse'>https://github.com/zhzhussupovkz/mouse</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7475' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7465.html#pid7465'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7475' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7475.html#pid7475'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-11-05 11:35
+<span class='htt'>Edited</span> 2013-11-05 13:01
+</div>
+<div class='ccl'>
+A basic way to make a player standing on a platform is to do a box against point hit test. You have a point which is the coordinate of the players feet, and you have a box which could be your bricks.<br/>If the point is within the box then the player is moved on top of the box! I hope this is enough to get you started.<br/><code><br/>class Brick<br/>&#160; ## Box attributes<br/>&#160; attr_reader :x, :y, :width, :height<br/>end<br/><br/>class Player<br/>&#160; def feet_on? box<br/>&#160; &#160; ## Find the coordinate of the playes feet here<br/>&#160; &#160; feet_x = @x + 0&#160; #replace zero so the feet_x is at the players feet<br/>&#160; &#160; feet_y = @y + 0 #replace zero so the feet_y is at the players feet<br/>&#160; &#160; <br/>&#160; &#160; ## Check if the point of the feet is within the boundary box of the brick.<br/>&#160; &#160; ## Box should be drawn from top left corner.<br/>&#160; &#160; feet_x &gt;= box.x&#160; &#160; &#160; &#160; &#160; &#160;&#160; &amp;&amp;<br/>&#160; &#160; feet_x &lt;= box.x + box.width &amp;&amp;<br/>&#160; &#160; feet_y &gt;&#160; box.y&#160; &#160; &#160; &#160; &#160; &#160;&#160; &amp;&amp;<br/>&#160; &#160; feet_y &lt;&#160; box.y + box.height<br/>&#160; end<br/><br/>&#160; def feet_y= val<br/>&#160; &#160; dy = 0 #replace delta y so @y + dy is at the players feet<br/>&#160; &#160; @y = val - dy<br/>&#160; end<br/>end<br/><br/>## I would recommend you move your game logic for your level into the level<br/>class Level<br/>&#160; def initialize window, player=nil<br/>&#160; &#160; @window = window<br/>&#160; &#160; ## player from argument or create new player<br/>&#160; &#160; @player = player || Player.new(window, 100, 100)<br/>&#160; &#160; @bricks = []<br/>&#160; end<br/>&#160; <br/>&#160; ## Game Logic<br/>&#160; def update<br/>&#160; &#160; ## Update your game physics here, move everything before hit testing<br/>&#160; &#160; <br/>&#160; &#160; ## Hit test all of the bricks against the player:<br/>&#160; &#160; @bricks.each do |brick|<br/>&#160; &#160; &#160; move_player_on_top_of brick if @player.feet_is_on? brick <br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def move_player_on_top_of box<br/>&#160; &#160; @player.feet_y = box.y<br/>&#160; end<br/>end<br/><br/>class MyWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; @level = Level.new self<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; @level.update<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; @level.draw<br/>&#160; end<br/>end<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn7475'>
+<div class='frm pst' id='pid7486' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7465.html#pid7475'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7486.html#pid7486'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1068.html' >zhzhussupovkz</a>
+<span class='htt'>Date</span> 2013-11-06 15:51
+</div>
+<div class='ccl'>
+Thank you very much. It&#39;s really easy
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1010.html#tid1010'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1010.html#tid1010'>Gosu Exchange</a> / Ground in game
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7465.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

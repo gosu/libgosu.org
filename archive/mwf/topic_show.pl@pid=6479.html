@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6479 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Playing Song prevents full game close - Ruby, Mac OSX 10.8</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6479' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=838.html#tid838'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=838.html#tid838'>Gosu Exchange</a> / Playing Song prevents full game close - Ruby, Mac OSX 10.8
+</div>
+</div>
+
+<div class='frm pst' id='pid6459' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6459' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6459.html#pid6459'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=980.html' >spirulence</a>
+<span class='htt'>Date</span> 2013-01-15 23:27
+</div>
+<div class='ccl'>
+Hello everybody!<br/><br/>I&#39;ve just started my Ruby + Gosu journey (today, actually) and I&#39;ve run into this problem. I&#39;m using Ruby 1.9.3 on Mac OSX 10.8.<br/><br/>If I store a few music files in a Hash, and play one of them, and try to close my game, my game window closes, but the game stays open in the terminal until I perform Ctrl-C. Here&#39;s some code that produces the problem, along with a commented workaround.<br/><br/><code>require &#39;gosu&#39;<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super 1024, 768, false<br/>&#160; &#160; @res = Resources.new(self, &quot;resources&quot;)<br/>&#160; &#160; @state = MainMenuState.new(self, @res)<br/>&#160; end<br/>&#160; <br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::KbEscape<br/>&#160; &#160; &#160; #uncomment for the workaround<br/>&#160; &#160; &#160; #@res.music.each do |title, song|<br/>&#160; &#160; &#160; #&#160; song.stop<br/>&#160; &#160; &#160; #end<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class Resources<br/>&#160; attr_accessor :music<br/><br/>&#160; def initialize(window, directory)<br/>&#160; &#160; @music = {}<br/>&#160; &#160; Dir.glob(&quot;#{directory}/music/*.ogg&quot;).each do |filename|<br/>&#160; &#160; &#160; base = File.basename(filename, &quot;.ogg&quot;)<br/>&#160; &#160; &#160; @music[base] = Gosu::Song.new(window, filename)<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class MainMenuState<br/>&#160; def initialize(window, res)<br/>&#160; &#160; @music = res.music[&quot;title_screen&quot;]<br/>&#160; &#160; @music.play<br/>&#160; end<br/>end<br/><br/>window = GameWindow.new<br/>window.show</code><br/><br/>The workaround is to simply stop every loaded song and then close the window. It&#39;s very easy when you have all your resources loaded in one class.<br/><br/>What&#39;s interesting is that this problem goes away if I store the Songs directly in the window class:<br/><br/><code>require &#39;gosu&#39;<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super 640, 480, false<br/>&#160; &#160; self.caption = &quot;Song test&quot;<br/>&#160; &#160; @songs = [Gosu::Song.new(self, &quot;title_screen.ogg&quot;), <br/>&#160; &#160; &#160; &#160; &#160; Gosu::Song.new(self, &quot;main.ogg&quot;)]<br/>&#160; &#160; @songs[0].play<br/>&#160; end<br/>&#160; <br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::KbEscape<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>window = GameWindow.new<br/>window.show</code><br/><br/>You can grab the ogg files I used from <a class='url' href='http://kiberion.net/pannewb/archived/omega/'>http://kiberion.net/pannewb/archived/omega/</a><br/><br/>This makes me think that it might have something to do with the order or timing of garbage collection. It&#39;s probably not something worth fixing, as that&#39;s a hard thing to predict, and the workaround is so easy. Hopefully this can help somebody else who is in the same situation as I was. :)<br/><br/>Thank you for the great work you&#39;ve done to make gosu! I expect many hours of joy to come from it. :D
+</div>
+</div>
+
+<div class='brn' id='brn6459'>
+<div class='frm pst' id='pid6462' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6479.html#pid6459'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6462' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6462.html#pid6462'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-16 02:51
+</div>
+<div class='ccl'>
+I have heard this before. It is a little strange but since it should be easy to reproduce, I have filed a ticket: <a class='url' href='https://github.com/jlnr/gosu/issues/161'>https://github.com/jlnr/gosu/issues/161</a><br/><br/>Ruby&#39;s shutdown vs. Gosu Audio has caused issues before. At least this time it&#39;s not a segfault! :)
+</div>
+</div>
+
+<div class='brn' id='brn6462'>
+<div class='frm pst' id='pid6478' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6479.html#pid6462'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6478' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6478.html#pid6478'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=983.html' >zenkalia</a>
+<span class='htt'>Date</span> 2013-01-21 02:50
+</div>
+<div class='ccl'>
+Oh I&#39;ve been seeing this too.&#160; Would love to see this resolved.&#160; In my project I&#39;m seeing it when trying to call close after playing a second background song.<br/><br/>The way I got around it was to explicitly stop the background music before calling close.&#160; <a class='url' href='https://github.com/zenkalia/rubystein/commit/fc14dcdc3f3c42ce3570545e301228556c6fe3b9'>https://github.com/zenkalia/rubystein/commit/fc14dcdc3f3c42ce3570545e301228556c6fe3b9</a><br/><br/>This project is managing background music using this function ( <a class='url' href='https://github.com/zenkalia/rubystein/blob/master/wolf3d.rb#L92'>https://github.com/zenkalia/rubystein/blob/master/wolf3d.rb#L92</a> ) which might be janky?&#160; I&#39;m still new to Gosu but thought I&#39;d link to this for context.
+</div>
+</div>
+
+<div class='brn' id='brn6478'>
+<div class='frm pst' id='pid6480' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6479.html#pid6478'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6480.html#pid6480'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-01-21 04:41
+</div>
+<div class='ccl'>
+The method looks good to me.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6479' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6479.html#pid6459'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6479.html#pid6479'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=983.html' >zenkalia</a>
+<span class='htt'>Date</span> 2013-01-21 02:52
+</div>
+<div class='ccl'>
+Hey, I commented further down the thread but in case you don&#39;t get notified for that...<br/><br/>The way I got around it was to explicitly stop the background music before calling close.&#160; <a class='url' href='https://github.com/zenkalia/rubystein/commit/fc14dcdc3f3c42ce3570545e301228556c6fe3b9'>https://github.com/zenkalia/rubystein/commit/fc14dcdc3f3c42ce3570545e301228556c6fe3b9</a><br/><br/>&lt;3
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=838.html#tid838'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=838.html#tid838'>Gosu Exchange</a> / Playing Song prevents full game close - Ruby, Mac OSX 10.8
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6479.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

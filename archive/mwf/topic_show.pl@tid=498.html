@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>OS X error: &#39;no such file to load&#39;</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=498.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=498.html#tid498'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=498.html#tid498'>Gosu Exchange</a> / OS X error: &#39;no such file to load&#39;
+</div>
+</div>
+
+<div class='frm pst' id='pid3555' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3555' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3555.html#pid3555'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-11-22 10:14
+</div>
+<div class='ccl'>
+Surely I&#39;m overlooking something trivial?<br/>I&#39;ll go step by step...<br/><br/>I&#39;m running OS X -v 10.6.5<br/><br/>$ ruby -v<br/>version is: ruby 1.8.7 (2009-06-12 patchlevel 174) [i686-darwin9.7.0]<br/><br/>$ which ruby<br/>/usr/local/bin/ruby<br/><br/>$ gem -v<br/>1.3.7<br/><br/>$ which gem<br/>/usr/local/bin/gem<br/><br/>$ sudo gem install gosu<br/><br/>$ gem which gosu<br/>/usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.rb<br/><br/>I create&#160; gosutest.rb with the following:<br/><br/>require &#39;rubygems&#39; # Remove this line if you aren&#39;t using RubyGems<br/>require &#39;gosu&#39;<br/><br/>class MyWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; &#160; self.caption = &#39;Hello World!&#39;<br/>&#160; end<br/>end<br/><br/>w = MyWindow.new<br/>w.show<br/><br/>$ ruby gosutest.rb<br/><br/>/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in <code>gem_original_require&#39;: no such file to load -- /usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.bundle (LoadError)<br/>&#160; from /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in </code>require&#39;<br/>&#160; from /usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.rb:12<br/>&#160; from /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in <code>gem_original_require&#39;<br/>&#160; from /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in </code>require&#39;<br/>&#160; from gosutest.rb:2<br/><br/>What am I missing here?<br/><br/>Regards,<br/>Chris
+</div>
+</div>
+
+<div class='brn' id='brn3555'>
+<div class='frm pst' id='pid3556' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=498.html#pid3555'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3556' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3556.html#pid3556'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-11-22 10:18
+</div>
+<div class='ccl'>
+Also, I&#39;ve tried running Tutorial.rb in the examples directory with the same error.
+</div>
+</div>
+
+<div class='brn' id='brn3556'>
+<div class='frm pst' id='pid3557' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=498.html#pid3556'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3557' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3557.html#pid3557'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-22 10:24
+</div>
+<div class='ccl'>
+Gosu tries to load &quot;gosu.bundle&quot; (which you shouldn&#39;t have) if loading &quot;gosu.for_1_8.bundle&quot; fails. See lib/gosu.rb:<br/><br/><code><br/>&#160; require &quot;#{File.dirname(__FILE__)}/gosu.for_#{version}.#{Config::CONFIG[&#39;DLEXT&#39;]}&quot;<br/>&#160; require &quot;#{File.dirname(__FILE__)}/gosu/swig_patches.rb&quot;<br/>rescue LoadError =&gt; e<br/>&#160; require &quot;#{File.dirname(__FILE__)}/gosu.#{Config::CONFIG[&#39;DLEXT&#39;]}&quot;<br/>&#160; require &quot;#{File.dirname(__FILE__)}/gosu/swig_patches.rb&quot;<br/></code><br/><br/>If you comment the whole rescue portion out, you should get the original exception. Can you post its message? (I should really change that part in gosu.rb)
+</div>
+</div>
+
+<div class='brn' id='brn3557'>
+<div class='frm pst' id='pid3559' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=498.html#pid3557'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3559.html#pid3559'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2010-11-22 21:01
+</div>
+<div class='ccl'>
+Thanks for the quick reply, Julian! As it turns out, my Ruby.framework is missing...<br/><br/>I commented out the rescue block like so:<br/><br/><code>require &#39;rbconfig&#39;<br/><br/>begin<br/>&#160; if defined? RUBY_VERSION and RUBY_VERSION[0..2] == &#39;1.9&#39; then<br/>&#160; &#160; version = &#39;1_9&#39;<br/>&#160; else<br/>&#160; &#160; version = &#39;1_8&#39;<br/>&#160; end<br/>&#160; require &quot;#{File.dirname(__FILE__)}/gosu.for_#{version}.#{Config::CONFIG[&#39;DLEXT&#39;]}&quot;<br/>&#160; require &quot;#{File.dirname(__FILE__)}/gosu/swig_patches.rb&quot;<br/><b>#rescue LoadError =&gt; e<br/>#&#160; require &quot;#{File.dirname(__FILE__)}/gosu.#{Config::CONFIG[&#39;DLEXT&#39;]}&quot;<br/>#&#160; require &quot;#{File.dirname(__FILE__)}/gosu/swig_patches.rb&quot;</b><br/>end<br/><br/>require &quot;#{File.dirname(__FILE__)}/gosu/patches.rb&quot;</code><br/><br/>And get the following error:<br/><br/><code>/usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.for_1_8.bundle: dlopen(/usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.for_1_8.bundle, 9): Library not loaded: /usr/lib/libruby.1.dylib (LoadError)<br/>&#160; Referenced from: /usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.for_1_8.bundle<br/>&#160; Reason: image not found - /usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.for_1_8.bundle<br/>&#160; from /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in <code>require&#39;<br/>&#160; from /usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib/gosu.rb:9<br/>&#160; from /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in </code>gem_original_require&#39;<br/>&#160; from /usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `require&#39;<br/>&#160; from x.rb:8</code><br/><br/>Here is the contents of my <code>/usr/local/lib/ruby/gems/1.8/gems/gosu-0.7.25-universal-darwin/lib</code> directory:<br/><br/><code>gosu&#160; &#160; &#160; <br/>gosu.for_1_8.bundle&#160; <br/>gosu.for_1_9.bundle&#160; <br/>gosu.rb</code><br/><br/>So yeah, no gosu.bundle.<br/><br/>I looked for <code>/usr/lib/libruby.1.dylib</code> and saw that it was a broken alias. After some further investigation I learned that it should point to <code>../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/lib/libruby.1.dylib</code>. Somehow, I&#39;m not sure how or why, my <code>/System/Library/Frameworks/Ruby.framework</code> doesn&#39;t exist. I&#39;ll correct this.<br/><br/>Thanks for the help in hunting this down.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=498.html#tid498'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=498.html#tid498'>Gosu Exchange</a> / OS X error: &#39;no such file to load&#39;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=498.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

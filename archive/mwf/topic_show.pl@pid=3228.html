@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3228 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Direct IP Multiplayer over LAN And/Or Internet</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3228' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=462.html#tid462'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=462.html#tid462'>Gosu Exchange</a> / Direct IP Multiplayer over LAN And/Or Internet
+</div>
+</div>
+
+<div class='frm pst' id='pid3226' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3226' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3226.html#pid3226'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-09-13 15:47
+</div>
+<div class='ccl'>
+As the title already says, I&#39;m wondering how I&#39;d approach doing that... I can&#39;t imagine it to be hard in general, however, I don&#39;t think it&#39;ll be that easy... XD<br/><br/>Just to make myself clear (in case I got the terminology or anything wrong): What I&#39;m looking for is something enabling me to either select &quot;Wait for incoming Request&quot;, or &quot;Send request to IP&quot;, which should work by putting in an IP address. I can take care of all the frontend parts, but what I&#39;m wondering is the code stuff behind it. I really have no idea about that section, other than I&#39;ve already played games like that :p So yeah, some explanations would help me as well.<br/><br/>The other part not quite clear to me is how interaction would work... obviously, you have to check for multiple input devices of the same kind (multiple keyboards, for example), so how&#39;d you do that? I can&#39;t really imagine that needing a new input module, but I can&#39;t imgine it working &quot;just like that&quot; either...<br/><br/>Any help is apprechiated!<br/><br/>Other than that, I&#39;ve been away for some time now, but I should be here for a while again... (I guess that&#39;s what I do... happened to me for hbgames.org as well :/ )
+</div>
+</div>
+
+<div class='brn' id='brn3226'>
+<div class='frm pst' id='pid3228' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3228.html#pid3226'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3228' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3228.html#pid3228'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-09-13 19:04
+</div>
+<div class='ccl'>
+I&#39;ve never done a networked, multi-player game either, but I think what you want is a &quot;socket&quot; library. Ruby has sockets built-in, but I can&#39;t make any recommendations for C++ (you didn&#39;t specify what you&#39;d be using) other than SDL (which, like I said, I&#39;ve not used for networking).<br/><br/>I do know that, as far as the actual game mechanism goes, you need to transfer more data than just the two users&#39; inputs to keep them properly synchronized.<br/><br/>Since this isn&#39;t really directly Gosu-related, you should look elsewhere to find a proper tutorial. I would check <a class='url' href='http://www.gamedev.net/reference/list.asp?categoryid=30'>http://www.gamedev.net/reference/list.asp?categoryid=30</a> and <a class='url' href='http://stackoverflow.com/'>http://stackoverflow.com/</a> and then a general search engine.
+</div>
+</div>
+
+<div class='brn' id='brn3228'>
+<div class='frm pst' id='pid3229' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3228.html#pid3228'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3229' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3229.html#pid3229'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-14 05:57
+</div>
+<div class='ccl'>
+Actually, C++ Gosu comes with sockets, but there is sadly no example game. Maybe the doxygen is good enough though. Classes: ListenerSocket (TCP server), CommSocket (TCP client&amp;server), MessageSocket (UDP). :)<br/><br/>Of course, for the general idea behind designing multiplayer games, all other resources are valid too. It is just worth keeping in mind that Gosu, as usual, keeps everything within a single thread with polling instead of threading and forking like mad. But designing a protocol, predicting movement etc. is the same.
+</div>
+</div>
+
+<div class='brn' id='brn3229'>
+<div class='frm pst' id='pid3233' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3228.html#pid3229'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3233.html#pid3233'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=80' >Quit</a>
+<span class='htt'>Date</span> 2010-09-14 15:56
+</div>
+<div class='ccl'>
+Well, Chuadrat was one. But I left its code in the middle of a transition (P&lt;-&gt;P to Server-Client with as many clients as possible), rendering it itself unusable. As far as I can tell is TCP pretty well.<br/><br/>Main reasons that something does not work with sockets are &quot;I forgot to update() every socket&quot;, &quot;I forgot necessary bindings (onReceive)&quot;.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3246' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3246' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3246.html#pid3246'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-09-15 11:42
+</div>
+<div class='ccl'>
+Well, I always seem to forget to add that I&#39;m using Ruby Gosu ^^&quot;<br/><br/>So, I&#39;ve been redirected to eventmachine in IRC, which is a network gem for Ruby... I&#39;ll have a look into it in the near future. Also, Thanks for the links provided in the first reply, that&#39;s very interesting stuff with nice means of downloading :o
+</div>
+</div>
+
+<div class='brn' id='brn3246'>
+<div class='frm pst' id='pid3250' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3228.html#pid3246'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3250.html#pid3250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-15 17:42
+</div>
+<div class='ccl'>
+Event Machine is really awesome but I&#39;m afraid I haven&#39;t found a good way to integrate with Gosu. You&#39;ll have to resort to multithreading (one for Gosu, one for EventMachine) and you need to make sure not to make any Gosu calls on any but the main thread. :(
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=462.html#tid462'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=462.html#tid462'>Gosu Exchange</a> / Direct IP Multiplayer over LAN And/Or Internet
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3228.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

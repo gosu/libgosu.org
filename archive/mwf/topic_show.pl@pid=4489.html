@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4489 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Can&#39;t load images Windows 7</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4489' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=604.html#tid604'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=604.html#tid604'>Gosu Exchange</a> / Can&#39;t load images Windows 7
+</div>
+</div>
+
+<div class='frm pst' id='pid4484' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4484' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4484.html#pid4484'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2011-07-04 11:58
+</div>
+<div class='ccl'>
+Windows 7 x64<br/>ruby 1.9.2p180 (2011-02-18) [i386-mingw32]<br/>gosu (0.7.33 i386-mingw32)<br/><br/>Hello all I&#39;m new to these forums and relatively new to Ruby in general, but I&#39;ve been having some issues getting started. When I follow the windows tutorial I can get a window loaded, and give it a caption but when I try to do the image tutorial I get an error related to FreeImage.dll and not being able to load it.<br/><br/>M:/ruby/gosu/GameWindow/main.rb:9:in <code>initialize&#39;: unable to locate FreeImage.dll (RuntimeError)<br/><br/>Which is annoying because I&#39;ve put the FreeImage.dll in my relative folder, and in the windows system32+64 folders with no luck so I can&#39;t quite figure that out.<br/><br/>Also I downloaded another user&#39;s Starfighter game in hopes to learn from it but I get greeted with a nasty require error:<br/><br/>&lt;internal:lib/rubygems/custom_require&gt;:29:in </code>require&#39;: no such file to load - lib/zorder (LoadError)<br/><br/>The above error I know is because of some issue relating to &quot;relative path&quot; which I founda&#160; fix for using require_relative and some code snippet but why is this? Is there a better way to go about it?<br/><br/>Hopefully there is somebody that can help and if I&#39;m not the only person that&#39;s been faced with this issue then maybe we can get it solved. Thanks for your time and dedication :)
+</div>
+</div>
+
+<div class='brn' id='brn4484'>
+<div class='frm pst' id='pid4487' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4484'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4487.html#pid4487'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-07-04 14:18
+</div>
+<div class='ccl'>
+The first issue probably means that the path to the image is wrong (can&#39;t be sure since you don&#39;t include more info/code snippet). The Gosu binary gem includes Freeimage.dll, so you don&#39;t need to provide it yourself. This is just an attack of the terrible error messages again...<br/><br/>For your second issue, the problem will be that you are using 1.9.2 and they used an earlier version (it used to be that Ruby added the current file&#39;s folder to the require path). Just change <code>require &quot;lib/zorder&quot;</code> to <code>require_relative &quot;lib/zorder&quot;</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid4489' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4484'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4489' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4489.html#pid4489'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-04 14:27
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; M:/ruby/gosu/GameWindow/main.rb:9:in initialize&#39;: unable to locate FreeImage.dll (RuntimeError)</p></blockquote><br/>You actually don&#39;t need to use FreeImage.dll, unless the file was saved in some exotic file format. The problem with the current Gosu version is that it does always complain about FreeImage.dll, no matter what&#39;s going wrong exactly.<br/>If you can zip &amp; attach a sample Ruby and image file to illustrate the problem, we maybe able to explain what is going wrong.<br/><br/><blockquote><p>&gt; using require_relative and some code snippet but why is this?</p></blockquote><br/>See Spooner&#39;s post. Ruby 1.9.x also has some other syntax changes to watch out for, like &quot;when X:&quot; in case statements that is &quot;when X then&quot; now.
+</div>
+</div>
+
+<div class='brn' id='brn4489'>
+<div class='frm pst' id='pid4501' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4489'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4501.html#pid4501'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2011-07-04 15:46
+</div>
+<div class='ccl'>
+I had that problem too, and Spooner is right : the image path is wrong. Be sure to add &quot;.png&quot; extension to your path.<br/>and +1 for require_relative, I was really surprised too the first time I upgraded to Ruby 1.9.x.<br/><br/>Thanks Julian BTW, you confirmed what I thought about error&#39;s handling.
+</div>
+</div>
+
+<div class='frm pst' id='pid4512' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4489'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4512' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4512.html#pid4512'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2011-07-04 22:11
+</div>
+<div class='ccl'>
+First of all thank you to everybody that is helping me resolve the issue. I am having issues with even the tutorial about loading images. I&#39;ve attached a file to illustrate the problem.
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=599.html'><img class='amt' src='../../mwf/attachments/12/4512/mygosuproblem.thb.jpg' title='Gosu/Ruby/FreeImage.dll (133k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn4512'>
+<div class='frm pst' id='pid4520' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4512'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4520' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4520.html#pid4520'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-07-05 10:52
+</div>
+<div class='ccl'>
+It looks as if you are running your script from within the <code>Notepad++</code> directory. There is a difference between<br/><code>cd my_game; ruby main.rb</code><br/>and<br/><code>ruby C:\my_game\main.rb</code><br/>Only in the first case can the game find its resources via <code>media/my_image.png</code>. If you want to change the script so it can be run from anywhere, you could add <code>Dir.chdir File.dirname(__FILE__)</code> to the top of the script. All files will be sought relative to the script&#39;s directory then.
+</div>
+</div>
+
+<div class='brn' id='brn4520'>
+<div class='frm pst' id='pid4524' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4520'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4524' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4524.html#pid4524'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2011-07-05 11:28
+</div>
+<div class='ccl'>
+I don&#39;t believe it&#39;s actually running from the notepad directory, I have a run command in notepad++<br/><br/>cmd /K ruby &quot;$(FULL_CURRENT_PATH)&quot;<br/><br/>It just defaults to the notepad++ directory after the file is run, as far as I know anyways because it&#39;s listing my main.rb file accurately in its proper directory.
+</div>
+</div>
+
+<div class='brn' id='brn4524'>
+<div class='frm pst' id='pid4525' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4524'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4525' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4525.html#pid4525'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2011-07-05 11:31
+</div>
+<div class='ccl'>
+Okay nevermind, when I change dir into my folder everything works 100% sorry<br/><br/>Thank you for your help in fixing my very noob problem :) I appreciate it!<br/><br/>edit: now that I look back at your post I fully understand exactly what you mean and it makes total sense now why it wasn&#39;t working before. Well here&#39;s to many great debugs in ruby/gosu ahead!! Thanks once more.
+</div>
+</div>
+
+<div class='brn' id='brn4525'>
+<div class='frm pst' id='pid4535' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4489.html#pid4525'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4535.html#pid4535'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2011-07-05 22:21
+</div>
+<div class='ccl'>
+Also for anybody else using Notepad++ this may be useful:<br/><br/>I downloaded the NPPExec plugin, then from within Notepad++ if you hit F6 you can bring up an exec script. Using the following script works very well and has solved my problem:<br/><br/>cd &quot;$(CURRENT_DIRECTORY)&quot;<br/>cmd /K ruby &quot;$(FILE_NAME)&quot;
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=604.html#tid604'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=604.html#tid604'>Gosu Exchange</a> / Can&#39;t load images Windows 7
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4489.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

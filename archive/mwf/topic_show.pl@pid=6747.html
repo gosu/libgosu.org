@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6747 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Multiplayer Ruby game possible with UDPSocket?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6747' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=879.html#tid879'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=879.html#tid879'>Gosu Exchange</a> / Multiplayer Ruby game possible with UDPSocket?
+</div>
+</div>
+
+<div class='frm pst' id='pid6740' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6740' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6740.html#pid6740'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-04-07 14:18
+<span class='htt'>Edited</span> 2013-04-07 20:49
+</div>
+<div class='ccl'>
+I&#39;m trying to create a P2P mesh network for my game with a server sharing the diffrent clients with each other. The game I want to create is a real time action game, and I thought it would be cool with multiplayer functionality. I&#39;m currently experimenting with ruby&#39;s UDPSocket and I&#39;ve successfully send data over LAN and over the internet with Hamachi. Though Hamachi works there&#39;s a limit of 5 clients for each network and I would like something where the setup isn&#39;t as much of a hassle for the user.<br/><br/>It&#39;s the first time I&#39;m trying to do something like this so I&#39;m completely unexperienced. I know a little of rails and sinatra development but not really much of server setup. I&#39;ve done a bit of research but I still don&#39;t quite understand what needs to be done. So I have to create a port forward/tunnel on the clients?<br/><br/>Possible solutions?<br/>-net ssh in ruby or ssh gateway<br/>-OpenSSH (mac, linux, cygwin) <a class='url' href='http://www.perturb.org/display/entry/770/'>http://www.perturb.org/display/entry/770/</a><br/>-OpenVPN (mac, windows) <a class='url' href='http://openvpn.net/'>http://openvpn.net/</a> <br/>-tinc-vpn (mac, linux, cygwin) <a class='url' href='http://www.tinc-vpn.org/'>http://www.tinc-vpn.org/</a> <br/>-LogMeIn Hamachi (mac, windows, linux)<br/>-tunngle (windows only) <a class='url' href='http://www.tunngle.net'>http://www.tunngle.net</a><br/><br/>when I run ifconfig I can see ham0, the Hamachi network interface with my public hamachi ip &quot;25.92.210.23&quot;. Is it possible to setup something like this without Hamachi? It&#39;s only possible to send data to it if people are in my hamachi network and the UDP port made available by Hamachi is 17771.<br/><br/>ham0: flags=8843&lt;UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1404<br/>&#160; ether 7a:79:00:00:00:00 <br/>&#160; inet 25.92.210.23 netmask 0xff000000 broadcast 25.255.255.255<br/>&#160; inet6 fe80::7879:ff:fe00:0%ham0 prefixlen 64 scopeid 0x6 <br/>&#160; inet6 2620:9b::195c:d217 prefixlen 96 <br/>&#160; open (pid 68260)<br/><br/>In addition, as for security matters, currently I&#39;m not worried about game cheating possibilities. It&#39;s just that I don&#39;t make any security breaches by exposing the users computer or something.
+</div>
+</div>
+
+<div class='brn' id='brn6740'>
+<div class='frm pst' id='pid6741' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6740'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6741' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6741.html#pid6741'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2013-04-07 15:58
+</div>
+<div class='ccl'>
+why dont you use the udp sockets directly throught Internet instead of tunneling?
+</div>
+</div>
+
+<div class='brn' id='brn6741'>
+<div class='frm pst' id='pid6742' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6741'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6742' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6742.html#pid6742'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-04-07 16:00
+</div>
+<div class='ccl'>
+As I said I&#39;m not very experienced with any of this. Do you have any recommendations on what I could read up on?
+</div>
+</div>
+
+<div class='brn' id='brn6742'>
+<div class='frm pst' id='pid6743' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6743' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6743.html#pid6743'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-04-07 18:22
+</div>
+<div class='ccl'>
+I&#39;d recommend looking at the rEnet gem, which wraps the Enet networking library which is designed specifically for this purpose.
+</div>
+</div>
+
+<div class='brn' id='brn6743'>
+<div class='frm pst' id='pid6744' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6743'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6744.html#pid6744'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-04-07 18:32
+</div>
+<div class='ccl'>
+Thanks I&#39;ll look into it.
+</div>
+</div>
+
+<div class='frm pst' id='pid6745' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6743'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6745.html#pid6745'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2013-04-07 21:36
+</div>
+<div class='ccl'>
+I wish the ENet people (person?) would publish, like, a formal description of the actual protocol and algorithms used so that there can be more than one implementation. The reference implementation&#39;s API is kind of…not that great. :\
+</div>
+</div>
+
+<div class='frm pst' id='pid6747' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6743'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6747.html#pid6747'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-04-07 23:34
+</div>
+<div class='ccl'>
+Hm, I installed ENet and rENet. I was trying to setup a basic server and connection without success. Then I found and tried to run the rENet example without success.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6766' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6747.html#pid6742'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6766.html#pid6766'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2013-04-14 20:34
+<span class='htt'>Edited</span> 2013-04-15 10:07
+</div>
+<div class='ccl'>
+I haven&#39;t made any progress so far but I found these articles that I will read through.<br/><a class='ura' href='http://www.beej.us/guide/bgnet/output/html/singlepage/bgnet.html'>http://www.beej.us/guide/bgnet/output/html/singlepage/bgnet.html</a><br/><a class='ura' href='http://www.brynosaurus.com/pub/net/p2pnat/'>http://www.brynosaurus.com/pub/net/p2pnat/</a><br/><a class='ura' href='http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html'>http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=879.html#tid879'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=879.html#tid879'>Gosu Exchange</a> / Multiplayer Ruby game possible with UDPSocket?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6747.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

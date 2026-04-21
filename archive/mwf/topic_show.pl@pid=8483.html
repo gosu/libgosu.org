@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8483 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Problems with packaging the game into a portable executable</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8483' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1206.html#tid1206'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1206.html#tid1206'>Gosu Exchange</a> / Problems with packaging the game into a portable executable
+</div>
+</div>
+
+<div class='frm pst' id='pid8481' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8481' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8481.html#pid8481'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1208.html' >ChaosBat</a>
+<span class='htt'>Date</span> 2015-08-09 09:59
+</div>
+<div class='ccl'>
+I tried installing releasy via <i>gem install releasy</i>&#160; and I keep having this error although ruby devkit is installed and that the PATH is set to the ruby directory<br/><code>ERROR:&#160; Error installing releasy:<br/>The &#39;libxml-ruby&#39; native gem requires installed build tools.<br/>Please update your PATH to include build tools or download the DevKit<br/>from &#39;<a class='ura' href='http://rubyinstaller.org/downloads'>http://rubyinstaller.org/downloads</a>&#39; and follow the instructions<br/>at &#39;<a class='ura' href='http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'>http://github.com/oneclick/rubyinstaller/wiki/Development-Kit</a>&#39;<br/></code><br/>then I moved to ocra and it installed fine but It won&#39;t include the resources even when I pass the file paths to the resources in the command line, when I move the created executable to any other PC or any other<br/>folder that isn&#39;t the root folder of the project it says it can&#39;t load images<br/>this is what I pass to ocra:<br/><code>ocra main.rb scripts/gameWindow.rb scripts/player.rb resources/backgrounds/bg_01.png resources/characters/char_01.bmp</code><br/>but as I said it still doesn&#39;t include the resources (except the scripts which work fine)<br/>I can provide code upon request<br/>all help would be very appreciated
+</div>
+</div>
+
+<div class='brn' id='brn8481'>
+<div class='frm pst' id='pid8482' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8483.html#pid8481'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8482' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8482.html#pid8482'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-09 10:52
+</div>
+<div class='ccl'>
+No idea about Releasy - especially since it seems to be more of a libxml installation issue than issue with Releasy itself.<br/><br/>Ocra: I suspect that Ocra does actually include the images. However when the game runs, they are not necessarily accessible from the current directory, so you will not be able to load them using a relative path like <code>&quot;resources/bg_01.png&quot;</code>. One thing you can try is to add the <code>--chdir-first</code> option to the <code>ocra</code> call. (I&#39;m not sure if that will set the current directory to the folder containing the EXE file, or to the temporary folder into which images are extracted, but it&#39;s worth a short.)<br/>For further debugging you can log <code>Dir.getwd</code> or <code>Dir[&#39;*&#39;]</code> to a file on the desktop to inspect what&#39;s going on, or pass <code>--debug-extract</code> to <code>ocra</code> and inspect which files are being included - see the README on GitHub: <a class='ura' href='https://github.com/larsch/ocra'>https://github.com/larsch/ocra</a><br/><br/>Hope that helps.
+</div>
+</div>
+
+<div class='brn' id='brn8482'>
+<div class='frm pst' id='pid8483' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8483.html#pid8482'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8483.html#pid8483'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1208.html' >ChaosBat</a>
+<span class='htt'>Date</span> 2015-08-09 12:36
+</div>
+<div class='ccl'>
+Thank you, the problem is solved now.<br/>the <code>--chdir-first</code> option solved it. I did use relative paths in my project I suspect the problem was that ocra didn&#39;t set the directory containing the main.rb script as the root folder (which I think it was what the <code>chdir-first</code> option did) and that caused the paths to the resources not to behave correctly in the executable. also the debugger has shown that the resources were added even without the option which indicates that the problem was indeed in the paths.<br/><b>p.s:</b> I just checked out the releasy git repository and it appears that the last commit was pushed over a year ago (Oct, 22, 2014) I am not sure but maybe the project is outdated.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1206.html#tid1206'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1206.html#tid1206'>Gosu Exchange</a> / Problems with packaging the game into a portable executable
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8483.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

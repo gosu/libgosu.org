@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8277 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>mouse movement</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8277' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=778.html#tid778'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=778.html#tid778'>Gosu Exchange</a> / mouse movement
+</div>
+</div>
+
+<div class='frm pst' id='pid5942' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5942' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5942.html#pid5942'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=941.html' >daIT</a>
+<span class='htt'>Date</span> 2012-06-28 04:04
+</div>
+<div class='ccl'>
+Hi,<br/><br/>I just discovered gosu and I have a few questions about mouse movement handling : does gosu provide an effective way of restricting or detecting mouse movement ? If not, could anyone tell me how they would go about for example preventing the cursor from getting outside the boundaries of the window, whenever the window has focus (useful for scrolling in an rts-type game) ? or making an fps-type game, where the cursor stays at the center of the screen and the background moves according to the movement of the mouse ?<br/>The only way to restrict cursor movement that I can think of would be to call Window#mouse_x= and #mouse_y= on every update, but this probably wouldn&#39;t work since the mouse obviously moves a lot faster than once every update_interval.<br/>As for detecting mouse movement, I guess you could, every update, take the difference between the current and the previous update&#39;s mouse position, and (in my second example) move your background that much pixels ?<br/><br/>And one last question : does gosu provide sockets for ruby ? I didn&#39;t see any mention of it in the ruby reference but there&#39;s a &quot;document Gosu&#39;s Sockets&quot; entry in the ToDo list.<br/><br/>Thank you for your help :)
+</div>
+</div>
+
+<div class='brn' id='brn5942'>
+<div class='frm pst' id='pid5943' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5942'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5943.html#pid5943'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=121' >rremedio</a>
+<span class='htt'>Date</span> 2012-06-28 04:46
+<span class='htt'>Edited</span> 2012-06-28 04:58
+</div>
+<div class='ccl'>
+For the mouse thing, I guess you could draw the cursor on the last position it had before leaving the game screen and make the scrolling according to its real position (so the farther the mouse position goes, the faster will be the scrolling). Keep in mind that you don&#39;t need to draw the cursor image on the real mouse_x/y positions, you may draw it where you want.<br/><br/>It&#39;s a way to do it, but it wouldn&#39;t keep the player from clicking outside the window (which would make the game window lose the focus).
+</div>
+</div>
+
+<div class='frm pst' id='pid5944' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5942'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5944' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5944.html#pid5944'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-28 18:11
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; The only way to restrict cursor movement that I can think of would be to call Window#mouse_x= and #mouse_y= on every update, but this probably wouldn&#39;t work since the mouse obviously moves a lot faster than once every update_interval.</p></blockquote><br/><code>mouse_x/y=</code> are indeed built-in for that purpose, though they will work better in fullscreen mode.<br/><br/>For a 3D shooter (or anything similar), you would always draw the cursor at the center of the screen. On every <code>update</code> call, you would move the camera based on the new (real) cursor position and reset the (real) cursor to the center of the screen.<br/><br/>Building an RTS in windowed mode would be a little tougher. How do other games work? <code>mouse_x/y</code> will work seamlessly when the cursor is outside the window. For example, you can keep scrolling left as long as <code>mouse_x</code> is between -50 and 50 and <code>mouse_y</code> is between 0 and <code>window.height</code>.<br/><br/>Sockets: Ruby has its own socket classes which are probably similar to what Gosu uses in C++.
+</div>
+</div>
+
+<div class='brn' id='brn5944'>
+<div class='frm pst' id='pid5957' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5944'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5957' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5957.html#pid5957'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=941.html' >daIT</a>
+<span class='htt'>Date</span> 2012-07-01 03:23
+</div>
+<div class='ccl'>
+The reason I was asking is because the games (or the one game?) I have seen implementing that kind of scrolling in windowed mode had an option to somehow prevent the (real, not just in-game) cursor from getting outside the window, it would just act as if the edge of the window was the edge of your screen or something.<br/>What do you mean <code>mouse_x/y=</code> will work better in fullscreen mode ?
+</div>
+</div>
+
+<div class='brn' id='brn5957'>
+<div class='frm pst' id='pid5961' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5957'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5961.html#pid5961'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-03 11:17
+</div>
+<div class='ccl'>
+I meant that the user experience will be better in fullscreen mode.<br/><br/>I know it is possible to restrict the cursor to a single window in Windows (forgot the function name...), but I have never seen that effect on a Mac. I don&#39;t think it is common enough to add to Gosu. It should be easy to add it for Windows via the Win32API library, though.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid5946' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5942'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5946.html#pid5946'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-06-29 03:18
+</div>
+<div class='ccl'>
+As far as I can think, when playing in window mode, auto-scrolling usually occurs when the mouse is near the edge (or very near/over the edge in full-screen). I wouldn&#39;t implement auto-scrolling at all in a windowed game though, because it is a bit messy.<br/><br/>Chingu provides a wrapper for TCP/IP sockets (NetworkClient and NetworkServer, I think), though obviously that isn&#39;t too fast for a twitch game. I had some success with this in my Wrath game, so it is perfectly workable with a simple arcade game..<br/><br/> rENet provides a Ruby wrapper for the ENet library, which uses UDP and is significantly faster (I&#39;m trying this in my latest game, though I haven&#39;t got too far with the networking side yet - I&#39;ll be applying the things I learned from Wrath here, I think :P )
+</div>
+</div>
+
+<div class='frm pst' id='pid8277' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5942'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8277' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8277.html#pid8277'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1187.html' >ProudPops</a>
+<span class='htt'>Date</span> 2015-01-25 15:59
+<span class='htt'>Edited</span> 2015-01-25 16:28
+</div>
+<div class='ccl'>
+Sorry for replying to an old post. I came across it on google while looking for a way to lock the mouse to a game window. I noticed that there weren&#39;t many answers on how to do it so I figured I would share how I got it done. I&#39;m new to ruby, gosu and programming in general so bear with me if my code isn&#39;t the best. I had to use functions built into windows but it&#39;s actually pretty easy. I used FFI to do that but if you prefer something else that may work too.<br/><br/>require &#39;ffi&#39;<br/><br/><b><i>#Create a struct class. This will be what you use to store the rectangle coordinates of your window.</i></b><br/>class Rect &lt; FFI::Struct<br/>&#160; layout :left,&#160;&#160; :long,<br/>&#160; &#160;&#160; :top,&#160; &#160;&#160; :long,<br/>&#160; &#160;&#160; :right,&#160; :long,<br/>&#160; &#160;&#160; :bottom, :long<br/>end<br/><br/><b><i>#Make a module that contains the windows functions needed to<br/>#1. Get the handle of the game window.<br/>#2. Get the handle of the foreground window (the window the user is using).<br/>#3. Get the coordinates of the game window.<br/>#4. Lock the cursor to the game window.</i></b><br/>module User32<br/>&#160; extend FFI::Library<br/><br/>&#160; ffi_lib &#39;user32&#39;<br/>&#160; ffi_convention :stdcall<br/><br/>&#160; attach_function :getActiveWindow, :GetActiveWindow,[], :pointer<br/>&#160; attach_function :getForegroundWindow, :GetForegroundWindow,[], :pointer<br/>&#160; attach_function :getWindowRect, :GetWindowRect,[ :pointer, :pointer ], :bool<br/>&#160; attach_function :clipCursor, :ClipCursor,[ :pointer ], :bool<br/>end<br/><br/><b><i>#I made a class that with an update method.<br/>#It makes sure you aren&#39;t in fullscreen mode and that it only locks the mouse when the game is the active window.<br/>#It also only locks the mouse to the client section of the window (window - borders).</i></b><br/>class MouseTrap<br/>&#160; include User32<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; @window_rect = Rect.new<br/>&#160; &#160; @client_rect = Rect.new<br/>&#160; end<br/><br/>&#160; def update(window)<br/>&#160; &#160; if !(window.fullscreen?) then<br/>&#160; &#160; &#160; @win_handle = User32.getActiveWindow()<br/>&#160; &#160; &#160; @active_handle = User32.getForegroundWindow()<br/>&#160; &#160; &#160; if (@win_handle == @active_handle) then<br/>&#160; &#160; &#160; &#160; User32.getWindowRect(@win_handle, @window_rect)<br/>&#160; &#160; &#160; &#160; @border = ((@window_rect[:right] - @window_rect[:left]) - window.width) / 2<br/>&#160; &#160; &#160; &#160; @client_rect[:left] = @window_rect[:left] + @border<br/>&#160; &#160; &#160; &#160; @client_rect[:right] = @client_rect[:left] + window.width<br/>&#160; &#160; &#160; &#160; @client_rect[:bottom] = @window_rect[:bottom] - @border<br/>&#160; &#160; &#160; &#160; @client_rect[:top] = @client_rect[:bottom] - window.height<br/>&#160; &#160; &#160; &#160; User32.clipCursor(@client_rect)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/><i><b>#In the initialize section of you game window you can do something like...</b></i><br/>@mouse_trap = MouseTrap.new<br/><br/><i><b>#In the update section you can do...</b></i><br/>@mouse_trap.update(self)
+</div>
+</div>
+
+<div class='brn' id='brn8277'>
+<div class='frm pst' id='pid8278' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid8277'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8278' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8278.html#pid8278'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-01-25 22:25
+</div>
+<div class='ccl'>
+Thanks for sharing this! Some code feedback-<br/><br/>You can safely delete the <code>MouseTrap#initialize</code> method. You can set instance variables even if they have never been used or declared in <code>initialize</code>.<br/><br/>In fact, you don&#39;t need instance variables at all :) You can simply use local variables in <code>#update(window)</code> (basically delete all the @ signs).<br/><br/><code>window.width</code> is not necessarily the width of the window in pixels. If you try to create a 8000x6000px <code>Gosu::Window</code>, Gosu will automatically scale the window down to fit on the screen. However, <code>window.width</code> will still return <code>8000</code> so that your calculations stay intact. This would break your script.<br/>You can use <code>GetClientRect</code> instead to retrieve the size of the window&#39;s contents in pixels.
+</div>
+</div>
+
+<div class='brn' id='brn8278'>
+<div class='frm pst' id='pid8279' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid8278'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8279.html#pid8279'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1187.html' >ProudPops</a>
+<span class='htt'>Date</span> 2015-01-26 14:28
+</div>
+<div class='ccl'>
+Thanks for the advice. I appreciate it!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5967' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5967' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5967.html#pid5967'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=941.html' >daIT</a>
+<span class='htt'>Date</span> 2012-07-04 05:54
+</div>
+<div class='ccl'>
+Alright, thank you everyone :). Since I have decided that my first little game would be a kind of RTS thingy, I&#39;ll just stick to fullscreen.<br/><br/>So I have been messing around with some isometric tiles and all that, and ran into another question : is it possible to use Gosu&#39;s scaling features with non-square tiles (so the <code>tilable</code> attribute when instanciating the <code>Gosu::Image</code> is no use) ? I think everyone knows what happens when stretching each tile individualy :)<br/><br/>I have tried to hack my way around by using the <code>Window#record</code> method : my idea was to record the map as one <code>Gosu::Image</code> and then scale that, but I found out that this actually has exactly the same effect since <code>#record</code> actually returns a <code>Gosu::Macro</code> and not a <code>Gosu::Image</code>.<br/>After looking into it, I found out that the Chingu library has a &quot;retrofy&quot; feature that scales an image without interpolating it. That might be one way to do it, but it seemed like kind of a shame after my previous theoretically-perfect (:D) idea.<br/><br/>So there you go, any suggestion would be greatly appreciated !<br/><br/>PS: I am quite new to programming (this is actually my first &quot;real&quot; program), so I&#39;m hoping my questions are not too pointless... :)
+</div>
+</div>
+
+<div class='brn' id='brn5967'>
+<div class='frm pst' id='pid5972' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8277.html#pid5967'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5972.html#pid5972'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-05 06:08
+</div>
+<div class='ccl'>
+I think you can just duplicate the lowest pixels of each tile so that they actually overlap a little. The CptnRuby example does this for square tiles too and it looks ok. Then you just need to draw them from the bottom up.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=778.html#tid778'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=778.html#tid778'>Gosu Exchange</a> / mouse movement
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8277.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

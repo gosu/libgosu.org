@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4030 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>TexPlay, drawing and hit-testing for Gosu::Image [from wiki]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4030' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=79.html#tid79'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=79.html#tid79'>Extending Gosu</a> / TexPlay, drawing and hit-testing for Gosu::Image [from wiki]
+</div>
+<div class='bcl'>
+<span class='pln'>
+<a href='topic_show.pl@tid=79%3Bpg=1.html'>1</a>
+<span>2</span>
+<a href='topic_show.pl@tid=79%3Bpg=1.html'><img class='sic sic_nav_prev' src='../../mwf/epx.png' title='Go to previous page' alt='Previous'></a>
+<img class='sic dsb sic_nav_next_d' src='../../mwf/epx.png' title='Go to next page' alt='Next'>
+</span>
+&#160;
+</div>
+</div>
+
+<div class='frm pst' id='pid2290' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2290.html#pid2290'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-04-02 16:29
+<span class='htt'>Edited</span> 2010-04-02 16:35
+</div>
+<div class='ccl'>
+If you need a tilemap class in Ruby, do have a look at my <a class='url' href='http://github.com/erisdiscord/gosu-tmx'>gosu-tmx</a>. It&#39;s not complete, but contributors are welcome and encouraged.<br/><br/>Right now it loads TMX maps, of course, which can be made with the open source and cross platform <a class='url' href='http://mapeditor.org'>Tiled</a>. If I remember correctly, it doesn&#39;t handle maps where different layers have different tile sizes, but this could be added. It also only supports orthogonal maps, but these are probably what you want.<br/><br/>If you do make any changes, please let me know and send them back my way. :)<br/><br/>&lt;/shameless-self-promotion&gt;
+</div>
+</div>
+
+<div class='frm pst' id='pid2328' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2328.html#pid2328'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<span class='htt'>Date</span> 2010-04-14 16:33
+</div>
+<div class='ccl'>
+Well, as your tilemap is written in full ruby it won&#39;t be faster as a one I can write. And if I have the chance to write something on my own, I will always do it ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2602' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2602.html#pid2602'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-06-07 11:58
+<span class='htt'>Edited</span> 2010-06-12 03:48
+</div>
+<div class='ccl'>
+TexPlay 0.2.910 released<br/><br/>provides:<br/><br/>* source_select, source_ignore, dest_select, dest_ignore (select exactly which source/dest pixels are affected by drawing action)<br/>* support for Gosu::Color <br/>* hopefully fixed opengl crashing problem in some linux distros (using Gosu::MAX_TEXTURE_SIZE)<br/>* rows, columns, to_blob (enables Gosu::Image to be reopened using Gosu::Image.new() and load_tiles())<br/>* bitwise drawing modes no longer affect alpha channels<br/>* Gosu::Image.from_text now patched to automatically cache the new image<br/>* optional :color parameter (sets background color) for TexPlay.create_image, e.g TexPlay.create_image(w, 500, 500, :color =&gt; Gosu::Color::GREEN) <br/><br/>Full documentation coming soon
+</div>
+</div>
+
+<div class='frm pst' id='pid2604' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2604.html#pid2604'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-06-07 12:36
+</div>
+<div class='ccl'>
+great job ban! I&#39;ll get back to you on how :color_mode =&gt; :gosu works out for me in skrutt... should make my code less complex, so it&#39;s a welcome addition.
+</div>
+</div>
+
+<div class='frm pst' id='pid2607' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2607.html#pid2607'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-06-07 13:06
+</div>
+<div class='ccl'>
+also interested how dest_select works out for you, note it accepts single or multiple color parameters (in a variety of formats)<br/><br/>e.g<br/><br/># for single <br/>img.line 10, 10, 20, 20, :dest_select =&gt; Gosu::Color::RED<br/><br/># for multiple<br/>img.line 10, 10, 20, 20, :dest_select =&gt; [:green, Gosu::Color.new(0xff00bbcc)]
+</div>
+</div>
+
+<div class='frm pst' id='pid2608' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2608.html#pid2608'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-06-07 16:37
+</div>
+<div class='ccl'>
+Thanks for the update, Banister! :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2614' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2614.html#pid2614'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-06-08 02:26
+</div>
+<div class='ccl'>
+TexPlay 0.2.920 released<br/><br/>* :trace now supports :color_mode =&gt; :gosu<br/><br/>:)
+</div>
+</div>
+
+<div class='frm pst' id='pid2675' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2675.html#pid2675'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-06-15 00:31
+</div>
+<div class='ccl'>
+Is there any way to draw parts of circles using texplay? I know this functionality is available in RMagick, but would like the usability and speed of texplay.&#160; What I mean is, is there a way to draw, say, the path of a circle from the 30 degree position to the 153 degree position (just random numbers there)?<br/><br/>I&#39;m trying to draw a bar for a video game which follows a circular arc.&#160; Thus, I need to draw a specific arc length to represent the character&#39;s stats.<br/><br/>Also, it would be nice to be able to draw ellipses as well as circles.
+</div>
+</div>
+
+<div class='frm pst' id='pid2682' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2682.html#pid2682'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-06-15 07:50
+</div>
+<div class='ccl'>
+not yet, but ill add it to the TODO list :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2692' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2692.html#pid2692'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2010-06-15 20:45
+<span class='htt'>Edited</span> 2010-06-15 21:05
+</div>
+<div class='ccl'>
+Well, I could do that with Chingu (a rubygem) where ippa included a circle drawing method that I modified to make it work like a HP or MP ring for RPG&#39;s.<br/><br/>Here&#39;s the code (you don&#39;t need to install chingu if you don&#39;t want to, this would still work since it depends on Gosu API).<br/><br/><i>def self.draw_ring(cx, cy, r, angle, colors, z=150)<br/>&#160; &#160; if !colors.is_a? Array or colors.size == 1<br/>&#160; &#160; &#160; self.draw_monocolor_ring(cx, cy, r, angle, colors, z)<br/>&#160; &#160; elsif colors.size == 2<br/>&#160; &#160; &#160; draw_bicolor_ring(cx, cy, r, angle, colors, z)<br/>&#160; &#160; elsif colors.size == 4<br/>&#160; &#160; &#160; draw_multicolor_ring(cx, cy, r, angle, colors, z)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def self.draw_monocolor_ring(cx, cy, r, angle, color, z)<br/>&#160; &#160; 0.step(angle, 1) do |a1|<br/>&#160; &#160; &#160; a2 = a1 + 1<br/>&#160; &#160; &#160; self.window.draw_line(cx + Gosu.offset_x(a1, r),<br/>&#160; &#160; &#160; &#160; cy + Gosu.offset_y(a1, r), color,<br/>&#160; &#160; &#160; &#160; cx + Gosu.offset_x(a2, r-28),<br/>&#160; &#160; &#160; &#160; cy + Gosu.offset_y(a2, r-28), color, z)<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def self.draw_bicolor_ring(cx, cy, r, angle, colors=[], z=150)<br/>&#160; &#160; 0.step(angle, 1) do |a1|<br/>&#160; &#160; &#160; a2 = a1 + 1<br/>&#160; &#160; &#160; self.window.draw_line(cx + Gosu.offset_x(a1, r),<br/>&#160; &#160; &#160; &#160; cy + Gosu.offset_y(a1, r), colors[1],<br/>&#160; &#160; &#160; &#160; cx + Gosu.offset_x(a2, r-28),<br/>&#160; &#160; &#160; &#160; cy + Gosu.offset_y(a2, r-28), colors[0], z)<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def self.draw_multicolor_ring(cx, cy, r, angle, colors=[], z=150)<br/>&#160; &#160; color = colors[0] if angle &gt; 270 &amp;&amp; angle &lt;= 360<br/>&#160; &#160; color = colors[1] if angle &gt; 180 &amp;&amp; angle &lt;= 270<br/>&#160; &#160; color = colors[2] if angle &gt; 90 &amp;&amp; angle &lt;= 180<br/>&#160; &#160; color = colors[3] if angle &gt; 0 &amp;&amp; angle &lt;= 90<br/>&#160; &#160; 0.step(angle, 1) do |a1|<br/>&#160; &#160; &#160; a2 = a1 + 1<br/>&#160; &#160; &#160; self.window.draw_line(cx + Gosu.offset_x(a1, r),<br/>&#160; &#160; &#160; &#160; cy + Gosu.offset_y(a1, r), color,<br/>&#160; &#160; &#160; &#160; cx + Gosu.offset_x(a2, r-28),<br/>&#160; &#160; &#160; &#160; cy + Gosu.offset_y(a2, r-28), 0xFF000000, z)<br/>&#160; &#160; end<br/>&#160; end</i><br/><br/>There&#39;s a need to check if draw_line method is still available or not but it works for me with Gosu 0.7.20. (I&#39;ve got no deprecation warning.)<br/><br/>You might credit us, shawn, ippa and me for this piece of code.
+</div>
+</div>
+
+<div class='frm pst' id='pid2697' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2697.html#pid2697'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-06-15 22:27
+</div>
+<div class='ccl'>
+Very nice, thank you so much.&#160; I believe you and I are both trying to accomplish the same thing, oddly enough.&#160; I will make a few changes to allow for a parameter to be sent to the method for the width of the ring, or perhaps give both the inner and outer radius.&#160; Regardless, this is a very good base.&#160; Still, if this code is to be included inside a class which descends from Gosu::Window, there is no need for all the explicit self calls before each method, nor the self.window calls.&#160; I will repost the code with these modifications after I make them.<br/><br/>Also, small complaint, but why does the method only accept 1, 2, or 4 colors? Why not any n colors?
+</div>
+</div>
+
+<div class='frm pst' id='pid2702' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2702.html#pid2702'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2010-06-16 05:44
+</div>
+<div class='ccl'>
+Because those are the amounts of colors I needed... the self originally referred to KyoBasic module, the module I create to encapsulate all of &quot;my (own or modified)&quot; methods.
+</div>
+</div>
+
+<div class='frm pst' id='pid2777' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2777' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2777.html#pid2777'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-07-04 10:04
+</div>
+<div class='ccl'>
+TexPlay 0.2.960 released<br/><br/>provides:<br/><br/>* :tolerance option (applies to :trace and :source_select (et al) families)<br/>&#160; e.g :color =&gt; [0.5, 0.5, 0.5, 1.0], :tolerance =&gt; 0.1&#160; &#160; &#160; &#160;&#160; turns the color point [0.5,0.5,0.5,1.0] into a color sphere centered at the point with radius 0.1<br/>* new :transparent pseudo-color (for use with :trace, and :source_select (et al)). Matches all colors with arbitrary rgb values but 0.0 alpha
+</div>
+</div>
+
+<div class='brn' id='brn2777'>
+<div class='frm pst' id='pid2778' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid2777'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2778.html#pid2778'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-07-04 17:19
+</div>
+<div class='ccl'>
+good stuff as usual banister
+</div>
+</div>
+
+<div class='frm pst' id='pid2795' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid2777'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2795' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2795.html#pid2795'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-07-16 07:24
+</div>
+<div class='ccl'>
+TexPlay 0.2.965 released<br/><br/>&quot;fixes&quot; segfault in linux by hardcoding max texture size to 1024 (this should work on most linux systems, but on a minority of systems this will fail. Still, better than a segfault)
+</div>
+</div>
+
+<div class='brn' id='brn2795'>
+<div class='frm pst' id='pid2796' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid2795'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2796.html#pid2796'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-07-16 07:29
+</div>
+<div class='ccl'>
+Gosu uses the same approach to avoid the segfault on Linux now, except I always return 512. This is the lowest value I have encountered myself in the last 5 years :) Can we settle on this more pessimistic constant? Or would you say from experience that most people need more?
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3012' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3012' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3012.html#pid3012'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-10 12:46
+</div>
+<div class='ccl'>
+I&#39;m trying to use the :transparent colour matcher in order to clear &quot;transparent but coloured&quot; pixels out of an image so they are uniformly &quot;transparent black&quot; wherever the alpha channel is 0. I need to do this so that I can know that images that appear identical to the eye are the same, even if they have different &quot;hidden&quot; colour information in them. I&#39;m trying to use:<br/><br/>&#160; &#160; rect 0, 0, width, height, :filled =&gt; true, :color =&gt; :alpha, :dest_select =&gt; :transparent<br/><br/>:transparent matches no pixels in my image (coloured or black, transparent or opaque), so the image is not changed in any way. Using :dest_ignore instead matches all pixels and clears the whole image.<br/><br/>:dest_select seems to work fine with other specific colours though. I also tried:<br/><br/>&#160; &#160; line x1, y1, x2, y2, dest_select =&gt; :transparent<br/><br/>and<br/><br/>&#160; &#160; line x1, y1, x2, y2, :trace { :while_color =&gt; :transparent }<br/>&#160; &#160; line x1, y1, x2, y2, :trace { :until_color =&gt; :transparent }<br/><br/>with similar effects, where :transparent matched no pixels in my image. I am specifically using :trace to draw an outline around an image as well as to allow me to autocrop (both actions would take forever if done with get/set_pixel), but then I realised I needed to clear out all the coloured transparent areas anyway, so I don&#39;t need to use :transparent with :trace any more).<br/><br/>:trace and :dest_select seem to work fine with specific colours, including :alpha.<br/><br/>Any thoughts on this dilemma appreciated (whether I&#39;m doing it wrong or if there is a bug in :transparent). Oh, and thanks for giving us really fast, amazingly versatile functionality like this in Ruby. Really helping me!<br/><br/>(Win7x64 / RubyInstaller 1.9.2 / Texplay 0.2.965 gem)
+</div>
+</div>
+
+<div class='brn' id='brn3012'>
+<div class='frm pst' id='pid3013' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3012'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3013' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3013.html#pid3013'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-10 14:21
+</div>
+<div class='ccl'>
+ill have a look at it soon, i finally got gdb up and running so this shouldn&#39;t be such a nightmare to debug.<br/><br/>could you gist up some small example code and attach the image you&#39;re working with? <br/><br/>thanks
+</div>
+</div>
+
+<div class='brn' id='brn3013'>
+<div class='frm pst' id='pid3014' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3013'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3014' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3014.html#pid3014'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-10 15:47
+</div>
+<div class='ccl'>
+:transparent fail case (written as one of your examples; feel free to use it): <a class='url' href='http://gist.github.com/517474'>http://gist.github.com/517474</a><br/><br/>What I see is: <a class='url' href='http://cl.ly/eb53ab6e93e238481366'>http://cl.ly/eb53ab6e93e238481366</a><br/><br/>Thanks for taking a look!
+</div>
+</div>
+
+<div class='brn' id='brn3014'>
+<div class='frm pst' id='pid3028' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3014'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3028' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3028.html#pid3028'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-13 14:01
+<span class='htt'>Edited</span> 2010-08-13 15:51
+</div>
+<div class='ccl'>
+i think i fixed the :transparent bug, try the new 0.2.970 gem and let me know if it works<br/><br/>note that it may be useful to use :tolerance too, since some graphics programs dont use an alpha value of exactly 0.<br/><br/>so:<br/>&#160; &#160; img.rect 0, 0, width, height, :color =&gt; :alpha, :dest_select =&gt; :transparent, :fill =&gt; true, :tolerance =&gt; 0.01
+</div>
+</div>
+
+<div class='brn' id='brn3028'>
+<div class='frm pst' id='pid3032' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3028'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3032' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3032.html#pid3032'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 16:03
+</div>
+<div class='ccl'>
+Thanks! This gem works correctly with that failing test I gave you.<br/><br/>Just going to check with my real code using real edited images. I&#39;ll see if I need the tolerance too.
+</div>
+</div>
+
+<div class='brn' id='brn3032'>
+<div class='frm pst' id='pid3034' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3032'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3034' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3034.html#pid3034'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 17:21
+<span class='htt'>Edited</span> 2010-08-13 17:47
+</div>
+<div class='ccl'>
+Ooohkay, I had mixed results!<br/><br/>With this:<br/><br/>&#160; img.rect 0, 0, width, height, :fill =&gt; true, :color =&gt; :red, :dest_select =&gt; :transparent<br/><br/>I get all the values with alpha == 0 being turned red. The ones with 0 &lt; alpha &lt; 0.01 didn&#39;t turn, so that operates as it should now.<br/><br/>As you suspected, I had an image where some of the apparently transparent areas did have very low, non-zero, alpha values. So I tried:<br/><br/>&#160; img.rect 0, 0, width, height, :fill =&gt; true, :color =&gt; :red, :dest_select =&gt; :transparent, :tolerance =&gt; 0.01<br/><br/>Turned the whole image red, including those coloured areas at alpha == 1<br/><br/>&#160;&#160; img.rect 0, 0, width, height, :fill =&gt; true, :color =&gt; :red, :dest_select =&gt; :transparent, :tolerance =&gt; 0<br/><br/>I would expect this to act as though there wasn&#39;t a tolerance value specified, however it still turned the whole image red!<br/><br/>Sooo, as far as I can tell, :transparent is working correctly now, but :transparent + :tolerance is not...<br/><br/>Attached the test image I am using.
+</div>
+<div class='ccl pat'>
+<img class='ami' src='../../mwf/attachments/34/3034/object.png' title='Test image (355B)' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn3034'>
+<div class='frm pst' id='pid3045' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3034'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3045.html#pid3045'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-14 02:07
+</div>
+<div class='ccl'>
+hehe,<br/><br/>ok i really should build a test suite for texplay....<br/><br/>ill get onto the current bug asap :)
+</div>
+</div>
+
+<div class='frm pst' id='pid3046' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3034'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3046' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3046.html#pid3046'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-14 02:40
+</div>
+<div class='ccl'>
+ok, pushed out a new 0.2.975 gem. should hopefully fix the tolerance issue, since the bug was quite glaring.... (i was checking color1.alpha &lt;= tolerance rather than color2.alpha &lt;= tolerance :D)
+</div>
+</div>
+
+<div class='brn' id='brn3046'>
+<div class='frm pst' id='pid3047' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3046'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3047.html#pid3047'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-14 07:52
+</div>
+<div class='ccl'>
+Great; that works as expected in my app now. Thanks!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3030' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3012'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3030' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3030.html#pid3030'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-13 15:36
+</div>
+<div class='ccl'>
+For interest&#39;s sake another approach to achieve this could be:<br/><br/>img.each { |c| <br/>&#160; &#160; if c[3] == 0 then<br/>&#160; &#160; &#160; &#160; c[0] = 0<br/>&#160; &#160; &#160; &#160; c[1] = 0<br/>&#160; &#160; &#160; &#160; c[2] = 0<br/>&#160; &#160; end<br/>}
+</div>
+</div>
+
+<div class='brn' id='brn3030'>
+<div class='frm pst' id='pid3031' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3030'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3031' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3031.html#pid3031'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-08-13 16:00
+</div>
+<div class='ccl'>
+Thanks. Yes, I think I did consider that method, but assumed it would be only an order of magnitude faster than iterating through x and y and using getpixel/setpixel. That method was taking quite a few seconds and I need to import and clean up a potentially large number of images in a realistic time (something that should take a few frames per image, not seconds). The rect/:transparent method I wanted to use, although it didn&#39;t actually work when I tried it, was virtually instant, even for large images.
+</div>
+</div>
+
+<div class='brn' id='brn3031'>
+<div class='frm pst' id='pid3033' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3031'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3033.html#pid3033'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-13 16:40
+</div>
+<div class='ccl'>
+set_pixel can be sped up significantly by using :no_sync,<br/><br/>e.g<br/><br/>img.set_pixel x, y, :color =&gt; :red, :sync_mode =&gt; :no_sync<br/><br/>or by doing your pixel setting inside a paint block:<br/><br/>img.paint {<br/>&#160; &#160; 0.upto(width) { |x|<br/>&#160; &#160; &#160; &#160; 0.upto(height) { |y|<br/>&#160; &#160; &#160; &#160; &#160; &#160; set_pixel x,y<br/>&#160; &#160; &#160; &#160; }<br/>&#160; &#160; }<br/>}
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3083' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=3083.html#pid3083'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-08-16 07:36
+</div>
+<div class='ccl'>
+Ok, i pushed a new 0.2.980 gem, that provides greater control over caching (for improved speed and efficiency) <br/><br/>(1) adds :caching option (to both Gosu::Image.new and TexPlay.set_options... remember it only accepts true and false)<br/>(2) gets rid of auto-caching for TexPlay.create_image() (this should be a significant boost to some games)<br/>(3) also added TexPlay#clear method, it essentially&#160; just sticks a filled rect over an image, e.g<br/>&#160; &#160;&#160; img.clear :color =&gt; :red, :dest_select =&gt; :transparent<br/>&#160; &#160;&#160; is equivalent to:<br/>&#160; &#160;&#160; img.rect 0,0, width, height, :fill =&gt; true, :color =&gt; :red, :dest_select =&gt; :transparent
+</div>
+</div>
+
+<div class='frm pst' id='pid3628' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3628' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3628.html#pid3628'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=216.html' >kaBOOM</a>
+<span class='htt'>Date</span> 2010-12-14 22:03
+</div>
+<div class='ccl'>
+I would like to thank Mr. Banister for making TexPlay. It is a great complementary tool for Gosu. In my opinion, when it becomes more refined it should come with the standard Gosu library. One of the things I most like, its the macro function. Thats just pure genious. That said, I would like to share some input. Take in consideration I have only used the program for 2 days, so I may be mistaken. <br/><br/>&#160; &#160;&#160; 1.&#160; get_pixel() function return an array of floats. Why is that? Why not an array of numbers from 0 to 255. The ‘set color’ works like this,&#160;&#160; <br/>&#160; &#160; why not the former? Sometimes this floats can get really long.<br/><br/>&#160; &#160;&#160; 2.&#160; I notice that there can be errors if one manipulates the ‘load_tiles’ version of an image. What I do in my currect project is reload the&#160; &#160; <br/>&#160; &#160;&#160; image with the ‘ new’ version of the image and everything works fine. Example:<br/>&#160; <br/>&#160; &#160;&#160; @tiles = Gosu::Image.load_tiles(window, ‘tileset.png’ , 32, 32, true)<br/>&#160; &#160;&#160; #trying to manipulate @tiles[0] is a failure, but…<br/>&#160; &#160;&#160; @tiles[0] = Gosu::Image.new(window, @tiles[0] , true)<br/>&#160; &#160;&#160; #now @tiles[0] can be manipulated; no problem<br/><br/>Anyway, I will share more later. Thanks once again.
+</div>
+</div>
+
+<div class='brn' id='brn3628'>
+<div class='frm pst' id='pid3629' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3628'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3629' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3629.html#pid3629'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-12-14 22:24
+<span class='htt'>Edited</span> 2010-12-14 23:06
+</div>
+<div class='ccl'>
+@kaBoom, thanks for your feedback.<br/><br/>(1) You can get your colors back as Gosu::Color by using get_pixel x, y, :color_mode =&gt; :gosu<br/>The reason why i made the design decision to return an array of floats was because that is how colors are stored internally and converting to another format would result in a performance hit --- perhaps not for one pixel, but imagine processing thousands of pixels consecutively -- converting the floats to ints or any other format would have significantly impacted on performance (:gosu =&gt; :color_mode already is 1.5 times slower than the float approach). Also i dont konw waht you mean by the &#39;set_color&#39; works like this. TexPlay&#39;s color argument accepts many different color formats - though the float array approach is the oldest and possibly most common.<br/><br/>(2) I&#39;ve never heard of this error before, can you provide more information about the error such as the error message, or even better, a tiny code sample that reproduces the problem? (preferably with the image you used available too)<br/><br/>Regarding &#39;macro&#39;, haha, i was thinking of retiring that method since i didn&#39;t think anyone used it *and* it doesn&#39;t really provide any extra functionality over and above <code>define_singleton_method</code> :)<br/><br/>Cheers
+</div>
+</div>
+
+<div class='brn' id='brn3629'>
+<div class='frm pst' id='pid3631' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3629'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3631' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3631.html#pid3631'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-15 09:02
+</div>
+<div class='ccl'>
+While on the topic of advancements to TexPlay I&#39;d like to have the ability to draw ellipses and the ability to get some anti-aliasing on curved shapes.&#160; (this is why I use both TexPlay and RMagick in fact).<br/><br/>Also, I agree, having TexPlay be included with Gosu as some sort of dependency or something would be pretty cool.
+</div>
+</div>
+
+<div class='brn' id='brn3631'>
+<div class='frm pst' id='pid3632' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3631'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3632' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3632.html#pid3632'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-12-15 09:57
+</div>
+<div class='ccl'>
+sure i can implement some ellipse functionality, anti-aliasing is quite straight forward too (i assume). I was also thinking of implementing some spline stuff to fill in the gaps of the very limited bezier curves. I&#39;m thinking of doing another release fairly soon so if you want certain features pls file issues on github.com/banister/texplay&#160;&#160; as i tend to forget :)
+</div>
+</div>
+
+<div class='brn' id='brn3632'>
+<div class='frm pst' id='pid3635' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3632'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3635' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3635.html#pid3635'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-16 09:51
+</div>
+<div class='ccl'>
+I&#39;ll just mention this issue here instead of on GitHub as I see you already closed this issue, and I&#39;m just looking for clarification.<br/><br/>Did you implement Gosu::Image#== or some similar method? I tried to call it, and it did not work.&#160; The method simply uses the default implementation (defined in object I believe) which is the same as #equal?.&#160; It&#39;s simple enough to just monkey-patch it in, but I just wanted to make sure this was not a bug.<br/><br/>Side note: Oddly enough, the first time I ran a test for this, the address for the clone had the letters &quot;bad&quot; in it.&#160; Just thought that was funny.
+</div>
+</div>
+
+<div class='brn' id='brn3635'>
+<div class='frm pst' id='pid3636' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3635'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3636' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3636.html#pid3636'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-12-16 12:47
+</div>
+<div class='ccl'>
+oops, i didn&#39;t mean to close it (reopened now). Yeah it&#39;s not implemented yet, it&#39;s coming soon though. I&#39;ll also take Spooner&#39;s advice and implement it as &#39;#==&#39; rather than &#39;#compare&#39;
+</div>
+</div>
+
+<div class='brn' id='brn3636'>
+<div class='frm pst' id='pid3637' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3636'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3637' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3637.html#pid3637'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-12-16 18:37
+</div>
+<div class='ccl'>
+Reminds me. Do you still use OpenGL to get pixel data out of Gosu&#39;s images? Or do you use to_blob? Would it simplify our combined codebase if I put some effort into making to_blob faster?<br/><br/>My thinking was that Image#== could just compare width, height and to_blob. But if TexPlay has already cached the image&#39;s contents, there&#39;s no need to call to_blob again, so there is at least a reason to have it in TexPlay *too*.<br/><br/>In pure Gosu, I am not so sure about the semantics. It should be consistent with TexPlay but how do I compare for identity then, which is usually enough? .equal? .eql? Man, it was hard enough to study these three for Scheme. ;)
+</div>
+</div>
+
+<div class='brn' id='brn3637'>
+<div class='frm pst' id='pid3638' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3637'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3638.html#pid3638'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-12-16 23:34
+</div>
+<div class='ccl'>
+Ruby does it like this:<br/><br/>(1) == (compare data)<br/>(2) .eql? (compare data AND type)<br/>(3) .equal? (compare object_id, identity)<br/><br/>so for example: <br/><br/>Point[1, 1] == Vector[1, 1, 3]&#160; (since @x and @y are equal)<br/><br/>Point[1, 1] NOT eql? Vector[1, 1, 3] (since they&#39;re diff types)<br/><br/>Point[1, 1] NOT equal? Point[1, 1] (since they&#39;re different objects, even though they have the same value)<br/><br/>TP is still using OpenGL to get image data; is Gosu::Image#to_blob a lot faster? Doesn&#39;t it do the same thing internally though? caching images is still one of the most expensive operations so it would be good if this could be made faster. Though to_blob data is INT right? I&#39;d still need to convert all the image date to floats, though im sure that&#39;s not so expensive.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3633' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3631'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3633' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3633.html#pid3633'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-12-15 17:40
+</div>
+<div class='ccl'>
+I think the gems should be kept separate, Ruby is powerful enough to integrate them without any noticeable rough edges.<br/><br/>Where it makes sense, I already &quot;include&quot; TexPlay though. For example, the RubyGame.app template builds a three-way universal texplay.bundle for easier OS X deployment. (The problem is, sadly, that the .app itself is 10.6 only. That should be fixed in the next time.)
+</div>
+</div>
+
+<div class='brn' id='brn3633'>
+<div class='frm pst' id='pid3634' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3633'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3634.html#pid3634'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-12-15 21:19
+</div>
+<div class='ccl'>
+Oh yeah, totally agree that the gems should be separate, just thought Gosu could install TexPlay as well.&#160; But I guess some people might not want that, so it&#39;d be better just to let them install the gems separately? I don&#39;t know ^_^;
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3642' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3629'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3642' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3642.html#pid3642'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=216.html' >kaBOOM</a>
+<span class='htt'>Date</span> 2010-12-18 04:03
+</div>
+<div class='ccl'>
+About number 2: Ok. Im using this macro:&#160; <br/><br/>TexPlay.create_macro(:alpha_set) {&#160; <br/> no_color = self.get_pixel(0,0)<br/> self.rect 0, 0, width, height, :fill =&gt; true, <br/> :color =&gt; :transparent, :dest_select =&gt; no_color<br/> }<br/>#so i want to use the first pixel as the alpha color, so i can use other images with tranparency besides (.bmp)s.<br/>If i use this the image become complete transparent, but if I &#39;reload&#39; the image it works like intended.<br/><br/>I should also say I&#39;m using hahses as cache like this: <br/>$cache[:image_no_alpha]&#160; = @img<br/>$cache[:image_with_alpha] = @img.alpha_set<br/><br/>Maybe its something I&#39;m doing wrong...<br/>Thank You.
+</div>
+</div>
+
+<div class='brn' id='brn3642'>
+<div class='frm pst' id='pid3644' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid3642'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3644.html#pid3644'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-12-18 08:52
+</div>
+<div class='ccl'>
+One thing that comes to mind is you really shouldn&#39;t be using :transparent, as it&#39;s a pseudo-color for use with :dest_select and friends. Try replacing it with :alpha instead. Also, since i assume just doing that wont fix your problem, could you please give me a complete code sample (one that i can execute) along with the image you&#39;re using. Try to make the code sample as small as possible so it just contains the bare minimum to reproduce your issue.<br/><br/>Thanks! :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4008' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4008' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4008.html#pid4008'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2011-02-21 15:47
+</div>
+<div class='ccl'>
+TexPlay 0.3.3 released, features a few more :alpha_blend modes<br/><br/>:alpha_blend =&gt; :source&#160;&#160; (default, same as :alpha_blend =&gt; true)<br/>:alpha_blend =&gt; :dest, uses destination pixels alpha instead of source&#39;s alpha for alpha blending<br/>:alpha_blend =&gt; :source_with_fixed_alpha, same as :source but doesn&#39;t affect alpha channel of destination pixel<br/>:alpha_blend =&gt; :dest_with_fixed_alpha, same as :dest but doesn&#39;t affect alpha channel of destination pixel<br/>:alpha_blend =&gt; false (no alpha blending, same as current behaviour. <code>nil</code> also accepted)<br/><br/>This version also has gem test support, do the following:<br/><code>gem install rubygems-test</code><br/><code>gem install texplay</code><br/><code>gem test texplay</code><br/><br/>and upload results.<br/><br/>THere&#39;s also a few easter eggs in thsi release, require &#39;texplay/alone&#39; let&#39;s you do image manip ostensively without gosu -- (really just wraps and hides gosu stuff): TexPlay.create_image(100, 100).clear(color: :red).save(&quot;blah.png&quot;)<br/><br/>and require &#39;texplay/live&#39; a REPL session for image editting; totally undocumented and therefore hard to use :P requires &#39;pry&#39; gem
+</div>
+</div>
+
+<div class='brn' id='brn4008'>
+<div class='frm pst' id='pid4030' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid4008'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4030' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4030.html#pid4030'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-03-01 04:44
+<span class='htt'>Edited</span> 2011-03-01 04:50
+</div>
+<div class='ccl'>
+While using my paint program just now, I came up with two new (possibly) useful :alpha_blend modes. The first I call &quot;:source_as_alpha&quot; and the second could be called either &quot;:copy_alpha&quot; or just &quot;:copy&quot;.<br/><br/>The first uses the grey-scale value of the pixels in the source to alter the alpha channel of the destination, without affecting the color channels. You could either do a straight copy, or an actual composite taking into account the source&#39;s alpha channel. Maybe there should be separate flags for both modes (:source_as_alpha_over?). Also, it could be split into &quot;:red_as_alpha&quot; etc. which would give the option of skipping the redundant computation of a grey value for a known grey pixel. (The &quot;:copy_alpha&quot; mode below could actually also be called &quot;:alpha_as_alpha&quot; for symmetry, although it&#39;s rather more cumbersome...)<br/><br/>The second mode (:copy_alpha) just draws the source&#39;s alpha channel to the destination&#39;s, ignoring the color channels of both images.<br/><br/>It&#39;s up to you whether either of these also respects the blending modes.<br/><br/>Whaddaya think? :D
+</div>
+</div>
+
+<div class='brn' id='brn4030'>
+<div class='frm pst' id='pid4031' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid4030'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4031' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4031.html#pid4031'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2011-03-01 06:02
+</div>
+<div class='ccl'>
+they are interesting but can you give example applications? im curious what sort of affect they have
+</div>
+</div>
+
+<div class='brn' id='brn4031'>
+<div class='frm pst' id='pid4032' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid4031'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4032' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4032.html#pid4032'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-03-01 07:02
+</div>
+<div class='ccl'>
+The one that popped into my head is a &quot;search light&quot; effect, where you have a black, opaque image over another image, and you splice a transparent circle into the black image to show the background through. Of course, the &quot;darkness&quot; doesn&#39;t have to just be black, it could just be really dim, or foggy, etc. It could even be used for &quot;x-ray vision&quot;. Basically, anywhere you&#39;d need to &quot;punch holes&quot; in another bitmap, or plug holes up, without affecting the color.
+</div>
+</div>
+
+<div class='brn' id='brn4032'>
+<div class='frm pst' id='pid4040' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid4032'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4040' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4040.html#pid4040'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-03-02 00:58
+</div>
+<div class='ccl'>
+You&#39;d use standard :multiply mode with [1, 1, 1, alpha] for that effect.<br/><br/>This wouldn&#39;t affect the rgb channels, but would multiply the alpha of each pixel by an amount (0 to clear, 0.5 to make it half as opaque). It doesn&#39;t set it directly, but multiplication is actually more generally useful, I think.
+</div>
+</div>
+
+<div class='brn' id='brn4040'>
+<div class='frm pst' id='pid4043' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid4040'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4043' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4043.html#pid4043'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-03-02 04:15
+</div>
+<div class='ccl'>
+Oh, I wasn&#39;t aware that blend modes worked on the alpha channel, too. That&#39;s cool! But, doesn&#39;t that mess things up when you just want a straight alpha composite with multiply? e.g. a sprite with an anti-aliased edge.
+</div>
+</div>
+
+<div class='brn' id='brn4043'>
+<div class='frm pst' id='pid4080' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4030.html#pid4043'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4080.html#pid4080'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-03-11 01:24
+</div>
+<div class='ccl'>
+Er, I dunno :$ I just knew I had a clue about the exact thing I was commenting on (I think).
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=79.html#tid79'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=79.html#tid79'>Extending Gosu</a> / TexPlay, drawing and hit-testing for Gosu::Image [from wiki]
+</div>
+<div class='bcl'>
+<span class='pln'>
+<a href='topic_show.pl@tid=79%3Bpg=1.html'>1</a>
+<span>2</span>
+<a href='topic_show.pl@tid=79%3Bpg=1.html'><img class='sic sic_nav_prev' src='../../mwf/epx.png' title='Go to previous page' alt='Previous'></a>
+<img class='sic dsb sic_nav_next_d' src='../../mwf/epx.png' title='Go to next page' alt='Next'>
+</span>
+&#160;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4030.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5680 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Color Module</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5680' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=732#tid732'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=732#tid732'>Gosu Exchange</a> / Color Module
+</div>
+</div>
+
+<div class='frm pst' id='pid5674' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5674' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5674.html#pid5674'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-06 14:16
+</div>
+<div class='ccl'>
+I&#39;m not sure if this is the most efficient way to handle it, but I needed a way to dynamically modify my gosu colors and this is the module I came up with. It works in its current state so feel free to use it if you find it useful :)<br/>If you: Include Colored into your ruby objects, you can then initiate a gosu color to them, and then modify it using these module methods.<br/>I mainly needed it for dynamic alpha, but it wasn&#39;t any different to make it work for the color channels either.<br/><br/>Examples:<br/>Object.alpha += 1 # Increases the alpha by 1<br/>Object.alpha = &quot;ff&quot; # Set alpha channel to ff, 255 (Opaque)<br/><br/>Let me know if you find it useful, if there are ways to optimize, if there are any bugs, etc etc. :)<br/><br/>module Colored<br/>&#160; attr_accessor :color<br/>&#160; <br/>&#160; class Position<br/>&#160; &#160; Alpha = 0<br/>&#160; &#160; Red = 1<br/>&#160; &#160; Green = 2<br/>&#160; &#160; Blue = 3<br/>&#160; end<br/>&#160; <br/>&#160; def alpha<br/>&#160; &#160; return unpack_color[Position::Alpha].to_i(16)<br/>&#160; end<br/>&#160; <br/>&#160; def red<br/>&#160; &#160; return unpack_color[Position::Red].to_i(16)<br/>&#160; end<br/>&#160; <br/>&#160; def green<br/>&#160; &#160; return unpack_color[Position::Green].to_i(16)<br/>&#160; end<br/>&#160; <br/>&#160; def blue<br/>&#160; &#160; return unpack_color[Position::Blue].to_i(16)<br/>&#160; end<br/>&#160; <br/>&#160; def alpha=(value)<br/>&#160; &#160; change_value(Position::Alpha, value)<br/>&#160; end<br/>&#160; <br/>&#160; def red=(value)<br/>&#160; &#160; change_value(Position::Red, value)<br/>&#160; end<br/>&#160; <br/>&#160; def green=(value)<br/>&#160; &#160; change_value(Position::Green, value)<br/>&#160; end<br/>&#160; <br/>&#160; def blue=(value)<br/>&#160; &#160; change_value(Position::Blue, value)<br/>&#160; end<br/>&#160; <br/>&#160; private<br/>&#160; <br/>&#160; def change_value(position, value)<br/>&#160; &#160; if value.is_a?(String)<br/>&#160; &#160; &#160; value = value.to_i(16)<br/>&#160; &#160; end<br/>&#160; &#160; if value.is_a?(Integer)<br/>&#160; &#160; &#160; if (0..255).include? value<br/>&#160; &#160; &#160; &#160; split_color = unpack_color<br/>&#160; &#160; &#160; &#160; split_color[position] = value.to_s(16)<br/>&#160; &#160; &#160; &#160; update_color(repack_color(split_color))<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def unpack_color<br/>&#160; &#160; return (&quot;%08x&quot; % @color).scan(/[0-9a-fA-F][0-9a-fA-F]/)<br/>&#160; end<br/>&#160; <br/>&#160; def repack_color(color)<br/>&#160; &#160; return &quot;0x&quot; &lt;&lt; color[0] &lt;&lt; color[1] &lt;&lt; color[2] &lt;&lt; color[3]<br/>&#160; end<br/>&#160; <br/>&#160; def update_color(color)<br/>&#160; &#160; @color = color.to_i(16)<br/>&#160; end<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn5674'>
+<div class='frm pst' id='pid5675' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5674'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5675' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5675#pid5675'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-03-06 15:45
+</div>
+<div class='ccl'>
+The first thing I see is that you are passing ff as a string to Gosu::Color#alpha.&#160; Why not just do<br/><code>Object.alpha = 0xff</code><br/>instead? Then there&#39;s no need to convert the string to an integer on input.&#160; Also, 0xff == 255, so that should simplify things.<br/><br/>Also, why does #to_i take a parameter? At the very least, the parameter should default to 16.&#160; I would assume that most of the time someone would want to call #to_i they would be using #to_i(16).&#160; Just look at how many times you did so yourself.<br/><br/>That&#39;s my criticism for the time being.
+</div>
+</div>
+
+<div class='brn' id='brn5675'>
+<div class='frm pst' id='pid5677' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5675'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5677.html#pid5677'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-06 16:00
+</div>
+<div class='ccl'>
+I&#39;m not passing &quot;ff&quot; myself, but it&#39;s there as a fallback to process a hex string. Personally I pass integers between 0-255 but other people may want to pass hex strings? If you pass 0xff, ruby will automatically turn it into 255 which is an Integer, and gets processed as such. The reason I have this is for versatility depending on how people want to use it in their own application. Ruby&#39;s integers default to base 10, hence the to_i(16). It&#39;s taking a string of hex code &quot;ff&quot; and it needs to convert it from base 16 to base 10.<br/><br/>irb(main):067:0&gt; &quot;ff&quot;.to_i<br/>=&gt; 0<br/><br/>irb(main):070:0&gt; &quot;ff&quot;.to_i(16)<br/>=&gt; 255
+</div>
+</div>
+
+<div class='frm pst' id='pid5679' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5675'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5679#pid5679'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-06 16:16
+</div>
+<div class='ccl'>
+The problem I was having initially is that Gosu::Color has a color value of 0xAARRGGBB opposed to individual values for Alpha, Red, Green and Blue. 0xAA, 0xRR, 0xGG, 0xBB. So using what was available to me I process this compounded value as a string, split it, modify it, repack it, and then change the original value.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5680' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5674'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5680.html#pid5680'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-06 19:40
+</div>
+<div class='ccl'>
+I&#39;m in the process of revising this completely without any string manipulation, and will post when done :)
+</div>
+</div>
+
+<div class='frm pst' id='pid5681' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5674'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5681' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5681.html#pid5681'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-03-06 21:15
+</div>
+<div class='ccl'>
+I would just keep it simple using a Gosu::Color object and delegation:<br/><br/><code>require &#39;forwardable&#39;<br/>module Colored<br/>&#160; extend Forwardable<br/><br/>&#160; attr_accessor :color<br/><br/>&#160; def_delegators :@color, :red, :blue, :green, :alpha, :red=, :blue=, :green=, :alpha=<br/>end<br/></code><br/><br/>Job done!
+</div>
+</div>
+
+<div class='brn' id='brn5681'>
+<div class='frm pst' id='pid5682' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5681'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5682' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5682.html#pid5682'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 00:35
+</div>
+<div class='ccl'>
+I&#39;m not really sure how to implement what you posted -- after looking into forwardable I wasn&#39;t sure how to make it meet my needs. I&#39;m trying to keep an objects color value separate from a gosu object -- maybe this isn&#39;t the correct approach but my UI_Elements don&#39;t know anything about gosu, and I was trying to keep it as abstract as possible. For this reason each UI_Element has a @color ranging from 0x0 to 0xffffffff<br/><br/>After much mucking around today, hairs lost and hours of frustration later -- this is my new version of the module without string manipulation:<br/><br/>module Colored<br/>&#160; class Position<br/>&#160; &#160; Alpha = 0<br/>&#160; &#160; Red = 1<br/>&#160; &#160; Green = 2<br/>&#160; &#160; Blue = 3<br/>&#160; end<br/>&#160; <br/>&#160; def color=(value)<br/>&#160; &#160; if (0x0..0xffffffff).include? value<br/>&#160; &#160; &#160; breakdown_color(value)<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def alpha=(value)<br/>&#160; &#160; change_value(Position::Alpha, value)<br/>&#160; end<br/>&#160; <br/>&#160; def red=(value)<br/>&#160; &#160; change_value(Position::Red, value)<br/>&#160; end<br/>&#160; <br/>&#160; def green=(value)<br/>&#160; &#160; change_value(Position::Green, value)<br/>&#160; end<br/>&#160; <br/>&#160; def blue=(value)<br/>&#160; &#160; change_value(Position::Blue, value)<br/>&#160; end<br/>&#160; <br/>&#160; def color<br/>&#160; &#160; return @color<br/>&#160; end<br/>&#160; <br/>&#160; def alpha<br/>&#160; &#160; return @color_breakdown[Position::Alpha]<br/>&#160; end<br/>&#160; <br/>&#160; def red<br/>&#160; &#160; return @color_breakdown[Position::Red]<br/>&#160; end<br/>&#160; <br/>&#160; def green<br/>&#160; &#160; return @color_breakdown[Position::Green]<br/>&#160; end<br/>&#160; <br/>&#160; def blue<br/>&#160; &#160; return @color_breakdown[Position::Blue]<br/>&#160; end<br/>&#160; <br/>&#160; private<br/>&#160; <br/>&#160; def breakdown_color(value)<br/>&#160; &#160; @color = value<br/>&#160; &#160; <br/>&#160; &#160; remainder = value<br/>&#160; &#160; alpha = 0<br/>&#160; &#160; red = 0<br/>&#160; &#160; green = 0<br/>&#160; &#160; blue = 0<br/>&#160; &#160; divmod = Array.new(1)<br/>&#160; &#160; <br/>&#160; &#160; begin<br/>&#160; &#160; &#160; case remainder<br/>&#160; &#160; &#160; &#160; when (0x0..0xff)<br/>&#160; &#160; &#160; &#160; &#160; blue = remainder<br/>&#160; &#160; &#160; &#160; &#160; divmod[1] = 0<br/>&#160; &#160; &#160; &#160; when (0x100..0xffff)<br/>&#160; &#160; &#160; &#160; &#160; divmod = remainder.divmod(0x100)<br/>&#160; &#160; &#160; &#160; &#160; green = divmod[0]<br/>&#160; &#160; &#160; &#160; when (0x10000..0xffffff)<br/>&#160; &#160; &#160; &#160; &#160; divmod = remainder.divmod(0x10000)<br/>&#160; &#160; &#160; &#160; &#160; red = divmod[0]<br/>&#160; &#160; &#160; &#160; when (0x1000000..0xffffffff)<br/>&#160; &#160; &#160; &#160; &#160; divmod = remainder.divmod(0x1000000)<br/>&#160; &#160; &#160; &#160; &#160; alpha = divmod[0]<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; remainder = divmod[1]<br/>&#160; &#160; end until remainder == 0<br/>&#160; &#160; @color_breakdown = Array[alpha, red, green, blue]<br/>&#160; end<br/>&#160; <br/>&#160; def change_value(position, value)<br/>&#160; &#160; if (0x0..0xff).include? value<br/>&#160; &#160; &#160; @color_breakdown[position] = value<br/>&#160; &#160; &#160; update_color<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def update_color<br/>&#160; &#160; @color = (self.alpha * 0x1000000) +<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; (self.red * 0x10000) +<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; (self.green * 0x100) +<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; (self.blue)<br/>&#160; end<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn5682'>
+<div class='frm pst' id='pid5683' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5682'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5683' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5683.html#pid5683'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-03-07 00:45
+</div>
+<div class='ccl'>
+What I gave was literally all you needed to do to have equivalent functionality to what you had written. You&#39;d just need to ensure you did <code>self.color = Color.rgba(123, 123, 13, 0)</code> or something in the constructor and you&#39;d be able to access #color and directly affect #alpha, etc.<br/><br/>That said, I&#39;ve never seen a reason to use the integer color in any of my games or libraries, since Gosu::Color is just so much more versatile and Rubified than a C-friendly integer (really, most of what Colored does is mimic the already existing Color class).<br/><br/>As an aside, since #divmod is just a way to get #div and #modulo at once, you can use:<br/><code>red = remainder.div(0x10000)</code><br/>instead of:<br/><code>divmod = remainder.divmod(0x10000)<br/>red = divmod[0]</code>
+</div>
+</div>
+
+<div class='brn' id='brn5683'>
+<div class='frm pst' id='pid5684' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5683'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5684' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5684.html#pid5684'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 00:49
+</div>
+<div class='ccl'>
+I appreciate your replies and will continue to try and understand your point of view on this. Thanks :)
+</div>
+</div>
+
+<div class='brn' id='brn5684'>
+<div class='frm pst' id='pid5685' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5684'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5685' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5685#pid5685'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 00:50
+</div>
+<div class='ccl'>
+I didn&#39;t think Gosu::Color had a way to set values on ARGB, rather just read from them so I began working on this. But had I understood what you meant I probably could have saved a lot of trouble!
+</div>
+</div>
+
+<div class='brn' id='brn5685'>
+<div class='frm pst' id='pid5686' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5685'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5686' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5686.html#pid5686'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-03-07 00:56
+</div>
+<div class='ccl'>
+That would make sense, if it wasn&#39;t clear that Color had setters.<br/><br/>I appreciate it is hard to drop 50 lines of code you&#39;ve worked hard on to use 5 lines of code that do the same thing. I maybe should properly explained how they worked rather than just plonking them down. I still find it hard to let go of code I&#39;ve written and even after years of working in Ruby I learn something new every week that makes some part of my own work redundant!
+</div>
+</div>
+
+<div class='brn' id='brn5686'>
+<div class='frm pst' id='pid5687' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5686'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5687#pid5687'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 02:13
+</div>
+<div class='ccl'>
+I got it working with the code supplied, although now it&#39;s time for me to break everything down and learn its usefulness =) The one thing I was hoping to avoid was making a reference to Gosu from within my child classes, but that might not be possible/feasible. Thanks for your help!
+</div>
+</div>
+
+<div class='frm pst' id='pid5688' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5686'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5688' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5688.html#pid5688'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 02:41
+</div>
+<div class='ccl'>
+with a simple addition to the code you supplied, I can now keep Gosu::Color out of my UI_Image<br/>As before, UI_Image takes a 0xaarrbbgg integer on initialization, sets @color to it, but now also makes a call to init_color from the Colored module. Kind of messy? But it works =x<br/><br/>require &#39;forwardable&#39;<br/>module Colored<br/>&#160; extend Forwardable<br/><br/>&#160; attr_accessor :color<br/><br/>&#160; def_delegators :@color, :red, :blue, :green, :alpha, :red=, :blue=, :green=, :alpha=<br/>&#160; <br/>&#160; def init_color<br/>&#160; &#160; self.color = Gosu::Color.argb(@color)<br/>&#160; end<br/>end
+</div>
+</div>
+
+<div class='brn' id='brn5688'>
+<div class='frm pst' id='pid5689' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5688'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5689' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5689#pid5689'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-03-07 02:45
+</div>
+<div class='ccl'>
+Ah, I thought you meant you wanted to keep Color out of your module, rather than to keep it hidden from the end-user.<br/><br/>Might I suggest:<br/><code><br/>&#160; attr_reader :color # Getter<br/>&#160; <br/>&#160; def color=(color) # Setter<br/>&#160; &#160; @color = color.is_a?(Gosu::Color) ? color.dup : Gosu::Color.argb(color)<br/>&#160; end</code>
+</div>
+</div>
+
+<div class='brn' id='brn5689'>
+<div class='frm pst' id='pid5695' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5689'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5695' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5695.html#pid5695'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 13:54
+<span class='htt'>Edited</span> 2012-03-07 13:59
+</div>
+<div class='ccl'>
+ah yes just looking at this.. it looks perfect for what I want :) many thanks! I think initially I was trying this but @color = value in my UI_Image wasn&#39;t calling Colored#color=(value) but I think it was a matter of scope at the time.<br/><br/>and I just found out why it didn&#39;t initially work when I tried it yesterday was because I was using @color = color in my UI_Image but I needed to use self.color = color to trigger off Colored#color=(value)<br/><br/>Well this was a great learning experience either way I look at it :D
+</div>
+</div>
+
+<div class='brn' id='brn5695'>
+<div class='frm pst' id='pid5696' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5680.html#pid5695'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5696.html#pid5696'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-03-07 14:14
+</div>
+<div class='ccl'>
+Yes, needing to use self.value= is a bit annoying, and often trips me up. Glad you learned something new :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=732#tid732'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=732#tid732'>Gosu Exchange</a> / Color Module
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5680.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2303 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>My platformer</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2303' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=346#tid346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=346#tid346'>Gosu Showcase</a> / My platformer
+</div>
+</div>
+
+<div class='frm pst' id='pid2296' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2296.html#pid2296'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-04-03 21:17
+<span class='htt'>Edited</span> 2010-04-03 22:55
+</div>
+<div class='ccl'>
+Hi ,<br/><br/>This is my third game made with gosu. It&#39;s a simple platformer , with somes particularities :<br/>- Rapid map edition via text files. Customisable parameters like gravity , movment speed .<br/>- Enemies that are agressive, can flee and avoid projectiles.<br/>- Terrain destruction.<br/><br/>The game is intented to be challenging , and very nervous.<br/><br/>Copy paste from the readme : <br/><br/>1-Description<br/><br/>&#160; This is a 2d side scrolling platformer. It was made so it could be played on a netbook. The game is unique because<br/>&#160; of the monster&#39;s AI and the importance of terrain. The player can not only rely on his reflexes to play the game but have to<br/>&#160; find the best strategy suitable for each level. Each map is conceived as a challenge and takes hours to be completed, by trial<br/>&#160; and error. The very basic and easy map edition tools allows to create custom maps very easily. The mapmakers can focus on gameplay<br/>&#160; because maps can be created with a simple text editor : No need to match tiles manually.<br/>&#160; <br/>&#160; <br/>2-Installation<br/><br/>&#160; Just launch the executable provided with the game. Windows only. Your firewall may block the program and ruby.exe (which is also launched by the program).<br/><br/>&#160; The game was created using the Ruby language and the gosu library.Ruby is an interpreted language therefore the source code of the game needs an environment to execute.<br/>&#160; It is bundled inside the game exe, explaining why the game takes a while to start up. Your firewall may block the program atempts to access some dlls.<br/>&#160; What the exe does is extracting the Ruby interpreter and required dependencies (like gosu) to a temporary file. Then it use ruby to read<br/>&#160; the game&#39;s source code which is also extracted.<br/>&#160; <br/>&#160; The launch time may improve in the future with the official release of ruby 2.0 and ruby2exe, thanks for your understanding.<br/>&#160; <br/>3-Options<br/><br/>&#160; Graphical settings are set in the config.txt file located in the game directory. <br/>&#160; This file has to be edited before the game starts up.<br/>&#160; This file also contains the settings for the controls of the game that can be edited igame.<br/>&#160; <br/>&#160; resolution_x 500 -&gt; vertical resolution<br/>&#160; resolution_y 500 -&gt; horizontal resolution<br/>&#160; fullscreen 0 -&gt; set it to 1 if you want fullscreen<br/>&#160; sound 0 -&gt; the game has no sounds for now, this option is useless<br/>&#160; particles 1 -&gt; values 0 1 2 , the presences of differents particles or not<br/>&#160; buffer 0 -&gt; if you experiment strange effects at the edges of the screen increase it by steps of 40. 0 is for better performances.<br/>&#160; &#160; &#160; a value of 100 is recommanded<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; <br/>&#160; Controls can be edited in the ingame menu. Press Esc to go to the previous menu once you edited all the keys you wanted.<br/>&#160; <br/>4-Gameplay<br/><br/>&#160; Default controls :<br/>&#160; -Arrows keys to move and jump<br/>&#160; -Spacebar to attack. Spacebar + down button to attack down.<br/>&#160; -Alt for secondary attack<br/>&#160; -Enter and Escape to navigate menus.<br/>&#160; -To move backward , hold down button<br/>&#160; <br/>5-Map edition<br/><br/>&#160; Maps are located in the simplemaps directory.<br/>&#160; A text editor such as notepad++ or ascii painter is recommanded.<br/>&#160; <br/>&#160; Every symbol that is not described here is interpreted as a blank space.<br/>&#160; /!\ The length of the first line determine the length of the level.<br/>&#160; Height is related to the number of lines.<br/>&#160; <br/>&#160; x : A square filled with dirt (destructible)<br/>&#160; r : A square filled with indestructible rocks.<br/>&#160; <br/>&#160; l : A fast green monster (its an L)<br/>&#160; c : A strong big monster<br/>&#160; t : A ranged attack monster<br/>&#160; y : The basic monster<br/>&#160; w : A stronger version of the basic monster<br/>&#160; b : A flying monster<br/><br/>&#160; <br/>&#160; <br/>&#160; p : The player starting postion (important)<br/>&#160; s : A checkpoint for the player<br/>&#160; e : End of level<br/>&#160; i : Spikes that hurt<br/>&#160; &lt; : A boulder that will go left<br/>&#160; &gt; : A boulder that will go right<br/>&#160; _ : A spring (makes things jump)<br/>&#160; ) : A right faced spring<br/>&#160; ( : A left faced spring<br/>&#160; <br/>&#160; d : Dynamite powerup<br/>&#160; h : One life ...<br/>&#160; <br/>&#160; <br/>&#160; You can add parameters before you write the map (they are all optionnal) :<br/>&#160; &#160; <br/>&#160; :description Worst shittiest map ever.&#160; =&gt; The description that appear in the map menu<br/>&#160; :death_msg Loooooooooser !<br/>&#160; :win_msg You win lololololol !<br/>&#160; :start_msg Welcome to this map ! <br/>&#160; :gravity 0.8<br/>&#160; :max_speed_fall 35<br/>&#160; :jump 30 =&gt; jump force of the player<br/>&#160; :speed 0.4 =&gt; speed of the player<br/>&#160; :map&#160; &#160; &#160; &#160; &#160; &#160;&#160; =&gt; Used to indicate when the map drawing beggins<br/>&#160; xxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>&#160; xxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br/>&#160; xxx&#160; &#160; &#160; &#160; &#160; &#160; xxxxxxxxxxxxxx<br/>&#160; xxx&#160; &#160;&#160; p&#160; &#160; &#160; &#160; &#160; &#160; xxxxxxxx<br/>&#160; xx&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; xxxxxx<br/>&#160; <br/><br/><img class='emi' src='http://img63.imageshack.us/img63/7223/sanstitrealm.png' alt=''/><br/><img class='emi' src='http://img337.imageshack.us/img337/8876/sanstitrenx.png' alt=''/><br/><br/>DL LINK IS THE ATTACHMENT
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/96/2296/Release.zip'>Release.zip</a>  (1992k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2297' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2297#pid2297'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-04-03 21:54
+</div>
+<div class='ccl'>
+waiting for it to download now :) but really that download link is HORRIBLE, 3 times i clicked an advert that had &#39;download&#39; written on it rather than the actual link, hehe.<br/><br/>Why not use either getdropbox.com or host the file as a downloadable on github.com ? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2298' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2298.html#pid2298'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-04-03 22:00
+</div>
+<div class='ccl'>
+Yes it&#39;s pretty terrible. I&#39;ll need a serious hosting solution one day.
+</div>
+</div>
+
+<div class='frm pst' id='pid2299' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2299#pid2299'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-04-03 22:02
+<span class='htt'>Edited</span> 2010-04-03 22:20
+</div>
+<div class='ccl'>
+wow just played it. Really impressive, fast paced and challenging game. The quake3 style jump-pads are a very nice touch. I couldn&#39;t figure how the terrain was &#39;destructible&#39; though? shooting at the terrain doesn&#39;t appear to leave any crater.<br/><br/>Can you release the source for this game? im curious how you did certain things.<br/><br/>nice work :))
+</div>
+</div>
+
+<div class='frm pst' id='pid2300' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2300.html#pid2300'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-04-03 22:14
+</div>
+<div class='ccl'>
+You have to pick up dynamite to destroy terrain. Don&#39;t expect worms-like destruction though. It destroys block per block.<br/>I may release the sources one day, though it&#39;s nothing spectacular.<br/><br/>thx
+</div>
+</div>
+
+<div class='frm pst' id='pid2302' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2302#pid2302'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-04-03 22:56
+</div>
+<div class='ccl'>
+Ok I just figured out this forum has attachments. So no need for a shitty dl link (see first post).
+</div>
+</div>
+
+<div class='frm pst' id='pid2303' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2303.html#pid2303'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-04 18:03
+</div>
+<div class='ccl'>
+I wonder if it&#39;s too late to sneak it into Shinobi Chef&#39;s compo? (See sticky thread) :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2304' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2304.html#pid2304'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2010-04-04 19:49
+</div>
+<div class='ccl'>
+Radical.
+</div>
+</div>
+
+<div class='frm pst' id='pid2315' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2315.html#pid2315'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-04-11 15:48
+</div>
+<div class='ccl'>
+I have now attached a new version in the first post, with sources.
+</div>
+</div>
+
+<div class='frm pst' id='pid2426' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2426#pid2426'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-07 14:59
+<span class='htt'>Edited</span> 2010-05-08 01:23
+</div>
+<div class='ccl'>
+Whatever you use for editing the ruby code apparently inserts BOM marks into the file, or something like that. At least I cannot run it with Ruby 1.8.7 on OS X. 1.9.2 also gave me a syntax error, but a less weird sounding one. Anyone else run into this?
+</div>
+</div>
+
+<div class='frm pst' id='pid2427' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2427.html#pid2427'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-05-07 20:27
+</div>
+<div class='ccl'>
+I could run it with Ruby 1.9.1 on Kubuntu Linux. 1.8.7 failed miserably...
+</div>
+</div>
+
+<div class='frm pst' id='pid2565' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2565.html#pid2565'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-31 06:52
+</div>
+<div class='ccl'>
+Used Windows to play it, MAN it is fast :P, actually when my VM acted up and was a bit slower I thought the game was more fun. At full 60 FPS it was already kind of hard to notice just HOW annoying the enemies are. Really, I think these are the fiercest enemies I have seen so far in a Gosu game. Grrr! :D<br/><br/>The terrain destruction is also pretty sweet. Not really logical that it lowers the grass, but nice looking that way :)<br/><br/>Oh, and for the slopes, I think the player should stick to them just as discussed regarding Maverick&#39;s game here: <a class='url' href='topic_show.pl@tid=135.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=135</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2569' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2569.html#pid2569'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-05-31 12:05
+</div>
+<div class='ccl'>
+Works well on Win7, cool lil game, I like how you&#39;ve gotten slopes to work well. As jlnr said, the game needs to slow down, stuff is moving way to fast.. I also would like to jump slighty higher! ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2593' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=2593#pid2593'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=179.html' >ickylevel</a>
+<span class='htt'>Date</span> 2010-06-05 22:17
+<span class='htt'>Edited</span> 2010-06-05 22:20
+</div>
+<div class='ccl'>
+I know that the slopes can prevent you from jumping... It would require some tweaking. But I&#39;m not working on this anymore (wouldn&#39;t take so long to do I assume). <br/><br/>You can specify the gravity and the players speed in the map file (:speed and :gravity I think).
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=346#tid346'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=346#tid346'>Gosu Showcase</a> / My platformer
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2303.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

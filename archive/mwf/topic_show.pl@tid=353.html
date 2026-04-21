@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Image Wont Draw!</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=353.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=353.html#tid353'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=353.html#tid353'>Gosu Exchange</a> / Image Wont Draw!
+</div>
+</div>
+
+<div class='frm pst' id='pid2331' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2331.html#pid2331'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=154.html' >ell</a>
+<span class='htt'>Date</span> 2010-04-15 10:08
+</div>
+<div class='ccl'>
+For some reason, none of my Gosu::Image(s) will draw under certain circumstances and I have no idea why. I beleive it is something to do with my loading function. Here are my ResourceBatch(<a class='url' href='http://pastebin.com/KqjB2fVA'>http://pastebin.com/KqjB2fVA</a>) and Resource(<a class='url' href='http://pastebin.com/vFiNM9xf'>http://pastebin.com/vFiNM9xf</a>) classes. To get a resource one simply needs to $game.resources[name_of_resource].<br/><br/>In my test scenes, drawing will work fine if the image is used on the first scene, for example:<br/><br/>class FirstScene &lt; Blocks::SceneBase<br/>&#160; def draw<br/>&#160; &#160; $game.resources[&quot;Media/TestImage.png&quot;].draw(0,0,0) #this will always work<br/>&#160; end<br/>end<br/>class NextScene &lt; Blocks::SceneBase<br/>&#160; def draw<br/>&#160; &#160; $game.resources[&quot;Media/TestImage.png&quot;].draw(0,0,0) #this will only work if the image has been used on FirstScene<br/>&#160; end<br/>end<br/><br/>Sorry if I haven&#39;t provided enough information and thanks in advance! ell.
+</div>
+</div>
+
+<div class='frm pst' id='pid2335' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2335.html#pid2335'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2010-04-15 13:23
+</div>
+<div class='ccl'>
+sounds like you have a bug ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2340' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2340.html#pid2340'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=154.html' >ell</a>
+<span class='htt'>Date</span> 2010-04-15 16:42
+</div>
+<div class='ccl'>
+Having just read the thread on drawing on another window that says that all drawing calls must be on the main thread, maybe this is the issue for the ResourceBatch.load_all is run on a seperate thread. And any ideas on how to fix the bug?
+</div>
+</div>
+
+<div class='frm pst' id='pid2352' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2352.html#pid2352'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-18 10:41
+</div>
+<div class='ccl'>
+I don&#39;t see the threading part. Where does it happen? It might indeed be related :)<br/><br/>Also, are you sure that this is not overengineering going on here? :) I have never seen such a large resource class.
+</div>
+</div>
+
+<div class='frm pst' id='pid2354' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2354.html#pid2354'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=154.html' >ell</a>
+<span class='htt'>Date</span> 2010-04-18 15:47
+<span class='htt'>Edited</span> 2010-04-18 15:51
+</div>
+<div class='ccl'>
+I&#39;l show you, and yes, there probably is a very large amount of over-engineering but I&#39;m just trying to do cool things with Gosu and Ruby at the moment, then maybe after I have learn&#39;t all of their ways I might make something serious!, and here&#39;s the threading link: <br/><a class='url' href='http://pastebin.com/0eeU86xz'>http://pastebin.com/0eeU86xz</a><br/><br/>And although this bug (if it is one) may be obsolete because I might not use this since it is heavily over-engineered, I may use it anyway :D. Thanks in advance, ell<br/><br/>[edit]: When I said trying to do cool things, that sounded rather casual and care-free, what I meant was, learn about different concepts. For example, the resource class(if you didnt catch this) will load in the background, and when a file is requested it is given, if it hasn&#39;t loaded it will be loaded, if you did catch that, paron me if I insulted your intelligence!
+</div>
+</div>
+
+<div class='frm pst' id='pid2355' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2355.html#pid2355'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-18 23:31
+</div>
+<div class='ccl'>
+Well now I saw it! ;) It&#39;s not legally possible though, because I commented out any thread synchronisation between Image.new and Window&#39;s internal management, so it might do even worse things than not draw an image :(<br/><br/>In fact, Gosu has a commented-out &quot;Image.async_new(...)&quot; function that will return a placeholder that can be polled for completion, but since nobody ever requested it outside of highly secret contexts, it never made it to the official side of things.
+</div>
+</div>
+
+<div class='frm pst' id='pid2356' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2356.html#pid2356'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-04-19 03:35
+</div>
+<div class='ccl'>
+Hey, that async_new actually sounds pretty genius. Consider this a formal request? :)<br/><br/>It would be useful for loading non-vital network resources—say, custom character graphics that could be represented by a placeholder until they are loaded. In fact, I have tried to implement something similar using a proxy object.
+</div>
+</div>
+
+<div class='frm pst' id='pid2357' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2357.html#pid2357'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-19 04:17
+</div>
+<div class='ccl'>
+Hah, not sure when to schedule it, but I consider it requested. ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2359' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2359.html#pid2359'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=154.html' >ell</a>
+<span class='htt'>Date</span> 2010-04-19 18:10
+</div>
+<div class='ccl'>
+So what I&#39;m doing can&#39;t be done? Also can you give me some examples of some basic game classes (or should I just look at the showcase?) Ell
+</div>
+</div>
+
+<div class='frm pst' id='pid2361' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2361.html#pid2361'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-20 07:18
+</div>
+<div class='ccl'>
+Nope, can&#39;t be done without help from Gosu&#39;s side.<br/><br/>You can look at the showcase, Ludum Dare entries pretty much all have a simple to understand object model. Actually the RMagickIntegration.rb example also has the object system like I usually use it for games, but you will need RMagick to run it.<br/><br/>For game state management, you can also look at Ludum Dare entries or at the Chingu library from the showcase which just extracts what most people do anyway (the State part of Chingu, the rest of Chingu is an alternative object system).
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=353.html#tid353'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=353.html#tid353'>Gosu Exchange</a> / Image Wont Draw!
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=353.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8857 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Getting (&amp; Keeping) libgosu &amp; C++ Games Compiling in MSYS2</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8857' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1271.html#tid1271'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1271.html#tid1271'>Gosu Exchange</a> / Getting (&amp; Keeping) libgosu &amp; C++ Games Compiling in MSYS2
+</div>
+</div>
+
+<div class='frm pst' id='pid8851' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8851' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8851.html#pid8851'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-19 01:51
+</div>
+<div class='ccl'>
+I&#39;ve been trying to compile a (C++) Gosu program under MSYS2. I&#39;m following the (out-of-date) &quot;Compiling on Mingw&quot; tutorial (<a class='ura' href='https://github.com/gosu/gosu/wiki/Compiling-in-Windows-using-MinGW'>https://github.com/gosu/gosu/wiki/Compiling-in-Windows-using-MinGW</a>).<br/><br/>Surprisingly (given my lack of experience in these things) I was able to modify the instructions enough to build libgosu.a itself (with only a few compiler warnings). I&#39;ve been attempting to compile the &quot;<code>Tutorial.cpp</code>&quot; that comes with Gosu, and I&#39;m stuck.<br/><br/>I&#39;ve made <a class='url' href='http://pastebin.com/iEMBDCwK'>my own Makefile</a>. When I run it, I get a lot of &quot;undefined references&quot; as you can see: <a class='ura' href='http://pastebin.com/PUNVMWJg'>http://pastebin.com/PUNVMWJg</a><br/>The compiler also seems to freeze, because I have to press <code>Ctrl+C</code> to get back to a prompt. (Although, I suppose this could be a bug in MSYS2...)<br/>If I comment out &quot;<code>-std=c++11</code>&quot;, I get this: <a class='ura' href='http://pastebin.com/QXB2X7HV'>http://pastebin.com/QXB2X7HV</a><br/>Either way, I don&#39;t get a nice Tutorial.exe to run.<br/><br/>My hope is that the collective experience of the smart people here can help me get this working, and then we can use this thread to deal with new issues that crop up as the various bits and bobs Gosu relies on are modified (as they invariably and incessantly are) by their respective maintainers.<br/><br/>I love developing with Gosu in Ruby, but I would really like to (someday) build actual games that others might want to play, and distributing Ruby+Gosu games is too troublesome. The performance boost of C++ is another nice perk...<br/><br/>Thanks for reading!
+</div>
+</div>
+
+<div class='brn' id='brn8851'>
+<div class='frm pst' id='pid8852' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8851'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8852' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8852.html#pid8852'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-03-19 19:58
+</div>
+<div class='ccl'>
+Is it maybe as simple as passing -lstdc++ to the linker? It looks like it can&#39;t find <i>anything</i> from the standard library :)<br/><br/>If C++11 is a problem, you can retry with the last C++98 version of Tutorial.cpp:<br/><br/><a class='ura' href='https://github.com/gosu/gosu/commit/7c00e01f03cc88ae67248a824e2a4b5da79b9977'>https://github.com/gosu/gosu/commit/7c00e01f03cc88ae67248a824e2a4b5da79b9977</a>
+</div>
+</div>
+
+<div class='brn' id='brn8852'>
+<div class='frm pst' id='pid8853' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8852'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8853' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8853.html#pid8853'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-19 20:39
+<span class='htt'>Edited</span> 2016-03-19 23:28
+</div>
+<div class='ccl'>
+That got us much closer! I knew it would be something n00bish like that -_-&#39;&#39;<br/><br/>Here&#39;s the output after adding that: <a class='ura' href='http://pastebin.com/cPqw9ZZR'>http://pastebin.com/cPqw9ZZR</a><br/><br/>Looks like problems with pthreads and Vorbis. I think I can go from here, but as usual, any advice is appreciated.<br/><br/>EDIT: adding &quot;-lpthread&quot; didn&#39;t help... still looking :)<br/><br/>EDIT2: A problem with the Makefile was keeping <code>stb_vorbis.c</code> from being built and included in <code>libgosu.a</code>. The pthread thing is still eluding me, though :/
+</div>
+</div>
+
+<div class='brn' id='brn8853'>
+<div class='frm pst' id='pid8854' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8853'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8854' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8854.html#pid8854'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-03-20 00:02
+</div>
+<div class='ccl'>
+Ah right, the MinGW Makefile precedes the switch from libogg/libvorbis to stb_vorbis.c. We should probably fix this in master too.<br/><br/>The only thing I found about the pthread error is this: <a class='ura' href='https://github.com/rust-lang/rust/issues/29649'>https://github.com/rust-lang/rust/issues/29649</a><br/><br/>But I&#39;m not sure how that translates to your setup.
+</div>
+</div>
+
+<div class='brn' id='brn8854'>
+<div class='frm pst' id='pid8855' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8855' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8855.html#pid8855'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-20 01:17
+</div>
+<div class='ccl'>
+<i>Ah right, the MinGW Makefile precedes the switch from libogg/libvorbis to stb_vorbis.c. We should probably fix this in master too.</i><br/><br/>Does that also mean I don&#39;t need the three Ogg/Vorbis .DLLs when I distribute my games?<br/><br/>BTW, I couldn&#39;t get it to work just including stb_vorbis.c (something about certain things being declared static it didn&#39;t like *shrug*), but I renamed it to .cpp, and that seemed to work, so... *shrug*<br/><br/><i>The only thing I found about the pthread error is this: <a class='ura' href='https://github.com/rust-lang/rust/issues/29649'>https://github.com/rust-lang/rust/issues/29649</a><br/><br/>But I&#39;m not sure how that translates to your setup.</i><br/><br/>Yeah, I found that, too. I&#39;m as unsure as you are about its usefulness... I think I&#39;m going to have to contact the MSYS2 maintainers.<br/><br/>It <i>looks</i> like I have all the (32-bit) thread-related &quot;packages&quot; installed:<br/><code>$ pacman -Ss | grep &#39;^\w.*hread&#39;<br/>mingw32/mingw-w64-i686-libwinpthread-git 5.0.0.4573.628fdbf-1 (mingw-w64-i686-toolchain) [installed]<br/>mingw32/mingw-w64-i686-winpthreads-git 5.0.0.4573.628fdbf-1 (mingw-w64-i686-toolchain) [installed]<br/>mingw64/mingw-w64-x86_64-libwinpthread-git 5.0.0.4573.628fdbf-1 (mingw-w64-x86_64-toolchain)<br/>mingw64/mingw-w64-x86_64-winpthreads-git 5.0.0.4573.628fdbf-1 (mingw-w64-x86_64-toolchain)<br/>msys/mingw-w64-cross-winpthreads-git 5.0.0.4574.ce1ad45-1 (mingw-w64-cross-toolchain mingw-w64-cross)<br/></code><br/><br/>I might try to install the 64-bit ones and recompile everything 64-bit, just to see if they&#39;re more complete/compatible.
+</div>
+</div>
+
+<div class='brn' id='brn8855'>
+<div class='frm pst' id='pid8856' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8855'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8856.html#pid8856'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-03-20 15:17
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Does that also mean I don&#39;t need the three Ogg/Vorbis .DLLs when I distribute my games?</p></blockquote><br/>Yep! Gosu still needs libsndfile.dll, though.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8857' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8854'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8857' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8857.html#pid8857'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-24 02:55
+</div>
+<div class='ccl'>
+<i>The only thing I found about the pthread error is this: <a class='ura' href='https://github.com/rust-lang/rust/issues/29649'>https://github.com/rust-lang/rust/issues/29649</a></i><br/><br/>It turns out, this thread <i>was</i> the key! Specifically, <a class='url' href='https://github.com/rust-lang/rust/issues/29649#issuecomment-157628791'>this post</a>, which mentions another MinGW installer, and a specific build of MinGW that uses win32 threads.<br/><br/>I installed it, copied the <code>mingw32</code> folder it created into my main MSYS2 folder (after renaming the existing one, just in case), ran make, found out <code>CC=cc</code>, copied gcc.exe to cc.exe, ran make <i>again</i>, and got a working Tutorial.exe that has a space-ship you can fly around and stars that make noises! Woot! :D<br/><br/>Next step is to try to use just that second installer and do another pair of makefiles that allows one to run <code>make</code> (or possibly <code>mingw32-make</code>) from a standard Windows Cmd shell and end up with a libgosu.a and a Whatever.exe. Then, I can write that up in the relevant section of the wiki, and wait for someone to &quot;improve&quot; something until it breaks again :P
+</div>
+</div>
+
+<div class='brn' id='brn8857'>
+<div class='frm pst' id='pid8858' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8857'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8858' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8858.html#pid8858'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-03-24 19:45
+</div>
+<div class='ccl'>
+Sweet! :) Thanks for digging into this. I think putting the whole Makefile into the wiki wouldn&#39;t be such a bad idea - it makes it even easier to contribute to it.
+</div>
+</div>
+
+<div class='brn' id='brn8858'>
+<div class='frm pst' id='pid8859' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8858'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8859.html#pid8859'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-25 00:03
+</div>
+<div class='ccl'>
+I would do that, but I had to do so much more than just editing the makefile that I don&#39;t think it would be much of an improvement on what is already there (plus, I might have included superfluous things). Also, like I alluded to in my previous post, I don&#39;t think the full MSYS2 distribution is necessary to make this work. I believe all one needs are the Mingw native compiler tools and the requisite libraries, but I still have to prove that.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8860' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8851'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8860' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8860.html#pid8860'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-27 15:48
+</div>
+<div class='ccl'>
+A quick question to anyone familiar with using gcc under windows: What argument(s) do you pass to gcc to prevent the &quot;DOS&quot; (console) window from popping up along with the Gosu-generated window? I used to know this, and I even tried searching both the forums and the &#39;Net at large, to no avail...
+</div>
+</div>
+
+<div class='brn' id='brn8860'>
+<div class='frm pst' id='pid8861' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8860'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8861' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8861.html#pid8861'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-03-27 18:29
+</div>
+<div class='ccl'>
+I remembered that it is &quot;/subsystem:console&quot; in the Visual C++ compiler, and that brought up this result: <a class='ura' href='http://stackoverflow.com/questions/7474504/compiling-a-win32-gui-app-without-a-console-using-mingw-and-eclipse'>http://stackoverflow.com/questions/7474504/compiling-a-win32-gui-app-without-a-console-using-mingw-and-eclipse</a>
+</div>
+</div>
+
+<div class='brn' id='brn8861'>
+<div class='frm pst' id='pid8862' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8861'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8862' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8862.html#pid8862'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-03-27 19:35
+</div>
+<div class='ccl'>
+Thanks again, jlnr! Adding <code> -mwindows</code> to LDFLAGS did the trick!<br/><br/>BTW, I&#39;ve uninstalled MSYS2. With just the stand-alone Mingw installer, and with its <code>/bin</code> folder on the path (which is easily done by running the batch file it comes with), I am able to use <code>mingw32-make</code> at a normal Cmd prompt to build the Tutorial program :D<br/><br/>I had to modify the paths in the makefile, but other than that it &quot;Just Worked(tm)&quot; ;)<br/><br/>Now I need to modify the other makefile accordingly and see if I can still build Gosu itself. Once that works, I&#39;ll be able to update the wiki page :D
+</div>
+</div>
+
+<div class='brn' id='brn8862'>
+<div class='frm pst' id='pid8863' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8862'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8863' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8863.html#pid8863'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-03-27 21:39
+</div>
+<div class='ccl'>
+Awesome, congrats on the working build :)
+</div>
+</div>
+
+<div class='brn' id='brn8863'>
+<div class='frm pst' id='pid8870' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8863'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8870' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8870.html#pid8870'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-04-04 00:56
+</div>
+<div class='ccl'>
+Thanks! I have a couple of questions about things I came across while updating the wiki guide:<br/>1. Is the DirectX SDK needed when compiling Gosu? If so, why?<br/>I found the following in the linker section of the VC project file: SDL2.lib, opengl32.lib, openal32.lib, winmm.lib, delayimp.lib (Note: DirectX stuff conspicuously absent...)<br/>Mingw doesn&#39;t even include a delayimp (although it does have a delayimp.h), but libgosu.a seems to compile and work fine without it.<br/>2. What libraries are needed when building programs based on Gosu?<br/>I experimented and found that some of the libraries suggested by the current guide don&#39;t appear to be necessary, including some seemingly DirectX-related libraries distributed with MinGW (e.g. libdxguid.a and libdinput8.a). The bare minimum seems to be: gosu, stdc++, libpthread (or whatever&#39;s linked when you pass the <code>-pthread</code> option), SDL2, OpenAl32, opengl32, glu32, and winmm<br/>It would be great if there was an up-to-date (per platform?) list of every library needed for both Gosu itself and Gosu apps. Something to add to the wiki, maybe?
+</div>
+</div>
+
+<div class='brn' id='brn8870'>
+<div class='frm pst' id='pid8873' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8870'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8873' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8873.html#pid8873'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-04-04 09:37
+</div>
+<div class='ccl'>
+1. The DirectX SDK used to be required up until Gosu 0.8.0. Now this is all handled by SDL2.lib, which wraps this for us.<br/><br/><code>delayimp.lib</code> is MSVC-specific and does not really matter.<br/><br/>2. I&#39;m curious about <code>glu32</code>, does it break if you omit this library? Gosu doesn&#39;t really use it.<br/><br/>I think you forgot libsndfile in your list, but otherwise it looks fine.<br/><br/><blockquote><p>&gt; It would be great if there was an up-to-date (per platform?) list of every library needed for both Gosu itself and Gosu apps. Something to add to the wiki, maybe?</p></blockquote><br/>I think the list of dev dependencies can live on the Wiki page for the respective platform, as with GettingStartedOnLinux. If you compile Gosu with MSVC, gosu.git includes all the required .lib files (SDL2, OpenAL, libsndfile), so this only applies to Compiling-in-Windows-using-MinGW. (Which should probably be renamed to be more in line with the other GettingStartedOn... pages)<br/><br/>Not sure where to list the runtime dependencies. Does the MSYS/MinGW build need libraries at runtime that the MSVC build doesn&#39;t? Are pthread and stdc++ statically linked?
+</div>
+</div>
+
+<div class='brn' id='brn8873'>
+<div class='frm pst' id='pid8882' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8873'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8882' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8882.html#pid8882'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2016-04-11 22:30
+</div>
+<div class='ccl'>
+1. Good to know that after all the trouble I went through to install it :P<br/>2. You&#39;re right; glu32 isn&#39;t needed to compile Tutorial.cpp. It could be useful to someone doing custom GL stuff along with Gosu, but I&#39;ll probably leave it out to keep from confusing noobs. I wasn&#39;t including it in Gosu itself, BTW.<br/>My post contains two lists. Which one needs libsndfile? It&#39;s currently in the Gosu makefile, but not the Tutorial one. Is it supposed to be the other way around? If not, how is it being linked by VC, since it isn&#39;t in the VC project? Is &quot;AutoLink.hpp&quot; doing it?<br/><i>Does the MSYS/MinGW build need libraries at runtime that the MSVC build doesn&#39;t?</i><br/>Yes. It requires <code>libstdc++-6.dll</code>.<br/><i>Are pthread and stdc++ statically linked?</i><br/>I think pthread is, but stdc++ isn&#39;t (see answer above). I should probably figure out how to ensure they&#39;re both static, to cut down on the DLLs required.<br/>What if we made a &quot;Getting Started on Windows&quot; page that linked to separate MSVC and Mingw pages?
+</div>
+</div>
+
+<div class='brn' id='brn8882'>
+<div class='frm pst' id='pid8886' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8882'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8886.html#pid8886'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-04-18 18:45
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; My post contains two lists. Which one needs libsndfile?</p></blockquote><br/>To be honest, I&#39;m not even sure. It seems that only Gosu itself should need it. Sometimes linking a game requires a dependency .lib though, and I haven&#39;t taken the time to work out why. I usually go with trial &amp; error, like a pro. :/ So, if everything builds and sound works, then don&#39;t worry.<br/><br/><blockquote><p>&gt; What if we made a &quot;Getting Started on Windows&quot; page that linked to separate MSVC and Mingw pages?</p></blockquote><br/>Sounds good! Can you create new wiki pages as a non-org member? If not, I can simply make you a member.<br/><br/>One thing that worries me a little is the amount of Linux distros, Ruby versions, C++ compilers etc. Gosu is built with. But I&#39;ve already opened a gazillion tabs in the background to sign up for free CI services. It seems like this will be an evening well spent. If I understand things right, Appveyor even lets you automate MinGW builds (for free!), which would make me feel much better about having a MinGW Makefile in Gosu&#39;s git repository proper. But first I&#39;ll set up Travis for Linux builds.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid9032' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8857.html#pid8851'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9032.html#pid9032'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=948' >IgorJorobus</a>
+<span class='htt'>Date</span> 2016-10-07 06:17
+</div>
+<div class='ccl'>
+Hi guys. I Just want to share my interest on this matter, when possible I try to avoid Microsoft products (may exist a contradiction, I use Windows, but I try to keep away from Visual Studio or related IDEs/products). So MinGW fan here, a new one, since I&#39;ve been using Gosu from Ruby but getting my head into C++ nowadays.<br/><br/> Could we have at some point a well document and updated wiki page explaining how to setup the environment to develop C++ games with Gosu? Even better, we could have a... repository with all the dependencies needed, to have them quickly on our PC, of course those heavy libraries (if any) will not be there, but we can provide the link to download it. If someone could create the page, I could be in charge of the repository creation. What do you think? I still don&#39;t have experience in C++, I had made some C developments for embedded software but still not very experienced in C++ library matters, so I got a bit confused reading the whole post. Best regards.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1271.html#tid1271'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1271.html#tid1271'>Gosu Exchange</a> / Getting (&amp; Keeping) libgosu &amp; C++ Games Compiling in MSYS2
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8857.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

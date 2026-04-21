@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5246 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu/Ruby performance limits</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5246' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=675.html#tid675'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=675.html#tid675'>Gosu Exchange</a> / Gosu/Ruby performance limits
+</div>
+</div>
+
+<div class='frm pst' id='pid5245' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5245' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5245#pid5245'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=883.html' >armornick</a>
+<span class='htt'>Date</span> 2011-11-23 13:24
+</div>
+<div class='ccl'>
+Hey everyone<br/><br/>I&#39;d like to know what the upper limits of Gosu/Ruby performance are. I don&#39;t really like the hassle of programming in C++ (primarily memory management) so I&#39;m interested in being able to program in Ruby. I know that high level languages are usually slow, however large parts of the library are written in C++ so I&#39;m interested how much overhead ruby itself has.<br/><br/>In short, what are the things you&#39;d do with Gosu/Ruby and what are the things you&#39;d only write in pure C++.<br/><br/>It&#39;s possible that this question has been asked a lot in the past, so I apologize in advance.<br/><br/>Yours truly<br/><br/>Armor Nick
+</div>
+</div>
+
+<div class='brn' id='brn5245'>
+<div class='frm pst' id='pid5246' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5245'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5246.html#pid5246'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-23 14:14
+</div>
+<div class='ccl'>
+Where you want to go with your game? FOSS that ends up on school PCs should be efficient, stuff that you&#39;ll play with your friends in a year can be more wasteful. If you ever want to port it to iOS, you have to rewrite it in C++ anyway. (Or any platform that is not a PC, but for iOS you can keep using Gosu at least.)<br/><br/>Most games end up between 10% and 90% completion (personal guess). If you don&#39;t feel enthusiastic about writing a game in C++, then focus on finishing it in Ruby and if necessary port parts or everything to C++ later on.<br/><br/>Sorry for the vague answer, it really depends a lot on the genre of the game, and on how much you&#39;d be willing to adjust some details to make Ruby happy. I&#39;d suggest joining a timed gamedev competition (Ludum Dare is in one month) to get a feeling for how far you can get with Ruby. (I&#39;m a C++ programmer mostly, but Ruby works great for compos.)
+</div>
+</div>
+
+<div class='frm pst' id='pid5250' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5245'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5250.html#pid5250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-23 15:28
+</div>
+<div class='ccl'>
+Your best bet is to look at all the games that have been written in Ruby/Gosu and see what they achieve. As jlnr points out, most are unfinished, and it might be hard for you to see which ones really push the envelop of Ruby/Gosu development. You might like to try running my <a class='url' href='topic_show.pl@tid=554.html'>Wrath</a> game, for example. Pressing F in-game will show the FPS and potential FPS in the overlay (that is, the FPS the game would achieve if the frame rate wasn&#39;t capped at 60).<br/><br/>One thing I&#39;d recommend is for you to do a simple rendering test of your game idea and see what the frame-rate is like. That is as far as I&#39;ve got with <a class='url' href='topic_show.pl@tid=659.html'>Smash and Grab</a>, which achieves a nice 400 FPS, though of course you need to allow for the fact that the game is extremely light on game-logic at this point.
+</div>
+</div>
+
+<div class='frm pst' id='pid5252' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5245'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5252.html#pid5252'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2011-11-23 16:28
+</div>
+<div class='ccl'>
+As these fine blokes above me have mentioned, I would like to add that no matter what you decide to use, it&#39;s all about putting time into said project and knowing your limits. Lately, I&#39;ve been making little mini games because my ambitious projects grow exponentially and before I know it, I have to refactor lots of code if I want to keep moving forward (something I know I don&#39;t have all the time in the world for...)<br/><br/>Both are great for making games.<br/>Ruby is faster and making games.<br/>C++, at this point with Gosu, just says &quot;this game could go somewhere big if I really, really cared and had time&quot;<br/><br/>Even as a C++ and Gosu user, I still stay go for Ruby.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5253' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5253' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5253#pid5253'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=883.html' >armornick</a>
+<span class='htt'>Date</span> 2011-11-23 16:42
+</div>
+<div class='ccl'>
+Thanks for all the answers so far, everyone.<br/><br/>I&#39;m not going to be making very intensive projects. Probably a SNES-style RPG or a visual novel. I&#39;m mostly worried about how performant AI would be.<br/><br/>On an off-topic note, I tried the C++ version but I had some problems with compiling the tutorial. The variable _WIN32 didn&#39;t seem to be declared so it tried to import either some Mac or Linux headers. Maybe it&#39;s because I&#39;m on an x64 system... Should I open a bug report?<br/><br/>Yours truly<br/>armornick
+</div>
+</div>
+
+<div class='brn' id='brn5253'>
+<div class='frm pst' id='pid5254' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5253'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5254' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5254.html#pid5254'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-23 16:49
+</div>
+<div class='ccl'>
+Sure. To be honest, I have no experience with Win64 at all, but I would&#39;ve guessed that _WIN32 would still be defined there. Can you try around a bit and see if WIN32 or _WIN64 or something like that would be better?<br/><br/>Which compiler are you using? Gosu has just recently gained support for MinGW (a contribution that I&#39;m not sure is being actively maintained).
+</div>
+</div>
+
+<div class='brn' id='brn5254'>
+<div class='frm pst' id='pid5255' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5254'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5255' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5255#pid5255'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=883.html' >armornick</a>
+<span class='htt'>Date</span> 2011-11-23 17:04
+</div>
+<div class='ccl'>
+I&#39;m using Visual C++ 2010 Express edition. I&#39;d take a look at the source of Boost to see how they catch the platform.<br/>I&#39;d try to use MinGW but there seems to be some error with g++ too.
+</div>
+</div>
+
+<div class='brn' id='brn5255'>
+<div class='frm pst' id='pid5256' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5255'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5256' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5256.html#pid5256'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-23 17:18
+</div>
+<div class='ccl'>
+Can&#39;t you just choose to create a new 32-bit Windows application instead? And think about the 64-bit stuff later. (I really need to reinstall my Windows to try it too...)
+</div>
+</div>
+
+<div class='brn' id='brn5256'>
+<div class='frm pst' id='pid5259' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5256'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5259.html#pid5259'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=883.html' >armornick</a>
+<span class='htt'>Date</span> 2011-11-23 18:37
+<span class='htt'>Edited</span> 2011-11-23 19:16
+</div>
+<div class='ccl'>
+Well, as far as I know, I&#39;m making a Win32 application. Maybe the problem is at my end. I&#39;ll try installing Gosu again this weekend and I&#39;ll post again if I&#39;m still having problems.<br/><br/><b>EDIT</b><br/><br/>Alright, so here&#39;s to reading the manual; everything works perfectly except that I had to manually define WIN32. I didn&#39;t read the getting started guide the first time and it turns out that it contains a lot of interesting stuff even if you already know how VC works :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5257' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5246.html#pid5253'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5257.html#pid5257'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-23 17:57
+</div>
+<div class='ccl'>
+You are right: AI and game-logic are the killers performance-wise, since you can make a perfectly decent 2D game <i>render </i>in Gosu without significantly impacting your frame-rate. To some extent you actually need to be more skilful to use Ruby/Gosu effectively, since you do need to optimise your code more (whereas I suspect that an equivalent C++ game can be incredibly sloppy and still hit 60FPS). Still, that doesn&#39;t mean you have to be an expert just to get a game working at all; I don&#39;t see any real reason why an RPG wouldn&#39;t be possible in Ruby/Gosu.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=675.html#tid675'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=675.html#tid675'>Gosu Exchange</a> / Gosu/Ruby performance limits
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5246.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

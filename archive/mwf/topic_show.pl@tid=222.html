@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>The call-order of update() and draw()</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=222.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=222.html#tid222'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=222.html#tid222'>Gosu Exchange</a> / The call-order of update() and draw()
+</div>
+</div>
+
+<div class='frm pst' id='pid1484' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1484.html#pid1484'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-09-08 14:45
+</div>
+<div class='ccl'>
+Some ppl might not even have noticed this (or care about it) but still. Everybody knows, when Gosu is &quot;started&quot; it starts to call draw() and update() after eachother, but which one comes first? :)<br/><br/>I&#39;ve always assumed update() first, then draw() .. first update the gamelogic.. then put the updated logic on screen, makes sense in my mind.<br/>But in the current GOSU draw() comes first.<br/><br/>I&#39;ve been surprised a couple of times by this since it feels backwards to me, a common example where I get caught it:<br/><br/>class Player<br/>&#160;&#160; def initialize<br/>&#160; &#160; &#160;&#160; @animation = Animation.new(.....)<br/>&#160;&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; @image = @animation.next!<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160;&#160; @image.draw ...&#160;&#160; # @image is NIL if update() hasn&#39;t been called.<br/>&#160; end<br/>end<br/><br/>Yes, it&#39;s easy to solve with 1 extra line in initialize.. but still,&#160; I&#39;m curious, is there a case to be made for having draw() first? I brought this up with jlnr and he suggested asking the community, so here it is =).
+</div>
+</div>
+
+<div class='frm pst' id='pid1488' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1488.html#pid1488'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-09-08 18:54
+</div>
+<div class='ccl'>
+I thought it was update(), draw() too!<br/><br/>I suppose it might be useful if you already set your @x&#39;s and @y&#39;s in the &#39;initialize&#39; step, and draw first so you don&#39;t miss a step, but it just seems wrong. <br/>I&#39;d prefer update(), draw(), as it gives me time to fix my stuff first.
+</div>
+</div>
+
+<div class='frm pst' id='pid1490' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1490.html#pid1490'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-09-08 20:32
+<span class='htt'>Edited</span> 2009-09-08 20:58
+</div>
+<div class='ccl'>
+yeah i think there&#39;s a case for either one. All depends whether you need an update() to bring your game object into state 0 or whether it&#39;s in state 0 on initialization. In my case my game objects are usually constructed to be in state 0 and so calling update() would bring it to state 1. So, in my case, if update() is called before draw() state 0 would never be drawn to the screen and state 1 would be the first visible state. In Ippa&#39;s case he evidently needs an update() to bring his game objects into state 0...neither approach is right/wrong imo.
+</div>
+</div>
+
+<div class='frm pst' id='pid1500' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1500.html#pid1500'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-09-09 21:51
+</div>
+<div class='ccl'>
+Some more opinions to push jlrn in the direction of doing the right thing? ... having update() first ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid1503' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1503.html#pid1503'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-09-10 03:34
+</div>
+<div class='ccl'>
+My games all work like banister said, so it&#39;s a 2:2 tie now ;)<br/><br/>Hmm, what happens if the order of draw/update was switched, but someone created a new game state in update()? Would the same problems arise? I don&#39;t know. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1507' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1507.html#pid1507'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-09-10 08:18
+</div>
+<div class='ccl'>
+I do the state thing now too. but even when I didn&#39;t I never ran into any problems. good to know tho
+</div>
+</div>
+
+<div class='frm pst' id='pid1508' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1508.html#pid1508'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2009-09-10 10:53
+</div>
+<div class='ccl'>
+i always used libraries with the draw first and the update later :3
+</div>
+</div>
+
+<div class='frm pst' id='pid1516' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1516.html#pid1516'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2009-09-11 05:12
+</div>
+<div class='ccl'>
+I&#39;m pretty new to Gosu and game libraries in general, but the few things I&#39;ve done have worked as it is now, so I guess I&#39;m doing something right ;)<br/><br/>I also agree with bannister&#39;s logic concerning &quot;state 0&quot; and &quot;state 1&quot; (although, since the difference between the two is 1/60 of a second, it&#39;s a bit moot :P )<br/><br/>So, I guess I vote for &quot;draw() -&gt; update()&quot;.<br/><br/>As a side note, the &quot;PopCap&quot; framework also uses the update/draw model. The last time I looked at it, it went in the &quot;update -&gt; draw&quot; order. Just throwing that out there...<br/><br/>One last thing I just thought of... What if it did something like: &quot;prepare() -&gt; draw() -&gt; update()&quot;? Then the programmer could choose the order or even use both (which may provide some hidden benefit, as well). Would the extra overhead make this impractical? Don&#39;t cry &quot;n00b&quot; too loudly, I&#39;m just thinking out loud... :P
+</div>
+</div>
+
+<div class='frm pst' id='pid1521' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1521.html#pid1521'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-09-12 13:21
+</div>
+<div class='ccl'>
+cool with alot of input.. I guess it would take a clear majority to justify a change of status qou.
+</div>
+</div>
+
+<div class='frm pst' id='pid1523' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1523.html#pid1523'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=112.html' >deps</a>
+<span class='htt'>Date</span> 2009-09-12 18:28
+</div>
+<div class='ccl'>
+I haven&#39;t given much thought in the past...<br/>If you ask me, I vote for draw(), update() as well.
+</div>
+</div>
+
+<div class='frm pst' id='pid1524' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1524.html#pid1524'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2009-09-12 19:31
+</div>
+<div class='ccl'>
+deps you traitor &gt;:O .. hah, when are you gonna be back in #gosu? =)
+</div>
+</div>
+
+<div class='frm pst' id='pid1526' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1526.html#pid1526'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=112.html' >deps</a>
+<span class='htt'>Date</span> 2009-09-12 19:47
+</div>
+<div class='ccl'>
+When I remember to open my irc client, probably. :)<br/>I think I pop in now...
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=222.html#tid222'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=222.html#tid222'>Gosu Exchange</a> / The call-order of update() and draw()
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=222.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8835 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Image scaling problem? (FULLSCREEN)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8835' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1264.html#tid1264'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1264.html#tid1264'>Gosu Exchange</a> / Image scaling problem? (FULLSCREEN)
+</div>
+</div>
+
+<div class='frm pst' id='pid8807' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8807' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8807.html#pid8807'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-19 18:24
+</div>
+<div class='ccl'>
+Maybe i&#39;m doing something wrong, but after drawing a 8x8 image all over the screen (tile layer) scaled by 4x (32x32), a black line appears at the top of the screen.<br/><br/>This only happens in fullscreen with a 8x8 scaled image with :retro=&gt;true.<br/>Also, if :retro is false all the screen looks like a grid (nice way to make a map editor :P)<br/><br/>Here&#39;s the code: (I&#39;m using a 8x8 blue square as the image to tile).<br/><br/><code>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; <br/>&#160; <br/>&#160; def draw()<br/>&#160; &#160; (Gosu::available_width/32).to_i.times do |x|<br/>&#160; &#160; &#160; (Gosu::available_height/32).to_i.times do |y|<br/>&#160; &#160; &#160; &#160; @img.draw( x*32, y*32, 1, 4, 4)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def update()<br/>&#160; &#160; <br/>&#160; end<br/>&#160; <br/>&#160; def initialize()<br/>&#160; &#160; super Gosu::available_width, Gosu::available_height, true<br/>&#160; &#160; <br/>&#160; &#160; @img = Gosu::Image.new(&quot;img.png&quot;, {:retro=&gt;true})<br/>&#160; end<br/>&#160; <br/>end<br/><br/>win = Window.new()<br/>win.show</code>
+</div>
+</div>
+
+<div class='brn' id='brn8807'>
+<div class='frm pst' id='pid8808' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8807'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8808' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8808.html#pid8808'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-02-20 00:27
+</div>
+<div class='ccl'>
+<code>Gosu::available_height</code> returns the height available for running games in *windowed* mode, so if you are on Windows, this will be the same as <code>Gosu::screen_height</code> minus space for the start menu/task bar at the bottom.<br/>You should be seeing a black bar at the top and bottom each, and you are probably looking for <code>Gosu::screen_width</code> and <code>Gosu::screen_height</code> instead.<br/><br/>And if you want to stretch images without <code>:retro =&gt; true</code> and without producing a grid effect, <code>:tileable =&gt; true</code> was designed exactly for that purpose :) Hope that helps!
+</div>
+</div>
+
+<div class='brn' id='brn8808'>
+<div class='frm pst' id='pid8809' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8808'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8809' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8809.html#pid8809'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-20 02:04
+</div>
+<div class='ccl'>
+:tileable seems to have solved the problem with resizing, however, after changing <code>available_height </code>with <code>screen_height </code> the bottom black bar dissapeared, but the top black bar is still there. Is that supposed to happen?<br/><br/><code>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; <br/>&#160; <br/>&#160; def draw()<br/><br/>&#160; &#160; ((Gosu::screen_width/32)+1).times do |x|<br/>&#160; &#160; &#160; ((Gosu::screen_height/32)+1).times do |y|<br/>&#160; &#160; &#160; &#160; @img.draw( (x*32), (y*32),0,4,4)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; Gosu::draw_rect(0,0,Gosu::screen_width, 32, Gosu::Color::WHITE)<br/>&#160; end<br/>&#160; <br/>&#160; def update()<br/>&#160; &#160; <br/>&#160; end<br/>&#160; <br/>&#160; def initialize()<br/>&#160; &#160; super Gosu::screen_width, Gosu::screen_height, true<br/>&#160; &#160; <br/>&#160; &#160; @img = Gosu::Image.new(&quot;img.png&quot;, {:retro=&gt;true, :tileable=&gt;true})<br/>&#160; end<br/>&#160; <br/>end<br/><br/>win = Window.new()<br/>win.show</code>
+</div>
+</div>
+
+<div class='brn' id='brn8809'>
+<div class='frm pst' id='pid8811' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8809'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8811.html#pid8811'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1242' >nietzschette</a>
+<span class='htt'>Date</span> 2016-02-20 09:24
+</div>
+<div class='ccl'>
+try replacing line 10 in your draw function with this<br/><br/><code>&#160; &#160; &#160; &#160; @img.draw( (x*32), (y*32),1,4,4)</code><br/><br/>let us know if that fixes it.
+</div>
+</div>
+
+<div class='frm pst' id='pid8813' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8809'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8813.html#pid8813'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-02-20 10:36
+</div>
+<div class='ccl'>
+Nope. Can you please post a screenshot? Which operating system and which version of Gosu are you using?
+</div>
+</div>
+
+<div class='frm pst' id='pid8818' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8809'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8818' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8818.html#pid8818'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-20 17:04
+</div>
+<div class='ccl'>
+Not only do i get a black bar at the top, but also the white rect that takes screen_width doesn&#39;t reach it&#39;s full size (ends like 20 pixels before the screen width)<br/><br/>..<br/>I can&#39;t seem to find a way to take a screenshot (as this only happens in fullscreen), but it looks like this:<br/><br/><img class='emi' src='http://i.imgur.com/RfMtr8k.png' alt=''/><br/><br/>(Modifying the z value didn&#39;t change anything)<br/><br/>(Windows 7 - 32 bits, Gosu 0.10.5)
+</div>
+</div>
+
+<div class='brn' id='brn8818'>
+<div class='frm pst' id='pid8823' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8818'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8823' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8823.html#pid8823'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-02-20 23:51
+</div>
+<div class='ccl'>
+That&#39;s really curious. I wonder if it has anything to do with your DPI settings? Are you running Windows 7 at 100%, 125% or 150% font scale? (It&#39;s somewhere in the display settings.)<br/><br/>I&#39;ll give it a try on my Windows 7 VM ASAP.
+</div>
+</div>
+
+<div class='brn' id='brn8823'>
+<div class='frm pst' id='pid8824' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8823'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8824.html#pid8824'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-20 23:56
+</div>
+<div class='ccl'>
+100%.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8835' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8835' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8835.html#pid8835'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-22 16:22
+</div>
+<div class='ccl'>
+Tested it on another machine and i got the same results.<br/><br/>Any idea? I&#39;m the only one with this problem?
+</div>
+</div>
+
+<div class='brn' id='brn8835'>
+<div class='frm pst' id='pid8836' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8835'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8836' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8836.html#pid8836'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-02-22 16:45
+</div>
+<div class='ccl'>
+Sorry for the delay, I&#39;ve tested it on Windows and you are right. I can also confirm that it has already been broken in Gosu 0.10.4. Everything works as expected on OS X.<br/><br/>I&#39;ve filed a ticket here:<br/><br/><a class='ura' href='https://github.com/gosu/gosu/issues/318'>https://github.com/gosu/gosu/issues/318</a><br/><br/>I hope this high priority bug gives me an excuse to spend a couple of evenings on Gosu. In the meantime, I&#39;m sorry for this blatant error!
+</div>
+</div>
+
+<div class='brn' id='brn8836'>
+<div class='frm pst' id='pid8837' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8836'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8837.html#pid8837'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-22 17:02
+</div>
+<div class='ccl'>
+OK, no problem!. Thanks for helping!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8841' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8841' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8841.html#pid8841'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-02-26 15:33
+</div>
+<div class='ccl'>
+0.10.6 is out and hopefully addresses this bug.
+</div>
+</div>
+
+<div class='brn' id='brn8841'>
+<div class='frm pst' id='pid8842' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8835.html#pid8841'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8842.html#pid8842'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2016-02-26 16:09
+</div>
+<div class='ccl'>
+Seems to work fine! <b>Thanks!</b>
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1264.html#tid1264'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1264.html#tid1264'>Gosu Exchange</a> / Image scaling problem? (FULLSCREEN)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8835.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

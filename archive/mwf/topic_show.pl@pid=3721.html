@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3721 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Rendering Performance Suggestion</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3721' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=475.html#tid475'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=475.html#tid475'>Gosu Exchange</a> / Rendering Performance Suggestion
+</div>
+</div>
+
+<div class='frm pst' id='pid3357' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3357' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3357.html#pid3357'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2010-10-03 21:44
+</div>
+<div class='ccl'>
+Hello all<br/><br/>I have been having fun playing around with Gosu. I really like the neat, modern coding style. It looks like it will be a solid foundation for my game.<br/><br/>I decided to give Gosu a stress test to check its performance, so I remade one of the demo projects for the Haaf Game Engine library. This displays a 1000 copies of a single image bouncing around the window and lets the frame rate run as fast as possible. Gosu held up well in this very artificial test - after turning off vsync, it got about 650 frames per second compared to the 1000 FPS that HGE got - probably smooth enough for most people. However when I had a look with the Very Sleepy profiler, I noticed that Gosu seemed to be spending a significant amount of time in std::_Tree insert methods and also (bizarely) in wcsncpy. Very Sleepy reports that wcsncpy is being called by free and malloc, which are also taking a fair amount of time.<br/><br/>I tracked all these calls to the std::multiset that stores the DrawingOp queue. It seems to me that a sorted collection is not actually required for the drawing queue, because the queue is only ever read all in one go in performDrawOps or compileTo. I tried replacing the multiset with a std::vector and putting a std::sort at the start of performDrawOps and compileTo - this does require making these methods non-const. The idea being to allocate memory in large chunks rather than one DrawingOp at a time. Performance in my stress test program increased to 1000 FPS or above.<br/><br/>I am using Windows and Visual Studio 2010, in case that is of interest.<br/><br/>I do not know whether this change is enough to make a significant difference in actual games, that do not use thousands of drawing operations. However I cannot think of any significant downsides. I am happy to post a patch if you want it.
+</div>
+</div>
+
+<div class='brn' id='brn3357'>
+<div class='frm pst' id='pid3358' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3357'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3358' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3358.html#pid3358'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-03 21:57
+</div>
+<div class='ccl'>
+The reason for using multiset is simply that it was the first thing that came to my mind when I was writing this, and I agree that it might not be the best data structure. However, std::sort will not work as a replacement because IIRC it is not guaranteed to be stable. Gosu currently guarantees that stuff drawn on the same Z level will end up being drawn in the same order as draw*() was called. I still guess that using a vector and a stable sorting approach might be faster. Do you know any algo in the std library or boost that we could abuse?<br/><br/>FWIW, I am approaching performance from a few sides too right now. There is a lot of unnecessary std::wstring copying happening in the current Font implementation. Sadly, few STL implementations use the Small String Optimization right now, resulting in malloc/free for even single-character strings. Yuck. :(<br/>As you saw in compileTo, there is work towards generating Vertex Arrays for large static collections of images, this also improves performance a lot when applicable.<br/>Then I want to make the internal format of Gosu::Color better suited for direct memcpy() into OpenGL.<br/>And finally, some stuff could be moved into a seperate thread. Being able to asynchronously load images or render text would make the *perceived* performance of Gosu games much better for in-game loading.<br/><br/>That is just WIP trivia because I *am* running into performance trouble on the iPhone 3G, so thanks for the research, all input is welcome :)
+</div>
+</div>
+
+<div class='brn' id='brn3358'>
+<div class='frm pst' id='pid3359' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3358'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3359' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3359.html#pid3359'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2010-10-04 01:04
+</div>
+<div class='ccl'>
+Fair point on the stability of std::sort. I realised stability would be necessary, but for some reason assumed std::sort was stable. However I notice that there is a std::stable_sort. I will alter my stress test to use it tomorrow and see how much that reduces the frame rate.<br/><br/>I am interested to hear your plans for performance improvement. Asynchronously loading sounds like a neat idea. I saw the work on using vertex arrays for the iPhone version. Are you thinking of using this method on all platforms? It looks like a good idea from a performance perspective, but it would take rather more work to get drawTriangle, drawQuad, macros, etc to work nicely with it.<br/><br/>Are macros supposed to work at the moment? They would not for me, though I did not try very hard to make them and may have been doing something stupid. Images in a macro were drawn as black squares with fuzz in them. Drawing quads in a macro caused an exception.
+</div>
+</div>
+
+<div class='brn' id='brn3359'>
+<div class='frm pst' id='pid3360' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3359'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3360' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3360.html#pid3360'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-04 10:15
+</div>
+<div class='ccl'>
+Oh, good call on std::stable_sort. For some reason I&#39;d never heard of it. Well, a patch is welcome then. ;)<br/><br/>Well, macros *are* vertex arrays. :) It&#39;s just that on the iPhone version, I have to use VAs for everything because GLES comes without glBegin. But no, they are not supported and it will take another few months until they are.<br/>drawTriangle and drawQuad will likely be approximated using a single-pixel white texture. drawLine should be replaced by a quad too as GL_LINE is too different across drivers.<br/><br/>And on a related note, with DrawOpQueue being a vector and some DrawOp layout tweaking, maybe there is a way to use DrawOpQueue as a VertexArray *directly*? That would certainly be convenient.
+</div>
+</div>
+
+<div class='brn' id='brn3360'>
+<div class='frm pst' id='pid3362' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3360'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3362' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3362.html#pid3362'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2010-10-04 22:24
+<span class='htt'>Edited</span> 2010-10-04 23:27
+</div>
+<div class='ccl'>
+I had also not heard of stable_sort either until I went to look up the stability of std::sort. <br/><br/>Unfortunately when I swapped in stable_sort I found my stress test dropped back to about 670 FPS. I also realised that I was unfairly favouring sorting over multiset by doing my drawing in z order, with most z values the same. When I moved to random z values, the std::sort approach fell back to about 700FPS. My profiling suggested that these drops were due to time spent copying DrawOps, which are quite bulky, so I have altered DrawOpQueue to sort a vector of pointers to DrawOps with associated z-values rather than DrawOps themselves. This takes the FPS back up to about 900. I am still keeping the DrawOps themselves in a vector so that memory is allocated for them in large chunks rather than for each in turn.<br/><br/>I have uploaded the patch to <a class='url' href='http://www.mediafire.com/?x34uexq6vpj4wmc'>http://www.mediafire.com/?x34uexq6vpj4wmc</a> . I have also included a full copy of DrawOpQueue.hpp just in case, as I have not&#160; made a patch with svn before. I will be interested to hear if it makes any difference where performance is a limitation.<br/><br/>An improvement might be to avoid the copying of existing DrawOps when the vector is expanded - push pointers to DrawOps into a vector as they were added, but allocate the memory for the DrawOps themselves in large chunks. It would be nice to also reuse the DrawOp memory between frames - a DrawOpPool maybe? [EDIT] Actually I just checked and I am not sure copying of existing DrawOps is worth worrying about, reserving a large vector in advance does not seem to make any difference in my stress test. [/EDIT]<br/><br/>It would be very elegant to be able to use a DrawOps vector for the VertexArray directly, however I expect the copying costs during sorting might outweigh the benefits of not copying into a separate VertexArray.<br/><br/>Using a single-pixel texture to approximate drawTriangle and drawQuad sounds like a very neat way of unifying the drawing operations.<br/><br/>An idea that just occurred to me is that you could easily offer the option of disabling the sort operation, disabling most of the overhead of z-order, for those who wanted just to rely on order of drawing.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/62/3362/ZSortingPatch.zip'>ZSortingPatch.zip</a> - Z-Ordering Patch (3k)</div>
+</div>
+</div>
+
+<div class='brn' id='brn3362'>
+<div class='frm pst' id='pid3363' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3362'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3363' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3363.html#pid3363'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-05 05:12
+<span class='htt'>Edited</span> 2010-10-05 05:48
+</div>
+<div class='ccl'>
+Oh dear, you should put your patch on <a class='url' href='http://pastebin.com/'>Pastebin</a> if it&#39;s too large for a forum post. It even has syntax highlighting! For patches, even.<br/><br/>No, scratch that, I completely forgot about forum attachments, as Julian has pointed out.
+</div>
+</div>
+
+<div class='brn' id='brn3363'>
+<div class='frm pst' id='pid3364' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3363'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3364' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3364.html#pid3364'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-05 05:45
+</div>
+<div class='ccl'>
+I guess I should add a &quot;you can attach files after posting&quot; line under the input text box. This board software is kinda alone with the way attachments work. ;)
+</div>
+</div>
+
+<div class='brn' id='brn3364'>
+<div class='frm pst' id='pid3365' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3364'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3365' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3365.html#pid3365'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-05 05:50
+</div>
+<div class='ccl'>
+Oh jeeze, I&#39;m pretty sure I&#39;ve even <i>used</i> the attachment feature before and I completely forgot about it. Thanks for catching my mistake, sir!<br/><br/>On the other hand, I think Pastebin is a useful service and it can&#39;t hurt to let people know about it. :)
+</div>
+</div>
+
+<div class='brn' id='brn3365'>
+<div class='frm pst' id='pid3367' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3365'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3367' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3367.html#pid3367'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-05 05:52
+</div>
+<div class='ccl'>
+Only embedding and automatic syntax-highlighting of attached code files here could be more awesome. Sadly, my Perl is too weak, so +1 for pastebin. :)
+</div>
+</div>
+
+<div class='brn' id='brn3367'>
+<div class='frm pst' id='pid3368' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3367'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3368.html#pid3368'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-05 14:10
+</div>
+<div class='ccl'>
+Calling pygments as an external script would probably be the way to go if you really wanted to do it. I think this is what GitHub does.<br/><br/>I used to be pretty competent in Perl but I haven&#39;t touched it in a long time since I found Ruby. Hmm.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3369' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3365'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3369' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3369.html#pid3369'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-10-05 20:50
+</div>
+<div class='ccl'>
+gist is better (if you use github) as you can fork them, find them again easily, favorite them. They also get you high.
+</div>
+</div>
+
+<div class='brn' id='brn3369'>
+<div class='frm pst' id='pid3370' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3369'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3370' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3370.html#pid3370'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-10-05 22:08
+</div>
+<div class='ccl'>
+You&#39;re absolutely right, but you don&#39;t have to have an account to use Pastebin. :)
+</div>
+</div>
+
+<div class='brn' id='brn3370'>
+<div class='frm pst' id='pid3372' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3370'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3372.html#pid3372'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2010-10-07 19:51
+</div>
+<div class='ccl'>
+Well I am spoiled for choice if I come up with any more patches. :)<br/><br/>Thanks for your recommendations all.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3366' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3362'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3366' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3366.html#pid3366'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-10-05 05:50
+</div>
+<div class='ccl'>
+Disabling Z ordering is not an option imho. The interface should not be made more complicated, and Gosu code should be able to mix and match without quirks. :)<br/><br/>The stable_sort of pointers sounds like a good option. I&#39;ll take a look at the patch. Thanks again.<br/><br/>BTW, if you just clear() the vector, it will keep its capacity. I haven&#39;t seen the code but you might just have an accidental DrawOpPool in there? ;)
+</div>
+</div>
+
+<div class='brn' id='brn3366'>
+<div class='frm pst' id='pid3371' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3366'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3371.html#pid3371'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2010-10-07 19:49
+</div>
+<div class='ccl'>
+I agree with your objections on disabling Z ordering. The potential speed up from the tweak would be small anyway.<br/><br/>I am just clearing the vector in the DrawOpQueue clear method, and you are quite right that this means it maintains its capacity between frames. This would explain why my sticking in calls to reserve had no effect - its all working better than I expected. The only downside is if someone decides to draw thousands of objects in one frame and then fall back to only a few for a long period, but I suspect that is not a usual pattern of use.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3721' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3362'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3721' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3721.html#pid3721'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-08 23:31
+</div>
+<div class='ccl'>
+Hello, I have now finally changed the data structure. To be honest I have not used the patch because I wanted to keep the code simple while adding custom Z-ordered OpenGL at the same time. I used your suggestion of stable_sort though, and I got 3 invaluable FPS more on my iPhone 3G running a typical game scene. Thank you :)<br/><br/>Let me know how the upcoming 0.7.26 release performs in your benchmark.
+</div>
+</div>
+
+<div class='brn' id='brn3721'>
+<div class='frm pst' id='pid3735' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3721'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3735' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3735.html#pid3735'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2011-01-09 22:39
+</div>
+<div class='ccl'>
+No problem about the patch: I am happy if the idea has been useful.<br/><br/>I did another test after my last post, and it seemed the inclusion of a copy of the z-order with the pointer to make up the DrawOpRef class did not actually have a significant effect, so the code was probably overcomplicated. However sorting a vector of pointers rather than the original DrawOps vector did have a significant effect and might be worth considering if that part of the code is still a significant bottleneck.<br/><br/>I am pleased to hear you have added Z-ordered custom OpenGL. This is a feature I thought I would need to add for my game. I note you are saving the OpenGL state and restoring it afterwards. I am guessing this could mean a fairly large speed hit with lots of custom operations, but leaving it to the user does give an easy way to shoot yourself in the foot. I suppose can always tweak Gosu if I find I need the speed.<br/><br/>I will certainly give the new release a test and let you know. I will post the benchmark code if I get a chance to clean it up a little.
+</div>
+</div>
+
+<div class='brn' id='brn3735'>
+<div class='frm pst' id='pid3736' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3735'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3736' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3736.html#pid3736'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-09 23:15
+</div>
+<div class='ccl'>
+Yeah, I&#39;ll still consider custom GL a special case that I won&#39;t optimize much for until some usage patterns emerge in (semi)finished games. If you have lots of GL objects on the same Z level, you can still work around the state push/pop by collecting all objects and drawing them in one run, which sounds as if it would be faster anyway.<br/>BTW I reduced the DrawOp size quite a bit by using float instead of double. (I am not sure if I should change Gosu&#39;s interface to use only float, or just the interface on iOS, different story…) That should have sped up things by making the copied data quite a bit smaller, but didn&#39;t make the slightest bump in my benchmark. Optimization is a weird game.
+</div>
+</div>
+
+<div class='brn' id='brn3736'>
+<div class='frm pst' id='pid3737' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3721.html#pid3736'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3737.html#pid3737'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=205.html' >Antikythera</a>
+<span class='htt'>Date</span> 2011-01-10 00:48
+</div>
+<div class='ccl'>
+Leaving optimisation until you see some usage seems reasonable. Your workaround might work for me - I am not sure yet if the individual custom drawn entities will need different levels.<br/><br/>It is interesting that going from double to float made no difference at all. That does seem to imply copying is not a bottleneck. I certainly won&#39;t dispute that optimization is a weird game.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=475.html#tid475'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=475.html#tid475'>Gosu Exchange</a> / Rendering Performance Suggestion
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3721.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

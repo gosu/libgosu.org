@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4463 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Trouble with button_down</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4463' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=599.html#tid599'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=599.html#tid599'>Gosu Exchange</a> / Trouble with button_down
+</div>
+</div>
+
+<div class='frm pst' id='pid4461' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4461' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4461.html#pid4461'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=849.html' >Jwosty</a>
+<span class='htt'>Date</span> 2011-06-24 17:15
+</div>
+<div class='ccl'>
+I am making a simple game in which you try to destroy the other player (you are a UFO). Player 1 moves with W, A, S, and D, and Player 2 moves with the UP, DOWN, LEFT, and RIGHT arrow keys. Player 1 shoots with 1 and Player 2 shoots with 7. I know, it&#39;s not the best controls, but I&#39;ll figure that out later. It works for now. xP<br/>The problem:<br/>If both players are shooting at the same time, then neither player can move left. Here is my code:<br/><br/><i>&#160; &#160; def move<br/>&#160; &#160; &#160; if button_down?(@nk)<br/>&#160; &#160; &#160; &#160; @y -= speed<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if button_down?(@sk)<br/>&#160; &#160; &#160; &#160; @y += speed<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if button_down?(@wk)<br/>&#160; &#160; &#160; &#160; @x -= speed<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; if button_down?(@ek)<br/>&#160; &#160; &#160; &#160; @x += speed<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end</i><br/><br/>@ek = east key (the trouble causing button, moves left)<br/>@nk = north key (moves up)<br/>@sk = south key (moves down)<br/>@wk = west key (moves right)<br/><br/>Two very odd things here:<br/>• It is only with the var @ek (a completely different button for the two players)<br/>• If I move the @ek conditional to the top of the list, I still get the same results.<br/><br/>Help would be much appreciated. :/
+</div>
+</div>
+
+<div class='brn' id='brn4461'>
+<div class='frm pst' id='pid4462' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4463.html#pid4461'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4462' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4462.html#pid4462'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-06-24 17:38
+</div>
+<div class='ccl'>
+My guess is that it is not Gosu, but a keyboard problem. In usual (more economic?) keyboard hardware, only some keys can be pressed at once. In my experience, special keys like strg, alt, shift are more tolerant. If they problem goes away or changes by using other keys, you know it&#39;s that problem.<br/><br/>First link I found on this issue: <a class='url' href='http://xahlee.org/comp/keyboard_key_ghosting.html'>http://xahlee.org/comp/keyboard_key_ghosting.html</a><br/><br/>Workaround: Let one player use the keyboard, buy a gamepad for the other one :)
+</div>
+</div>
+
+<div class='brn' id='brn4462'>
+<div class='frm pst' id='pid4463' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4463.html#pid4462'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4463.html#pid4463'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=849.html' >Jwosty</a>
+<span class='htt'>Date</span> 2011-06-24 22:38
+</div>
+<div class='ccl'>
+Okay, thanks! That seems to be the answer, I just tried using the trouble-causing key combonation in a text editor, and it didn&#39;t print all the keys that were pressed. Thanks a bunch! :D
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=599.html#tid599'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=599.html#tid599'>Gosu Exchange</a> / Trouble with button_down
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4463.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

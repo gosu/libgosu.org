@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 23 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Redrawing static content [from wiki]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d23' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=7.html#tid7'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=7.html#tid7'>Gosu Exchange</a> / Redrawing static content [from wiki]
+</div>
+</div>
+
+<div class='frm pst' id='pid11' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=11.html#pid11'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-09 03:49
+</div>
+<div class='ccl'>
+(This thread of discussion originated on the wiki but has since been moved to the forums.)<br/><br/><b>Comment by philomory, Nov 08, 2008</b><br/><br/>So, I&#39;m in the process of creating a puzzle-game (in ruby) with a tile-based map. Every level is split into a grid (20x14) of tiles, and each tile has something in it, even if that something is simply &#39;the floor&#39;.<br/><br/>I was profiling my code and rather dismayed (but not surprised) to discover that I spend nearly 80% of my process time drawing the map over and over again, every frame. This is because I have to loop over all 280 tiles every frame and call each one&#39;s draw method. I have to call each one every time, even though almost none of them change from frame to frame, because otherwise they are erased. (In fact, if the player is not pressing keys, there is only one in-game object that can be moving, and there can only be one of it on screen at a time).<br/><br/>It&#39;d be very nice if there was a way to get around re-drawing everything all the time, but so far the only way I can think of is to have a pre-generated image for the large set of non-changing tiles, and then draw the rest of the objects over-top of it. The problem with this approach is that I have 100 levels and eventually plan to offer multiple tile-sets, so generating a PNG for each level and packaging it with the game is not going to work.<br/><br/>My basic question is this: Do I have any solution other than RMagic for this? Is there some way (within Ruby) to force Gosu not to erase the previous frame before calling Window#draw for the next one? Because if I could just leave the last frame up and only redraw things that I want changed, it would be a huge improvement in performance.<br/><br/>Otherwise if I want to avoid the redraw issue, it looks like I&#39;ll need to use RMagick to construct a &#39;floor plan&#39; image as I load the level data, which would be fine, but I&#39;d really rather not have to package RMagick and the ImageMagick? library with the game (let alone compiling ImageMagick? for all three platforms (Mac would have to be UB, too, so more like 3.5)).
+</div>
+</div>
+
+<div class='frm pst' id='pid12' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=12.html#pid12'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-09 03:56
+<span class='htt'>Edited</span> 2008-11-09 03:58
+</div>
+<div class='ccl'>
+Gosu will never be designed for that as it complicates the whole architecture (with regard to double-buffering, scrolling, dirty rectangles etc). What is much more likely is that you will later be able to record macros using a syntax like:<br/><br/><code><br/>my_macro = record_macro do<br/>&#160; @my_image.draw(...)<br/>end<br/>...<br/>my_macro.draw<br/></code><br/><br/>Drawing 20x14 tiles shouldn&#39;t cause any performance issues though :( And right now, there is no way to get around redrawing everything.
+</div>
+</div>
+
+<div class='frm pst' id='pid17' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=17.html#pid17'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-11-09 06:39
+</div>
+<div class='ccl'>
+First of all, thanks for these forums!<br/><br/>Now, the macro you refer to... how would it work? It seems like it&#39;s either essentially a proc, and is storing the sequence of drawing steps, or it&#39;s a way to generate a Gosu::Image object (or something very much like one) which is composed of many others. I&#39;m hoping it&#39;s the latter, since the former wouldn&#39;t be very useful. If it does save the result, rather than the list of steps which generated the result, it&#39;d be exactly what I&#39;m looking for.<br/><br/>Say I wrote something akin to this:<br/><br/>---<br/>level_background = record_macro do<br/>&#160; (0...width).each do |x|<br/>&#160; &#160; (0...height).each do |y|<br/>&#160; &#160; &#160; @places[x][y].draw_background(x,y)<br/>&#160; &#160;&#160; end<br/>&#160;&#160; end<br/>end<br/>---<br/><br/>If I call level_background.draw, would any calls to my tiles&#39; draw_background method be made?<br/>&#160; &#160; &#160; &#160;&#160; <br/>As for the performance issue, it&#39;s not that the game doesn&#39;t run well. It&#39;s perfectly smooth at all times. It&#39;s just that it also has my CPU pegged at around 80% or higher at all times (G5 iMac, 1.9 GHz). If you say Gosu shouldn&#39;t be doing that, then you are very likely correct, and there is probably something unnecessarily inefficient in my code, which I suppose I will go look for now.
+</div>
+</div>
+
+<div class='frm pst' id='pid21' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=21.html#pid21'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-09 16:53
+</div>
+<div class='ccl'>
+It would be a macro that can be drawn like an Image (sort of, color modulation wouldn&#39;t be possible) that is actually just one Ruby call happening. In the background, it would either be an OpenGL VBO or, if that doesn&#39;t work, a small, custom macro system (in C++).<br/><br/>I wonder if the overhead comes from Ruby or the bloaty SWIG wrappers for my C++ methods. If it&#39;s Ruby, it would also help to finally have Gosu work with Ruby 1.9 on OS X :)
+</div>
+</div>
+
+<div class='frm pst' id='pid22' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=22.html#pid22'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-11-09 17:52
+</div>
+<div class='ccl'>
+Awesome, that sounds exactly like what I&#39;m looking for. <br/><br/>As for Gosu working with 1.9 on OS X, I actually have some questions about that, too, but I guess now that we have a forum, I should make a new thread for it.
+</div>
+</div>
+
+<div class='frm pst' id='pid23' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=23.html#pid23'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-09 19:09
+</div>
+<div class='ccl'>
+Ah, I&#39;ll move the beginning of the last discussion to this board if you don&#39;t mind :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=7.html#tid7'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=7.html#tid7'>Gosu Exchange</a> / Redrawing static content [from wiki]
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=23.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

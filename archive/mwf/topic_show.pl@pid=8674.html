@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8674 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>OpenGL vs fake 3D</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8674' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1240.html#tid1240'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1240.html#tid1240'>Gosu Exchange</a> / OpenGL vs fake 3D
+</div>
+</div>
+
+<div class='frm pst' id='pid8670' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8670' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8670.html#pid8670'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=121' >rremedio</a>
+<span class='htt'>Date</span> 2015-11-20 15:50
+</div>
+<div class='ccl'>
+So I&#39;ve been playing with ideas for a side-scrolling adventure game (something between a run &#39;n gun, a beat &#39;em up and Flashback: The Quest for Identity). <br/><br/>One thing that I&#39;d like to add is that &quot;3d&quot; effect when the ground scrolls, like some 16bit side-scrolling games (Mega Drive&#39;s The Adventures of Batman and Robin comes to mind), just because it is neat. After an hour remembering my old algebra and trigonometry lessons (buried deep in my mind after 20 years of using computers and calculators) it worked very well with tiles and the draw_as_quad method. Then I did the same for some basic 3d objects, like walls and boxes, just to see how hard and demanding it would be and it also worked nicely. But I wonder if I&#39;m to include some basic 3d objects in my 2d games, should I forget about that and go straight OpenGL? I tried to make OpenGL work a few years ago and I gave up soon because of installation problems, but I&#39;m sure it was something wrong I was doing. <br/><br/>It is not that I want a full 3d scenery but if I start to add too many objects and the game is supposed to have a few platforms, will I regret doing it in plain Gosu?<br/><br/>Thanks in advance! :D
+</div>
+</div>
+
+<div class='brn' id='brn8670'>
+<div class='frm pst' id='pid8671' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8674.html#pid8670'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8671.html#pid8671'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-11-21 09:34
+</div>
+<div class='ccl'>
+When faking 3D is hard, you could of course consider using proper OpenGL. And you could maybe use the great Gosu::Window#draw.gl(z) method to generate a &quot;sprite&quot; with a 3D model and to do a composition mixing your 2D/3D elements, playing with the Z value.<br/><br/><a class='ura' href='../../rdoc/Gosu.html#gl-class_method'>https://www.libgosu.org/rdoc/Gosu.html#gl-class_method</a><br/><br/>Using glViewport and a proper camera setting, I&#39;m sure it could render just great !
+</div>
+</div>
+
+<div class='frm pst' id='pid8672' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8674.html#pid8670'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8672' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8672.html#pid8672'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-11-21 09:47
+</div>
+<div class='ccl'>
+I&#39;ve used fake 3D boxes in a few games and was quite happy with the results. Usually, what I&#39;ve done is just to calculate the x/y delta of each vertex to the screen centre, then multiplied it by 1.1 or some other value &gt; 1.0. Then I use <code>draw_quad</code> to connect the original vertices and the offset vertices, drawing up to five images per box.<br/>So if part of your problem is that your math has become tricky, you can maybe simplify it like that :)<br/><br/>Very simple fake 3D in action -&gt; <a class='ura' href='http://ludumdare.com/compo/2009/04/19/starferret-48h-final/'>http://ludumdare.com/compo/2009/04/19/starferret-48h-final/</a>
+</div>
+</div>
+
+<div class='brn' id='brn8672'>
+<div class='frm pst' id='pid8674' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8674.html#pid8672'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8674' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8674.html#pid8674'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=121' >rremedio</a>
+<span class='htt'>Date</span> 2015-11-21 14:03
+</div>
+<div class='ccl'>
+Hummm...maybe I&#39;m overcomplicating things by using 3 images for each box. I&#39;m gonna try this trick.
+</div>
+</div>
+
+<div class='brn' id='brn8674'>
+<div class='frm pst' id='pid8680' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8674.html#pid8674'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8680.html#pid8680'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-11-21 21:33
+</div>
+<div class='ccl'>
+Oh, you&#39;ll still need to draw things up to 5 times, depending on the camera position. I just wanted to say that the math for this is simple, since you&#39;ve mentioned trigonometry - but I see below that you&#39;re already using a very simple formula :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8673' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8673' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8673.html#pid8673'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=121' >rremedio</a>
+<span class='htt'>Date</span> 2015-11-21 13:58
+</div>
+<div class='ccl'>
+I think I should explain myself better<br/><br/>Here is more or less what I want to do (the slowdown is because of the recording software). In the game that I have in mind, there would be no auto-scrolling.<br/><br/><a class='ura' href='https://www.youtube.com/watch?v=n9yoDqZBKgQ'>https://www.youtube.com/watch?v=n9yoDqZBKgQ</a><br/><br/>The math is not tricky. It is just one equation that takes the y position of the horizon on the screen and returns the x position of a point. Since the camera will never need to zoom in/out, I think it is good enough for the scrolling ground and in this example it works ok for the boxes. <br/><br/>But for each draw_as_quad it will be called 2-4 times/frame and I wonder if this isn&#39;t exactly what I should be using OpenGL for, especially with the boxes (which display 3-4 tiles/box every frame).
+</div>
+</div>
+
+<div class='brn' id='brn8673'>
+<div class='frm pst' id='pid8676' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8674.html#pid8673'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8676' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8676.html#pid8676'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-11-21 16:00
+</div>
+<div class='ccl'>
+I just love it ! Could you share the code for this ? I&#39;m curious :)
+</div>
+</div>
+
+<div class='brn' id='brn8676'>
+<div class='frm pst' id='pid8678' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8674.html#pid8676'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8678.html#pid8678'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=121' >rremedio</a>
+<span class='htt'>Date</span> 2015-11-21 17:16
+</div>
+<div class='ccl'>
+Thanks! <br/><br/>Well, this code is a mess. I wouldn&#39;t use any of this in any project. It is just to test the validity of the equation.<br/><br/>require &#39;gosu&#39;<br/><br/>White=Gosu::Color::WHITE<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize<br/>&#160; super(600, 400, true)<br/>&#160; &#160; $window=self<br/>&#160; &#160; @img1=Gosu::Image.new(self, &quot;tile1.png&quot;, true) #gray tile 40x40<br/>&#160; &#160; @img3=Gosu::Image.new(self, &quot;tile3.png&quot;, true) #yellow tile 80X80<br/>&#160; &#160; <br/>&#160; &#160; @wall=[]<br/>&#160; &#160; @f1=[]<br/>&#160; &#160; <br/>&#160; &#160; for i in 0..18<br/>&#160; &#160; &#160; #[tile img, x position]<br/>&#160; &#160; &#160; @wall&lt;&lt;[@img1,i*40] #wall tiles<br/>&#160; &#160; &#160; @f1&lt;&lt;[@img3,i*40] #floor tiles<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; @cx=350 #sort of camera_x<br/>&#160; &#160; @cy=180.1 #horizon_y<br/>&#160; &#160; @box=[]<br/>&#160; &#160; for i in 0..2<br/>&#160; &#160; &#160; @box&lt;&lt;Box.new(10+i*200, @cx, @cy)<br/>&#160; &#160; end<br/>&#160; &#160; @ms=2<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; self.caption = &quot;Editor: #{Gosu::fps} fps&quot; <br/>&#160; &#160; &#160; @wall.each do |pie|<br/>&#160; &#160; &#160; &#160; pie[1]-=@ms<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; @f1.each do |pie|<br/>&#160; &#160; &#160; &#160; pie[1]-=@ms<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; @box.each do |box|<br/>&#160; &#160; &#160; &#160; box.move(-@ms)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; #end<br/>&#160; &#160; <br/>&#160; &#160; @box.each do |box|<br/>&#160; &#160; &#160; box.update<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; #this could be much simpler, probably<br/>&#160; #I just made a drawing and used basic math<br/>&#160; #x1,y1 are coordinates of a point (1) in the screen<br/>&#160; #y2 is the y coordinate on the screen of another point (2)<br/>&#160; #points 1 and 2 are conected by a line, perpendicular to the wall<br/>&#160; def getp(x1,y1,y2) <br/>&#160; &#160; a=(x1*(@cy-y2)+@cx*(y2-y1))/(@cy-y1)<br/>&#160; &#160; a<br/>&#160; end<br/>&#160; &#160; <br/>&#160; def draw<br/>&#160; &#160; @wall.each do |brick|<br/>&#160; &#160; &#160; if brick[1].between?(-40,740) #if we want to draw it<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; #fill the screen vertically<br/>&#160; &#160; &#160; &#160; brick[0].draw(brick[1], 0, 0, 1, 1, White, :default)<br/>&#160; &#160; &#160; &#160; brick[0].draw(brick[1], 40, 0, 1, 1, White, :default)<br/>&#160; &#160; &#160; &#160; brick[0].draw(brick[1], 80, 0, 1, 1, White, :default)<br/>&#160; &#160; &#160; &#160; brick[0].draw(brick[1], 120, 0, 1, 1, White, :default)<br/>&#160; &#160; &#160; &#160; brick[0].draw(brick[1], 160, 0, 1, 1, White, :default)<br/>&#160; &#160; &#160; &#160; brick[0].draw(brick[1], 200, 0, 1, 1, White, :default)<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; #when scrolling, we move the tile to right end if it moves left off the screen<br/>&#160; &#160; &#160; &#160; if brick[1]&lt;-40<br/>&#160; &#160; &#160; &#160; &#160; brick[1]=@wall.max_by{|a|a[1]}[1]+40<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; #we should have a class for the floor tiles and we should calculate the coordinates in the update step, but I was just checking if the calculations are correct<br/>&#160; &#160; @f1.each do |b|<br/>&#160; &#160; &#160; if b[1].between?(-40,740)<br/>&#160; &#160; &#160; &#160; #drawing the floor tiles<br/>&#160; &#160; &#160; &#160; #the floor &quot;top&quot;<br/>&#160; &#160; &#160; &#160; b[0].draw_as_quad(b[1],240,White,b[1]+40,240,White,getp(b[1],240,300),300,White,getp(b[1]+40,240,300),300,White,1,:default)<br/>&#160; &#160; &#160; &#160; #the &quot;front&quot; face of the floor &quot;blocks&quot;<br/>&#160; &#160; &#160; &#160; b[0].draw_as_quad(getp(b[1],240,300),300,White,getp(b[1]+40,240,300),300,White,getp(b[1],240,300),350,White,getp(b[1]+40,240,300),350,White,1,:default)<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; #when scrolling, we move the tile to right end if it moves left off the screen<br/>&#160; &#160; &#160; &#160; if b[1]&lt;-40<br/>&#160; &#160; &#160; &#160; &#160; b[1]=@f1.max_by{|a|a[1]}[1]+40<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @box.each do |box|<br/>&#160; &#160; &#160; box.draw<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; &#160; <br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::KbEscape<br/>&#160; &#160; &#160; puts @cy<br/>&#160; &#160; &#160; $window.close<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; #move the horizon line up/down<br/>&#160; &#160; if id==Gosu::KbUp<br/>&#160; &#160; &#160; @cy-=5<br/>&#160; &#160; &#160; @box.each do |box|<br/>&#160; &#160; &#160; &#160; box.move_horizon(-5)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; if id==Gosu::KbDown<br/>&#160; &#160; &#160; if @cy&lt;235<br/>&#160; &#160; &#160; &#160; @cy+=5<br/>&#160; &#160; &#160; &#160; @box.each do |box|<br/>&#160; &#160; &#160; &#160; &#160; box.move_horizon(5)<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; <br/>&#160; end<br/>&#160; <br/>end<br/><br/>class Box<br/>&#160; def initialize (x, cx, cy)<br/>&#160; &#160; @cx=cx<br/>&#160; &#160; @cy=cy<br/>&#160; &#160; @x=x<br/>&#160; &#160; @img2=Gosu::Image.new($window, &quot;tile2.png&quot;, true) #red tile 40x40<br/>&#160; end<br/>&#160; <br/>&#160; def getp(x1,y1,y2)<br/>&#160; &#160; a=(x1*(@cy-y2)+@cx*(y2-y1))/(@cy-y1)<br/>&#160; &#160; a<br/>&#160; end<br/>&#160; <br/>&#160; def move(x)<br/>&#160; &#160; @x+=x<br/>&#160; end<br/>&#160; <br/>&#160; def move_horizon(y)<br/>&#160; &#160; @cy+=y<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; #when scrolling, we move the block to right end if it moves left off the screen<br/>&#160; &#160; if @x&lt;-40<br/>&#160; &#160; &#160; @x=740<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; if @x.between?(-42,702)<br/>&#160; &#160; &#160; #drawing the faces of the boxes<br/>&#160; &#160; &#160; #we assume the block top being below the horizon<br/>&#160; &#160; &#160; #we can easily make this more generic by adding the calcs for it being above the horizon<br/>&#160; &#160; &#160; #again, we should add variables for the box shape and make calculations in the update step<br/>&#160; &#160; &#160; <br/>&#160; &#160; &#160; #front face<br/>&#160; &#160; &#160; @img2.draw_as_quad(getp(@x,240,250),230,White,getp(@x+40,240,250),230,White,getp(@x,240,250),250,White,getp(@x+40,240,250),250,White,1,:default)<br/>&#160; &#160; &#160; #top face<br/>&#160; &#160; &#160; @img2.draw_as_quad(@x,225,White,@x+40,225,White,getp(@x,240,250),230,White,getp(@x+40,240,250),230,White,1,:default)<br/>&#160; &#160; &#160; #left face, only displayed if the block left face is to the right of @cx<br/>&#160; &#160; &#160; if @x&gt;@cx<br/>&#160; &#160; &#160; &#160; @img2.draw_as_quad(@x,225,White,getp(@x,240,250),230,White,@x,240,White,getp(@x,240,250),250,White,1,:default)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; #right face, only displayed if the block right face is to the left of @cx<br/>&#160; &#160; &#160; if (@x+40)&lt;@cx<br/>&#160; &#160; &#160; &#160; @img2.draw_as_quad(getp(@x+40,240,250),230,White,@x+40,225,White,getp(@x+40,240,250),250,White,@x+40,240,White,1,:default)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; end<br/>end<br/><br/>window = GameWindow.new<br/>window.show
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1240.html#tid1240'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1240.html#tid1240'>Gosu Exchange</a> / OpenGL vs fake 3D
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8674.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

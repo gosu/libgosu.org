@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6150 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Playing some sort of cutscene in games</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6150' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=801.html#tid801'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=801.html#tid801'>Gosu Exchange</a> / Playing some sort of cutscene in games
+</div>
+</div>
+
+<div class='frm pst' id='pid6146' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6146' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6146.html#pid6146'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-08-17 01:44
+</div>
+<div class='ccl'>
+Another competition is coming up (<a class='url' href='http://bpatechnical.org/'>http://bpatechnical.org/</a>),<br/>and this time I&#39;m going to amp my game up a notch. I&#39;ve a few ideas on<br/>how to do some sort of hacky-custom-filetypey cutscenes, but how would<br/>you guys go about this sort of thing?
+</div>
+</div>
+
+<div class='brn' id='brn6146'>
+<div class='frm pst' id='pid6147' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6146'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6147.html#pid6147'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-08-17 05:40
+</div>
+<div class='ccl'>
+I&#39;d leave most of the entity actions up to several functions:<br/>define move(direction dir) { if(dir == LEFT) then x--; ... }<br/>define jump(velocity v) { ... }<br/><br/>the same with GUI functions:<br/>define promptTextBox(String message, int scrollSpeed) { ... }<br/>define promotTextBoxQuestion(String message, String[] questions, int scrollSpeed) { .... }<br/><br/>Then use some form of executing those functions. An easier way (in the long run) would to create your own small form of scripting:<br/>[Somewhere in cutscene1.txt]:<br/>Player: Move LEFT &gt; do 3 times<br/>Player: Jump<br/>Wait for Value &lt; Player: GetIsStanding<br/>GUI: Prompt &quot;You&#39;re the chosen one!&quot; 20<br/><br/>You&#39;d have to register these values in your code like so:<br/>ScriptHandler.registerCallback(&quot;Player&quot;, playerObject);<br/>ScriptHandler.getCallback(&quot;Player&quot;).setCommand(&quot;Move&quot;, 1, Player.move); // where 1 is the amount of parameters.<br/><br/>Creating your own scripting could get complicated. It might be easier to use existing scripting languages like LUA. <br/><br/>It really depends how complex you want things.
+</div>
+</div>
+
+<div class='frm pst' id='pid6150' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6146'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6150' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6150.html#pid6150'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-17 15:22
+</div>
+<div class='ccl'>
+For my cutscene in Zed and Ginger, I mostly used programmatic movement of the normal game objects, but I played all that movement and recorded the mouse position, each frame, for the movement of Zed as an energy cloud. Doing it that way made synchronising the complex movements significantly simpler.<br/><br/>Since you are using Ruby (or, at least, you have used Ruby in stuff before), you might have all the movement info in a YAML file, which you could read in and convert into actual movements of each sprite (just need to have move_x, move_y, angle, object_id, etc in the file in a big array of arrays).<br/><br/>Beyond that, you&#39;d really need to know what you wanted to achieve before more advice could be forthcoming :)
+</div>
+</div>
+
+<div class='brn' id='brn6150'>
+<div class='frm pst' id='pid6152' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6150'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6152' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6152.html#pid6152'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-08-19 00:05
+</div>
+<div class='ccl'>
+As far as using YAML goes, it&#39;s completely out of question. YAML load calls take a significant amount of time compared to Marshal load calls, since YAML is designed to be human-readable. No, I&#39;d probably make a cutscene-maker type thing which saves the finished product into a array (frames) of hashes (pixel points =&gt; color). Working on this now actually.
+</div>
+</div>
+
+<div class='brn' id='brn6152'>
+<div class='frm pst' id='pid6154' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6152'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6154.html#pid6154'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-19 00:12
+</div>
+<div class='ccl'>
+YAML is only too slow<i> if it is too slow for what you need it for</i>. Most of the time it is plenty fast enough and the additional speed of Marshal is irrelevant. I agree that Marshal makes a great deal more sense if you are storing a significant amount of data in it, so it might be appropriate in this case; really depends how much info you are storing for your cut-scene.
+</div>
+</div>
+
+<div class='frm pst' id='pid6155' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6152'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6155' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6155.html#pid6155'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2012-08-19 09:29
+</div>
+<div class='ccl'>
+so you are making a video codec? :D
+</div>
+</div>
+
+<div class='brn' id='brn6155'>
+<div class='frm pst' id='pid6156' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6155'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6156.html#pid6156'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-08-20 00:12
+</div>
+<div class='ccl'>
+I guess it could kinda be seen as that. :P
+</div>
+</div>
+
+<div class='frm pst' id='pid6157' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6150.html#pid6155'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6157.html#pid6157'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-20 00:43
+</div>
+<div class='ccl'>
+I considered playing movies with Ashton, then realised that I&#39;d need some way of playing them that is cross-platform. Not insurmountable, but then I realised I had no real capacity to create decent movies (that wouldn&#39;t be just as easily made in-game) so gave up as fast as the idea got into my head :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=801.html#tid801'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=801.html#tid801'>Gosu Exchange</a> / Playing some sort of cutscene in games
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6150.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

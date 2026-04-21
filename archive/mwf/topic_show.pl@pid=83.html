@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 83 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu Bullet Hell Shmup</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d83' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=28.html#tid28'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=28.html#tid28'>Gosu Showcase</a> / Gosu Bullet Hell Shmup
+</div>
+</div>
+
+<div class='frm pst' id='pid60' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=60.html#pid60'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-11-16 17:58
+<span class='htt'>Edited</span> 2008-12-31 13:14
+</div>
+<div class='ccl'>
+In order to promote ruby game libraries , we need more game created with those libraries. So, here it is!&#160; It seems like Gosu can handle the bullets pretty well, though it started to lag when the number reach 800.&#160;&#160; Anyway, it&#39;s enough for a nice shmup game :) <br/><br/><img class='emi' src='http://img.photobucket.com/albums/v628/himatako/Clip-4.jpg' alt=''/><br/><br/><img class='emi' src='http://img.photobucket.com/albums/v628/himatako/session-6.jpg' alt=''/><br/><br/>It&#39;s for shmup-dev prototype development session 6. Hopefully I can finish it in time :(<br/>===============================================================================<br/>[center]<img class='emi' src='http://img.photobucket.com/albums/v628/himatako/Capture-2.jpg' alt=''/>[/center]<br/><br/>This is my entry for Shmup-Dev rapid prototype session 6. The theme for this session is &quot;You&#39;re not the boss of me&quot; or basically a boss rush shmup.<br/><br/><b>CONTROL</b><br/>Arrow keys&#160; &#160; &#160; &#160; -&#160; Movement<br/>Z&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; -&#160; Shoot/Decision<br/>X&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; -&#160; Bomb<br/>A&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; -&#160; Adjust Bet<br/>Shift&#160; &#160; &#160; &#160; &#160; &#160;&#160; -&#160; Hold for precise movement<br/><br/><b>------ Star Point System ------- </b><br/>- At the beginning of each boss pattern, you&#39;ll have a short amount of time to adjust your bet by pressing A. Your amount of current bet is shown on the right , next to the star icon.&#160; The minimum bet is 1 and the maximum bet is the number of your lives.<br/><br/>- Beating that pattern without losing a life means you&#39;ve won the bet. You&#39;ll collect star points with the same amount of star points you&#39;ve bet earlier.<br/><br/>- Losing a life during the pattern mean you&#39;ve lost the bet. You&#39;ll lose the star point equal to the amount you&#39;ve bet and your bet will be reset to 1. Meaning every life lost after this during this pattern will keep on decreasing your star point by 1.<br/><br/>- Winning a bet without using any bomb will double the amount of star point you gain.<br/><br/><b>------ Other Information ------- </b><br/><br/>- Each boss has three patterns.<br/><br/>- The number of bombs will be reset to 2 after you&#39;ve defeated a boss.<br/><br/>- Defeating a boss without losing any lives will resulting in another bonus bomb ( 3 bombs in total.)<br/><br/>- Right now there&#39;s only 4 stage in total. The requirement to meet the fourth boss is 20 star points or above.<br/><br/><b><br/>------ Something That I should fix ------- </b><br/>- The number of bombs will NOT be reset after you&#39;ve died. (Not a system....I just forgot ^ ^;;)<br/><br/>-&#160; Where&#39;s the pausing screen :&#39;(<br/><br/>-&#160; There should be something to tell the player that their star points has meet a requirement to fight a hidden boss.<br/><br/><b>DOWNLOAD LINK</b><br/><a class='url' href='http://www.mediafire.com/download.php?nmwt4nomwcw'>http://www.mediafire.com/download.php?nmwt4nomwcw</a><br/><br/><a class='url' href='http://www.youtube.com/watch?v=E3T6yRMf34k'>http://www.youtube.com/watch?v=E3T6yRMf34k</a>
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/60/60/Shmup.jpeg'>Shmup.jpeg</a>  (136k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid61' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=61.html#pid61'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-11-16 20:12
+</div>
+<div class='ccl'>
+Wow, good luck, looking pretty stylish already! I wonder if the gosu.so file can be used with Ruby 1.9 on Windows, that would probably increase performance a bit.<br/><br/>BTW, you can attach images in this board, but only after posting :)
+</div>
+</div>
+
+<div class='frm pst' id='pid65' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=65.html#pid65'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2008-11-21 04:51
+</div>
+<div class='ccl'>
+.. so where&#39;s the c0de? :p
+</div>
+</div>
+
+<div class='frm pst' id='pid66' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=66.html#pid66'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2008-11-22 15:36
+</div>
+<div class='ccl'>
+It isn&#39;t done yet though! The due date is next monday so we&#39;ll see if I can get it done by that time XD (Don&#39;t look forward too much on the code though....I&#39;m sure it isn&#39;t that pretty :&#39;( )
+</div>
+</div>
+
+<div class='frm pst' id='pid67' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=67.html#pid67'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-11-22 15:38
+</div>
+<div class='ccl'>
+Sorry that was me ^ ^;;<br/><br/>Oh, and I haven&#39;t tried ruby 1.9 though...so I don&#39;t know if it&#39;s gonna be faster.&#160;&#160; But turns out I have to change the laser to something else. Rotate rectangle collision detection with almost thousand objects don&#39;t really do well in Ruby :/
+</div>
+</div>
+
+<div class='frm pst' id='pid83' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=83.html#pid83'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-12-01 12:08
+</div>
+<div class='ccl'>
+<a class='url' href='http://www.youtube.com/watch?v=am6KWmjYHvM'>http://www.youtube.com/watch?v=am6KWmjYHvM</a><br/><br/><a class='url' href='http://www.youtube.com/watch?v=E3T6yRMf34k'>http://www.youtube.com/watch?v=E3T6yRMf34k</a><br/><br/>Here are some game videos. I don&#39;t know if I can attach youtube video here so the link should do for now. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid88' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=88.html#pid88'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-03 02:57
+</div>
+<div class='ccl'>
+God, from the gameplay videos it looks like a Kenta Cho game! Impressive.<br/><br/>I don&#39;t suppose you have a fast-paced electronica soundtrack to go with it, do you?
+</div>
+</div>
+
+<div class='frm pst' id='pid136' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=136.html#pid136'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2008-12-31 13:15
+</div>
+<div class='ccl'>
+Sorry for the late reply. I kinda borrow the music from other game for now hehe<br/><br/>Anyway, the game&#39;s up there! Please try it out :)
+</div>
+</div>
+
+<div class='frm pst' id='pid147' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=147.html#pid147'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-02 00:26
+</div>
+<div class='ccl'>
+Is there any way to extract the source code from exerb compiled files? I only have a virtualized Windows right now and its slooooww... :(
+</div>
+</div>
+
+<div class='frm pst' id='pid154' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=154.html#pid154'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-01-02 06:43
+</div>
+<div class='ccl'>
+Oh sorry I was going to attach the source code here as well. I probably forgot x (&#160; Here you go!<br/><br/><a class='url' href='http://hima.gptouch.com/stuff/TestGosu.rar'>http://hima.gptouch.com/stuff/TestGosu.rar</a><br/><br/>Sorry for the poor comment and coding.X(&#160; I was kinda rush since I only have less than a week to work on it. I was thinking about finishing the game along with refactoring the code and release the source code so that people could learn from it. Will try to do that if I have time :)
+</div>
+</div>
+
+<div class='frm pst' id='pid172' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=172.html#pid172'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-04 14:57
+</div>
+<div class='ccl'>
+Wow, awesome! I died at Threehorns (?) though :)<br/><br/>Reminds me to state somewhere that MIDI music weirdly does not work on OS X =/ Had to disable that and change the font.
+</div>
+</div>
+
+<div class='frm pst' id='pid539' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=539.html#pid539'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-11 12:53
+</div>
+<div class='ccl'>
+Very Impressive<br/><br/>Any New Version in the works???
+</div>
+</div>
+
+<div class='frm pst' id='pid1167' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1167.html#pid1167'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-07-29 03:21
+</div>
+<div class='ccl'>
+will you release the Heart Beat boss and Shmup Dev Session 4?<br/><br/>I seen them on youtube there very impressive ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid1180' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1180.html#pid1180'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=23.html' >hima</a>
+<span class='htt'>Date</span> 2009-08-02 15:52
+</div>
+<div class='ccl'>
+Hey thank you for the compliment! Surprisingly I have been thinking about finishing this game too! I just got ruby 1.9 working with Gosu so let&#39;s see if what I can do XD<br/><br/>As for the shmup dev session 4, you can check out www.shmup-dev.org. I have posted the game there :)&#160; <br/><a class='url' href='http://www.shmup-dev.com/forum/index.php?topic=1681.0'>http://www.shmup-dev.com/forum/index.php?topic=1681.0</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=28.html#tid28'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=28.html#tid28'>Gosu Showcase</a> / Gosu Bullet Hell Shmup
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=83.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3955 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu implementation of RGSS</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3955' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=547.html#tid547'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=547.html#tid547'>Gosu Exchange</a> / Gosu implementation of RGSS
+</div>
+</div>
+
+<div class='frm pst' id='pid3838' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3838' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3838.html#pid3838'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-04 19:42
+<span class='htt'>Edited</span> 2011-02-28 17:00
+</div>
+<div class='ccl'>
+So I&#39;ve been working on a Gosu implementation of RGSS. Here it is: <a class='url' href='http://www.rpg-palace.com/mewsterus/gosu-rgss-0.8.zip'>http://www.rpg-palace.com/mewsterus/gosu-rgss-0.8.zip</a><br/><br/>Some background: RGSS is the Ruby-based scripting language of RPG Maker XP and VX. The RGSS library is Windows-only GDI-based, and is generally considered slow for what it does.<br/><br/>What I&#39;ve done above is to create an implementation of RGSS2 - that is, with the extensions added in RMVX - but with RGSS1 classes where there are conflicts. For example, windowskins are handled differently between the two; the RMXP version is implemented. Tilemaps are wildly different; I have only implemented the RMXP version.<br/><br/>To try it out, you need an RMXP project (uncompressed). Simply extract the files to the project&#39;s root directory (it will include main.rb and a directory). Run main.rb, either directly (it has a shebang) or with the ruby command. You can create a new project using the trial version of RMXP, available here: <a class='url' href='http://download.cnet.com/RPG-Maker-XP/3000-7537_4-10437117.html'>http://download.cnet.com/RPG-Maker-XP/3000-7537_4-10437117.html</a><br/><br/>Why am I posting it here? Well, besides the fact that people from the RPG Maker community are here (I know who you are!), I&#39;m having some issues that are probably due to my relative inexperience with Gosu:<br/><br/>1. Image loading:<br/>&#160; a: Limited format support. I need at least JPG&#39;s. The current version cannot display the title screen because it has no means of loading JPG&#39;s.<br/>&#160; b: No transparency? For some reason, Gosu will not load the alpha value from some (but not all) RTP graphics (png&#39;s).<br/>2. Really slow text drawing; RGSS implements text drawing as an operation on images. I&#39;m implementing it as a Texplay splice with Gosu::Image.from_text. This is slow. I&#39;ve tried using render_to_image and Gosu::Font.draw, but that method does not preserve alpha channels.<br/>3. I need MIDI support! Granted, I&#39;ve only tested on Mac, but MIDI&#39;s are currently disabled so I could test other things.<br/>4. <b>FIXED</b> General performance issues: Scene_Map is running at about 9 fps, and I haven&#39;t been able to figure out why. Do I just need to do this in C instead?<br/>5. <b>FIXED</b>Segfaults with modifying $window. I am trying to set the window&#39;s caption to something else when &quot;F2&quot; is pressed (to display frame rate) during $window.update and that segfaults.<br/>6. I&#39;m also trying to bring the game in and out of fullscreen during $window.update by closing the existing $window object and restarting it; I&#39;m getting a huge mound of untraceable Cocoa errors. I haven&#39;t even tried testing the resize_screen or frame_rate= methods, which do the same thing.<br/><br/>Any hints or suggestions? Any vouchers of support or condemnations?<br/><br/>For those worried about the legality, this is not &quot;reverse engineering&quot; which is forbidden in the RMXP license. I am just implementing an interface. I know full well that Enterbrain implemented it using GDI, and I am implementing it completely differently. It is still necessary to purchase a license to use the interface, especially because games made with RMXP basically never escape their roots in Enterbrain&#39;s coding style and practices. Further, this does not negatively affect the marketability or profitability of Enterbrain&#39;s products; in fact, it increases the marketability by allowing people to distribute their games on more platforms.<br/><br/>Updates:<br/>2011-02-07: I fixed #4 by figuring out that some sprites were creating a new Gosu::Image every frame. I&#39;ve stopped them from doing that, and also rewritten that procedure to use Texplay clearing and splicing instead of creating a new Gosu::Image for source rectangles. New file: <a class='url' href='http://www.rpg-palace.com/mewsterus/gosu-rgss-0.81.zip'>http://www.rpg-palace.com/mewsterus/gosu-rgss-0.81.zip</a><br/>2011-02-21: Part of #5 seems to have evaporated, either due to a Gosu update or a change I made to the dual-threading between Gosu::Window and Graphics. I separated #6 from that as it&#39;s a separate issue that may need a more involved solution, such as providing :fullscreen=, :update_interval=, and a :resize(width, height) method. Ne file: <a class='url' href='http://www.rpg-palace.com/mewsterus/gosu-rgss-0.82.zip'>http://www.rpg-palace.com/mewsterus/gosu-rgss-0.82.zip</a><br/>2011-02-28: So #5 was still an issue, but I&#39;ve fixed it now. Not posting the file again because I don&#39;t think anyone cares; I&#39;ll post the next time I fix something.
+</div>
+</div>
+
+<div class='brn' id='brn3838'>
+<div class='frm pst' id='pid3841' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3838'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3841' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3841.html#pid3841'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-04 23:13
+<span class='htt'>Edited</span> 2011-02-05 00:20
+</div>
+<div class='ccl'>
+1. a) If you use the Devil gem, it should magically increase the number of image types you can load (including jpeg).<br/>&#160; &#160; b) Never had a problem with this. Gosu manages PNG transparency fine; perhaps an issue with the way RPGMaker deals with transparency? Does it use the &quot;gif&quot; way of making a specific colour transparent when the image is loaded, rather use an alpha channel (easily dealt with in Texplay, if that is what happens)?<br/><br/>2) Now I understand why you were so insistent on rendering text to an image. It isn&#39;t that it is the best way to put text in a game, but the fact is that you are forced to do it that way because that is the way RPGMaker does it. I think you are screwed (in Gosu) if you want to do that particular thing anything near quickly.<br/><br/>5. Although it is possible to replace the Gosu window, it is not supported and I was warned away from relying on it (but with a promise of resize/fullscreen switching in some future life...maybe :P). Why it should segfault on #caption is anyone&#39;s guess<br/><br/>I&#39;m pretty sure that &quot;reverse engineering&quot; covers replicating the functionality in a slightly different way, though I have no idea of the legal ramifications. By definition, reverse engineering will implement things slightly differently; what you are doing it copying an interface (whether it is GUI or API interface) without looking at source or decompiling, which is exactly what you are doing.<br/><br/>EDIT: Corrected reference to Texplay to be Devil (oops)
+</div>
+</div>
+
+<div class='brn' id='brn3841'>
+<div class='frm pst' id='pid3843' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3841'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3843' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3843.html#pid3843'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-05 00:32
+</div>
+<div class='ccl'>
+Questions about Devil: Firstly, does libdevil need to be installed for it to work, or just for the gem to compile? Is it possible to package it in rubyscript2exe and/or an OS X .app package? Does it replace or augment Gosu&#39;s image loading? If it replaces, that might fix the PNG problem.<br/><br/>While earlier versions of RPG Maker defined the transparent color as the zero-index color in the 8-bit color table, RMXP uses full alpha-channel support on 24-bit PNG&#39;s. There is a tool inside RMXP to import images made for &quot;the gif way&quot; for full alpha-transparency (it gives to a dropper tool to select full-transparent and half-transparent colors) but I am reasonably certain that this changes the actual files as it copies them to the project directory, rather than storing the information somewhere (where it would be stored, I have no idea, and I know basically everything about how RMXP stores its project information).
+</div>
+</div>
+
+<div class='brn' id='brn3843'>
+<div class='frm pst' id='pid3844' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3843'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3844.html#pid3844'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-02-05 00:41
+</div>
+<div class='ccl'>
+The DevIL gem requires DevIL.dll, ILU.dll and ILUT.dll, which you can package with your application using Ocra, as I have done previously (Ocra is the preferred Windows packager and works with Ruby 1.9.2; rubyscript2exe is pretty obsolete). Assume similarly for OS X, but I have no direct experience. It monkey-patches Gosu&#39;s Image#new and automatically loads non-png images through Devil on their way to being gosu images (so completely transparently). To save non-png images, you&#39;d have to use the Devil API, though, but you could just monkey-patch Image#save if you wanted to.<br/><br/>If the images are proper alpha-channel PNGs, then they should work fine with Gosu as far as I&#39;m aware. *shrugs*
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3847' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3838'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3847' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3847.html#pid3847'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-05 07:32
+<span class='htt'>Edited</span> 2011-02-05 07:38
+</div>
+<div class='ccl'>
+First, that sounds like an awesome project! Allowing people to move their code is always a good thing.<br/><br/><blockquote><p>&gt;&#160; 1a: Limited format support. I need at least JPG&#39;s. </p></blockquote><br/>libjpeg looks exactly like libpng, which is absurdly hard to use, so I&#39;ve avoided it so far. A contribution for JPEG specificially would be very welcome though, I doubt there are any other interesting formats after that.*<br/><br/><blockquote><p>&gt; 1b: No transparency? For some reason, Gosu will not load the alpha value from RTP graphics (png&#39;s).</p></blockquote><br/>(Insert repeated rant about libpng :)) Can you attach one of these files? Everything I save from Photoshop works with Gosu, but I was mailed one other PNG file for which transparency was broken. I hope it&#39;s the same bug.<br/><br/><blockquote><p>&gt; 2. Really slow text drawing; RGSS implements text drawing as an operation on images.</p></blockquote><br/>That interface will never work great with OpenGL-based backends, I guess. It would be easier to work around this from the C++ side too. I guess a proper render_to_texture with transparency support could save the day, but it&#39;s pretty far down the list.*<br/><br/><blockquote><p>&gt; 3. I need MIDI support! Granted, I&#39;ve only tested on Mac, but MIDI&#39;s are currently disabled so I could test other things.</p></blockquote><br/>It seems no major audio library has MIDI support anymore. On Windows and OS X at least, one could use system APIs for MIDI playback. A clean next step would be if someone submitted a Gem that implements a Gosu::Song like interface for MIDI files. I would happily add hooks to Gosu to integrate with that, or include its source.*<br/><br/><blockquote><p>&gt; 4. General performance issues: Scene_Map is running at about 9 fps, and I haven&#39;t been able to figure out why.</p></blockquote><br/>Is the map static? There is a record{} function in the works that will take all the drawing code in the block and return a Gosu::Image that can than be redrawn with only one Ruby call. Not sure if that explanation is very good, but if the map doesn&#39;t change aa lot, then this will give you a huge boost.<br/><br/><blockquote><p>&gt; 5. Segfaults with modifying $window. I am trying to set the window&#39;s caption to something else when &quot;F2&quot; is pressed (to display frame rate) during $window.update and that segfaults.</p></blockquote><br/>Can you post a minimal example for that? That sounds like a genuine bug.<br/><br/><blockquote><p>&gt; I&#39;m also trying to bring the game in and out of fullscreen during $window.update by closing the existing $window object and restarting it; I&#39;m getting segfault during $window.close.</p></blockquote><br/>Multiple windows aren&#39;t supported, however #fullscreen= and similar methods are in the works.<br/><br/>—<br/><br/>* With these and other problems, I really wonder if anyone would like to help out? I&#39;d gladly throw in €20-€50 for contributions like these. Anyone interested in setting up a pledgie for such contributions? Between working on my game and just keeping Gosu *alive*, I really can&#39;t invest much more time right now. For example—behind the scenes, I&#39;m wasting hours after hours trying to improve the RubyGosu.app—that is also a project that shouldn&#39;t even be part of Gosu. Stuff really explodes everywhere lately. :(
+</div>
+</div>
+
+<div class='brn' id='brn3847'>
+<div class='frm pst' id='pid3855' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3847'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3855' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3855.html#pid3855'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2011-02-05 12:37
+</div>
+<div class='ccl'>
+I for one would really like to help out on the C++/OpenGL side of things, but I am lacking proper goals and directions to do so. The GLFW port for example was even much more fun than I imagined. :)<br/><br/>Also I am afraid that contributing is not that easy, what is the reason to have both a github and a google code page, if you only push the svn changes back to git anyways? Merging git-forks back into the svn seems like an awful waste of time :\
+</div>
+</div>
+
+<div class='brn' id='brn3855'>
+<div class='frm pst' id='pid3868' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3855'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3868.html#pid3868'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-06 10:13
+</div>
+<div class='ccl'>
+Hmm, I&#39;m not sure if the use cases are convincing enough right now, but I&#39;d be curious to benchmark some stuff using render-to-texture (with alpha). Really analogous to beginRecording()/endRecording()—except it doesn&#39;t render the DrawOpQueue into a vertex array but to a texture. That would be a nicely isolated feature too :)<br/><br/>There&#39;s also lots of things that are annoying but that I&#39;d happily throw money into a pledgie pot for. For example, it&#39;s terribly annoying to develop or test C++ example games because there are no MSVC(08/10)/Xcode(4) templates. I have tested every single feature in Gosu from the Ruby side for the last years because it&#39;s just way faster, even without a debugger.<br/><br/><blockquote><p>&gt; what is the reason to have both a github and a google code page</p></blockquote><br/>The reason is to make forking easier for people who are used to git. You really shouldn&#39;t mind the minutes that *I* may waste merging stuff back in just because I&#39;m too stupid to use git-svn (or even git), which can apparently sync stuff back. Manually merging isn&#39;t even much slower than reviewing the diff.<br/><br/>I think I should post time consumption statistics for Gosu. For example, in the time I wasted burning and testing two Ubuntu live CDs only to throw them away, I could have merged a dozen contributions even from 1.44&quot; floppies ;)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3856' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3847'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3856' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3856.html#pid3856'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-05 14:45
+</div>
+<div class='ccl'>
+Alright, here&#39;s the project inside an RMXP project: <a class='url' href='http://www.rpg-palace.com/mewsterus/gosu-rgss-example.zip'>http://www.rpg-palace.com/mewsterus/gosu-rgss-example.zip</a><br/><br/>I&#39;ve tried to include all the RTP files. Under Windows, it should look for them in the right place (if you installed Enterbrain&#39;s RTP) but I haven&#39;t tested that part yet. Everywhere else, it looks for RTP in the ~/.rgss folder. Anyway, it shouldn&#39;t be an issue since I&#39;ve included the files.<br/><br/>For an example of an image where transparency isn&#39;t working, look in /Graphics/Characters. Neither files are loading transparency correctly, although now that I think about it the transparency IS getting loaded correctly on the windowskin. Here&#39;s how it loads the images:<br/><br/>Typically, game scripts ask for RPG::Cache.character(name, hue). &#39;name&#39; is filename and &#39;hue&#39; is a hue change on load (haven&#39;t tested that part yet). That function adds &#39;Graphics/Characters/&#39; to the beginning and calls RPG::Cache.load_bitmap(name, hue). This keeps a cache of loaded images. It tries to create the image with Bitmap.new(filename). My implementation of Bitmap takes the filename, searches for it in the project directory and then the RTP path(s), also searching for the right file extension (filenames are stored without their extensions for some reason), and passes the filename to super($GameWindow, filename). It also takes two arguments as a width and height to pass to Texplay.create_image.<br/><br/>I&#39;m not sure what&#39;s causing the lag in Scene_Map. There are tons of things being told to draw even if they&#39;re empty, like pictures sprites and two parallaxes. My Tilemap implementation could be the culprit, but I can&#39;t have it render to a static image because the different tiles have different Z values.<br/><br/>As for the problem with :caption=, the code that operates with that are in the GosuWindow class (global.rb:102) and the Input module (input.rb:46). Don&#39;t let those small line numbers fool you, there are 1300 lines of new code here (and 1400 of the RPG module written by Enterbrain, which is mostly data types with no real functions).<br/><br/>Now, I haven&#39;t been able to test whether this exact version works because it&#39;s including devil and I get an error from that:<br/><br/>dyld: lazy symbol binding failed: Symbol not found: _ilInit<br/>&#160; Referenced from: /Library/Ruby/Gems/1.8/gems/devil-0.1.9.5/lib/devil.bundle<br/>&#160; Expected in: flat namespace
+</div>
+</div>
+
+<div class='brn' id='brn3856'>
+<div class='frm pst' id='pid3867' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3856'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3867' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3867.html#pid3867'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-06 09:49
+</div>
+<div class='ccl'>
+Since I don&#39;t have DevIL installed either, can you post a minimal example for the caption= bug?<br/><br/>I could reproduce the bug with &quot;001-Fighter01.png&quot;. I don&#39;t know what program they&#39;ve been saved with, but if you just use Apple&#39;s Preview to open and save them again, the alpha channel works. I&#39;ll attach it to my To Do list, I really think it&#39;s the same alpha issue that shawn42 ran into.
+</div>
+</div>
+
+<div class='brn' id='brn3867'>
+<div class='frm pst' id='pid3873' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3867'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3873' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3873.html#pid3873'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2011-02-07 14:07
+</div>
+<div class='ccl'>
+These sample images are only on your local drive or can we see them too?
+</div>
+</div>
+
+<div class='brn' id='brn3873'>
+<div class='frm pst' id='pid3874' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3873'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3874.html#pid3874'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-07 15:17
+</div>
+<div class='ccl'>
+I have no idea about their license, so I&#39;m hesitant to check them in. I guess it&#39;s okay to forward them on though. :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3875' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3867'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3875' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3875.html#pid3875'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-07 21:19
+</div>
+<div class='ccl'>
+Here&#39;s a new one: <a class='url' href='http://www.rpg-palace.com/mewsterus/gosu-rgss-0.81.zip'>http://www.rpg-palace.com/mewsterus/gosu-rgss-0.81.zip</a><br/><br/>It&#39;s also wrapped in an RMXP project which contains all the graphics necessary to run (you shouldn&#39;t need the RTP installed). The original loader (Game.exe) is included as well, but you do need to install the RTP from Enterbrain to use that.<br/><br/>It&#39;s got Devil removed for now so it should work with only Gosu and Texplay installed. I also managed to figure out what was making it really laggy sometimes - two of the sprites were being recached every frame, which used to involve creating a new Gosu::Image. I&#39;ve both replaced that procedure to use Texplay clearing and splicing instead, and fixed what was causing it to recache every frame.<br/><br/>I extracted the code for :caption= but there was no error with the simplified example. Could it have something to do with my multithreading tricks to get out of GosuWindow.show&#39;s loop? I had to do tricks because in Gosu, the update procedure calls upon objects, while in RGSS the objects call upon the update procedure. GosuWindow.update basically tells Graphics.update that it&#39;s OK to continue, then uses Thread.stop to wait for the next call to Graphics.update to call @@window_thread.wakeup. So while I am technically using two threads, there&#39;s never a point of concurrency because Graphics.update just calls sleep(0.001) until the window thread has stopped.
+</div>
+</div>
+
+<div class='brn' id='brn3875'>
+<div class='frm pst' id='pid3877' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3875'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3877' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3877.html#pid3877'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-08 01:51
+</div>
+<div class='ccl'>
+You can also squeeze some extra performance out by using :sync_mode =&gt; :no_sync for the clear() and only syncing after the splice
+</div>
+</div>
+
+<div class='brn' id='brn3877'>
+<div class='frm pst' id='pid3878' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3877'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3878' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3878.html#pid3878'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-08 02:44
+</div>
+<div class='ccl'>
+I&#39;m using a :paint block. Doesn&#39;t that make it wait to sync until the end?
+</div>
+</div>
+
+<div class='brn' id='brn3878'>
+<div class='frm pst' id='pid3880' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3878'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3880.html#pid3880'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-08 03:02
+</div>
+<div class='ccl'>
+hmm, yes, but imo - dont use paint blocks, it&#39;s a lot faster not to use them. Im actually thinking of removing the paint block in a future version.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3879' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3875'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3879' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3879.html#pid3879'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-08 03:01
+<span class='htt'>Edited</span> 2011-02-08 03:07
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Could it have something to do with my multithreading tricks to get out of GosuWindow.show&#39;s loop?</p></blockquote><br/>Yes, none of Gosu is built for multithreading. #caption= specifically uses Cocoa, which needs some special flag to work with pthreads. Can you move all of Gosu onto one thread? I&#39;m wondering if there&#39;s some other way to invert the control. Jumping around with continuations doesn&#39;t sound very inviting right now though.
+</div>
+</div>
+
+<div class='brn' id='brn3879'>
+<div class='frm pst' id='pid3885' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3879'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3885.html#pid3885'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-09 03:45
+</div>
+<div class='ccl'>
+Jumping into the Gosu run loop actually causes a hard crash (SIGSEGV? I forget) on OS X. Actually, might have been something to do with a mutex being unlocked too many times. Definitely not inviting.
+</div>
+</div>
+
+<div class='frm pst' id='pid3886' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3879'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3886' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3886.html#pid3886'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-09 04:36
+</div>
+<div class='ccl'>
+I imagine I could try a :try block, but that only gets me out when Graphics.update :throw&#39;s; there would be no way to jump back to that execution point after Gosu has gone through another update step. Would it be better if I had Gosu::Window do the :sleep&#39;ing while it waited for the other thread to stop, instead of the other way around? I can&#39;t think of any other solution to my problem and there definitely shouldn&#39;t be any thread conflicts since they&#39;re just bouncing control back and forth.
+</div>
+</div>
+
+<div class='brn' id='brn3886'>
+<div class='frm pst' id='pid3887' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3886'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3887' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3887.html#pid3887'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-09 07:15
+</div>
+<div class='ccl'>
+Yes, having Gosu on the main thread sounds good. Many things in Gosu are not technically thread safe (not even &quot;milliseconds&quot;). But I cannot think of anything that would be a problem if the threads really never overlap.
+</div>
+</div>
+
+<div class='brn' id='brn3887'>
+<div class='frm pst' id='pid4010' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3887'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4010' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4010.html#pid4010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-21 18:20
+</div>
+<div class='ccl'>
+I&#39;m not sure what changed (maybe it was when I changed to Thread.stop and @@window_thread.wakeup, or the last GOSU update) but I&#39;m not having any more problems with :caption=.
+</div>
+</div>
+
+<div class='brn' id='brn4010'>
+<div class='frm pst' id='pid4015' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid4010'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4015' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4015.html#pid4015'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-24 22:36
+</div>
+<div class='ccl'>
+Nevermind, I&#39;m having the problem again. It&#39;s not a segfault, it&#39;s a &quot;Bus Error&quot;:<br/><br/>./gosu-rgss/global.rb:105: [BUG] Bus Error<br/>ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]<br/><br/>The code:<br/><br/>[class GosuWindow &lt; Gosu::Window]<br/>102:&#160; def recaption<br/>103:&#160; &#160; to_show = Settings[&#39;Title&#39;]<br/>104:&#160; &#160; to_show += &#39; (%d fps)&#39; % [Gosu.fps] if @showing_fps<br/>105:&#160; &#160; self.caption = to_show<br/>106:&#160; end
+</div>
+</div>
+
+<div class='brn' id='brn4015'>
+<div class='frm pst' id='pid4016' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid4015'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4016.html#pid4016'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-25 00:25
+</div>
+<div class='ccl'>
+But this code is still called from another thread, right?
+</div>
+</div>
+
+<div class='frm pst' id='pid4019' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid4015'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4019' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4019.html#pid4019'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-25 04:18
+</div>
+<div class='ccl'>
+For the record, I seem to encounter bus errors on OS X in situations that could have caused a segfault on Linux. Usually invalid memory access or so, but also whatever it is that happens when you call Gosu from another thread. If you&#39;re doing that, then it&#39;s almost certainly the cause of your woes.
+</div>
+</div>
+
+<div class='brn' id='brn4019'>
+<div class='frm pst' id='pid4029' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid4019'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4029' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4029.html#pid4029'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-28 16:30
+</div>
+<div class='ccl'>
+Alright, changed the code to this and it works now. I still don&#39;t understand why it matters which thread is calling the function if only one of the two is ever running at the same time.<br/><br/>&#160; def showing_fps=(bool)<br/>&#160; &#160; @showing_fps = bool<br/>&#160; &#160; @recaption = true<br/>&#160; &#160; bool<br/>&#160; end<br/>&#160; def recaption<br/>&#160; &#160; @recaption = @showing_fps<br/>&#160; &#160; to_show = Settings[&#39;Title&#39;]<br/>&#160; &#160; to_show += &#39; (%d fps)&#39; % [Gosu.fps] if @showing_fps<br/>&#160; &#160; self.caption = to_show<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; Thread.stop if @drawn<br/>&#160; &#160; recaption if @recaption<br/>&#160; end
+</div>
+</div>
+
+<div class='brn' id='brn4029'>
+<div class='frm pst' id='pid4035' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid4029'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4035.html#pid4035'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-01 10:35
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; I still don&#39;t understand why it matters which thread is calling the function if only one of the two is ever running at the same time.</p></blockquote><br/>The system may rely on thread-local storage as one simple reason. Hey, at least it seems to crash pretty reliably as opposed to &quot;every third user experiences it&quot; :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3888' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3838'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3888' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3888.html#pid3888'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=32.html' >mathias</a>
+<span class='htt'>Date</span> 2011-02-09 11:36
+</div>
+<div class='ccl'>
+The transparency bug is now fixed in the svn and it should be part of the next update. The problem existed only with Images that are using the palette, and most image manipulation programs don&#39;t use these. In these images, the transparency chunk (tRNS) was misinterpreted. See <a class='url' href='http://code.google.com/p/gosu/source/detail?r=1800'>http://code.google.com/p/gosu/source/detail?r=1800</a> and <a class='url' href='http://code.google.com/p/gosu/source/detail?r=1801'>http://code.google.com/p/gosu/source/detail?r=1801</a> for details.
+</div>
+</div>
+
+<div class='brn' id='brn3888'>
+<div class='frm pst' id='pid3890' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3888'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3890.html#pid3890'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-09 16:29
+</div>
+<div class='ccl'>
+Excellent! I shall wait in anticipation for the next release.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3889' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3889' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3889.html#pid3889'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-09 16:27
+</div>
+<div class='ccl'>
+Is there anything I can do about MIDI support? Should I look into getting it into Audiere? What if I were such a stud I could write MIDI support brand new? Or if I could patch in an existing package? Is there an existing package that could coexist with Audiere?
+</div>
+</div>
+
+<div class='brn' id='brn3889'>
+<div class='frm pst' id='pid3891' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3889'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3891' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3891.html#pid3891'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-09 17:47
+</div>
+<div class='ccl'>
+I just double-checked and take back my statement that MIDI is completely unsupported. It&#39;s just very special on each platform.<br/><br/>On Windows, Audiere actually has MIDI support:<br/><br/><a class='url' href='http://audiere.sourceforge.net/audiere-1.9.4-users-doxygen/classaudiere_1_1MIDIStream.html'>http://audiere.sourceforge.net/audiere-1.9.4-users-doxygen/classaudiere_1_1MIDIStream.html</a><br/><br/>This is completely independent from the rest of Audiere, which is why I thought it didn&#39;t work after a quick test. Gosu would need to specifically add support for this class. No big problem, as the internals of Gosu are designed to support two kinds of Song implementations (yay). I can schedule this right after the upcoming graphics changes.<br/><br/>For Linux, which uses SDL_mixer right now, there is some theoretical MIDI support. You should verify that it still works as it sounds a bit sketchy. It may need extra packages.<br/><br/><a class='url' href='http://www.libsdl.org/projects/SDL_mixer/'>http://www.libsdl.org/projects/SDL_mixer/</a><br/><br/>This leaves OS X. Apparently, SDL_mixer for OS X supports MIDI, but is missing other features. I could dynamically link SDL_mixer and use it for MIDIs on demand. I just have no idea how to reference a .framework from within a Ruby dynamic library. Or you could check if using the Apple MIDI APIs is reasonably easy. I can&#39;t just copy&amp;paste SDL_mixer sadly as it is LGPL licensed. :(<br/><br/>I&#39;ve actually tried to get MIDI to work on OS X, but Core MIDI looked a bit intimidating and I didn&#39;t have a use case for it at the time. (Existing games on the forum would benefit from MOD/IT actually.) I&#39;d be a happy coder if it would work reliably on all platforms though.
+</div>
+</div>
+
+<div class='brn' id='brn3891'>
+<div class='frm pst' id='pid3894' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3891'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3894' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3894.html#pid3894'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-09 21:54
+</div>
+<div class='ccl'>
+I&#39;m a bit confused about Audiere. Is it only being used on Windows? Does it even support OS X? I thought Gosu was moving to Audiere as a solution for all platforms, but it&#39;s starting to seem like the only reason was to avoid FMOD.
+</div>
+</div>
+
+<div class='brn' id='brn3894'>
+<div class='frm pst' id='pid3901' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3894'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3901' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3901.html#pid3901'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-10 18:48
+</div>
+<div class='ccl'>
+For iOS, OpenAL is almost the only choice. So having Audiere for Win+Linux, and OpenAL for Mac+iOS would have been as cool as it gets—there&#39;s no way to unify everything without writing a LOT of code. So that was the plan.<br/><br/>Sadly, Audiere turned out not to be compatible with modern Linux distributions anymore. :( So yeah, Audiere only replaced FMOD in the end. I could put it in place on Linux with an inofficial backend, but that would break MIDI, so I&#39;m think I&#39;m not going to bother. Being able to play the same files on all platforms &gt; using the same library on all platforms. :)
+</div>
+</div>
+
+<div class='brn' id='brn3901'>
+<div class='frm pst' id='pid3927' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3901'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3927' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3927.html#pid3927'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-11 18:47
+</div>
+<div class='ccl'>
+So...doesn&#39;t OpenAL support MIDI? Or does it have to be implemented with Core Audio? If nobody is willing, I could try to write that up. All I need is a starting point to get involved in developing and contributing to Gosu.
+</div>
+</div>
+
+<div class='brn' id='brn3927'>
+<div class='frm pst' id='pid3936' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3927'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3936' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3936.html#pid3936'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-12 08:24
+</div>
+<div class='ccl'>
+OpenAL only provides a route for waveform data from memory to the sound card, with some positioning and stuff. So you need to turn the file into waveform data. Right now I use Apple&#39;s system library &quot;Audio Toolbox&quot; to do this. I am not sure if there is an API that streams MIDI files into waveform data or if you have to take a completely separate route for that. If Audio Toolbox can&#39;t do it, then I&#39;d assume either Core Midi or QTKit could.
+</div>
+</div>
+
+<div class='brn' id='brn3936'>
+<div class='frm pst' id='pid3955' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3936'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3955' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3955.html#pid3955'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-15 21:49
+</div>
+<div class='ccl'>
+Is it possible to link to TiMidity or FluidSynth? Or is that linking from a dylib what&#39;s giving you too much trouble?
+</div>
+</div>
+
+<div class='brn' id='brn3955'>
+<div class='frm pst' id='pid3959' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3955'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3959.html#pid3959'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-16 00:13
+</div>
+<div class='ccl'>
+I only know Timidity, but that would be quite a daunting task since it also includes (lots of) resource files. On Linux, the package manager can handle all of this. I think system APIs are really the way to go for OS X, which should have great MIDI support out of the box.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3892' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3889'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3892' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3892.html#pid3892'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2011-02-09 18:57
+</div>
+<div class='ccl'>
+theres a crossplatform ruby gem for midi playback<br/><a class='url' href='https://github.com/bleything/midiator'>https://github.com/bleything/midiator</a><br/><br/>you can try it and tell us if it works.
+</div>
+</div>
+
+<div class='brn' id='brn3892'>
+<div class='frm pst' id='pid3893' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3955.html#pid3892'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3893.html#pid3893'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-09 21:44
+</div>
+<div class='ccl'>
+AFAIK that package does not play MIDI files, just provides a general interface to the MIDI processing system. I could theoretically write up something that uses the interface to play a MIDI file (each file would need its own execution thread) but that wouldn&#39;t be all too useful for Gosu as a whole because it would be a Ruby-only implementation.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=547.html#tid547'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=547.html#tid547'>Gosu Exchange</a> / Gosu implementation of RGSS
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3955.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

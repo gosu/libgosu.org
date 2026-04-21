@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby HeightMap generator</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=831.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=831.html#tid831'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=831.html#tid831'>Extending Gosu</a> / Ruby HeightMap generator
+</div>
+</div>
+
+<div class='frm pst' id='pid6411' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6411' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6411.html#pid6411'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-12-22 05:11
+<span class='htt'>Edited</span> 2012-12-25 05:08
+</div>
+<div class='ccl'>
+So this is as the title says, a heightmap generator written in Ruby.<br/><br/>It also includes a visualizer (which uses Gosu), which lets you see the Perlin-noise-esque stuff it generates.<br/><br/>Check it out on <b>GitHub</b>: <a class='url' href='https://github.com/chase4926/Ruby-Heightmap'>https://github.com/chase4926/Ruby-Heightmap</a><br/>Or should I write, clone it.<br/><br/>Here&#39;s a nice timelapse of a 64x64 heightmap. <a class='url' href='http://www.youtube.com/watch?v=QmzJFEP1JIM'>http://www.youtube.com/watch?v=QmzJFEP1JIM</a>
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=730.html'><img class='amt' src='../../mwf/attachments/11/6411/heightmap.thb.jpg' title='Played around with the visualizer for this cool looking example (51k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn6411'>
+<div class='frm pst' id='pid6412' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid6411'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6412' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6412.html#pid6412'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-12-22 23:53
+</div>
+<div class='ccl'>
+You might not be aware of it, but my <a class='url' href='http://github.com/spooner/ruby-perlin'>Perlin</a> (C extension gem) already does Simplex/Classic Perlin noise and has a simple gosu-based visualiser. I&#39;m sure your implementation is fine, but I&#39;m guessing it is about 100x slower if it is pure Ruby ;(<br/><br/>Ashton also supports noise-generation via shaders which I&#39;m guessing is 100x faster than even Perlin can manage. Perlin is better if you don&#39;t want to just generate a noisey-image (for example Ashton is great for creating dynamic textures, but less so for heightmaps).<br/><br/>Sorry, Github is down right now, so I can&#39;t confirm how your gem works. It is possible you might be adding heightmap-specific stuff that isn&#39;t supplied by Perlin, in which case you might consider using the Perlin gem as a backend for the grunt-work...?
+</div>
+</div>
+
+<div class='brn' id='brn6412'>
+<div class='frm pst' id='pid6413' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid6412'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6413' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6413.html#pid6413'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-12-23 01:21
+</div>
+<div class='ccl'>
+Wasn&#39;t aware of it, but I plan on adding a ton of customization methods to allow developers to really make the heightmap that is generated tailored for their purpose.<br/><br/>Such as:<br/><br/>- A function to generate static, so the heightmap wouldn&#39;t start out flat<br/>- A function to &quot;average&quot; the grid (take the average height of all the cells, and move the actual height down that distance)<br/><br/>My main goal at the moment is to load it with features and make it work, past that, a C version isn&#39;t out of the question.
+</div>
+</div>
+
+<div class='brn' id='brn6413'>
+<div class='frm pst' id='pid6414' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid6413'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6414' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6414.html#pid6414'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-12-23 02:00
+</div>
+<div class='ccl'>
+Sounds like it adds a lot of heightmap specific stuff, so that sounds grand. Really try to avoid reinventing wheels on the Perlin stuff though.<br/><br/>Don&#39;t write a C version unless the Ruby one is actually too slow for what you need. I&#39;m guessing you aren&#39;t generating super-dense heightmaps, so maybe it is fine (assuming you use Perlin gem for the noise generation, perhaps, to give it a bit more speed).
+</div>
+</div>
+
+<div class='brn' id='brn6414'>
+<div class='frm pst' id='pid6415' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid6414'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6415.html#pid6415'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-12-23 04:37
+</div>
+<div class='ccl'>
+GitHub is back, feel free to check it out.<br/>I added the previously mentioned features aswell.<br/><br/>Next on the chopping block: A function to smooth out the grid
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6416' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid6411'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6416.html#pid6416'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2012-12-24 03:44
+</div>
+<div class='ccl'>
+New commit, added contrast feature.<br/>Made positive heights green, negative blue. Darker = lower, lighter = higher.
+</div>
+</div>
+
+<div class='frm pst' id='pid7249' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid6411'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7249' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7249.html#pid7249'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-16 01:18
+</div>
+<div class='ccl'>
+Just doing the finishing touches on procedural generation, attached is an example screenshot containing 4 heightmaps generated procedurally.
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=789.html'><img class='amt' src='../../mwf/attachments/49/7249/render-1.thb.jpg' title='render-1.png (9k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn7249'>
+<div class='frm pst' id='pid7250' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid7249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7250' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7250.html#pid7250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-16 02:50
+</div>
+<div class='ccl'>
+Looks natural to me. :)
+</div>
+</div>
+
+<div class='brn' id='brn7250'>
+<div class='frm pst' id='pid7251' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid7250'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7251.html#pid7251'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-16 03:08
+</div>
+<div class='ccl'>
+Thanks :D, now to find a use for this...
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7303' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid7249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7303' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7303.html#pid7303'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-09-28 16:43
+</div>
+<div class='ccl'>
+Hey I just checked this out for the first time. Bonus points for loading on the first try on my system without any errors.<br/><br/>For me this serves as a good general overall Gosu and Ruby tutorial, as many of the games on this forum do.<br/><br/>It reminds me of the <a class='url' href='http://www.ludumdare.com/compo/ludum-dare-17/?action=preview&amp;uid=796'>Sinking Islands</a> Ludum Dare Game, which I found on the Showcase by way of the daily featured projects.
+</div>
+</div>
+
+<div class='brn' id='brn7303'>
+<div class='frm pst' id='pid7304' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid7303'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7304' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7304.html#pid7304'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=485' >chase4926</a>
+<span class='htt'>Date</span> 2013-09-28 18:21
+</div>
+<div class='ccl'>
+This reminds me, I never did sync the latest version to github. So the version you have doesn&#39;t actually have the procedural stuff. Oops!
+</div>
+</div>
+
+<div class='brn' id='brn7304'>
+<div class='frm pst' id='pid7305' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=831.html#pid7304'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7305.html#pid7305'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-09-28 18:52
+</div>
+<div class='ccl'>
+Well, at least the contrast worked. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=831.html#tid831'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=831.html#tid831'>Extending Gosu</a> / Ruby HeightMap generator
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=831.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

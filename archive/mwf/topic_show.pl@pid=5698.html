@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5698 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Keyboard input</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5698' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=656.html#tid656'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=656.html#tid656'>Gosu Exchange</a> / Keyboard input
+</div>
+</div>
+
+<div class='frm pst' id='pid5004' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5004' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5004.html#pid5004'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=867' >SPK</a>
+<span class='htt'>Date</span> 2011-10-24 12:18
+</div>
+<div class='ccl'>
+Hey,<br/><br/>currently I&#39;m working on a menu, which works, except that the<br/>button_down?(key) method is called too often during the update interval.<br/>That means if the KbUp button is pressed the index doesn&#39;t move one time, it moves<br/>3 - 4 times.<br/><br/>I tried it with button_down instead of button_down?, but it ignores all input.<br/>How can I avoid this problem?
+</div>
+</div>
+
+<div class='brn' id='brn5004'>
+<div class='frm pst' id='pid5005' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5004'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5005.html#pid5005'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-10-24 13:18
+</div>
+<div class='ccl'>
+button_down?(key) is called one time, but each frame. If you want to make with this you can use a variable toggled by button.<br/><br/><code>if button_down?(KbDown) and !@pressed<br/>&#160; @index+=1<br/>&#160; @pressed=true<br/>elsif not button_down?(KbDown)<br/>&#160; @pressed=nil<br/>end</code><br/><br/>The second method uses a local variable as a button value.<br/><br/><code>def button_down(id)<br/>&#160; if id==KbDown then @index+=1 end<br/>end</code>
+</div>
+</div>
+
+<div class='frm pst' id='pid5007' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5004'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5007' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5007.html#pid5007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-24 15:53
+</div>
+<div class='ccl'>
+<code>button_down</code> is a method that you write and wait for Gosu to call it whenever a button is pushed down.<br/><code>button_down?</code> is a method that you call to ask Gosu whether a button is being held down right now. Gosu never calls <code>button_down?</code>.<br/><br/>By the way these methods work, <code>button_down</code> is what you use for one-time button presses, and <code>button_down?</code> is what you use to make buttons influence code in <code>update</code> - for example, walking left and right is a case for <code>button_down?</code> because you don&#39;t want the player to move only one pixel when he first hits the button, but you want them to move in every <code>update</code> tick.<br/><br/><code>class MyWindow ...<br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::KbDown then<br/>&#160; &#160; &#160; move_down_in_menu...<br/>&#160; &#160; end<br/>&#160; end</code>
+</div>
+</div>
+
+<div class='brn' id='brn5007'>
+<div class='frm pst' id='pid5008' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5007'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5008' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5008.html#pid5008'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=867' >SPK</a>
+<span class='htt'>Date</span> 2011-10-24 17:29
+</div>
+<div class='ccl'>
+Thanks for your replies.<br/><br/>This :<br/>def update<br/>if button_down?(KbDown) and !@pressed<br/>&#160; @index+=1<br/>&#160; @pressed=true<br/>elsif not button_down?(KbDown)<br/>&#160; @pressed=nil<br/>end<br/>end<br/><br/>and then I call @menu.update in my gosu::window update method and everything works. Great!<br/><br/>But I still don&#39;t understand when to use button_down(id)<br/>When I replace my update method with button_down(id) and adjust it to the example above,<br/>it isn&#39;t working. <br/>As far as I understood Gosu calls button_down without any doing from my side, or?<br/><br/>If I put this inside my menu instead of the update snippet from above:<br/><br/>def button_down(id)<br/>if id == Gosu::KbDown and !@pressed<br/>&#160; @index+=1<br/>&#160; @pressed=true<br/>elsif not id == Gosu::KbDown<br/>&#160; @pressed=nil<br/>end<br/>end<br/><br/>Nothing happens. Where do I have to put this method for Gosu to call it?<br/>Leaving it alone in my menu doesn&#39;t seem to work.<br/>But since button_down? works I don&#39;t mind.
+</div>
+</div>
+
+<div class='brn' id='brn5008'>
+<div class='frm pst' id='pid5009' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5008'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5009' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5009.html#pid5009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-10-24 17:56
+</div>
+<div class='ccl'>
+I gave you example of button_down(id)&#160; (have you noticed it?).<br/>It&#39;s like button_down?, but it&#39;s not repeated and is better for menu (because using it is shorter)
+</div>
+</div>
+
+<div class='brn' id='brn5009'>
+<div class='frm pst' id='pid5010' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5009'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5010' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5010.html#pid5010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=867' >SPK</a>
+<span class='htt'>Date</span> 2011-10-24 18:01
+</div>
+<div class='ccl'>
+I tried it, but nothing happens. <br/>Where does id come from by the way?
+</div>
+</div>
+
+<div class='brn' id='brn5010'>
+<div class='frm pst' id='pid5011' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5010'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5011' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5011.html#pid5011'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2011-10-24 18:28
+</div>
+<div class='ccl'>
+It&#39;s a method argument&#160; &#160; button_down( <b>id</b> )<br/>It should work. Have you placed it in Window (along with update and draw)?<br/><br/><code>class YourWindow &lt; Gosu::Window<br/>&#160; def update<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; end<br/><br/>&#160; def button_down(id)<br/>&#160; end<br/>end</code>
+</div>
+</div>
+
+<div class='brn' id='brn5011'>
+<div class='frm pst' id='pid5012' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5011'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5012.html#pid5012'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=867' >SPK</a>
+<span class='htt'>Date</span> 2011-10-24 18:59
+</div>
+<div class='ccl'>
+Ah, ok. I put it in my menu class.<br/>So that&#39;s the flaw. Now it works.<br/>Again, big thanks.
+</div>
+</div>
+
+<div class='frm pst' id='pid5697' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5011'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5697' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5697.html#pid5697'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-07 14:36
+</div>
+<div class='ccl'>
+is there a way to abstract input out of the GameWindow &lt;&lt; Gosu::Window<br/>I have GameWindow calling update on my GameManager, which then has a check_input method. Is it possible to use button_down(id) this way?
+</div>
+</div>
+
+<div class='brn' id='brn5697'>
+<div class='frm pst' id='pid5698' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5697'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5698' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5698.html#pid5698'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-03-07 15:26
+</div>
+<div class='ccl'>
+Sure, Window can just call <code>button_down(id)</code> on the GameManager too. It&#39;s just a Ruby method call, no magic :)
+</div>
+</div>
+
+<div class='brn' id='brn5698'>
+<div class='frm pst' id='pid5701' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5698.html#pid5698'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5701.html#pid5701'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=850.html' >PhusionDev</a>
+<span class='htt'>Date</span> 2012-03-08 20:30
+</div>
+<div class='ccl'>
+Thanks for this :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=656.html#tid656'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=656.html#tid656'>Gosu Exchange</a> / Keyboard input
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5698.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

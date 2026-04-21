@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8313 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ashton causes window to go blank</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8313' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1180.html#tid1180'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1180.html#tid1180'>Extending Gosu</a> / Ashton causes window to go blank
+</div>
+</div>
+
+<div class='frm pst' id='pid8308' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8308' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8308.html#pid8308'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-08 18:49
+<span class='htt'>Edited</span> 2015-03-08 19:33
+</div>
+<div class='ccl'>
+Hi, Spooner, (or anyone willing to take a look)<br/><br/>I have a problem with Ashton, and I wonder if you could shed some light, when you get a chance.<br/><br/>I&#39;ll preface this by saying that Ashton seems to work fine on my system; the examples all display perfectly, and even other things I&#39;ve made work, up to now... This leads me to believe I&#39;m just doing something silly, but I cannot find out what that is! I&#39;ve even looked through Ashton&#39;s code to see what might be happening, to no avail.<br/><br/>Here&#39;s the gist: <a class='ura' href='https://gist.github.com/runnerpack/6d51f5b40eff1bf1107a#comment-1408520'>https://gist.github.com/runnerpack/6d51f5b40eff1bf1107a#comment-1408520</a> (Note: the comment explains what I&#39;m trying to do.)<br/><br/>Any insight you can offer will be greatly appreciated.
+</div>
+</div>
+
+<div class='brn' id='brn8308'>
+<div class='frm pst' id='pid8310' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8308'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8310' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8310.html#pid8310'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2015-03-09 17:35
+</div>
+<div class='ccl'>
+I had an idea that it didn&#39;t work because the draw_line function didn&#39;t work within the post_proccess block and it seems like that was the case.<br/><br/>To fix it I created a buffer in the window initialize function<br/><code><br/>@buffer = Ashton::WindowBuffer.new</code><br/><br/>And then I changed your window&#39;s draw function to<br/><code><br/>&#160; def draw<br/>&#160; &#160; @buffer.clear<br/>&#160; &#160; @buffer.render { draw_3d }<br/>&#160; &#160; <br/>&#160; &#160; if button_down?(Gosu::KbTab)<br/>&#160; &#160; &#160; # Convert the half-over/under image to the desired stereo output format<br/>&#160; &#160; &#160; post_process (@shader) {<br/>&#160; &#160; &#160; &#160; @buffer.draw 0,0,0<br/>&#160; &#160; &#160; }<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @buffer.draw 0,0,0<br/>&#160; &#160; end<br/>&#160; end</code><br/><br/>Hope you can get this to work! Looks pretty cool. Hardware-accelerated stereoscopy? Yes, please!
+</div>
+</div>
+
+<div class='brn' id='brn8310'>
+<div class='frm pst' id='pid8311' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8310'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8311' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8311.html#pid8311'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2015-03-09 17:45
+</div>
+<div class='ccl'>
+One thing that just came to my mind was that it would be cool if you could have images with depth maps like on <a class='ura' href='http://depthy.me/'>http://depthy.me/</a> as game assets.
+</div>
+</div>
+
+<div class='brn' id='brn8311'>
+<div class='frm pst' id='pid8313' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8311'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8313.html#pid8313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-09 19:54
+</div>
+<div class='ccl'>
+Wow, that&#39;s pretty cool! Actually, I&#39;ve been looking for a way to make stereo &quot;sprites&quot; that can be rotated (which you obviously can&#39;t do with just a stereo pair), and this might be a good idea to try. Thanks for bringing it to my attention.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8312' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8310'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8312' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8312.html#pid8312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-09 19:51
+<span class='htt'>Edited</span> 2015-03-09 20:05
+</div>
+<div class='ccl'>
+I thought this, too, but I modified the &quot;bloom&quot; demo that comes with Ashton to include a black line, and it seemed to work fine. How did you test to find out it didn&#39;t work?<br/><br/>Your buffer workaround seems to work, which is confusing because Ashton&#39;s Window#post_process already uses a buffer system.<br/><br/>Now I have to figure out why the interleaved image is so blurry...
+</div>
+</div>
+
+<div class='brn' id='brn8312'>
+<div class='frm pst' id='pid8314' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8314' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8314.html#pid8314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2015-03-09 22:24
+</div>
+<div class='ccl'>
+Actually I didn&#39;t do any testing to find out it didn&#39;t work. I just thought it might be so since both the lines and the post processing is done with OpenGL.
+</div>
+</div>
+
+<div class='brn' id='brn8314'>
+<div class='frm pst' id='pid8315' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8314'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8315' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8315.html#pid8315'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-09 23:24
+</div>
+<div class='ccl'>
+Well, yeah... <i>everything</i> graphical in Gosu is done with OpenGL. I assume that&#39;s what allows shaders to work on Gosu graphics.<br/><br/>Also, if it was just that lines didn&#39;t work in the post_process block, they should come back when you release Tab, but they don&#39;t. That&#39;s what makes me think something weird is going on inside Ashton.
+</div>
+</div>
+
+<div class='brn' id='brn8315'>
+<div class='frm pst' id='pid8316' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8316' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8316.html#pid8316'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2015-03-10 00:07
+</div>
+<div class='ccl'>
+Hmm it&#39;s not because the lines is done with OpenGL but rather because line drawing is using different OpenGL calls than when you draw images so something could go wrong.
+</div>
+</div>
+
+<div class='brn' id='brn8316'>
+<div class='frm pst' id='pid8319' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8316'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8319.html#pid8319'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-11 05:24
+</div>
+<div class='ccl'>
+I think you might be on to something! I disabled your buffer workaround, and tried to draw an image using my Image3D class, along with the test lines. The image didn&#39;t show up in either 2D or 3D mode (which is odd), but the lines are there in both modes as if the workaround was in place! It&#39;s getting late, but I&#39;ll do some more testing, tomorrow.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8317' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8315'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8317' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8317.html#pid8317'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-03-10 10:17
+</div>
+<div class='ccl'>
+I had a strange experiences with Ashton myself. There was a bug that when you render to texture and then try normal drawing, all images were displaced and you had to call an empty <code>Texture.new.render{}</code> block to fix it (not sure if it still happens). Or a bug when trying to read image pixels and Y-axis is inverted somehow.
+</div>
+</div>
+
+<div class='brn' id='brn8317'>
+<div class='frm pst' id='pid8320' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8317'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8320' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8320.html#pid8320'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-11 05:26
+</div>
+<div class='ccl'>
+This might be related to the invisible image problem I mentioned above. Do I just put <code>Texture.new.render{}</code> at the top of my Window#draw?
+</div>
+</div>
+
+<div class='brn' id='brn8320'>
+<div class='frm pst' id='pid8322' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8320'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8322' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8322.html#pid8322'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-03-11 16:33
+</div>
+<div class='ccl'>
+Actually it was <code>WindowBuffer.new.render{}</code> (small mistake)<br/>But it won&#39;t probably work for your image, because it&#39;s only to fix drawing after rendering to another texture. It should be placed after previous finished render block to reset values etc.
+</div>
+</div>
+
+<div class='brn' id='brn8322'>
+<div class='frm pst' id='pid8323' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8322'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8323' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8323.html#pid8323'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-11 20:13
+</div>
+<div class='ccl'>
+Yeah, when I include that, it makes the lines all flickery, and prevents the post_process from even working.<br/>I&#39;ve had no progress at all, BTW. If I draw solid colors in my shader, I get perfect interlaced lines, but when I try to draw from the texture, it&#39;s all blurry like it&#39;s using a low-resolution version of the window that&#39;s been scaled up and bilinear filtered :/<br/>Image3D is still not drawing at all, but a standard Image loading the same PNG works fine.<br/>I&#39;m out of ideas...
+</div>
+</div>
+
+<div class='brn' id='brn8323'>
+<div class='frm pst' id='pid8324' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8313.html#pid8323'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8324.html#pid8324'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=200.html' >arrow</a>
+<span class='htt'>Date</span> 2015-03-12 15:30
+</div>
+<div class='ccl'>
+Maybe Spooner can help. You could try submitting a bug report with some test scripts on github.<br/><br/><a class='ura' href='https://github.com/Spooner/ashton/issues'>https://github.com/Spooner/ashton/issues</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1180.html#tid1180'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1180.html#tid1180'>Extending Gosu</a> / Ashton causes window to go blank
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8313.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

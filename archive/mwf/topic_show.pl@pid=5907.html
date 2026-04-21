@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5907 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Overlapped transparency.</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5907' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=770.html#tid770'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=770.html#tid770'>Gosu Exchange</a> / Overlapped transparency.
+</div>
+</div>
+
+<div class='frm pst' id='pid5897' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5897' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5897.html#pid5897'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2012-06-11 00:45
+</div>
+<div class='ccl'>
+Hello!<br/><br/>Let&#39;s say I have a PJ formed by several overlapped images (body + eyes + mouth +...). When I do a fade-in or a fade-out of the whole character, you can see the face background behind the eyes and mouth. That&#39;s because each element is semi-transparent (alpha 255-&gt;0).<br/><br/>Is there any way to do this thinking of the character as &quot;just one entity&quot;?<br/><br/>Are shaders needed? How to do it?<br/><br/>I atacched 2 images to explain this better.<br/>good.jpg -&gt; what I want to happen: Draw all elements and then render them as one joined element at 50% over the other things<br/>bad.jpg -&gt; what happens if each element has a 50% transparency
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=696.html'><img class='amt' src='../../mwf/attachments/97/5897/good.thb.jpg' title='what I want to do (26k)' alt=''/></a>
+<a href='attach_show.pl@aid=697.html'><img class='amt' src='../../mwf/attachments/97/5897/bad.thb.jpg' title='what happens right now (26k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn5897'>
+<div class='frm pst' id='pid5898' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5898' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5898.html#pid5898'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-11 06:41
+</div>
+<div class='ccl'>
+You don&#39;t need shaders, but a way to create a single image from your stack of images. I think Texplay can do this, but I&#39;m not sure. ImageMagick can do it too. Once you have merged them into a single image, you can draw it as you wish.<br/><br/>Or you could somehow fake it by making the skin in the eye pieces semi transparent and drawing them after the body etc… but I&#39;m not sure if that&#39;s feasible.<br/><br/>I&#39;d really love to have real render-to-texture in Gosu actually, but I&#39;m busy these months :( Contributions welcome!
+</div>
+</div>
+
+<div class='brn' id='brn5898'>
+<div class='frm pst' id='pid5899' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5898'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5899' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5899.html#pid5899'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2012-06-11 11:35
+</div>
+<div class='ccl'>
+But as the eyes and mouth are constantly changing, is it a good idea to merge it into a single image and then draw it? Isn&#39;t it a bitexpensive to generate images all the time?
+</div>
+</div>
+
+<div class='brn' id='brn5899'>
+<div class='frm pst' id='pid5900' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5899'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5900' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5900.html#pid5900'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-11 12:32
+</div>
+<div class='ccl'>
+Good call. Are they the same size all the time? Can you just cut out the areas in the &quot;background&quot; person?
+</div>
+</div>
+
+<div class='brn' id='brn5900'>
+<div class='frm pst' id='pid5901' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5900'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5901' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5901.html#pid5901'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2012-06-11 12:35
+</div>
+<div class='ccl'>
+I already thought about that, but I can&#39;t guarantee that... :-S<br/>That&#39;s why I need the shader-like image drawing
+</div>
+</div>
+
+<div class='brn' id='brn5901'>
+<div class='frm pst' id='pid5902' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5901'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5902' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5902.html#pid5902'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-11 13:18
+</div>
+<div class='ccl'>
+Hmm, that would be a question for an OpenGL board then...<br/><br/>Another quick hack idea (because all games need these :D), draw the background, draw the fading character, draw the background again at 50% opacity, draw normal characters?
+</div>
+</div>
+
+<div class='brn' id='brn5902'>
+<div class='frm pst' id='pid5903' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5902'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5903.html#pid5903'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2012-06-11 14:22
+</div>
+<div class='ccl'>
+yep that&#39;s another hack, but anyways I want to do it in a right way, so I&#39;ll try to investigate something on OpenGL... hope it&#39;s not too much complicated :P
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5921' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5901'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5921' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5921.html#pid5921'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-17 22:24
+</div>
+<div class='ccl'>
+Why don&#39;t you do the opposite? Take the color away from the &quot;layers&quot; of the eyes and mouth.&#160; Thus, the eyes and mouth would be on transparent backgrounds.&#160; Currently, it looks like the eyes/mouth are on skin-colored backgrounds.
+</div>
+</div>
+
+<div class='brn' id='brn5921'>
+<div class='frm pst' id='pid5923' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5921'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5923.html#pid5923'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-18 00:24
+</div>
+<div class='ccl'>
+Since this topic came up just hours before:<br/><br/><a class='url' href='topic_show.pl@tid=774.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=774</a><br/><br/>If you remove the backgrund color, be super careful that you can really <i>deeply</i> remove it :)<br/><br/>danikaze&#39;s images are likely neither stretched nor rotated, but with things like auto-stretching to fullscreen (Linux Gosu), it could still happen.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid5904' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5904' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5904.html#pid5904'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-06-11 23:34
+</div>
+<div class='ccl'>
+You can use TexPlay&#39;s Gosu::Window#render_to_image to create a single image from the individual sprites and then make it transparent. Unfortunately, render_to_image&#39;s method of hack means the final image won&#39;t have transparency, but you can fill the background with a colour (say, purple) that you will clear to transparent later. render_to_image is fast, in case you want to do it a lot, but a cleaner, if slower, way is TexPlay&#39;s Image#splice.
+</div>
+</div>
+
+<div class='brn' id='brn5904'>
+<div class='frm pst' id='pid5905' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5904'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5905' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5905.html#pid5905'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-06-12 16:48
+</div>
+<div class='ccl'>
+Correct me if I&#39;m wrong, but if the problem here is that the opacity is <b>adding</b> up because it&#39;s over another transparent image, then won&#39;t increasing the level of transparency (therefore <b>reducing</b> opacity <i>aka</i> <i>alpha</i>) make the resulting image look like the op wants it to?<br/><br/><b>Edit:</b> looked at the images closer. I&#39;m not sure how Gosu is handling the alpha properties of the images, but something&#39;s not making sense to me. In the left photo everything is overlapped nicely and the black pixels are defined. In the second, there&#39;s obvious lightening of the overlapped graphics, but even the black pixels are very &quot;watered-down&quot;. Why is this?
+</div>
+</div>
+
+<div class='brn' id='brn5905'>
+<div class='frm pst' id='pid5907' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5905'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5907' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5907.html#pid5907'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=239.html' >danikaze</a>
+<span class='htt'>Date</span> 2012-06-13 11:57
+</div>
+<div class='ccl'>
+The images are fake. It was made by me on Photoshop just to illustrate the problem. The black pixels in the 2nd image shouldn&#39;t be lightened. Sorry.
+</div>
+</div>
+
+<div class='brn' id='brn5907'>
+<div class='frm pst' id='pid5909' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5909' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5909.html#pid5909'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-06-13 15:42
+</div>
+<div class='ccl'>
+Would you mind rendering your graphics via Gosu and take a screenshot? I&#39;d like to see what&#39;s going on. :)
+</div>
+</div>
+
+<div class='brn' id='brn5909'>
+<div class='frm pst' id='pid5912' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5909'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5912' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5912.html#pid5912'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-06-14 03:36
+</div>
+<div class='ccl'>
+It&#39;s a common problem actually. Let&#39;s imagine the face and the background of the eye images as a solid yellow (ffff00). We&#39;ll draw on a black background. The face is drawn with 50% alpha, ends up being 7f7f00. Now we draw the eyes with 50% alpha. The yellow background of the eyes is mixed with 7f7f00 (face already drawn), resulting in afaf00. So the rectangles around the eyes are a brighter yellow than the face.<br/><br/>Terava uses skeletal models and I cannot draw transparent characters for the same reason. The joints would appear less transparent than the actual limbs, because that&#39;s where two images overlap.
+</div>
+</div>
+
+<div class='brn' id='brn5912'>
+<div class='frm pst' id='pid5916' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5912'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5916.html#pid5916'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-06-14 15:51
+</div>
+<div class='ccl'>
+Oh! I see now.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6114' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid5897'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6114' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6114.html#pid6114'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-08-04 22:24
+</div>
+<div class='ccl'>
+I think you can do this using window#record. Basically you render all your body parts into one single Gosu::Image object. So when you change the opacity, it will all change as one single entity.
+</div>
+</div>
+
+<div class='brn' id='brn6114'>
+<div class='frm pst' id='pid6116' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid6114'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6116' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6116.html#pid6116'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-05 07:57
+</div>
+<div class='ccl'>
+Nope - Images recorded using <code>Window#record</code> can only be drawn with full transparency. :(
+</div>
+</div>
+
+<div class='brn' id='brn6116'>
+<div class='frm pst' id='pid6120' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid6116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6120' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6120.html#pid6120'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-08-05 19:13
+</div>
+<div class='ccl'>
+Oh, why is that? I though that it returned a Gosu::Image (and I remember changing the opacity of Gosu::Image objects)
+</div>
+</div>
+
+<div class='brn' id='brn6120'>
+<div class='frm pst' id='pid6126' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5907.html#pid6120'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6126.html#pid6126'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-08-05 23:08
+</div>
+<div class='ccl'>
+It&#39;s a detail of how <code>record</code> works. It does not render to a texture, it does really &quot;record&quot; your drawing. If you would record the body parts and draw them with 50% opacity, it&#39;d look exactly as if you drew each part on top of each other without using <code>record</code>. So I haven&#39;t even implemented drawing with changed opacity. (And if I did, it would never change the OP&#39;s problem.)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=770.html#tid770'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=770.html#tid770'>Gosu Exchange</a> / Overlapped transparency.
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5907.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

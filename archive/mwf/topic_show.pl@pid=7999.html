@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7999 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Resolution Issue</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7999' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1132.html#tid1132'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1132.html#tid1132'>Gosu Exchange</a> / Resolution Issue
+</div>
+</div>
+
+<div class='frm pst' id='pid7998' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7998' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7998.html#pid7998'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1143' >Maimer</a>
+<span class='htt'>Date</span> 2014-09-02 20:48
+<span class='htt'>Edited</span> 2014-09-02 21:53
+</div>
+<div class='ccl'>
+So I just updated my version of Gosu, I was using 0.7.5 and now I have 0.8.3.<br/><br/>Now, all of my projects the resolution is all screwed up.&#160; The window still renders fine.&#160; It still renders the correct window size based on what i have input.&#160; However, the graphics and everything else that I have coded no longer displays properly.&#160; It renders everything from the bottom left corner, but the resolution of the images is all wrong.&#160; I am not sure what to do to fix it, so hopefully someone can help me.<br/><br/>I have attached a screenshot of what it&#39;s looking like now.&#160; It&#39;s supposed to be a 16x16 board with player 1 and 2 on the bottom.<br/><br/>It happens in all my Gosu projects.<br/><br/>This is my current project:<br/><br/><img class='emi' src='http://i.imgur.com/cbFTOh0.png' alt=''/><br/><br/>Here is my older project Ruby Racer:<br/><br/><img class='emi' src='http://i.imgur.com/UbRiA9I.png' alt=''/><br/><br/>Edit:&#160; To make things even more weird, I uninstalled all versions of Gosu (so I could do a fresh install), but I tried my games afterwards and they still worked without gosu installed.
+</div>
+</div>
+
+<div class='brn' id='brn7998'>
+<div class='frm pst' id='pid7999' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid7998'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7999' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7999.html#pid7999'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1143' >Maimer</a>
+<span class='htt'>Date</span> 2014-09-02 22:35
+</div>
+<div class='ccl'>
+Here is a bit more detail on the situation that may help solve the issue.<br/><br/>I was making a gemfile for a recent game I made.&#160; I did a bundle command after making it to create the Gemfile.lock.<br/><br/>Doing this attempted to update my version of Gosu from 0.7.50 to 0.8.3.&#160; It gave me that error of &quot;failed to build native extensions&quot;.<br/>I went to the Gosu page on installed on OS X and did brew install sdl2 libogg libvorbis.<br/>After installing those 3 extensions, I was then able to install the upgraded version of Gosu (0.8.3).<br/><br/>This is when my problems started with the resolution.<br/><br/>I then uninstalled all versions of Gosu and also did a brew uninstall sdl2 libogg libvorbis.<br/>However, my games would still run as somehow Gosu 0.8.3 was still running even though I uninstalled it.<br/><br/>I then manually went into my ruby folder and manually deleted Gosu 0.8.3 and reinstalled 0.7.50.<br/><br/>Everything is &quot;back to normal&quot; now in terms of how the games look, but now whenever I run a ruby program with Gosu in it it says &quot;Ignoring gosu-0.8.3 because its extensions are not built.&#160; Try: gem pristine gosu-0.8.3&quot;, which I assume is due to some remaining pieces of Gosu 0.8.3 lying around in my system.<br/><br/>I really want to update my Gosu to the latest version, but as of right now it makes my games unusable.<br/><br/>Please advise.
+</div>
+</div>
+
+<div class='brn' id='brn7999'>
+<div class='frm pst' id='pid8002' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid7999'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8002' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8002.html#pid8002'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-09-03 12:44
+</div>
+<div class='ccl'>
+I would suggest running <code>gem uninstall gosu</code> until all versions are gone, then installing Gosu 0.8.2, which should hopefully fix this issue.<br/><br/>There is a tiny bug in Gosu 0.8.3 that can cause this issue on a Retina MacBook Pro. In related news, I&#39;ve just spent all of this morning trying to get some advanced features of Gosu to work on a Retina Mac: <a class='ura' href='https://github.com/jlnr/gosu/issues/244'>https://github.com/jlnr/gosu/issues/244</a> :) But your issue should already be fixed, and I&#39;ll try to push 0.8.4 ASAP.
+</div>
+</div>
+
+<div class='brn' id='brn8002'>
+<div class='frm pst' id='pid8003' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8002'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8003' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8003.html#pid8003'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1143' >Maimer</a>
+<span class='htt'>Date</span> 2014-09-03 16:09
+</div>
+<div class='ccl'>
+I will try what you mentioned, but just so you are aware, when this originally happened I did run gem uninstall gosu and I had 3 versions installed.&#160; I uninstalled all versions yet my programs still ran that needed gosu.&#160; There was definitely an issue where Gosu 0.8.3 was staying installed even though I had given the command to uninstall.<br/><br/>Anyway, let me try 0.8.2 and see how it goes.
+</div>
+</div>
+
+<div class='brn' id='brn8003'>
+<div class='frm pst' id='pid8004' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8003'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8004' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8004.html#pid8004'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-09-03 17:25
+<span class='htt'>Edited</span> 2014-09-03 17:31
+</div>
+<div class='ccl'>
+Hmm. Did you maybe run <code>bundle --deployment</code> (which will install the gem in a local <code>.bundle</code> subfolder), or do you use several versions of Ruby with rvm/rbenv? Uninstalling gems is the pretty much the only thing that gem developers are not responsible for :) Should have been a bug somewhere else...<br/><br/>0.8.4 is out now, as well. One thing that I&#39;ve noticed is that <code>brew install sdl2 --HEAD</code> works a lot better here than the current stable version.
+</div>
+</div>
+
+<div class='brn' id='brn8004'>
+<div class='frm pst' id='pid8006' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8004'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8006' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8006.html#pid8006'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1143' >Maimer</a>
+<span class='htt'>Date</span> 2014-09-03 22:13
+</div>
+<div class='ccl'>
+Nope, never ran bundle --deployment and I only use one version of Ruby, which is 2.0.0p451.&#160; I actually had to go into this folder:<br/><br/>/Users/&lt;myusername&gt;/.rubies/ruby-2.0.0-p451/lib/ruby/gems/2.0.0/gems/<br/><br/>and then delete the gosu-0.8.3 folder manually even though if I typed &quot;gem uninstall gosu&quot; it would tell me that no gem named gosu was installed.<br/><br/>So I am assuming that it&#39;s safe to use 0.8.4 now?&#160; I am going to update and hopefully all goes well!<br/><br/>By the way, thanks for the great gem!&#160; I know you probably deal with people and their issues all day and probably don&#39;t have enough people telling you how much fun it is to use.
+</div>
+</div>
+
+<div class='brn' id='brn8006'>
+<div class='frm pst' id='pid8007' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8006'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8007' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8007.html#pid8007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1143' >Maimer</a>
+<span class='htt'>Date</span> 2014-09-04 00:15
+</div>
+<div class='ccl'>
+So I updated to 0.8.4 and it works great!&#160; Everything is back to normal and working well.<br/><br/>I have attached some screenshots to give you a better idea of what&#39;s going on with version 0.8.3.<br/><br/>This is what it says when I run any program that uses Gosu (even after upgrading to 0.8.4):<br/><br/><img class='emi' src='http://i.imgur.com/Oi5ds6n.png' alt=''/><br/><br/><img class='emi' src='http://i.imgur.com/Xnpw4ij.png' alt=''/><br/><br/><img class='emi' src='http://i.imgur.com/H46ei3M.png' alt=''/><br/><br/>You can see the contradiction here between the gem list and when I try to uninstall.
+</div>
+</div>
+
+<div class='brn' id='brn8007'>
+<div class='frm pst' id='pid8009' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8007'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8009' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8009.html#pid8009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-09-04 12:11
+</div>
+<div class='ccl'>
+Hmm, what does &quot;<code>gem which gosu</code>&quot; or &quot;<code>gem which gosu.bundle</code>&quot; say in the <code>ruby_racer</code> directory? Does it find anything at all after you uninstall the other gem versions?<br/><br/>In recent Ruby setups, there is an <code>extensions/</code> folder next to <code>gems/</code>. Maybe something got stuck there?<br/><br/>If nothing else helps, there is always <code>rvm implode</code> ;)
+</div>
+</div>
+
+<div class='brn' id='brn8009'>
+<div class='frm pst' id='pid8010' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8009'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8010.html#pid8010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1143' >Maimer</a>
+<span class='htt'>Date</span> 2014-09-05 00:37
+</div>
+<div class='ccl'>
+So I uninstalled all versions of Gosu and ran the commands you listed.&#160; Even when I tried to run the command it listed it doesn&#39;t seem to want to do anything.<br/><br/><img class='emi' src='http://i.imgur.com/46HelI6.png' alt=''/><br/><br/>I think I will stay away from rvm implode for now...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8008' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7999.html#pid8006'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8008.html#pid8008'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-09-04 12:10
+</div>
+<div class='ccl'>
+Thanks! It&#39;s not too bad actually. Probably one &quot;support request&quot; per game that is posted to the Showcase. :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1132.html#tid1132'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1132.html#tid1132'>Gosu Exchange</a> / Resolution Issue
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7999.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

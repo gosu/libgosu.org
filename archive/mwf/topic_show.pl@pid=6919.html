@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6919 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby: Operations on strings for dialog</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6919' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=907.html#tid907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=907.html#tid907'>Gosu Exchange</a> / Ruby: Operations on strings for dialog
+</div>
+</div>
+
+<div class='frm pst' id='pid6893' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6893' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6893.html#pid6893'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2013-06-23 11:50
+</div>
+<div class='ccl'>
+Hi all.<br/><br/>I made a handy dialog system for my project, which stores the dialog within a hash (example dialog looks like that:<br/><code>&#39;Dialog&#39; =&gt; [<br/>&#160; &#160; &#160; &#160; &#160; [&quot;Talker&quot;],<br/>&#160; &#160; &#160; &#160; &#160; [&quot;Dialog Message&quot;],<br/>&#160; &#160; &#160; &#160; &#160; [[&quot;Reply 1&quot;, &quot;Resulting dialog&quot;]],<br/>&#160; &#160; &#160; &#160; &#160; [[&quot;Reply 2&quot;, &quot;Resulting dialog&quot;]],<br/>&#160; &#160; &#160; &#160; &#160; ...<br/>&#160; &#160; &#160; &#160; &#160; [[&quot;Reply N&quot;, &quot;Resulting dialog&quot;]]<br/>&#160; &#160; &#160; &#160; ]</code><br/>)<br/><br/>And it works well, includes line break etc. I also made a small function, that checks if either message or replies include &quot;[PLAYER_NAME]&quot;, it is substituted with the name of a player character that is talking:<br/><code>@message[&quot;[PLAYER_NAME]&quot;] = @player.name if @message.include?(&quot;[PLAYER_NAME]&quot;)</code><br/><br/>And I need 2 more functions like that, and I can&#39;t think of how to do them. These functions are<br/>- if message/reply includes &quot;<code>[VAR X]</code>&quot;, then it is substituted with the value of variable X (so if I&#39;d write &quot;<code>[VAR $game_width]</code>&quot;, it would write &quot;1366&quot; in dialog.<br/>and<br/>- if message/reply includes &quot;<code>[NOTES KEY]&quot;</code>, then this part is deleted, but it also calls function <code>add_note(KEY)</code>. <br/><br/>So I pretty much can&#39;t figure out how to get variable values from string. Any help will be greatly appreciated!
+</div>
+</div>
+
+<div class='brn' id='brn6893'>
+<div class='frm pst' id='pid6894' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6919.html#pid6893'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6894.html#pid6894'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-06-23 13:26
+</div>
+<div class='ccl'>
+For first one use <code>eval</code> method, e.g.<br/><code>eval &quot;$game_width&quot;</code> would return 1366<br/>Command you put into string after eval is treated like normal code.
+</div>
+</div>
+
+<div class='frm pst' id='pid6895' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6919.html#pid6893'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6895.html#pid6895'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-06-23 18:03
+</div>
+<div class='ccl'>
+String has many different methods that can do this in one way or another - <a class='ura' href='http://rdoc.info/stdlib/core/1.9.3/String'>http://rdoc.info/stdlib/core/1.9.3/String</a> :)<br/><br/>I would recommend <code>String#gsub</code> (globally substitute). You can use it to remove parts from a string by replacing them with <code>&#39;&#39;</code>, and (I didn&#39;t even know this) you can pass a <code>Hash</code> as the second argument that contains a table to replace things. You could use this for the <code>$game_width</code> part, e.g.<br/><br/><code>your_dialog_line.gsub /\$[a-z_]+/, { &quot;$game_width&quot; =&gt; &quot;1366&quot;, &quot;$player_name&quot; =&gt; &quot;Herbert&quot;, &quot;$level_name&quot; =&gt; &quot;Tutorial&quot; }</code><br/><br/>The <code>/\$[a-z_]+/</code> bit is a Regexp that will match all <code>$variable_names</code> in <code>your_dialog_line</code>.
+</div>
+</div>
+
+<div class='frm pst' id='pid6919' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6919.html#pid6893'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6919.html#pid6919'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-07-01 14:20
+</div>
+<div class='ccl'>
+jlnr shows how best to replace variables, but I wouldn&#39;t put actions inside the text. <br/><br/>Use YAML files and nested Hashes rather than code Hash/Array for all this. Much cleaner and keeps it from clogging the code and redesign it to use hashes rather than arrays:<br/><code><br/># dialogs.yml<br/>---<br/>:dialogs:<br/>&#160; :talking_to_pete:<br/>&#160; &#160; &#160; :talker: Peter Heinz<br/>&#160; &#160; &#160; :message: |<br/>&#160; &#160; &#160; &#160; &#160; Blah Blah Blah<br/>&#160; &#160; &#160; &#160; &#160; And what do you think of that, $player_name?<br/>&#160; &#160; &#160; :sound: key.ogg<br/>&#160; &#160; &#160; :actions:<br/>&#160; &#160; &#160; &#160;&#160; - [:muster_troops, 15] # Calls #muster_troops(15)<br/>&#160; &#160; &#160; &#160;&#160; - [:invade_poland] # Calls #invade_poland<br/>&#160; &#160; &#160; :replies:<br/>&#160; &#160; &#160; &#160;&#160; -<br/>&#160; &#160; &#160; &#160; &#160; &#160; :option: Get off, you fiend!<br/>&#160; &#160; &#160; &#160; &#160; &#160; :dialog: talking_to_pete_angry<br/>&#160; &#160; &#160; &#160;&#160; -<br/>&#160; &#160; &#160; &#160; &#160; &#160; :option: I love you!<br/>&#160; &#160; &#160; &#160; &#160; &#160; :dialog: talking_to_pete_lustful<br/>&#160; &#160; &#160; &#160;&#160; -<br/>&#160; &#160; &#160; &#160; &#160; &#160; :option: Do you want to buy some eggs?<br/>&#160; &#160; &#160; &#160; &#160; &#160; :dialog: talking_to_pete_bemused<br/>&#160; :talking_to_pete_bemused:<br/>&#160; &#160;&#160; ...<br/>&#160; :talking_to_pete_angry:<br/>&#160; &#160;&#160; ...<br/></code><br/><br/>EDIT: Forgot to add actions.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=907.html#tid907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=907.html#tid907'>Gosu Exchange</a> / Ruby: Operations on strings for dialog
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6919.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2160 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Workaround to use Custom Fonts in LINUX</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2160' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=332.html#tid332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=332.html#tid332'>Extending Gosu</a> / Workaround to use Custom Fonts in LINUX
+</div>
+</div>
+
+<div class='frm pst' id='pid2153' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2153.html#pid2153'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-03-07 15:37
+<span class='htt'>Edited</span> 2010-05-16 02:07
+</div>
+<div class='ccl'>
+Hi there. As I wrote in the other forum post (<a class='url' href='topic_show.pl@tid=310.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=310</a>) some time ago, I was needing custom fonts support ¡n Linux/C++. Looks like the problem in pango is not yet solved, so I started to think about something else.<br/><br/>Given I had some experience in SDL, I remembered that SDL_ttf was actually able to load custom ttf files so I thought I could write my text in a SDL_Surface, copy it to a Gosu::Bitmap and then create a Gosu::Image from it. And it works!!! It&#39;s nice!<br/><br/>I have written a class &quot;customFont&quot; with more or less the same members as Gosu::Font. The way to use it is very simple:<br/><code><br/>boost::scoped_ptr&lt;customFont&gt; myFont(new CustomFont(graphics(), &quot;nameOfFile.ttf&quot;, 30)); // being 30 the font height<br/>myFont -&gt; draw (&quot;Hello&quot;, x, y, z);<br/><br/>// members<br/>myFont -&gt; name(); // returns &quot;nameOfFile.ttf&quot;<br/>myFont -&gt; height(); // returns 30<br/>myFont -&gt; textWidth(&quot;text&quot;); <br/></code><br/>I&#39;ve used std::string instead of std::wstring because I found no easy way to get a const char * from a wstring. The other two overloaded &quot;draw&quot; member functions are not implemented because I don&#39;t need them for now, but they&#39;re pretty straightforward to create if you happen to need them.<br/><br/>To compile it, you just need to link the sdl ttf lib: &quot;g++ -o myExe ... -lSDL_ttf&quot;. Obviously you need to have installed libsdl-ttf2.0-dev or similar.<br/><br/>You can download the file here: <a class='url' href='https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log'>https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log</a><br/><br/>Please comment any errors or sugestions you come across.<br/>Thanks.
+</div>
+</div>
+
+<div class='frm pst' id='pid2154' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2154.html#pid2154'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-07 20:20
+</div>
+<div class='ccl'>
+Hmm, good idea! Actually it&#39;s just a tiny bit of code in Gosu that would need to be replaced (TextPangoFT.cpp). Then, all of Gosu&#39;s text support could use the SDL. I will look into text quality and maybe just replace the old Pango bits with SDL_ttf.<br/><br/>BTW, you can attach files after posting, so you don&#39;t have to use external webspace :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2159' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2159.html#pid2159'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-03-08 00:32
+<span class='htt'>Edited</span> 2010-03-08 01:08
+</div>
+<div class='ccl'>
+The quality is really good. In fact, there are three different methods in SDL ttf, depending on the quality you need. In my class I&#39;m using the best one, TTF_RenderUTF8_Blended. It&#39;s fully anti-aliased, with alpha channel support and all. Also, looks like SDL ttf offers some options like built-in outline.<br/><br/>BTW, I hadn&#39;t seen the attach button until I had already posted the message, but it&#39;s good to know it :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2160' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2160.html#pid2160'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-03-08 01:08
+</div>
+<div class='ccl'>
+Ouch, looks like SDL ttf lacks the ability to use a already installed font. Too bad.
+</div>
+</div>
+
+<div class='frm pst' id='pid2181' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2181.html#pid2181'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-03-09 23:02
+</div>
+<div class='ccl'>
+I think that the ability to load a font by file name is more useful than loading a preinstalled system font since you are never guaranteed the presence of a font on any given system—especially working with cross-platform development.<br/><br/>There is always the option for Gosu to use a platform-appropriate method to find the file name of an installed font as well.
+</div>
+</div>
+
+<div class='frm pst' id='pid2184' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2184.html#pid2184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-10 00:24
+</div>
+<div class='ccl'>
+I think relying on web-safe fonts is pretty reasonable :)<br/><br/>But even keeping the old code for existing fonts and using the SDL_ttf code for custom fonts would be better than the current state of things.
+</div>
+</div>
+
+<div class='frm pst' id='pid2185' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2185.html#pid2185'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-03-10 01:10
+</div>
+<div class='ccl'>
+Mm, true, but web safe fonts means the likes of Arial (gag). :)<br/><br/>Any chance of exposing some of SDL_ttf&#39;s rendering options through Gosu?
+</div>
+</div>
+
+<div class='frm pst' id='pid2195' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2195.html#pid2195'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-10 12:17
+</div>
+<div class='ccl'>
+Oh, if you knew all the dreams I have about proper typography in Gosu… ;) It&#39;s even in the To Do (wiki page) in its right place, but I am pretty slow at getting down there lately.
+</div>
+</div>
+
+<div class='frm pst' id='pid2239' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2239.html#pid2239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-03-17 23:05
+</div>
+<div class='ccl'>
+I&#39;m improving the customFont class. Right now I&#39;ve just added bold, italics and underline support. Also, latest SDL_ttf version features different types of pixel hinting and more.<br/><br/>I&#39;ve attached a testcase for you to check it out. Just decompress it. In the same folder the program expects to find a gosu folder with a proper installation of gosu (check the makefile if you have doubts)
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/39/2239/testcase.tar.gz'>testcase.tar.gz</a> - Testcase for customFont class (198k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2268' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2268.html#pid2268'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=95.html' >lobo_tuerto</a>
+<span class='htt'>Date</span> 2010-03-31 02:08
+</div>
+<div class='ccl'>
+I&#39;d love to see this already implemented in Gosu/Ruby :) pls pls jlnr *nudge nudge wink wink*
+</div>
+</div>
+
+<div class='frm pst' id='pid2270' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2270.html#pid2270'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-03-31 03:54
+</div>
+<div class='ccl'>
+Sure. but I just added it for OS X (64-bit, it worked for 32-bit before). One after another. ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2450' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2450.html#pid2450'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-05-16 02:06
+<span class='htt'>Edited</span> 2010-05-16 02:08
+</div>
+<div class='ccl'>
+Hey there.<br/><br/>I&#39;ve been improving the customFont class, because it was giving me some segfaults from time to time. There had been some changes, so you should check it out. I think that performance is a little bit better now, but it could be definitely better. Also some doxygen comments have been added.<br/><br/>You can fetch it at <br/><a class='url' href='https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log'>https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log</a><br/><br/>By the way, the class is part of my final degree project, it&#39;s a musical game called oflute. You can check it out (and svn checkout it, too ;) )&#160; at <a class='url' href='http://oflute.wordpress.com/about/'>http://oflute.wordpress.com/about/</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2452' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2452.html#pid2452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-16 04:03
+</div>
+<div class='ccl'>
+Sweet, I have been meaning to steal your code into Gosu. Is this appreciated? I haven&#39;t yet looked for a license on your part.<br/><br/>Even more awesome that you use it for a degree project. I think you&#39;re the first male from Spain to do that ;), and the third or fourth instance in which I hear of Gosu being used for university stuff. The fact that you do something musical on Linux where all of Gosu&#39;s cool audio features don&#39;t work makes me curious now ^^&quot; Be sure to add it to the showcase later!
+</div>
+</div>
+
+<div class='frm pst' id='pid2453' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2453.html#pid2453'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-05-16 11:53
+</div>
+<div class='ccl'>
+You can do what you want with the code, although some credit would be appreciated :D<br/><br/>About the project, I&#39;m actually encouraging all of my mates to use Gosu instead of plain SDL for all of their projects. I think it&#39;s a huge step in comparison to using plain SDL. Sometimes people spend a lot of time dealing with SDL_Surfaces, SDL_Images, trying to create their own object oriented adaptation of SDL, instead of actually programming games. After being suffering SDL for all of these years, Gosu has been like a gift to me. I like it a lot. <br/><br/>My project is musical, but I haven&#39;t used Gosu&#39;s sound features yet, because I don&#39;t actually play any sounds (at least at this point of the project). I&#39;m using PortAudio library to get the microphone input, the user has to play the recorder (flute). Then I analyse the input using FFT and calculate the sound pitch, to check if the user is playing the instrument properly. You can see it in action at <a class='url' href='http://www.youtube.com/watch?v=UU7YMdi-2bY'>http://www.youtube.com/watch?v=UU7YMdi-2bY</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid2461' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2461.html#pid2461'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-17 16:16
+</div>
+<div class='ccl'>
+Wow, so it&#39;s basically SingStar for the flute, too bad I don&#39;t have mine from school anymore ^^<br/><br/>BTW: Because you asked on IRC, here is a vector version of the Gosu logo, I converted it from its proprietary format to PDF. It does not have the gloss effect on it that the website version has, that one is just a quick Photoshop.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/61/2461/gosulogo.pdf'>gosulogo.pdf</a>  (5k)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid2556' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2556.html#pid2556'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-05-30 05:34
+<span class='htt'>Edited</span> 2010-05-30 05:46
+</div>
+<div class='ccl'>
+I just integrated a SDL_TTF fallback based on your code into GosuImpl/Graphics/TextUnix.cpp. It just crashed on 1.9.2pre1, but lots of things crash on 1.9.2pre1, so I am now trying it with 1.8. Thanks!<br/><br/>Edit: Never mind, it works. The UnicodeTest.rb file crashes in various, seemingly unrelated ways, but that is stuff for later.
+</div>
+</div>
+
+<div class='frm pst' id='pid2633' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2633' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2633.html#pid2633'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-06-09 17:47
+<span class='htt'>Edited</span> 2010-06-09 19:34
+</div>
+<div class='ccl'>
+Really nice!! I don&#39;t know how you solved it (I&#39;ll take a look at the code), but my customFont class was giving me a segfault if I tried something like this:<br/><code>void draw(){<br/>&#160; wstring a = L&quot;Perro&quot;;<br/>&#160; fuente -&gt; draw(a, 10, 10, 1., 1,1, Gosu::Color(0xffffffff));<br/>&#160; fuente -&gt; draw(a, 10, 30, 1., 1,1, Gosu::Color(255, 255,0,0));<br/>&#160; &#160; }</code><br/><br/>But with your implementation it works! Thanks a lot.<br/><br/>Edit: I looked at the code and see how you did it. It&#39;s more or less the same I was doing as a workaround, nice.<br/><br/>By the way, could you implement in Gosu::Font that uses TTF_FontLineSkip? It would be really very useful, specially when using Gosu::createText, the lineSpacing argument could be automatically calculated.
+</div>
+</div>
+
+<div class='brn' id='brn2633'>
+<div class='frm pst' id='pid2982' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2633'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2982' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2982.html#pid2982'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-08-07 01:57
+</div>
+<div class='ccl'>
+Two months later, I&#39;ve got stuck again on the same segmentation fault errors, even though I solved them some time ago, but I lost the files.<br/>Julian, could you give it a look? I&#39;ve been trying to debug the error but not been able to solve it. It only happens when I try to draw twice using the same font on the same game loop iteration. The debugger stack says that the error appears on the TexName method. It&#39;s quite strange because, even using new objects every time customFont::draw is called, it fails. Why? There is not supposed to be anything in common between each call.
+</div>
+</div>
+
+<div class='brn' id='brn2982'>
+<div class='frm pst' id='pid2985' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2982'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2985' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2985.html#pid2985'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-07 04:34
+</div>
+<div class='ccl'>
+If it crashes in texName then it sounds as if you are deleting the Font object before Window::draw is finished. That would cause the Font&#39;s glyphs to be waiting to be rendered, but when the window wants to render them (indirectly needing their GL texture name), it would crash.<br/><br/>Do you ever delete any Font instances? Can you provide a minimal C++ program that causes this so I can get a head start when looking at it?
+</div>
+</div>
+
+<div class='brn' id='brn2985'>
+<div class='frm pst' id='pid2987' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2985'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2987' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2987.html#pid2987'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-08-07 15:20
+</div>
+<div class='ccl'>
+Watch out! I&#39;m talking about my ancient customFont class, not Gosu::Font. The problem is that the font sizes in Windows and Linux render differently. In windows, some fonts appear smaller than they should, whereas in Linux they render properly.<br/><br/><img class='emi' src='http://img40.imageshack.us/img40/3425/comp1v.png' alt=''/><br/><br/>Then, given I can&#39;t force Gosu to use SDLTTFRenderer under Windows, I thought I could use my customFont class to render the texts using SDL on both platforms. That&#39;s when the problem appears. If you create a customFont object (obviously keeping the object alive as a class member or something like that) and draw a line of text, there&#39;s no problem. BUT, if you try to draw two lines of text (calling customFont::draw twice) on the same game loop iteration, it fails. I think it&#39;s because the image that customFont creates with the first line of text gets overwritten when draw is called for the second time. Pretty obvious I think, but I can&#39;t think of a good way of being able to call customFont::draw as many times as I want on the same game loop iteration. <br/><br/>Somehow, when you implemented my sdl idea on Gosu two months ago, I discovered a solution for my problem based on your implementation, but now I forgot it. It must be the heat of the summer :(
+</div>
+</div>
+
+<div class='brn' id='brn2987'>
+<div class='frm pst' id='pid2988' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2987'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2988' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2988.html#pid2988'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-07 16:54
+<span class='htt'>Edited</span> 2010-08-07 16:56
+</div>
+<div class='ccl'>
+Wasn&#39;t there a problem with descenders (like the lower-case &#39;q&#39;) being clipped off on Linux though? Then actually the basic problem is SDLTTFRenderer rendering things too big. If you can find a way to shrink things so that nothing will be clipped off, things should look practically identical on Windows and Linux. And then we could port that fix from customFont into Gosu::Font, finally making the customFont/SDLTTFRenderer duality obsolete? :)
+</div>
+</div>
+
+<div class='brn' id='brn2988'>
+<div class='frm pst' id='pid2989' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2988'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2989' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2989.html#pid2989'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-08-07 17:50
+</div>
+<div class='ccl'>
+Yes, there&#39;s a clipping problem, but I&#39;m using a workaround (explained in <a class='url' href='topic_show.pl@pid=2636.html#pid2636'>this post</a>)to avoid that clipping. Without using the workaround it looks like this: <br/><img class='emi' src='http://img843.imageshack.us/img843/8093/seleccin002.png' alt=''/><br/><br/>In my opinion, it&#39;s not that SDLTTFRenderer is rendering things too big, because if you look at the other image, it&#39;s the one that fits the actual size (30px) passed to the Gosu::Font constructor, but the windows&#39;s rendering stuff too small. I don&#39;t know...
+</div>
+</div>
+
+<div class='brn' id='brn2989'>
+<div class='frm pst' id='pid2991' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2989'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2991' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2991.html#pid2991'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-08 02:19
+<span class='htt'>Edited</span> 2010-08-08 02:23
+</div>
+<div class='ccl'>
+Even in the comparison image I can see at least one pixel of the &#39;J&#39; being lower than the 30px rect. I think it&#39;s that SDLTTFRenderer makes *most* glyphs 30px high, but reserves some extra space (for the ascender of d and descender of q, for example). In Gosu logic, the 30px should already cover all extra things that could possibly happen, so no clipping should ever happen. In your layout it&#39;s not that important if, but in general drawing at (x,y) with height=30 should never draw things above y and below y+30.
+</div>
+</div>
+
+<div class='brn' id='brn2991'>
+<div class='frm pst' id='pid3007' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2991'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3007' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3007.html#pid3007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-08-09 15:08
+</div>
+<div class='ccl'>
+When you tell SDL_ttf to open a font with size=30, it doesn&#39;t actually mean that all characters should fit in 30 px height. In fact, there&#39;s a function called TTF_FontHeight that will tell you the actual total height of the font, which in 99% of cases, it&#39;s higher than the font size you passed to TTF_OpenFont. For example, for the font I&#39;m using (Lake Wobegon), it returns 41px for a 30px loaded font. But that does not happen just in SDL ttf, but in many other systems as well, like Photoshop: take a look at how Photoshop renders the same font at the same size. <br/><br/><img class='emi' src='http://img641.imageshack.us/img641/4491/comp2.png' alt=''/><br/><br/>Anyway, what I meant is that the appearance of font rendering should be the same across platforms. It&#39;s ok that the pixel hinting and such things be different, but it&#39;s a pain in the a$$ to have to use different font sizes for each platform, even though it happens with some fonts and not with others.<br/><br/>Given SDL ttf works the same across platforms, why not use it as a single good solution for all the platforms?
+</div>
+</div>
+
+<div class='brn' id='brn3007'>
+<div class='frm pst' id='pid3008' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid3007'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3008' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3008.html#pid3008'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-10 01:52
+</div>
+<div class='ccl'>
+SDL_TTF only works for custom loaded .TTF files and it&#39;s a DLL (or .framework) more to include just for that. And from Gosu&#39;s perspective it is still the library that does the &quot;wrong&quot; thing, vs. all the others.<br/><br/>I agree that it might be nice if you could draw a bit of text and some parts of it would extend from that rectangle as necessary: ascenders, descenders umlaut marks ¨´`´, indented &quot; etc., as in Photoshop. However, that breaks the whole logic of how an Image works now for Gosu#from_text because if you draw at (x,y) suddenly parts of the texture would be at (x-something, y-something), similar for Gosu::Font. On the upside, the current logic is perfect if you have a rectangular area (text field etc.) to fill and want to make sure that nothing bleeds out.<br/><br/>It should be pretty easy to just scale the font down so that TTF_FontHeight is the desired value, I do the same thing on iOS, i.e. create a temporary font, calculate the size-&gt;px factor and then create the real font based on that.
+</div>
+</div>
+
+<div class='brn' id='brn3008'>
+<div class='frm pst' id='pid3009' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid3008'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3009' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3009.html#pid3009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2010-08-10 02:09
+</div>
+<div class='ccl'>
+But isn&#39;t there any method or proposal that might let us test the size of a Font image without really creating one for testing purposes? I mean, something that might let us mathematically calculate it without ever displaying it on screen.
+</div>
+</div>
+
+<div class='brn' id='brn3009'>
+<div class='frm pst' id='pid3010' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid3009'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3010.html#pid3010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-10 04:47
+</div>
+<div class='ccl'>
+Opening a TTF font, creating images and rendering something to screen are three different tasks and to get the pixel height, we only need to do the first one. There is obviously no way to get the height without opening the .TTF file, but it would be nice if SDL_TTF objects could just be resized without creating a new one, or were not tied to a size generally. Let&#39;s just hope nobody creates Font objects in a tight loop? ;)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3750' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid2987'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3750' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3750.html#pid3750'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2011-01-15 19:42
+</div>
+<div class='ccl'>
+I guess with the new changes in 0.7.26 (<a class='url' href='http://code.google.com/p/gosu/source/detail?r=1711'>http://code.google.com/p/gosu/source/detail?r=1711</a>) now this works properly, doesn&#39;t it? I&#39;ll check it out tonight.
+</div>
+</div>
+
+<div class='brn' id='brn3750'>
+<div class='frm pst' id='pid3758' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2160.html#pid3750'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3758.html#pid3758'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-16 02:57
+</div>
+<div class='ccl'>
+Yep. My list still has two SDL_TTF related issues though: bold/italic/underline doesn&#39;t seem to work, and I got some crash with Unicode once that I wanted to look into.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid2636' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2636.html#pid2636'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
+<span class='htt'>Date</span> 2010-06-09 23:11
+</div>
+<div class='ccl'>
+Hi,<br/><br/>I&#39;m afraid I&#39;ve found a bug. Take a look at the &quot;g&quot; letter:<br/><br/><img class='emi' src='http://img824.imageshack.us/img824/2295/pantallazo.png' alt=''/><br/><br/>The top image is using my customFont class, the bottom image is using the new Gosu::Font.<br/><br/>What happens? <br/>When we use Font::draw, Gosu::Font::Impl::getChar is called. This method creates a bitmap (Font.cpp, line 59):<br/><br/><code>Bitmap bmp;<br/>bmp.resize(charWidth, height);</code><br/><br/>Then, <code>drawText</code> is called. Depending on the font, drawText may call PangoRenderer&#39;s or SDLTTFRenderer&#39;s drawText. <br/><br/>The problem is that usually the surface created by SDLTTFRenderer.drawText has a bigger height than fontHeight. In my example, for instance, the height I passed as argument is 30, but the surface generated is 34 pixels tall, so the bottom pixels are cut off.<br/><br/>The only solution I&#39;ve thought is checking if the bitmap is too small, and resizing it to fit the text; At TextUnix.cpp, line 235, I would add right before <code>bmp.insert</code>:<br/><br/><code>if(bmp.height() &lt; temp.height()){<br/>&#160; &#160; bmp.resize(bmp.width(), temp.height());<br/>}<br/></code><br/><br/>so the height is enough to hold the text.
+</div>
+</div>
+
+<div class='frm pst' id='pid2640' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2640.html#pid2640'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-10 02:08
+</div>
+<div class='ccl'>
+Well, that makes it a different height than on other operating systems then. I think I should try to figure out the pixel size of the whole string and then just render it again using a scaled size so it fits the height perfectly. Argh, how ugly. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2651' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2651.html#pid2651'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-13 04:13
+</div>
+<div class='ccl'>
+Hey TheOm3ga, I am currently working on improving text support in Gosu. Right now, the SDL_TTF renderer respects neither the passed color&#39;s alpha channel nor the font flags passed to textWidth and drawText (ffBold and ffItalic, ffUnderline). Do you want to try your luck at updating the SDL_TTF class for that? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2654' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2654.html#pid2654'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-06-13 15:15
+</div>
+<div class='ccl'>
+(SDL_TTF renderer also crashes with the Unicode text given in feature_tests/UnicodeTest.rb (definition of @loc_text).)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=332.html#tid332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=332.html#tid332'>Extending Gosu</a> / Workaround to use Custom Fonts in LINUX
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2160.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

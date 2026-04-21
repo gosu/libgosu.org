@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8264 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Isometric City Generator</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8264' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1172.html#tid1172'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1172.html#tid1172'>Gosu Exchange</a> / Isometric City Generator
+</div>
+</div>
+
+<div class='frm pst' id='pid8260' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8260' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8260.html#pid8260'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1185' >redcodefinal</a>
+<span class='htt'>Date</span> 2015-01-18 20:43
+</div>
+<div class='ccl'>
+<img class='emi' src='http://36.media.tumblr.com/c17a61b43be7b6ebd7cb247da1b123da/tumblr_nictxxm3dg1rk6usmo1_1280.png' alt=''/><br/><br/>Hi guys,<br/><br/>New to the gosu forums, so I&#39;m hoping this is the right place to post&#160; this<br/>I just got into gosu a week ago, and I&#39;ve been working on porting an old piece of code called the Isometric City Generator<br/><br/><b>First some links:</b><br/><a class='url' href='https://github.com/redcodefinal/Isometric-City-Generatorv2/tree/master/Isometric-City-Generatorv2/Isometric-City-Generatorv2'>ICGV2</a> - Written in C# XNA<br/><a class='url' href='https://github.com/redcodefinal/Isometric-City-Generator-V3/tree/master/ICG'>ICGV3</a> - Also in XNA<br/><a class='url' href='https://github.com/redcodefinal/isometric-city-generator-ruby'>isometric-city-generator-ruby</a> - Current version<br/><br/>Some pictures of the old version can be found <a class='url' href='http://idevelopgames.tumblr.com'>here</a><br/><a class='url' href='http://idevelopgames.tumblr.com/post/47254607237/got-the-isometric-city-generator-ported-to-linux'>After I ported to Mono</a><br/><a class='url' href='http://idevelopgames.tumblr.com/post/47748605163/now-the-city-can-rotate-im-working-on-adding'>Rotating</a><br/><a class='url' href='http://idevelopgames.tumblr.com/post/48143305752/roads-are-working-now-i-just-need-to-tweak-the'>Rotating a city</a><br/><br/>Current pictures (of the ruby version)<br/><a class='url' href='http://idevelopgames.tumblr.com/post/108427704302/perlin-noise-generation-on-an-isometric-heightmap'>Using perlin gem</a><br/><a class='url' href='http://idevelopgames.tumblr.com/post/108409372662'>Using perlin_noise gem</a> (Disgustingly slow although I liked the way it looked better)<br/><br/>I&#39;m looking for a little advice on performance enhancement since I can barely use it right now to make anything bigger than a 40^3 render of the blocks but, I&#39;ll take any suggestions on anything, I&#39;m really looking to improve anything.<br/><br/>So I&#39;ll start with talking about the end goal<br/>My plan is to make a program that generates cities at an isometric perspective. My old versions would use a 3d array. I think this is gross. I wanted to make it dynamically generate it so I could do infinite size cities (or at least close to infinite). The ruby version is going to use perlin noise to generate building heights. Buildings will have features like windows, roofs, billboards, signs, doors. The ground will have plants, grass, roads. There should be special patches, like open stadiums, parks, airports. I&#39;d love to add freeways. There will also be specially generated buildings, either by a single texture or building one out of smaller ones. If I can make that happen I&#39;d really like to add people, cars, helocopters, all with pathing. All of these should be generated with perlin noise and not saved to memory (except for the objects like people, cars, copters, etc)<br/><br/>The Mono version was the most complete by far, adding things like rotation, special buildings like clock towers and radio towers, influence generation (making the city have a heart and suburbs).<br/><br/><b>Issues:</b><br/>Making buildings with a single texture where x or y (z is height in this case) was greater than one. I made a neat &quot;city hall&quot; sprite that I was going to plop down but, the drawing order would get messed up as a result. To see how I was drawing check <a class='url' href='https://github.com/redcodefinal/Isometric-City-Generator-V3/blob/master/ICG/IsometricFactory.cs'>IsometricFactory.cs</a>, go to the DrawBlocks method @ line 466. This draw order issue was specifically frustrating. Now I could solve it by breaking up large buildings into single blocks and rendering them that way, but I figure there should be a better way.<br/><br/>Performance is a huge issue. In C# I was barely scraping by @ 30 FPS with a city size of 30*30*7. In ruby I&#39;m barely getting 10 fps on a 20*20*20 block. I had an ok solution of not drawing blocks where there was a block obstructing it. Basically it would just check if a block was at (x+1, y+1, z+1). The hackish solution was to screenshot the window and start rendering that image instead. This sucks because you can&#39;t make a city bigger than the screen size, moving the camera will show an edge where the block fell off the screen. Of course this does boost FPS to 60. If possible I&#39;d like to do all generation and drawing dynamically, so no arrays storing what block is where and what tile is what however, the more I use gosu the more I&#39;m getting discouraged from the idea.<br/><br/>Here&#39;s my method_profiler report on <a class='url' href='https://gist.github.com/redcodefinal/88d30687a9260a11242d'>isometric_factor.rb</a><br/><br/><b>Questions:</b><br/>I&#39;d like to generate features, colors, roads, etc using perlin noise. My idea was to grab the noise at the current x, y, turn it into a string, then grab some digits after the floating point. Is there any issue with this? Is there a better way?<br/>Roads would be the biggest issue I can see with the pure dynamic method, I&#39;m not sure how to go about making them consistent. How would I figure out where a road should be placed? I want to make them more realistic (before I used straight lines and spaced them out a bit, I feel like there is a better way. <br/><br/>I would love to hear your thoughts on the project, if you have any questions I&#39;d be happy to clarify my post.
+</div>
+</div>
+
+<div class='brn' id='brn8260'>
+<div class='frm pst' id='pid8262' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8260'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8262' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8262.html#pid8262'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-01-18 21:35
+<span class='htt'>Edited</span> 2015-01-18 21:41
+</div>
+<div class='ccl'>
+Hey! Definitely the right place to post this and ask questions.<br/><br/>Performance: Instead of storing things in an array, you can group &quot;slices&quot; of the city into a macro by using <code>Window#record { lots_of_rendering_here }</code>. This will return an image that captures all rendering code in the block into OpenGL vertex array for efficient reusing. (Efficient enough that you shouldn&#39;t have to worry about skipping obscured blocks.)<br/>Of course, this is yet another way of saving things to memory - but Ruby just isn&#39;t efficient enough to do all the calculations at 60 FPS. And <code>record</code> is definitely cleaner than taking a screenshot of the window.<br/><br/>Z-order issues: Assuming that no block can contain two things at once, can&#39;t you just draw the whole box with the Z-position of the block that is the furthest away from the camera? Pretty hard (but fun) to reason about it without playing with the code :)
+</div>
+</div>
+
+<div class='brn' id='brn8262'>
+<div class='frm pst' id='pid8263' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8262'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8263' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8263.html#pid8263'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1185' >redcodefinal</a>
+<span class='htt'>Date</span> 2015-01-18 22:38
+<span class='htt'>Edited</span> 2015-01-18 23:11
+</div>
+<div class='ccl'>
+I actually used the Window#record method in my commit before I posted this. However, I had no idea that it would record things off screen! Crazy nifty! Thanks for the tip on that. Question about that though. When I start the record the width and height I supply doesnt seem to matter at all, as long as it is &gt; 0. Even weirder when I draw the image at 0,0 the top of the image is off the top of the screen, which doesn&#39;t really make any sense. I&#39;m not to familiar with vertex buffers and the gosu rdocs say that Window#record returns something that is &quot;<a class='url' href='../../rdoc/Gosu/Window.html#record-instance_method'>not a true image</a>&quot;. Is this position issue an expected behaviour? How do I figure out what the true coords of the image are?<br/><br/>I&#39;ll try to explain the issue better. If you look at the Draw method in IsometricFactory.cs @ line 466 <a class='url' href='https://github.com/redcodefinal/Isometric-City-Generator-V3/blob/master/ICG/IsometricFactory.cs#L466'>here</a> (turns out you can link directly to the line in github!), you can see I basically just use three for loops for x, y, z. However, once you add a building whose texture is one file where width &gt; 1 || height &gt; 1 it starts to overlap and be overlapped by draws before and after. Also I predict that using slices would screw this up if a large sized building was made across a slice.<br/><br/>EDIT: Realized you are a dev! Thanks for your work on gosu! I love it so far. :)
+</div>
+</div>
+
+<div class='brn' id='brn8263'>
+<div class='frm pst' id='pid8264' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8263'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8264.html#pid8264'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-01-18 23:10
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; When I start the record the width and height I supply doesnt seem to matter at all, as long as it is &gt; 0.</p></blockquote><br/>It matters if you want to query <code>image.width</code> or <code>image.height</code>, and when you rotate the image around its centre or use <code>Image#draw_quad</code>. If you don&#39;t plan on doing either of these things, you can just pass <code>1, 1</code>.<br/><br/><blockquote><p>&gt; Even weirder when I draw the image at 0,0 the top of the image is off the top of the screen, which doesn&#39;t really make any sense.</p></blockquote><br/>I agree that it&#39;s not intuitive, but there is no elegant &#39;fix&#39;, and it might actually have creative uses. :)<br/><br/>EDIT: It&#39;s a pleasure, thanks for playing with Gosu!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8267' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8260'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8267' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8267.html#pid8267'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2015-01-20 19:16
+</div>
+<div class='ccl'>
+How about trying the simplex noise generator (regular Perlin noise sucks) with my 100% C gem: <a class='ura' href='https://github.com/Spooner/ruby-perlin'>https://github.com/Spooner/ruby-perlin</a> (you say you&#39;ve tried &quot;perlin&quot; and &quot;perlin_noise&quot; gems and found the latter slow, but &quot;prettier&quot;). Should be fast...<br/><br/>Alternatively, use a noise shader and read the pixels to get the heights (this can be done with Ashton and would be even faster, but a little more fiddly).
+</div>
+</div>
+
+<div class='brn' id='brn8267'>
+<div class='frm pst' id='pid8268' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8267'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8268' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8268.html#pid8268'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1185' >redcodefinal</a>
+<span class='htt'>Date</span> 2015-01-21 04:56
+</div>
+<div class='ccl'>
+For &#39;perlin_noise&#39;, the issue is that it does not generate the random values on the fly, rather it stores 256 random values and interpolates between them. Here are my results of a simple benchmark running [x, y] on perlin&#39;s Perlin::Generator#[] and perlin_noise&#39;s Perlin::Noise#[] (<a class='url' href='https://gist.github.com/redcodefinal/f8b254024e9474f023d3'>gist</a>). perlin&#39;s Perlin::Generator#[] was 266 times more efficient. As it turns out, I was using yours the whole time (your <a class='url' href='https://rubygems.org/gems/perlin'>gem</a> is already on rubygems.org)! Thanks for writing such a great implementation! I was wondering how I could go about making more hills, especially in the emptier parts of the map. Would <a class='url' href='https://github.com/redcodefinal/isometric-city-generator-ruby/blob/master/isometric_factory.rb#L52'>get_perlin_noise(x,y)</a>.abs do the trick? It seems to but maybe there is something else I can do.
+</div>
+</div>
+
+<div class='brn' id='brn8268'>
+<div class='frm pst' id='pid8269' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8268'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8269' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8269.html#pid8269'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2015-01-21 12:35
+</div>
+<div class='ccl'>
+Using abs isn&#39;t a great plan, since it will mean a steep angular change when the sign changes. Better to add 1 and divide by 2 so you get a range of 0..1 rather than -1..1. I&#39;d recommend using some harmonics &amp; multiple generators at once, adding the result, in order to get something that looks less like noise and more like terrain.
+</div>
+</div>
+
+<div class='brn' id='brn8269'>
+<div class='frm pst' id='pid8270' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8269'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8270' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8270.html#pid8270'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1185' >redcodefinal</a>
+<span class='htt'>Date</span> 2015-01-21 16:20
+</div>
+<div class='ccl'>
+Sounds good! I&#39;m interested in learning more about harmonics and multiple generators. Do you have any resources to point me in the right direction?
+</div>
+</div>
+
+<div class='brn' id='brn8270'>
+<div class='frm pst' id='pid8271' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8270'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8271.html#pid8271'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2015-01-21 16:22
+</div>
+<div class='ccl'>
+Nope, sorry, I just played with the numbers until I got something nice ;) You could try some googling and hope...<br/><br/>Best I can do is to suggest you&#160; look at Ashton, which uses glsl shaders to make more interesting patterns with multiple generators. Obviously not directly useful to you.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8272' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8264.html#pid8260'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8272.html#pid8272'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2015-01-23 15:56
+</div>
+<div class='ccl'>
+Nice progress!<br/><br/>I had a thought for roads: what if you randomly generate attractive points using noise as a height map.&#160; The more attractive a place, the more traffic needs to get to it. (generate more roads from this point) and have your road generator focus on connecting the attractive points. This would mimic how roads / highways get built in real life. Just my $0.02.<br/><br/>Good luck.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1172.html#tid1172'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1172.html#tid1172'>Gosu Exchange</a> / Isometric City Generator
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8264.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

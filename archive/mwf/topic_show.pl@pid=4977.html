@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4977 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>non-returning values</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4977' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=653.html#tid653'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=653.html#tid653'>Gosu Exchange</a> / non-returning values
+</div>
+</div>
+
+<div class='frm pst' id='pid4972' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4972' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4972.html#pid4972'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-19 10:39
+<span class='htt'>Edited</span> 2011-10-19 13:55
+</div>
+<div class='ccl'>
+I have a strange problem here.<br/><br/>I&#39;ll first copy you the code, than I&#39;ll tell you where is the problem:<br/><br/>class Finestra &lt; Gosu::Window<br/>...<br/>&#160; def update<br/>&#160; &#160; ...<br/>&#160; &#160; if (@menu == true) and (@click == &quot;menu&quot;) and (button_down? Gosu::MsLeft) and (mouse_x &gt; 300) and (mouse_x &lt; 701) and (mouse_y &gt; 434) and (mouse_y &lt; 635) then<br/>&#160; &#160; &#160;&#160; ...<br/>&#160; &#160; &#160; @n_ga = true<br/>&#160; &#160; &#160; @creat_pas = 1<br/>&#160; &#160; &#160; @fed_name = &quot;&quot;<br/>&#160; &#160; &#160; @fed_tag = &quot;&quot;<br/>&#160; &#160; &#160; @down = false<br/>&#160; &#160; end<br/>&#160; &#160; if (@n_ga == true) then<br/>&#160; &#160; &#160; case @creat_pas<br/>&#160; &#160; &#160; when 1 then self.key(@fed_nome, @down, @creat_pas)<br/>&#160; &#160; &#160; ...<br/>&#160; &#160; &#160; end<br/>&#160;&#160; end<br/><br/>... <br/><br/>&#160; def key (m_t, m_down, m_pas)<br/>&#160; &#160; if (m_down == false) then<br/>&#160; &#160; &#160; if (button_down? Gosu::KbA) then m_t = m_t + &quot;A&quot;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; m_down = true&#160; <br/>&#160; &#160; &#160; elsif (button_down? Gosu::KbB) then m_t = m_t + &quot;B&quot;<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; m_down = true<br/>&#160; &#160; &#160; ...<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; if (m_down == true) then<br/>&#160; &#160; &#160; unless (button_down? Gosu::KbA) or (button_down? Gosu::KbB) or (button_down? Gosu::KbC) or (button_down? Gosu::KbD) or (button_down? Gosu::KbE) or (button_down? Gosu::KbF) or (button_down? Gosu::KbG) or (button_down? Gosu::KbH) or (button_down? Gosu::KbI) or (button_down? Gosu::KbJ) or (button_down? Gosu::KbK) or (button_down? Gosu::KbL) or (button_down? Gosu::KbM) or (button_down? Gosu::KbN) or (button_down? Gosu::KbO) or (button_down? Gosu::KbP) or (button_down? Gosu::KbQ) or (button_down? Gosu::KbR) or (button_down? Gosu::KbS) or (button_down? Gosu::KbT) or (button_down? Gosu::KbU) or (button_down? Gosu::KbV) or (button_down? Gosu::KbW) or (button_down? Gosu::KbX) or (button_down? Gosu::KbY) or (button_down? Gosu::KbZ) then<br/>&#160; &#160; &#160; &#160; m_down = false<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; return m_t, m_down, m_pas<br/>&#160; end<br/>end<br/><br/>Now: what this code is trying to do is to &quot;write&quot; a sentence. The sentence is the @fed_name variable. The initial value of this one is &quot;&quot; (nothing, yeah).<br/><br/>When the player presses a button on the keyboard (a letter, the space, or enter) the method &quot;Key&quot; add a letter to @fed_name. This means that if I press A, than Key does &quot;&quot; + &quot;A&quot; = &quot;A&quot;. If I then press B, then the sentence will be &quot;A&quot; + &quot;B&quot; = &quot;AB&quot;, and so on.<br/><br/>The m_down variable is necessary so that if you keep the button pressed than the game won&#39;t add the same letter at every frame.<br/><br/>What I know is that this code basically should work: now it&#39;s in a different method, so that every time I have to write something I can call the self.key method, and all is ok. But in a previous version that code was written directly where I had to write something, and all worked how it had to work.<br/><br/>What happens now is that when i return the variables, they assume their original value.<br/><br/>For instance: the inital value for @fed_name is &quot;&quot;. I pass it to the method, and @fed_name becomes the m_t (<b>m</b>essage_<b>t</b>ext, that&#39;s why I named it that way). If I press A, than m_t becomes &quot;A&quot; (&quot;&quot; + &quot;A&quot;, as I was saying), and m_down becomes true. Then, when I return the values, they return to be &quot;&quot; and false. I know this because if i make a test, adding &quot;puts(m_t)&quot; before the return, the message &quot;A&quot; appears in the command window, while if I add that instruction after the return then nothing appears in the window. And if I keep pressed the A key, than at every frame appears a &quot;A&quot; in the command window, and if I release it then in the command window appers anything (this also means that the m_down value turns back to false, because when it&#39;s true the game doesn&#39;t add the letter to the m_t string). I also tried to put a &quot;puts(@fed_name)&quot; after the &quot;case @creat_pas&quot; instruction, and also here the @fed_name variable appears to be empty.<br/><br/>So it&#39;s all linked to that return instruction.<br/><br/>Suggestions?
+</div>
+</div>
+
+<div class='brn' id='brn4972'>
+<div class='frm pst' id='pid4975' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4977.html#pid4972'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4975' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4975.html#pid4975'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-19 19:49
+<span class='htt'>Edited</span> 2011-10-19 20:03
+</div>
+<div class='ccl'>
+Well, you are not quite understanding how return works or when you need to pass around variables. To fix your code, I think you need to set the values of the instance variables to the values that are returned:<br/><br/><code>when 1 then @fed_nome, @down, @creat_pas = key(@fed_nome, @down, @creat_pas)</code><br/><br/>However, there is no reason at all to pass instance variables around in methods on the same instance, so you should just<br/><br/><code>when 1 then key</code><br/><br/>and just alter the instance variable values directly in the #key method!<br/><br/>EDIT:<br/><br/>Also, you can make the code a lot cleaner by creating a map of codes to letters, thus:<br/><code><br/>&#160; KEY_MAP = {&#160; Gosu::KbA =&gt; &quot;A&quot;, Gosu::KbB =&gt; &quot;B&quot;, Gosu::KbC =&gt; &quot;C&quot; , ...etc... }<br/><br/>&#160; def key<br/>&#160; &#160; @button_held_down = KEY_MAP.keys.find { |k| button_down? k } <br/>&#160; &#160; if @button_held_down<br/>&#160; &#160; &#160; @m_t += KEY_MAP[@button_held_down]<br/>&#160; &#160; end<br/>&#160; end</code><br/><br/>OK, this is pretty inefficient and probably needs some re-writing for your game, but saves about 100 lines of code :D On the other hand, I&#39;d recommend using Chingu, which manages keys and their conditions for you to a significant degree, which would simplify things even more.
+</div>
+</div>
+
+<div class='brn' id='brn4975'>
+<div class='frm pst' id='pid4976' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4977.html#pid4975'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4976' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4976.html#pid4976'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-19 20:41
+<span class='htt'>Edited</span> 2011-10-19 20:54
+</div>
+<div class='ccl'>
+wo! thanks a lot!<br/><br/>I have downloaded Chingu and I&#39;m trying to understand how it works right now. I have to say that probably I&#39;ll use it for some other project, because I&#39;m already at a good point with the game right now, and even if it isn&#39;t absolutely a perfect code, you know... it works, that&#39;s ok, and it&#39;s not the right time to begin using a new library. Just to avoid the mess, you know.. :\
+</div>
+</div>
+
+<div class='brn' id='brn4976'>
+<div class='frm pst' id='pid4977' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4977.html#pid4976'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4977.html#pid4977'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-19 20:44
+</div>
+<div class='ccl'>
+The thing with Chingu is that it is just an extension to Gosu; you can use as much or as little as you want to of it. You could, for example, just use the key handling stuff to get key events, rather than having to poll all keys yourself manually. However, if what I said about how better to handle keys in vanilla Gosu made sense to you, then that is fine too :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid4983' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4977.html#pid4975'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4983' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4983.html#pid4983'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-10-20 07:28
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;&#160; KEY_MAP = {&#160; Gosu::KbA =&gt; &quot;A&quot;, Gosu::KbB =&gt; &quot;B&quot;, Gosu::KbC =&gt; &quot;C&quot; , ...etc... }</p></blockquote><br/>Or just Gosu&#39;s <code>button_id_to_char(id)</code>. Maybe even better would be to use <code>Gosu::TextInput</code> but that requires a different program structure, so you can leave that for later.
+</div>
+</div>
+
+<div class='brn' id='brn4983'>
+<div class='frm pst' id='pid4985' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4977.html#pid4983'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4985.html#pid4985'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-10-20 15:42
+</div>
+<div class='ccl'>
+Oops, shows how long it is since I actually did any Gosu :D Thanks for setting me right!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=653.html#tid653'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=653.html#tid653'>Gosu Exchange</a> / non-returning values
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4977.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

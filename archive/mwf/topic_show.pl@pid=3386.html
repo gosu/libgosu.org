@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3386 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Pathfinding with Chipmunk</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3386' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=476.html#tid476'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=476.html#tid476'>Gosu Exchange</a> / Pathfinding with Chipmunk
+</div>
+</div>
+
+<div class='frm pst' id='pid3379' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3379' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3379.html#pid3379'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-12 05:36
+</div>
+<div class='ccl'>
+I know there has been some work done with A* pathfinding in Gosu.&#160; However, I was wondering if anyone had used Gosu in conjunction with Chipmunk and had done pathfinding already.&#160; I ask this partially because I am still learning and do not know much about pathfinding, and partially to reduce code duplication (which is to say, I&#39;m lazy, and would rather put effort into what makes my game unique rather than the pathfinding code).<br/><br/>I am currently using the Chipmunk space to represent a horizontal plane for use in an action RPG, in case anyone wants to know what this is for and how Chipmunk comes into play.&#160; Also, I am using the ruby version of Gosu.
+</div>
+</div>
+
+<div class='brn' id='brn3379'>
+<div class='frm pst' id='pid3382' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3379'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3382' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3382.html#pid3382'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-10-12 18:29
+</div>
+<div class='ccl'>
+I don&#39;t really see the connection between path-finding and a physics engine. And a side on 2D physics engine will generally be move left or move right.
+</div>
+</div>
+
+<div class='brn' id='brn3382'>
+<div class='frm pst' id='pid3383' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3382'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3383' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3383.html#pid3383'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-13 00:41
+</div>
+<div class='ccl'>
+That&#39;s why I said I was using the Chipmunk space to represent a horizontal plane, rather than the vertical plane often used in side-scrollers.&#160; Also, the connection is that the physics engine already holds the positions for where everything is, so I wouldn&#39;t want a path-finding algorithm that created some sort of bitmap as an intermediary stage.&#160; I&#39;m not even sure if a path-finding algorithm like that exists, but there definitely is a collision detection algorithm like that.<br/><br/>Here&#39;s an example of path-finding using the glaze physics engine<br/><a class='url' href='http://jaketastic.com/blog/heuristic-uninformed-realtime-adaptive-2d-pathfinding-using-ray-casting/'>http://jaketastic.com/blog/heuristic-uninformed-realtime-adaptive-2d-pathfinding-using-ray-casting/</a><br/>I&#39;m pretty sure similar logic will carry over into Chipmunk.&#160; <br/><br/>However, as I said before, I just want to see if anyone has already done this and would let me use their code before I go ahead and do it myself.&#160; I&#39;m pretty new to path-finding, so I figured if someone had already done something it would probably be a lot better than my solution.
+</div>
+</div>
+
+<div class='brn' id='brn3383'>
+<div class='frm pst' id='pid3386' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3383'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3386' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3386.html#pid3386'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2010-10-13 17:10
+</div>
+<div class='ccl'>
+ah I saw horizontal and thought side scrolling. although chipmunk not so hot at top down stuff, I tried faking a top down racing game in chipmunk, it kinda worked but not really nicely.<br/><br/>I&#39;ve only done grid based pathfinding.<br/><br/>Heres an easy grid based pathfinding tutorial.<br/><a class='url' href='http://www.gamedev.net/reference/programming/features/astar/'>http://www.gamedev.net/reference/programming/features/astar/</a><br/><br/>Implementing A grid based pathfinding with chipmunk isn&#39;t any harder than not. Just the object coords are held in chipmunk instead.
+</div>
+</div>
+
+<div class='brn' id='brn3386'>
+<div class='frm pst' id='pid3387' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3386'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3387' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3387.html#pid3387'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-14 06:07
+<span class='htt'>Edited</span> 2010-10-14 06:36
+</div>
+<div class='ccl'>
+I read that tutorial already, and while helpful, I&#39;m trying to make a game that is not restricted to grid-based locations.&#160; From the link I posted, it seems as if a modified version of A* can be used in a non-grid-based space by substituting the grid tiles with waypoints.&#160; This comes from the fact that A* really only cares about the pathways between the tiles, and not the tiles themselves per say.&#160; Or, put another way, it&#39;s the edges which are important, not the nodes.<br/><br/>I&#39;m explaining this really badly though ^_^;<br/><br/>All in all, thanks for trying to help anyway.&#160; <br/><br/>That top-down racer sounds kinda cool.&#160; It&#39;s too bad Chipmunk didn&#39;t work out for that though, though I suppose I kinda see why.&#160; One would have thought it&#39;d just be the same as the Chipmunk integration demo in terms of getting things to move and such.&#160; That&#39;s basically what I did for this game, except I assumed the units used by Chipmunk were meters instead of pixels.&#160; Ah, but I&#39;m getting off topic...
+</div>
+</div>
+
+<div class='brn' id='brn3387'>
+<div class='frm pst' id='pid3389' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3387'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3389' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3389.html#pid3389'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-14 12:47
+<span class='htt'>Edited</span> 2010-10-14 12:49
+</div>
+<div class='ccl'>
+I used an overhead 2D chipmunk in the last version of my Alpha Channel game (my LD18 entry, though I didn&#39;t re-release the Chipmunk version). The only difference between overhead and side-on usage of a physics engine is whether you apply gravity to it, so I don&#39;t see that Chipmunk is inappropriate for any system in which 2D planes are used (you can even have 2.5D since you can give items a Z attribute and only things on the same Z will collide).<br/><br/>And yes, A* works on any graph, whether it is a grid or another shape. I don&#39;t think the ray-tracing system is really workable - it would work, I suppose, but I can&#39;t see that it would be less complex or more efficient than A*.
+</div>
+</div>
+
+<div class='brn' id='brn3389'>
+<div class='frm pst' id='pid3393' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3389'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3393' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3393.html#pid3393'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-14 20:00
+</div>
+<div class='ccl'>
+I am actually using Chipmunk for what you could call a 2.5D environment, as I also have a z variable tacked on to control height.<br/><br/>However, is it possible to use A* for a dynamic environment? By this I mean, if you had moving barriers, would it still work? From what little I have seen, A* does not seem to work in that scenario.&#160; <br/><br/>The ray-tracing system is certainly not any less complex, but I was considering it in order to be able to get pathfinding in a dynamic environment.<br/><br/>Side note: You could always use gravity in this scenario to simulate a strong wind in one direction or something.
+</div>
+</div>
+
+<div class='brn' id='brn3393'>
+<div class='frm pst' id='pid3394' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3393'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3394' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3394.html#pid3394'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-14 20:16
+</div>
+<div class='ccl'>
+A* would need to be recalculated each time the environment changed, unless it ignored barriers (that is, the AI would wait at the barrier until it opened, rather than seeking alternative, longer paths when its way was blocked; alternatively a blocked route could just be given a higher cost rather than breaking the edge, to prevent the AI from running all the way around the map to avoid the blockage). It has to be recalculated each time the target moves anyway, to see if there are shorter paths opened up, so I don&#39;t see recalculation as a great problem.<br/><br/>The choice is also a lot about the omniscience of the AI. If you use A* (and, say, add cost for a temporarily blocked route) then you assume the AI has full knowledge of the position of the player, the barriers and knows the map implicitly. In a ray-tracing system, you are simulating the AI having no knowledge at all, beyond what it can see, which is probably not what you want in a game (rather than a simulation).
+</div>
+</div>
+
+<div class='brn' id='brn3394'>
+<div class='frm pst' id='pid3395' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3394'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3395' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3395.html#pid3395'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-15 07:55
+</div>
+<div class='ccl'>
+I was thinking of using a ray-tracing system for wide open spaces and field locations, where both you and the AI would have little knowledge of the terran.&#160; However, I think it would be good it integrate A* as well in bases or fortresses or what-have-you controlled by AI opponents.&#160; The rationale being that the AI should have a good sense of the terrain in an area controlled by NPCs.&#160; <br/><br/>However, I want the AI to attempt to guess where the player is going, based on what it has &quot;seen&quot; or &quot;heard&quot; or something similar, rather than by being omniscient and knowing exactly where the player is.&#160; Any ideas on how to do this? Basically, I would like the AI to be able to figure out, &quot;oh he&#39;s going down that corridor, so I&#39;ll go this way and flank him.&quot; I suppose this bleeds over into other areas of AI though.
+</div>
+</div>
+
+<div class='brn' id='brn3395'>
+<div class='frm pst' id='pid3396' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3395'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3396' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3396.html#pid3396'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2010-10-15 10:09
+</div>
+<div class='ccl'>
+I don&#39;t really have much experience of implementing this sort of AI, so I&#39;m not sure what level of help I can give. However, I will suggest that AI in games that don&#39;t cheat _to_some_degree_ generally appear stupid (or grind the game to a snail&#39;s pace with excessive calculations).<br/><br/>For example, the AI in Arma are not scripted and work off the realistic information they have available in the very open terrain. They often appear extremely dumb compared to AI in other FPS games, which usually use very restrictive maps with scripted behaviour. However, they are very versatile and can manage to do _something_ being dropped into absolutely any map in any situation. It is swings and roundabouts...
+</div>
+</div>
+
+<div class='brn' id='brn3396'>
+<div class='frm pst' id='pid3400' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3396'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3400.html#pid3400'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-16 00:56
+</div>
+<div class='ccl'>
+From what little I know of game programming, I would have to agree with you.&#160; Game programming seems to be about ways to fake stuff really well imo.<br/><br/>Hmm, that&#39;s rather interesting, I&#39;ll have to take that into consideration, thanks a lot.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3397' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3395'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3397' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3397.html#pid3397'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-15 13:31
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Basically, I would like the AI to be able to figure out, &quot;oh he&#39;s going down that corridor, so I&#39;ll go this way and flank him.&quot;</p></blockquote><br/>Leading to the player quickly jumping into and out of long corridors to make the AI take detours? Often, when you try to make the AI smart, it just ends up looking even more stupid once the player figures out the rules... :)
+</div>
+</div>
+
+<div class='brn' id='brn3397'>
+<div class='frm pst' id='pid3399' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3386.html#pid3397'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3399.html#pid3399'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-10-16 00:54
+<span class='htt'>Edited</span> 2010-10-16 01:05
+</div>
+<div class='ccl'>
+I would make it so the AI would go look in a location based on where the player was last seen, not the actual location of the player.&#160; That should mitigate this problem.<br/><br/>Basically, what I want is something like how the AI is designed in Splinter Cell: Conviction, where the AI will look for you where you were last spotted.&#160; However, it would be modified slightly to store you velocity and position when you are spotted, so it can try to guess where you are headed.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=476.html#tid476'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=476.html#tid476'>Gosu Exchange</a> / Pathfinding with Chipmunk
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3386.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

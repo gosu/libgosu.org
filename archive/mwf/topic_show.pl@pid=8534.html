@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8534 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Using Tk with Gosu for the GUI?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8534' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1218#tid1218'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1218#tid1218'>Gosu Exchange</a> / Using Tk with Gosu for the GUI?
+</div>
+</div>
+
+<div class='frm pst' id='pid8531' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8531' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8531.html#pid8531'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=964.html' >bigtunacan</a>
+<span class='htt'>Date</span> 2015-08-31 03:02
+</div>
+<div class='ccl'>
+I&#39;m trying to use Gosu to create a custom image editor for one of my games and I need some pretty heavy GUI needs in this case.&#160; I thought using Tk would be an easier way to do the GUI piece, but I&#39;m having issues with the application locking up whenever I try to use both Gosu and Tk in the same project.&#160; I&#39;m wondering if anyone else has done this and maybe could point me in the direction of some basic example code that could help me to get going in the right direction?
+</div>
+</div>
+
+<div class='brn' id='brn8531'>
+<div class='frm pst' id='pid8532' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8531'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8532' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8532.html#pid8532'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-31 09:36
+</div>
+<div class='ccl'>
+I&#39;ve looked into several Ruby GUI toolkits (Tk, wx, Fox...), and they all seemed to be pretty obscure or half-broken on most platforms, so I haven&#39;t spent time integrating any of them with Gosu. The state of GUI programming in Ruby is terrible :|<br/><br/>Anyway, the biggest problem is that both Gosu and Tk (or any of the other UI/eventing libraries) have their own mainloop. Gosu&#39;s is here:<br/><br/><a class='ura' href='https://github.com/gosu/gosu/blob/master/src/Window.cpp#L179-L219'>https://github.com/gosu/gosu/blob/master/src/Window.cpp#L179-L219</a><br/><br/>In theory I could unroll the <code>while (true)</code> loop and introduce a new method <code>tick</code> that handles a single step in the <code>while</code> loop, so that <code>show</code> becomes a simple <code>while tick; end</code>.<br/>Then in Tk, you could just never call <code>show</code>, but keep the <code>Gosu::Window</code> running by calling <code>tick</code> regularly from Tk (a timer?). Do you feel like doing a little research work? I can push a beta gem.
+</div>
+</div>
+
+<div class='brn' id='brn8532'>
+<div class='frm pst' id='pid8533' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8532'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8533' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8533#pid8533'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=964.html' >bigtunacan</a>
+<span class='htt'>Date</span> 2015-08-31 11:44
+</div>
+<div class='ccl'>
+I agree that most Ruby GUI toolkits have been left to rot, which is the sole reason I use Tk with Ruby since it is part of the standard library and I actually kept maintained (<a class='ura' href='http://ruby-doc.org/stdlib-2.0.0/libdoc/tk/rdoc/'>http://ruby-doc.org/stdlib-2.0.0/libdoc/tk/rdoc/</a>).<br/><br/>If you can release a beta gem with the support you&#39;ve described here I would love to give it spin.
+</div>
+</div>
+
+<div class='brn' id='brn8533'>
+<div class='frm pst' id='pid8534' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8533'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8534' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8534.html#pid8534'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-31 15:25
+</div>
+<div class='ccl'>
+Cool. I&#39;ve pushed a <code>--pre</code> version of Gosu that has <code>Window#tick</code> as described above. Seems to work fine from a quick test, but I haven&#39;t integrated it with any libraries, only called <code>tick</code> in a <code>while</code> loop. It is still possible that Gosu&#39;s <code>tick</code> eats OS events that Tk is waiting for, or the other way around.<br/><br/><code>w = Gosu::Window.new(...)<br/>loop { break if not w.tick }</code><br/><br/>Note that everything related to Gosu has to be called from the main thread.<br/><br/>Looking forward to your results :)
+</div>
+</div>
+
+<div class='brn' id='brn8534'>
+<div class='frm pst' id='pid8535' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8534'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8535' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8535.html#pid8535'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=964.html' >bigtunacan</a>
+<span class='htt'>Date</span> 2015-09-01 03:33
+</div>
+<div class='ccl'>
+Thanks; that works great.<br/><br/>I put a code gist up of a hello world style sample that I tested it out with to get started; Posting it here in case someone else can make use of this as well.<br/><br/><a class='urs' href='https://gist.github.com/bigtunacan/99833dccbeab0359c796'>https://gist.github.com/bigtunacan/99833dccbeab0359c796</a>
+</div>
+</div>
+
+<div class='brn' id='brn8535'>
+<div class='frm pst' id='pid8536' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8535'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8536' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8536#pid8536'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-01 08:13
+</div>
+<div class='ccl'>
+Oh, Tk has an <code>.update</code> method? I thought it only had the full <code>.mainloop</code>. Do we even need <code>Window#tick</code> then? I&#39;ve just created a TkRoot in a <code>Window</code> constructor and called <code>.update</code> on it from <code>Window#update</code>, and then just called <code>window.show</code>. The result seems to be the same as in your gist - a tiny Tk window alongside a working <code>Gosu::Window</code>.
+</div>
+</div>
+
+<div class='brn' id='brn8536'>
+<div class='frm pst' id='pid8537' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8536'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8537' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8537.html#pid8537'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=964.html' >bigtunacan</a>
+<span class='htt'>Date</span> 2015-09-01 09:25
+</div>
+<div class='ccl'>
+Tk has the update method, but it&#39;s considered an anti-pattern to use it (Under certain cases, which I have not personally encountered, the Tk loop can get out of sync with events when using update directly).&#160; The recommended mechanism is use the .after method that is used as a callback from mainloop.&#160; So that is what I tried initially after your update.&#160; It looked something like this.<br/><br/>def step(window, root)<br/>&#160; window.tick<br/>&#160; root.after(1000, step(window, root)<br/>end<br/><br/>root = TkRoot.new { title &quot;ex1&quot; }<br/>TkLabel.new(root) { text &quot;hello world&quot;; pack { padx 15; pady 15; side &quot;left&quot;; }; }<br/>root.after(1000, step(window, root))<br/>root.mainloop<br/><br/>The expected behavior there would be that Tk calls step once in approximately 1 second from now and then step adds itself back so that it will happen again.&#160; But this was still causing some type of contention between Tk and Gosu and you end up with an unresponsive application.
+</div>
+</div>
+
+<div class='brn' id='brn8537'>
+<div class='frm pst' id='pid8538' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8537'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8538.html#pid8538'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-02 19:13
+</div>
+<div class='ccl'>
+Ah, too bad. I&#39;ll take a look myself, but I&#39;ll put it on my lower-priority list if I can&#39;t figure it out quick enough.<br/><br/>It seems that using Tk&#39;s <code>#update</code> should be good enough for internal tools like level editors, though? That&#39;s actually good to know!
+</div>
+</div>
+
+<div class='frm pst' id='pid8555' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8534.html#pid8537'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8555#pid8555'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-13 10:52
+<span class='htt'>Edited</span> 2015-09-13 10:57
+</div>
+<div class='ccl'>
+Wait, why do you call <code>root.after(1000, step(window, root))</code>? You need to pass the <code>step</code> as a proc/lambda, or it will be evaluated immediately.<br/>(Why does <code>after</code> even accept two arguments? Mysteries of Ruby/Tk... :))<br/><br/>This works for me:<br/><br/><code>window = GameWindow.new<br/>root = TkRoot.new { title &quot;ex1&quot; }<br/>TkLabel.new(root) { text &quot;hello world&quot;; pack { padx 15; pady 15; side &quot;left&quot;; }; }<br/>step = proc { window.tick; root.after(16, &amp;step) }<br/>step.call # start Gosu::Window#tick timer loop<br/>root.mainloop</code><br/><br/>I think I&#39;ll leave <code>Window#tick</code> in the final Gosu 0.10.2, but mark it is experimental in the docs. Thanks for testing, and for nudging me to refactor Gosu a little more.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1218#tid1218'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1218#tid1218'>Gosu Exchange</a> / Using Tk with Gosu for the GUI?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8534.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7742 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>hackable game editor project?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7742' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1085.html#tid1085'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1085.html#tid1085'>Gosu Exchange</a> / hackable game editor project?
+</div>
+</div>
+
+<div class='frm pst' id='pid7732' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7732' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7732.html#pid7732'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2014-02-17 17:46
+</div>
+<div class='ccl'>
+Hi,<br/><br/>Is there some source code around easily hackable for a game game editor? <br/><br/>What I need, is to create a visual map of point &quot;above&quot; a picture.<br/>Then recording this &quot;path&quot; or &quot;polygon&quot; into my own data structure.<br/><br/>So I could associate this &quot;map&quot; to the image and perform fill / masq / collision detection, etc.<br/><br/>Of course, load / save, edit point add / remove / join would be very nice to have, read: not to recode.<br/><br/>Do you have seen this kind of tool? <br/><br/>like that: <img class='emi' src='http://molo.bee.free.fr/screenshot/bee_happy_screenshot_103.png' alt=''/><br/><br/>Regards,<br/>Sylvain.
+</div>
+</div>
+
+<div class='brn' id='brn7732'>
+<div class='frm pst' id='pid7733' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7732'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7733' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7733.html#pid7733'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-02-18 02:30
+</div>
+<div class='ccl'>
+Why not let the computer do (most of) the work? Just turn your image into a silhouette, scale it down to the resolution of your grid (or use the &quot;Pixelate&quot; function, if you have one), and do a threshold to get the &quot;solid&quot; bits where you want them. You can either use the low-resolution bitmap for collision directly, or run it through a vectorization program. In fact, you could vectorize the full-size silhouette and reduce the number of edges to something manageable.<br/><br/>I made an illustration:<br/><br/><img class='emi' src='https://dl.dropboxusercontent.com/u/5754740/Picachu%20Collision%20Map.png' alt=''/><br/><br/>And here is the <a class='url' href='https://dl.dropboxusercontent.com/u/5754740/Picachu%20Mask.svg'>resulting vector file</a> (SVG).
+</div>
+</div>
+
+<div class='brn' id='brn7733'>
+<div class='frm pst' id='pid7734' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7733'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7734' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7734.html#pid7734'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2014-02-18 05:23
+</div>
+<div class='ccl'>
+Hi RunnerPack,<br/><br/>Yes, it&#39;s a possibility. Which tool(s) did you used? <br/><br/>I did some try some time ago, as I&#39;m not well skilled in picture manipulation, it takes me longer too learn gimp and co, than hacking code…<br/>But I can try.<br/><br/>Regards,<br/>Sylvain.
+</div>
+</div>
+
+<div class='brn' id='brn7734'>
+<div class='frm pst' id='pid7735' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7734'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7735' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7735.html#pid7735'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-02-18 06:02
+</div>
+<div class='ccl'>
+I used PaintShop Pro 8, but Paint.NET or, like you said, The GIMP, would work if you want something free. Of course, if you want to try automating it, there&#39;s always ImageMagick. You could probably do it in Ruby with Gosu and Texplay, too.
+</div>
+</div>
+
+<div class='brn' id='brn7735'>
+<div class='frm pst' id='pid7736' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7735'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7736' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7736.html#pid7736'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2014-02-20 07:14
+</div>
+<div class='ccl'>
+Thank you RunnerPack,<br/><br/>I did manage to perform the shadow with The gimp. But in didn&#39;t find the svg part, yet…<br/>How did you compute the path surrounding the pixelized shadow?<br/><br/><img class='emi' src='http://molo.bee.free.fr/screenshot/bee_happy_screenshot_104.png' alt=''/><br/><br/>I opened the SVG you&#39;ve posted and it could be a great result to achieve, thanks.<br/><br/>May be the good question should be: <br/><br/>Which library will I use to perform collision detection and or, what is its ability to open such or such path format?<br/>or shape, using Chipmunk vocabulary for example…<br/><br/>We didn&#39;t answered the topic question, though: is there already some game editor project around?<br/><br/>Regards,<br/>Sylvain.
+</div>
+</div>
+
+<div class='brn' id='brn7736'>
+<div class='frm pst' id='pid7737' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7736'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7737' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7737.html#pid7737'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2014-02-21 12:31
+</div>
+<div class='ccl'>
+I&#39;ve found it, with Gimp:<br/><br/>1. Make a shadow, by selecting by color or magic tools or following a shadow tutorial on youtube<br/>2. you should have a layer with only the shadow<br/>3. unselect all in the shadow layer and do a filter &gt; blur &gt; pixelate<br/>4. reselect the result, fill it in black, if needed<br/>5. convert the selection to a path, excellent tutorial available too<br/>6. in the path selector (A pane in the layer window) you can export the path it&#39;s an svg file…<br/><br/><img class='emi' src='http://molo.bee.free.fr/screenshot/bee_happy_screenshot_105.png' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn7737'>
+<div class='frm pst' id='pid7738' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7737'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7738.html#pid7738'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-02-21 17:05
+</div>
+<div class='ccl'>
+Hey, that&#39;s cool; I didn&#39;t know GIMP could export the path like that (I haven&#39;t used it much, and it was a long time ago).<br/><br/>I actually used a commercial program (Vector Magic) to do the conversion, but there are free alternatives. Inkscape, for example, has bitmap tracing. I don&#39;t know how it performs, but it&#39;s probably good enough for this.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7739' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7736'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7739.html#pid7739'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-02-21 17:17
+</div>
+<div class='ccl'>
+I&#39;m glad you figured it out.<br/><br/>As for an &quot;off-the-shelf&quot; game editor that supports this, that I don&#39;t know. Frankly, if you&#39;re looking for an all-in-one solution for making games, you&#39;ve come to the wrong place :p Gosu is great at what it does, but it has very specific design goals which don&#39;t generally include much &quot;hand-holding&quot;...<br/><br/>For those who don&#39;t want to engineer their own solution, there are things like Unity, Construct 2, Stencyl, and the like. One of those probably has something you can use. In fact, I wouldn&#39;t be surprised to see something that automated this entire process – just drop images into it and get usable physics &quot;objects&quot; out of with no work at all. It&#39;s probably going to cost you, though.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7740' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7732'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7740' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7740.html#pid7740'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2014-02-22 10:21
+</div>
+<div class='ccl'>
+Thank you RunnerPack,<br/><br/>I followed your hints using open source software and some tutorial.<br/>keeping this way I&#39;ve a path in a SVG file that I need to load, and transform into my polygon data structure, should not be very difficult.<br/><br/><blockquote><p>&gt; As for an &quot;off-the-shelf&quot; game editor that supports this, that I don&#39;t know. </p></blockquote><br/>Sorry to have been unclear about, but I was just looking for a piece of open source Ruby code, having some basic path editing behavior.<br/>As I have understood the library chipmunk use a concept of &quot;shape&quot; which is exactly that. You have to provide a path matching the sprite.<br/><br/>Just a bit lazy and didn&#39;t want to recode all the stuff, or see it as community participation… ;)<br/><br/>Regards,<br/>Sylvain.
+</div>
+</div>
+
+<div class='brn' id='brn7740'>
+<div class='frm pst' id='pid7741' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7740'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7741' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7741.html#pid7741'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2014-02-23 19:14
+</div>
+<div class='ccl'>
+Oh, so I completely missed the point, then... Well, the only thing I have that&#39;s even remotely related is a SketchUp plugin that exports ActionScript3 (Flash) source for Box2D physics objects. I doubt if any of it would be useful in this case. I do look forward to seeing anything you end up sharing, though.
+</div>
+</div>
+
+<div class='brn' id='brn7741'>
+<div class='frm pst' id='pid7742' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7742.html#pid7741'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7742.html#pid7742'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2014-02-24 05:16
+</div>
+<div class='ccl'>
+Ok, <br/><br/>Now that I&#39;m playing with svg I&#39;ve found that exported path from The Gimp have duplicated points…<br/>And that modified svg from Inkscape have relatives coordinates…<br/><br/>I didn&#39;t find an SVG parser library yet. One which seems to extract the path nicely… There&#39;s some&#160; chunk of code on github, though:<br/><br/><a class='ura' href='https://github.com/ippa/svg_parser'>https://github.com/ippa/svg_parser</a>&#160; a bit old, very limited parser can&#39;t read path from Gimp because of XPATH expression limited to Inkscape,&#160; use hpricot (deprecated) <br/><a class='ura' href='https://github.com/rfrankel/Parse-SVG-Paths'>https://github.com/rfrankel/Parse-SVG-Paths</a> not tested yet, more complete, more recent lib<br/><a class='ura' href='http://www.inkscapeforum.com/viewtopic.php?f=5&amp;t=4601'>http://www.inkscapeforum.com/viewtopic.php?f=5&amp;t=4601</a> many be some hint or lib here SVG Path specification and lib 2Geom.<br/><br/>Of course my click and pointing shape editor in my own ruby code, would have been probably working already, if I&#39;ve not explored the SVG way…<br/>But application like Inkscape and Gimp, are of course much more powerful.<br/><br/>I&#39;m still looking for game editor&#39;s code if someone have seen a base with load/save/export features.<br/><br/>Regards,<br/>Sylvain.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1085.html#tid1085'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1085.html#tid1085'>Gosu Exchange</a> / hackable game editor project?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7742.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

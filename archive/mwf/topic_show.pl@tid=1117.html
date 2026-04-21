@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu development documentation?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1117.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1117.html#tid1117'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1117.html#tid1117'>Extending Gosu</a> / Gosu development documentation?
+</div>
+</div>
+
+<div class='frm pst' id='pid7900' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7900' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7900.html#pid7900'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1141' >spajus</a>
+<span class='htt'>Date</span> 2014-07-13 03:02
+</div>
+<div class='ccl'>
+Is there any documentation available that would walk through setting up the development environment, building the project from source, running tests, etc., so it would be easier to start contributing to Gosu? There are issues with <code>help-wanted</code> label: (<a class='ura' href='https://github.com/jlnr/gosu/issues?labels=help-wanted'>https://github.com/jlnr/gosu/issues?labels=help-wanted</a>), but no info about how to build everything. For instance, this is what I get when I try to compile it intuitively using provided Rake tasks (on Mac):<br/><br/><code><br/>➜&#160; gosu git:(master) ✗ rake compile<br/>cd tmp/universal.x86_64-darwin13/gosu/2.0.0<br/>make<br/>compiling ../../../../ext/gosu/gosu_wrap.cxx<br/>../../../../ext/gosu/gosu_wrap.cxx:2181:10: fatal error: &#39;Gosu/Gosu.hpp&#39; file not found<br/>#include &lt;Gosu/Gosu.hpp&gt;<br/>&#160; &#160; &#160; &#160;&#160; ^<br/>1 error generated.<br/>make: *** [gosu_wrap.o] Error 1<br/>rake aborted!<br/>Command failed with status (2): [make...]<br/>/Library/Ruby/Gems/2.0.0/gems/rake-compiler-0.9.2/lib/rake/extensiontask.rb:152:in <code>block (2 levels) in define_compile_tasks&#39;<br/>/Library/Ruby/Gems/2.0.0/gems/rake-compiler-0.9.2/lib/rake/extensiontask.rb:151:in </code>block in define_compile_tasks&#39;<br/>Tasks: TOP =&gt; compile =&gt; compile:universal.x86_64-darwin13 =&gt; compile:gosu:universal.x86_64-darwin13 =&gt; copy:gosu:universal.x86_64-darwin13:2.0.0 =&gt; tmp/universal.x86_64-darwin13/gosu/2.0.0/gosu.bundle<br/>(See full trace by running task with --trace)<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn7900'>
+<div class='frm pst' id='pid7901' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1117.html#pid7900'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7901' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7901.html#pid7901'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-07-13 10:24
+<span class='htt'>Edited</span> 2014-07-13 10:37
+</div>
+<div class='ccl'>
+Not yet, but making Gosu easier to hack is definitely a priority! Thanks for checking out the github labels. The plan is to add a hacking guide &amp; a front page link to both the guide, and the help-wanted tickets soon.<br/><br/>For testing things in Ruby, I usually do something like this:<br/><br/><code>export GOSU_RELEASE_VERSION=0.8.0.pre7 # or whatever version you want to use for testing<br/>rake gem &amp;&amp; sudo gem install pkg/gosu-$GOSU_RELEASE_VERSION.gem &amp;&amp; ruby my_test_script.rb</code><br/><br/>If you are changing Gosu&#39;s Ruby interface, you also have to run <code>rake swig</code> in-between, to regenerate the Ruby wrapper from <code>gosu.swg</code>.<br/><br/>And then I just use the up-arrow to repeat the last step. This takes like a minute though, so for faster, C++-based development, I always keep an Xcode project of the Tutorial game around that includes the Gosu source files as well. Xcode is smart enough only to recompile the files that have actually changed, which brings the feedback loop down to a second. But for that I don&#39;t know the instructions off the top of my head. =/
+</div>
+</div>
+
+<div class='brn' id='brn7901'>
+<div class='frm pst' id='pid7904' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1117.html#pid7901'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7904.html#pid7904'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1141' >spajus</a>
+<span class='htt'>Date</span> 2014-07-13 12:39
+</div>
+<div class='ccl'>
+Thanks, this was helpful, I was able to build it!
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1117.html#tid1117'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1117.html#tid1117'>Extending Gosu</a> / Gosu development documentation?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1117.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

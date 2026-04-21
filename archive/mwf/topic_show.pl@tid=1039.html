@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Help with pathfinding:find closest path if cant reach target</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1039.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1039.html#tid1039'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1039.html#tid1039'>Gosu Exchange</a> / Help with pathfinding:find closest path if cant reach target
+</div>
+</div>
+
+<div class='frm pst' id='pid7545' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7545' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7545.html#pid7545'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2013-12-06 17:29
+</div>
+<div class='ccl'>
+(Tried to fit thread into given space)<br/><br/>Hi all. I&#39;ve slightly upgraded my pathfinding, so that it actively searches path between points. This has one pro, and one con:<br/>Pro =&gt; is that the path is constantly refreshed; moving objects won&#39;t make player suddenly block or glitch<br/>Con =&gt; when walking, if one of other moving objects (ex. other player character) blocks only way to reach the target, player stops and pathfinding gets erased. And I have a problem with that thing.<br/><br/>I reckon upgrading path finding in the way that whenever path can&#39;t be created, it looks for a closest reachable point and returns path to this point. This wouldn&#39;t be that hard to do (if path can&#39;t be created, just calculate approximate distance between path ends and target), but the problem is that my pathfinding (script below) works &quot;backwards&quot; - it goes from target to start point. This creates the problem that the &quot;nearest point to target&quot; (in this case: player) <i>will</i> be unreachable. <br/><br/>Thanks to a friend I&#39;ve found one way I could kind of fix it - series of &quot;waypoints&quot; to which player would go (ofc. closest to target) if he can&#39;t reach the target itself. I guess it will work, but if anyone could help me with making it more advanced (so finding nearest available point and walking towards it) I would be really grateful. <br/><br/>My pathfinding code is here:<br/><code>def get_path(sx, sy, ex, ey)<br/>&#160; &#160; map = []<br/>&#160; &#160; for y in 0...@map_size[0]<br/>&#160; &#160; &#160; map[y] = []<br/>&#160; &#160; &#160; for x in 0...@map_size[1]<br/>&#160; &#160; &#160; &#160; map[y][x] = 0<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; map[ey][ex] = 1<br/>&#160; &#160; old_positions = []<br/>&#160; &#160; new_positions = []<br/>&#160; &#160; old_positions &lt;&lt; [ex, ey]<br/>&#160; &#160; depth = 2<br/>&#160; &#160; depth.upto(100) { |step|<br/>&#160; &#160; &#160; loop do<br/>&#160; &#160; &#160; &#160; break if old_positions[0] == nil<br/>&#160; &#160; &#160; &#160; x, y = old_positions.shift<br/>&#160; &#160; &#160; &#160; return [true, map, step] if x == sx and y + 1 == sy<br/>&#160; &#160; &#160; &#160; if passable?(x, y + 1) and map[y+1][x] == 0 then<br/>&#160; &#160; &#160; &#160; &#160; map[y+1][x] = step<br/>&#160; &#160; &#160; &#160; &#160; new_positions &lt;&lt; [x, y+1]<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; return [true, map, step] if x-1 == sx and y == sy<br/>&#160; &#160; &#160; &#160; if passable?(x - 1,y) and map[y][x-1] == 0 then<br/>&#160; &#160; &#160; &#160; &#160; map[y][x-1] = step<br/>&#160; &#160; &#160; &#160; &#160; new_positions &lt;&lt; [x-1, y]<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; return [true, map, step] if x+1 == sx and y == sy<br/>&#160; &#160; &#160; &#160; if passable?(x + 1,y) and map[y][x + 1] == 0 then<br/>&#160; &#160; &#160; &#160; &#160; map[y][x + 1] = step<br/>&#160; &#160; &#160; &#160; &#160; new_positions &lt;&lt; [x+1, y]<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; return [true, map, step] if x == sx and y - 1 == sy<br/>&#160; &#160; &#160; &#160; if passable?(x, y - 1) and map[y-1][x] == 0 then<br/>&#160; &#160; &#160; &#160; &#160; map[y-1][x] = step<br/>&#160; &#160; &#160; &#160; &#160; new_positions &lt;&lt; [x, y-1]<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; old_positions = new_positions<br/>&#160; &#160; &#160; new_positions = []<br/>&#160; &#160; }<br/>&#160; &#160; return [false, nil, nil]<br/>&#160; end</code><br/><br/>And explanation - algorithms looks around the given tile, and assigns each surrounding tile a number (i+1, starting at 0). This keeps going on, until it reaches player. Then it returns the path <code>path = [boolean: path_finished?, [map], current_step]</code> which player follows (goes from a to b, where b = a - 1. Fairly simple, but it works.<br/><br/>Thanks a lot for any help =)
+</div>
+</div>
+
+<div class='brn' id='brn7545'>
+<div class='frm pst' id='pid7551' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1039.html#pid7545'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7551.html#pid7551'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2013-12-07 16:01
+</div>
+<div class='ccl'>
+I played around with some A* a while ago, the repo is here: <br/><a class='ura' href='https://github.com/shawn42/polaris'>https://github.com/shawn42/polaris</a><br/><br/>You can install it via gem install polaris<br/><br/>It operates on a map and location objects that you define. The common case of 2D can be found in the repo, but I&#39;ve used it for 3D space and I&#39;m sure you could use it for hex pathing too.<br/><br/>pull requests welcome&#160; &#160; :D
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1039.html#tid1039'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1039.html#tid1039'>Gosu Exchange</a> / Help with pathfinding:find closest path if cant reach target
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1039.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

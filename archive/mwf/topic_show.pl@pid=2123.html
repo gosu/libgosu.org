@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2123 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Win32 + Ruby + Gems = Fewer Problems!</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2123' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=324.html#tid324'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=324.html#tid324'>Gosu Exchange</a> / Win32 + Ruby + Gems = Fewer Problems!
+</div>
+</div>
+
+<div class='frm pst' id='pid2120' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2120.html#pid2120'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-02-25 02:53
+</div>
+<div class='ccl'>
+I realize this isn&#39;t directly gosu related, but you guys are really smart and rubygems has got me seriously bummed...<br/><br/>I&#39;ve installed Ruby with the &quot;one-click&quot; installer (1.8 and/or 1.9; same problems with either) and &quot;gem install x&quot; very rarely works (basically only for &quot;ruby-only&quot; gems). Any time a gem has to compile native code, something always breaks. I&#39;ve installed the MinGW compiler tools (i.e. the &quot;devkit&quot;). I&#39;ve even got TWO versions of Visual Studio, AND cygwin installed!<br/><br/>For example, I just tried to install mixology (so I can try out Legend of Purple Dot) and it looks like it&#39;s trying to use a combination of M$ and gcc tools. It calls &quot;nmake&quot; (which can&#39;t be found until I run &quot;vcvars32.bat&quot;) but the makefile seems to call gcc. Is that right? Even if it is, that fails too, and I don&#39;t know why. As I said, I have two copies of gcc installed.<br/><br/>Another example: ruby-opengl. Running &quot;gem install ruby-opengl&quot; fails (as I&#39;ve come to expect...) but if I specifically go to rubyforge and manually download and install &quot;ruby-opengl-0.??.?-x86-mswin32.gem&quot;, it works fine (after I add GL headers to MinGW). So, why doesn&#39;t it automatically get the Win32 version? Is there a way to tell it to do so? I know &quot;gem help install&quot; doesn&#39;t say anything about it...<br/><br/>For that matter, why do gems come in specific win32 versions, anyway? Can&#39;t a single gem package be made to install on any system? There aren&#39;t separate MacOSX and Linux ones, so what&#39;s so special about Windows (especially considering they use the same Ruby and GCC)?<br/><br/>If the only answer is to keep downloading gems manually (or install Linux :P ) I can accept that, but I&#39;m hoping someone has a simple fix for making the whole &quot;gems&quot; system work like it&#39;s supposed to on my PC.<br/><br/>Thanks for reading.
+</div>
+</div>
+
+<div class='frm pst' id='pid2121' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2121.html#pid2121'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=44' >disciplex</a>
+<span class='htt'>Date</span> 2010-02-25 09:53
+</div>
+<div class='ccl'>
+MacOSX and Linux are POSIX compliant so gems can be built from source on both platforms with little changes to the actual source. Windows is a different beast entirely and has it&#39;s own proprietry platform. I would first check which version of rubygems you have installed, I believe with version &lt;= 1.0 you had to supply any extra parameter in order to specify the gem be built for Windows. You can check with &quot;gem -v&quot;, I am currently running version 1.3.6.<br/><br/>It may be worth doing an update just to be sure, &quot;gems update --system&quot;. Then try again.
+</div>
+</div>
+
+<div class='frm pst' id='pid2122' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2122.html#pid2122'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-02-25 10:57
+</div>
+<div class='ccl'>
+The problem is that RubyGems&#39; documentation is traditionally more than vague for non-Ruby gems. For example, lacking any official documentation, I&#39;ve tagged the binary Gosu gem win32-msvc60 or something like that. That let &quot;gem install gosu&quot; recognize it on Windows, even though I build it with msvc80 (or msvc90?). Now the one-click installer switched to being compiled with mingw instead of msvc60, and this means binary gems need to be tagged as i386-mingw32 or something like that. I don&#39;t even know if there are 64bit versions or not. I also don&#39;t know if there is any potential danger in cheating around with this tag.<br/><br/>tl;dr, if you want to bypass the mess that is gem platform matching, just install gems like this:<br/><br/><code>gem install gosu --platform=mswin32</code><br/><br/>Also, there are special pre-built gems for OS X too, at least some (Gosu!) ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2123' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2123.html#pid2123'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-02-25 22:05
+</div>
+<div class='ccl'>
+hello Runner,<br/><br/>mingw and win32 are different platforms as far as rubygems is concerned. <br/><br/>I have a clean windows system with just mingw and the devkit installed and the mixology gem compiles and installs fine, i suggest you get rid of your other C compilers and stick with mingw since there&#39;s probably conflicting definitions of some environment variables causing the problem.<br/><br/>The reason gems typically have a win32 version (as well as the &#39;normal version&#39;) is because that gem is a native extension and gem writers do not trust windows users to have a C compiler handy. The win32 version then is a precompiled windows binary whereas the &#39;normal version&#39; is source code that is compiled during gem installation (this is usually fine for *nix and macosx users)<br/><br/>I&#39;ve actually looked at the setup for the ruby-opengl gem and it looks like it SHOULD work so i think it&#39;s a gem hosting screwup that&#39;s causing the problem.
+</div>
+</div>
+
+<div class='frm pst' id='pid2126' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2126.html#pid2126'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-02-26 06:32
+<span class='htt'>Edited</span> 2010-02-26 06:35
+</div>
+<div class='ccl'>
+Hey, thanks for all the great info, guys!<br/><br/>@disciplex: I was aware of the POSIX thing, but I always thought that was what the &quot;devkit&quot; add-on was for. Thanks for the tip about updating rubygems, BTW. I&#39;m now running 1.3.6, too (I forgot to check before updating, but it was obviously older than that).<br/><br/>@jlnr: Actually, now I&#39;m not sure how I installed Ruby... Both the 1.8 and 1.9 I have seem to have been compiled with some version of MSVC (there is an &quot;msvcrt-ruby18.lib&quot; for example). Is that why compiling doesn&#39;t work? Do I need a version compiled with mingw to use the devkit to compile extensions?<br/><br/>@banister: I think you&#39;re right about environment variables being (at least part of) the problem, but I&#39;ll just have to try to fix it so that they all get along, since I can&#39;t really get rid of any of the other compilers. I would also prefer not to have to install mingw, if at all possible. Is it really necessary to have the full MinGW AND the &quot;devkit&quot; files? What about MSYS?
+</div>
+</div>
+
+<div class='frm pst' id='pid2128' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2128.html#pid2128'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-02-26 11:51
+</div>
+<div class='ccl'>
+I have never heard about a devkit, if any gem requires compiling on Windows I&#39;d call it broken ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid2130' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2130.html#pid2130'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-02-26 17:37
+</div>
+<div class='ccl'>
+<a class='url' href='http://rubyinstaller.org/download.html'>http://rubyinstaller.org/download.html</a><br/><br/>The problem was that I was trying to use that devkit with the old, VC6 version of Ruby. When I installed Ruby and the devkit from that site, mixology built without a hitch!<br/><br/>Like you, jlnr, I would also think gems with native win32 versions shouldn&#39;t have to be built. I think banister explained it as a bug with the gem host. But, in this case, I&#39;m kind of glad mixology didn&#39;t work. The native windows gem on ruby-forge is version 0.1.0, but now that I can compile extensions, I can use the 0.2.0 version! (Now I just need to figure out how to use mixology ;)<br/><br/>Now, I&#39;m off to install gosu, texplay, etc. and start having fun with my new, faster, non-broken Ruby environment! Yay! :D
+</div>
+</div>
+
+<div class='frm pst' id='pid2132' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2132.html#pid2132'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-02-26 18:26
+</div>
+<div class='ccl'>
+Sorry for the double-post, but it seems I spoke too soon...<br/><br/>There are still problems building both ruby-opengl and gosu. I forgot about the fact that the OpenGL lib is called &quot;libGL&quot; on *nix and &quot;libopengl32&quot; on Windows... Without changes to the gem itself, I see no way to resolve this, so I&#39;ll still be forced to manually download the win32 gems until they fix whatever is broken there.<br/><br/>Oh, well... At least I only have to do it once/not very often.
+</div>
+</div>
+
+<div class='frm pst' id='pid2134' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2134.html#pid2134'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2010-02-26 23:24
+<span class='htt'>Edited</span> 2010-02-26 23:41
+</div>
+<div class='ccl'>
+you only need the devkit files iirc, it includes a copy of mingw bundled with it. You don&#39;t need msys either. Luis Lavena (the guy behind rubyinstaller and devkit) is awesome and his tools are really pick up and play, i was very impressed with rubyinstaller and devkit, it all worked exactly as advertised for me with no hiccups at all.<br/><br/>regarding mixology the only diff. b/w 0.1.0 and 0.2.0 is that 0.2.0 is 1.9.1 compatible. It&#39;s a pity they didn&#39;t update the windows binary when i upgraded the source. If you need help using mixology just send me a msg.
+</div>
+</div>
+
+<div class='frm pst' id='pid2135' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2135.html#pid2135'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-02-27 20:47
+</div>
+<div class='ccl'>
+Well, I got it working pretty well, now. I got some handy info from Luis himself on the RubyInstaller Google group. He pointed out that the latest version of ruby-opengl doesn&#39;t have a win32 gem available in the rubygems.org repository. There&#39;s one in the RubyForge project downloads, though. So, I installed the 0.60.0 version by specifying the version number and the full platform specification. That allowed it to install, and gosu, texplay, and DevIL all fell into line after it, so now I&#39;m all set up.<br/><br/>I manually copied the contents of the 0.60.1 gem from RubyForge over the 0.60.0 install in my gems folder, and it hasn&#39;t broken anything yet, so I&#39;ll try that until they update the repo (which I&#39;ve mailed them about).<br/><br/>I still want to try to set gem up so I don&#39;t have to supply the platform each time, but it&#39;ll do for now. I&#39;m wondering if the &quot;update&quot; functionality might be smart enough to take it from here without the hand-holding (assuming the win32 gems are there for it to find) but I&#39;ll just have to wait and see...<br/><br/>Thanks again, folks!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=324.html#tid324'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=324.html#tid324'>Gosu Exchange</a> / Win32 + Ruby + Gems = Fewer Problems!
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2123.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

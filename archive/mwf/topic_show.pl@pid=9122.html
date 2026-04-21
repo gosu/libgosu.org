@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9122 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby Chipmunk Integration beginner hacking gosu-example</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9122' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1324.html#tid1324'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1324.html#tid1324'>Gosu Exchange</a> / Ruby Chipmunk Integration beginner hacking gosu-example
+</div>
+</div>
+
+<div class='frm pst' id='pid9116' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9116' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9116.html#pid9116'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2017-01-30 06:41
+</div>
+<div class='ccl'>
+Hi,<br/><br/>I&#39;m testing the physics, notably to have collision detection.<br/><br/>First I read <a class='ura' href='https://github.com/gosu/gosu/wiki/Ruby-Chipmunk-Integration'>https://github.com/gosu/gosu/wiki/Ruby-Chipmunk-Integration</a> OK.<br/><br/>I just would like to add a border to the window limit (600x600)<br/>in: <a class='ura' href='https://github.com/gosu/gosu-examples/blob/master/examples/chipmunk_integration.rb'>https://github.com/gosu/gosu-examples/blob/master/examples/chipmunk_integration.rb</a><br/><br/>So the ship will collide on the border and probably bounce back into the defined area.<br/><br/>I&#39;m thinking about adding a box of that size and add collision with :ship, but for now I don&#39;t know about how to set this box.<br/><br/>mass, moment, and how to tell chipmunk that it is a bounding box, the ship is inside the box?<br/><br/>I&#39;m keep reading…<br/><br/>Regards,<br/>Sylvain.
+</div>
+</div>
+
+<div class='brn' id='brn9116'>
+<div class='frm pst' id='pid9121' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9122.html#pid9116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9121' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9121.html#pid9121'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2017-02-01 06:38
+</div>
+<div class='ccl'>
+I found it, the trick is to define 4 CP::Shap::Segment<br/><br/>I found this old code: <a class='ura' href='https://github.com/PhilCK/Chipmunk-Examples/blob/master/02_slides.rb'>https://github.com/PhilCK/Chipmunk-Examples/blob/master/02_slides.rb</a><br/><br/><code><br/>class Wall<br/>&#160; attr_reader :a, :b<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; <br/>&#160; def initialize(window, shape, pos)<br/>&#160; &#160; # window needs to have a attr_accessor for :space<br/>&#160; &#160; @window = window<br/><br/>&#160; &#160; @color = Gosu::Color::WHITE<br/><br/>&#160; &#160; @a = CP::Vec2.new(shape[0][0], shape[0][1])<br/>&#160; &#160; @b = CP::Vec2.new(shape[1][0], shape[1][1])<br/><br/>&#160; &#160; @body = CP::Body.new(CP::INFINITY, CP::INFINITY)<br/>&#160; &#160; @body.p = CP::Vec2.new(pos[0], pos[1])<br/>&#160; &#160; @body.v = CP::Vec2.new(0,0)<br/><br/>&#160; &#160; @shape = CP::Shape::Segment.new(@body, @a, @b, 1)<br/>&#160; &#160; @shape.e = 0.5<br/>&#160; &#160; @shape.u = 1<br/><br/>&#160; &#160; @window.space.add_static_shape(@shape)<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @window.draw_line(@body.p.x + a.x, @body.p.y + a.y, @color,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; @body.p.x + b.x, @body.p.y + b.y, @color,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ZOrder::Wall)<br/>&#160; end<br/>end<br/></code><br/><br/>I integrated it here: <br/><br/><a class='ura' href='https://github.com/Sylvain303/gosu-examples/blob/test_chipmunk/examples/chipmunk_integration.rb#L218'>https://github.com/Sylvain303/gosu-examples/blob/test_chipmunk/examples/chipmunk_integration.rb#L218</a>
+</div>
+</div>
+
+<div class='brn' id='brn9121'>
+<div class='frm pst' id='pid9122' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9122.html#pid9121'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9122' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9122.html#pid9122'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-02-01 06:44
+</div>
+<div class='ccl'>
+Thanks for reporting back. I&#39;ve linked the PhilCK/Chipmunk-Examples repo from the Ruby-Chipmunk-Integration wiki page, so helpfully it will be easier to find for the next developer.
+</div>
+</div>
+
+<div class='brn' id='brn9122'>
+<div class='frm pst' id='pid9142' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9122.html#pid9122'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9142.html#pid9142'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2017-02-12 05:41
+</div>
+<div class='ccl'>
+cool :)<br/><br/>Could you put the URL link, where did you do that?
+</div>
+</div>
+
+<div class='frm pst' id='pid9143' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9122.html#pid9122'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9143.html#pid9143'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1119.html' >sylvain303</a>
+<span class='htt'>Date</span> 2017-02-12 05:44
+</div>
+<div class='ccl'>
+Ho, found!<br/><br/><a class='ura' href='https://github.com/gosu/gosu/wiki/Ruby-Chipmunk-Integration#ruby-chipmunk-integration'>https://github.com/gosu/gosu/wiki/Ruby-Chipmunk-Integration#ruby-chipmunk-integration</a><br/>At the end of the paragraph.<br/><br/>See also this topic, I posted some links to be merged some where…<br/><br/>ruby and chipmunk &lt;<a class='ura' href='topic_show.pl@tid=1325.html'>https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=1325</a>&gt;
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1324.html#tid1324'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1324.html#tid1324'>Gosu Exchange</a> / Ruby Chipmunk Integration beginner hacking gosu-example
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9122.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

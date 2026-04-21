@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu&#39;s OpenGL implementation vs. Python&#39;s SDL</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=966.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=966.html#tid966'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=966.html#tid966'>Gosu Exchange</a> / Gosu&#39;s OpenGL implementation vs. Python&#39;s SDL
+</div>
+</div>
+
+<div class='frm pst' id='pid7253' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7253' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7253.html#pid7253'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1023' >misbehavens</a>
+<span class='htt'>Date</span> 2013-09-18 20:28
+</div>
+<div class='ccl'>
+I&#39;ve been thinking a lot lately about Ruby vs. Python. Not the languages, but their libraries and overarching philosophies that drive their direction.<br/><br/>Python&#39;s culture follows a philosophy that there should only be one way to do something; one tool for the job. For example, pygame makes use of a library called <a class='url' href='http://www.libsdl.org'>SDL</a> (Simple DirectMedia Layer). It handles the 2D/3D graphics, sound, input, etc like Gosu does, but unlike Gosu, it is not a game library. It only has one job. As far as I know, SDL is the official Python library to use if you&#39;re dealing with graphics.<br/><br/>Ruby has a rich community of libraries (gems) and it seems there are new gems popping up every day. However, gem authors fight to gain popularity instead of contributing to an official library. Rails different in that it&#39;s sort of the de facto Ruby web framework which gives Rails the advantage of having lots of contributors because lots of people choose it. There are alternative frameworks in Ruby, but none as popular as Rails. I&#39;d like Ruby to have the same success with a game engine, where people know of Ruby because it has a great framework for creating games.<br/><br/>Gosu doesn&#39;t currently support graphics on the Raspberry Pi (although I know work is being done to support that), but it got me thinking about whether or not Gosu is making the right choice in its custom implementation of graphics, etc. I see the value in creating/choosing a standard library that can be maintained by a large group of people, especially when it comes to graphics, versus multiple similar implementations that compete for contributors.<br/><br/>I came across a <a class='url' href='http://www.kmc.gr.jp/~ohai/rubysdl.en.html'>Ruby implementation of SDL</a> but not sure how up-to-date it is (or if anyone uses it). Searching google, I found many Ruby OpenGL graphics implementations and game libraries that never saw much adoption and eventually faded into &quot;no longer maintained&quot; status.<br/><br/>I&#39;ve never written any C or C++ code. Lately, I&#39;ve been trying to get more experience in that area. There may be many others who use Gosu who also don&#39;t have much experience in that area which means there probably aren&#39;t many contributors/maintainers of the Gosu core. Are we happy with the core graphics implementation of Gosu? Do we feel that it has enough support to be maintained as the official Ruby graphics library? Should Gosu be split into two distinct libraries: the graphics library and the game library?<br/><br/>This is not meant to be negative criticism but more of a constructive discussion that leads to a better library for all of us Ruby developers. What do you think?
+</div>
+</div>
+
+<div class='brn' id='brn7253'>
+<div class='frm pst' id='pid7254' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7253'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7254' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7254.html#pid7254'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2013-09-19 00:59
+</div>
+<div class='ccl'>
+Re separating &quot;game&quot; from graphics: AFAIK Gosu&#39;s rendering system is tightly integrated into the run loop. There&#39;s some stuff that has to happen before and after your custom draw method, and I think extracting that from the rest of the library would be difficult and not worthwhile. The architecture is what it is.<br/><br/>I think OpenGL is the best choice for graphics, even 2D. It&#39;s much faster than SDL&#39;s software-based rendering and it&#39;s much easier to do fancy stuff like rotation, perspective transformation and blending modes—not to mention the potential to use GLSL for advanced effects. Gosu doesn&#39;t directly support GLSL just yet, but there are already libraries like Ashton that support it as an add-on.<br/><br/>I don&#39;t have an answer or opinion for the other questions really.
+</div>
+</div>
+
+<div class='brn' id='brn7254'>
+<div class='frm pst' id='pid7256' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7254'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7256' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7256.html#pid7256'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-19 01:23
+</div>
+<div class='ccl'>
+I think SDL always uses OpenGL for graphics now, but I&#39;m not sure how/if they have managed that while staying compatible with their old interface, which was clearly geared towards software-based rendering.<br/>Most people probably still use SDL only to open the OpenGL viewport though :)
+</div>
+</div>
+
+<div class='brn' id='brn7256'>
+<div class='frm pst' id='pid7257' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7256'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7257' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7257.html#pid7257'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-09-19 11:13
+</div>
+<div class='ccl'>
+I&#39;m working extensively with SDL2/Python at the moment and am finding it pretty good! The main advantage it has over CRuby/Gosu is no garbage collector stutter, bytecode distribution (to obfuscate code) and proper multi-thread support; on the other hand, Python is not nearly as nice to actually code in as Ruby!<br/><br/>SDL1 uses SDL_Surface, which is, by default run in software. Unity of Command used this system and this was plenty fast enough.<br/>SDL2 uses SDL_Texture (hardware accelerated; opengl, directx or gles backend) and SDL_Surface (always software). You can also mix this with opengl or use just opengl with it, if you need the performance (you&#39;d just use the non-graphics side of SDL then - window management, sound, input, etc), if you force it to use that rendering backend (for example, it will use directx on Windows by default). <i>[EDIT: I&#39;m using hardware acceleration throughout, but using high-level sprites for the interface (because that is easier and fast enough) and low-level opengl for the stuff that needs it (rendering the map/units).]</i><br/><br/>The &quot;best&quot; python SDL2 library (<a class='ura' href='https://bitbucket.org/marcusva/py-sdl2'>https://bitbucket.org/marcusva/py-sdl2</a>) adds a lot of higher level structures over the rather horrid C SDL wrapper (like Sprite and Window classes), which make it actually a tiny bit higher level than even vanilla Gosu, though not quite as high level as Chingu/Gamebox though, but give it time!
+</div>
+</div>
+
+<div class='brn' id='brn7257'>
+<div class='frm pst' id='pid7259' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7257'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7259' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7259.html#pid7259'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=867' >SPK</a>
+<span class='htt'>Date</span> 2013-09-19 18:40
+</div>
+<div class='ccl'>
+^This. py-sdl2 is really cool.<br/><br/>But no matter how hard I try, I always come back to Ruby/gosu. :)
+</div>
+</div>
+
+<div class='brn' id='brn7259'>
+<div class='frm pst' id='pid7260' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7259'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7260.html#pid7260'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-09-19 18:43
+</div>
+<div class='ccl'>
+I probably would too, but no-one wants to pay me to use Gosu :D
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7272' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7257'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7272' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7272.html#pid7272'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-23 07:19
+</div>
+<div class='ccl'>
+<a class='ura' href='https://www.ruby-forum.com/topic/4417257'>https://www.ruby-forum.com/topic/4417257</a><br/><br/>I wonder if RGenGC will get rid of the stutter. I suspect that it is much worse on Windows too because it has never bothered me on OS X (obviously :)).
+</div>
+</div>
+
+<div class='brn' id='brn7272'>
+<div class='frm pst' id='pid7273' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7273' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7273.html#pid7273'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-09-23 10:05
+</div>
+<div class='ccl'>
+It is noticeable on Windows compared to Linux. I&#39;ve found it it only really noticeable when you are trying to manage smooth full-screen scrolling. I think in Smash and Grab, I turn off the GC while you are dragging the window, but leave it on when the background is static.
+</div>
+</div>
+
+<div class='brn' id='brn7273'>
+<div class='frm pst' id='pid7274' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7273'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7274.html#pid7274'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-23 12:09
+</div>
+<div class='ccl'>
+That won&#39;t work for every game but…genius. :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7255' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7253'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7255' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7255.html#pid7255'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-19 01:17
+<span class='htt'>Edited</span> 2013-09-19 01:27
+</div>
+<div class='ccl'>
+When I started porting Gosu to OS X, the SDL still sucked on Macs. And it was LGPL-licensed, which prevented it from being used on the App Store later on. That&#39;s why I have been eyeing glfw for a long time: Its only task is to set up an OpenGL window (and do some input), which is exactly what Gosu would use from the SDL too.<br/><br/>At this point I&#39;m not sure if SDL 2.0 or glfw 3 would be the better choice as a base library, but I absolutely agree that I never want to touch any code again that uses the X11 API directly :) And both libraries would make it easier to port Gosu to new platforms.<br/>I also don&#39;t think it has to be a sudden departure. The <code>Gosu::Window</code> implementations can just be moved onto a base library one by one. The whole Graphics stack does not really use anything that&#39;s platform specific, it just needs more #ifdef to switch between OpenGL and OpenGL ES functions now that it&#39;s supposed to support Android and the Pi.<br/><br/>But what is the game part of Gosu? Gosu provides no game logic because I see it as a media library like the SDL. In fact, Gosu was my attempt at writing something like the SDL, except based on OpenGL, because the SDL was still using DirectDraw in 2001 :) I have written non-game systems in Gosu that would otherwise have been built in Flash.<br/><br/>Good discussion in any case because I want to reduce/split up the work that I have to do to keep Gosu semi-alive. The first step was to move the Ruby.app wrapper on OS X into its own repository. That monster has sucked up countless productive days… and after I&#39;d extracted it from the Gosu repository, I found out that wycats is working on a standalone Ruby.app too! So that might be something else that I can let other people build for me. :D
+</div>
+</div>
+
+<div class='brn' id='brn7255'>
+<div class='frm pst' id='pid7258' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7255'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7258' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7258.html#pid7258'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-09-19 18:25
+</div>
+<div class='ccl'>
+I need to move to one of those OSX apps one day in Releasy :$. Give me a shout when you know which one is going to continue to exist because I&#39;m lazy...
+</div>
+</div>
+
+<div class='brn' id='brn7258'>
+<div class='frm pst' id='pid7261' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7261.html#pid7261'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-20 05:02
+</div>
+<div class='ccl'>
+My Ruby.app is just the old app spun into a new git repository. I might ping you or fork Releasy once I make two changes on my To Do list. It should be a seamless upgrade from the old .app. :)
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7263' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7255'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7263' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7263.html#pid7263'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1023' >misbehavens</a>
+<span class='htt'>Date</span> 2013-09-20 21:53
+</div>
+<div class='ccl'>
+Thanks for your feedback Julian! I wasn&#39;t aware that your plan for Gosu was to be a media library. The homepage mentions &quot;Gosu is a 2D game development library&quot;. =] But it&#39;s good to hear from you your vision of the project. Along those lines, it seems like Gosu would need to work toward supporting 3D graphics if it were going to become a true media library.<br/><br/>I like the idea of splitting things into smaller pieces. I have tried digging through the Gosu github repo but I don&#39;t know my way around so I don&#39;t understand how things are organized and don&#39;t know where I can contribute. Having smaller repos, or even some sort of directory guide (or READMEs in each directory) would help to understand how the whole thing fits together.<br/><br/>I checked out GLFW and it looks nice (small and focused, written in C). I don&#39;t know much about the implementation of SDL 2.0 so I don&#39;t know how much junk is in there that Gosu wouldn&#39;t use. I leave that decision up to you.<br/><br/>I decided to start learning C (using <a class='ura' href='http://c.learncodethehardway.org/book'>http://c.learncodethehardway.org/book</a>) since it&#39;s probably a good skill to learn. I think that will help me understand the project better and find ways to contribute.
+</div>
+</div>
+
+<div class='brn' id='brn7263'>
+<div class='frm pst' id='pid7264' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7263'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7264.html#pid7264'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-21 05:17
+</div>
+<div class='ccl'>
+Gosu <i>does</i> provide 3D graphics…in the form of <code>gl {…}</code> blocks :) Everything beyond that, like support for model loading etc., would make the project impossible to maintain. Thankfully OpenGL is relatively portable across platforms.<br/><br/>Yes, I think I should extend the CONTRIBUTING.md file a little to explain the overall project structure. *makes a note*
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7493' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7253'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7493' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7493.html#pid7493'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1037.html' >tangofoxtrot</a>
+<span class='htt'>Date</span> 2013-11-11 22:20
+</div>
+<div class='ccl'>
+Misbehavens, I was unaware of this thread and not being aware of the state of gosu on the Rpi, naively&#160; installed ruby 1.9.3 and gosu. Of course, it didn’t work. My ruby threw a segmentation fault when it tried to open a window.<br/><br/>Like you, I would like to see gosu on the RPi. Our motives are different (I have a bunch<br/>of time invested in ruby code that I developed on a Ubuntu desktop system, but must run on the RPi), but I totally agree with your sentiments regarding ruby and gosu.<br/><br/>I see that your last post was a couple of months ago. Are you aware of any ongoing work in bringing gosu up on the pi?
+</div>
+</div>
+
+<div class='brn' id='brn7493'>
+<div class='frm pst' id='pid7494' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7493'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7494' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7494.html#pid7494'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-11-12 21:23
+</div>
+<div class='ccl'>
+I&#39;ve bought an RPi just to port Gosu, actually, but I gave up after one day. These are the options I see:<br/><br/>• Someone ports GLFW to the RPi and I finally have a reason to port Gosu to be GLFW-based on Linux, allowing Gosu to be run on the RPi at the same time.<br/>• Extend Gosu&#39;s messy X11 backend with a lot of #ifdef to make it work on the RPi<br/>• Change Gosu to be based on the SDL on Linux<br/><br/>The last option is the obvious one, but I&#39;ll really have to swallow my pride because I much prefer GLFW&#39;s interface. :(
+</div>
+</div>
+
+<div class='brn' id='brn7494'>
+<div class='frm pst' id='pid7498' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7494'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7498' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7498.html#pid7498'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2013-11-13 14:08
+</div>
+<div class='ccl'>
+I assume you mean SDL2, not SDL; it isn&#39;t bad at all on Linux, though for non-trivial use, I seem to have to use OpenGL anyway :/. The idea of having different backends is not a great one, since the things you are using are supposed to be cross-platform anyway :D Oh, the laughs we&#39;ve had about your audio backends ;)
+</div>
+</div>
+
+<div class='brn' id='brn7498'>
+<div class='frm pst' id='pid7499' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7498'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7499.html#pid7499'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-11-13 23:01
+</div>
+<div class='ccl'>
+Well, I was hoping that GLFW would be the portable panacea to open an OpenGL (ES)-capable window for me, but the RPi has proven that it isn&#39;t. :( I&#39;m pretty sure that there will be new exciting problems once I start playing around with the SDL2...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7794' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=966.html#pid7493'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7794.html#pid7794'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-29 22:12
+</div>
+<div class='ccl'>
+If you still receive notifications from this forum - please check out <a class='ura' href='topic_show.pl@tid=1095.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=1095</a> :)
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=966.html#tid966'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=966.html#tid966'>Gosu Exchange</a> / Gosu&#39;s OpenGL implementation vs. Python&#39;s SDL
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=966.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7789 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>draw_quad not working correctly</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7789' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1094.html#tid1094'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1094.html#tid1094'>Gosu Exchange</a> / draw_quad not working correctly
+</div>
+</div>
+
+<div class='frm pst' id='pid7786' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7786' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7786.html#pid7786'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1131.html' >kognizant.kog</a>
+<span class='htt'>Date</span> 2014-04-29 19:58
+</div>
+<div class='ccl'>
+I am trying to draw a square, but it draws offscreen. This happens even if I am using other&#39;s example code. Larger shapes will be drawn, but portions will be drawn offscreen.<br/><br/>require &#39;gosu&#39;<br/><br/>class Game &lt; Gosu::Window<br/>&#160; SQUARE_WIDTH&#160; = SQUARE_HEIGHT = 32<br/><br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; &#160; self.caption = &quot;Game of Life&quot;<br/>&#160; &#160; @x&#160; &#160; &#160; &#160; &#160; &#160;&#160; = 0<br/>&#160; &#160; @y&#160; &#160; &#160; &#160; &#160; &#160;&#160; = 0<br/>&#160; &#160; @block_color&#160;&#160; = Gosu::Color.argb(0xffff0000)<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; draw_quad(@x, @y, @block_color,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; @x + SQUARE_WIDTH, @y, @block_color,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; @x + SQUARE_WIDTH, @y + SQUARE_HEIGHT, @block_color,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; @x, @y + SQUARE_HEIGHT, @block_color)<br/>&#160; end<br/>end<br/><br/>Game.new.show<br/><br/>Has anyone else had this problem?
+</div>
+</div>
+
+<div class='brn' id='brn7786'>
+<div class='frm pst' id='pid7787' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7786'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7787' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7787.html#pid7787'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-29 20:16
+</div>
+<div class='ccl'>
+Can you please attach a screenshot of what this looks like? Which version of Gosu is this?<br/><br/>Gosu used to expect this order of coordinates: top left, top right, bottom left, bottom right. I think it was in the middle of the 0.7.x series when I started accepting clockwise order as well. Just to make sure, can you see if it works if you replace the 3rd and 4th coordinates?
+</div>
+</div>
+
+<div class='brn' id='brn7787'>
+<div class='frm pst' id='pid7788' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7787'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7788' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7788.html#pid7788'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1131.html' >kognizant.kog</a>
+<span class='htt'>Date</span> 2014-04-29 20:22
+</div>
+<div class='ccl'>
+I&#39;ve tried both ways. If I give you a screenshot of the above, you won&#39;t see anything, so notice that I am changing the width/height. <br/><br/>www.tiikoni.com/tis/view/?id=526a3e6<br/><br/>Gosu version 0.7.50<br/><br/>Edit: image is breaking, so I hard posted the link.
+</div>
+</div>
+
+<div class='brn' id='brn7788'>
+<div class='frm pst' id='pid7789' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7788'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7789' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7789.html#pid7789'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-29 20:38
+</div>
+<div class='ccl'>
+So with the original values of 32/32 it does not work?
+</div>
+</div>
+
+<div class='brn' id='brn7789'>
+<div class='frm pst' id='pid7790' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7789'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7790' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7790.html#pid7790'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1131.html' >kognizant.kog</a>
+<span class='htt'>Date</span> 2014-04-29 20:55
+</div>
+<div class='ccl'>
+I expect that it does, but it is rendered off-screen. The interesting thing is that it is not just my code, but all tutorials I&#39;ve copied an pasted from. Are there incompatibility issues with Mac?
+</div>
+</div>
+
+<div class='brn' id='brn7790'>
+<div class='frm pst' id='pid7791' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7790'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7791.html#pid7791'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-29 21:32
+</div>
+<div class='ccl'>
+No, Gosu is primarily developed on a Mac (several of them, actually ;) ). Are you on a Retina Mac?
+</div>
+</div>
+
+<div class='frm pst' id='pid7792' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7790'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7792' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7792.html#pid7792'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-29 21:33
+</div>
+<div class='ccl'>
+If you happen to have <code>sdl2</code> installed via homebrew, you can try if this solves the issue: <code>gem install gosu --pre</code>
+</div>
+</div>
+
+<div class='brn' id='brn7792'>
+<div class='frm pst' id='pid7796' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7792'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7796' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7796.html#pid7796'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1131.html' >kognizant.kog</a>
+<span class='htt'>Date</span> 2014-04-30 16:41
+</div>
+<div class='ccl'>
+I&#39;m new to Macs and was just given one when I got my new job. I pretty sure it was brand new, so I imagine it is retina. gem install gosu --pre worked great; well, except for the fact that the quad is in the wrong location until I move the window around the screen. But I can deal with that. I&#39;m just writing Conway&#39;s Game of Life at the moment. Thanks for the help!
+</div>
+</div>
+
+<div class='brn' id='brn7796'>
+<div class='frm pst' id='pid7797' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7796'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7797' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7797.html#pid7797'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-30 19:19
+</div>
+<div class='ccl'>
+Is it a laptop WITHOUT any label in the black bezel around the screen?<br/><br/><a class='ura' href='http://images.apple.com/macbook-pro/design-retina/images/fluidgallery/gallery3_2256.jpg'>http://images.apple.com/macbook-pro/design-retina/images/fluidgallery/gallery3_2256.jpg</a><br/><br/>Then it&#39;s a MacBook Pro with Retina display. :)<br/><br/>It might be this issue here or it might not. I&#39;ll try to reproduce it with an external Retina display...<br/><br/><a class='ura' href='https://github.com/jlnr/gosu/issues/203'>https://github.com/jlnr/gosu/issues/203</a>
+</div>
+</div>
+
+<div class='brn' id='brn7797'>
+<div class='frm pst' id='pid7799' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7797'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7799' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7799.html#pid7799'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1131.html' >kognizant.kog</a>
+<span class='htt'>Date</span> 2014-05-02 01:50
+</div>
+<div class='ccl'>
+Yep. It&#39;s a retina.
+</div>
+</div>
+
+<div class='brn' id='brn7799'>
+<div class='frm pst' id='pid7800' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7789.html#pid7799'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7800.html#pid7800'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1131.html' >kognizant.kog</a>
+<span class='htt'>Date</span> 2014-05-02 01:52
+</div>
+<div class='ccl'>
+And I will also keep track of the issues page.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1094.html#tid1094'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1094.html#tid1094'>Gosu Exchange</a> / draw_quad not working correctly
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7789.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

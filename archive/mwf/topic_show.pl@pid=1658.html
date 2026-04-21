@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1658 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Performance (with TexPlay)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1658' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=252#tid252'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=252#tid252'>Gosu Exchange</a> / Performance (with TexPlay)
+</div>
+</div>
+
+<div class='frm pst' id='pid1654' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1654.html#pid1654'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-10-28 13:11
+</div>
+<div class='ccl'>
+I&#39;m a big Ruby fan. Instead of Actionscript I tried gosu+chipmunk+texplay for some game prototyping today.<br/>I just tried this quickly:<br/><br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/>require &#39;texplay&#39;<br/>require &#39;time&#39;<br/> <br/>class W &lt; Gosu::Window<br/>&#160; &#160; def initialize<br/>&#160; &#160; &#160; &#160; super(1024, 768, false)<br/>&#160; &#160; &#160; &#160; @img = TexPlay::create_blank_image(self, 500, 500)<br/> <br/>&#160; @frame_cnt = 0<br/>&#160; @beginning = Time.now<br/>&#160; &#160; &#160; &#160; # put a border on the image<br/>&#160; &#160; &#160; &#160; @img.rect 0,0, @img.width - 1, @img.height - 1<br/> <br/>&#160; &#160; &#160; &#160; points = []<br/> <br/>&#160; &#160; &#160; &#160; (0..@img.width + 100).step(40) { |x|<br/>&#160; &#160; &#160; &#160; &#160; &#160; p = TexPlay::TPPoint.new<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.x = x<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.y = @img.height * rand<br/> <br/>&#160; &#160; &#160; &#160; &#160; &#160; points &lt;&lt; p<br/>&#160; &#160; &#160; &#160; }<br/> <br/>&#160; &#160; &#160; &#160; # making the bezier<br/>&#160; &#160; &#160; &#160; @img.bezier points, :color =&gt; :red<br/><br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; def draw <br/>&#160; &#160; &#160; &#160; @img.draw 100, 50,1<br/>&#160; @frame_cnt += 1<br/><br/>&#160; passed_time = Time.now - @beginning<br/>&#160; puts @frame_cnt/passed_time<br/><br/>&#160; &#160; end<br/><br/>&#160; &#160; def update<br/>&#160; points = []<br/><br/>&#160; &#160; &#160; @img = TexPlay::create_blank_image(self, 500, 500)<br/> <br/>&#160; (0..@img.width + 100).step(40) { |x|<br/>&#160; &#160; &#160; &#160; &#160; &#160; p = TexPlay::TPPoint.new<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.x = x<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.y = @img.height * rand<br/> <br/>&#160; &#160; &#160; &#160; &#160; &#160; points &lt;&lt; p<br/>&#160; &#160; &#160; &#160; }<br/> <br/>&#160; &#160; &#160; &#160; @img.bezier points, :color =&gt; :red<br/>&#160; #@img.draw 100, 50,1<br/><br/>&#160; &#160; end<br/>&#160; &#160; <br/>end<br/> <br/> <br/>w = W.new<br/>w.show<br/><br/>And I get about 1fps! Note that I&#39;m initializing the @img on purpose, I was wondering about the performance.<br/>Does this get much better with Ruby 1.9? What are your benchmarks?
+</div>
+</div>
+
+<div class='frm pst' id='pid1655' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1655#pid1655'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-10-28 14:01
+</div>
+<div class='ccl'>
+This should be totally independent of Ruby&#39;s performance.<br/><br/>I&#39;m not sure why it is 1 FPS, I would expect at least a two-digit number. But generally try to create and modify as few textures as possible, maybe it will even help if instead of creating an empty texture, you can somehow reset the existing TexPlay texture (is there a simple fill?).
+</div>
+</div>
+
+<div class='frm pst' id='pid1656' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1656.html#pid1656'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-10-28 14:58
+<span class='htt'>Edited</span> 2009-10-28 15:02
+</div>
+<div class='ccl'>
+Hi,<br/><br/>You&#39;re actually invoking some extremely expensive operations. Every frame you are creating a new image that is 500x500 pixels. You are also drawing a bezier curve (the most expensive graphical operation) across 500 pixels. Further, the bezier curve that is drawn must be sync&#39;d again to opengl, the image that is sync&#39;d is likely around 500x250 pixels. :)<br/><br/>There&#39;s a few things you can do to speed it up, though possibly not to real-time speeds. You could use the :sample_size hash_parameter (for bezier) to reduce the number of sample points. You should also, definitely, not create a new image every single frame, a better approach would be to create the image once and then use something like: image.rect 0, 0, @img.width, @img.height, :color =&gt; :black&#160; &#160; &#160; to reset the image and then draw the bezier on the image.<br/><br/>I have a feeling this would not bring you to a particularly high frame-rate though. <br/><br/>If you are adamant to achieve a high frame-rate doing this kind of thing then I guess I can research faster ways to clear an image, though I have a feeling that this kind of application could never run at a very high frame rate in TexPlay.<br/><br/>A better approach may be to use raw OpenGL calls for this kind of thing? TexPlay is really designed for manipulating images --- whereas you seem to be wanting to draw a fresh curve at every frame?<br/><br/>EDIT: the user RunnerPack had something similar to this working at a high frame-rate, he used TexPlay&#39;s bezier function with a color_control proc and Gosu&#39;s built-in draw_line method to create a very nice real-time water effect. Maybe you can ask him to share his code :)<br/><br/>banister
+</div>
+</div>
+
+<div class='frm pst' id='pid1657' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1657#pid1657'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-10-28 15:50
+</div>
+<div class='ccl'>
+Well I wanted to use this as a general check if the gosu/texplay/ruby is performant enough.<br/>I had a general idea about how complex the operation was, and 1fps seemed way too slow (note that if you do not initialize the img object, it is much faster).<br/>I ran some gl demos now, they seem fine.<br/>I won&#39;t give on the framework up yet.
+</div>
+</div>
+
+<div class='frm pst' id='pid1658' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1658.html#pid1658'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-10-28 16:12
+<span class='htt'>Edited</span> 2009-10-28 16:46
+</div>
+<div class='ccl'>
+TexPlay has pretty good performance for its intended usage :) It is generally faster than ImageMagick for example and equal to or faster than a lot of other image manipulation frameworks. However you seem to be using TexPlay for another purpose than image manipulation.<br/><br/>Luckily TexPlay can also, sort of, be used for your kind of application too. Here is some code that may do what you want. It is using a combination of TexPlay (bezier math) and Gosu (draw_line):<br/><br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/>require &#39;texplay&#39;<br/>require &#39;time&#39;<br/><br/>class W &lt; Gosu::Window<br/>&#160; &#160; def initialize<br/>&#160; &#160; &#160; &#160; super(1024, 768, false)<br/>&#160; &#160; &#160; &#160; @img = TexPlay::create_blank_image(self, 500, 500)<br/><br/>&#160; &#160; &#160; &#160; @frame_cnt = 0<br/>&#160; &#160; &#160; &#160; @beginning = Time.now<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; @frame_cnt += 1<br/><br/>&#160; &#160; &#160; &#160; passed_time = Time.now - @beginning<br/>&#160; &#160; &#160; &#160; puts @frame_cnt/passed_time<br/>&#160; &#160; end<br/><br/>&#160; &#160; def update<br/>&#160; &#160; &#160; &#160; bez_array = []<br/>&#160; &#160; &#160; &#160; points = []<br/><br/>&#160; &#160; &#160; &#160; (0..@img.width + 100).step(40) { |x|<br/>&#160; &#160; &#160; &#160; &#160; &#160; p = TexPlay::TPPoint.new<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.x = x<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.y = @img.height * rand<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; points &lt;&lt; p<br/>&#160; &#160; &#160; &#160; }<br/><br/>&#160; &#160; &#160; &#160; p = points.shift<br/>&#160; &#160; &#160; &#160; @img.bezier points, :sample_size =&gt; 40, :color_control =&gt; proc {&#160; |c,x,y|<br/>&#160; &#160; &#160; &#160; &#160; &#160; draw_line(<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; p.x + 100, p.y + 100, 0xffaabbcc,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; x + 100, y+ 100, 0xffaabbcc<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; )<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.x = x<br/>&#160; &#160; &#160; &#160; &#160; &#160; p.y = y<br/>&#160; &#160; &#160; &#160; &#160; &#160; :none<br/>&#160; &#160; &#160; &#160; }<br/>&#160; &#160; end<br/><br/>end<br/><br/>w = W.new<br/>w.show<br/><br/>The above code runs reasonably fast on my system, it at least has a double digit frame rate :)<br/><br/>EDIT: just to make things a bit clearer, i really dont think your code would run any faster even if it was written in pure C . Unfortunately it&#39;s just the nature of image manipulation in OpenGL --- i.e OpenGL does not support it ;) If you want to manipulate an OpenGL texture the following things must happen: (1) you must first modify a local copy of the opengl texture (2) you must resync that local copy to OpenGL.&#160; <br/><br/>It&#39;s really number (2) that is the very expensive operation, and if you&#39;re resyncing a reasonably large texture back to opengl at every frame you will not, unfortunately get a good frame rate. :( <br/>TexPlay tries its best by only syncing that part of the texture that has changed but still it can be quite slow if you are changing a large portion of a large texture. In practical terms, though, I can&#39;t imagine large scale manipulation of opengl textures to happen in a real game. I wrote a worms-style game prototype that does alot of image manipulation, i.e blowing holes in the landscape etcetara and that game was able to maintain around 50 FPS. I can&#39;t think of any real game where you need to modify large chunks of large images every frame?<br/><br/>:)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=252#tid252'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=252#tid252'>Gosu Exchange</a> / Performance (with TexPlay)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1658.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

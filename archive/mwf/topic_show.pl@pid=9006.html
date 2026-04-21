@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9006 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Problem Installing Gosu on Raspberry Pi</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9006' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1301.html#tid1301'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1301.html#tid1301'>Gosu Exchange</a> / Problem Installing Gosu on Raspberry Pi
+</div>
+</div>
+
+<div class='frm pst' id='pid9000' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9000' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9000.html#pid9000'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-10 07:18
+</div>
+<div class='ccl'>
+I can&#39;t get Gosu to install on my Pi. I have the pi 3 and have followed the instructions on the wiki and still no luck. <a class='urs' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-Raspbian-%28Raspberry-Pi%29'>https://github.com/gosu/gosu/wiki/Getting-Started-on-Raspbian-%28Raspberry-Pi%29</a><br/><br/>I had problems getting SDL_ttf to install on Raspbian but was able to on Ubuntu Mate then I tried to <br/><br/><code>sudo gem install gosu -- --with-cflags=-I/opt/SDL2/include --with-cppflags=-I/opt/SDL2/include --with-ldflags=\&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a\&quot;<br/></code> <br/>and I get the following error:<br/><br/><code>Building native extensions with: &#39;--with-cflags=-I/opt/SDL2/include --with-cppflags=-I/opt/SDL2/include --with-ldflags=&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&quot;&#39;<br/>This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>/usr/bin/ruby2.3 -r ./siteconf20160910-3133-1edcscw.rb extconf.rb --with-cflags=-I/opt/SDL2/include --with-cppflags=-I/opt/SDL2/include --with-ldflags=&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&quot;<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux'>https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux</a><br/>checking for TTF_RenderUTF8_Blended() in -lSDL2_ttf... yes<br/>checking for SDL_ttf.h... yes<br/>checking for main() in -lopenal... yes<br/>checking for AL/al.h... yes<br/>creating Makefile<br/><br/>To see why this extension failed to compile, please check the mkmf.log which can be found here:<br/><br/>&#160; /var/lib/gems/2.3.0/extensions/arm-linux/2.3.0/gosu-0.10.8/mkmf.log<br/><br/>current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>make &quot;DESTDIR=&quot; clean<br/><br/>current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>make &quot;DESTDIR=&quot;<br/>compiling Audio-Audio.cpp<br/>compiling Bitmap-Bitmap.cpp<br/>compiling Bitmap-BitmapIO.cpp<br/>In file included from Bitmap-BitmapIO.cpp:1:0:<br/>../../src/Bitmap/BitmapIO.cpp: In function ‘Gosu::Reader Gosu::loadFromBMP(Gosu::Bitmap&amp;, Gosu::Reader)’:<br/>../../src/Bitmap/BitmapIO.cpp:163:12: warning: ‘Gosu::Reader Gosu::loadFromPNG(Gosu::Bitmap&amp;, Gosu::Reader)’ is deprecated [-Wdeprecated-declarations]<br/>&#160; &#160;&#160; return loadFromPNG(bitmap, reader);<br/>&#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/Bitmap/BitmapIO.cpp:154:14: note: declared here<br/> Gosu::Reader Gosu::loadFromPNG(Bitmap&amp; bitmap, Reader reader)<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/Bitmap/BitmapIO.cpp:163:12: warning: ‘Gosu::Reader Gosu::loadFromPNG(Gosu::Bitmap&amp;, Gosu::Reader)’ is deprecated [-Wdeprecated-declarations]<br/>&#160; &#160;&#160; return loadFromPNG(bitmap, reader);<br/>&#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/Bitmap/BitmapIO.cpp:154:14: note: declared here<br/> Gosu::Reader Gosu::loadFromPNG(Bitmap&amp; bitmap, Reader reader)<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/Bitmap/BitmapIO.cpp:163:38: warning: ‘Gosu::Reader Gosu::loadFromPNG(Gosu::Bitmap&amp;, Gosu::Reader)’ is deprecated [-Wdeprecated-declarations]<br/>&#160; &#160;&#160; return loadFromPNG(bitmap, reader);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/Bitmap/BitmapIO.cpp:154:14: note: declared here<br/> Gosu::Reader Gosu::loadFromPNG(Bitmap&amp; bitmap, Reader reader)<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>compiling DirectoriesUnix.cpp<br/>compiling FileUnix.cpp<br/>In file included from FileUnix.cpp:1:0:<br/>../../src/FileUnix.cpp: In member function ‘virtual void Gosu::File::resize(std::size_t)’:<br/>../../src/FileUnix.cpp:76:34: warning: ignoring return value of ‘int ftruncate(int, __off_t)’, declared with attribute warn_unused_result [-Wunused-result]<br/>&#160; &#160;&#160; ftruncate(pimpl-&gt;fd, newSize);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/FileUnix.cpp: In member function ‘virtual void Gosu::File::read(std::size_t, std::size_t, void*) const’:<br/>../../src/FileUnix.cpp:91:42: warning: ignoring return value of ‘ssize_t read(int, void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]<br/>&#160; &#160;&#160; ::read(pimpl-&gt;fd, destBuffer, length);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/FileUnix.cpp: In member function ‘virtual void Gosu::File::write(std::size_t, std::size_t, const void*)’:<br/>../../src/FileUnix.cpp:99:45: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]<br/>&#160; &#160;&#160; ::write(pimpl-&gt;fd, sourceBuffer, length);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>compiling Graphics-BlockAllocator.cpp<br/>compiling Graphics-Color.cpp<br/>compiling Graphics-Graphics.cpp<br/>In file included from ../../src/Graphics/Graphics.cpp:2:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from Graphics-Graphics.cpp:1:<br/>../../src/Graphics/Common.hpp:20:21: fatal error: GLES/gl.h: No such file or directory<br/>compilation terminated.<br/>Makefile:231: recipe for target &#39;Graphics-Graphics.o&#39; failed<br/>make: *** [Graphics-Graphics.o] Error 1<br/><br/>make failed, exit code 2<br/><br/>Gem files will remain installed in /var/lib/gems/2.3.0/gems/gosu-0.10.8 for inspection.<br/>Results logged to /var/lib/gems/2.3.0/extensions/arm-linux/2.3.0/gosu-0.10.8/gem_make.out<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn9000'>
+<div class='frm pst' id='pid9001' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9000'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9001' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9001.html#pid9001'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-09-10 08:10
+<span class='htt'>Edited</span> 2017-04-05 19:57
+</div>
+<div class='ccl'>
+I have no experience with the later Raspberry Pi models, only the original one running Raspbian.<br/><br/>Do you have any idea where the GLES headers might be?<br/><br/><code>../../src/Graphics/Common.hpp:20:21: fatal error: GLES/gl.h: No such file or directory</code><br/><br/>Maybe they&#39;re in the popular <code>/opt/vc/include</code> directory again? If you can find <code>gl.h</code> and pass the directory in via <code>--with-cflags</code>/<code>--with-cppflags</code>, you should get one step further. Not sure what comes next - probably finding the right library to link against :)
+</div>
+</div>
+
+<div class='brn' id='brn9001'>
+<div class='frm pst' id='pid9002' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9001'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9002' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9002.html#pid9002'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-10 09:03
+</div>
+<div class='ccl'>
+The gl.h file is in <code>/opt/vc/include/GLES</code><br/>I&#39;ve tried including the path but I am not sure I am including it properly.
+</div>
+</div>
+
+<div class='brn' id='brn9002'>
+<div class='frm pst' id='pid9003' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9002'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9003' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9003.html#pid9003'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-09-10 09:06
+</div>
+<div class='ccl'>
+Should be:<br/><code>--with-cppflags=&quot;-I/opt/SDL2/include -I/opt/vc/include&quot;</code>, without the <code>GLES</code> because the <code>#include</code> already includes that part.<br/><br/>Thinking about it, you shouldn&#39;t need <code>--with-cflags=</code> at all since Gosu only uses C++, no C.
+</div>
+</div>
+
+<div class='brn' id='brn9003'>
+<div class='frm pst' id='pid9004' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9003'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9004' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9004.html#pid9004'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-10 09:35
+</div>
+<div class='ccl'>
+One step closer! Thanks so much for your help! My error is getting smaller. I&#39;m not familiar with extconf.rb.<br/><br/><code></code>~$ sudo gem install gosu -- --with-cppflags=&quot;-I/opt/SDL2/include -I/opt/vc/include&quot; --with-ldflags=\&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a\&quot;<br/>Building native extensions with: &#39;--with-cppflags=-I/opt/SDL2/include -I/opt/vc/include --with-ldflags=&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&quot;&#39;<br/>This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>/usr/bin/ruby2.3 -r ./siteconf20160910-4108-16luooy.rb extconf.rb --with-cppflags=-I/opt/SDL2/include -I/opt/vc/include --with-ldflags=&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&quot;<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux'>https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux</a><br/>*** extconf.rb failed ***<br/>Could not create Makefile due to some reason, probably lack of necessary<br/>libraries and/or headers.&#160; Check the mkmf.log file for more details.&#160; You may<br/>need configuration options.<br/><br/>Provided configuration options:<br/>&#160; --with-opt-dir<br/>&#160; --without-opt-dir<br/>&#160; --with-opt-include<br/>&#160; --without-opt-include=${opt-dir}/include<br/>&#160; --with-opt-lib<br/>&#160; --without-opt-lib=${opt-dir}/lib<br/>&#160; --with-make-prog<br/>&#160; --without-make-prog<br/>&#160; --srcdir=.<br/>&#160; --curdir<br/>&#160; --ruby=/usr/bin/$(RUBY_BASE_NAME)2.3<br/>&#160; --with-gl-config<br/>&#160; --without-gl-config<br/>&#160; --with-pkg-config<br/>&#160; --without-pkg-config<br/>/usr/lib/ruby/2.3.0/mkmf.rb:456:in <code>try_do&#39;: The compiler failed to generate an executable file. (RuntimeError)<br/>You have to install development tools first.<br/>&#160; from /usr/lib/ruby/2.3.0/mkmf.rb:541:in </code>try_link0&#39;<br/>&#160; from /usr/lib/ruby/2.3.0/mkmf.rb:556:in <code>try_link&#39;<br/>&#160; from /usr/lib/ruby/2.3.0/mkmf.rb:657:in </code>try_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.3.0/mkmf.rb:1813:in <code>pkg_config&#39;<br/>&#160; from extconf.rb:105:in </code>&lt;main&gt;&#39;<br/><br/>To see why this extension failed to compile, please check the mkmf.log which can be found here:<br/><br/>&#160; /var/lib/gems/2.3.0/extensions/arm-linux/2.3.0/gosu-0.10.8/mkmf.log<br/><br/>extconf failed, exit code 1<br/><br/>Gem files will remain installed in /var/lib/gems/2.3.0/gems/gosu-0.10.8 for inspection.<br/>Results logged to /var/lib/gems/2.3.0/extensions/arm-linux/2.3.0/gosu-0.10.8/gem_make.out
+</div>
+</div>
+
+<div class='brn' id='brn9004'>
+<div class='frm pst' id='pid9005' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9004'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9005' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9005.html#pid9005'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-09-10 18:18
+</div>
+<div class='ccl'>
+I forgot to escape the quotes, can you please try this instead:<br/><br/><code>sudo gem install gosu -- --with-cppflags=\&quot;-I/opt/SDL2/include -I/opt/vc/include\&quot; --with-ldflags=\&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a\&quot;</code><br/><br/>If it still doesn&#39;t work - what&#39;s the output in the mkmf.log / gem_make.out file that are mentioned in the error?
+</div>
+</div>
+
+<div class='brn' id='brn9005'>
+<div class='frm pst' id='pid9006' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9005'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9006' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9006.html#pid9006'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-10 20:12
+</div>
+<div class='ccl'>
+I had an ‘-fstack-protector-strong’ error which I believe is from having gcc 4.7.<br/>I switched to gcc 4.9 and that did away with the fstack error but now have the following. I will try and work on this more later tonight.<br/><br/>log file now gives me this:<br/><code>cat /var/lib/gems/2.3.0/extensions/arm-linux/2.3.0/gosu-0.10.8/mkmf.log</code><br/><br/>[tt| pkg-config --libs gl<br/>=&gt; &quot;-lGL\n&quot;<br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED= conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160;&#160; -lruby-2.3&#160; -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED= conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160;&#160; -lruby-2.3 -lGL -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>| pkg-config --cflags-only-I gl<br/>=&gt; &quot;-I/usr/include/libdrm\n&quot;<br/>| pkg-config --cflags-only-other gl<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --libs-only-l gl<br/>=&gt; &quot;-lGL\n&quot;<br/>package configuration for gl<br/>cflags: <br/>ldflags: <br/>libs: -lGL<br/><br/>| pkg-config --libs sdl2<br/>=&gt; &quot;-lSDL2\n&quot;<br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; -lGL -lruby-2.3 -lSDL2 -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>| pkg-config --cflags-only-I sdl2<br/>=&gt; &quot;-I/usr/include/SDL2\n&quot;<br/>| pkg-config --cflags-only-other sdl2<br/>=&gt; &quot;-D_REENTRANT\n&quot;<br/>| pkg-config --libs-only-l sdl2<br/>=&gt; &quot;-lSDL2\n&quot;<br/>package configuration for sdl2<br/>cflags: -D_REENTRANT<br/>ldflags: <br/>libs: -lSDL2<br/><br/>| pkg-config --libs pangoft2<br/>=&gt; &quot;-lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype\n&quot;<br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160;&#160; -lGL -lSDL2 -lruby-2.3 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>| pkg-config --cflags-only-I pangoft2<br/>=&gt; &quot;-I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2\n&quot;<br/>| pkg-config --cflags-only-other pangoft2<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --libs-only-l pangoft2<br/>=&gt; &quot;-lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype\n&quot;<br/>package configuration for pangoft2<br/>cflags: <br/>ldflags: <br/>libs: -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype<br/><br/>| pkg-config --libs vorbisfile<br/>=&gt; &quot;-lvorbisfile\n&quot;<br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2 -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; &#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lruby-2.3 -lvorbisfile -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>| pkg-config --cflags-only-I vorbisfile<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --cflags-only-other vorbisfile<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --libs-only-l vorbisfile<br/>=&gt; &quot;-lvorbisfile\n&quot;<br/>package configuration for vorbisfile<br/>cflags: <br/>ldflags: <br/>libs: -lvorbisfile<br/><br/>| pkg-config --libs openal<br/>=&gt; &quot;-lopenal\n&quot;<br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160;&#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; &#160;&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lruby-2.3 -lopenal -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>| pkg-config --cflags-only-I openal<br/>=&gt; &quot;-I/usr/include/AL\n&quot;<br/>| pkg-config --cflags-only-other openal<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --libs-only-l openal<br/>=&gt; &quot;-lopenal\n&quot;<br/>package configuration for openal<br/>cflags: <br/>ldflags: <br/>libs: -lopenal<br/><br/>| pkg-config --libs sndfile<br/>=&gt; &quot;-lsndfile\n&quot;<br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/usr/include/AL -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; &#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; &#160; &#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lruby-2.3 -lsndfile -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: int main(int argc, char **argv)<br/>4: {<br/>5:&#160;&#160; return 0;<br/>6: }<br/>/* end */<br/><br/>| pkg-config --cflags-only-I sndfile<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --cflags-only-other sndfile<br/>=&gt; &quot;\n&quot;<br/>| pkg-config --libs-only-l sndfile<br/>=&gt; &quot;-lsndfile\n&quot;<br/>package configuration for sndfile<br/>cflags: <br/>ldflags: <br/>libs: -lsndfile<br/><br/>have_library: checking for TTF_RenderUTF8_Blended() in -lSDL2_ttf... -------------------- yes<br/><br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/usr/include/AL&#160; -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; &#160;&#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; &#160; &#160;&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lsndfile -lruby-2.3 -lSDL2_ttf&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lsndfile -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>conftest.c: In function ‘t’:<br/>conftest.c:13:57: error: ‘TTF_RenderUTF8_Blended’ undeclared (first use in this function)<br/> int t(void) { void ((*volatile p)()); p = (void ((*)()))TTF_RenderUTF8_Blended; return !p; }<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in<br/>checked program was:<br/>/* begin */<br/> 1: #include &quot;ruby.h&quot;<br/> 2: <br/> 3: /*top*/<br/> 4: extern int t(void);<br/> 5: int main(int argc, char **argv)<br/> 6: {<br/> 7:&#160;&#160; if (argc &gt; 1000000) {<br/> 8:&#160; &#160;&#160; printf(&quot;%p&quot;, &amp;t);<br/> 9:&#160;&#160; }<br/>10: <br/>11:&#160;&#160; return 0;<br/>12: }<br/>13: int t(void) { void ((*volatile p)()); p = (void ((*)()))TTF_RenderUTF8_Blended; return !p; }<br/>/* end */<br/><br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/usr/include/AL&#160; -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; &#160;&#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; &#160; &#160;&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lsndfile -lruby-2.3 -lSDL2_ttf&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lsndfile -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/> 1: #include &quot;ruby.h&quot;<br/> 2: <br/> 3: /*top*/<br/> 4: extern int t(void);<br/> 5: int main(int argc, char **argv)<br/> 6: {<br/> 7:&#160;&#160; if (argc &gt; 1000000) {<br/> 8:&#160; &#160;&#160; printf(&quot;%p&quot;, &amp;t);<br/> 9:&#160;&#160; }<br/>10: <br/>11:&#160;&#160; return 0;<br/>12: }<br/>13: extern void TTF_RenderUTF8_Blended();<br/>14: int t(void) { TTF_RenderUTF8_Blended(); return 0; }<br/>/* end */<br/><br/>--------------------<br/><br/>have_header: checking for SDL_ttf.h... -------------------- yes<br/><br/>&quot;gcc -E -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/usr/include/AL&#160; -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; &#160; &#160; conftest.c -o conftest.i&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: #include &lt;SDL_ttf.h&gt;<br/>/* end */<br/><br/>--------------------<br/><br/>have_library: checking for main() in -lopenal... -------------------- yes<br/><br/>&quot;gcc -o conftest -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/usr/include/AL&#160; -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; &#160;&#160; conftest.c&#160; -L. -L/usr/lib/arm-linux-gnueabihf /opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&#160; &#160; &#160; &#160; &#160; -lSDL2_ttf&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lsndfile -lruby-2.3 -lopenal -lSDL2_ttf&#160; -lGL -lSDL2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lvorbisfile -lopenal -lsndfile -lpthread -lgmp -ldl -lcrypt -lm&#160;&#160; -lc&quot;<br/>checked program was:<br/>/* begin */<br/> 1: #include &quot;ruby.h&quot;<br/> 2: <br/> 3: /*top*/<br/> 4: extern int t(void);<br/> 5: int main(int argc, char **argv)<br/> 6: {<br/> 7:&#160;&#160; if (argc &gt; 1000000) {<br/> 8:&#160; &#160;&#160; printf(&quot;%p&quot;, &amp;t);<br/> 9:&#160;&#160; }<br/>10: <br/>11:&#160;&#160; return 0;<br/>12: }<br/>13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return !p; }<br/>/* end */<br/><br/>--------------------<br/><br/>have_header: checking for AL/al.h... -------------------- yes<br/><br/>&quot;gcc -E -I/usr/include/arm-linux-gnueabihf/ruby-2.3.0 -I/usr/include/ruby-2.3.0/ruby/backward -I/usr/include/ruby-2.3.0 -I. -I../.. -I../../src -I/usr/include/libdrm -I/usr/include/SDL2 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/freetype2&#160; -I/usr/include/AL&#160; -I/opt/SDL2/include -I/opt/vc/include -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -fPIC -DGOSU_DEPRECATED=&#160; -D_REENTRANT&#160; &#160; &#160; conftest.c -o conftest.i&quot;<br/>checked program was:<br/>/* begin */<br/>1: #include &quot;ruby.h&quot;<br/>2: <br/>3: #include &lt;AL/al.h&gt;<br/>/* end */<br/><br/>--------------------<br/>]
+</div>
+</div>
+
+<div class='brn' id='brn9006'>
+<div class='frm pst' id='pid9007' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9006'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9007' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9007.html#pid9007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-10 20:22
+</div>
+<div class='ccl'>
+cat of /gem_make.out<br/><code><br/>current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>/usr/bin/ruby2.3 -r ./siteconf20160910-17079-lqn9gi.rb extconf.rb --with-cppflags=&quot;-I/opt/SDL2/include -I/opt/vc/include&quot; --with-ldflags=&quot;/opt/SDL2/lib/libSDL2.a /opt/SDL2/lib/libSDL2_ttf.a&quot;<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux'>https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux</a><br/>checking for TTF_RenderUTF8_Blended() in -lSDL2_ttf... yes<br/>checking for SDL_ttf.h... yes<br/>checking for main() in -lopenal... yes<br/>checking for AL/al.h... yes<br/>creating Makefile<br/><br/>To see why this extension failed to compile, please check the mkmf.log which can be found here:<br/><br/>&#160; /var/lib/gems/2.3.0/extensions/arm-linux/2.3.0/gosu-0.10.8/mkmf.log<br/><br/>current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>make &quot;DESTDIR=&quot; clean<br/><br/>current directory: /var/lib/gems/2.3.0/gems/gosu-0.10.8/ext/gosu<br/>make &quot;DESTDIR=&quot;<br/>compiling Audio-Audio.cpp<br/>compiling Bitmap-Bitmap.cpp<br/>compiling Bitmap-BitmapIO.cpp<br/>In file included from Bitmap-BitmapIO.cpp:1:0:<br/>../../src/Bitmap/BitmapIO.cpp: In function ‘Gosu::Reader Gosu::loadFromBMP(Gosu::Bitmap&amp;, Gosu::Reader)’:<br/>../../src/Bitmap/BitmapIO.cpp:163:12: warning: ‘Gosu::Reader Gosu::loadFromPNG(Gosu::Bitmap&amp;, Gosu::Reader)’ is deprecated (declared at ../../src/Bitmap/BitmapIO.cpp:154) [-Wdeprecated-declarations]<br/>&#160; &#160;&#160; return loadFromPNG(bitmap, reader);<br/>&#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/Bitmap/BitmapIO.cpp:163:38: warning: ‘Gosu::Reader Gosu::loadFromPNG(Gosu::Bitmap&amp;, Gosu::Reader)’ is deprecated (declared at ../../src/Bitmap/BitmapIO.cpp:154) [-Wdeprecated-declarations]<br/>&#160; &#160;&#160; return loadFromPNG(bitmap, reader);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>compiling DirectoriesUnix.cpp<br/>compiling FileUnix.cpp<br/>In file included from FileUnix.cpp:1:0:<br/>../../src/FileUnix.cpp: In member function ‘virtual void Gosu::File::resize(std::size_t)’:<br/>../../src/FileUnix.cpp:76:34: warning: ignoring return value of ‘int ftruncate(int, __off_t)’, declared with attribute warn_unused_result [-Wunused-result]<br/>&#160; &#160;&#160; ftruncate(pimpl-&gt;fd, newSize);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/FileUnix.cpp: In member function ‘virtual void Gosu::File::read(std::size_t, std::size_t, void*) const’:<br/>../../src/FileUnix.cpp:91:42: warning: ignoring return value of ‘ssize_t read(int, void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]<br/>&#160; &#160;&#160; ::read(pimpl-&gt;fd, destBuffer, length);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^<br/>../../src/FileUnix.cpp: In member function ‘virtual void Gosu::File::write(std::size_t, std::size_t, const void*)’:<br/>../../src/FileUnix.cpp:99:45: warning: ignoring return value of ‘ssize_t write(int, const void*, size_t)’, declared with attribute warn_unused_result [-Wunused-result]<br/>&#160; &#160;&#160; ::write(pimpl-&gt;fd, sourceBuffer, length);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>compiling Graphics-BlockAllocator.cpp<br/>compiling Graphics-Color.cpp<br/>compiling Graphics-Graphics.cpp<br/>compiling Graphics-Image.cpp<br/>compiling Graphics-LargeImageData.cpp<br/>compiling Graphics-Macro.cpp<br/>compiling Graphics-Resolution.cpp<br/>compiling Graphics-TexChunk.cpp<br/>compiling Graphics-Texture.cpp<br/>compiling Graphics-Transform.cpp<br/>compiling IO.cpp<br/>compiling Input-Input.cpp<br/>In file included from Input-Input.cpp:1:0:<br/>../../src/Input/Input.cpp: In member function ‘bool Gosu::Input::feedSDLEvent(void*)’:<br/>../../src/Input/Input.cpp:307:65: warning: comparison between ‘const enum SDL_Scancode’ and ‘enum Gosu::ButtonName’ [-Wenum-compare]<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; if (e-&gt;key.repeat == 0 &amp;&amp; e-&gt;key.keysym.scancode &lt;= kbRangeEnd) {<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>compiling Input-TextInput.cpp<br/>compiling Inspection.cpp<br/>compiling Math.cpp<br/>compiling Text-Font.cpp<br/>compiling Text-Text.cpp<br/>compiling Text-TextUnix.cpp<br/>In file included from Text-TextUnix.cpp:1:0:<br/>../../src/Text/TextUnix.cpp: In member function ‘unsigned int Gosu::PangoRenderer::textWidth(const wstring&amp;, const wstring&amp;, unsigned int, unsigned int)’:<br/>../../src/Text/TextUnix.cpp:57:13: warning: ‘void g_type_init()’ is deprecated (declared at /usr/include/glib-2.0/gobject/gtype.h:681) [-Wdeprecated-declarations]<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; g_type_init();<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>../../src/Text/TextUnix.cpp:57:25: warning: ‘void g_type_init()’ is deprecated (declared at /usr/include/glib-2.0/gobject/gtype.h:681) [-Wdeprecated-declarations]<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; g_type_init();<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>../../src/Text/TextUnix.cpp:61:23: warning: ‘PangoContext* pango_ft2_get_context(double, double)’ is deprecated (declared at /usr/include/pango-1.0/pango/pangoft2.h:111): Use &#39;pango_font_map_create_context&#39; instead [-Wdeprecated-declarations]<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; context = pango_ft2_get_context(dpi_x, dpi_y);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>../../src/Text/TextUnix.cpp:61:57: warning: ‘PangoContext* pango_ft2_get_context(double, double)’ is deprecated (declared at /usr/include/pango-1.0/pango/pangoft2.h:111): Use &#39;pango_font_map_create_context&#39; instead [-Wdeprecated-declarations]<br/>&#160; &#160; &#160; &#160; &#160; &#160;&#160; context = pango_ft2_get_context(dpi_x, dpi_y);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>compiling TimingUnix.cpp<br/>compiling Utility.cpp<br/>compiling Window.cpp<br/>compiling gosu_wrap.cxx<br/>gosu_wrap.cxx: In function ‘VALUE _wrap_Font_draw_rot(int, VALUE*, VALUE)’:<br/>gosu_wrap.cxx:5483:111: warning: ‘void Gosu::Font::drawRot(const wstring&amp;, double, double, Gosu::ZPos, double, double, double, Gosu::Color, Gosu::AlphaMode) const’ is deprecated (declared at ../../Gosu/Font.hpp:81) [-Wdeprecated-declarations]<br/>&#160; &#160; &#160;&#160; ((Gosu::Font const *)arg1)-&gt;drawRot((std::wstring const &amp;)*arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; ^<br/>compiling stb_vorbis.c<br/>linking shared-object gosu.so<br/>/usr/bin/ld: /opt/SDL2/lib/libSDL2.a(SDL_dynapi.o): relocation R_ARM_THM_MOVW_ABS_NC against `a local symbol&#39; can not be used when making a shared object; recompile with -fPIC<br/>/opt/SDL2/lib/libSDL2.a: error adding symbols: Bad value<br/>collect2: error: ld returned 1 exit status<br/>Makefile:255: recipe for target &#39;gosu.so&#39; failed<br/>make: *** [gosu.so] Error 1<br/><br/>make failed, exit code 2</code>
+</div>
+</div>
+
+<div class='brn' id='brn9007'>
+<div class='frm pst' id='pid9009' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9007'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9009' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9009.html#pid9009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-09-11 08:07
+</div>
+<div class='ccl'>
+Ouch, this line is the actual error:<br/><br/><code>/usr/bin/ld: /opt/SDL2/lib/libSDL2.a(SDL_dynapi.o): relocation R_ARM_THM_MOVW_ABS_NC against &#39;a local symbol&#39; can not be used when making a shared object; recompile with -fPIC</code><br/><br/>Do you have a <code>/opt/SDL2/lib/libSDL2.so</code> file as well? Can you please try passing that in, instead of the static <code>.a</code> library?
+</div>
+</div>
+
+<div class='brn' id='brn9009'>
+<div class='frm pst' id='pid9011' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9009'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9011' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9011.html#pid9011'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-11 12:55
+</div>
+<div class='ccl'>
+New problem but first, Thanks for your help! To summarize, with your help I got gosu (0.10.8) to install by following the wiki, changing to gcc 4.9 from 4.7, and this last line:<br/><br/><code><br/>$ sudo gem install gosu -- --with-cppflags=\&quot;-I/opt/SDL2/include -I/opt/vc/include\&quot; --with-ldflags=\&quot;/opt/SDL2/lib/libSDL2.so /opt/SDL2/lib/libSDL2_ttf.so\&quot;</code><br/><br/>I changed both libSDL2.a and libSDL2tff.a to *.so respectfully.<br/><br/>Now the new problem:<br/><br/>When I run a gosu program, the screen is completly black. I have executed the program in both fullscreen and not full with the same results. When not in fullscreen, the canvas does appear with the title. The program runs on my mac just fine. Source linked down below. Thanks again!<br/><br/><a class='urs' href='https://github.com/mikedstark/ruby-pong'>https://github.com/mikedstark/ruby-pong</a>
+</div>
+</div>
+
+<div class='brn' id='brn9011'>
+<div class='frm pst' id='pid9022' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9011'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9022' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9022.html#pid9022'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-09-17 09:48
+</div>
+<div class='ccl'>
+Hm. :/ The one thing I can still suggest is to re-compile SDL2 without OpenGL, just to be sure it doesn&#39;t try to use normal (non-ES) OpenGL. There&#39;s a full command-line here for the Pi 2 (which should also apply for the Pi 3): <a class='ura' href='https://solarianprogrammer.com/2015/01/22/raspberry-pi-raspbian-getting-started-sdl-2/'>https://solarianprogrammer.com/2015/01/22/raspberry-pi-raspbian-getting-started-sdl-2/</a><br/><br/>If that doesn&#39;t help, I&#39;m out of ideas - no idea how to debug the black screen.
+</div>
+</div>
+
+<div class='brn' id='brn9022'>
+<div class='frm pst' id='pid9029' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9022'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9029.html#pid9029'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1271.html' >mikedstark</a>
+<span class='htt'>Date</span> 2016-09-23 07:13
+</div>
+<div class='ccl'>
+Still no luck. I will post if I can figure out what&#39;s wrong. I&#39;m making an arcade that will play games that I will make. I have an old laptop that will be powering the arcade for now. I would like to swap out the laptop with my Pi 3 but that hinges on getting gosu to work on the Pi of course. I think I will try to install an older version of raspbian on the pi to see if that helps.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid9177' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9006.html#pid9000'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9177.html#pid9177'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-04-05 19:59
+</div>
+<div class='ccl'>
+It turns out that getting Gosu to work on the Pi 2 and 3 is much easier than on the original Pi. Basically, just enable OpenGL and then install Gosu as you would on a normal Linux distro (but be sure to <code>sudo gem install gosu --pre</code> until 0.11.4 is out).<br/><br/><a class='ura' href='https://github.com/gosu/gosu/wiki/Getting-Started-on-Raspbian-'>https://github.com/gosu/gosu/wiki/Getting-Started-on-Raspbian-</a>(Raspberry-Pi)<br/><br/>Probably too late, but maybe it&#39;ll be helpful for the next person looking into this.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1301.html#tid1301'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1301.html#tid1301'>Gosu Exchange</a> / Problem Installing Gosu on Raspberry Pi
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9006.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

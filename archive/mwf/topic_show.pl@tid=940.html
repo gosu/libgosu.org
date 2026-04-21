@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Flight</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=940.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=940.html#tid940'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=940.html#tid940'>Gosu Showcase</a> / Flight
+</div>
+</div>
+
+<div class='frm pst' id='pid7103' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7103' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7103.html#pid7103'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2013-08-11 10:48
+</div>
+<div class='ccl'>
+Flight was a small project I did last year, for my Software Engineering project. We had to write a program - anything, in any language - that had at least 5 classes. I found this to be a perfect opportunity to learn Ruby and Gosu, and this simple project was born. Since I was still learning, this project took me about 4 weeks of work. It&#39;s simple shooter, that you probably can play infinitely. Today I would probably write it better, faster and more advanced, but well ;)<br/><br/>Download link: <a class='url' href='https://dl.dropboxusercontent.com/u/18909657/Flight.rar'>Click here</a><br/><br/>I included both .exe file (used Ocra to compile it) and source code. I&#39;m not sure if it will work on linux and/or OSX, because it uses .gif files, but if that&#39;s an issue I will convert graphics to .pngs and reupload the game.
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=787.html'><img class='amt' src='../../mwf/attachments/3/7103/01_title.thb.jpg' title='Title screen (137k)' alt=''/></a>
+<a href='attach_show.pl@aid=788.html'><img class='amt' src='../../mwf/attachments/3/7103/02_game.thb.jpg' title='Game (91k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn7103'>
+<div class='frm pst' id='pid7108' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=940.html#pid7103'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7108' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7108.html#pid7108'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-12 20:18
+</div>
+<div class='ccl'>
+Pretty nice game!&#160; Though a couple things strike me as odd.<br/><br/>Why so many globals?&#160; Things like the players armor and score should be handled by the instances of those objects instead of globally hard-coded.&#160; In general if you&#39;re using a global in an object oriented language you&#39;re either in a very special situation, or you&#39;re making a mistake.<br/><br/>Player1 and Player2 are almost exactly the same.&#160; Would be easy to make a base &quot;Player&quot; class and have player1 and player2 (or player3, or player99) extend it.&#160; Same for bullets.&#160; Can make a simple bullet class that handles hitting other entities and sending callbacks to them, and then have a player_bullet and enemy_bullet that extend it and implement behavior specific to friendly or hostile bullets. (Like moving up instead of down, different graphics, sounds, etc)<br/><br/>You use two identical methods to check for two hard-coded players and adjust their health in global variables.&#160; It&#39;d be cleaner and easier to just send a callback to the player you hit, and have the player manage their health themselves, instead of using globals and checking for each hard-coded player separately.<br/><br/>You store the main Gosu::Window into a global $window (which is fine), but then have the window pass &quot;self&quot; around anyway.<br/><br/>The final product works really well, but under the hood it&#39;s kind of spaghetti.&#160; I love the floating healthbars and smooth influx of enemies as they&#39;re destroyed, and the pre-rendered menus with moving cursor is smart, instead of setting up a bunch of positioned text.
+</div>
+</div>
+
+<div class='brn' id='brn7108'>
+<div class='frm pst' id='pid7109' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=940.html#pid7108'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7109.html#pid7109'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2013-08-12 20:39
+</div>
+<div class='ccl'>
+Thanks a lot for the comment!<br/><br/>I do realize most of the things within the code could be done differently, but as I stated, this was my very first thing I ever programmed. I partially lost myself in my own code, and wasn&#39;t sure how to achieve some things (like Player classes), so I tried a workaround. I had a limited time to finish that too, so I couldn&#39;t really experiment with it, at least not too much. I might soon re-write the code, but at the moment I&#39;m fairly busy with other works.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7114' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=940.html#pid7103'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7114' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7114.html#pid7114'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-13 05:03
+</div>
+<div class='ccl'>
+I like the welcome screen and menu system a lot. Very straightforward and simple. Thanks for sharing your project.<br/><br/>I&#39;m on Linux, and it seems like the .gifs loaded just fine.... In order to get the game to load I deleted the file &#39;gosu.rb&#39; from the main folder (/Flight/). Also, I encountered an inexplicable problem with the enemy bullets, so I commented out the line where the enemy bullets get created. Also, going to the high score menu gave me an error. So, I was only able to check out <i>most</i> of the game, without enemy fire. Still I was able to play it a little and check it out. The weapons upgrade is a nice touch.<br/><br/>I am new to programming, and I am not sure what exactly is causing the errors, especially with the enemy bullets. In case it is of interest, this is the error I received (for enemy bullets):<br/>/Flight/Scripts/EnemyBullet.rb:21:in &#39;initialize&#39;: Unknown error (RuntimeError)<br/>&#160; from /Flight/Scripts/EnemyBullet.rb:21:in &#39;new&#39;<br/>&#160; from /Flight/Scripts/EnemyBullet.rb:21:in &#39;initialize&#39;<br/>&#160; from /Flight/Scripts/Scene_Game.rb:132:in &#39;new&#39;<br/>&#160; from /Flight/Scripts/Scene_Game.rb:132:in &#39;update&#39;<br/>&#160; from /Flight/Scripts/GameWindow.rb:105:in &#39;update&#39;<br/>&#160; from Main.rb:94:in &#39;&lt;main&gt;&#39;<br/>The game is able to boot up, but as soon as an enemy tries to fire, I get the error above (unless I hash out that line of code).<br/><br/>And for the high scores screen. This error comes up as soon as I try to access the High Scores:<br/>/Flight/Scripts/Scene_Highscore.rb:16:in &#39;initialize&#39;: Unknown error (RuntimeError)<br/>&#160; from /Flight/Scripts/Scene_Highscore.rb:16:in &#39;new&#39;<br/>&#160; from /Flight/Scripts/Scene_Highscore.rb:16:in &#39;initialize&#39;<br/>&#160; from /Flight/Scripts/Scene_Title.rb:70:in &#39;new&#39;<br/>&#160; from /Flight/Scripts/Scene_Title.rb:70:in &#39;confirm&#39;<br/>&#160; from /Flight/Scripts/Scene_Title.rb:61:in &#39;button_pressed&#39;<br/>&#160; from /Flight/Scripts/GameWindow.rb:114:in &#39;button_down&#39;<br/>&#160; from Main.rb:94:in &#39;&lt;main&gt;&#39;<br/><br/>Not sure if other people on Linux would get the same errors, but that&#39;s what happened when I tried it. Also, I don&#39;t know whether it&#39;s worth your time to try to find a solution, but I mention it in case it is of interest.
+</div>
+</div>
+
+<div class='brn' id='brn7114'>
+<div class='frm pst' id='pid7118' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=940.html#pid7114'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7118' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7118.html#pid7118'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2013-08-13 09:17
+</div>
+<div class='ccl'>
+I checked both codes, and seems to be related to loading graphics, first .png and then .gif. Try adding additional backslash in these lines:<br/><code>@background = Image.new(@window, &quot;/Graphics/Backgrounds/Highscore.gif&quot;, false)</code><br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ^ About here<br/><br/>If error changed to another line, seems that linux requires these when loading graphics.
+</div>
+</div>
+
+<div class='brn' id='brn7118'>
+<div class='frm pst' id='pid7151' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=940.html#pid7118'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7151.html#pid7151'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-24 03:07
+</div>
+<div class='ccl'>
+Hi thanks for the response. I just tried it out and I was able to get everything to work great.<br/><br/>The issue ended up being the usual suspect - case sensitivity - with these two filenames:<br/>Eshot.png Highscore.gif<br/>EShot.png HighScore.gif
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7268' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=940.html#pid7103'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7268.html#pid7268'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-09-21 07:04
+</div>
+<div class='ccl'>
+To bring up a gameplay issue…you cannot fly diagonally! :) And there is no feedback when enemies get hit. Everything from the presentation here would make the game a lot more fun: <a class='ura' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=826'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=826</a><br/><br/>(I realise that the project is probably finished, but I just can&#39;t link to the article often enough :))
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=940.html#tid940'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=940.html#tid940'>Gosu Showcase</a> / Flight
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=940.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

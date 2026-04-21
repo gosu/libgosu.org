@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3752 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Constrain Gosu::Window#draw to a Gosu::Image</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3752' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=529.html#tid529'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=529.html#tid529'>Gosu Exchange</a> / Constrain Gosu::Window#draw to a Gosu::Image
+</div>
+</div>
+
+<div class='frm pst' id='pid3743' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3743' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3743.html#pid3743'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-14 19:13
+</div>
+<div class='ccl'>
+I know there is Gosu::Window#clip_to method which allows constraining drawing to a specific area.&#160; Is there a way to constrain the drawing to a instance of Gosu::Image instead? <br/><br/>I&#39;m trying to draw shadows by overlaying a semi-transparent black circle over other images.&#160; As a result, I can&#39;t use texplay for this as it would be too slow to process this every frame.&#160; Feel free to correct me if I&#39;m wrong though.<br/><br/>I assume that this is possible using OpenGL or something, but I was curious if it was already implemented somewhere and just was not documented, or if there was some code that someone else was working on that would point me in the right direction.
+</div>
+</div>
+
+<div class='brn' id='brn3743'>
+<div class='frm pst' id='pid3744' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3743'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3744' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3744.html#pid3744'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-01-15 01:13
+</div>
+<div class='ccl'>
+why not just draw a semi transparent blac, circle over images? :) just create a circle image with an alpha &lt; 255 and draw it? :)
+</div>
+</div>
+
+<div class='brn' id='brn3744'>
+<div class='frm pst' id='pid3745' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3744'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3745' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3745.html#pid3745'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-15 02:14
+</div>
+<div class='ccl'>
+Ok, I suppose I should go into a bit more detail then.<br/><br/>I&#39;m making a top-down game and thus am working with a psudo-3D environment.&#160; I need to constrain the drawing so that, for example, if the player was jumping over a box, the shadow would only appear on the top of the box.&#160; I would then draw another shadow on the ground.&#160; This is so that the shadow does not show up on the sides of the box, as that would be weird.&#160; Also, as the ground&#39;s surface is a different distance away from the player than the top surface of the box, the shadow size and opacity should be different.<br/><br/>Just imagine what it should look like, looking straight-down from the top and seeing a shadow resulting from light which comes straight down.&#160; This would appear as simply a circle.&#160; However, if you use a top-down perspective a-la the 2D Zelda games, then then just using a circle would be weird, as in this perspective you can view the top and sides of a building, box, or what-have-you in the same plane.&#160; <br/><br/>Hope that&#39;s clear enough and everything makes sense &gt;.&lt;<br/><br/>If you draw out a picture of what the scene should look like as seen from directly above, and then try to draw the same thing from the typical top-down psudo-3D perspective, I think you&#39;ll see what my problem is.
+</div>
+</div>
+
+<div class='brn' id='brn3745'>
+<div class='frm pst' id='pid3746' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3745'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3746.html#pid3746'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-01-15 03:29
+</div>
+<div class='ccl'>
+<code>clip_to</code> works with the other transformations like <code>rotate</code> and <code>translate</code> if that helps at all. If you could show a wee snippet of code for what you&#39;re trying to do, I might be able to figure out what needs to be done about it. If you&#39;re using a fixed perspective (no rotation or parallax) then it should be as simple as clipping to the coordinates of the tile that the player is over.
+</div>
+</div>
+
+<div class='frm pst' id='pid3747' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3745'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3747' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3747.html#pid3747'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-15 03:38
+</div>
+<div class='ccl'>
+Is the box a pixel-perfect rectangle? Then you could draw the shadow on the floor, draw the box, clip to the box&#39; top plane and draw the shadow again with an offset?<br/><br/>Maybe I am getting the situation wrong though :)
+</div>
+</div>
+
+<div class='brn' id='brn3747'>
+<div class='frm pst' id='pid3748' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3747'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3748' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3748.html#pid3748'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-15 07:28
+</div>
+<div class='ccl'>
+I had the exact same idea.&#160; The problem with this is that it starts to get weird when you have non-rectangular objects, doesn&#39;t it?&#160; For now I&#39;m simply using pixel-perfect rectangles, but I wanted to be able to expand beyond that and have various sorts of buildings and such.<br/><br/>I think for some reason I thought that it would get to expensive to draw the shadow on the floor and then draw tho box on top of it.&#160; Perhaps I just don&#39;t know what I&#39;m talking about&#160; ^.^;<br/><br/>Also, I had somehow thought that this would require some odd coding flow, but I suppose simply using the z-index would take care of ordering the drawing.<br/><br/>Am I just over thinking this? That does tend to happen every so often...
+</div>
+</div>
+
+<div class='brn' id='brn3748'>
+<div class='frm pst' id='pid3749' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3748'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3749' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3749.html#pid3749'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-01-15 09:31
+</div>
+<div class='ccl'>
+As long as you have rectangles (or objects that can be approximated using a few rectangles), the actual clipping and drawing will not be a problem. The Ruby overhead to find these rectangles is probably worse :)<br/>If you want to render onto other images, that is not only tough in Gosu but probably OpenGL too. I imagine it&#39;s possible with stencil buffers, but&#160; designing around the issue would be the smoothest solution in any case.
+</div>
+</div>
+
+<div class='brn' id='brn3749'>
+<div class='frm pst' id='pid3752' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3752.html#pid3749'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3752.html#pid3752'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-01-15 20:01
+</div>
+<div class='ccl'>
+Actually, as a result of the way I have the Chipmunk integrating going in my game, finding the rectangles is fairly trivial.<br/><br/>Alright then, I&#39;ll just try to avoid this problem for now.&#160; Thanks for the help.&#160; I&#39;ll try to look into stencil buffers later on.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=529.html#tid529'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=529.html#tid529'>Gosu Exchange</a> / Constrain Gosu::Window#draw to a Gosu::Image
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3752.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4004 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How can I skip transparent pixels with &quot;rect&quot; method?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4004' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=551.html#tid551'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=551.html#tid551'>Gosu Exchange</a> / How can I skip transparent pixels with &quot;rect&quot; method?
+</div>
+</div>
+
+<div class='frm pst' id='pid3895' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3895' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3895.html#pid3895'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=393.html' >quarcy</a>
+<span class='htt'>Date</span> 2011-02-10 06:52
+</div>
+<div class='ccl'>
+I would like to paint my png picture with color. I tried to use <br/><br/>&#160; &#160; @cover.rect( 0, 0,@cover.width, @cover.height, :fill =&gt; true, :dest_ignore=&gt;:transparent,:color =&gt; color,:alpha_blending =&gt; true)<br/><br/>but it also effects that pixels are not 0x00FFFFFF (like 0x00FEFEFE) :(<br/><br/>The following code works OK, but it is too slow.<br/><br/>&#160; &#160; @cover = Gosu::Image.new(...)<br/>&#160; &#160; color = Gosu::Color.new(...)<br/>&#160; &#160; @cover.each do |c|<br/>&#160; &#160; &#160; unless c[3] == 0<br/>&#160; &#160; &#160; &#160; c[0] = c[3]*color.red/255.0 + (1.0-c[3])*c[0]<br/>&#160; &#160; &#160; &#160; c[1] = c[3]*color.green/255.0 + (1.0-c[3])*c[1]<br/>&#160; &#160; &#160; &#160; c[2] = c[3]*color.blue/255.0 + (1.0-c[3])*c[2]<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end
+</div>
+</div>
+
+<div class='brn' id='brn3895'>
+<div class='frm pst' id='pid3896' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3895'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3896' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3896.html#pid3896'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-10 14:48
+</div>
+<div class='ccl'>
+:transparent is a pseudo-color that matches any color that has an alpha channel of 0. In your case you do not want :transparent but instead specifically: [1, 1, 1, 0] (in float notation). You can also use the clear method instead of a filled rect.<br/><br/>so try:<br/><br/>@cover.clear :dest_ignore=&gt; [1, 1, 1, 0], :color =&gt; color, :alpha_blend =&gt; true
+</div>
+</div>
+
+<div class='brn' id='brn3896'>
+<div class='frm pst' id='pid3900' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3896'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3900' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3900.html#pid3900'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-10 18:35
+</div>
+<div class='ccl'>
+I&#39;m seeing this and thinking of a faster way to do something I&#39;ve been trying to do...is there any way to provide a color mask, that would have the same sort of effect as this code but would not affect the alpha channel at all? So, it just recolors the image but doesn&#39;t make it any more opaque. Also, is there a fast way to provide an additive or subtractive color mask, or a desaturation mask?
+</div>
+</div>
+
+<div class='brn' id='brn3900'>
+<div class='frm pst' id='pid3905' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3900'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3905' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3905.html#pid3905'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-10 23:29
+</div>
+<div class='ccl'>
+can you provide a tiny code sample for such a color mask effect as i dont understand exactly what you mean
+</div>
+</div>
+
+<div class='brn' id='brn3905'>
+<div class='frm pst' id='pid3926' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3905'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3926' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3926.html#pid3926'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-11 18:44
+</div>
+<div class='ccl'>
+A &quot;code sample&quot; isn&#39;t exactly going to explain it. Think of it like there is a provided color, with alpha channel. If alpha=0, the entire image is unchanged. If alpha=1.0, the entire image becomes that color, except that the alpha channel is unaffected. For intermediate alpha values, the color of each individual pixel is brought closer to the provided color. Technically, this mode would function exactly like drawing a color over the whole image with :alpha_blend except that it would keep the alpha channel of the source image.<br/><br/>Reading below, I think a mode like this could solve the OP&#39;s problem as well.<br/><br/>I guess the second question could basically be solved with :mode =&gt; :add. What about a desaturation filter? How could that be quickly implemented?
+</div>
+</div>
+
+<div class='brn' id='brn3926'>
+<div class='frm pst' id='pid3935' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3926'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3935.html#pid3935'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-02-12 07:19
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; What about a desaturation filter? How could that be quickly implemented?</p></blockquote><br/>Are you always going to draw the image at full transparency? Then you could just create a grayscale version once at startup, then always draw it over the full-color one with varying transparency.<br/>Creating a grayscale version is not that hard, you could probably do it with a brutally long binary regexp over Image#to_blob and then feed that back into Image.new. That should be sufficiently fast and make you the hacker of the day at any good party. ;) (Maybe you can just use TexPlay for that, I don&#39;t know.)
+</div>
+</div>
+
+<div class='frm pst' id='pid3941' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3926'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3941' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3941.html#pid3941'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-13 04:00
+<span class='htt'>Edited</span> 2011-02-13 04:16
+</div>
+<div class='ccl'>
+I can add this as a :mode option. Does this drawing mode have a name? <br/><br/>Let me get it straight what you want:<br/><br/>* normal alpha blend takes place between source and destination pixels, using source alpha for the blend (as per usual)<br/>* However, alpha channel of the resulting pixel is not blended and is instead set to the alpha channel of the destination pixel.<br/><br/>Is this right?<br/><br/>This, i think, is different to what the OP wanted, i could be wrong; but i think he wanted an alpha blend to take place but instead base it on the destination pixel&#39;s alpha channel, rather than the source pixel&#39;s alpha channel. I think he also wanted to keep the result pixel&#39;s alpha the same as the destination pixel&#39;s alpha.
+</div>
+</div>
+
+<div class='brn' id='brn3941'>
+<div class='frm pst' id='pid3953' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3941'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3953' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3953.html#pid3953'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-15 18:19
+<span class='htt'>Edited</span> 2011-02-15 21:48
+</div>
+<div class='ccl'>
+That&#39;s exactly what I want. I think it&#39;s what the OP wanted too, based on his slow code to accomplish what he wanted. We can&#39;t be entirely sure, though; there&#39;s some lack of clarity based on exactly what he asked for.<br/><br/>I guess I would call this a color mask, so maybe :mode =&gt; :mask ? For that matter, why isn&#39;t :alpha_blend =&gt; true a :mode? Also note the long thread below...
+</div>
+</div>
+
+<div class='brn' id='brn3953'>
+<div class='frm pst' id='pid3960' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3953'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3960' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3960.html#pid3960'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-16 00:24
+<span class='htt'>Edited</span> 2011-02-16 00:42
+</div>
+<div class='ccl'>
+:alpha_blend isn&#39;t a mode because it existed before i added all that :mode jazz. but you&#39;re right, ill probably add alpha_blend as a mode (along with your new mode) and phase out the :alpha_blend option.<br/><br/>In the OP&#39;s (Image#each) example c[3] is actually the destination alpha, not the source alpha (which would be color.alpha) and he is using c[3] as the basis for alpha blending; that&#39;s why i figured he wanted the opposite of you -- but it&#39;s possible he just made a mistake.
+</div>
+</div>
+
+<div class='brn' id='brn3960'>
+<div class='frm pst' id='pid3962' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3960'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3962' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3962.html#pid3962'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-16 05:02
+</div>
+<div class='ccl'>
+I don&#39;t think alpha blending should be (a) mode(s), unless you can have multiple modes active at once.
+</div>
+</div>
+
+<div class='brn' id='brn3962'>
+<div class='frm pst' id='pid3963' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3962'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3963' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3963.html#pid3963'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-16 05:46
+</div>
+<div class='ccl'>
+You have a point. Currently it&#39;s possible to apply one of the drawing modes AND have it alpha blended with the background; this wouldn&#39;t be possible if alpha blending just became another mode.<br/><br/>Out of interest can you think of a good name for applying the alpha blend to rgb but leaving alpha of the destination intact?<br/><br/>i thought about :alpha_blend =&gt; :keep_dest_alpha<br/><br/>But that seems unwieldy at best
+</div>
+</div>
+
+<div class='brn' id='brn3963'>
+<div class='frm pst' id='pid3969' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3963'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3969.html#pid3969'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-16 13:24
+</div>
+<div class='ccl'>
+<code>:dest_alpha_mask</code>? The much more terrible and obscure <code>:source_atop</code> from Cocoa? :D<br/><br/>Maybe let us define our own? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid3971' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3963'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3971.html#pid3971'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-16 18:48
+</div>
+<div class='ccl'>
+How about &quot;:dest_alpha =&gt; :keep&quot; or &quot;:dest_alpha =&gt; :overwrite&quot; (as the default)? In other words, don&#39;t muck up the existing alpha-blending syntax just to add this feature.
+</div>
+</div>
+
+<div class='frm pst' id='pid3983' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3963'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3983' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3983.html#pid3983'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-17 20:28
+</div>
+<div class='ccl'>
+Alright, then let&#39;s defer to the similar discussion below where I see &quot; &#39;:alpha_blend =&gt; &lt;true, :source, :dest, :none, or false&gt;&#39; where true and :source are equivalent, as are false and :none.&quot; Some solution like that might work as desired. Another option is to allow multiple modes, though that could get confusing: [:add, :alpha_blend] would presumably first add dest to source, then blend the result. How exactly does this function now? How do you alpha blend and add at the same time?<br/><br/>As for what the OP said, I would think that his code would cause &quot;color&quot; to be blended only with partially transparent pixels. I&#39;m starting to get very confused so I don&#39;t think I can explain what I&#39;m thinking.
+</div>
+</div>
+
+<div class='brn' id='brn3983'>
+<div class='frm pst' id='pid4007' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3983'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4007.html#pid4007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-21 15:45
+</div>
+<div class='ccl'>
+TexPlay 0.3.3 released, features a few more :alpha_blend modes<br/><br/>:alpha_blend =&gt; :source&#160;&#160; (default, same as :alpha_blend =&gt; true)<br/>:alpha_blend =&gt; :dest, uses destination pixels alpha instead of source&#39;s alpha for alpha blending<br/>:alpha_blend =&gt; :source_with_fixed_alpha, same as :source but doesn&#39;t affect alpha channel of destination pixel<br/>:alpha_blend =&gt; :dest_with_fixed_alpha, same as :dest but doesn&#39;t affect alpha channel of destination pixel<br/>:alpha_blend =&gt; false (no alpha blending, same as current behaviour. <code>nil</code> also accepted)<br/><br/>THere&#39;s also a few easter eggs in thsi release, require &#39;texplay/alone&#39; let&#39;s you do image manip ostensively without gosu -- (really just wraps and hides gosu stuff): TexPlay.create_image(100, 100).clear(color: :red).save(&quot;blah.png&quot;)<br/><br/>and require &#39;texplay/live&#39; a REPL session for image editting; totally undocumented and therefore hard to use :P requires &#39;pry&#39; gem
+</div>
+</div>
+
+<div class='frm pst' id='pid4012' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3983'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4012' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4012.html#pid4012'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-22 04:33
+</div>
+<div class='ccl'>
+also, could you get back to me on whether this release does what you want? :) also let me know if performance is ok:) thx
+</div>
+</div>
+
+<div class='brn' id='brn4012'>
+<div class='frm pst' id='pid4014' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid4012'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4014.html#pid4014'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-24 20:23
+</div>
+<div class='ccl'>
+I tested it and it did what I expected. Performance is fine, although it&#39;s not like I&#39;m doing this operation every frame so there wouldn&#39;t be any major problems anyway.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3997' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3963'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3997' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3997.html#pid3997'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-02-21 01:26
+<span class='htt'>Edited</span> 2011-02-21 01:33
+</div>
+<div class='ccl'>
+I would deffer to less technical terminology and call it something like &quot;color blend,&quot; as from what I can tell, that&#39;s the intended use case.&#160; You want the image tinted a specific color, with a specific &quot;magnitude&quot; of that color being used to tint.<br/><br/>Or just call it &quot;tint.&quot;&#160; That&#39;s probably better.<br/><br/>I&#39;m almost positive the OP wants a function that can be used like a minuscule ruby photoshop.&#160; Just select an image, apply a tinge of color to the whole image, and then BAM.&#160; Done.&#160; This operation sounds similar to locking transparency and dragging a big semi-transparent brush over everything.&#160; No hassle for the coder, just easy results.&#160; I would find that sort of library highly desirable myself, although I can imagine the coding might get a bit intense for whoever had to implement the library.
+</div>
+</div>
+
+<div class='brn' id='brn3997'>
+<div class='frm pst' id='pid3999' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3997'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3999' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3999.html#pid3999'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-21 01:46
+</div>
+<div class='ccl'>
+Naming conventions aside, it&#39;s already possible to fill with a color having a less-than-opaque alpha value. What&#39;s not currently possible (without using a slow Ruby loop structure) is the &quot;locking transparency&quot; part, which is what&#39;s under discussion in this particular thread.
+</div>
+</div>
+
+<div class='brn' id='brn3999'>
+<div class='frm pst' id='pid4000' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3999'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4000' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4000.html#pid4000'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-02-21 02:02
+<span class='htt'>Edited</span> 2011-02-21 02:41
+</div>
+<div class='ccl'>
+What I&#39;m trying to say is, I don&#39;t think the results posted by AmIMeYet are what the OP intended.&#160; I believe he wanted to basically shift the color pallet of the image, so to speak.&#160; I&#39;m not knowledgeable about the technical terminology here, so try to bear with me.&#160; <br/><br/>I believe gave an incorrect example of the use case in my previous post.&#160; Upon reading the original post as well as the posts in the other &quot;branch&quot; of this thread, it seems like what is desired is a &quot;mask&quot; which would block out all but a single color.&#160; Not sure if that&#39;s how it works out from the coding perspective, but conceptually that&#39;s how I would visualize it.&#160; Imagine the normal image is something seen normally, and the effect is like putting red cellophane in front of your eyes.&#160; Now only the red light gets in, so everything is in shades of red.&#160; Think greyscale.&#160; Though, I suppose in this case it would be... red-scale?<br/><br/>This would explain why quarcy mentions additive and subtractive masks, and desaturation masks.&#160; This also explains the &quot;loosing image quality&quot; thing.&#160; I believe quarcy is saying that you loose detail within the image as a result of this fill, as a result of the desired tint effect which would preserve detail.&#160; Not in detail in terms of artifacts or something, but visual detail.<br/><br/>In contrast, what you have described sounds to me like just a standard bucket fill, but using a transparent color instead of a color with 100% opacity.<br/><br/>Basically, while the other people are trying to examine this as a programming problem, I&#39;m trying to approach this from an artist&#39;s perspective.&#160; Thus, I&#39;m trying to analyze the intent of the OP&#39;s statements, while disregarding implementation.
+</div>
+</div>
+
+<div class='brn' id='brn4000'>
+<div class='frm pst' id='pid4001' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid4000'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4001.html#pid4001'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-02-21 02:32
+<span class='htt'>Edited</span> 2011-02-21 02:50
+</div>
+<div class='ccl'>
+EDIT:<br/>Ok, so it&#39;s called HSL or HSV.&#160; I used &quot;T&quot; for &quot;tone,&quot; relying on my extremely shaky art foundation.<br/><br/>Oh, duh.&#160; Just use the HST color space instead of RGB.&#160; I know that&#39;s possible with Gosu::Color objects, but does that work with this structure? If so, you could just copy over the hue of the the specified color to each pixel that is not :transparent.&#160; You&#39;d have to take into account the saturation and tone as well, but my epiphany doesn&#39;t go that far ^_^;<br/><br/>I could be describing a totally different problem here though, so I&#39;ll stop my speculation-based train of thought right here before I de-rail the thread...
+</div>
+</div>
+
+<div class='frm pst' id='pid4002' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid4000'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4002' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4002.html#pid4002'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-21 05:28
+<span class='htt'>Edited</span> 2011-02-21 05:45
+</div>
+<div class='ccl'>
+an alpha blend _is_ a form of tinting ; it&#39;s tinting the colors of the destination pixel with the color of&#160; the source pixel. Strictly speaking an alpha blend is just a linear interpolation from the destination color towards the source color ; the higher the alpha value the stronger the tint -- until the destination pixel (at alpha 255) simply becomes the source pixel. <br/><br/>To achieve&#160; a red tint on an image you simply draw a pure red filled rect over the image with an alpha value &lt; 255.<br/><br/>EDIT: and if you want &#39;red-scale&#39; you simply use the :multiply mode with a pure red (255, 0, 0, 255) filled rect - this will block all channels except the red (and alpha) channels.
+</div>
+</div>
+
+<div class='brn' id='brn4002'>
+<div class='frm pst' id='pid4004' style='margin-left: 42%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid4002'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4004' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4004.html#pid4004'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2011-02-21 10:17
+</div>
+<div class='ccl'>
+Ah, ok then, I clearly didn&#39;t understand the question posed in this thread then.&#160; Please excuse my ignorance, and I sincerely apologize.&#160; I also apparently misunderstood how alpha blend worked.&#160; I thought it included some sort of interpolation of alpha values.&#160; Next time I will google before-hand and try not to post in the forum at far-past-midnight local time.
+</div>
+</div>
+
+<div class='brn' id='brn4004'>
+<div class='frm pst' id='pid4005' style='margin-left: 45%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid4004'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4005.html#pid4005'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-21 10:26
+</div>
+<div class='ccl'>
+hahah dont worry man :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3913' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3900'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3913.html#pid3913'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-11 03:37
+</div>
+<div class='ccl'>
+this probably wont help now, but the next release of texplay will have a very fast and sophisticated color match language that will let you select or ignore precisely the colors you want, specified in terms of each channel
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3984' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3895'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3984.html#pid3984'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=294' >meustrus</a>
+<span class='htt'>Date</span> 2011-02-17 20:38
+</div>
+<div class='ccl'>
+quarcy, there&#39;s some considerable confusion as to what you&#39;re asking. Your question itself states that you only want to ignore 0x00FFFFFF, and not other transparent values, but your replies contradict this. Your code specifically is a variant of :alpha_blend except that the color being blended is assumed to have the same alpha value as what is currently at the destination. I think that your code would cause full alpha values to be replaced completely by &quot;color&quot; and partially transparent values would be partially between &quot;color&quot; and their original color. Technically, that would be &quot;alpha blending with destination alpha instead of source alpha&quot;.<br/><br/>I think that the only important effect that you&#39;re trying to achieve is an alpha blend that does not affect transparency. Are you trying to create a silhouette of the original object, such that the entire image is a single color but with the same shape as the original object? I think that&#39;s what you&#39;re trying to accomplish, and the way that would happen is to have a form of :alpha_blend which simply does not overwrite the destination alpha.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid3902' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3902' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3902.html#pid3902'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=393.html' >quarcy</a>
+<span class='htt'>Date</span> 2011-02-10 21:34
+</div>
+<div class='ccl'>
+No, it still won&#39;t work.<br/>&quot;clear&quot; method with :dest_ignore=&gt; [1.0, 1.0, 1.0, 0.0] dose not make any effect. It looks like the background color is [1.0,1.00000011920929,1.0,0.0] instead of what you mentioned. I think this is not the main point because what I what to ignore is pseudo-color （any color that has an alpha channel of 0）. I don&#39;t know whether a bug is in here, but :transparent doesn&#39;t match all pseudo-colors.
+</div>
+</div>
+
+<div class='brn' id='brn3902'>
+<div class='frm pst' id='pid3903' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3902'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3903' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3903.html#pid3903'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-10 22:11
+<span class='htt'>Edited</span> 2011-02-10 22:18
+</div>
+<div class='ccl'>
+can you give me a code example + image that reproduces your problem? and ill play with it.<br/><br/>Though perhaps what the issue is is that your alpha component is not exactly zero but is 0.00001 or something? In this case, use a tolerance to be sure to catch those too:<br/><br/>image.clear :dest_ignore =&gt; :transparent, ;tolerance =&gt; 0.01, :color =&gt; color
+</div>
+</div>
+
+<div class='brn' id='brn3903'>
+<div class='frm pst' id='pid3906' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3903'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3906' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3906.html#pid3906'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=393.html' >quarcy</a>
+<span class='htt'>Date</span> 2011-02-11 00:32
+</div>
+<div class='ccl'>
+Here is my code. Just directly run it and look at the shape of those three graphics shown on screen.<br/><a class='url' href='http://www.2shared.com/file/rhsnb1bq/projgosu-game.html'>http://www.2shared.com/file/rhsnb1bq/projgosu-game.html</a>
+</div>
+</div>
+
+<div class='brn' id='brn3906'>
+<div class='frm pst' id='pid3907' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3906'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3907' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3907.html#pid3907'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-11 01:31
+</div>
+<div class='ccl'>
+Ok I played with the image. The pixels that are causing the problem have a very low alpha value, but not 0. Like 0.3 or less.<br/><br/>The reason why your :dest_ignore strategy didn&#39;t work, even with :alpha_blend =&gt; true was because the blending doesn&#39;t happen until after the pixels are updated.<br/><br/>So the situation with image.clear :dest_ignore =&gt; :transparent, :alpha_blend =&gt; true, :color =&gt; color<br/><br/>was:<br/><br/>* select all non 100% alpha pixels, and color them (replacing the alpha value to the alpha of the new color too)<br/>* alpha blend these new pixels with the background<br/><br/>So, at the point you&#39;re alpha blending it&#39;s already too late as the alpha values of those low alpha pixels have already been changed to the alpha of the source color<br/><br/>What you instead want to do is use :dest_ignore with a :tolerance&#160;&#160; to ignore low alpha pixels too<br/><br/>I added the following to your example code and it now works as expected:<br/>&#160; &#160; <br/>@cover.clear :dest_ignore=&gt; :transparent, :color =&gt; color, :tolerance =&gt; 0.5
+</div>
+</div>
+
+<div class='brn' id='brn3907'>
+<div class='frm pst' id='pid3908' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3908' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3908.html#pid3908'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=393.html' >quarcy</a>
+<span class='htt'>Date</span> 2011-02-11 02:12
+</div>
+<div class='ccl'>
+The reason that I don&#39;t use tolerance is it has some obviously negative effect on quality.<br/>Try this image too and look at the upper-left conner of those picture. The shapes of the man&#39;s hair are different.<br/><a class='url' href='http://www.2shared.com/photo/8bcL7WNo/Battler.html'>http://www.2shared.com/photo/8bcL7WNo/Battler.html</a><br/>I am thinking I have to totally ignore the alpha channel. :(
+</div>
+</div>
+
+<div class='brn' id='brn3908'>
+<div class='frm pst' id='pid3909' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3908'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3909' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3909.html#pid3909'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-11 02:20
+</div>
+<div class='ccl'>
+First of all, we have to consider each image on its own terms and think about the special considerations for each one.<br/><br/>For the image you gave me tolerance seems like the perfect solution, and the result i got by using it appeared to be exactly what you wanted. So use it, in this case.<br/><br/>Secondly, &#39;tolerance&#39; does not and cannot have a &#39;negative effect on image quality&#39;. It just doesn&#39;t make sense to say this -- it may not be _appropriate_ for a given situation and so using it may give weird results --- but you have to THINK about the given situation and decide if it&#39;s going to work or not.<br/><br/>In summary: Tolerance is not always going to be the right tool for the job. However for the image you sent me, it appears perfect. For other images it may not be the right tool. Either way -- tolerance does not and cannot cause a &#39;negative effect on image quality&#39;<br/><br/>Thankyou.
+</div>
+</div>
+
+<div class='brn' id='brn3909'>
+<div class='frm pst' id='pid3910' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3909'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3910' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3910.html#pid3910'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=393.html' >quarcy</a>
+<span class='htt'>Date</span> 2011-02-11 02:47
+</div>
+<div class='ccl'>
+OK, using :tolerance is not the right solution. Any other suggestions?
+</div>
+</div>
+
+<div class='brn' id='brn3910'>
+<div class='frm pst' id='pid3912' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3910'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3912' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3912.html#pid3912'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-11 03:00
+</div>
+<div class='ccl'>
+Nevermind, I guess I just don&#39;t understand your problem. In my opinion you&#39;re not being nearly clear enough in your description, and you seem to keep creating new constraints as this thread progresses.<br/><br/>I have other things to do, hopefully someone else here can help you. Good luck :)
+</div>
+</div>
+
+<div class='brn' id='brn3912'>
+<div class='frm pst' id='pid3924' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3912'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3924' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3924.html#pid3924'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2011-02-11 15:14
+</div>
+<div class='ccl'>
+I think quarcy want&#39;s to draw a color onto the bitmap, using the alpha of the original image. Basically, you color the whole image, but with alpha=0, you color red*0, blue*0 and green*0, so nothing. But with alpha=10, you color the image by a little. Which I think is what he was doing here (although it&#39;s not very clear):<br/>c[0] = c[3]*color.red/255.0 + (1.0-c[3])*c[0]<br/>c[1] = c[3]*color.green/255.0 + (1.0-c[3])*c[1]<br/>c[2] = c[3]*color.blue/255.0 + (1.0-c[3])*c[2]<br/><br/>(also note that he basically disregards color.alpha here, that is, the alpha of the color to apply)<br/><br/>With the @cover.clear thing, you basically draw a given color onto a new image, skipping where it is transparent, but then with a tolerance so that things don&#39;t have to be completely transparent to not be painted. But then, you&#39;ll basically get a hard edge of when you *do* finally start coloring. Images look a bit &#39;aliased&#39; that way.<br/><br/>Below is a comparison image. To the left, you have the original. In the middle, you have the image.each implementation. To the right, there&#39;s the dest_ignore with tolerance. You can clearly see the &#39;clipped color&#39; effect.<br/><br/>I think the title of this thread should not be &#39;skip transparent pixels&#39;, but rather &#39;draw with below transparency&#39; or something. Am I right, quarcy?
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=519.html'><img class='amt' src='../../mwf/attachments/24/3924/original_opacity_tolerance.thb.jpg' title='original, with below opacity, dest_ignore with tolerance (7k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn3924'>
+<div class='frm pst' id='pid3928' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3924'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3928' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3928.html#pid3928'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-12 01:33
+<span class='htt'>Edited</span> 2011-02-12 02:13
+</div>
+<div class='ccl'>
+Oh, he wants to alpha blend, but alpha blend using the destination pixel&#39;s alpha rather than the source pixel&#39;s alpha.<br/><br/>Alpha blending (afaik) is always done with respect to the source pixel&#39;s alpha and this is how texplay works.<br/><br/>Can anyone think of a nice, general, API change to support this? maybe :reverse_alpha_blend =&gt; true, (currently it&#39;s :alpha_blend =&gt; true for source-based alpha blending)
+</div>
+</div>
+
+<div class='brn' id='brn3928'>
+<div class='frm pst' id='pid3929' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3929' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3929.html#pid3929'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-12 04:55
+<span class='htt'>Edited</span> 2011-02-16 04:50
+</div>
+<div class='ccl'>
+How about: &#39;:dest_alpha_blend =&gt; true&#39;?<br/><br/>If both options were set to true, you could multiply the two alpha channels before blending; I don&#39;t know if that would be useful, but it doesn&#39;t sound hard to implement ;)<br/><br/>If you want mutually exclusive, you could change it to: &#39;:alpha_blend =&gt; &lt;true, :source, :dest, :none, or false&gt;&#39; where true and :source are equivalent, as are false and :none.<br/><br/>EDIT: Fixed the colons and clarified (I hope).
+</div>
+</div>
+
+<div class='brn' id='brn3929'>
+<div class='frm pst' id='pid3930' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3929'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3930' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3930.html#pid3930'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-02-12 06:05
+</div>
+<div class='ccl'>
+I think this is a pretty nice idea. though do you mean true or :true?
+</div>
+</div>
+
+<div class='brn' id='brn3930'>
+<div class='frm pst' id='pid3932' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3930'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3932.html#pid3932'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-12 06:22
+</div>
+<div class='ccl'>
+Oh, sorry, yeah I went a little crazy with the colons :P Just &quot;true&quot; and &quot;false&quot; should suffice; retaining backward-compatibility is all I meant...
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3931' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3931' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3931.html#pid3931'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-12 06:09
+</div>
+<div class='ccl'>
+I think Apple calls this <a class='url' href='http://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSImage_Class/Reference/Reference.html#//apple_ref/doc/uid/20000344-BAJDEBIA'><code>NSCompositeSourceAtop</code></a> but I think it&#39;s a terrible name:<br/><br/><blockquote><p>&gt; Source image wherever both images are opaque, destination image wherever destination image is opaque but source image is transparent, and transparent elsewhere. (R = S*Da + D*(1 - Sa))<br/>&gt; R =&gt; The premultiplied result color.<br/>&gt; S =&gt; The source color<br/>&gt; D =&gt; The destination color<br/>&gt; Sa =&gt; The alpha value of the source color<br/>&gt; Da =&gt; The alpha value of the destination color</p></blockquote><br/>I suppose you could look at the <code>NSCompositingOperation</code> constants anyway to get some inspiration.
+</div>
+</div>
+
+<div class='brn' id='brn3931'>
+<div class='frm pst' id='pid3933' style='margin-left: 33%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3931'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3933' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3933.html#pid3933'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-12 06:27
+</div>
+<div class='ccl'>
+I&#39;m not sure it needs that D*(1-Sa) business... You just need to do a regular composite but without affecting the destination alpha channel.
+</div>
+</div>
+
+<div class='brn' id='brn3933'>
+<div class='frm pst' id='pid3938' style='margin-left: 36%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3933'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3938' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3938.html#pid3938'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-12 16:22
+</div>
+<div class='ccl'>
+D*(1-Sa) isn&#39;t my devising, of course; I just copy-pasted the documentation of the constant that sounded most like what was described for the sake of comparison. I think Apple&#39;s NSCompositingOperation constants are kind of confusing and not very powerful, though.
+</div>
+</div>
+
+<div class='brn' id='brn3938'>
+<div class='frm pst' id='pid3939' style='margin-left: 39%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3938'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3939' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3939.html#pid3939'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-02-12 17:03
+<span class='htt'>Edited</span> 2011-02-12 17:13
+</div>
+<div class='ccl'>
+Sorry, I didn&#39;t mean to imply that you wrote OSX or it&#39;s Cocoa subsystem ;)<br/><br/>I found this, though, and I think you&#39;re right: <a class='url' href='http://amarsagoo.blogspot.com/2007/01/nscompositingoperation-visual-quick.html'>http://amarsagoo.blogspot.com/2007/01/nscompositingoperation-visual-quick.html</a>
+</div>
+</div>
+
+<div class='brn' id='brn3939'>
+<div class='frm pst' id='pid3940' style='margin-left: 42%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4004.html#pid3939'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3940.html#pid3940'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-02-12 22:24
+</div>
+<div class='ccl'>
+Haha, I wish I could take credit. Except for the parts that suck, like the documentation. :D<br/><br/>Thanks for finding that blog post, though—the textual descriptions are (to me) pretty confusing and hard to follow. Now I can know at a glance which constant I want to use, or more likely, that there isn&#39;t one that does what I want after all~
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=551.html#tid551'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=551.html#tid551'>Gosu Exchange</a> / How can I skip transparent pixels with &quot;rect&quot; method?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4004.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

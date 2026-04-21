@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Questions about the chipmunk tutorial</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7928' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1122#tid1122'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1122#tid1122'>Gosu Exchange</a> / Questions about the chipmunk tutorial
+</div>
+</div>
+
+<div class='frm pst' id='pid7928' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7928' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7928.html#pid7928'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=665' >Daidalos</a>
+<span class='htt'>Date</span> 2014-07-27 21:48
+</div>
+<div class='ccl'>
+Hi ! <br/>I came back to gosu, and try for the first time to use chipmunk in order to help me to detect collision (developing a very basic shmup, just to see if I can do it).<br/>And the example/tutorial given with gosu left me quite perplex about certain things : <br/><br/>1. Wouldn&#39;t it be better/more logic to create a body and a shape in the constructor of the sprite object than in the MainWindow constructor?<br/>2. Talking about creating shape, the example says &quot;You need to define the vectors so that the &quot;top&quot; of the Shape is towards 0 radians (the right)&quot; but then, the vectors are defined forming a triangle fitting the image of the ship exactly like it is, i.e. with the &quot;top&quot; on the top, so I don&#39;t understand.<br/>3. Still about defining shape, the first vector defines the bottom-left vertex. I search other tutos/forums speaking of that point, and it seems to always start with the bottom-left then going counter-clockwise. Is it a reason for that, or could we start from whatever vertex we want, as long as we keep going counter-clockwise ?<br/>4. The exemple use &quot;@space.add_collision_func(:star, :star, &amp;nil)&quot; to tell stars not to collide with each other. As the game uses collisions only to take actions like killing sprites, increasing scores etc... that are game logic, and not to use chipmunk physics calculations, couldn&#39;t we simply set &quot;shape.sensor&quot; to true (As the documentation of chipmunk says &quot;sensor – true or false: A Boolean value if this shape is a sensor or not. Sensors only call collision callbacks, and never generate real collisions.&quot;) for all the sprites and just bother for collision functions between those who should interact ?<br/><br/>I know those questions should sounds totally basics to people used to chipmunk, but as a beginner, I found the documentation and tutorials quite opaque.
+</div>
+</div>
+
+<div class='brn' id='brn7928'>
+<div class='frm pst' id='pid7929' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7928.html#pid7928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7929' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7929.html#pid7929'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-07-28 08:31
+</div>
+<div class='ccl'>
+Hey. The tutorial was contributed a long time ago, and I don&#39;t know if the author of the Chipmunk tutorial is following this forum :) I would suggest that you trust your intuition, and add notes to the wiki page where you disagree. I&#39;m not a Chipmunk expert, but everything you mention sounds very reasonable. If you want you can also change the source code and send a pull request for the <code>.rb</code> file.
+</div>
+</div>
+
+<div class='brn' id='brn7929'>
+<div class='frm pst' id='pid7930' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7928.html#pid7929'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7930' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7930#pid7930'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=665' >Daidalos</a>
+<span class='htt'>Date</span> 2014-07-28 13:48
+</div>
+<div class='ccl'>
+Ok, thank you ! I&#39;d still wait for someone more used to Chipmunk to answer the 2. and 3. that are the two question I could not make an answer myself, and that can mess up the game if I tried something different.
+</div>
+</div>
+
+<div class='brn' id='brn7930'>
+<div class='frm pst' id='pid7942' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7928.html#pid7930'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7942.html#pid7942'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-08-17 05:32
+<span class='htt'>Edited</span> 2014-08-17 05:40
+</div>
+<div class='ccl'>
+The problems you describe in #2 and #3 have to do with differences in coordinate systems. This is something that the current tutorial does not explain very well at all. I certainly struggled with it myself when I was getting started.<br/><br/>Please feel free to ask questions. This is the first time I&#39;ve tried explaining the notion of coordinate systems.<br/>(Hopefully I&#39;ll compile this info along with some other stuff into a proper Chipmunk tutorial when I have more free time)<br/><br/>This first part is an explanation of how coordinate systems are relevant to this problem.<br/>The second post (right under this one) uses this information to answer your questions.<br/><br/>Take a look at this diagram.<br/>[<b>ATTACHED BELOW</b>, can&#39;t figure out how to inline at proper size]<br/><br/>The illustration of Gosu&#39;s coordinate system is how the Gosu window is set up. That&#39;s rather definitive (though, like most things in programming, you <b>could</b> alter it if you really wanted).<br/><br/>However, you can interpret the data from Chipmunk in various ways. Chipmunk is just a physics library. It does not really specify how data is to be visualized. I prefer to think of the positive direction of the Y-Axis as being &quot;up&quot;, but you could interpret that data as &quot;down&quot; if you wanted to. (In particular, the tutorial seems to use y+ DOWN, so I have illustrated both.)<br/><br/>In fact, specifying y+ DOWN may make combining Gosu and Chipmunk more straightforward. If you look at the diagram, you&#39;ll notice that the three differences between these coordinate systems are:<br/><br/>1) y+ DOWN (vs) y+ UP<br/>2) positive rotation clockwise (vs) positive rotation COUNTER-clockwise<br/>3) 0 is UP (vs) 0 is RIGHT<br/><br/>Points (1) and (2) are linked.<br/>When you flip your interpretation of the Chipmunk Y-Axis, your interpretation of positive rotation direction with be altered as well. PI/2 is always attached to the Y+ axis, regardless of where that may lie. Same goes for any other axis and angle measure pair.<br/><br/>Even after interpreting both Chipmunk and Gosu as y+ DOWN, you will find that the 0 angle measures will not match up. They will always be out of sync by a quarter turn.<br/><br/>However, you can&#39;t just change your interpretation of which angles are associated with which axes. Doing so would mean the numbers Chipmunk gives you concerning rotations would cease to make sense. Chipmunk&#39;s internal math assumes a coordinate system with a certain angle and axis relationship (I&#39;m not sure of the formal term for this).<br/><br/>I suggest implementing some sort of method to allow for easy conversion between Chipmunk&#39;s coordinate space and Gosu&#39;s coordinate space (and vice versa) so that it is always clear that a coordinate space conversion is happening, and not some other sort of angular math.<br/><br/>I will assume you understand the difference between angles and radians, and can convert between the two appropriately. The specifics of how you want to write the conversion methods are up to you. Do you want to create methods like radians_to_degrees(angle), or will you monkey-patch Numeric to provide Numeric#to_degrees and Numeric#to_radians. Do you want conflate conversion between radians and degrees with the coordinate space conversion? Or do you want to keep those two ideas separate? There are many choices to be made at this point, but I&#39;m not certain there is a &quot;best&quot; answer. It seems like more of an issue of personal coding style.
+</div>
+<div class='ccl pat'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=822'><img class='amt' src='../../mwf/attachments/42/7942/diagram1.thb.jpg' title='diagram1.png (178k)' alt=''/></a>
+</div>
+</div>
+
+<div class='frm pst' id='pid7943' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7928.html#pid7930'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7943#pid7943'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-08-17 05:36
+</div>
+<div class='ccl'>
+With these things in mind, I will return to your questions:<br/><br/>I&#39;m going to answer #3 first, because #2 is dependent on #3<br/><br/>#3:<br/>In the coordinate system I tend to use, verticies should always be specified clockwise. If you would prefer to use a y+ DOWN coordinate system, (as is consistent with Gosu&#39;s coordinate system) then yes, the verticies should be specified counter-clockwise. In either case, the verticies should be specified in order of decreasing rotation. CW / CCW is relative to the coordinate system you use the interpret the data, but the direction of positive rotation is determined by Chipmunk. It makes assumptions about rotations, sometimes referred to as the &quot;handedness&quot; of a coordinate system (as in &quot;right handed&quot; or &quot;left handed&quot;), to return correct signage for things like the cross product.<br/><br/>I think when you say &quot;bottom-left vertex&quot; you are using the same coordinate system as the one I tend to use with Chipmunk. However, I believe the tutorial uses an y+ DOWN coordinate system. This means the first vertex is actually the TOP LEFT point. In general, the top-left of an image is the origin of that image (this applies to all image formats that I know of, not just Gosu::Image objects). Thus, the top-left is generally specified first, simply because it is the origin.<br/><br/>#2:<br/>The coordinate systems are tripping you up again.<br/><br/>Here&#39;s a diagram which explains how the example lists verts for the shape of the ship:<br/>[ATTACHED BELOW, can&#39;t figure out how to inline at proper size]<br/><br/>What we&#39;re going to do is rotate the shape so that it is correct in Chipmunk coordinate space, and then transform the data such that the sprite can be rendered correctly in Gosu coordinate space.<br/><br/>In the end, the ship ends up rendered on screen pointing up, because the sprite is being drawn with a rotation of 0 degrees in Gosu coordinate space (see first diagram for refresher). <br/><br/>However, UP in Chipmunk coordinate space (again, we&#39;re assuming y+ DOWN) is 3 PI / 2. We thus want <code>@player.shape.body.a == 3 * Math::PI / 2</code>. This means rotating the ship a quarter turn CCW from it&#39;s initial orientation of 0 radians. Knowing that we want the final result to point UP, and that we need to turn the body a quarter turn CCW, we must specify the verticies such that the ship points to the right in its default orientation. (Notice that RIGHT is a quarter turn CW from UP)<br/><br/>At this point, you may think:<br/>&quot;why not just rotate the body BEFORE the verticies are applied?&quot;<br/><br/>That&#39;s unfortunately not how this works.<br/>This is another case of coordinate space conversion.<br/><br/>The shape verticies are specified (and stored) in a coordinate space relative to the body. In order to evaluate collisions, all shapes are converted to global coordinate space. In fact, Chipmunk actually exposes <code>world2local</code> and <code>local2world</code> if you ever need to convert between those coordinate systems.<br/><br/>Thus, you can&#39;t simply rotate the body ahead of time, because that rotation is not applied until the shape verticies are converted from local space to world space. This conversion needs to done repeatedly inside of CP::Space to account for both the rotation and translation of objects.<br/><br/>But the heavy-lifting behind that is why you&#39;re using Chipmunk :D<br/><br/>In summary:<br/>Switching between coordinate systems can be really confusing, and confusion causes bugs. Thus, I once again recommend that you write methods to perform coordinate space conversion, rather than writing it out each time. It&#39;s not just because you&#39;re a beginner. I still get tripped up by this stuff sometimes.<br/><br/>(Also, man. I had forgotten how bad that tutorial is. Ugh.)
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='attach_show.pl@aid=823.html'>Diagram2.png</a>  (110k)</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7935' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7928.html#pid7928'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=7935#pid7935'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=26.html' >shawn42</a>
+<span class='htt'>Date</span> 2014-08-08 04:14
+</div>
+<div class='ccl'>
+Daidalos, <br/>It&#39;s late here, but I&#39;ll see if I can answer the easy ones.<br/><br/>#1 Yes.<br/>#2-3 Too sleepy at the moment to look up the answer.<br/>#4 When the example was written, I don&#39;t believe the sensor feature had been added to chipmunk. The tutorial should definitely be updated to use the new sensor method on shape.<br/><br/>These are great questions, thanks for asking. I&#39;ll try to look up the other answers soon. Good luck!
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1122#tid1122'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1122#tid1122'>Gosu Exchange</a> / Questions about the chipmunk tutorial
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7928.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

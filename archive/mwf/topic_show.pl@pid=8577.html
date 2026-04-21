@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8577 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu load images in separate thread</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8577' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1216.html#tid1216'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1216.html#tid1216'>Gosu Exchange</a> / Gosu load images in separate thread
+</div>
+</div>
+
+<div class='frm pst' id='pid8523' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8523' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8523#pid8523'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1215.html' >bbb</a>
+<span class='htt'>Date</span> 2015-08-22 14:55
+</div>
+<div class='ccl'>
+I have coded a simple CBR reader in gosu for gigs, and it have served me surprisingly well, so I decided to polish it up, refactor and release into open source. There is however single issue that I&#39;m having hard time dealing with: when gosu reads big image file from hdd - like, when turning a page, because I don&#39;t won&#39;t images read all at once - it (quite expectantly) freezes application for a bit. To solve this, I tried to cache images in separate tread, like so:<br/><br/><code>&#160; &#160; Thread.new {<br/>&#160; &#160; &#160; @cache[img] = Gosu::Image.new(img, tileable: true)<br/>&#160; &#160; }</code><br/><br/>and than access it this way:<br/><br/><code>&#160;&#160; def access img<br/>&#160; &#160;&#160; @cache[img] ||= Gosu::Image.new(img, tileable: true)<br/>&#160;&#160; end</code><br/><br/>However, images loaded in separate thread appear blank-white. This also happens if I wait until file is completely loaded before accessing it (using mutexes or simply waiting before turning the page). Is there any way to load images in separate thread in gosu?
+</div>
+</div>
+
+<div class='brn' id='brn8523'>
+<div class='frm pst' id='pid8524' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8523'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8524' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8524.html#pid8524'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-22 16:37
+</div>
+<div class='ccl'>
+Yes and no. A client once ran into the same issue, and for a while there was an experimental <code>Image.async_new</code> method that returned a &#39;placeholder&#39; object. You could ask this object whether it was <code>ready?</code> and then call <code>get</code> to extract the Image on the main thread. (I&#39;m not sure if it is a Future or a Promise in computer science terms…I always get them wrong.)<br/><br/>The problem with the <code>async_new</code> interface was that I&#39;d also have to add <code>Image.async_from_text</code>, <code>Image.async_load_tiles</code>, <code>Sample.async_new</code> etc. to be consistent. My client ended up not using it anyway, so I&#39;ve silently removed <code>async_new</code>.<br/><br/>It would be pretty easy to just make most of Gosu&#39;s resource management thread-safe. Alas that wouldn&#39;t help, because Ruby is still not executing code from C extensions on separate threads (unless I&#39;ve missed something in the changelog).<br/><br/>Anyway, that sounds like a cool project, and I&#39;ll see if I can bring <code>Image.async_new</code> back as an experimental feature. I miss it as well. I&#39;ve opened an issue on GitHub that you can subscribe to: <a class='ura' href='https://github.com/gosu/gosu/issues/294'>https://github.com/gosu/gosu/issues/294</a>
+</div>
+</div>
+
+<div class='brn' id='brn8524'>
+<div class='frm pst' id='pid8525' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8524'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8525#pid8525'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1215.html' >bbb</a>
+<span class='htt'>Date</span> 2015-08-22 16:53
+</div>
+<div class='ccl'>
+Wow, thanks for such quick response :D
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8563' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8563' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8563.html#pid8563'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-15 11:45
+</div>
+<div class='ccl'>
+I have the same issue - white blanks. And I also need a way to load images in separate Threads. By now it costs me about 20 secconds to start a game. And this is only 1 game stage? but I need much more...
+</div>
+</div>
+
+<div class='brn' id='brn8563'>
+<div class='frm pst' id='pid8569' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8563'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8569' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8569#pid8569'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1215.html' >bbb</a>
+<span class='htt'>Date</span> 2015-09-17 14:57
+</div>
+<div class='ccl'>
+For a game, loading your assets in separate thread might not be a solution at all, because performance matters, and Ruby Threads are not very fast. I&#39;d advice you to consider other ways to solve this issue first.
+</div>
+</div>
+
+<div class='brn' id='brn8569'>
+<div class='frm pst' id='pid8571' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8569'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8571' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8571.html#pid8571'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-18 06:27
+</div>
+<div class='ccl'>
+For a complete game, maybe, loading tilesheets and simple images in png/jpg is the best way, I think. But I construct many of my graphics &quot;on the fly&quot;, using RMagick...((( And beside this, I have a VERY complex GameObjects)) For example, I need to draw a highlight shape of my sword or armor, when mouse enter an image. And for now I dont&#39;t know other way of doing this, rather than to create a shape-image for every object in initialize method(( My &quot;Create Hero&quot; screen consisits of more than 50 objects, such as push-buttons, text images, background, scrolling windows and so on)) To load this stage (and only this!) I need about 20 seconds. But the next screen is &quot;Choose profession&quot; screen, and next is &quot;Inventory screen&quot; and &quot;Battle field&quot; and more, and more)) I dont; think, that anyone wants to wait about 20 secs for each screen loading)) Today is not the &#39;90th)))
+</div>
+</div>
+
+<div class='brn' id='brn8571'>
+<div class='frm pst' id='pid8572' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8571'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8572#pid8572'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1215.html' >bbb</a>
+<span class='htt'>Date</span> 2015-09-18 07:51
+</div>
+<div class='ccl'>
+Do you really need to generate all the graphics on the fly? Wouldn&#39;t it be possible to just use RMagick to generate them, save, and treat just like other assets? Now, I don&#39;t want to criticize your approach, as you might know your needs the best, but I&#39;d expect ImageMagick running in background Thread to cause noticeable FPS drop on many machines.
+</div>
+</div>
+
+<div class='frm pst' id='pid8577' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8571'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8577' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8577.html#pid8577'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-09-20 13:38
+</div>
+<div class='ccl'>
+I&#39;d suggest lazily generating these images during development, and then at some point you write them all out to PNG files. That way your players don&#39;t need to have ImageMagick installed on their machines.
+</div>
+</div>
+
+<div class='brn' id='brn8577'>
+<div class='frm pst' id='pid8578' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8577.html#pid8577'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8578#pid8578'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1218.html' >Salazar</a>
+<span class='htt'>Date</span> 2015-09-20 14:31
+</div>
+<div class='ccl'>
+Yeah, something like that))
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1216.html#tid1216'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1216.html#tid1216'>Gosu Exchange</a> / Gosu load images in separate thread
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8577.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

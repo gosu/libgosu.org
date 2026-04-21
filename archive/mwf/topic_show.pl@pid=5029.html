@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 5029 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>The game ignores the methods</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d5029' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=657.html#tid657'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=657.html#tid657'>Gosu Exchange</a> / The game ignores the methods
+</div>
+</div>
+
+<div class='frm pst' id='pid5018' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5018' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5018.html#pid5018'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-25 20:35
+</div>
+<div class='ccl'>
+I&#39;m having a silly problem with a simple code that is driving me crazy:<br/><br/><code>cont_l = 0<br/>@scroll2 = 0<br/>@lot_sel = $lottatore[0]<br/><i>puts($lottatore[cont_l + @scroll2].write(&quot;engaged&quot;))</i><br/>begin<br/>&#160; y_lot = 206 + (cont_l * 30)<br/>&#160; if @lot_sel == $lottatore[cont_l + @scroll2] then<br/>&#160; &#160; color_text_1 = 0xff2DC800<br/>&#160; elsif $lottatore[cont_l + @scroll2].write(&quot;engaged&quot;) == true then<br/>&#160; &#160; color_text_1 = 0xffFF6600<br/>&#160; else<br/>&#160; &#160;&#160; color_text_1 = 0xffffffff<br/>&#160; end<br/>&#160; @font_Segoe_UI_30.draw_rel($lottatore[cont_l + @scroll2].write(&quot;nome&quot;), 60, y_lot, 2, 0, 0.5, 1, 1, color_text_1)<br/>&#160; cont_l = cont_l + 1<br/>end until cont_l == @partita.output(&quot;tot_lot&quot;)</code><br/><br/>This returns this text:<br/><br/><code><i>false</i><br/>#&lt;NoMethodError: undefined method <code>write&#39; for nil:NilClass&gt;<br/>C:/Users/Alex/My Documents/Aptana Studio 3 Workspace/Wrestling Manager/main.rb:706:in </code>draw&#39;<br/>c:/Ruby192/lib/ruby/gems/1.9.1/gems/gosu-0.7.31-x86-mingw32/lib/gosu/swig_patches.rb:18:in <code>draw_&#39;<br/>C:/Users/Alex/My Documents/Aptana Studio 3 Workspace/Wrestling Manager/main.rb:802:in </code>show&#39;<br/>C:/Users/Alex/My Documents/Aptana Studio 3 Workspace/Wrestling Manager/main.rb:802:in `&lt;main&gt;&#39;</code><br/><br/>So it appears that the $lottatore class doesn&#39;t exist, or that it hasn&#39;t got the &quot;write&quot; method.<br/><br/>Wich is not true.<br/><br/>As you see, I added a line to the code (the one you see in italic). Before the cycle begins, the program uses the same method of the same class that that cycle is using. And it returns the &quot;false&quot; line that i wrote in italic. Because that&#39;s it, $lottatore[0].write(&quot;engaged&quot;) is false. And also all the other objects in the array have their @engaged variable false.<br/><br/>So the problem is: why the program doesn&#39;t find the method called &quot;write&quot; during the cycle, if ten lines above it finds it?
+</div>
+</div>
+
+<div class='brn' id='brn5018'>
+<div class='frm pst' id='pid5020' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5018'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5020' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5020.html#pid5020'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=849.html' >Jwosty</a>
+<span class='htt'>Date</span> 2011-10-26 00:01
+</div>
+<div class='ccl'>
+Well, it looks like <code>$lottalore == nil</code>. Two things come to my mind that could cause this:<br/>1. You set this variable incorrectly somehow<br/>2. You gave it its value in a different method (as the $ symbol indicates a temporary method)<br/>Hmm
+</div>
+</div>
+
+<div class='brn' id='brn5020'>
+<div class='frm pst' id='pid5021' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5020'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5021' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5021.html#pid5021'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-26 04:59
+</div>
+<div class='ccl'>
+Ok but then why it works with the puts? :\<br/><br/>Actually I&#39;m on the iPhone. I&#39;m preparing to go to the university. On the train or as soon as I can I want to try to put the puts AFTER the if. Just to see if it works even there, or if the conditional statement somehow resets the array.
+</div>
+</div>
+
+<div class='brn' id='brn5021'>
+<div class='frm pst' id='pid5023' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5021'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5023.html#pid5023'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-26 07:06
+</div>
+<div class='ccl'>
+tried. And the puts works after the &quot;if&quot;. Wich means that the conditional doesn&#39;t reset the array.<br/><br/>I think I&#39;ll try to write that thing differently. Maybe it will work.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid5025' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5018'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5025.html#pid5025'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2011-10-26 11:36
+</div>
+<div class='ccl'>
+It looks like $lottatore#[] is returning nil -- if $lottatore itself was nil, then the error message would mention &#39;[]&#39; as the undefined method.<br/><br/>If $lottatore is an array, then it will return nil if you try to reference an element that&#39;s out of bounds. One way that could happen is if your loop&#39;s exit condition isn&#39;t being met before you&#39;ve run out of elements -- it looks to me like you&#39;re relying on a side-effect to tell you when to end the loop, which is probably making the problem harder to debug.<br/><br/>Check your loop&#39;s exit condition, and since you&#39;re iterating over an array, you may want to consider re-writing this to use a for loop or the each method (or, in the very least, something that makes it clear what terminates the loop).
+</div>
+</div>
+
+<div class='frm pst' id='pid5027' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5018'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5027' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5027.html#pid5027'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-26 12:39
+</div>
+<div class='ccl'>
+I think I&#39;ve found out where the problem was.<br/><br/>First of all, &quot;@tot_lot&quot; didn&#39;t exist. I don&#39;t know why i didn&#39;t receive an error about that. The correct name of the variable was &quot;@num_lot&quot;, wich anyway was initialized to 0, so even with that the loop would have been eternal.<br/><br/>So the condition for the loop to end was never met, and the @cont_l exceeded the number of elements in the array.<br/><br/>Beeing out of the loop, the puts returned a correct value of @engaged for the class $lottatore[0]. When i inserted it inside the loop, it gave me a &quot;false&quot; output for every element in the array, until it reached the maximum number of values. Then, the error returned.<br/><br/>Now I have corrected the condition. I&#39;ll confirm you that everything is ok.
+</div>
+</div>
+
+<div class='brn' id='brn5027'>
+<div class='frm pst' id='pid5028' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5027'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5028' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5028.html#pid5028'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2011-10-26 13:18
+</div>
+<div class='ccl'>
+Not initialising an instance variable before using it is regarded as a warning, not an error. Try enabling warnings by passing ruby the -w option when you run your script.<br/><br/>Also, is there a reason why you&#39;re accessing instance variables like this rather than using Ruby&#39;s attributes or writing your own getters and setters?
+</div>
+</div>
+
+<div class='brn' id='brn5028'>
+<div class='frm pst' id='pid5029' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=5029.html#pid5028'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5029.html#pid5029'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=865.html' >il mietitore</a>
+<span class='htt'>Date</span> 2011-10-26 14:32
+</div>
+<div class='ccl'>
+I&#39;m noob, that&#39;s the reason :( I learnt ruby by myself and I&#39;m not a programmer, so my ruby knowledge is a bit, ehm, rough.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=657.html#tid657'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=657.html#tid657'>Gosu Exchange</a> / The game ignores the methods
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=5029.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

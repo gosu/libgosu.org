@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7760 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Custom GL error? (triangle fan causes crash)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7760' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1049.html#tid1049'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1049.html#tid1049'>Gosu Exchange</a> / Custom GL error? (triangle fan causes crash)
+</div>
+</div>
+
+<div class='frm pst' id='pid7580' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7580' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7580.html#pid7580'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-12-20 03:50
+</div>
+<div class='ccl'>
+Section of code that causes crash:<br/><a class='ura' href='https://gist.github.com/RavensKrag/8050038'>https://gist.github.com/RavensKrag/8050038</a><br/><br/>Dump of all the errors:<br/><a class='ura' href='https://gist.github.com/RavensKrag/8050151'>https://gist.github.com/RavensKrag/8050151</a><br/><br/>Is there some bug with custom gl code?<br/><br/>I just wanted to try and approximate a circle using OpenGL, so I thought I&#39;d just whip out a triangle fan and be done with it.&#160; Something has gone really screwy, my program seems to crash randomly. When this code is commented out, I have no problems, so it seems like the error is here somewhere.<br/><br/>Any ideas?
+</div>
+</div>
+
+<div class='brn' id='brn7580'>
+<div class='frm pst' id='pid7582' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7580'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7582' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7582.html#pid7582'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-12-20 20:54
+</div>
+<div class='ccl'>
+There used to be issues when Gosu put blocks in the Z queue, but the GC wanted to free them. Do the crashes stop when you disable the GC, or do they happen more often when you call <code>GC.start</code>? (<code>lib/gosu.rb</code> already tries to protect against this, though =/)<br/><br/>Can you attach <code>gdb</code> to it and see more information about the crash? The C level stack trace does not make any sense at all, why would <code>IO.hpp</code> be involved in GL rendering?! :)<br/><br/>I think it&#39;s just a matter of...<br/><br/><code>gdb ruby</code><br/><code>run path_to_script.rb</code><br/><br/>and then <code>backtrace</code> when things blow up.
+</div>
+</div>
+
+<div class='brn' id='brn7582'>
+<div class='frm pst' id='pid7583' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7582'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7583' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7583.html#pid7583'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-12-20 21:32
+</div>
+<div class='ccl'>
+Maybe IO is involved because I&#39;m doing some input stuff while the crash is happening? It may be an intersection of this code with some other things, but definitively, the crash goes away if I remove this code.<br/><br/>Strangely, disabling GC seems to have no effect (I&#39;m using GC.disable, hopefully that&#39;s correct? Haven&#39;t done this in a while)<br/>but forcing GC using GC.start before the block seems to eliminate the error.<br/><br/>Also, sometimes I just get this error, instead of a full explosion:<br/><br/><code>/home/ravenskrag/.rvm/gems/ruby-1.9.3-p448/gems/gosu-0.7.50/lib/gosu/swig_patches.rb:37:in </code>show&#39;: method <code>call&#39; called on terminated object (0x0000000190cb98 flags=0x0 klass=0x0) (NotImplementedError)<br/>&#160; from /home/ravenskrag/.rvm/gems/ruby-1.9.3-p448/gems/gosu-0.7.50/lib/gosu/swig_patches.rb:37:in </code>show&#39;<br/>&#160; from ./main.rb:152:in <code>&lt;main&gt;&#39;<br/></code><br/><br/>Don&#39;t think that&#39;s very helpful though....<br/>Will post back when I manage to get it to blow up again<br/>(stupid sporadic errors D:)<br/><br/>Thanks in advance for your help :D
+</div>
+</div>
+
+<div class='brn' id='brn7583'>
+<div class='frm pst' id='pid7602' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7583'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7602.html#pid7602'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-12-26 12:16
+</div>
+<div class='ccl'>
+That&#39;s interesting! Because the only object in your sample that <code>call</code> should be called on, are indeed the GL blocks.<br/><br/>So it definitely looks like a GC thing: <a class='ura' href='http://stackoverflow.com/questions/2003885/garbage-collection-with-ruby-c-extension'>http://stackoverflow.com/questions/2003885/garbage-collection-with-ruby-c-extension</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid7584' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7582'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7584' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7584.html#pid7584'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-12-20 21:41
+</div>
+<div class='ccl'>
+ok, here we go:<br/><a class='ura' href='https://gist.github.com/RavensKrag/8062110'>https://gist.github.com/RavensKrag/8062110</a>
+</div>
+</div>
+
+<div class='brn' id='brn7584'>
+<div class='frm pst' id='pid7585' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7584'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7585' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7585.html#pid7585'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-12-21 09:19
+</div>
+<div class='ccl'>
+Wow, that&#39;s a tough one. This stack trace &quot;makes sense&quot; in the way that you are not the first one to see a SIGSEGV inside st_lookup:<br/><br/><a class='ura' href='https://github.com/jasonroelofs/rice/issues/33'>https://github.com/jasonroelofs/rice/issues/33</a><br/><br/>But I&#39;m honestly clueless why only custom GL blocks would trigger this. They&#39;re not <i>that</i> special :)<br/><br/>If you are on Linux, can you retry with Ruby 2.0.0, and if your code should be compatible, also 1.8? Can you just let it run for a (long) while and it will happen?<br/><br/>Is your code public so that I can let it run on my Mac some time during the next days?
+</div>
+</div>
+
+<div class='brn' id='brn7585'>
+<div class='frm pst' id='pid7587' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7585'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7587.html#pid7587'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-12-21 19:37
+<span class='htt'>Edited</span> 2013-12-21 19:43
+</div>
+<div class='ccl'>
+I thought Gosu didn&#39;t work with 2.0, but apparently I was mistaken (or it&#39;s already been fixed?).&#160; I&#39;ll try that then.&#160; I think I&#39;m using a couple things that were introduced in 1.9.3, so 1.8 probably won&#39;t work (could be wrong though).<br/><br/>The program involves manipulating objects with the mouse.&#160; You need to grab one of the red circles it spawns (hold right click) and then shake it violently for a few seconds. <br/>(Weird, but rather consistent.)<br/>Letting it sit may work, but this is my procedure for triggering the behavior.<br/><br/>This code will be public, but it&#39;s not on github just yet. I&#39;ll let you know when I get it up, but it could be a while, what with Christmas coming and such. It also depends on a custom input library I wrote (pure ruby, so it should run on anything) so I have to figure out if I want to vendor that through rubygems.org or just ship it through the repository for this application.<br/><br/>Testing with ruby 2.0 now, will report back with findings.
+</div>
+</div>
+
+<div class='frm pst' id='pid7588' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7585'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7588' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7588.html#pid7588'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2013-12-21 20:46
+</div>
+<div class='ccl'>
+Using ruby 2.0 results in the application running for a longer period of time (not timing it, but it feels like it runs longer) but then crashing with a different error.<br/><br/>(some sort of error on Gosu::Text this time, rather than IO)<br/>ruby backtrace: <a class='ura' href='https://gist.github.com/RavensKrag/8074047'>https://gist.github.com/RavensKrag/8074047</a><br/><br/>I&#39;m starting to suspect that it&#39;s not actually the custom code DIRECTLY, but some weird side effect that&#39;s intersecting with other systems.<br/>(I&#39;m still extremely confused though.)
+</div>
+</div>
+
+<div class='brn' id='brn7588'>
+<div class='frm pst' id='pid7603' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7588'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7603.html#pid7603'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-12-26 12:20
+</div>
+<div class='ccl'>
+I think it happens because this line in my GC workaround happens too early:<br/><br/><code>$gosu_gl_blocks = nil</code><br/><br/>Let me see if there is a pure-Ruby patch that you could try...
+</div>
+</div>
+
+<div class='frm pst' id='pid7604' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7588'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7604' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7604.html#pid7604'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-12-26 12:26
+</div>
+<div class='ccl'>
+This is a hack on top of a hack; but in your <code>gosu-0.7.50/lib/swig_patches.rb</code>, can you change the <code>protected_draw_2</code> method to...<br/><br/><code>&#160; def protected_draw_2<br/>&#160; &#160; protected_draw<br/>&#160; &#160; $gosu_gl_blocks_2 = $gosu_gl_blocks<br/>&#160; &#160; $gosu_gl_blocks = nil<br/>&#160; end</code><br/><br/>What the current hack does is collect all <code>gl</code> blocks inside a global <code>Array</code>, which is emptied at the end of <code>draw</code>. But I think that&#39;s too early, because the blocks will only be disposed <i>after</i> <code>draw</code>. With the new hack, they&#39;re retained for one more frame.<br/><br/>If this really fixes the issue, I&#39;ll try to come up with a nicer way of doing this. :)
+</div>
+</div>
+
+<div class='brn' id='brn7604'>
+<div class='frm pst' id='pid7605' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7604'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7605' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7605.html#pid7605'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=867' >SPK</a>
+<span class='htt'>Date</span> 2013-12-26 16:04
+<span class='htt'>Edited</span> 2013-12-26 17:31
+</div>
+<div class='ccl'>
+I also have problems with crashes and always thought it&#39;s ashtons fault. :P<br/><br/>I applied your hack and have my gl code running since 5 minutes without a crash. Looks good. I&#39;ll let it run another 30 minutes or so.<br/><br/>Edit: Still running like a boss. :)
+</div>
+</div>
+
+<div class='brn' id='brn7605'>
+<div class='frm pst' id='pid7606' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7605'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7606' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7606.html#pid7606'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-12-27 00:29
+</div>
+<div class='ccl'>
+Awesome! Thanks for the feedback :)
+</div>
+</div>
+
+<div class='brn' id='brn7606'>
+<div class='frm pst' id='pid7760' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7760.html#pid7606'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7760.html#pid7760'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2014-03-25 16:57
+</div>
+<div class='ccl'>
+Sorry for taking many months to respond, but I would like to confirm that this does fix my problem as well.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1049.html#tid1049'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1049.html#tid1049'>Gosu Exchange</a> / Custom GL error? (triangle fan causes crash)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7760.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

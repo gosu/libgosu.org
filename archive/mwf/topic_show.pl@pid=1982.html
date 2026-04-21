@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1982 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Need your opinions: Tile Map saving</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1982' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=301.html#tid301'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=301.html#tid301'>Gosu Exchange</a> / Need your opinions: Tile Map saving
+</div>
+</div>
+
+<div class='frm pst' id='pid1979' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1979.html#pid1979'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-12-31 18:38
+</div>
+<div class='ccl'>
+I got my game framework&#39;s map editor working to an extremely functional state recently. Loading and saving along with the collision map. It&#39;s designed to export the map as an array [width][height] whereas the position of a number can easily identify it&#39;s x position and it&#39;s y position. The number itself represents the tile from the tile set to draw. So in the text file, the map data could look like this: (ex. only) 0001110002222111000. So it&#39;s in a straight line. but it gets parsed.<br/><br/>So here&#39;s the problamo I&#39;ve come across. The tile number can only be 0-9. Otherwise &quot;11&quot; will fill two spots in the array and cause run-time problems. That means&#160; can only allow the editor to store up to 10 tiles at a time which is not a realistic quantity for a game imho.<br/><br/>So what do you think I should do to avoid this? It took forever to write it to work like it is and rewriting it is something I&#39;d rather not do to support more than 10 tiles. Opinions and advice people! Share em! :D
+</div>
+</div>
+
+<div class='frm pst' id='pid1980' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1980.html#pid1980'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-12-31 18:45
+</div>
+<div class='ccl'>
+either use some kind of delimiter or allow alphanumeirc characters too, like &#39;A&#39;
+</div>
+</div>
+
+<div class='frm pst' id='pid1981' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1981.html#pid1981'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-12-31 20:40
+</div>
+<div class='ccl'>
+I thought of using characters. That would definitely expand the tile set limit, but would it be enough? There are 26 letters in the alphabet. Uppercase counts as another 26. Then the 0-9. So that would give a total of 62 tiles that can be used in a game. What&#39;s the average? Maybe google will help. I&#39;m sure it would be enough though. Using a delimiter would make me have to rewrite it. I know how to, but I really don&#39;t want to. :P
+</div>
+</div>
+
+<div class='frm pst' id='pid1982' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1982.html#pid1982'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-12-31 23:17
+</div>
+<div class='ccl'>
+I made the map get converted into ASCII characters 33-126 (127 is DEL). So the map editor supports up to 94 tiles. I&#39;m pretty sure that&#39;s enough. And that&#39;s 94 tiles in a level. It can easily load another tile set for another level. :D Thanks banister.
+</div>
+</div>
+
+<div class='frm pst' id='pid1983' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1983.html#pid1983'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-12-31 23:54
+</div>
+<div class='ccl'>
+Does that include some obscure characters? Might as well go binary :P<br/>Nah, 94 should be enough
+</div>
+</div>
+
+<div class='frm pst' id='pid1984' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1984.html#pid1984'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2010-01-01 02:01
+</div>
+<div class='ccl'>
+I lied. It goes from 33-255 it seems according to the extended ASCII chart. That&#39;s 223 tiles. :P That&#39;s gotta be enough. :D
+</div>
+</div>
+
+<div class='frm pst' id='pid1986' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1986.html#pid1986'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>Date</span> 2010-01-01 11:42
+</div>
+<div class='ccl'>
+why dont you use groups of 3 numbers per tile?<br/>for my zombies game i made a tilemap class which allows 1000 different tiles, because each tile is represented by 3 numbers (000, 457, etc).<br/>you only need to parse the array from 3 to 3.<br/>Try it, is cool.
+</div>
+</div>
+
+<div class='frm pst' id='pid1987' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1987.html#pid1987'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2010-01-01 17:41
+</div>
+<div class='ccl'>
+For levelsaving, the best is the Marshal class, which saves objects to file. It can save hash with level settings, array of tiles, etc. Tiles named with symbols can have unlimited number of types.<br/><br/>Example of saving level:<br/>@level={&#39;name&#39;=&gt;&#39;new_level&#39;, &#39;width&#39;=&gt; 25, &#39;tiles&#39;=&gt;[Tile,Tile,Tile...]}<br/>Marshal.dump(@level, f=File.new(&quot;maps/#{@level[&#39;name&#39;]}.lvl&quot;,&#39;w&#39;))<br/>f.close<br/><br/>For load:<br/>@level=Marshal.load(File.new(&quot;maps/#{@level[&#39;name&#39;]}.lvl&quot;,&#39;r&#39;))
+</div>
+</div>
+
+<div class='frm pst' id='pid1988' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1988.html#pid1988'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-01-01 18:35
+</div>
+<div class='ccl'>
+That depends. I&#39;ve always preferred human-readable files.
+</div>
+</div>
+
+<div class='frm pst' id='pid1989' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1989.html#pid1989'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-01-01 22:26
+</div>
+<div class='ccl'>
+A possible solution nobody has mentioned is to use Array#pack and String#unpack to save the numbers as raw bytes or whatever. If you thing 256 tiles (well, 255 + blank) is enough and you&#39;re ok with binary files, then tile_data = tiles.pack(&#39;C*&#39;) will give you a binary string (not human readable, obviously) and something like tiles = tile_data.unpack(&#39;C*&#39;) will give you back that array.<br/><br/>If 256 isn&#39;t enough (you crazy fellow) then you could use a different format string: n* would convert the numbers to unsigned 16-bit integers, giving you 65536 possible values. As a bonus, the N and n specifiers both use network (big-endian) byte order so it&#39;s the same on Intel, PowerPC and everywhere else.<br/><br/>See <a class='url' href='http://ruby-doc.org/core/classes/Array.html#M002222'>http://ruby-doc.org/core/classes/Array.html#M002222</a> and <a class='url' href='http://ruby-doc.org/core/classes/String.html#M000760'>http://ruby-doc.org/core/classes/String.html#M000760</a> for more information about what pack and unpack are doing and what the format strings mean.<br/><br/>If you don&#39;t want to save a binary file (for instance, if you intend to store other information in a human readable format) then you could Base64 encode it, although that will bloat the file size. You could also use zlib compression before you encode it, but now I&#39;m going a little beyond the scope of the discussion. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1994' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1994.html#pid1994'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2010-01-03 18:56
+</div>
+<div class='ccl'>
+Yeh I&#39;m actually thinking about rewriting it again anyway. I completely forgot about the properties of the tiles (alpha value and color modifiers) so I&#39;m gonna work on the new method and if I get any prpblems, I&#39;ll update it here. I&#39;m thinking about using something similar to that Marshal class. Woo. Work. :P
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=301.html#tid301'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=301.html#tid301'>Gosu Exchange</a> / Need your opinions: Tile Map saving
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1982.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

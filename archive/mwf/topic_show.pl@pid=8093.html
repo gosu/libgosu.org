@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8093 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>no more than 2 simultaneous inputs?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8093' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1149.html#tid1149'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1149.html#tid1149'>Gosu Exchange</a> / no more than 2 simultaneous inputs?
+</div>
+</div>
+
+<div class='frm pst' id='pid8090' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8090' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8090.html#pid8090'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1170' >Cassy</a>
+<span class='htt'>Date</span> 2014-11-01 04:22
+</div>
+<div class='ccl'>
+Good day, everyone.<br/><br/>I&#39;m working on a shooter project (you know, another classic 2d sh&#39;mup) merely as a way to learn to program games with Ruby (and Gosu of course). <br/><br/>I&#39;m really enjoying my experience, so I try to figure out every problem I come across. But, unfortunately, I don&#39;t have the slightest idea what to do with this. I already made a search on the forums, but I didn&#39;t find a similar post (maybe there is, but I overlooked it).<br/><br/>Long story short, I have my standard ship, which can move up, down, left, right, and shoot. Here&#39;s the code for the update method of the Player class (which is passed to the main window through a manager):<br/><br/> def update<br/>&#160; &#160; @x = @last_x&#160; if @x &lt; 0 || @x &gt; $window.width<br/>&#160; &#160; @y = @last_y&#160; if @y &lt; 0 || @y &gt; $window.height<br/>&#160; &#160; @last_x, @last_y = @x, @y<br/>&#160; <br/>&#160; if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then izquierda end<br/>&#160; if button_down? Gosu::KbRight or button_down? Gosu::GpRight then derecha end<br/>&#160; if button_down? Gosu::KbUp or button_down? Gosu::GpUp then arriba end<br/>&#160; if button_down? Gosu::KbDown or button_down? Gosu::GpDown then abajo end<br/>&#160; if button_down? Gosu::KbZ or button_down? Gosu::GpButton1 then fire end<br/>&#160; end<br/><br/>I used <i>&quot;button_down?&quot;</i>, because I need that the player keeps moving as along as I press the direction, and keeps shooting while holding down the Z key. When I test it, it does well, I can press 2 directions and it goes in angles (8 ways). And if I press 2 opposing keys, the player stays in place (as expected). If I shoot, the bullets keep coming. <br/><br/>The problem is, that it seems that Gosu can&#39;t handle more than 2 inputs at the same time, because if I&#39;m not shooting, player can move 8-way, but if I&#39;m shooting, thent player can only move 4 way. In other words, while I&#39;m holding the Z button, the game only recognizes one other button, one of the arrows. This is a problem, because on a sh&#39;ump you need to dodge enemy bullets from any direction, and that means you have to be able to move 8 ways while shooting. <br/><br/>So, the question is: is there a way to solve this? can I make Gosu to handle both things (8way move + shooting) at the same time?<br/><br/>Thanks in advance for any answer.
+</div>
+</div>
+
+<div class='brn' id='brn8090'>
+<div class='frm pst' id='pid8093' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8093.html#pid8090'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8093' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8093.html#pid8093'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-11-01 10:12
+</div>
+<div class='ccl'>
+Have you tried using a different key than Z? I know that keyboards used to have bizarre limits on which keys you could press at the same time. It was usually the safest choice to use non-letter keys like shift and ctrl. Or do you have a gamepad to test this with?<br/><br/>In any case, this doesn&#39;t look like a problem with your code :)
+</div>
+</div>
+
+<div class='brn' id='brn8093'>
+<div class='frm pst' id='pid8097' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8093.html#pid8093'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8097' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8097.html#pid8097'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1170' >Cassy</a>
+<span class='htt'>Date</span> 2014-11-01 17:59
+</div>
+<div class='ccl'>
+Thanks for your answer. I just tried it, and these are my results:<br/><br/>First, I changed &quot; if button_down? Gosu::KbZ&quot; for &quot; if button_down? Gosu::KbSpace&quot;, and the player could go 7ways while shooting (it couldn&#39;t go northwest). <br/><br/>Then I tried with &quot; if button_down? Gosu::KbLeftShift&quot;, and then it could go 8way while shooting. At last :)<br/><br/>Thanks a lot, I would never thought the problem would be the keyboard itself. Go figure.
+</div>
+</div>
+
+<div class='brn' id='brn8097'>
+<div class='frm pst' id='pid8098' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8093.html#pid8097'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8098' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8098.html#pid8098'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-11-02 04:59
+</div>
+<div class='ccl'>
+I&#39;ve managed to find the technical term for this limitation :)<br/><br/><a class='ura' href='http://en.wikipedia.org/wiki/Rollover_'>http://en.wikipedia.org/wiki/Rollover_</a>(key)
+</div>
+</div>
+
+<div class='brn' id='brn8098'>
+<div class='frm pst' id='pid8099' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8093.html#pid8098'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8099.html#pid8099'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1170' >Cassy</a>
+<span class='htt'>Date</span> 2014-11-03 19:56
+</div>
+<div class='ccl'>
+Thanks for the link, that was a really interesting read. It&#39;s useful to know about gosthing and jamming :)<br/><br/>I still have some questions about it, I may look a little further into it later. For example, I recalled why I used Z key in the first place, and it was because that&#39;s the default key for shooting on the Touhou series. I played&#160; Touhou 6 before posting, just to be sure, and I was right: you use arrows to move, Z to shoot, and X to bomb; but the game didn&#39;t have any trouble handling all the inputs (and I&#39;m using the same keyboard). <br/><br/>I even tried to force a jamming, but I couldn&#39;t (with 2 arrows + shooting, or even 2 arrows + another key + shooting). So that makes me think the game itself has something to do with the handling. Certainly a point I want to research a little more. <br/><br/>Thanks again :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1149.html#tid1149'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1149.html#tid1149'>Gosu Exchange</a> / no more than 2 simultaneous inputs?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8093.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

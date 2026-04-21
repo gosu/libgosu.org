@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1145 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>My very first ruby+gosu app</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1145' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=165.html#tid165'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=165.html#tid165'>Gosu Showcase</a> / My very first ruby+gosu app
+</div>
+</div>
+
+<div class='frm pst' id='pid1028' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1028.html#pid1028'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-06-25 22:37
+</div>
+<div class='ccl'>
+(omg, I forgot to login and posted like mr. ?, I post this again and report my previous post, sorry for the inconvenience)<br/><br/>Hello everybody.<br/>I&#39;m interested in doing a 2D platform game using Ruby and Gosu, and I have already written this code.<br/>I&#39;m quite a noob, using gosu, using ruby and even writing object-oriented code so I&#39;m posting here this early code and reading every comment, correction or suggestion that you post.<br/><br/>This is just a simple platform game like test, a character and three platforms. 
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/28/1028/platform_test.tar.gz'>platform_test.tar.gz</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1030' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1030.html#pid1030'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-26 00:51
+</div>
+<div class='ccl'>
+Nice! I didn&#39;t get to write a game that has &quot;jump-through platforms&quot; until earlier this year. From a player&#39;s POV, you should widen the collision box of the player from a point to a rectangle or so :) But it plays nice already.<br/><br/>One function that I found while skimming through the code and which I found confusing:<br/><br/><code>&#160; def on_floor(character,platform)<br/><br/>&#160; &#160; @x_character_position = character.get_x<br/>&#160; &#160; @y_character_position = character.get_y<br/>&#160; &#160; @x_platform_position = platform.get_x<br/>&#160; &#160; @y_platform_position = platform.get_y<br/><br/>&#160; if ((@x_character_position&gt;=@x_platform_position) &amp;&amp; (@x_character_position&lt;=@x_platform_position+291)) then<br/>&#160; &#160; if ((@y_character_position&lt;=@y_platform_position-61) &amp;&amp; (@y_character_position&gt;=@y_platform_position-69)) then <br/>&#160; &#160; &#160; &#160; &#160; &#160; if character.get_v_accel&lt;0 then character.set_y(@y_platform_position-61) end<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; return 1 end<br/>&#160; else return 0 end<br/>&#160; end</code><br/><br/>• Why do you store the positions into instance variables (@)? Are these used outside of this function?<br/>• In any case, this method sounds like it would detect something, but it actually changes something (the player&#39;s y coordinate). The naming makes it harder to understand the code.<br/>• There are a lot of magic numbers in there.<br/>• Weird nesting of if/&amp;&amp; :) I think the first two ifs could be merged?<br/>• Why 0 and 1 instead of true and false?<br/>• You should use getters and setters which match Ruby&#39;s convention of &quot;foo.x&quot; and &quot;foo.x = ...&quot; instead of &quot;get_x&quot; and &quot;set_x&quot; :) attr_accessor can be used to generate these with one line of code.<br/><br/>HTH :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1038' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1038.html#pid1038'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-06-26 16:53
+<span class='htt'>Edited</span> 2009-06-26 16:58
+</div>
+<div class='ccl'>
+Thank you for the quick reply. I read what you wrote and made the following changes:<br/><br/> - I have deleted the @ from the method variables, I really didn&#39;t know exactly how this works, but I will read some manuals to learn.<br/> - The two if&#39;s are now merged<br/> - Changed the 0 and 1 with true or false<br/> - And now I&#39;m using the attr_reader and attr_accessor (those are great! :D) I didn&#39;t know there was something like this, I&#39;m a noob xD<br/> - About magic numbers: sorry but I really don&#39;t understand what are you talking about<br/><br/> - And yes, the weird method:<br/><br/>&#160;&#160; This method is the core of the platform example, but I am not very happy with it. I will explain, basically, what it does is:<br/><br/>&#160; &#160; &#160; &#160; &#160; &#160; First, gets the platform&#39;s and character&#39;s positions to compare, then checks if the character its in a little area 8 pixel over the platform. If it&#39;s there returns true, and sets the character&#39;s position on the first pixel above the platform. This last step is to unify the position where the character is standing on the platform. Because it would stick sometimes 5 pixel above, and sometimes 2, or maybe 3. If I reduced this collision rectangle to a single line, sometimes the character passed through the platform floor, so I had to make it a little wider.<br/>Yeah, I know this is a little sketchy.<br/><br/>Also, this function checks collision between the character and a platform, and the game has to call it with every platform in the screen, the platform is an object, and I have coded every single platform. But this could not be done in bigger levels so I must think another alternative.<br/><br/>I have changed the name too, to something like standing_on_platform or something like this.<br/><br/>Anyway, as said before, thank you for replying and for your suggestions.<br/>I&#39;m still looking for any kind of advice to get this thing the best and cleanest as possible.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/38/1038/platform_test.tar.gz'>platform_test.tar.gz</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1039' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1039.html#pid1039'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-26 19:48
+<span class='htt'>Edited</span> 2009-06-26 19:53
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; - About magic numbers: sorry but I really don&#39;t understand what are you talking about</p></blockquote><br/>Magic numbers are all numbers that aren&#39;t trivial (like 0 or 1) and should be moved out of the computation if possible. By introducing constants for PLAYER_WIDTH or whatever else is involved, the code becomes easier to understand and less of a hell if you ever need to change the size of the player (for example).<br/><br/>Not that I *always* follow this practice, but the quoted function is probably a place where you should :)<br/><br/><blockquote><p>&gt; But this could not be done in bigger levels so I must think another alternative.</p></blockquote><br/>In my current game I have used a 2D tile map similar to the one in Cptn Ruby, with some added math so it doesn&#39;t draw unneeded tiles. To introduce jump-through platforms, I added a method platform_at?(x, y) that checks if there is a platform at the given position. (It will return true only for platform tiles and when y % TILE_SIZE == 0, i.e. only the first pixel line of the platform tile counts.) I then test for that whenever I move objects downwards. That way, I only have to look for a platform in one single place while I move the player. (Everything except the platform part is oversimplified, actually, but you get the idea :) )<br/><br/>In any case, I would seperate the logic for testing for a platform (which doesn&#39;t change anything) from the code that meddles with variables.<br/><br/>If you just keep on working and growing this game, you will inevitably find out what kind of way you should organize your code to keep it maintainable :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1079' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1079.html#pid1079'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-07-06 16:28
+<span class='htt'>Edited</span> 2009-07-06 23:23
+</div>
+<div class='ccl'>
+I have made some improvements this afternoon, if someone wants to take a look here is the new version.<br/>Now the map is loaded from a file, and the platforms have borders<br/><br/>Edit: No friends at night on IM, programming night.<br/><br/>Now I&#39;ve added tiled background and scroll. It&#39;s cool because the game could be resolution independent. It only changes the field of view.<br/>Note that it only weights a few kbs, I will try to keep it as simple as possible.<br/>I&#39;ve also recoded many things, like, the platform or backgroud stuff, are more &quot;dynamic&quot;, if you change the platform tile size externally with an image editor, the collision and drawing on screen will keep that on mind, the same for the tiled background, no matter what the size of the image or the screen is, it fills the background properly.<br/><br/>I still got many thinks on mind, I will post more advances.<br/><br/>PD: The code is starting to get a little messy
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/79/1079/platform_test.tar.gz'>platform_test.tar.gz</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1080' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1080.html#pid1080'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-07-07 14:08
+</div>
+<div class='ccl'>
+Nice improvements,Keep up the good work!
+</div>
+</div>
+
+<div class='frm pst' id='pid1081' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1081.html#pid1081'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-07-07 16:20
+</div>
+<div class='ccl'>
+I haven&#39;t taken a look at the source again, but gameplay-wise, I think you should work on the player&#39;s physical width next. Basically, all you have to turn the check into two &#39;and&#39;-ed checks at the sides of the player. This will also make it look more realistic if you ever add fully solid walls.<br/><br/>I like the look of the platforms :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1091' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1091.html#pid1091'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-07-09 15:23
+</div>
+<div class='ccl'>
+Another new feature, moving platforms, and as I implemented it I&#39;m going to make some conveyor belt (it&#39;s really named like that?) and stuff like that.<br/><br/>The first thing I have to recode is the collision and standing on platform stuff, as jlnr said, the player&#39;s physical width is not very well done, and also there is a new problem with the vertical moving platforms (if you don&#39;t see it try jumping a few times on them).<br/><br/>But I&#39;m quite happy, because I&#39;m doing this as fast as I thought, and I hope I can finish it before my exams.<br/><br/>I thinks it&#39;s also ready to start thinking on the game concept, art stuff, level design and that. So if you people know some kind of community where can I ask for recruiting some free artists ,level designers or just people that want to help It would be cool.<br/><br/>I was thinking on some original concept for a platform game, not another mario clone, and I really like the Lucasart&#39;s Night Shift oldie concept (gameplay video available on youtube), which presents another point of view for a platform game, I dunno, I haven&#39;t decided yet.<br/><br/>Anyway, thanks for the replies and support given here. I will come back with new stuff!
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/91/1091/platform_test.tar.gz'>platform_test.tar.gz</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1136' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1136.html#pid1136'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-07-18 14:42
+</div>
+<div class='ccl'>
+This thing about the collision and platform standing stuff is giving me more problems than I thought, so lets see if someone can give me a clue about this.<br/><br/>So far, I&#39;ve already solved all problems with static platforms and almost with the moving, but I have not tested everything, so new problems can appear. The problem I have already encountered is the vertical moving platforms which are moving FAST. The character always pass through them, this could be a minor problem, the easy way to solve this is not to place fast moving platforms, but anyway, it would be cool if I could solve this.<br/>-----------------------------------------------------------------------------<br/><br/>Now here it is, the collision mess explained, I have attached an image with the colored code an some numbers referring to highlighted blocks.<br/><br/>1.- These are the function character&#39;s data, it uses the X and Y position and width and height as-well, the X and Y I&#39;m not sure what part of the image are, but I suppose that are placed in a corner. The Width and Height are the current character&#39;s image width and height.<br/><br/>2.- These are the function platform&#39;s data, X and Y position and the tile width, which is the current image&#39;s width.<br/><br/>3.- This line right here calculates the total platform size, it multiplies the size (number of tiles) by the tile width<br/><br/>4.- Now, this line, it&#39;s supposed to get the tile&#39;s height, it is multiplied by 1.5, that&#39;s because, if not, the character would stand in the middle of the platform. This product could be done after while placing the character in 8.-, but I placed it there.<br/><br/>5.- That&#39;s for none existing platforms size 0 = no colliding with them<br/><br/>6.- Another problematic part, this calculates if the character is on the platform, referring to it&#39;s X position, this causes the player&#39;s physical width that jlnr posted, I have tried to fix this but I always get strange results.<br/><br/>7.- This is the main problem for me, it calculates if the character and the platform are colliding referring to their Y position. The character is just a point (x and y position), and the platform too. So the chances to get those two points at the same time colliding are too low, so the character used to pass through the platform. That&#39;s why I introduced the +12 at the end. This makes the platform collision rectangle 12 pixels tall, so now the character don&#39;t pass through. This value it&#39;s arbitrary, I have tried different numbers, if it&#39;s too low the character pass through the platform some times, if it&#39;s too high the character sticks too the platform too fast creating an awful effect.<br/><br/>8.- And finally (sigh), the last part. This sets the character&#39;s position on top of the platform if it&#39;s v_accel is negative, that means that makes the character stand on this if it&#39;s going down and returns true to indicate that there is a collision.<br/><br/>As you can see there is some shitty code here, I will try to fix this or at least search for some general platform game programming info to deal with the platform issue.<br/><br/>I also attach the last code version.<br/>Greetings and sorry for this huge post xD
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/36/1136/platform_test.tar.gz'>platform_test.tar.gz</a>  (0B)</div>
+<div class='amf'>Attachment: <a href='attach_show.pl@aid=215.html'>code.png</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid1138' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1138.html#pid1138'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-07-18 20:51
+</div>
+<div class='ccl'>
+Something I don&#39;t understand is why you subtract the platform&#39;s height in (7). Does the height matter? Isn&#39;t the platform, physically, just a 1px wide line from its (left, y) to its (right, y), and the player&#39;s height should be subtracted?<br/>Also, you should be clear at all times what character_x/_y means (top left corner/middle center/bottom center, …) :) Or maybe add methods for character.bottom, character.top etc...<br/><br/>For moving platforms, I have never implemented them, but I think I would give in and give the player a link to the platform he&#39;s standing on and vice versa, so the platform can adjust the player when it moves, and the player can &quot;unregister&quot; himself when he jumps off it. Uglier (IMHO), but I&#39;d guess that most games actually do it like that ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid1142' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1142.html#pid1142'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-07-19 00:01
+</div>
+<div class='ccl'>
+Keep a list of moving tiles separate from the list of other tiles. Keep an instance of a moving tile in the character object. check to see if the character is on a tile or moving platform. If it is on a platform, set a flag onMovingPlatform to true and store the reference of it in the character and then use that reference to base your calculations on whether or not to move up with the platform or left and right with the platform. This does not mean disregard the other tiles in the game. In fact, you&#39;ll need to do two updates for collision: the tiles and moving tiles.<br/><br/>hope that helped. :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1145' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1145.html#pid1145'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-07-20 11:32
+</div>
+<div class='ccl'>
+Thank you all, I have solved the width problem quite convincingly I think, and almost all passing through problems, but not 100%.<br/>Now I am trying to recruit some graphical artist through deviantart and I have created a free forum (<a class='url' href='http://monsterfactory.freeforums.org'>http://monsterfactory.freeforums.org</a>) to get the game development stuff tidy.<br/><br/>I also have another question, for the game menu and that, I would like to get the code split in some files, like a C or a Java program, is this possible? Cause I can&#39;t find anything about googling o_O
+</div>
+</div>
+
+<div class='frm pst' id='pid1146' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1146.html#pid1146'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-07-20 16:39
+</div>
+<div class='ccl'>
+<blockquote><p>&gt;I also have another question, for the game menu and that, I would like to get the code split in some files, like a C or a Java program, is this possible? Cause I can&#39;t find &gt;anything about googling o_O</p></blockquote><br/>Yup. I posted a small game/tutorial which uses one file (actually one class) for each screen: <a class='url' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=509'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=509</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid1151' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1151.html#pid1151'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=92.html' >endless_dark</a>
+<span class='htt'>Date</span> 2009-07-24 16:33
+</div>
+<div class='ccl'>
+Thanks! I will remember that!<br/><br/>I asked for graphic artists on deviantart and pixeljoint, but I had no much luck. So I have done many graphics myself (some of them stink).<br/>I have also added more stuff like a background wall or an animated background, if you play for enough time you will see how the night ends. Thats because I want the levels to take place at night and the player should finish the level before the sun rises.<br/><br/>Anyway, not big changes and the collision stuff is broken again due to new player&#39;s sprite size but I will fix later.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='https://www.libgosu.org/mwf/attachments/51/1151/platform_test.tar.gz'>platform_test.tar.gz</a>  (0B)</div>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=165.html#tid165'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=165.html#tid165'>Gosu Showcase</a> / My very first ruby+gosu app
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1145.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>bg_utils - a small extending library around Gosu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1394.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1394.html#tid1394'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1394.html#tid1394'>Extending Gosu</a> / bg_utils - a small extending library around Gosu
+</div>
+</div>
+
+<div class='frm pst' id='pid9453' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9453' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9453.html#pid9453'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2018-06-15 06:35
+<span class='htt'>Edited</span> 2018-06-15 06:53
+</div>
+<div class='ccl'>
+Hi all,<br/><br/><a class='ura' href='https://rubygems.org/gems/bg_utils'>https://rubygems.org/gems/bg_utils</a><br/><br/>I created this small gem to keep somewhere at the same place all the various methods I need to create that can be used in other projects.<br/><br/>The current release is adding two useful methods :<br/>- get_pixel<br/>- set_pixel<br/><br/>to allow read / write pixel methods from / to a Gosu::Image.<br/><br/>But it also adds a new feature : the possibility to draw a TiledImage. It works like this :<br/><br/>Image used in this example :<br/><br/><img class='emi' src='http://bestguigui.free.fr/gosu/bg_utils/bg_utils_texture.png' alt=''/><br/><br/>@image = BgUtils::TiledImage.new(&#39;texture.png&#39;, 160, 160, 2, 2)<br/><br/>In this case, I load the &#39;texture.png&#39; file inside a Gosu::Image, and ask for a quad of 160 * 80 pixels. The image is 16 * 16 pixels, and I want it to be displayed twice big, so I set repeat 2 times in width and 2 times in height. I can also set a Gosu::Image as first argument.<br/><br/>Applying a simple draw call, that gives the result :<br/><br/>@image.draw(40, 40, 0)<br/><br/><img class='emi' src='http://bestguigui.free.fr/gosu/bg_utils/bg_utils.png' alt=''/><br/><br/>You can use arbitrary size for the desired rectangle, and use any float values for scale_x and scale_y, that don&#39;t have to be the same values.<br/><br/>You can also use draw_rot and draw_as_quad, with minor argument modifications, as we&#39;ll see in next examples. All indications to colors and drawing modes were removed, compared to the classic Gosu::Image draw methods.<br/><br/>For example :<br/><br/>@image.draw_as_quad(0, 0, 120, 5, 10, 130, 140, 160, 0)<br/><br/><img class='emi' src='http://bestguigui.free.fr/gosu/bg_utils/bg_utils2.png' alt=''/><br/><br/>Internally, it uses Gosu macro (Gosu::record) method, so you can&#39;t use colors and set drawing modes within draw methods. But you can do it if you set color and drawing mode inside the constructor inside.<br/><br/>For example, let&#39;s modify the creation of the image, setting color to red :<br/><br/>@image = BgUtils::TiledImage.new(&#39;texture.png&#39;, 160, 160, 2.0, 2.0, Gosu::Color::RED)<br/><br/>And now, let&#39;s display it using for example the draw_rot method :<br/><br/>@image.draw_rot(150, 150, 0, 35, 0.5, 0.5)<br/><br/><img class='emi' src='http://bestguigui.free.fr/gosu/bg_utils/bg_utils3.png' alt=''/><br/><br/>Feel free to ask for any useful method that could be added to this small gem. I&#39;ll keep it updated anytime I create something new.
+</div>
+</div>
+
+<div class='brn' id='brn9453'>
+<div class='frm pst' id='pid9454' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1394.html#pid9453'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9454' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9454.html#pid9454'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2018-06-16 15:35
+<span class='htt'>Edited</span> 2018-06-16 15:43
+</div>
+<div class='ccl'>
+This is really cool! Downloading immediately :D<br/>Question: Can you pass a <code>TiledImage</code> to <code>TiledImage#new</code>?<br/><br/>EDIT: Now that I think about it, it probably wouldn&#39;t be very useful to do that... You could just increase the number of tiles in the original TiledImage.
+</div>
+</div>
+
+<div class='brn' id='brn9454'>
+<div class='frm pst' id='pid9455' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1394.html#pid9454'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9455.html#pid9455'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2018-06-16 16:24
+</div>
+<div class='ccl'>
+As discussed on Discord, I&#39;ll wait until jlnr updates Gosu with Gosu::record. That way, we&#39;ll get a true Gosu::Image out of TiledImage, and we&#39;ll be able to draw it with colors and mode in a really more efficient way !
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1394.html#tid1394'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1394.html#tid1394'>Extending Gosu</a> / bg_utils - a small extending library around Gosu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1394.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

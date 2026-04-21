@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7781 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Furry Dangerzone</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7781' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1093.html#tid1093'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=1093.html#tid1093'>Gosu Showcase</a> / Furry Dangerzone
+</div>
+</div>
+
+<div class='frm pst' id='pid7772' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7772' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7772.html#pid7772'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-18 23:38
+<span class='htt'>Edited</span> 2014-04-21 02:07
+</div>
+<div class='ccl'>
+Hi Everyone<br/><br/>This is my first Gosu game :) It&#39;s called &quot;Furry Dangerzone.&quot;<br/><br/><a class='url' href='https://www.dropbox.com/sh/xso2tm8bwphphbr/y0H0mxeolf/furry-dangerzone-releases'>Download it here.</a><br/><br/>You can also check out the code on <a class='url' href='https://github.com/jellymann/furry-dangerzone'>github</a>.<br/><br/>Here are some screens:<br/><br/><img class='emi' src='http://i.imgur.com/MXZoBaG.png' alt=''/><br/><br/><img class='emi' src='http://i.imgur.com/mWHdr57.png' alt=''/><br/><br/><img class='emi' src='http://i.imgur.com/voRnABH.png' alt=''/>
+</div>
+</div>
+
+<div class='brn' id='brn7772'>
+<div class='frm pst' id='pid7773' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7773' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7773.html#pid7773'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-19 08:02
+</div>
+<div class='ccl'>
+I like the amount of polish :)<br/><br/>And this was a fun Ruby/Gosu optimisation exercise too: The game jitters a lot as soon as the player bursts into particles. It&#39;s not the CPU, because then it would be consistently slow (and Ruby is not that bad) - it&#39;s this loop which is creating lots of work for the garbage collector:<br/><br/><code>&#160; &#160; &#160; @particles.each do |particle|<br/>&#160; &#160; &#160; &#160; (1..MOTION_BLUR).each do |i|<br/>&#160; &#160; &#160; &#160; &#160; xoffset = i*MOTION_BLUR_OFFSET*0.4<br/>&#160; &#160; &#160; &#160; &#160; yoffset = i*particle[:vy]*MOTION_DT<br/>&#160; &#160; &#160; &#160; &#160; alpha = ((1.0 - i.to_f/MOTION_BLUR)*MOTION_BLUR_ALPHA).to_i<br/>&#160; &#160; &#160; &#160; &#160; @particle.draw particle[:x]-@particle.width-xoffset, particle[:y]-@particle.height-yoffset, 0, 1, 1, Gosu::Color.new(alpha,255,255,255)<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; @particle.draw particle[:x]-@particle.width, particle[:y]-@particle.height, 0<br/>&#160; &#160; &#160; end</code><br/><br/>I don&#39;t know if all the temporary <code>Float</code>s are still an issue (they should be immediate objects on 64-bit Ruby 2.0, right?), but the <code>Gosu::Color</code> is definitely causing trouble. Quick loop refactoring:<br/><br/><code>&#160; &#160; &#160; (1..MOTION_BLUR).each do |i|<br/>&#160; &#160; &#160; &#160; xoffset = i*MOTION_BLUR_OFFSET*0.4<br/>&#160; &#160; &#160; &#160; alpha = ((1.0 - i.to_f/MOTION_BLUR)*MOTION_BLUR_ALPHA).to_i<br/>&#160; &#160; &#160; &#160; color = Gosu::Color.new(alpha,255,255,255)<br/>&#160; &#160; &#160; &#160; @particles.each do |particle|<br/>&#160; &#160; &#160; &#160; &#160; yoffset = i*particle[:vy]*MOTION_DT<br/>&#160; &#160; &#160; &#160; &#160; @particle.draw particle[:x]-@particle.width-xoffset, particle[:y]-@particle.height-yoffset, 0, 1, 1, color<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; @particles.each do |particle|<br/>&#160; &#160; &#160; &#160; @particle.draw particle[:x]-@particle.width, particle[:y]-@particle.height, 0<br/>&#160; &#160; &#160; end</code><br/><br/>Et voila, the jitter is gone (at least to my eyes) :)
+</div>
+</div>
+
+<div class='brn' id='brn7773'>
+<div class='frm pst' id='pid7774' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7773'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7774' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7774.html#pid7774'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-19 12:01
+</div>
+<div class='ccl'>
+Thanks :) I&#39;m glad you enjoyed it and fixing it :)<br/><br/>I didn&#39;t really notice the jitter that much because I developed it on my desktop which has some pretty fast memory and a lot of it, too. This morning I played it on my Mac and noticed it a lot. I thought maybe I would just reduce the number of particles, but your fix lets me have my particles and eat them too :P<br/><br/>Making games on garbage-collected system can be such a pain sometimes! I imagine my whole game could run a whole lot better if I optimised out a lot of GC bottlenecks, but I have a feeling the code would start looking a little horrid after a while &gt;.&lt;<br/><br/>Thanks again for looking at my game :)
+</div>
+</div>
+
+<div class='brn' id='brn7774'>
+<div class='frm pst' id='pid7775' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7774'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7775' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7775.html#pid7775'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-19 13:54
+</div>
+<div class='ccl'>
+It&#39;s getting better though! Immediate <code>Float</code>s in Ruby 2.0 on 64-bit are a big step forward. Now it&#39;s mostly <code>Gosu::Color</code> that is dangerous, and you can often use 0xaarrggbb constants (only a little bit horrid).
+</div>
+</div>
+
+<div class='brn' id='brn7775'>
+<div class='frm pst' id='pid7776' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7775'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7776' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7776.html#pid7776'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-19 14:33
+</div>
+<div class='ccl'>
+I&#39;ve added a few more optimisations. Firstly I took your optimisation to the next level and just keep an array of Gosu::Color objects for the levels of alpha, and reuse them throughout the game. Secondly, to remove all object allocations from the update method during actual play-time, I made a simple object pool for the Danger objects. I just wonder if it&#39;s actually helping anything.
+</div>
+</div>
+
+<div class='brn' id='brn7776'>
+<div class='frm pst' id='pid7779' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7776'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7779' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7779.html#pid7779'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-20 14:50
+</div>
+<div class='ccl'>
+You can always increase the motion blur level to 1000 to find out; <code>self.caption = Gosu::fps.to_s</code> is your friend ;)
+</div>
+</div>
+
+<div class='brn' id='brn7779'>
+<div class='frm pst' id='pid7782' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7779'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7782.html#pid7782'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1027.html' >EdwinOdesseiron</a>
+<span class='htt'>Date</span> 2014-04-21 13:14
+</div>
+<div class='ccl'>
+There&#39;s a <code>Gosu::fps</code> function? I wrote a code just to do that ;_;
+</div>
+</div>
+
+<div class='frm pst' id='pid7783' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7779'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7783' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7783.html#pid7783'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-21 19:02
+</div>
+<div class='ccl'>
+Thanks :) I tried running it on my dad&#39;s ancient netbook and found out it was lagging horribly whenever you explode, so I optimised it even more by only drawing the motion blur trail once in a record block and then only drawing one image per particle. Makes a huge difference.
+</div>
+</div>
+
+<div class='brn' id='brn7783'>
+<div class='frm pst' id='pid7784' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7783'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7784.html#pid7784'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-04-22 19:14
+</div>
+<div class='ccl'>
+Ha! :) That&#39;s a good optimisation indeed.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7778' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7778.html#pid7778'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-20 11:54
+</div>
+<div class='ccl'>
+I&#39;ve made a few changes. Added high score, made a few cosmetic adjustments. Screenshots have been updated.
+</div>
+</div>
+
+<div class='frm pst' id='pid7780' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7780.html#pid7780'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-21 02:09
+</div>
+<div class='ccl'>
+Quick update: I&#39;ve added a link to download a standalone copy of the game in the OP.
+</div>
+</div>
+
+<div class='frm pst' id='pid7781' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7772'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7781' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7781.html#pid7781'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1021.html' >jahmaican</a>
+<span class='htt'>Date</span> 2014-04-21 08:59
+</div>
+<div class='ccl'>
+That&#39;s one quite relaxing game. I&#39;m suprised you didn&#39;t call it &quot;Flappy Cotton Candy&quot;.
+</div>
+</div>
+
+<div class='brn' id='brn7781'>
+<div class='frm pst' id='pid7785' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7781.html#pid7781'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7785.html#pid7785'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1130' >jellymann</a>
+<span class='htt'>Date</span> 2014-04-23 12:34
+</div>
+<div class='ccl'>
+Haha, I didn&#39;t choose the name, though. I just created a github repo and went with the generated suggestion.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1093.html#tid1093'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=1093.html#tid1093'>Gosu Showcase</a> / Furry Dangerzone
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7781.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

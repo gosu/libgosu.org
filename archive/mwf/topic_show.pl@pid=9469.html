@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9469 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>ODROID-GO</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9469' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1395.html#tid1395'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1395.html#tid1395'>Extending Gosu</a> / ODROID-GO
+</div>
+</div>
+
+<div class='frm pst' id='pid9456' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9456' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9456.html#pid9456'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2018-07-01 00:00
+</div>
+<div class='ccl'>
+Many of you have likely heard about the ODROID family of single-board computers, at least in passing. You may have even heard of the ODROID-GO. In case you haven&#39;t, here&#39;s a link:<br/><a class='ura' href='https://wiki.odroid.com/odroid_go/odroid_go'>https://wiki.odroid.com/odroid_go/odroid_go</a><br/>As you can see, it is a hand-held game console (reminiscent of Nintendo&#39;s Game Boy) based on the ESP32 WiFi-enabled microcontroller platform. It&#39;s not very expensive for what you get (although the shipping adds 50% to the price - it&#39;s $48 shipped to the U.S.)<br/><br/>The first time I saw it I thought “ODROID-<i>GO</i>? More like ODROID-<i>Go<b>su</b></i>, amirite?” ;)<br/>But seriously… this looks like tons of fun, and (like most things) it would be even better with Gosu!<br/><br/>So, before I ordered one, I made sure that some form of Ruby would run on it, and I found a port of mruby:<br/><a class='ura' href='https://github.com/mruby-esp32'>https://github.com/mruby-esp32</a><br/><br/>I&#39;ve also looked around for a development environment. This looks like a good one:<br/><a class='ura' href='https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html#setup-toolchain'>https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html#setup-toolchain</a><br/><br/>Now, there&#39;s one little hitch when it comes to porting Gosu: I don&#39;t think it has any kind of video acceleration hardware. That means all video rendering will have to be done in software. Since, to my knowledge, Gosu doesn&#39;t have any software rendering code, I suppose this could turn out to be less of a port and more of an API re-implementation... But, I&#39;m okay with that, since it&#39;s the nice, clean API that made me fall in love with Gosu in the first place. Also, there&#39;s this:<br/><a class='ura' href='https://github.com/ssloy/tinyrenderer'>https://github.com/ssloy/tinyrenderer</a><br/><br/>On top of getting the basics to work, I plan on making a platform to allow other Gosu users to target the ODROID-GO with their games.<br/><br/>I&#39;m envisioning a front-end that lists and launches Gosu apps, each stored in its own folder (or archive?) on the SD card. Picture the &quot;XMB-style&quot; interface that many projects are using (including the emulator front-end that comes preinstalled on the unit) with a standardized icon/description format.<br/><br/>Anyone who wants to help is welcome, even if it&#39;s only to offer testing or constructive criticism.<br/><br/>NOTE: I don&#39;t have much free time to devote to this, so don&#39;t expect this project to move forward in leaps and bounds. In fact, I don&#39;t even have the little guy in my hands, yet (but it should be here Monday!)
+</div>
+</div>
+
+<div class='brn' id='brn9456'>
+<div class='frm pst' id='pid9457' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9469.html#pid9456'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9457.html#pid9457'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2018-07-04 22:26
+</div>
+<div class='ccl'>
+Looking forward to see more activity around mruby :) I keep reading about it in the context of game development, I really hope it takes off as an alternative to C Ruby.
+</div>
+</div>
+
+<div class='frm pst' id='pid9469' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9469.html#pid9456'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9469.html#pid9469'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2018-09-22 02:14
+</div>
+<div class='ccl'>
+Okay, no real progress to report, but the project isn&#39;t totally dead; I&#39;m still doing research and gathering ideas and code.<br/><br/>For example, I found this, which should allow larger game projects: <a class='ura' href='https://github.com/mrubyc/mrubyc'>https://github.com/mrubyc/mrubyc</a>
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1395.html#tid1395'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1395.html#tid1395'>Extending Gosu</a> / ODROID-GO
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9469.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

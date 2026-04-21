@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2637 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How do you do animations?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2637' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=382.html#tid382'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=382.html#tid382'>Gosu Exchange</a> / How do you do animations?
+</div>
+</div>
+
+<div class='frm pst' id='pid2507' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2507.html#pid2507'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-05-25 20:12
+</div>
+<div class='ccl'>
+Working on a chingu (github.com/ippa/chingu) trait called automatic_assets:<br/><br/>Thinking something along the lines of:<br/><br/>class Spaceship &lt; GameObject<br/>&#160;&#160; has_trait :automatic_assets<br/>end<br/><br/>This would automatically load and display media\spaceship.png if available. Or media\spaceship_animation.png tileset.<br/><br/>I&#39;ve always used tilebased animations, made in graphicsgale or tilestudio. You usually want to have different animations which you display at different times, for example:<br/><br/>spaceship_default_animation.png&#160; &#160; &#160; &#160; # flying tileset<br/>spaceship_exploding_animation.png&#160;&#160; # dying/exploding tileset<br/><br/>automatic_assets would detect those and then in the code you could do something like switch_animation(:exploding) or simular.<br/><br/>Anyhuuu... how do you ppl do your animations? what programs .. and how do you save them? is it all tilebased or maybe one image per frame?
+</div>
+</div>
+
+<div class='frm pst' id='pid2517' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2517.html#pid2517'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-27 13:45
+</div>
+<div class='ccl'>
+I&#39;m working with single-frame PNGs for animations, naming them in a batchy way (character_attack_01.png, character_attack_02.png, ...) and calling them by a script that basically looks like this (obviously heavily shortened, as I have to write it from my mind and don&#39;t feel like create a whole character class just to show animating XD ):<br/><br/>class Character<br/><br/>&#160; attr_accessor :state<br/><br/>&#160; def initialize(name)<br/>&#160; &#160; @name, @state, @frame, @delay = name, &#39;idle&#39;, 1, 0<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; # these lines check for the filename, and if there&#39;s a file with @frame+1 in it - if yes, @frame get&#39;s incremeted by 1, if not, set to 1<br/>&#160; &#160; Engine.draw_sprite(@name + &#39;_&#39; + @state + &#39;_&#39; + @frame) #my own method, basically just a handler for the default method with advanced call options<br/>&#160; end<br/><br/>end<br/><br/>The stage itself (that checks for key input) handles the state setting, based on the @delay variable. This variable basically gets decreased by 1 each tick, unless it&#39;s already at 0. This ensures that no action is executed while another is (just included as it might be interesting... doesn&#39;t really have to do anything with animation ^^&quot; ).<br/><br/>The reason why I&#39;m doing single frames is that I like to work resource-efficient and like to cut off boarder pixels with no color. The base pixel to draw sprites from is the solid foot (manually set coordinates, unfortunately), making for a believeable, non-skipping animation for cartooney sprites. I think this method of drawing sprites is easier, as you can, for example, include large effects directly into the frame without worrying of bloating a whole file up because you have to adjust the raster. It&#39;s also easier to adjust if you realize your spriting needs some final improvement and you avoid having to edit the whole set because you need to fit a single additional pixel in.<br/><br/>As a side note, for fixed-size objects like cursors and the like, I use tiled images as well ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid2528' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2528.html#pid2528'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-05-28 17:58
+</div>
+<div class='ccl'>
+Thanks for your detailed answer! Indeed there&#39;s some upsides to single-frame animations. I&#39;ve just grown custom to working with tile-sets in graphics gale which is very quick &#39;n easy.<br/>I&#39;ll add support for single-frame-support to Chingu if someone requests it :).<br/><br/>Another downside to tile-animations is that you have to provide the frame-size somehow, I&#39;m thinking including it directly into the filename for autodetection like this:<br/><br/>&#160; spaceship-10x10.png<br/><br/>That could be automatically picked up and used by a Spaceship-class. If a state is required it could be baked into the filename as well: spaceship-10x10-flying.png<br/><br/>May I ask what program you use to draw animations?
+</div>
+</div>
+
+<div class='frm pst' id='pid2532' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2532.html#pid2532'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-29 04:04
+</div>
+<div class='ccl'>
+As for autodetection of frame size, there&#39;s a couple of ways I can think of without actually messing with the filename at all (which you want to avoid as well, admit it ;) )... let&#39;s see:<br/><br/>- autodetection by taking the smaller side as seperator, assuming square frames only (as in having a 50x10 image would result in five seperate images, as the &quot;longer side will be devided by the shorter side&quot;)<br/>- autodetection using certain folders for certain purposes, RPG Maker style... if something is in folder &quot;graphics/animations&quot; you know it&#39;s frame size is 128x128px<br/>- autodetection using some kind of alpha checking to actually determine how many seperated images there are (checking in a first step which side&#39;s the longer one, and then checking line-wise in the opposite direction how many completely blank line blocks there are (for an image with 4 frames, this should return 5 - 3 inbetween the frames, two at the sides), so simply do blank_line_amount-1 and you have your frame number)<br/><br/>None of these methods is perfect, as you can tell... #1&#39;s assuming square frames is not problematic when working with PNGs, as completely transparent pixels don&#39;t take up any filesize... however, forcing that upon users of a meant-to-be-variable engine like Chingu is would be substandart. #2 even forces you to use certain folders, however, you can define your folders yourself. It gets problematic when you want to work efficient and yet use different sizes. #3 is basically good, however you restrict the designer heavily in how he can layout sprites, as a single completely transparent line within two objects of the same sprite will break it (being a spriter as well occasionally, I know that doesn&#39;t happen too often... but it&#39;s those few times that make the difference ^^ )<br/><br/>I think to solve this completely automatic, you&#39;d have to use an algorythm that doesn&#39;t only check if there are break blocks, but if they&#39;re having roughly the same distance, and simply ignore everything not fitting the checkup. The problem is that you&#39;ll never get it 100% secure, so even if you make it, it probably won&#39;t make people happy...<br/>I think I&#39;d personally recommend #1 from all of these... you&#39;re variable in spriteset size, get automatic clipping and all of that for the price of not having multi-line spritesets... (which noone wants anyway?)<br/><br/>--<br/><br/>As for the animation drawing, what I have up there is basically all I have... I&#39;m not using any additional modules or anything to draw them, just Gosu. Here&#39;s the complete method for you though, if you&#39;Re interested:<br/><br/>&#160; def draw(screen_x)<br/>&#160; &#160; if @current_graphic == @state<br/>&#160; &#160; &#160; frame_count &lt;= @frame ? @frame = 1 : @frame += 1<br/>&#160; &#160; else<br/>&#160; &#160; &#160; @current_graphic = @state<br/>&#160; &#160; &#160; #@frame = 1 unless @state.inherit # take over frame number from one animation to another for smooth transitions<br/>&#160; &#160; &#160; @frame = 1 if frame_count &lt;= @frame ? @frame = 1 : @frame += 1<br/>&#160; &#160; end<br/>&#160; &#160; filename = &#39;graphics/&#39; + @referer + &#39;/&#39; + @state + &#39;_&#39; + @frame.to_s + &#39;.png&#39;<br/>&#160; &#160; @direction == 0 ? fx = -1 : fx = 1<br/>&#160; &#160; Engine.draw_sprite(@x - screen_x, @y, filename, 1, 2, @z, fx)<br/>&#160; end<br/><br/>The escaped line is what I still have to work on, however, I&#39;m fiddling with my interface at the moment and put this game on halt ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid2543' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2543.html#pid2543'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<span class='htt'>Date</span> 2010-05-29 14:43
+</div>
+<div class='ccl'>
+damn, BlueScope, you could write a book on the subject ;-D<br/><br/>You have some good ideas:<br/><br/>#1 - easy and robust, though I&#39;ve often found myself doing odd sizes like 11 x 16 that fits the sprite &quot;perfectly&quot; and then using the very same size for rectangle collision detection. doing 16 x 16 there would fuck up the collision detection. Though it shouldn&#39;t be so hard &quot;trimming&quot; off the transparent extra space with TexPlay. Trimming could also be cool for sprites which vary a lot in size between frames.. the collision rectangle could adapt to each frame.<br/><br/>#2 - as #1 but with special directories.<br/><br/>#3 Now this is interesting.. I&#39;ve thought about simular things. A &quot;blank transparent line&quot; is probably the best separator there is.<br/><br/>Hm.. I think I&#39;ll look into trimming, could be usefull in a lot of conditions.<br/><br/>Oh I was wondering what program you used to paint sprites with, not rubycode to animate.
+</div>
+</div>
+
+<div class='frm pst' id='pid2545' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2545.html#pid2545'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-05-30 00:51
+<span class='htt'>Edited</span> 2010-05-30 00:53
+</div>
+<div class='ccl'>
+As far as the book part goes, I don&#39;t really think I could... I just have some interest in interface design in general, and this topic is very loosely related, so yeah... I like to come up with solutions to problems, and I guess working with RPG MAker makes you come up with solutions for problems, so... XD<br/><br/>And well, same sizes for #1 would only occur for a) multiple lines, or b) single frame. As I excluded multiple lines in the definition (as you&#39;d need a way to autodetect these as well, which isn&#39;t possible by just deciding on dimensions), it&#39;d mean it&#39;s a single frame ^^<br/><br/>For drawing sprites, I actually use Photoshop... which for some reason is totally hated upon the spriters in general. I like how a few people told me it didn&#39;t have swatches XD As a I-guess-professional graphic artist, I&#39;m very familiar with the program, and I really like to work with it, so yeah... it may be overloaded, it may not be the perfect program for spriting, but I still like it XD<br/>I think a save plugin I use is worth mentioning, being PNGOUT. It&#39;s the best PNG save algorythm I know, and as it&#39;s based on a quality-first idea, it really manages to output awesomely small files with completely lossless rewriting. I&#39;ve managed to get down to 10% of filesize compared to a Photoshop-default saved image. It&#39;s really worth taking a look at!
+</div>
+</div>
+
+<div class='frm pst' id='pid2596' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2596.html#pid2596'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-06-07 04:03
+</div>
+<div class='ccl'>
+BlueScope:<br/><br/><blockquote><p>&gt; I think a save plugin I use is worth mentioning, <br/>&gt; being PNGOUT. It&#39;s the best PNG save algorythm I <br/>&gt; know, and as it&#39;s based on a quality-first idea, it <br/>&gt; really manages to output awesomely small files with <br/>&gt; completely lossless rewriting. I&#39;ve managed to get <br/>&gt; down to 10% of filesize compared to a <br/>&gt; Photoshop-default saved image. It&#39;s really worth <br/>&gt; taking a look at!</p></blockquote><br/>My favorite graphics viewer/converter, IrfanView, also has the PNGOUT plugin, though I rarely use it. The standard PNG export in either IrfanView or my favorite editor (Jasc Paint Shop Pro 8.1) is usually sufficient.<br/><br/>Also, about method #1 not working for multiple lines: one way would be to set maximum dimensions for a single frame. If the result of the division is greater than this, increase the number of rows and try again. Just an idea, though; I&#39;ve never actually implemented such a thing...
+</div>
+</div>
+
+<div class='frm pst' id='pid2606' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2606.html#pid2606'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-06-07 12:48
+</div>
+<div class='ccl'>
+I use IrfanView myself; the problem with that is transparency color conversion, as it&#39;s got it&#39;s problems detecting alpha transparency (which is a huge strong point of PNGs really). As for regular images without transparency, IrfanView&#39;s plugin will be exactly as sufficient as the PNGOUT program.<br/>Personally, I run every image through PNGOUT that I process for a game. Having a 5000b file lossless compressed into 500b is great and I don&#39;t see a reason why you wouldn&#39;t want to do that if it takes not too long while getting you a huge saving in filesize (even in whatever-speed internet ages, I don&#39;t think that I as a game designer should slack... o something like that ^^ ).<br/><br/>As for the vertical splitting: The problem is variable frame sizes: Let&#39;s say your maximum height is 64 pixels, then it&#39;d work on an image that&#39;s 1024x128 perfectly, however, a 1024x32 image would be processed as a single line. If you set 32 as your limit, assuming noone uses smaller-in-height images, you&#39;ll have problems using your 64-high images. ^^
+</div>
+</div>
+
+<div class='frm pst' id='pid2637' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2637.html#pid2637'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-06-10 00:25
+</div>
+<div class='ccl'>
+BlueScope wrote:<br/><br/><blockquote><p>&gt; I use IrfanView myself; the problem with that is <br/>&gt; transparency color conversion, as it&#39;s got it&#39;s <br/>&gt; problems detecting alpha transparency (which is a <br/>&gt; huge strong point of PNGs really).</p></blockquote><br/>That&#39;s true, I forgot about IV not handling alpha very well... The batch converter preserves alpha (except in obvious circumstances) but when you open a transparent image in the viewer, alpha is lost.<br/><br/><blockquote><p>&gt; Personally, I run every image through PNGOUT that I <br/>&gt; process for a game. Having a 5000b file lossless <br/>&gt; compressed into 500b is great and I don&#39;t see a <br/>&gt; reason why you wouldn&#39;t want to do that if it takes <br/>&gt; not too long while getting you a huge saving in <br/>&gt; filesize (even in whatever-speed internet ages, I <br/>&gt; don&#39;t think that I as a game designer should <br/>&gt; slack... o something like that ^^ ).</p></blockquote><br/>I totally agree. I also do Flash games and I always try to keep the assets as small as possible. Of course, the largest part of the majority of Flash games is the MP3 music most developers and sponsors insist on :P<br/><br/>On the same subject, it would be nice if Gosu supported JNG (PNGs with JPEG compressed image chunks) for when a little lossiness is acceptable to get /really/ small images, but an alpha channel is still needed. Maybe DevIL has support?<br/><br/><blockquote><p>&gt; As for the vertical splitting: The problem is <br/>&gt; variable frame sizes: Let&#39;s say your maximum height <br/>&gt; is 64 pixels, then it&#39;d work on an image that&#39;s <br/>&gt; 1024x128 perfectly, however, a 1024x32 image would <br/>&gt; be processed as a single line. If you set 32 as <br/>&gt; your limit, assuming noone uses smaller-in-height <br/>&gt; images, you&#39;ll have problems using your 64-high <br/>&gt; images. ^^</p></blockquote><br/>Well, I meant that the maximum height would be chosen for each given project, not as something hard-coded into a library or toolkit...
+</div>
+</div>
+
+<div class='frm pst' id='pid2643' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2643.html#pid2643'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-06-10 18:34
+</div>
+<div class='ccl'>
+I never noticed PNGOUT doesn&#39;t do alpha transparency... to be honest, I apparently never tried it XD<br/>I&#39;ll definately have a look into that in the future.<br/><br/>As for accepting lossy picture compression, that&#39;s something about NO game out there does really... regardless of it&#39;s for small sprites or large pictures, going for anything but perfect quality in your graphics will immediately be noticed. Too bad the opposite isn&#39;T gonna happen and people be like &quot;Dude, I totally love your lossless image compression! :D&quot; (except for Odin Sphere maybe... at least I said that)<br/><br/>And I think it&#39;d also be problematic project-wide. It&#39;d even be problematic spritesheet-wide, as for me personnally, cutting frames larger so that they all fit into a tileable sheet isn&#39;t too appealing. Therefore, my sprites are all kinds of sizes and shapes, so defining a global value for the sheet height.
+</div>
+</div>
+
+<div class='frm pst' id='pid2665' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2665.html#pid2665'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2010-06-14 07:17
+</div>
+<div class='ccl'>
+BlueScope:<br/><br/><blockquote><p>&gt; As for accepting lossy picture compression, that&#39;s <br/>&gt; something about NO game out there does really... </p></blockquote><br/>Maybe not in mainstream PC games, but I&#39;ve seen plenty of PS3 and NDS games (and maybe other systems... PS2?) containing images that exhibit the tell-tale &quot;fuzzy squares&quot; of JPEG. Not for sprites, necessarily, but things like title screens, &quot;loading&quot; screens, etc.<br/><br/>Of course, it may just be sloppy asset handling that allowed an image to be JPEG&#39;ed somewhere in the work-flow, but not in the actual game medium (which would make the file harder to losslessly compress).<br/><br/>Also, I&#39;ve used JPEGs in Flash games for large background images and the like. As long as it&#39;s not being scaled up, rotated, etc., it works fine and really saves a lot of space for images with lots of fine details, anti-aliasing, gradients, etc. (i.e. no large blocks of solid color).<br/><br/>(BTW, apologies to the O.P. for this slightly O.T. discussion...)
+</div>
+</div>
+
+<div class='frm pst' id='pid2713' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2713.html#pid2713'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
+<span class='htt'>Date</span> 2010-06-16 20:35
+</div>
+<div class='ccl'>
+By &quot;fuzzy squares&quot;, I assume you&#39;re talking about artifacts (compression-originated). If so, I&#39;ve never seen them in a game ever, may it be because of I own neither of the mentioned consoles or just my lack of ability to spot stuf like that... it&#39;s interesting though, as I figure especially on the DS, you&#39;d have to have your own display module for that filetype, as I don&#39;t really see a reason why it&#39;d be included from the begin with... As for PS2, I&#39;ve played it a long time and own quite a bunch of games, however never noticed any... (not meaning they&#39;re not there, of course, just saying).<br/>With that in the way, I have to redo my statement earlier made: No gam out there should accept lossy image compression. ;)<br/><br/>And well, the problem with JPG files in non-professional use aren&#39;t that they&#39;re bad in general, but that 95% of all people use them wrong: Some low-class programs on&#39;t even support quality adjustments, so if someone only works with Paint because they prioritize programming or something, they probably never heard of a quality option. IrfanView uses weird steps (1 to 12), which, while thoughtful as you rarely need 100 seperate steps, is confusing and not directly translateable well. Photoshop&#39;s JPG output module isn&#39;t any bad (compared to the PNG module, it lights your room), however that is a professional program and unless people are shamelessly stealing it, amateurs would less likely have access to it.<br/>The quality itself, if adjustable, is the next trap: Setting the slider to 95% can cut the filesize in half, while looking perfectly fine even on closer looks. However, it might still change colors of some pixels here and there, up to bigger areas that just become brighter or darker.<br/>Las but not least, there is to know that JPG is meant for photos. I&#39;ve seen it being used for sprites, tilesets, pixelled avatars, the like... people just go &quot;JPG is cool, so just use it&quot;, and at least judging from the RPG Maker communities I&#39;ve been in over the last couple of years, I&#39;ve seen a never-fading group of people totally resistent to help on the topic.<br/>On the other hand, using them as backgrounds can be alright, as depending on the picture, as you said, it&#39;ll sometimes be radically smaller in filesize. However, you will always have that small imperfectism in your images that who-knows-who might be able to spot on their screens (like you did for the PS3/DS games).
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=382.html#tid382'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=382.html#tid382'>Gosu Exchange</a> / How do you do animations?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2637.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Trajectories</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=266.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=266.html#tid266'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=266.html#tid266'>Gosu Exchange</a> / Trajectories
+</div>
+</div>
+
+<div class='frm pst' id='pid1715' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1715.html#pid1715'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=135' >unnown</a>
+<span class='htt'>Date</span> 2009-11-13 23:48
+</div>
+<div class='ccl'>
+hey all,<br/><br/>im having a problem with trajectories,<br/>im trying to make an arrow-like movement<br/>i did find this but it&#39;s way over my head<br/><br/><a class='url' href='http://www.gamedev.net/reference/programming/features/physicsch6/ch06.pdf'>http://www.gamedev.net/reference/programming/features/physicsch6/ch06.pdf</a><br/><br/>i have these values,<br/>@x and @y is the x and y the image is drawn<br/><br/>&#160; &#160; @targetx = targetx<br/>&#160; &#160; @targety = targety<br/>&#160; &#160; @fromx = fromx<br/>&#160; &#160; @fromy = fromx<br/>&#160; &#160; @x = fromx<br/>&#160; &#160; @y = fromy<br/><br/>can anybody help me with this?<br/>thanx
+</div>
+</div>
+
+<div class='frm pst' id='pid1716' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1716.html#pid1716'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=25' >benko</a>
+<span class='htt'>Date</span> 2009-11-14 00:19
+</div>
+<div class='ccl'>
+In order to calculate the projectile&#39;s position each frame, you must decide how are you measuring time:<br/><br/>Option A) Frames: you have your speed units in pixels/frame and your aceleration in pixels/frame^2<br/><br/>Option B) Seconds: you can use Gosu::milliseconds to calculate the gap of time between this frame and the previous one. This gap is usually called &quot;delta time&quot;. So you can have your speed units in pixels/second (speed) or pixels/second^2 (for acceleration)<br/><br/>Let&#39;s assume we chose option B. A simple projectile will have always the same speed horizontally, but it&#39;s vertical speed will change due to gravity. When you shoot the projectile, you set some initial variables to these speeds:<br/><br/>@speed_x = 20 # going to the right<br/>@speed_y = -15 # it goes up<br/><br/>In each frame, we can calculate the projectile&#39;s position very easily:<br/><br/># vertical speed changes due to gravity<br/>@speed_y += Gravity * delta<br/><br/># position<br/>@x += @speed_x * delta<br/>@y += @speed_y * delta<br/><br/>The PDF shows how you can calculate the initial speed (both horizontally and vertically) if you want to aim the projectile to some target. If you decide that all your projectiles will have the same speed &#39;modulus&#39; (ie, you have an archer shooting arrows with the same &#39;strength&#39; every time), you just need to calculate the angle of the shot in order to set your initial speeds. Just look at all the data you *do* know and solve the equations displayed in the PDF to get this angle.
+</div>
+</div>
+
+<div class='frm pst' id='pid1717' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1717.html#pid1717'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-11-14 01:31
+<span class='htt'>Edited</span> 2009-11-14 05:18
+</div>
+<div class='ccl'>
+EDIT: benko&#39;s method (using delta-time) is a better approach than the one below (which just assumes a dt of 1)<br/><br/>play with this code:<br/><br/>require &#39;rubygems&#39;<br/>require &#39;texplay&#39;<br/><br/>module Common<br/>&#160; &#160; GRAVITY = 1.81<br/>end<br/><br/>class Arrow<br/>&#160; &#160; def initialize(window, x, y, velocity, angle)<br/>&#160; &#160; &#160; &#160; @window, @x, @y = window, x, y<br/>&#160; &#160; &#160; &#160; @image = TexPlay::create_blank_image(@window, 50, 50).fill 1, 1, :color =&gt; :red<br/><br/>&#160; &#160; &#160; &#160; @init_x = velocity * Math::cos((angle / 180.0) * Math::PI)<br/>&#160; &#160; &#160; &#160; @init_y = velocity * Math::sin((angle / 180.0) * Math::PI)<br/><br/>&#160; &#160; &#160; &#160; @vy = 0<br/>&#160; &#160; end<br/><br/>&#160; &#160; def update<br/>&#160; &#160; &#160; &#160; @x += @init_x<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; @vy += Common::GRAVITY<br/>&#160; &#160; &#160; &#160; @y += @vy - @init_y<br/>&#160; &#160; end<br/><br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; @image.draw_rot(@x, @y, 1, 0)<br/>&#160; &#160; end<br/>end<br/><br/>class W &lt; Gosu::Window<br/>&#160; &#160; def initialize<br/>&#160; &#160; &#160; &#160; super(1024, 768, false, 20)<br/>&#160; &#160; &#160; &#160; @font = Gosu::Font.new(self, Gosu::default_font_name, 20)<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; @angle = 45<br/>&#160; &#160; &#160; &#160; @velocity = 15<br/>&#160; &#160; &#160; &#160; @arrows = []<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; &#160; @arrows.each { |v| v.draw }<br/><br/>&#160; &#160; &#160; &#160; @font.draw(&quot;angle: #{@angle}&quot;, 840, 10, 3, 1.0, 1.0, 0xffffff00)<br/>&#160; &#160; &#160; &#160; @font.draw(&quot;velocity: #{@velocity}&quot;, 840, 30, 3, 1.0, 1.0, 0xffffff00)<br/>&#160; &#160; &#160; &#160; @font.draw(&quot;press space to fire and left/right and up/down to change velocity and angle&quot;, 10, 10, 3, 1.0, 1.0, 0xffffff00)<br/>&#160; &#160; end<br/><br/>&#160; &#160; def update<br/>&#160; &#160; &#160; &#160; if button_down?(Gosu::KbSpace)<br/>&#160; &#160; &#160; &#160; &#160; &#160; arrow = Arrow.new(self, 500, 300, @velocity, @angle)<br/>&#160; &#160; &#160; &#160; &#160; &#160; @arrows &lt;&lt; arrow<br/>&#160; &#160; &#160; &#160; end<br/><br/>&#160; &#160; &#160; &#160; @velocity += 1 if button_down?(Gosu::KbUp)<br/>&#160; &#160; &#160; &#160; @velocity -= 1 if button_down?(Gosu::KbDown)<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; @angle = @angle &lt; 0 ?&#160; 360 : @angle - 1 if button_down?(Gosu::KbLeft)<br/>&#160; &#160; &#160; &#160; @angle = (@angle + 1) % 360 if button_down?(Gosu::KbRight)<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; @arrows.each { |v| v.update }<br/>&#160; &#160; end<br/>end<br/><br/>W.new.show<br/>&#160; &#160; &#160; &#160; 
+</div>
+</div>
+
+<div class='frm pst' id='pid1720' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1720.html#pid1720'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=135' >unnown</a>
+<span class='htt'>Date</span> 2009-11-14 11:39
+</div>
+<div class='ccl'>
+thanx guys,<br/>you both helped me a lot with this
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=266.html#tid266'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=266.html#tid266'>Gosu Exchange</a> / Trajectories
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=266.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

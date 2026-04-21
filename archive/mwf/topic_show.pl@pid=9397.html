@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9397 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Window closes itself</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9397' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1381.html#tid1381'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1381.html#tid1381'>Gosu Exchange</a> / Gosu::Window closes itself
+</div>
+</div>
+
+<div class='frm pst' id='pid9392' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9392' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9392.html#pid9392'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1312.html' >ssmfd</a>
+<span class='htt'>Date</span> 2018-03-31 19:59
+</div>
+<div class='ccl'>
+Hi, everyone! It&#39;s my first post here, so I&#39;m sorry if I make some mistake. Also, english isn&#39;t my first language, so... yeah.<br/><br/>As the post subject says, I have a problem with Gosu::Window. I just started a new game a few days ago, and I&#39;ve been able to evade most obstacles, but not this one.<br/><br/>The problem is this: after an apparently random amount of seconds, the windows closes itself. Interestingly, the program doesn&#39;t finish. The &#39;show&#39; loop continues, as I have to CTRL + C in the console to actually end the program, which ends in &quot;Interrupt&quot;.<br/><br/>Is this a known issue? Maybe I just hit a corner case. I&#39;ve tried several Ruby-oriented game frameworks before and, honestly, I like Gosu the most. I don&#39;t want to have to change it.<br/><br/>I use Windows 10, Ruby 2.3.3 and the most recent version of Gosu. Here&#39;s the main part of the code; the window (other classes manage different things; if this piece of code isn&#39;t enough, I&#39;ll post more).<br/><br/><code>class Main &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize(scale_factor = 2, res_chosen = false)<br/>&#160; <br/>&#160; &#160; super 320*scale_factor, 240*scale_factor<br/>&#160; &#160; self.caption = &quot;Game&quot;<br/>&#160; &#160; <br/>&#160; &#160; @res_chosen = res_chosen<br/>&#160; <br/>&#160; &#160; @res_chosen ? @scene = Title.new : @scene = ResChoice.new<br/>&#160; &#160; <br/>&#160; end<br/>&#160; &#160; <br/>&#160; def update<br/>&#160; &#160; @scene.update<br/>&#160; &#160; State.reset_all_keys<br/>&#160; &#160; <br/>&#160; &#160; if !$scale_factor.nil? &amp;&amp; !@res_chosen<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; &#160; <br/>&#160; def draw<br/>&#160; &#160; @scene.draw<br/>&#160; end<br/>&#160; <br/>&#160; def scene<br/>&#160; &#160; @scene<br/>&#160; end<br/>&#160; <br/>&#160; def scene=(new_scene)<br/>&#160; &#160; @scene = new_scene<br/>&#160; end<br/>&#160; <br/>&#160; def button_down(id)<br/>&#160; &#160; case id<br/>&#160; &#160; when Gosu::KB_DOWN<br/>&#160; &#160; &#160; State.set_key_down(:down)<br/>&#160; &#160; when Gosu::KB_UP<br/>&#160; &#160; &#160; State.set_key_down(:up)<br/>&#160; &#160; when Gosu::KB_LEFT<br/>&#160; &#160; &#160; State.set_key_down(:left)<br/>&#160; &#160; when Gosu::KB_RIGHT<br/>&#160; &#160; &#160; State.set_key_down(:right)<br/>&#160; &#160; when Gosu::KB_RETURN<br/>&#160; &#160; &#160; State.set_key_down(:return)<br/>&#160; &#160; when Gosu::KB_LEFT_ALT<br/>&#160; &#160; &#160; State.set_key_down(:lalt)<br/>&#160; &#160; else<br/>&#160; &#160; &#160; super<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def button_up(id)<br/>&#160; &#160; case id<br/>&#160; &#160; when Gosu::KB_DOWN<br/>&#160; &#160; &#160; State.set_key_up(:down)<br/>&#160; &#160; when Gosu::KB_UP<br/>&#160; &#160; &#160; State.set_key_up(:up)<br/>&#160; &#160; when Gosu::KB_LEFT<br/>&#160; &#160; &#160; State.set_key_up(:left)<br/>&#160; &#160; when Gosu::KB_RIGHT<br/>&#160; &#160; &#160; State.set_key_up(:right)<br/>&#160; &#160; when Gosu::KB_RETURN<br/>&#160; &#160; &#160; State.set_key_up(:return)<br/>&#160; &#160; when Gosu::KB_LEFT_ALT<br/>&#160; &#160; &#160; State.set_key_up(:lalt)<br/>&#160; &#160; else<br/>&#160; &#160; &#160; super<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>end<br/><br/>Main.new.show if __FILE__ == $0<br/>$main = Main.new($scale_factor, true)<br/>$main.show if __FILE__ == $0</code><br/><br/>Sorry if I missed something. I&#39;ve been using Ruby for years but I still a pretty noob programmer, haha. Thanks in advance!
+</div>
+</div>
+
+<div class='brn' id='brn9392'>
+<div class='frm pst' id='pid9393' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9392'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9393.html#pid9393'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2018-03-31 22:19
+</div>
+<div class='ccl'>
+I have noticed two things. The first thing would be the two loops you create at the end of the main script. You only need call one of them! The latter would be the strange condition you set in the update method that should close the game window. Why don&#39;t you try solving the issue by removing it?
+</div>
+</div>
+
+<div class='frm pst' id='pid9395' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9392'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9395.html#pid9395'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2018-04-01 11:00
+</div>
+<div class='ccl'>
+The two <code>Window.show</code> calls at the end of the file are a little odd but shouldn&#39;t be the issue, because the second window will only be created and shown after the first window&#39;s <code>show</code> method returns (because it was closed).<br/><br/>Code looks good, but I don&#39;t know what Title and ResChoice do. I would suggest isolating the issue by commenting out parts of the source code to see at which point the problem goes away.<br/><br/>Gosu also swallows some exceptions and re-raises them later. If there&#39;s a bug in this part of Gosu, it can happen that exceptions just disappear altogether (this has happened before) :/
+</div>
+</div>
+
+<div class='frm pst' id='pid9397' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9392'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9397' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9397.html#pid9397'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1312.html' >ssmfd</a>
+<span class='htt'>Date</span> 2018-04-01 15:14
+</div>
+<div class='ccl'>
+Thank you both! I know it may seem weird, but that&#39;s because I&#39;m trying to create a way to make some kind of GUI for the player to change the screen size and toggle fullscreen.<br/><br/>I&#39;ve been playing around, trying to figure out what might be wrong, and I&#39;ve concluded the &#39;double window&#39; HAS to do with the problem. If I stay long enough on the first spawned window, even if I smash the keys around to see if I can trigger something, nothing happens. However, the window closes ONLY if the one opened is the second. Sometimes even without me having to do anything; just wait.<br/><br/>So, being that I don&#39;t have the abilities to fix that just yet, and that I don&#39;t feel this is an easy problem to solve, I decided to eliminate that part of the code altogether. I&#39;m considering include a little external program to manage the settings. Like those old &#39;setup.exe&#39; from some games that helped you with the game settings, as I believe it&#39;s impossible to do from Gosu itself for the moment (unless I use Gosu itself as the external program... I may try that).<br/><br/>Just for information: Title is the class that manages the title screen, and ResChoice manages the screen size selection menu, which goes before the title.<br/><br/>Anyway, sorry for the inconvenience. I hope the next time I post something is the finished game, haha. I&#39;m sure you&#39;ll like it!
+</div>
+</div>
+
+<div class='brn' id='brn9397'>
+<div class='frm pst' id='pid9398' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9397'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9398' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9398.html#pid9398'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2018-04-01 15:21
+</div>
+<div class='ccl'>
+FYI, some recent Gosu version fixed window size handling, so you can easily switch fullscreen mode, and probably resolution, in-game with no need for some additional windows.
+</div>
+</div>
+
+<div class='brn' id='brn9398'>
+<div class='frm pst' id='pid9399' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9398'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9399' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9399.html#pid9399'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1312.html' >ssmfd</a>
+<span class='htt'>Date</span> 2018-04-01 15:32
+</div>
+<div class='ccl'>
+That sounds interesting, at least to try. How do I do that? I mean, as far as I know, to set the window size and fullscreen mode you HAVE to do it from the <code>initialize</code> method in <code>Window</code>.
+</div>
+</div>
+
+<div class='brn' id='brn9399'>
+<div class='frm pst' id='pid9400' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9399'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9400' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9400.html#pid9400'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2018-04-01 21:59
+</div>
+<div class='ccl'>
+<a class='ura' href='topic_show.pl@tid=1316.html'>https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=1316</a><br/><br/>You can do<br/><br/><code>window.width = <br/>window.height = <br/>window.fullscreen = </code><br/><br/>and it works while the game is running.
+</div>
+</div>
+
+<div class='brn' id='brn9400'>
+<div class='frm pst' id='pid9401' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9397.html#pid9400'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9401.html#pid9401'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1312.html' >ssmfd</a>
+<span class='htt'>Date</span> 2018-04-02 10:44
+</div>
+<div class='ccl'>
+All this time I thought they were read-only...<br/><br/>Well, thank you a lot!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1381.html#tid1381'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1381.html#tid1381'>Gosu Exchange</a> / Gosu::Window closes itself
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9397.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

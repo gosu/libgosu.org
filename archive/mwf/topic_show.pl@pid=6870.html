@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Really useful libraries</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6870' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=901.html#tid901'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=901.html#tid901'>Extending Gosu</a> / Really useful libraries
+</div>
+</div>
+
+<div class='frm pst' id='pid6870' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6870' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6870.html#pid6870'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=485.html' >chase4926</a>
+<span class='htt'>Date</span> 2013-06-05 03:44
+</div>
+<div class='ccl'>
+So these have been on my github for a while now, but I&#39;ve never made a post about them yet.<br/><br/>I use these in each project I make, and they <b>_really_</b> help me out.<br/><br/>Library name + short description:<br/><br/><b>Non-gosu libraries:</b><br/><br/><i>lib_misc.rb</i><br/>&#160; - Just my personal library of semi-useful methods, might be useful to someone.<br/><br/><i>lib.rb</i><br/>&#160; - Intended to be a &quot;library loader library&quot;, but I lost interest in making it do that, it&#39;s now just a very small collection of methods.<br/><br/><i>lib_encrypt.rb</i><br/>&#160; - Very useful collection of encryption / compression methods, and their counterparts.<br/><br/><b>Gosu libraries (The really useful ones):</b><br/><br/><i>lib_alphabet.rb</i><br/>&#160; - An amazing font system; Make sure to grab alphabet.png or make your own if you plan on using it.<br/><br/><i>lib_lighting.rb</i><br/>&#160; - A lighting system I made a couple years ago, this one already has a post.<br/><br/><i>lib_medialoader.rb</i><br/>&#160; - Here&#39;s the best one, the <i>crème de la crème</i>. It loads all the images, sounds, and tilesets located within their specified folder once and for all.<br/>&#160; &#160; To use an image once loaded, it&#39;s as easy as Media::get_image(&#39;tower.png&#39;) -or- Media::get_sound(&#39;hiptobesquare.ogg&#39;)<br/><br/><i>lib_misc_gosu.rb</i><br/>&#160; - Another small one with a few gosu related methods.<br/><br/>Repo link:<br/><a class='ura' href='https://github.com/chase4926/chase4926-library/tree/master/ruby'>https://github.com/chase4926/chase4926-library/tree/master/ruby</a><br/><br/>Feel free to use any or all, credit isn&#39;t necessary, but appreciated.
+</div>
+</div>
+
+<div class='brn' id='brn6870'>
+<div class='frm pst' id='pid6875' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6870.html#pid6870'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6875' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6875.html#pid6875'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-06-07 20:59
+</div>
+<div class='ccl'>
+The media loader is not bad because it preloads everything, unlike most helpers which load images and sounds on demand, introducing lag during gameplay. But I think Chingu&#39;s Image[&#39;name&#39;] syntax is still a little neater. :)<br/><br/>The Ruby style could be a little more idiomatic, e.g. <code>inverse_bool</code> seems to be just the <code>!</code>/<code>not</code> operator in disguise?
+</div>
+</div>
+
+<div class='brn' id='brn6875'>
+<div class='frm pst' id='pid6876' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6870.html#pid6875'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6876.html#pid6876'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=485.html' >chase4926</a>
+<span class='htt'>Date</span> 2013-06-07 21:09
+</div>
+<div class='ccl'>
+<code>inverse_bool</code> is a very old bad method that I have no use for anymore, it should and will be deleted at some point.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=901.html#tid901'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=901.html#tid901'>Extending Gosu</a> / Really useful libraries
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6870.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

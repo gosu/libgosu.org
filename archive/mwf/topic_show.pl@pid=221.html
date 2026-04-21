@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 221 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Window dimensions question</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d221' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=64.html#tid64'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=64.html#tid64'>Gosu Exchange</a> / Window dimensions question
+</div>
+</div>
+
+<div class='frm pst' id='pid210' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=210.html#pid210'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-16 18:35
+</div>
+<div class='ccl'>
+Working on a recent ruby/gosu game I happened to notice that the window I&#39;m creating of dimensions 800x600 isn&#39;t quite accurately respecting those dimensions from what I can tell.&#160; It would appear that I can display a quad that actually goes from 0,0 to 800,600 and see it.&#160; In otherwords, one would assume counting from 0 that you could only write to coord 799 in an 800 width display.&#160; I&#39;ve noticed this because I am both writing a quad layer to the background most z-layer and then rendering some bitmaps over top on the same z-layer which are wider than 800 pixels.&#160; This in affect showed me a black line where my underlying quad wasn&#39;t quite covering.&#160; Any thoughts on when you create an 800x600 window in gosu window init that it is really making it 801x601 ?&#160; That is what it looks like.
+</div>
+</div>
+
+<div class='frm pst' id='pid213' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=213.html#pid213'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-17 08:28
+</div>
+<div class='ccl'>
+The lower right coordinates are exclusive, if you draw a 800x600 image it should cover the window exactly. Maybe this should be somehow documented. Until you think about it, It Just Works, though. ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid214' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=214.html#pid214'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-19 00:00
+</div>
+<div class='ccl'>
+Not sure I&#39;m understanding how you are answering my question.&#160; Are you saying that I&#39;m seeing this &quot;undocumented feature&quot; because I&#39;m trying to write a quad from 0,0 to 799,699..&#160; and also writing out a bitmap that starts at 0,0 but is in effect 1600x600 dimensions thereby hitting the &#39;exclusive lower right coords&#39; and that is why I see the &#39;line&#39; of 1-pixel wide black?<br/><br/>Sorry I&#39;m having trouble getting what you&#39;re telling me! ;)&#160; If we keep having prob I will post a test program to demonstrate what I mean in case you aren&#39;t understanding me.&#160; Thanks for the reply!
+</div>
+</div>
+
+<div class='frm pst' id='pid221' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=221.html#pid221'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-22 08:57
+<span class='htt'>Edited</span> 2009-11-30 16:26
+</div>
+<div class='ccl'>
+Hmm, if you see a 1-pixel wide black line by drawing an image that is as large as the window, then that is indeed a bug in the Windows port that I need to check. But it is neither a feature nor a bug that a rectangle drawn from 0, 0 to 800, 600 covers the screen exactly. In contrast, a rectangle from (0, 0) to (0, 100) is even invisible. One way to view it is that the lower right pixels aren&#39;t included. One explanation that I like more is that Gosu&#39;s coordinates aren&#39;t the pixels, but the infinitely small points between them, so that 0, 0 is to the top left of the first physical pixel and 800, 600 would be to the low right of the last physical pixel. draw_line probably destroys the latter imagination. But I hope clears up why a quad to 799, 599 would leave a black line.<br/><br/>Anyway, this example program should cover the screen exactly, show one 10x10 px square and nothing more, does this not work on Windows? (Can&#39;t start VM right now, exam time until this weekend)<br/><br/><code>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/>include Gosu<br/><br/>class MyWindow &lt; Window<br/>&#160; def initialize<br/>&#160; &#160; super 400, 300, false<br/>&#160; end<br/>&#160; <br/>&#160; def draw_rect x, y, w, h, color = 0x40ff0000<br/>&#160; &#160; draw_quad x, y, color, x + w, y, color,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; x, y + h, color, x + w, y + h, color<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; # square<br/>&#160; &#160; draw_rect 5, 5, 10, 10<br/>&#160; &#160; # nothing<br/>&#160; &#160; draw_rect 5, 50, 100, 0<br/>&#160; &#160; # covers window<br/>&#160; &#160; draw_rect 0, 0, 400, 300<br/>&#160; end<br/>end<br/><br/>MyWindow.new.show</code><br/><br/>Hope that helps! :)
+</div>
+</div>
+
+<div class='frm pst' id='pid222' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=222.html#pid222'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=33.html' >HybridMind</a>
+<span class='htt'>Date</span> 2009-01-22 13:43
+</div>
+<div class='ccl'>
+This helps a lot, thanks!&#160; I think your explanation about the way you think of 0,0 to 800, 600 working makes a lot of sense.&#160; I just was never suspecting it to work that way.&#160; But, visualizing it as drawing pixels from the &quot;edge&quot; of 0,0 to the &quot;edge&quot; of 800, 600 makes me get why it is behaving that way.&#160; Thanks for the example code.&#160; It correctly runs on windows and doesn&#39;t leave a black line.&#160; I was always knocking -1 off my dimensions and getting the black line because of the way I was thinking about it.&#160; I never noticed until I was also drawing bitmaps that were so much wider than the screen width that it started to fill the last pixel on the right that I had left blank on my bottom most quad layer.&#160; Rock!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=64.html#tid64'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=64.html#tid64'>Gosu Exchange</a> / Window dimensions question
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=221.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

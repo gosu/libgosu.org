@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8593 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>undefined method `to_blob&#39; for #&lt;Game:0x000000025c3c38 @__sw</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8593' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1228.html#tid1228'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1228.html#tid1228'>Gosu Exchange</a> / undefined method `to_blob&#39; for #&lt;Game:0x000000025c3c38 @__sw
+</div>
+</div>
+
+<div class='frm pst' id='pid8590' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8590' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8590.html#pid8590'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1185.html' >redcodefinal</a>
+<span class='htt'>Date</span> 2015-10-03 21:05
+<span class='htt'>Edited</span> 2015-10-04 03:14
+</div>
+<div class='ccl'>
+<code>/home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:39:in <code>initialize&#39;: undefined method </code>to_blob&#39; for #&lt;Game:0x000000025c3c38 @__swigtype__=&quot;_p_Gosu__Window&quot;&gt; (NoMethodError)<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:39:in <code>initialize&#39;<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:39:in </code>new&#39;<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:39:in <code>block (2 levels) in load_assets&#39;<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:29:in </code>each&#39;<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:29:in <code>block in load_assets&#39;<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:26:in </code>each&#39;<br/>&#160; from /home/ian/Documents/gamedev/isometric-city-generator-ruby/assets.rb:26:in <code>load_assets&#39;<br/>&#160; from ./game.rb:23:in </code>initialize&#39;<br/>&#160; from ./game.rb:113:in <code>new&#39;<br/>&#160; from ./game.rb:113:in </code>&lt;main&gt;&#39;<br/></code><br/><br/>Code: <a class='url' href='https://github.com/redcodefinal/isometric-city-generator-ruby/blob/master/assets.rb#L39'>assets.rb @ 39 </a><br/><br/>Just reinstalled gosu on a new machine and I get this error when I try to run my <a class='url' href='https://github.com/redcodefinal/isometric-city-generator-ruby'>Isometric City Generator</a>. I haven&#39;t updated it in 8 months or so, was there any updates changing how Gosu::Image works? The error occurs when calling Gosu::Image.new.<br/><br/><code>2.2.1 :001 &gt; require &#39;gosu&#39;<br/> =&gt; true <br/>2.2.1 :002 &gt; Gosu::Image<br/> =&gt; Gosu::Image <br/>2.2.1 :003 &gt; window = Gosu::Window.new(400, 400, false)<br/> =&gt; #&lt;Gosu::Window:0x00000001252708 @__swigtype__=&quot;_p_Gosu__Window&quot;&gt; <br/>2.2.1 :004 &gt; image = Gosu::Image.new(window, &quot;./block.png&quot;)<br/>NoMethodError: undefined method <code>to_blob&#39; for #&lt;Gosu::Window:0x00000001252708 @__swigtype__=&quot;_p_Gosu__Window&quot;&gt;<br/>&#160; from (irb):4:in </code>initialize&#39;<br/>&#160; from (irb):4:in <code>initialize&#39;<br/>&#160; from (irb):4:in </code>new&#39;<br/>&#160; from (irb):4<br/>&#160; from /home/ian/.rvm/rubies/ruby-2.2.1/bin/irb:11:in <code>&lt;main&gt;&#39;<br/>2.2.1 :005 &gt; image = Gosu::Image.new(window, &quot;block.png&quot;)<br/>NoMethodError: undefined method </code>to_blob&#39; for #&lt;Gosu::Window:0x00000001252708 @__swigtype__=&quot;_p_Gosu__Window&quot;&gt;<br/>&#160; from (irb):5:in <code>initialize&#39;<br/>&#160; from (irb):5:in </code>initialize&#39;<br/>&#160; from (irb):5:in <code>new&#39;<br/>&#160; from (irb):5<br/>&#160; from /home/ian/.rvm/rubies/ruby-2.2.1/bin/irb:11:in </code>&lt;main&gt;&#39;<br/>2.2.1 :006 &gt; image = Gosu::Image.new(window, &quot;./block.png&quot;)<br/>NoMethodError: undefined method <code>to_blob&#39; for #&lt;Gosu::Window:0x00000001252708 @__swigtype__=&quot;_p_Gosu__Window&quot;&gt;<br/>&#160; from (irb):6:in </code>initialize&#39;<br/>&#160; from (irb):6:in <code>initialize&#39;<br/>&#160; from (irb):6:in </code>new&#39;<br/>&#160; from (irb):6<br/>&#160; from /home/ian/.rvm/rubies/ruby-2.2.1/bin/irb:11:in `&lt;main&gt;&#39;<br/>2.2.1 :007 &gt; <br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn8590'>
+<div class='frm pst' id='pid8591' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8593.html#pid8590'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8591' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8591.html#pid8591'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-10-04 09:35
+</div>
+<div class='ccl'>
+See <a class='ura' href='https://github.com/gosu/gosu/issues/306'>https://github.com/gosu/gosu/issues/306</a><br/><br/>Same issue as in this thread: <a class='ura' href='topic_show.pl@tid=1208.html'>https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=1208</a><br/><br/>I haven&#39;t been able to reproduce it... :(
+</div>
+</div>
+
+<div class='brn' id='brn8591'>
+<div class='frm pst' id='pid8592' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8593.html#pid8591'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8592' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8592.html#pid8592'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-10-04 09:36
+</div>
+<div class='ccl'>
+Oops, I can actually reproduce it now.
+</div>
+</div>
+
+<div class='brn' id='brn8592'>
+<div class='frm pst' id='pid8597' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8593.html#pid8592'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8597' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8597.html#pid8597'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1185.html' >redcodefinal</a>
+<span class='htt'>Date</span> 2015-10-04 20:18
+</div>
+<div class='ccl'>
+I updated the main issue thread, thanks for the quick reply. The issue was because a Gosu::Window is no longer needed to load an image.
+</div>
+</div>
+
+<div class='brn' id='brn8597'>
+<div class='frm pst' id='pid8598' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8593.html#pid8597'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8598.html#pid8598'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-10-04 20:57
+</div>
+<div class='ccl'>
+Yep, but it was still a bug in Gosu because LOTS of code still uses the old interface, and I&#39;ll probably have to support it forever :) Anyway, great to know that it works now.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid8593' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8593.html#pid8590'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8593.html#pid8593'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-10-04 10:15
+</div>
+<div class='ccl'>
+Fixed in Gosu 0.10.4.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1228.html#tid1228'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1228.html#tid1228'>Gosu Exchange</a> / undefined method `to_blob&#39; for #&lt;Game:0x000000025c3c38 @__sw
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8593.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu and ChunkyPNG/MiniMagick: Blob length mismatch</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9073' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1318.html#tid1318'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1318.html#tid1318'>Gosu Exchange</a> / Gosu and ChunkyPNG/MiniMagick: Blob length mismatch
+</div>
+</div>
+
+<div class='frm pst' id='pid9073' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9073' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9073.html#pid9073'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-11 11:18
+</div>
+<div class='ccl'>
+Hello.<br/><br/>I tried to add in a first time MiniMagick then ChunkyPNG to my Gosu project. However, I found some strange issues.<br/><br/>First, for both libraries, they work nice without Gosu. But when I&#39;m creating an image like this (here with ChunkyPNG):<br/><code>image = ChunkyPNG::Image.from_file &#39;img.png&#39;<br/>@my_image = Gosu::Image.new image</code><br/>I have an error telling me that both methods <code>columns</code> and <code>rows</code> are undefined. Well, I created them quickly to fix that (example with ChunkyPNG):<br/><code>module ChunkyPNG<br/>&#160; class Canvas<br/>&#160; &#160; def columns ; @width ; end<br/>&#160; &#160; def rows ; @height ; end<br/>&#160; end<br/>end</code><br/>And of course the errors disappeared. But now, I have a new issue: <code>Blob length mismatch (RuntimeError)</code>. But I checked, <code>columns</code> and <code>rows</code> return the right value. I think it&#39;s related to compression level or something like that when generating the blob. <br/><br/>I have the same issue with MiniMagick: <code>columns</code> and <code>rows</code> return the right value but the blob is not accepted.<br/><br/>So. Do you have some idea to fix it ?<br/><br/>Thank you for your attention,<br/>NYU.
+</div>
+</div>
+
+<div class='brn' id='brn9073'>
+<div class='frm pst' id='pid9074' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9073.html#pid9073'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9074' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9074.html#pid9074'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-12 06:32
+<span class='htt'>Edited</span> 2017-01-12 06:42
+</div>
+<div class='ccl'>
+Gosu expects raw RGBA pixel data in the string, and <code>Canvas#to_blob</code> returns compressed data. The return value of <code>to_blob</code> has to have a length of either <code>columns * rows * 4</code> or <code>columns * rows * 16</code> (the latter is rare, when <code>float</code> RGBA values).<br/><br/>Looking at the ChunkyPNG docs, I think <code>to_rgba_stream</code> returns something that can be used with Gosu. In that case, you should probably create a wrapper for <code>ChunkyPNG::Canvas</code> instead of monkey-patching <code>Canvas</code> and changing the names. Example (untested):<br/><br/><code>module ChunkyPNG<br/>&#160; class Canvas<br/>&#160; &#160; GosuWrapper = Struct.new(:columns, :rows, :to_blob)<br/>&#160; &#160; def to_gosu<br/>&#160; &#160; &#160; GosuWrapper.new(@width, @height, to_rgba_stream)<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/>...<br/>Gosu::Image.new(my_canvas.to_gosu)</code><br/><br/>Does that work?
+</div>
+</div>
+
+<div class='brn' id='brn9074'>
+<div class='frm pst' id='pid9076' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9073.html#pid9074'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9076.html#pid9076'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-12 09:07
+</div>
+<div class='ccl'>
+It works like a charm. Thank you very much.<br/><br/>It&#39;s really curious however: I just checked an older project using an older version of Gosu and it was working nicely without that fix. Well.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid9075' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9073.html#pid9073'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9075' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9075.html#pid9075'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-01-12 06:41
+</div>
+<div class='ccl'>
+Hm, not sure what <code>MiniMagick::Image#to_blob</code> is good for, it just seems to read a file (expand the source code): <a class='ura' href='http://www.rubydoc.info/github/minimagick/minimagick/MiniMagick%2FImage%3Ato_blob'>http://www.rubydoc.info/github/minimagick/minimagick/MiniMagick%2FImage%3Ato_blob</a><br/><br/>MiniMagick has an <code>import_pixels</code> method that can import a &quot;blob&quot; (as defined by Gosu), but I can&#39;t find the other direction.<br/><br/>This StackOverflow answer also doesn&#39;t lead anywhere: <a class='ura' href='http://stackoverflow.com/questions/7152362/return-array-of-pixel-values-using-ruby-and-mini-magick-or-rmagick'>http://stackoverflow.com/questions/7152362/return-array-of-pixel-values-using-ruby-and-mini-magick-or-rmagick</a><br/><br/>It&#39;s probably easier to read the image from disk with Gosu.
+</div>
+</div>
+
+<div class='brn' id='brn9075'>
+<div class='frm pst' id='pid9077' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9073.html#pid9075'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9077.html#pid9077'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1282.html' >NYU</a>
+<span class='htt'>Date</span> 2017-01-12 09:12
+</div>
+<div class='ccl'>
+I will just go with <code>ChunkyPNG </code>I think. The only interest I had in <code>MiniMagick </code>was the ability to load animated gif. <br/>I don&#39;t know if another library allows it. I will look for an alternative ; in any case, <code>MiniMagick</code> was too big for what I needed.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1318.html#tid1318'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1318.html#tid1318'>Gosu Exchange</a> / Gosu and ChunkyPNG/MiniMagick: Blob length mismatch
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9073.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

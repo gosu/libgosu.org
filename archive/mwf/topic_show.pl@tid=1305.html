@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Controlling window/application focus</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=1305.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1305.html#tid1305'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1305.html#tid1305'>Gosu Exchange</a> / Controlling window/application focus
+</div>
+</div>
+
+<div class='frm pst' id='pid9033' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9033' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9033.html#pid9033'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2016-10-12 02:28
+</div>
+<div class='ccl'>
+Hey all -<br/><br/>I&#39;m putting together a simple arcade machine.&#160; I have a Gosu app that acts as a menu, which then uses Process.spawn to launch the game. It works fairly well. There is some flickering when the apps change, but I&#39;ll work on that.<br/><br/>But the real problem is that the menu app doesn&#39;t receive focus when the game app exits. I&#39;m calling Process.wait and getting notified when the game exits. Is there a call I can make in the menu app to restore it to the foreground?<br/><br/>If it matters, I&#39;m developing on a Mac, but plan on eventually deploying (way way down the road) to a Raspberry Pi.<br/><br/>Also, if anyone has a better suggestion for how to approach this, I&#39;m listening. I originally considered a single app containing the menu and games, but I&#39;m planning on more than ten games, and think that it could get bloated pretty quickly.
+</div>
+</div>
+
+<div class='brn' id='brn9033'>
+<div class='frm pst' id='pid9034' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1305.html#pid9033'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9034.html#pid9034'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2016-10-12 02:38
+</div>
+<div class='ccl'>
+I kind of got around it by using Process.exec instead of Process.spawn. The menu app unloads when the game loads. When the game exits, it drops back to the shell. But, I&#39;m launching with a script like this:<br/><br/>#!/bin/bash<br/><br/>while [ true ]; do<br/>&#160; ruby main.rb<br/>&#160; echo &quot;Relaunching&quot;<br/>done<br/><br/>This works, but is even more flickery. It might be manageable; I&#39;ll need to build a slightly bigger example to know for sure.
+</div>
+</div>
+
+<div class='frm pst' id='pid9035' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1305.html#pid9033'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9035' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9035.html#pid9035'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-10-13 20:35
+</div>
+<div class='ccl'>
+I don&#39;t think there&#39;s a platform-independent way to handle this. Which version of the Raspberry Pi are you deploying to? The original Pi only supports running Gosu in full-screen and is a little tricky to set up, so you might not be able to reuse the same logic as on your Mac. And the tutorial has not yet been updated for the Pi 2/3. Just a little heads-up that getting Gosu to work on the Pi is still tricky. :(
+</div>
+</div>
+
+<div class='brn' id='brn9035'>
+<div class='frm pst' id='pid9036' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1305.html#pid9035'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9036' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9036.html#pid9036'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=862' >siebharinn</a>
+<span class='htt'>Date</span> 2016-10-15 02:21
+</div>
+<div class='ccl'>
+I don&#39;t have a Pi yet, but will be ordering the 3. Unless something new gets announced in the next few months.<br/><br/>I&#39;ll be sure to share anything I discover in the process of getting everything to work.
+</div>
+</div>
+
+<div class='brn' id='brn9036'>
+<div class='frm pst' id='pid9037' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=1305.html#pid9036'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9037.html#pid9037'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-10-15 08:30
+</div>
+<div class='ccl'>
+Thanks!<br/><br/>If the Pi 3 is running a regular Linux distro, you can use a scriptable window manager that can bring windows to the foreground if necessary. I&#39;ve built a Kiosk running Gosu and a video player on Linux once and scripted Sawfish to manage windows (z-order, focus, all that):<br/><a class='ura' href='http://sawfish.tuxfamily.org'>http://sawfish.tuxfamily.org</a><br/><br/>On OS X, you should be able to do the same thing with AppleScript :) You probably have to wrap your script as an <code>.app</code> to do so:<br/><br/><code>osascript -e &#39;tell application &quot;My App Name&quot; to activate&#39;</code>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1305.html#tid1305'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1305.html#tid1305'>Gosu Exchange</a> / Controlling window/application focus
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=1305.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

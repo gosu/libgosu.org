@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>2D platform collisions in non-tile-based game</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=941.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=941.html#tid941'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=941.html#tid941'>Gosu Exchange</a> / 2D platform collisions in non-tile-based game
+</div>
+</div>
+
+<div class='frm pst' id='pid7107' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7107' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7107.html#pid7107'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-12 19:12
+<span class='htt'>Edited</span> 2013-08-12 21:14
+</div>
+<div class='ccl'>
+I&#39;m at a junction where I need to decide if I want to use Chipmunk or Chingu, or go all-in on figuring out a custom 2D collision system.&#160; You can see what I have so far at github:<br/><br/><a class='url' href='https://github.com/mikezila/GodMustAnswer'>God Must Answer</a><br/><br/>I need the usual platformer stuff.&#160; Need to know when I&#39;m grounded, walk smoothly between blocks with different bounding boxes, need to be able to stop the player from jumping up through a platform, or jumping into the side of one.&#160; For the game&#39;s purpose I&#39;ll also need to know when I&#39;m touching the bottom or side of another block, not just that I&#39;ve hit another block, detecting what edge I&#39;ve collided with is important.<br/><br/>I&#39;ve rolled my own Vector2 and Box2D classes, and I&#39;m using those to do the thing.&#160; So far they calculate the bounding boxes based on the gameobject&#39;s graphics, though for the game&#39;s purpose that will work fine.&#160; Only the player will need a custom bounding box, and that&#39;ll be easy enough to specify and tweak manually.<br/><br/>I&#39;ve got platform grounding working pretty well.&#160; Can walk along multiple platforms that don&#39;t quite touch without sinking down for falling between by using two &quot;feet&quot; points on the box.&#160; This is working pretty well, but I&#39;m not sure if I want to go all-in on rolling my own methods for checking other types of collision.&#160; I&#39;m also having an odd issue where the bottom box of the player sinks into the other collider one or two pixels before collision happens.<br/><br/>There will be no other gameobjects checking collision, just the player.&#160; There will be no bullets, though there will be moving colliders to contend with, including platforms the player will need to &quot;stand&quot; on and move along with.
+</div>
+</div>
+
+<div class='brn' id='brn7107'>
+<div class='frm pst' id='pid7110' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7107'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7110' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7110.html#pid7110'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-13 01:52
+</div>
+<div class='ccl'>
+Tried to make some progress on it, but still facing some issues.&#160; In particular I&#39;d like someone who has done this before to look at ball.rb, box2d.rb and tell me what I&#39;m done wrong.&#160; I&#39;m running into a couple issues.<br/><br/>-My box &quot;lags&quot; behind the graphics when they&#39;re moving, I&#39;m rendering the graphics at the box&#39;s origin (it&#39;s top left vertex) and movement methods move the box, so I don&#39;t know why this is happening.&#160; The location the box uses to render its debug lines and the location the graphics render should always bee the same at any given time.&#160; Unless I&#39;ve spaghetti&#39;d somewhere and don&#39;t see it.<br/>-My box must sink into another box by a pixel before collision registers.&#160; I have a gravity method that applies a one-pixel downward force on the ball, checks to see if it&#39;s grounded, then does it again a certain number of times each update step.&#160; The ball&#39;s bounding box always sinks one pixel lower than the platform&#39;s origin before it stops.<br/><br/>I&#39;m guessing these two issues are related to a core issue, but I&#39;m a little lost on how to fix it.
+</div>
+</div>
+
+<div class='brn' id='brn7110'>
+<div class='frm pst' id='pid7111' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7110'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7111.html#pid7111'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-13 03:48
+</div>
+<div class='ccl'>
+Looks like you&#39;re making solid progress on a large project. As a bonus, I was able to load it on the first try.<br/><br/>I am not too experienced with collision detection - or programming in general - otherwise I would provide a bunch of suggestions.<br/><br/>You&#39;ve probably already checked out CptnRuby, but I&#39;ll mention it, just in case you haven&#39;t... It is a tile-based platformer, while yours in non-tile-based, but it deals with gravity and collisions, and might be worth taking a look if you haven&#39;t already done so.<br/><br/>The original version by jlnr can be found inside the Gosu gemfile on your hard drive, along with the other Gosu examples. CptnRuby with Walljump, by Maverick, can be found at this URL:&#160; <a class='ura' href='../../mwf/attachments/10/2110/CptRbyWithWalljmp.zip'>http://www.libgosu.org/mwf/attachments/10/2110/CptRbyWithWalljmp.zip</a><br/>Credit goes to Dahrkael for providing the link, and to Maverick for adding Walljump, and to jlnr for creating the original.<br/><br/>Other than that, your questions are mostly beyond my experience level, and I hesitate to say anything because I&#39;ll probably be wrong...... That being said, I wonder if part of the reason the ball sinks 1 pixel into the box before stopping is because the box in ball.rb - def generate_box - extends one pixel beyond the dimensions of the ball itself...
+</div>
+</div>
+
+<div class='frm pst' id='pid7113' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7110'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7113' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7113.html#pid7113'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-13 04:19
+<span class='htt'>Edited</span> 2013-08-13 04:42
+</div>
+<div class='ccl'>
+I&#39;m very glad to hear it ran on the first try!&#160; My least favorite part of using Ruby is how it&#39;s always a gamble if your code is going to work for someone else as it does for you.&#160; It sometimes makes me want to go back to Java. (Sometimes.)<br/><br/>I think I&#39;ve solved/worked around the issue by just making the bounding boxes one pixel bigger than the graphics, so that if the box is one pixel in the other box, the graphics will be setting on&#160; top of each other perfectly.&#160; If nothing else I&#39;ll call it good enough until it proves to not be good enough.&#160; In any case it means I can work on other, more fun parts.&#160; <br/><br/>I&#39;m actually really proud of the level editor.&#160; Gosu::Images don&#39;t Marshal well (and by not well I mean at all) so you can&#39;t directly marshal an array of gameobjects.&#160; So instead I gather only the information needed to recreate the gameobject, and store that info in an editorobject, which contains nothing but strings and vector2s, which marshal fine.&#160; Then when loading the .map (which is an array of these editorobjects) the gamestate can recreate the objects array I wanted using that info.&#160; It works perfectly.
+</div>
+</div>
+
+<div class='brn' id='brn7113'>
+<div class='frm pst' id='pid7115' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7113'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7115' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7115.html#pid7115'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-13 05:18
+</div>
+<div class='ccl'>
+Sounds pretty sophisticated. I&#39;m trying to figure out how to look at your .map files. In a text editor, they just look encoded.<br/><br/>Ruby is the first programming language I&#39;ve ever experimented with, so pretty much everything is new to me.
+</div>
+</div>
+
+<div class='brn' id='brn7115'>
+<div class='frm pst' id='pid7116' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7115'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7116' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7116.html#pid7116'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-13 05:29
+</div>
+<div class='ccl'>
+The .map files are Marshal&#39;d blobs.&#160; Each one contains an array of EditorObjects.&#160; Each editor object is very simple, just two variables, &quot;type&quot; and &quot;origin&quot;.&#160; Type is just a string, like &quot;block&quot;, or &quot;door&quot;.&#160; Origin is a Vector2, which is a type I created/implimented myself, it&#39;s also very simple, just two integers, an X and a Y.&#160; With those two pieces of info, I can recreate the level using the &quot;load&quot; method in the gamestate.rb class.&#160; It sounds like I&#39;m splitting the atom I&#39;m sure, but it&#39;s really simple.&#160; Elegant almost.<br/><br/>Marshal produces files that aren&#39;t readable outside of being de-Marshal&#39;ed by Ruby.<br/><br/><a class='ura' href='http://ruby-doc.org/core-1.9.3/Marshal.html'>http://ruby-doc.org/core-1.9.3/Marshal.html</a><br/><br/>In general you&#39;ll want to create your own save format if you have special needs, but for simple things Marshal works very well.
+</div>
+</div>
+
+<div class='brn' id='brn7116'>
+<div class='frm pst' id='pid7154' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7154.html#pid7154'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<span class='htt'>Date</span> 2013-08-24 09:50
+<span class='htt'>Edited</span> 2013-08-24 10:12
+</div>
+<div class='ccl'>
+Thank you. This information is highly useful for me.<br/><br/>btw, I just checked out the latest version on github. Looks like it&#39;s coming along.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid7117' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7113'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7117' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7117.html#pid7117'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-08-13 08:51
+</div>
+<div class='ccl'>
+If you don&#39;t store Images inside objects, but somewhere globally and then only refer to them, you can simply dump whole gamestates.<br/><br/>And to make bounding boxes not to sink, you can move them temporary by one pixel while checking collision.
+</div>
+</div>
+
+<div class='brn' id='brn7117'>
+<div class='frm pst' id='pid7119' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7117'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7119' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7119.html#pid7119'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1029' >allcaps</a>
+<span class='htt'>Date</span> 2013-08-13 18:14
+</div>
+<div class='ccl'>
+I think I like the object re-creation approach more.&#160; This way if I change the way a particular object works (such as making a block wider, or making spikes taller, or changing the way somethings box works) that change will be reflected when the gamestate generates the level.&#160; If I just dumped the state, the objects would be in the state they were in when they were dumped, so I&#39;d have to re-create the level to see the updated objects, or more likely just crash if I&#39;d refactored something major.&#160; This also helps because objects will be created with their &quot;game&quot; variable correctly referencing the gamestate that loaded the map, and they&#39;ll be placed into the state-wide @objects array for access by other objects.&#160; Also sidesteps having to use globals, or an image manger/dispatch class to hold graphics.
+</div>
+</div>
+
+<div class='brn' id='brn7119'>
+<div class='frm pst' id='pid7120' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7119'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7120.html#pid7120'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2013-08-13 19:30
+</div>
+<div class='ccl'>
+I meant that dumping gamestate may be used to create a checkpoint or suspend playing session.<br/>Dumping actual objects in levels I used only once. It&#39;s not so bad solution, because there&#39;s less work to define new objects. Normally you have to make this object display in editor and initialize proper class while loading map. When you use only the classes, they appear in editor as in game and are pushed into state&#39;s objects automatically. But trouble is when you want to change their variables. Anyway, I don&#39;t recommend it either.<br/><br/>Global resource storage is good idea as the resources are easy to access and they are loaded only once, so map loads faster and game uses less memory.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid7122' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=941.html#pid7107'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7122.html#pid7122'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-08-14 10:48
+</div>
+<div class='ccl'>
+I would suggest not using a physics engine for a platformer, mostly because it&#39;s fun to roll your own algorithms and it&#39;s no fun to bend a complex engine to do exactly what you want.<br/><br/>What I did to handle uneven grounds was basically this: I&#39;d move objects one pixel left or right (if possible), then move them up by 5 pixels or so, and then move them down as far as possible, but at most 10 pixels. That way they could climb slopes and would stick to the ground when moving down a slope, instead of displaying a &quot;falling down&quot; animation.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=941.html#tid941'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=941.html#tid941'>Gosu Exchange</a> / 2D platform collisions in non-tile-based game
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=941.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

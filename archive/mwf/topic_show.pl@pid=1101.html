@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1101 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Window Singleton mixin Issue</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1101' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=173.html#tid173'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=173.html#tid173'>Gosu Exchange</a> / Gosu::Window Singleton mixin Issue
+</div>
+</div>
+
+<div class='frm pst' id='pid1093' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1093.html#pid1093'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=89.html' >asoules</a>
+<span class='htt'>Date</span> 2009-07-10 01:50
+</div>
+<div class='ccl'>
+Based on the Space Shooter demo app by Belén Albeza González, I&#39;ve been using a Singleton instance of Gosu::Window. However, I ran into and issue when trying to access the attributes of the window, specifically mouse_x and mouse_y. I can&#39;t seem to find a way to access those instance variables while using the Singleton mixin. Has anyone else run into this problem?
+</div>
+</div>
+
+<div class='frm pst' id='pid1095' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1095.html#pid1095'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-07-10 07:11
+<span class='htt'>Edited</span> 2009-07-10 09:50
+</div>
+<div class='ccl'>
+I&#39;ve not run into any problems with singleton classes. and just to test the mouse_x and mouse_y coords<br/><br/><code><br/>require &#39;rubygems&#39;<br/>require &#39;gosu&#39;<br/>require &#39;singleton&#39;<br/><br/>class Game &lt; Gosu::Window<br/>&#160; <br/>&#160; include Singleton<br/><br/>&#160; def initialize<br/>&#160; &#160; super(800, 600, false)<br/>&#160; &#160; @test_mouse = TestMouse.new<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; @test_mouse.update<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; @test_mouse.draw<br/>&#160; end<br/>&#160; <br/>end<br/><br/>class TestMouse<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; @colour = Gosu::red<br/>&#160; end<br/>&#160; <br/>&#160; def update<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; mouse_x = Game.instance.mouse_x<br/>&#160; &#160; mouse_y = Game.instance.mouse_y<br/>&#160; &#160; <br/>&#160; &#160; Game.instance.draw_quad(mouse_x, mouse_y, @colour,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; mouse_x + 2, mouse_y, @colour,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; mouse_x, mouse_y + 2, @colour,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; mouse_x + 2, mouse_y + 2, @colour, 1)<br/>&#160; end<br/>&#160; <br/>end<br/><br/>Game.instance.show<br/></code><br/><br/>this works for me
+</div>
+</div>
+
+<div class='frm pst' id='pid1096' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1096.html#pid1096'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=89.html' >asoules</a>
+<span class='htt'>Date</span> 2009-07-10 12:52
+</div>
+<div class='ccl'>
+Thanks for the help. I tried game.instance but my game locked up so I assumed that was not the correct syntax. Thanks again. 
+</div>
+</div>
+
+<div class='frm pst' id='pid1097' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1097.html#pid1097'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-07-10 15:05
+</div>
+<div class='ccl'>
+I think Ruby&#39;s singleton doesn&#39;t solve circular dependencies. I used it in one game and had the lockup too. My Window called SomeGameObject.new in its constructor, which in turn called Image.new(MyWindow.instance, ...), and so it ended up being an endless loop. Kind of sad that the singleton lib didn&#39;t even check for this very common problem :(<br/><br/>My workaround was to just create the first &quot;state&quot; after the Window was constructed (and accessible via MyWindow.instance). The future, supercool workaround will of course happen in Gosu itself, once Image.new doesn&#39;t need the Window arg anymore. The next release might already be very close to that.
+</div>
+</div>
+
+<div class='frm pst' id='pid1098' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1098.html#pid1098'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-07-10 15:26
+</div>
+<div class='ccl'>
+nothing gets past you jlnr
+</div>
+</div>
+
+<div class='frm pst' id='pid1099' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1099.html#pid1099'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-07-10 22:40
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Kind of sad that the singleton lib didn&#39;t even check for this very common problem :(</p></blockquote><br/>What&#39;s more sad is, this is, according to Matz, the correct behavior: <a class='url' href='http://www.ruby-forum.com/topic/179676'>http://www.ruby-forum.com/topic/179676</a><br/><br/>Here&#39;s my workaround: <a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/app/MainWindow.rb#cl-31'>OperationLamba/app/MainWindow.rb:31</a><br/>more here: <a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/app/MainWindow.rb#cl-43'>MainWindow.rb:43</a> and here: <a class='url' href='http://bitbucket.org/philomory/operationlambda/src/tip/app/MainWindow.rb#cl-105'>MainWindow.rb:105</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid1100' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1100.html#pid1100'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=89.html' >asoules</a>
+<span class='htt'>Date</span> 2009-07-11 03:51
+</div>
+<div class='ccl'>
+Thanks for the help. I haven&#39;t had a chance to get back into the code today, but I&#39;ll get back on it tomorrow and try to access the mouse position.<br/><br/>Somehow I missed that operation lambda was open source, or I would have been looking at it for tips :)
+</div>
+</div>
+
+<div class='frm pst' id='pid1101' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1101.html#pid1101'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=89.html' >asoules</a>
+<span class='htt'>Date</span> 2009-07-11 04:16
+</div>
+<div class='ccl'>
+Alright, just jumped into the code for a minute, turns out I was calling Game.instance inside a constructor which was getting called inside the constructor for the play state, which was getting initialized by my Gosu::Window. So, my solution was as simple as initializing my variables to zero, then setting them based on the mouse position in the update loop. Hopefully I won&#39;t make that mistake again.<br/><br/>Thanks for the quick help!
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=173.html#tid173'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=173.html#tid173'>Gosu Exchange</a> / Gosu::Window Singleton mixin Issue
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1101.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

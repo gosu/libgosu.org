@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6090 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ashton - shaders and framebuffers in Ruby</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6090' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=784.html#tid784'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=784.html#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
+</div>
+<div class='bcl'>
+<span class='pln'>
+<span>1</span>
+<a href='topic_show.pl@tid=784%3Bpg=2.html'>2</a>
+<img class='sic dsb sic_nav_prev_d' src='../../mwf/epx.png' title='Go to previous page' alt='Previous'>
+<a href='topic_show.pl@tid=784%3Bpg=2.html'><img class='sic sic_nav_next' src='../../mwf/epx.png' title='Go to next page' alt='Next'></a>
+</span>
+&#160;
+</div>
+</div>
+
+<div class='frm pst' id='pid5996' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5996' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5996.html#pid5996'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-09 15:48
+<span class='htt'>Edited</span> 2012-07-15 18:17
+</div>
+<div class='ccl'>
+I&#39;ve started developing a gem to incorporate shaders and framebuffers into Ruby/Gosu, using a high-level framework. Although mostly my own work, I did use the existing post-processing code to get me started, by&#160; <a class='url' href='topic_show.pl@pid=4790.html'>Mathias in C++</a> and <a class='url' href='topic_show.pl@pid=2800.html'>jsb&#39;s port of that to Ruby</a>. I also peeked at Mon_Ouie&#39;s implementation of shaders in <a class='url' href='http://mon-ouie.github.com/projects/ray.html'>Ray</a>.<br/><br/>* <b>Shader</b> allows for all sorts of real-time manipulation of textures and vertices and, being written in a C-like language run on your graphics card, they will run painfully fast, even in Ruby :) Aston will support both full-screen post-processing (blur, pixelate, etc) and affecting individual Image/Font/primitive draw operations.<br/>* <b>Framebuffer</b> allows for drawing Image/Font, etc., directly into other Images, as though they were the window. A very limited version of this ability to draw off-screen is currently available as Window#render_to_image, provided by TexPlay.<br/>* Although not directly related, I also have a <b>ParticleEmitter </b>class which manages large-scale particle drops. It supports shaders and is relatively efficient compared to anything you could implement in Ruby, even though it can update and draw a lot of moving particles. Current benchmark is 18k particles @ 40FPS, so you should be able to use it with a couple of thousand at a time quite nicely.<br/><br/>I&#39;ve only released a --pre gem, but the github project is <a class='url' href='https://github.com/Spooner/ashton'>spooner/ashton</a>. I&#39;ve added a <a class='url' href='https://github.com/Spooner/ashton/wiki'>todo list</a> on the wiki.<br/><br/>I&#39;m aiming at strict OpenGL2.0/GLSL 1.10 compatibility in the gem, but that wouldn&#39;t stop people using more advanced stuff for their own projects if they don&#39;t mind alienating people with ancient hardware (e.g. Maverick&#39;s laptop only supports OpenGL2.0).
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=706.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_01_18k_particles.thb.jpg' title='18k particles @ 40fps (hopefully this will improve, but enough for most people, I&#39;m sure :D). (688k)' alt=''/></a>
+<a href='attach_show.pl@aid=707.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_02_simplex_noise.thb.jpg' title='Animated fluid look through use of Simplex noise shader in full-screen post-processing. (424k)' alt=''/></a>
+<a href='attach_show.pl@aid=708.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_03_outline_sprirtes.thb.jpg' title='Shaders can apply to both individual draws (right) and composing into a Framebuffer first (left) (105k)' alt=''/></a>
+<a href='attach_show.pl@aid=709.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_04_image_shaders.thb.jpg' title='A variety of simple shader effects applied to image #draw. (494k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn5996'>
+<div class='frm pst' id='pid5997' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5997' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5997.html#pid5997'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-10 00:21
+<span class='htt'>Edited</span> 2012-07-11 08:47
+</div>
+<div class='ccl'>
+I sorted out my dumb mistake with the shaders that was holding me back, after a lot of banging of heads!<br/><br/>I&#39;ve have released an 0.0.1alpha gem today, but it is far from production-ready:<br/><br/>&#160; &#160; <code>gem install ashton --pre</code><br/><br/>Mainly, I expect to completely revamp the API a few times before it gets to beta quality - any thoughts on this, based on what I have done so far are welcome. As are suggestions of the sorts of things that should be in the gem (hopefully somewhat related!).<br/><br/>I have a few examples it might be worth looking at, though! I&#39;m quite impressed that such effects are even possible in Ruby, but then it is OpenGL doing all the heavy lifting :)<br/><br/><b><i>To jlnr (and any other Gosu source hackers)</i></b>: I&#39;m having a real problem with not being able to force drawing when I want it, in order to draw into a buffer or with a shader. I can use <code>Window#flush</code>, but that will flush _everything_ that is pending not just the items in a block (or, in the case of the :shader option I&#39;ve added to<code> Image#draw</code> et al, to individual items). Is there a way to do this now, or can it be added, either on individual <code>#draw</code>s or in some sort of <code>Gosu#draw_immediate = true/false</code> option?
+</div>
+</div>
+
+<div class='brn' id='brn5997'>
+<div class='frm pst' id='pid5998' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5998' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5998.html#pid5998'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-11 08:16
+</div>
+<div class='ccl'>
+I&#39;d suggest Stencil operations for framebuffer or some alpha-replacing (e.g. to make holes using transparent images). I played a bit with the gem and the speed looks promising :)
+</div>
+</div>
+
+<div class='brn' id='brn5998'>
+<div class='frm pst' id='pid5999' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5998'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5999' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5999.html#pid5999'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-11 08:29
+</div>
+<div class='ccl'>
+Hard to tell too much about the speed, really, since the examples are not really doing much. Since Opengl is doing all the work, there shouldn&#39;t be an issue, but I will eventually convert chunks of code into a C-extension once I&#39;ve got the design complete and working.<br/><br/>I&#39;m looking at trying to implement some sort of shadow-casting effect with shaders at this very moment :)<br/><br/>Is there any use to depth buffers in the framebuffer class, or would that only be if people wanted to use proper opengl in them (in which case, such hard-core people might prefer to manage the fbo themselves)? I&#39;ll look into stencils and alpha-replacing for you. <br/><br/>I am considering whether <code>Image#draw_points points_array, z, etc</code> would be worth implementing (using point sprites). I suspect that could be a lot faster than a lot of individual draws if you have a lot of moving particles, but I&#39;m worried that the cost in particle systems is more about the Ruby code managing them than anything else.<br/><br/>I&#39;m aiming at strict OpenGL2.0/GLSL 1.10 compatibility in the gem, but that wouldn&#39;t stop people using more advanced stuff for their own projects if they don&#39;t mind alienating people with ancient hardware (e.g. Maverick&#39;s laptop only supports OpenGL2.0).
+</div>
+</div>
+
+<div class='brn' id='brn5999'>
+<div class='frm pst' id='pid6004' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5999'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6004' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6004.html#pid6004'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-11 10:32
+</div>
+<div class='ccl'>
+A particle system is one of those things that everyone can agree on, I think, so it would make more sense to outsource the engine altogether into a flexible C/C++ library. Bonus points for getting the balance on customizability just right. :)<br/><br/>I would worry that point sprites will end up being another mess like GL_LINE / <code>Window#draw_line</code>.
+</div>
+</div>
+
+<div class='brn' id='brn6004'>
+<div class='frm pst' id='pid6005' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6004'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6005' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6005.html#pid6005'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-11 10:59
+</div>
+<div class='ccl'>
+jlnr Why would point-sprites be like GL_LINE? Yeah, they would be GL_POINT, but sprites drawn at those positions. The advantage to us would be passing a 100x2 array of points, to draw 100 sprites, rather than doing 100 Image#draw calls. You can&#39;t use #record for this, since the vertexes would be continually moving, but I could use vertex arrays (or is that what is underneath #record? I&#39;m still a bit of an opengl noob). <br/><br/>Admittedly, doing the physics in C as well would make additional benefits. If you can suggest any appropriate engines, do so, otherwise I could consider a very simple one myself, since that may even be easier to integrate into Gosu and it doesn&#39;t have to do much (apart from set velocity, texture, size &amp; lifespan of created particles).
+</div>
+</div>
+
+<div class='brn' id='brn6005'>
+<div class='frm pst' id='pid6006' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6005'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6006' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6006.html#pid6006'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-11 11:39
+</div>
+<div class='ccl'>
+<code>GL_LINE</code> was a total disaster because it turned out to work differently on every driver and only caused confusion and bug reports.&#160; I wouldn&#39;t trust <code>GL_POINT</code> to work any better. A wasteful quad per particle should be fine, everything else seems to be good for debug UI only. :(<br/><br/><code>record</code> uses a vertex array but doesn&#39;t let you change the positions afterwards, mostly because I haven&#39;t figured out a nice interface to do so. Of course the particle engine could use its own <code>gl(z) {}</code> block to render everything with an optimized vertex array. Then I also don&#39;t know if there is an issue with keeping the VA in VRAM vs. system RAM.<br/><br/>Physics? My particles never bounce off any walls so it&#39;s basically just a loop over all my particles to add <code>vx</code> to <code>x</code> and <code>ax</code> to <code>vx</code> etc. - I don&#39;t think a wrapping a library for that is worth the hassle :)
+</div>
+</div>
+
+<div class='brn' id='brn6006'>
+<div class='frm pst' id='pid6007' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6006'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6007' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6007.html#pid6007'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-11 11:53
+</div>
+<div class='ccl'>
+I thought the issue with GL_LINE was that it wasn&#39;t pixel-perfect, so if you were drawing boxes, then things wouldn&#39;t line up. This wouldn&#39;t make any difference to GL_POINT-based particles, surely?<br/><br/>gl(z) {} seems to break when mixed with shaders and shaders are the easiest way to affect particles in movement (e.g. changing colour and size based on distance from origin or similar manipulations).<br/><br/>Velocity and acceleration calculations are both &quot;physics&quot;. Particles just don&#39;t have collision physics :P The problem with having a lot of particles (say 100) in Ruby is that they grind very, very quickly, even with trivial physics implemented in Ruby-slow-a-thon.
+</div>
+</div>
+
+<div class='brn' id='brn6007'>
+<div class='frm pst' id='pid6009' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6007'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6009' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6009.html#pid6009'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-12 04:12
+</div>
+<div class='ccl'>
+Well, being off by one pixel would be enough to trigger bug reports! :) And this is before even touching line width/point size or texturization (in the case of points).<br/><br/><code>gl(z)</code> should not break with shaders, I thought the crash was related to calling <code>Image#draw</code> inside the block :S Can you please open a ticket on github with the code attached?<br/><br/>As for the particle system…I was thinking of a simple C based library that would do the particle physics in a tight <code>for</code> loop. It wouldn&#39;t even have to be deeply tied to Gosu if it used a vertex array.
+</div>
+</div>
+
+<div class='brn' id='brn6009'>
+<div class='frm pst' id='pid6010' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6009'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6010.html#pid6010'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-12 10:39
+</div>
+<div class='ccl'>
+Well, it depends on what people are using things for. I agree that in Gosu, pixel-perfection idiot-proofing makes sense, since people will want to build GUIs out of lines, but points in a particle system can definitely be approximations :)<br/><br/>I&#39;ll try to make a minimum repeatable shader/gl problem today.<br/><br/>Yes, that is what I was thinking too. I started on implementing a particle-emitter in Ruby yesterday, with the intention of porting it to C. I&#39;m trying to write the code in Ruby and will try to use a VBO to make it as fast and optimised as I can. I have really got to quite like building in high-level Ruby, when I don&#39;t have such clear design in mind, and getting everything working/tested before converting it, method at a time, into C.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid6019' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6007'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6019.html#pid6019'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-07-14 19:45
+</div>
+<div class='ccl'>
+Indeed, GL_LINE is defined by OpenGL is such a way that it is ambiguous as to whether it should be inclusive or exclusive of the first/last point.&#160; However, GL_POINT has no such problem; as far as I know.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6000' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5998'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6000' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6000.html#pid6000'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-11 08:52
+</div>
+<div class='ccl'>
+Regarding alpha-replacing, I think that might be difficult to implement, since it would be a new drawing operation (:default, :add and :multiply being implemented so far). Without re-writing the image/font/drawing code, I might find it impossible to control the drawing mode, even into framebuffers.
+</div>
+</div>
+
+<div class='brn' id='brn6000'>
+<div class='frm pst' id='pid6001' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6000'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6001' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6001.html#pid6001'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-11 09:13
+<span class='htt'>Edited</span> 2012-07-11 09:18
+</div>
+<div class='ccl'>
+What I want with this is simple light/shadow effect (<a class='url' href='../../mwf/attachments/50/2150/screen1rp.png'>like here</a>). I previously made it with TexPlay but it was toooo slow. So if it&#39;s possible with shaders, you don&#39;t need to bother with alpha-replacing or Stencil just for me :)<br/><br/>BTW, I tested framebuffer example with 100 waves and FPS dropped &quot;only&quot; to 30<br/><br/>Edit:<br/>Also if it&#39;s possible, you could make some get_pixel method faster than in TexPlay.
+</div>
+</div>
+
+<div class='brn' id='brn6001'>
+<div class='frm pst' id='pid6002' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6002.html#pid6002'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-11 09:34
+</div>
+<div class='ccl'>
+If you are using Texplay&#39;s&#160; Image#circle, then yeah, that would be totally impossible in real-time. I think you could have done it in real-time, however, with <code>Window#render_to_texture</code>, drawing white circular images into a black image, then <code>image.clear dest_select :white</code> to make the white bits into &quot;holes&quot; ( render_to_texture uses the screen as a buffer, so only works in RGB). You may have had to increase the pixel size of the lighting though, to get it fast enough, but that is rather moot now, I hope!<br/><br/>Obviously, you can do that a lot more easily with a framebuffer with a stencil of some kind. Shaders would do it too, I think, passing the game texture and a stencil texture. This is what I need to do, but I want to also <a class='url' href='https://www.youtube.com/watch?v=0FZIKX1Y_8I&amp;feature=plcp'>cast shadows</a> (well, OK, that tutorial is using regular opengl to do it at the polygon level, not shaders on a pixel level, but we need to use shaders, since doing that processing in Ruby would be too slow, I think).
+</div>
+</div>
+
+<div class='frm pst' id='pid6003' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6003.html#pid6003'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-11 09:47
+<span class='htt'>Edited</span> 2012-07-11 09:52
+</div>
+<div class='ccl'>
+I don&#39;t know about getpixel. I&#39;ll look at the texplay source to see how banister did it and if I can improve on that. One thing I could think of was to be able to pass an array of points to get/set pixel, since then you aren&#39;t continually dipping into C and back.<br/><br/>EDIT: Thing is that doing anything like that in Ruby is pointless. My plan is to implement brand new features in Ruby, then port those to C and then maybe add some stuff that we can already do, but would like to do faster, in C.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6013' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6013' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6013.html#pid6013'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-07-13 23:54
+</div>
+<div class='ccl'>
+First of all, thank you for doing this! I&#39;ve been watching this thread since your first post, but I haven&#39;t been able to test it until now. It doesn&#39;t work for me, but I&#39;m hoping there&#39;s a simple work-around.<br/><br/>I have the OpenGL gem you posted about in your &quot;Game of Scones&quot; thread (0.8.0.pre1 x86-mingw32) but I&#39;m getting this error when I try to run the demos:<br/><br/>C:\Ruby\lib\ruby\gems\1.9.1\gems\ashton-0.0.1alpha\examples&gt;shader_image_example.rb<br/>C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/lib/ashton/base_shader.rb:18:in <code>initialize&#39;: undefined method </code>version_supported?&#39; for GL:Module (NoMethodError)<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/lib/ashton/shader.rb:23:in <code>initialize&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/shader_image_example.rb:21:in </code>new&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/shader_image_example.rb:21:in <code>initialize&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/shader_image_example.rb:41:in </code>new&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/shader_image_example.rb:41:in `&lt;main&gt;&#39;<br/><br/>Any ideas? I&#39;m really looking forward to seeing this working...
+</div>
+</div>
+
+<div class='brn' id='brn6013'>
+<div class='frm pst' id='pid6014' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6013'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6014' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6014.html#pid6014'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-14 00:27
+</div>
+<div class='ccl'>
+That should just be checking you have OpenGL 2.0+ (absolute minimum needed for shaders). Is there a chance you are loading the wrong &#39;opengl&#39;, such as the ruby-opengl posted on this forum a while back? If you have the ruby-opengl gem installed too, it might be picking the wrong one. In any case, try with<br/>&#160; &#160; <code>bundle exec ruby examples/shader_image_example.rb</code><br/>just to make sure it is running with the correct gem.<br/><br/>You&#39;ll be happy to know that shader_image_example.rb is the dullest one :)<br/><br/>This is still very much alpha, of course, so I expect wobbliness - remember that I am very nearly always&#160; in the freenode #gosu IRC channel for moral support.
+</div>
+</div>
+
+<div class='brn' id='brn6014'>
+<div class='frm pst' id='pid6015' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6014'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6015' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6015.html#pid6015'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-07-14 17:23
+</div>
+<div class='ccl'>
+1. ruby-opengl isn&#39;t installed.<br/>2. Even the examples that came with the &quot;opengl&quot; gem don&#39;t work, so it&#39;s probably not Ashton&#39;s fault.<br/>3. Ashton seems to build fine, but most of the unit tests fail due to the same <code>undefined method &#39;version_supported?&#39; for GL:Module</code> error.<br/>4. The &quot;bundle&quot; command gives:<br/><code>D:\rubydev\gosu\ashton&gt;bundle exec ruby examples/shader_image_example.rb<br/>D:/rubydev/gosu/ashton/lib/ashton/shader.rb:309:in &#39;link&#39;: Shader link error: Fragment info (Ashton::ShaderLinkError)<br/>-------------<br/>(14) : error C5051: profile does not support conditional returns<br/><br/>&#160; &#160; &#160; &#160; from D:/rubydev/gosu/ashton/lib/ashton/shader.rb:56:in &#39;initialize&#39;<br/>&#160; &#160; &#160; &#160; from examples/shader_image_example.rb:24:in &#39;new&#39;<br/>&#160; &#160; &#160; &#160; from examples/shader_image_example.rb:24:in &#39;initialize&#39;<br/>&#160; &#160; &#160; &#160; from examples/shader_image_example.rb:74:in &#39;new&#39;<br/>&#160; &#160; &#160; &#160; from examples/shader_image_example.rb:74:in &#39;&lt;main&gt;&#39;</code><br/><br/>It probably doesn&#39;t like my old video card. It&#39;s an AGP Geforce 6600 GT, and I have to run an older driver to prevent glitchy graphics.<br/><br/>Also, my Ruby environment is in a general state of disrepair. I may be reinstalling windows in the near future (to move to a new PC), so I&#39;ll just try again later with a fresh system. I hope I can get it working soon enough to help you tackle some &quot;TODO&quot; items (and solidify some of the wobbliness ;)
+</div>
+</div>
+
+<div class='brn' id='brn6015'>
+<div class='frm pst' id='pid6016' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6015'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6016' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6016.html#pid6016'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-14 17:39
+</div>
+<div class='ccl'>
+Right, the 6600 is _just_ at the cusp of OpenGL 2.0, which is where I&#39;d set my minimum compatibility. Possibly an issue with your drivers.<br/><br/>The problem with my shader code I include is that I have asked them to be run in glsl 1.10 (that is, the version that comes with opengl), which helps me avoid using some newer features, although I&#39;m using OpenGL4.2/glsl4.20. It isn&#39;t great at telling me about stuff like the conditional return error you found.<br/><br/>Try the framebuffer_example.rb, since that uses OpenGL, but not shaders, so you might have more luck (try with and without bundle exec please). If the shader gets as far as compiling with bundle exec, that implies that not doing so is loading another opengl gem, since it wouldn&#39;t get past version_supported? otherwise.<br/><br/>I&#39;d suggest you report this issue to <a class='url' href='https://github.com/larskanis/opengl'>https://github.com/larskanis/opengl</a> (I _think_ this is where the gem is generated from and is active, unlike the old ruby-opengl by drbrain).
+</div>
+</div>
+
+<div class='brn' id='brn6016'>
+<div class='frm pst' id='pid6017' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6016'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6017' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6017.html#pid6017'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-07-14 18:23
+</div>
+<div class='ccl'>
+<code>D:\rubydev\gosu\ashton&gt;bundle exec ruby examples\framebuffer_example.rb<br/><br/>*** Runs great! No errors and a constant 59/60fps! ***<br/><br/>D:\rubydev\gosu\ashton&gt;examples\framebuffer_example.rb<br/>D:/rubydev/gosu/ashton/lib/ashton/framebuffer.rb:167:in &#39;create_framebuffer&#39;: undefined method &#39;glGenFramebuffersEXT&#39; for #&lt;Ashton::Framebuffer:0xe88450 @height=600, @width=800&gt; (NoMethodError)<br/>&#160; &#160; &#160; &#160; from D:/rubydev/gosu/ashton/lib/ashton/framebuffer.rb:9:in &#39;initialize&#39;<br/>&#160; &#160; &#160; &#160; from D:/rubydev/gosu/ashton/examples/framebuffer_example.rb:20:in &#39;new&#39;<br/>&#160; &#160; &#160; &#160; from D:/rubydev/gosu/ashton/examples/framebuffer_example.rb:20:in &#39;initialize&#39;<br/>&#160; &#160; &#160; &#160; from D:/rubydev/gosu/ashton/examples/framebuffer_example.rb:51:in &#39;new&#39;<br/>&#160; &#160; &#160; &#160; from D:/rubydev/gosu/ashton/examples/framebuffer_example.rb:51:in &#39;&lt;main&gt;&#39;<br/><br/>D:\rubydev\gosu\ashton&gt;cd c:\Ruby\lib\ruby\gems\1.9.1\gems\ashton-0.0.1alpha\examples<br/><br/>C:\Ruby\lib\ruby\gems\1.9.1\gems\ashton-0.0.1alpha\examples&gt;framebuffer_example.rb<br/>C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/lib/ashton/framebuffer.rb:143:in &#39;init_framebuffer&#39;: undefined method &#39;glGenFramebuffersEXT&#39; for #&lt;Ashton::Framebuffer:0xe98770 @height=600, @width=800&gt; (NoMethodError)<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/lib/ashton/framebuffer.rb:21:in &#39;initialize&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/framebuffer_example.rb:20:in &#39;new&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/framebuffer_example.rb:20:in &#39;initialize&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/framebuffer_example.rb:49:in &#39;new&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/examples/framebuffer_example.rb:49:in &#39;&lt;main&gt;&#39;</code><br/><br/>I would report the error, but when the problem is likely due to the age of my machine, I usually just try to modify my system to fix it, rather than trying to get developers to support my ancient and/or broken machine... :P<br/><br/>An example of this is when I hacked my registry to report a newer build date for my video driver to work around a lock-out in the Flash 11 3D hardware acceleration (it works fine, they just want fewer support emails from owners too dumb to update their video drivers).<br/><br/>I still haven&#39;t narrowed down the exact version of the nVidia drivers that produces the garbled graphics, but there may be newer drivers I can use. If I ever do find the first non-working version, I <b>will</b> report that to nVidia, since they claim the latest driver supports my card, and it clearly doesn&#39;t.
+</div>
+</div>
+
+<div class='brn' id='brn6017'>
+<div class='frm pst' id='pid6018' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6017'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6018' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6018.html#pid6018'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-14 18:56
+<span class='htt'>Edited</span> 2012-07-14 19:03
+</div>
+<div class='ccl'>
+There is obviously something odd going on and yes, I don&#39;t think I can reasonably support a card of that age using legacy drivers.<br/><br/>It is my intention, however, to not use anything beyond OpenGL2.0, in order to keep low-spec and older generation cards able to use Ashton - I absolutely can&#39;t go back further than that because that is when shaders and framebuffers were first introduced as extensions to the main OpenGL specification (they came into OpenGL officially in 3.0, I think, when they wouldn&#39;t need the EXT in their names). I suspect that if you don&#39;t use decent drivers, then although you are running OpenGL2.0, you aren&#39;t running OpenGL2.0+extensions, but I don&#39;t know enough about it to say anything about that.<br/><br/>The main problem is that it is hard to replicate an OpenGL 2.0 card running OpenGL 2.0 compared to my OpenGL 4.2 card running OpenGL2.0. I can fix that issue with &#39;return&#39; you reported in your previous post though, but I&#39;m not sure whether there won&#39;t be more issues still lying around.<br/><br/>EDIT: Actually, framebuffers should require OpenGL1.1. It is shaders that require 2.0. I think Gosu itself relies on 1.1.
+</div>
+</div>
+
+<div class='brn' id='brn6018'>
+<div class='frm pst' id='pid6021' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6018'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6021.html#pid6021'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-07-14 20:34
+<span class='htt'>Edited</span> 2012-07-14 21:13
+</div>
+<div class='ccl'>
+Actually, I used to be able to run jsb&#39;s Ruby shader stuff successfully using ruby-opengl, so I don&#39;t think it&#39;s a card/driver issue. But, if you want to skip adding support for older cards for right now, that&#39;s fine. Maybe I can help test/fix stuff once the lib&#39;s more mature. Thanks for helping me get the frame-buffer stuff working, at least.<br/><br/>EDIT: I just started fresh with the latest RubyInstaller (1.9.3) and Devkit. I installed Gosu, opengl, and ashton. The frame-buffer example runs fine (without bundler), but the rest of the examples give me this:<br/><br/><code>c:/Ruby/lib/ruby/gems/1.9.1/gems/ashton-0.0.1alpha/lib/ashton/base_shader.rb:34:in &#39;glBindFragDataLocationEXT&#39;: Extension GL_EXT_gpu_shader4 is not available on this system (NotImplementedError)</code><br/><br/>The good news is that jsb&#39;s shader stuff runs again, so I know I have <i>some</i> shader support. Whether it&#39;s enough to support what you want to do is another thing entirely...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6020' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6015'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6020' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6020.html#pid6020'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-14 19:49
+</div>
+<div class='ccl'>
+The keyword <code>return</code> apparently isn&#39;t supported in GLSL1.10 (OpenGL2.0), so I refactored the code to remove them. Problem is I have no idea what other gotchas will jump on me as I make more code.<br/><br/> I need a better way to test... I do have an OpenGL 2.0 graphics card (8400GS), but manually swapping video-cards seems a bit heavy-handed!
+</div>
+</div>
+
+<div class='brn' id='brn6020'>
+<div class='frm pst' id='pid6022' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6020'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6022.html#pid6022'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-07-14 20:35
+</div>
+<div class='ccl'>
+Maybe you could find a cheap system to drop that card into on craigslist.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6030' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6030.html#pid6030'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-15 17:51
+</div>
+<div class='ccl'>
+Added several screenshots, from the examples, to the first post. Getting there :)
+</div>
+</div>
+
+<div class='frm pst' id='pid8043' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8043' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8043.html#pid8043'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2014-09-27 11:35
+</div>
+<div class='ccl'>
+I just installed Ruby 1.9.3 on my laptop, installed Gosu and Ashton and when trying to run Ashton, I get error like: <i>193: %1 is not a valid Win32 application</i> - from ashton.so What may be the problem? Gosu alone works as intended.
+</div>
+</div>
+
+<div class='brn' id='brn8043'>
+<div class='frm pst' id='pid8044' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid8043'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8044' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8044.html#pid8044'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2014-09-28 00:46
+</div>
+<div class='ccl'>
+Er...not a clue on that info.
+</div>
+</div>
+
+<div class='brn' id='brn8044'>
+<div class='frm pst' id='pid8046' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid8044'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8046.html#pid8046'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2014-09-28 17:13
+</div>
+<div class='ccl'>
+I downgraded to Ruby 1.9.2 - miracle happened. I think it was problem with my Ruby installation.<br/><br/>And to not make another post: there&#39;s a bug in newest version of Ashton - drawing onto Framebuffer is glitched in fullscreen, easy to test in <i>texture_render_example</i>. I&#39;m Win 7 x64.
+</div>
+</div>
+
+<div class='frm pst' id='pid8105' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid8044'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8105.html#pid8105'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2014-11-09 13:20
+</div>
+<div class='ccl'>
+what&#39;s up spooner, ltns
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8330' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8330' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8330.html#pid8330'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2015-03-19 04:23
+</div>
+<div class='ccl'>
+Regarding the shadow-casting:<br/><br/>Have you seen this page? <a class='ura' href='https://github.com/mattdesl/lwjgl-basics/wiki/2D-Pixel-Perfect-Shadows'>https://github.com/mattdesl/lwjgl-basics/wiki/2D-Pixel-Perfect-Shadows</a><br/><br/>Quote:<br/><br/>&quot;My technique is inspired by Catalin Zima&#39;s dynamic lighting, although the process discussed in this article is rather different and requires far fewer passes.&quot;<br/><br/>It has code examples and descriptions that should give you some ideas. It&#39;s written in Java using LibGDX, but it shouldn&#39;t be too hard to translate.<br/><br/>I noticed the &quot;issue&quot; you created for splitting the shadow stuff into a separate gem, so I thought you might want to just start from scratch using this more efficient system.<br/><br/>PS: I&#39;m making some progress on that multitexturing thing you helped me with :D
+</div>
+</div>
+
+<div class='brn' id='brn8330'>
+<div class='frm pst' id='pid8332' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid8330'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8332' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8332.html#pid8332'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2015-03-19 12:48
+</div>
+<div class='ccl'>
+Sadly, I&#39;ve stopped trying to make games for Ruby (Unity just opens up so much more). This means that Ashton is very much in minimal maintenance mode. I think the shadows would be nice and I&#39;ll merge and release a new version if someone sorts it out, but I doubt I&#39;ll bother to spend more time on the shadows, on the off chance I can get out working.
+</div>
+</div>
+
+<div class='brn' id='brn8332'>
+<div class='frm pst' id='pid8334' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid8332'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8334' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8334.html#pid8334'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2015-03-19 17:33
+</div>
+<div class='ccl'>
+Does this mean that Ashton is pretty dead right now? FrameBuffers have &quot;few&quot; bugs that could be fixed... I know I can&#39;t demand you to fix all of this, but if you won&#39;t work on Ashton anymore, looks like I&#39;ll have to learn some C/OpenGL to fix it myself.
+</div>
+</div>
+
+<div class='brn' id='brn8334'>
+<div class='frm pst' id='pid8335' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid8334'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8335.html#pid8335'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2015-03-19 18:50
+</div>
+<div class='ccl'>
+Sorry, but that is about the size of it.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6076' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6076' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6076.html#pid6076'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-22 16:27
+<span class='htt'>Edited</span> 2012-07-22 19:32
+</div>
+<div class='ccl'>
+Tried to implement some shadow-casting lighting effects with <code>Ashton::Lighting::LightSource</code> and <code>Ashton::Lighting::Manager</code>. Sadly, this doesn&#39;t work without glitches yet, but it is based on someone else&#39;s shader/XNA code and should eventually look like: <a class='url' href='http://www.youtube.com/watch?v=m0-VW0N57ss'>http://www.youtube.com/watch?v=m0-VW0N57ss</a><br/><br/>Added some more functionality implemented in C for speed:<br/><code><br/>&#160; &#160; Framebuffer#[x, y]&#160; &#160; &#160; &#160; &#160; &#160;&#160; #=&gt; Get colour (Gosu::Color, which is more Gosu-friendly than Texplay&#39;s RGBA float array) from a framebuffer texture<br/>&#160; &#160; Framebuffer#transparent?(x, y) #=&gt; true if the colour is entirely transparent. Useful for pixel-perfect collision detection.<br/>&#160; &#160; Framebuffer#refresh_cache&#160; &#160; &#160; #=&gt; Reload the texture data from the graphics card (for example if the framebuffer has been draw to in a #render block).<br/></code><br/>As can be seen, these operations are orders of magnitude faster than their TexPlay equivalents (for a 1000x1000 image)!<br/><code><br/>&#160; &#160; Framebuffer#refresh_cache&#160; 0.204000&#160;&#160; 0.110000&#160;&#160; 0.314000 (&#160; 0.161133)<br/>&#160; &#160; Framebuffer#[]&#160; &#160; &#160; &#160; &#160; &#160;&#160; 0.046000&#160;&#160; 0.000000&#160;&#160; 0.046000 (&#160; 0.045898)<br/>&#160; &#160; Framebuffer#transparent?&#160;&#160; 0.000000&#160;&#160; 0.000000&#160;&#160; 0.000000 (&#160; 0.000977)<br/><br/>&#160; &#160; TexPlay equivalents<br/>&#160; &#160; Image#refresh_cache&#160; &#160; &#160; &#160; 1.079000&#160;&#160; 0.453000&#160;&#160; 1.532000 (&#160; 0.780274)<br/>&#160; &#160; Image#[]&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0.078000&#160;&#160; 0.000000&#160;&#160; 0.078000 (&#160; 0.083984)<br/>&#160; &#160; Image#[][3] == 0.0&#160; &#160; &#160; &#160;&#160; 0.109000&#160;&#160; 0.000000&#160;&#160; 0.109000 (&#160; 0.113281)<br/></code><br/>I do not intend to implement any special draw commands on the Framebuffer texture data, as TexPlay does with images, since it can be rendered to very easily with Gosu&#39;s image/font/draw commands (or directly in OpenGL). This means there will never be a need to sync data (that is, push pixel data to the graphics card).
+</div>
+</div>
+
+<div class='brn' id='brn6076'>
+<div class='frm pst' id='pid6084' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6076'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6084.html#pid6084'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-24 14:22
+<span class='htt'>Edited</span> 2012-07-24 14:27
+</div>
+<div class='ccl'>
+I added <code>Framebuffer#rgba</code> (returns array of Fixnum) and <code>Framebuffer#red/green/blue/alpha</code>. This allows you to get the colour information exactly as efficiently as you require (this will be useful to me for reading data from images processed by shaders).<br/><br/><a class='url' href='https://gist.github.com/3170006'>View benchmarks</a><br/><br/>Interesting to note that retrieving a 4-element colour array is actually 10x faster if it contains Fixnum (0..255) rather than Float (0.0..1.0). The conclusion is that although a lot of the image processing that TexPlay does is easier using Floats internally (in C), it would have been more efficient to pass integers out to Ruby.
+</div>
+</div>
+
+<div class='frm pst' id='pid6122' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6076'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6122' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6122.html#pid6122'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-08-05 20:00
+</div>
+<div class='ccl'>
+&quot;I do not intend to implement any special draw commands on the Framebuffer texture data...&quot;<br/><br/>Does this mean that you&#39;re not messing with the internals of Gosu at all, and only interacting through it&#39;s interfaces? Could another engine with the same interface as Gosu use Ashton?
+</div>
+</div>
+
+<div class='brn' id='brn6122'>
+<div class='frm pst' id='pid6123' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6122'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6123.html#pid6123'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-05 20:25
+</div>
+<div class='ccl'>
+No, I don&#39;t mean that. I mean that I won&#39;t offer an Image#circle or Image#splice via Ashton, because you could do that with shaders or just drawing an image in a #render block. This was necessary in TexPlay, because it didn&#39;t come with any method to draw directly into an Image (until it added #render_to_image, but that was slow and limited), and was very slow since it performed these tasks in a client-side pixel cache.<br/><br/>Ashton does use client-side pixel caches, but read-only, since they are purely used as a fast way to read pixel data. All writing to images should be done inside a #render block using standard Gosu/OpenGL drawing methods.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6085' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6085' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6085.html#pid6085'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-26 12:31
+</div>
+<div class='ccl'>
+I forgot to ask sooner: is this possible with some shaders? <a class='url' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=720'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=720</a><br/>Like rendering specified RGB color value as another, maybe different in each frame.
+</div>
+</div>
+
+<div class='brn' id='brn6085'>
+<div class='frm pst' id='pid6086' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6085'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6086.html#pid6086'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2012-07-26 15:45
+</div>
+<div class='ccl'>
+Yep.
+</div>
+</div>
+
+<div class='frm pst' id='pid6087' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6085'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6087' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6087.html#pid6087'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-26 22:53
+</div>
+<div class='ccl'>
+Yes, I&#39;m sure it is possible, but changing whole palettes dynamically makes little sense. Are you sure it isn&#39;t an old-fashioned way to achieve something that is now easier, faster and smoother with a specific fragment shader, but back in the day the only way to do it was with crude palette changing? What is the actual _effect_ you are trying to achieve? <i>Not how you want to do it, but what is the visual effect you want to be seen by the user</i>?
+</div>
+</div>
+
+<div class='brn' id='brn6087'>
+<div class='frm pst' id='pid6088' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6087'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6088' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6088.html#pid6088'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-27 08:06
+</div>
+<div class='ccl'>
+You saw my game, player is in 8 color schemes that has only few color varying. I want to leave only 1 scheme and change it to look like others so I don&#39;t need to load &gt;100 images just to change few colors.
+</div>
+</div>
+
+<div class='brn' id='brn6088'>
+<div class='frm pst' id='pid6089' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6088'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6089' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6089.html#pid6089'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-27 08:38
+</div>
+<div class='ccl'>
+Oh, it is the player wearing different suits? Doesn&#39;t really make much difference anyway, as long as you aren&#39;t changing a huge number of colours at once. You do know you can do this quickly and easily in Texplay already? Would be slightly faster in a shader, but I&#39;m not sure it is worth the extra effort to implement it unless you want to do that yourself.<br/><br/><code><br/># The frames of animation for your character. Might want to dup them so that you keep copies of all the different colour schemes after creating them.<br/>@frames.each do |frame|<br/>&#160; &#160; # Hash of { old_color =&gt; new_color }<br/>&#160;&#160; @color_replacements.each_pair do |old_color, new_color|<br/>&#160; &#160; &#160;&#160; frame.clear :color =&gt; new_color, :dest_select =&gt; old_color, :tolerance =&gt; 0.001<br/>&#160;&#160; end<br/>end<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn6089'>
+<div class='frm pst' id='pid6090' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6089'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6090' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6090.html#pid6090'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-27 09:03
+</div>
+<div class='ccl'>
+Oh, thanks for this, it seems fast enough. :)
+</div>
+</div>
+
+<div class='brn' id='brn6090'>
+<div class='frm pst' id='pid6092' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6090'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6092' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6092.html#pid6092'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-27 09:26
+</div>
+<div class='ccl'>
+The only real advantage a shader implementation would have over this would be that you could do it in real-time, so you wouldn&#39;t need to have 8 versions of the sprites in memory, but I&#39;m sure the memory footprint is the least of your worries :)
+</div>
+</div>
+
+<div class='brn' id='brn6092'>
+<div class='frm pst' id='pid6093' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6092'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6093' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6093.html#pid6093'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-07-27 09:42
+</div>
+<div class='ccl'>
+Maybe it&#39;s possible in real-time, because I only need to change 1-2 images that are actually drawn. Image.dup has no sense, because cloning images into memory takes the same time as loading them from file.
+</div>
+</div>
+
+<div class='brn' id='brn6093'>
+<div class='frm pst' id='pid6094' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6093'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6094.html#pid6094'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-27 09:47
+<span class='htt'>Edited</span> 2012-07-27 10:02
+</div>
+<div class='ccl'>
+It really shouldn&#39;t be slow (dup that is), but the way Gosu implements it isn&#39;t too good at all. Reminds me that I can implement a nearly instantaneous Ashton::Texture#dup :)<br/><br/>EDIT: Yep, at 1022x1022 pixels, Ashton::Texture#dup is <i>over 30 times</i> faster than Gosu::Image#dup (6ms vs 225ms) :P
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid6091' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=6091.html#pid6091'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-27 09:24
+</div>
+<div class='ccl'>
+Renamed <code>Ashton::Framebuffer</code> as <code>Ashton::Texture</code> since it is a texture with a framebuffer, not a framebuffer with a texture. If I can, I&#39;ll add a framebuffer-based <code>#render</code> to <code>Gosu::Image</code> too.<br/><br/>Added <code>Ashton::SignedDistanceField</code>, which is an absolutely wonderful system to detect collisions against static scenery, lines of sight and many more wonderful things.
+</div>
+</div>
+
+<div class='frm pst' id='pid6117' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=6117.html#pid6117'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-05 16:40
+</div>
+<div class='ccl'>
+Well, I&#39;ve been beating Ashton&#39;s ParticleEmitter with a stick and now it is considerably more efficient! From 40FPS for 18k particles in the particles example (when I made the original post in this thread), I&#39;ve bumped that to 47FPS for a whopping 124k particles. Yay for being a lot more wise in the ways of C and OpenGL! I think that is a lot more reasonable and does mean you can have quite complex particle systems in your Ruby games.<br/><br/>What I haven&#39;t done yet, however, is allow for:<br/>* particle animation. You can shrink/grow/rotate/fade out already, just not switch images. Not sure of the best way to do this though (in terms of API, not implementation).<br/>* collision of the particles with scenery (the latter I will use my signed distance field for, so it should be pretty quick). Making the particles bounce rather than simply die on contact may be more than I bother with though :D<br/>* callbacks when particles die (though in anything but a tiny pixel systems, Ruby wouldn&#39;t be able to handle this very well at all!).
+</div>
+</div>
+
+<div class='frm pst' id='pid6165' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6165' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6165.html#pid6165'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2012-08-22 20:06
+</div>
+<div class='ccl'>
+I need a grayscale effect, so could you make next release? Or just give working shader with instructions how to implement in current version.<br/>I can wait, but it&#39;s better to see the result while working.
+</div>
+</div>
+
+<div class='brn' id='brn6165'>
+<div class='frm pst' id='pid6166' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6090.html#pid6165'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6166' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6166.html#pid6166'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-08-22 21:48
+</div>
+<div class='ccl'>
+There is already a grayscale shader included in Ashton. Look at examples/shader_image_example.rb to see how to use it. In fact, I&#39;d strongly recommend you look at all the examples, since there is a lot of good stuff in there :)<br/><br/>In fact, you can see the effect in one of the <a class='url' href='http://www.libgosu.org/cgi-bin/mwf/image_show.pl?aid=709'>posted screenshots</a>!
+</div>
+</div>
+
+<div class='brn' id='brn6166'>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=784.html#tid784'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=784.html#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
+</div>
+<div class='bcl'>
+<span class='pln'>
+<span>1</span>
+<a href='topic_show.pl@tid=784%3Bpg=2.html'>2</a>
+<img class='sic dsb sic_nav_prev_d' src='../../mwf/epx.png' title='Go to previous page' alt='Previous'>
+<a href='topic_show.pl@tid=784%3Bpg=2.html'><img class='sic sic_nav_next' src='../../mwf/epx.png' title='Go to next page' alt='Next'></a>
+</span>
+&#160;
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6090.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

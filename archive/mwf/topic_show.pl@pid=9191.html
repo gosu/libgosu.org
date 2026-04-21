@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9191 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Create a Gosu::Image from clipboard</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9191' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1338.html#tid1338'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1338.html#tid1338'>Gosu Exchange</a> / Create a Gosu::Image from clipboard
+</div>
+</div>
+
+<div class='frm pst' id='pid9187' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9187' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9187.html#pid9187'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2017-04-27 18:00
+</div>
+<div class='ccl'>
+Hi guys !<br/><br/>Since Gosu has a drop method, I want to complete it with the possibility to use the clipboard to generate Gosu::Image from pixel data.<br/>One idea would be to do some copy / paste from an image editor to the game window directly.<br/><br/>So I&#39;m using Win32::clipboard gem (sorry, it would be a windows only feature for now :() to get the data, and it works great.<br/><br/>Win32::Clipboard.data(Win32::Clipboard::DIB) will do just what I need. I&#39;m able to create a BMP file with it without any issue :<br/><br/>File.open(&#39;bitmap_copy.bmp&#39;, &#39;wb&#39;) do |fh|<br/>&#160; &#160; fh.write Win32::Clipboard.data(Win32::Clipboard::DIB)<br/>end<br/><br/>wiill just do the job.<br/><br/>But that would be an uggly way to do what I want, because I would have to :<br/>- first create an image on the HDD<br/>- and then load it via the classic Gosu::Image constructor.<br/><br/>Would you have an idea ? Since it&#39;s made to be used in an OpenGL context, I was thinking using OpenGL to create my texture, but I cannot extract width and height from the binary data (even if I found the header description, I cannot do anything with binary...).<br/><br/>Any help would be really appreciated !
+</div>
+</div>
+
+<div class='brn' id='brn9187'>
+<div class='frm pst' id='pid9189' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9191.html#pid9187'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9189' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9189.html#pid9189'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-04-27 19:21
+</div>
+<div class='ccl'>
+Hah, interesting suggestion. There&#39;s no GitHub ticket for it yet, but I feel that clipboard support is definitely missing from Gosu&#39;s text editing.<br/><br/>My plan so far was this:<br/><code>Gosu.clipboard</code> returns the copied text or filename, or <code>nil</code> if the user hasn&#39;t copied anything useful. Games can just listen for ctrl+V/cmd+V and implement pasting of image files using the filenames. (<code>Gosu::TextInput</code> should have built-in copy &amp; paste, though.) Writing to <code>Gosu.clipboard=</code> would allow for copying of arbitrary text.<br/><br/>I didn&#39;t even think of copying/pasting image data, though. Makes me wonder if a future <code>Gosu.clipboard</code> should be able to read/write <code>Gosu::Image</code> instances as well. Or maybe you could call it like this, <code>image = Gosu.clipboard { |imgdata| Image.new(imgdata, tileable: true) }</code> if you are interested in image data, and without a block if you are interested in text.<br/><br/>What is the use case for pasting image data in a Gosu game? To quickly iterate on your game&#39;s assets? Maybe this hack will do the trick - pressing R in the window will cause all images to be reloaded from disk: <a class='ura' href='https://github.com/jlnr/Trikus/blob/master/src/debug/image_reloading.rb'>https://github.com/jlnr/Trikus/blob/master/src/debug/image_reloading.rb</a>
+</div>
+</div>
+
+<div class='brn' id='brn9189'>
+<div class='frm pst' id='pid9191' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9191.html#pid9189'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9191' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9191.html#pid9191'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2017-04-28 07:00
+<span class='htt'>Edited</span> 2017-04-28 16:35
+</div>
+<div class='ccl'>
+Nice to hear that this is part of your plans, that way it will be portable to Linux and Mac !<br/><br/>What would I like ? To be honest, I&#39;m not quite sure. I&#39;m thinking about a mapping tool, where it&#39;s possible to apply decals on surfaces. So... I don&#39;t want to have to create sophisticated tools like Photoshop has, for example. So, let&#39;s imagine I want to apply some &quot;dirty thing&quot; on a wall, I would like to be able to copy/paste the pixels from photoshop to my level editor directly.<br/><br/>Same thing for small decorative sprites I could want to place... Not to have to create a spritesheet for everything would be the idea.<br/><br/>In truth, a &quot;simple&quot; Gosu::Image.from_blob would do the job !
+</div>
+</div>
+
+<div class='brn' id='brn9191'>
+<div class='frm pst' id='pid9192' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9191.html#pid9191'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9192' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9192.html#pid9192'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-04-30 08:02
+</div>
+<div class='ccl'>
+There is a <code>Image.from_blob</code>: You can pass an RMagick image instead of a filename to all Window constructors (also <code>load_tiles</code> etc.)<br/><br/>It doesn&#39;t really have to be an RMagick image, but it needs to respond to <code>columns</code> (width), <code>rows</code> (height) and <code>to_blob</code> (return RGBA data as a String). The problem is that you would still need to extract the width and height from the binary DIB image, and convert the RGB DIB data to RGBA.<br/><br/>If this is just for use during development, then I think saving the bitmap information to a temporary file and loading it back isn&#39;t such a bad option. It should be too fast to notice?
+</div>
+</div>
+
+<div class='brn' id='brn9192'>
+<div class='frm pst' id='pid9195' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9191.html#pid9192'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9195.html#pid9195'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2017-05-02 08:08
+</div>
+<div class='ccl'>
+Yes, according to this page : <a class='ura' href='https://www.imagemagick.org/script/formats.php'>https://www.imagemagick.org/script/formats.php</a><br/><br/>&quot;DIB is a BMP file without the BMP header. Used to support embedded images in compound formats like WMF.&quot;<br/><br/>So without the BMP header, you will not get the informations about width and height... You&#39;re right, creating in the HDD seems really good now because it would be way simpler, and it is really fast. But in the future, I have to learn a little about binary files, because I&#39;m getting stuck a lot when it comes to it.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1338.html#tid1338'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1338.html#tid1338'>Gosu Exchange</a> / Create a Gosu::Image from clipboard
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9191.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

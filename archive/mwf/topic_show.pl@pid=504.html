@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 504 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby 1.9 Progress</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d504' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=111.html#tid111'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=111.html#tid111'>Extending Gosu</a> / Ruby 1.9 Progress
+</div>
+</div>
+
+<div class='frm pst' id='pid480' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=480.html#pid480'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-03 21:53
+<span class='htt'>Edited</span> 2009-05-03 23:30
+</div>
+<div class='ccl'>
+I just committed a bunch of changes, the status quo on OS X is now (public memo to myself):<br/><br/>• RubyGosu Core/&quot;Release&quot; builds a universal gosu.bundle against the system Ruby (as before)<br/><br/>• RubyGosu Core/&quot;Release with Ruby 1.9&quot; builds an Intel-only <code>gosu.bundle</code> against Ruby 1.9.1 installed in <code>/usr/local</code>, with program suffix &#39;1.9&#39; (i.e. <code>/usr/local/bin/ruby1.9</code>), which then is linked against the system headers, as opposed to Ruby 1.9.1 from MacPorts, which is linked against MacPorts-specific libs.<br/>I guess for a Universal, 10.4+ build I need to compile libruby1.9 on both Intel and a PPC Tiger machine, and lipo them together.<br/><br/>• The RubyGosu Deployment Template was renamed <code>RubyGosu App.app</code> and contains a full, static, universal build of Ruby 1.9.1 (needs testing).<br/>(For anyone trying to build this at home: You&#39;ll have to <code>configure/make</code> Ruby 1.9.1 with the flags mentioned above, and then comment out the last prelude in <code>prelude.c</code>), then merge this folder with the &quot;Ruby 1.9 Source&quot; folder in &quot;mac&quot; so you have the &quot;config.h&quot; file from SVN in your &quot;include&quot; folder. Whew!)<br/><br/>The plan for OS X is then to include all three in the gem/package. The first <code>gosu.bundle</code> will be installed for the system Ruby, the other one should work with all Ruby 1.9s, even from MacPorts. (Needs testing.)&#160; The <code>.app</code> wrapper should be included in the Gem too, I think :)<br/><br/>Now to get other Macs for testing, then I&#39;ll pre-compile Gosu against the official Ruby 1.9.1 on Windows too...
+</div>
+</div>
+
+<div class='frm pst' id='pid481' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=481.html#pid481'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-03 23:26
+<span class='htt'>Edited</span> 2009-05-03 23:40
+</div>
+<div class='ccl'>
+You want a universal libruby 1.9? I&#39;ve got one, I can email it to you.<br/><br/>Edit: Incidentally, I&#39;ve been thinking a bit about a script which could figure out the appropriate path for libruby 1.9 and edit gosu.bundle with install_name_tool to point appropriately. Requires developer tools to be installed, but, how would you get ruby 1.9 without dev tools anyway? (IIRC, you need Dev tools to install MacPorts, yes?)<br/><br/><a class='url' href='http://pastie.org/467123'>http://pastie.org/467123</a><br/>That&#39;s a script that should do it; mind it only works if the two dylibs have the same interface, so different versions (or rather, incompatible versions) are not dealt with here. But it should allow one to take a gosu.bundle linked to MacPorts ruby 1.9 and hook it up to, say, one installed in /usr/local/ . Usage is, save it in a file, and edit the paths to point to gosu.bundle, then run the file with the version of ruby you want to use gosu with. I&#39;d wager this could get incorporated into a rake task with some tweaking.<br/><br/>Note that I can&#39;t actually test this fully myself. I tried it on the gosu.bundle for macports 1.9 julian posted earlier, and it did re-link it, but since it was Intel only, I have no idea whether it worked, not having an intel machine handy.
+</div>
+</div>
+
+<div class='frm pst' id='pid482' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=482.html#pid482'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-03 23:28
+<span class='htt'>Edited</span> 2009-05-03 23:31
+</div>
+<div class='ccl'>
+That would be great! :) -&gt; julian@raschke.de<br/><br/>Thanks. (And wow, good that you are still on 10.4!)
+</div>
+</div>
+
+<div class='frm pst' id='pid483' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=483.html#pid483'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-04 11:13
+<span class='htt'>Edited</span> 2009-05-04 11:15
+</div>
+<div class='ccl'>
+Before I get to the gosu.bundle, I&#39;d like to finish the RubyGosu App wrapper.<br/><br/>The idea is that I basically compile Ruby 1.9 completely into the app&#39;s core, with no external dependencys (RUBY_LIB etc. are all set to just &#39;.&#39;). Works quite well...except...I can&#39;t load any compiled C extensions (e.g. Chipmunk) because I get unresolved references during dlopen to rb_cFalseClass and all the other things that should be in libruby. (At least it seems that they all use the flat_namespace, so they don&#39;t care where the symbols come from, which already makes it lots easier.)<br/><br/>I tried the nebulous -export-dynamic flag that is exists exactly to export symbols from the current executable to dlopened libraries, but it seems not to work with my toolchain. I think a last resort would be to put everything into a dynamically loaded libruby that I put inside my app wrapper.<br/><br/>The next question would then be: how can anyone compile C extensions that would work with the wrapper, anyway? They would also need to be compiled universally and against the 10.4 SDK in order to work on all Macs. But that&#39;s just the next step.<br/><br/>philomory: Any ideas—did you ever run into the first issue? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid484' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=484.html#pid484'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-04 11:41
+<span class='htt'>Edited</span> 2009-05-04 15:04
+</div>
+<div class='ccl'>
+OK, I could solve it by disabling stripping, now if I only knew why ld strips my explicitly exported symbols in the first place—probably because it&#39;s an executable, sigh.<br/><br/>But the progress of picking the right .rb and .so files from /usr to have a fully self-contained app bundle is a bit much for casual deployment (say Ludum Dare competitions that use more than just gosu or chipmunk). There probably is something akin to RubyScript2Exe for OS X, maybe I can borrow from them. Until then, I think I should keep the old .app wrapper online for quick packaging.
+</div>
+</div>
+
+<div class='frm pst' id='pid486' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=486.html#pid486'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-05-04 20:17
+</div>
+<div class='ccl'>
+I might not be following this conversation right, but there is a ruby gem that might help<br/><br/>Its very young. v 0.2.1 or something<br/><a class='url' href='http://www.copiousfreetime.org/'>http://www.copiousfreetime.org/</a><br/><a class='url' href='http://copiousfreetime.rubyforge.org/crate/'>http://copiousfreetime.rubyforge.org/crate/</a><br/><a class='url' href='http://www.bestechvideos.com/2008/11/30/rubyconf-2008-crate-packaging-your-ruby-application'>http://www.bestechvideos.com/2008/11/30/rubyconf-2008-crate-packaging-your-ruby-application</a><br/><br/>I have been waiting for some free time to play with it, but it packages everything ruby you need into one package. Which works on any platform that ruby works on. Weather you can easily bundle this with a .app or even with gosu it self I dont know.
+</div>
+</div>
+
+<div class='frm pst' id='pid488' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=488.html#pid488'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-05 01:22
+</div>
+<div class='ccl'>
+Basic:<br/>The/my problem with Crate is that it requires adding to the game&#39;s code, as far as I know. rubyscript2exe—when it&#39;s working—is just &#39;gem install rubyscript2exe &amp;&amp; rubyscript2exe MyGame.rb&#39;, voila :) But if anyone manages to package a Gosu game with Crate, I&#39;d love to add their experience to the RubyDeploymentOnOSx page.<br/><br/>I have just tried Ocra (on GitHub) for packaging my Ruby 1.9 game (next post). There are two bugs that I encountered, one of them leading to me including all the .rb and .so files in the package, but at least it seems to work with 1.9. I couldn&#39;t get rubyscript2exe to do anything at all with Ruby 1.9 and I think I&#39;ll give up on it now.
+</div>
+</div>
+
+<div class='frm pst' id='pid489' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=489.html#pid489'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-05 01:37
+</div>
+<div class='ccl'>
+<b>Windows:</b><br/>I downloaded the Ruby 1.9.1 package from ruby-lang.org and added an option to build against that in my MSVC project. Seems to work smoothly. Only need to figure out how to include both .so files in the gem and have it install the correct one. Test project (hackily packaged using Ocra):<br/><a class='url' href='http://www.raschke.de/julian/temp/LD11_1.9.zip'>http://www.raschke.de/julian/temp/LD11_1.9.zip</a><br/>If anyone wants to give it a try, the gosu.so file for Ruby 1.9 is included in the zip.<br/><br/><b>OS X:</b><br/>Didn&#39;t work on the gosu.bundle file today, but packaged an old game and it seems to have helped its performance (feel free to test the .app wrapper with your game):<br/><a class='url' href='http://www.raschke.de/julian/temp/LD11_1.9.app.zip'>http://www.raschke.de/julian/temp/LD11_1.9.app.zip</a><br/>Unfortunately, the game uses YAML files, so I had to include syck.bundle and stringio.bundle from my Ruby 1.9 installation, and these are not universal.<br/><br/>philomory: Do you also happen to have universal (and 10.4 built) versions of these files and socket.bundle? They seem to be the most commonly used C extensions :)
+</div>
+</div>
+
+<div class='frm pst' id='pid495' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=495.html#pid495'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-05 21:55
+</div>
+<div class='ccl'>
+I don&#39;t have universal ones built atm, but I have a 10.4 Intel installation and a 10.4 PPC installation. To get libruby, I just lipoed the libruby from each together... I&#39;m considering writing up a script to just go through a pair of ruby lib trees and lipo all the binaries together, now that you mention this. At that point, I can give you any standard lib binary extension you want.<br/><br/>Just a note going forward that I don&#39;t have reliable access to a 10.4 Intel machine indefinitely; I&#39;ve got built 1.9.1 installation available to me right now, but I may or may not be able to compile future updates to 1.9 for Intel 10.4.
+</div>
+</div>
+
+<div class='frm pst' id='pid502' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=502.html#pid502'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-06 23:18
+</div>
+<div class='ccl'>
+Hehe, I think I&#39;ll use this excuse to buy an old G4 series Mac again :) Just for building Ruby, of course, not that I&#39;d ever start collecting those...!<br/><br/>For YAML, one workaround would be to use a pure-Ruby implementation, so I guess it&#39;s not too critical, just nice to have.<br/><br/>The status quo regarding arbitrary Ruby installations on OS X is that I need to call install_name_tool after installing the gem as you have pointed out. But RubyGems provides *zero* support for post-install scripts—very weird. One trick to fake it is to create an extconf.rb file which does it and generates a bogus Makefile. Unfortunately, this introduces the Xcode tools as a requirement to install the Ruby gem, as I was not able to supply a fake &#39;make&#39; script. That&#39;s probably the next step if the new 1.8/1.9 bundled gems turn out to work reliably.
+</div>
+</div>
+
+<div class='frm pst' id='pid504' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=504.html#pid504'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-06 23:53
+</div>
+<div class='ccl'>
+Well, I already gave you an XCode tools dependency, so another dependency isn&#39;t going to hurt you any further; to whit, install_name_tool is part of XCode tools.
+</div>
+</div>
+
+<div class='frm pst' id='pid505' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=505.html#pid505'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-07 00:05
+</div>
+<div class='ccl'>
+Yep, but it only needs to be called for the Ruby 1.9 bundle, and getting Ruby 1.9 without Xcode tools is hard :) For Ruby 1.8, I was able to just &#39;gem install&#39; it on friends&#39; Macs to test things. Other than that, I guess Ruby coders have Xcode installed anyway, and wrapping up Gosu games on OS X isn&#39;t too hard.
+</div>
+</div>
+
+<div class='frm pst' id='pid506' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=506.html#pid506'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-07 00:26
+</div>
+<div class='ccl'>
+I see; so you mean to say that rubygems can&#39;t even detect what version of ruby is being used without an extconf.rb... that&#39;s obnoxious. There&#39;s no way to run rake tasks as part of the gem install process?
+</div>
+</div>
+
+<div class='frm pst' id='pid507' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=507.html#pid507'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-07 00:39
+</div>
+<div class='ccl'>
+From what I gathered in #ruby-lang, the old &#39;required_ruby_version&#39; flag could gain more relevance soon, but I don&#39;t know if that would help with binary gems. Binary, pre-built gems aren&#39;t something the system seems to have been built for.<br/><br/>But I think I will go through the source before posting the next set of gems to check this. Maybe there&#39;s a new feature somewhere that can be used. I just wish their docs were up-to-date, RubyGems is not an obscure niche project :)
+</div>
+</div>
+
+<div class='frm pst' id='pid510' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=510.html#pid510'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-07 18:27
+<span class='htt'>Edited</span> 2009-05-07 18:34
+</div>
+<div class='ccl'>
+Okay, I noticed something really, really odd. I was just able to download the new 0.7.13.2 gem, and <i>without using lib_name_tool</i>, and do the following:<br/><br/><code>$ ruby-1.9 --disable-gems<br/>require &#39;./gosu.for_1_9.bundle&#39;<br/>$LOADED_FEATURES.push(&#39;gosu&#39;)<br/>require &#39;~/code/other/QuickThing/QuickThing.rb&#39;<br/>^D</code><br/><br/>And it worked. A quick check with otool confirms that it&#39;s still set to link against the macports libruby location:<br/><code>$ otool -L gosu.for_1_9.bundle <br/>gosu.for_1_9.bundle:<br/>&#160; &#160; &#160; &#160; /opt/local/lib/libruby1.9.dylib (compatibility version 1.9.0, current version 1.9.1)<br/>&#160; &#160; &#160; &#160; /usr/lib/libiconv.2.dylib (compatibility version 5.0.0, current version 5.0.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (compatibility version 1.0.0, current version 1.0.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 824.47.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices (compatibility version 1.0.0, current version 22.0.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 567.37.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 128.0.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (compatibility version 1.0.0, current version 275.0.0)<br/>&#160; &#160; &#160; &#160; /System/Library/Frameworks/OpenAL.framework/Versions/A/OpenAL (compatibility version 1.0.0, current version 1.0.0)<br/>&#160; &#160; &#160; &#160; /usr/lib/libstdc++.6.dylib (compatibility version 7.0.0, current version 7.4.0)<br/>&#160; &#160; &#160; &#160; /usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 1.0.0)<br/>&#160; &#160; &#160; &#160; /usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 88.3.10)</code><br/><br/>The really interesting stuff happens when we set DYLD_PRINT_LIBRARIES_POST LAUNCH:<br/><br/><code>$ export DYLD_PRINT_LIBRARIES_POST_LAUNCH=1<br/>$ ruby-1.9 --disable-gems<br/>dyld: loaded: /usr/local/lib/ruby-1.9/1.9.1/powerpc-darwin8.11.0/enc/encdb.bundle<br/>dyld: loaded: /usr/local/lib/ruby-1.9/1.9.1/powerpc-darwin8.11.0/enc/trans/transdb.bundle<br/>require &#39;./gosu.for_1_9.bundle&#39;<br/>$LOADED_FEATURES.push(&#39;gosu&#39;)<br/>require &#39;~/code/other/QuickThing/QuickThing.rb&#39;<br/>^D<br/>dyld: loaded: /Users/name/gosu-0.7.13.2-universal-darwin/lib/gosu.for_1_9.bundle, cpu-sub-type: 0<br/>dyld: loaded: /usr/lib/libiconv.2.dylib<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL<br/>dyld: loaded: /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices<br/>dyld: loaded: /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Carbon<br/>dyld: loaded: /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit<br/>dyld: loaded: /System/Library/Frameworks/OpenAL.framework/Versions/A/OpenAL<br/>dyld: loaded: /usr/lib/libstdc++.6.dylib, cpu-sub-type: 0<br/>dyld: loaded: /usr/lib/libgcc_s.1.dylib<br/>dyld: loaded: /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/ATS<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ColorSync.framework/Versions/A/ColorSync<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreText.framework/Versions/A/CoreText<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintCore<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/LangAnalysis<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/FindByContent.framework/Versions/A/FindByContent<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/SpeechSynthesis<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/ImageIO<br/>dyld: loaded: /System/Library/Frameworks/Security.framework/Versions/A/Security<br/>dyld: loaded: /System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration<br/>dyld: loaded: /usr/lib/libicucore.A.dylib<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CFNetwork.framework/Versions/A/CFNetwork<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/WebServicesCore.framework/Versions/A/WebServicesCore<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit<br/>dyld: loaded: /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata<br/>dyld: loaded: /usr/lib/libz.1.dylib<br/>dyld: loaded: /System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration<br/>dyld: loaded: /usr/lib/libbsm.dylib<br/>dyld: loaded: /usr/lib/libcrypto.0.9.7.dylib<br/>dyld: loaded: /usr/lib/libcups.2.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJP2.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libGIF.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libRaw.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libRadiance.dylib<br/>dyld: loaded: /usr/lib/libxml2.2.dylib, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SpeechRecognition.framework/Versions/A/SpeechRecognition<br/>dyld: loaded: /System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox<br/>dyld: loaded: /System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit<br/>dyld: loaded: /System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv<br/>dyld: loaded: /System/Library/Frameworks/CoreData.framework/Versions/A/CoreData<br/>dyld: loaded: /System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CarbonSound.framework/Versions/A/CarbonSound, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio<br/>dyld: loaded: /usr/lib/libsqlite3.0.dylib<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib<br/>dyld: loaded: /System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Ink.framework/Versions/A/Ink<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Help.framework/Versions/A/Help<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/Versions/A/Print<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HTMLRendering.framework/Versions/A/HTMLRendering<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/NavigationServices.framework/Versions/A/NavigationServices<br/>dyld: loaded: /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CommonPanels.framework/Versions/A/CommonPanels<br/>dyld: loaded: /System/Library/Frameworks/vecLib.framework/Versions/A/vecLib, cpu-sub-type: 0<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Resources/GLEngine.bundle/GLEngine<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLProgrammability.dylib<br/>dyld: loaded: /System/Library/Extensions/ATIRadeon9700GLDriver.bundle/Contents/MacOS/ATIRadeon9700GLDriver<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Resources/GLDriver.bundle/GLDriver<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLSystem.dylib<br/>dyld: loaded: /System/Library/Frameworks/OpenGL.framework/Versions/A/Resources/GLRendererFloat.bundle/GLRendererFloat<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/Resources/libCSync.A.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/Resources/libRIP.A.dylib<br/>dyld: loaded: /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/Resources/libCGATS.A.dylib</code><br/><br/>Note with intense interest what does and does not get loaded by DYLD here. I think you may have already won. The two librubies don&#39;t even have the same suffix, let alone path, but it&#39;s working anyway, probably because running the ruby command line app already loads my installed libruby and provides its symbols.<br/><br/>This may or may not help you in your work on the deployment template, but it&#39;s good news for the development gem, I&#39;d say.<br/><br/><b>EDIT:</b> Okay, I really should have used DYLD_PRINT_LIBRARIES rather than DYLD_PRINT_LIBRARIES_POST_LAUNCH, to get the full picture of what&#39;s going on. It gives the same results, except that this occurs immediately after invoking ruby, before encdb.bundle and transdb.bundle are loaded:<br/><br/><code>dyld: loaded: /usr/local/bin/ruby-1.9<br/>dyld: loaded: /usr/local/lib/libruby-1.9.dylib<br/>dyld: loaded: /usr/lib/libSystem.B.dylib, cpu-sub-type: 0<br/>dyld: loaded: /usr/lib/libobjc.A.dylib<br/>dyld: loaded: /usr/lib/system/libmathCommon.A.dylib, cpu-sub-type: 0<br/>dyld: loaded: /usr/lib/libauto.dylib</code><br/><br/><b>Edit again:</b> To be 100% clear, my previous edit hoped to clarify what was going on, not downplay it. It&#39;s just extra info I should have included the first time.
+</div>
+</div>
+
+<div class='frm pst' id='pid512' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=512.html#pid512'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-07 20:14
+<span class='htt'>Edited</span> 2009-05-07 20:43
+</div>
+<div class='ccl'>
+Just for clarity, it works even when you require it using rubygems as usual?<br/><br/>That would be awesome news. I just deactivated Ruby 1.9 in MacPorts, and the gosu gem worked with my custom Ruby 1.9 in /usr/local. Surprisingly enough—it didn&#39;t work when I tried it the other way around (spent half a day seeing dlopen errors). I think I&#39;ll just leave it at that until it breaks…<br/><br/>As for stringio.bundle and syck.bundle, when I put them into my deployment template (which is a self-contained 1.9 installation now), I still have to adjust paths, but there *is* no right one in that case. Oh no! I just wish I could remove the dyld dependencies altogether. I even thought about pointing it to a completely unrelated library, but the version tags will probably ruin that. The symbols are available anyway (in the flat namespace, just not coming from a dylib).<br/>To add to the weirdness, the Ruby .app wrapper does not run here when I use your stringio.bundle and syck.bundle, but there are no problems to run it on a machine without any Ruby 1.9 when I use the .dylibs from my Intel-only, Leopard-only installation. Duh! :)<br/><br/>Thanks for in-depth analysis! :)
+</div>
+</div>
+
+<div class='frm pst' id='pid513' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=513.html#pid513'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-07 20:52
+</div>
+<div class='ccl'>
+Just tried it using rubygems, works fine that way too!<br/><br/>As for the app wrapper, I can&#39;t comment on it yet since I haven&#39;t tried your new one even a little bit. I might get a chance to play with that later tonight.<br/><br/>When you say it doesn&#39;t run, what *does* it do? Do you get anything dumped to the console, on the order of &#39;could not load library&#39; or some such?
+</div>
+</div>
+
+<div class='frm pst' id='pid514' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=514.html#pid514'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-07 21:43
+</div>
+<div class='ccl'>
+Yes, the standard dlopen error:<br/><br/><code><br/>.../lib/open-uri.rb:2:in `require&#39;: dlopen(.../lib/stringio.bundle, 9): Library not loaded: /usr/local/lib/libruby-1.9.dylib (LoadError)<br/></code><br/><br/>I will retry it later with my stringio/syck bundles, but with temporarily removed libruby dylibs, to see if our libraries differ in their behavior (I&#39;m trying to understand why my bundles work on another machine without 1.9).<br/><br/>For what it&#39;s worth, I have built the gosu.for_1_9.bundle with -weak-lruby..., but at first I thought it didn&#39;t work; now that I think about it, that was probably an error on my side, because that flag would explain why the problem doesn&#39;t occur with this bundle.
+</div>
+</div>
+
+<div class='frm pst' id='pid515' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=515.html#pid515'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-07 21:55
+</div>
+<div class='ccl'>
+One possibility would be to recompile ruby-1.9 after editing ext/Setup in the source tree to make all the relevant modules (syck, stringio, etc) statically linked into libruby. At least, if I&#39;m reading the docs correctly, that&#39;s what I think would happen. I don&#39;t really have time to play with that at the moment, though. If you try it and find that it works, then I can try building the universal version for you.<br/><br/>The problem is, though, that only solves the issue for Standard Lib bundles, not third party C-extensions from gems, etc. This seems like it could end up being something very difficult to do correctly; I imagine these were some of the issues _why had to deal with, since in Shoes he maintains a custom fork of Ruby. A quick scan of the Shoes Adventurer&#39;s mailing list shows a lot of contortions gone through to get native extensions to build.<br/><br/>Hopefully the situation with gosu can be made less complex, since you haven&#39;t actually forked ruby, but I think, as things currently stand, there is a limit to how simple this approach can be made.<br/><br/>Remind me, what was the advantage of statically compiling libruby into the deployment package, instead of bundling the universal dylib and dynamically loading it? It seems it would be easier to get binary gems to work with the latter approach (there may be other differences which tilt the balance the other way, however; that&#39;s why I&#39;m asking).
+</div>
+</div>
+
+<div class='frm pst' id='pid516' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=516.html#pid516'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-07 22:17
+</div>
+<div class='ccl'>
+Here&#39;s an idea; is there some way to, when building a (native) gem, pass extra flags to the linker? Either with environment variables or the --build-options flag to gem install? I&#39;m not sure if --build-options passes flags to the linker, or only the compiler, and the env variables might be ignored (though they shouldn&#39;t be). But if either way works, then people needing to bundle a native gem with their distributed app could be instructed to build it with &#39;gem install whatever --build-options -weak-lruby&#39;. Worth a shot.
+</div>
+</div>
+
+<div class='frm pst' id='pid520' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=520.html#pid520'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-08 02:58
+<span class='htt'>Edited</span> 2009-05-08 03:05
+</div>
+<div class='ccl'>
+OK, so to conserve a bit of IRC, there are two problems with shipping Ruby games with C extensions (actually, most of this is true for 1.8 as well):<br/><br/>1. All the libraries we get from installing gems or building Ruby from source (or via MacPorts) have a dependency on some dynamic libruby. It&#39;s just a formal requirement, as all the imports are in a flat namespace that can be satisfied by any Ruby whatsoever, and there is usually one. If we can just strip the dependency from the extension, it will work in the .app container regardless of the Ruby it was built against. (Right now, everything worked because everything was built against OS X&#39; system Ruby.)<br/><br/>Solution: install_name_tool lets us change the name of the required library, a trivial bit of hex editing lets us change the required version too. (As a short verification of this step, the ABI is documented at <a class='url' href='http://developer.apple.com/documentation/DeveloperTools/Conceptual/MachORuntime/Reference/reference.html'>http://developer.apple.com/documentation/DeveloperTools/Conceptual/MachORuntime/Reference/reference.html</a>) By just changing any libruby to libSystem and the required number to 1.0.0, the dependency is practically erased. I&#39;ll probably write a two-liner to automate that.<br/><br/>2. If someone wants to deploy a C extension with their game, it is inevitable to build a Universal version, at best against the OS X 10.4 SDK for Tiger compatibility. This is pretty hard because gem, extconf/mkmf etc. don&#39;t really care about this.<br/><br/>Right now, this is worked around by building on machines that run 10.4 and manual stitching with lipo afterwards. This was done for RMagick (kind of—on 10.5), and this is what you just provided for syck.bundle and stringio.bundle. This means that if we collect one bundle for 1.8 and 1.9 each here for the most common libraries publicaly (Chipmunk, ...), we have a workaround.<br/><br/>The ideal solution would be to have a tool that builds gems as well as system libraries universally and against the 10.4 SDK, and erases the dependency just in case. But since I guess it&#39;s just ~5 C extensions that have ever been used in a Gosu game, I think this would be overengineering it for now.<br/><br/>Phew! But I think we are just a few collected libraries, and one explanatory wiki page away from a solid base for most deployment needs.
+</div>
+</div>
+
+<div class='frm pst' id='pid525' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=525.html#pid525'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-08 15:00
+</div>
+<div class='ccl'>
+This thread might be useful: <a class='url' href='http://www.ruby-forum.com/topic/105509'>http://www.ruby-forum.com/topic/105509</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid527' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=527.html#pid527'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-08 20:09
+</div>
+<div class='ccl'>
+Hey, Julian, if I wanted to download current source to try and play with getting the App package to work the way we want, what revision would you recommend checking out of SVN?
+</div>
+</div>
+
+<div class='frm pst' id='pid528' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=528.html#pid528'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-08 21:24
+<span class='htt'>Edited</span> 2009-05-08 21:27
+</div>
+<div class='ccl'>
+Do you mean the &quot;new style&quot; 1.9 package? Just follow the HEAD. The Ruby source that you have to drop into the &quot;mac/Ruby 1.9 Source&quot; subdirectory for it to work is the one from ruby-lang.org for 1.9.1p0, except that some files have to be overwritten by Gosu (the ones that are in SVN). Then just build the .app wrapper in the configuration &quot;Release with 1.9&quot;, or &quot;Release&quot;, as they both use 1.9.<br/><br/>What do you plan to change, introduce a faux libruby so my byte-punching will not be necessary? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid529' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=529.html#pid529'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-08 23:38
+</div>
+<div class='ccl'>
+Actually, the plan is to link the Deployment Package to libruby dynamically rather than statically, but use a tweaked libruby which is itself statically linked to the necessary parts of Standard Lib (syck, stringio, etc). Or, if I can&#39;t get that part to work, just dynamically link everything as normal, bite the bullet, tweak the entirety of the standard library with install_name_tool, and include all of it in the deployment bundle, universal-style. It can all be stuck in a separate directory inside the bundle (Contents/lib/ruby/, perhaps).<br/><br/>Basically I want to see which approach ultimately turns out to be the simpler one. The only way to know for sure is to try them both, since I&#39;m sure they each will have surprises waiting for us.
+</div>
+</div>
+
+<div class='frm pst' id='pid530' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=530.html#pid530'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-09 02:03
+<span class='htt'>Edited</span> 2009-05-09 02:51
+</div>
+<div class='ccl'>
+Hmm, I think with 10.4 Intel and PPC boxes, or some advanced Makefile know-how available, it would be easy to just build Ruby 1.9.1 into /tmp/everything_goes_here, universalize &amp; install_name_toolize it and put it into the .app. Admittedly, that would probably be the least trouble to stay up to date with future Ruby versions :)
+</div>
+</div>
+
+<div class='frm pst' id='pid2384' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2384.html#pid2384'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-04-26 08:26
+<span class='htt'>Edited</span> 2010-04-26 18:45
+</div>
+<div class='ccl'>
+philomory, I want to switch the Ruby 1.9 wrapper to work pretty much like Operation Lambda seems to work.<br/><br/>Operation Lambda works for me but I cannot really figure out how you install_name_tool&#39;d the dynamic Ruby libraries to be found and how you set up the .app. Actually, the thing I don&#39;t get is how the main binary has the right paths (@executable_path.../) but the libraries themselves still have your paths in there.<br/><br/>Edit: Reading <a class='url' href='http://qin.laya.com/tech_coding_help/dylib_linking.html'>http://qin.laya.com/tech_coding_help/dylib_linking.html</a> now. Man, this whole install_path thing seems like arbitrary torture to me. :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=111.html#tid111'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=111.html#tid111'>Extending Gosu</a> / Ruby 1.9 Progress
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=504.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

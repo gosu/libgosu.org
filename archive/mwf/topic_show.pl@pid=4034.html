@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4034 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>primitive drawing method in record block causes segfault</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4034' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=556.html#tid556'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=556.html#tid556'>Gosu Exchange</a> / primitive drawing method in record block causes segfault
+</div>
+</div>
+
+<div class='frm pst' id='pid4033' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4033' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4033.html#pid4033'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-01 07:44
+</div>
+<div class='ccl'>
+Yeah, got an interesting problem.<br/><br/>I was trying to implement a cached drawing system so complex but infrequently changing drawing operations could be compiled to Gosu macros inline when I hit a bit of a wall.<br/><br/>Seems using a primitive drawing method (draw_line, draw_quad, draw_triangle) inside of a <code>record</code> block causes one of those new fangled dreaded segmentation faults the kids are always talking about. There&#39;s some weirdness with alpha transparency too, but the crashing bug is a bit more of a big deal.<br/><br/>Let me show you:<br/><br/><code>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; super 480, 240, false<br/>&#160; &#160; @draw_cache = { }<br/>&#160; &#160; <br/>&#160; &#160; @image = Gosu::Image.new self, &#39;test.png&#39;, false<br/>&#160; &#160; @font&#160; = Gosu::Font.new self, &#39;Helvetica&#39;, 16<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; <br/>&#160; &#160; draw_cache(:peachy_keen) do<br/>&#160; &#160; &#160; # Appears to work without a hitch.<br/>&#160; &#160; &#160; @font.draw &quot;Hello, World!&quot;, 64, 0, 0<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; draw_cache(:reasonably_fine) do<br/>&#160; &#160; &#160; # Transparency is rendered white even though it works as expected<br/>&#160; &#160; &#160; # outside of a <code>record</code>ed macro.<br/>&#160; &#160; &#160; @image.draw 64, 16, 0<br/>&#160; &#160; end<br/>&#160; &#160; <br/>&#160; &#160; draw_cache(:this_causes_an_error) do<br/>&#160; &#160; &#160; # OH NO SEGFAULT<br/>&#160; &#160; &#160; draw_quad( 0,&#160; 0, Gosu::Color::WHITE,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; 0, 64, Gosu::Color::WHITE,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 64, 64, Gosu::Color::WHITE,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; 64,&#160; 0, Gosu::Color::WHITE, 0)<br/>&#160; &#160; end<br/>&#160; &#160; &#160; <br/>&#160; end<br/>&#160; <br/>&#160; def draw_cache id, z = 0, &amp;block<br/>&#160; &#160; unless @draw_cache.include? id<br/>&#160; &#160; &#160; @draw_cache[id] = record(&amp;block)<br/>&#160; &#160; end<br/>&#160; &#160; @draw_cache[id].draw 0, 0, z<br/>&#160; end<br/>&#160; <br/>end<br/><br/>Window.new.show<br/></code><br/><br/>This is the stack trace, complete with a mysteriously empty &quot;C level backtrace information&quot; section:<br/><br/><code>crash.rb:38: [BUG] Segmentation fault<br/>ruby 1.9.2p136 (2010-12-25 revision 30365) [x86_64-darwin10.6.0]<br/><br/>-- control frame ----------<br/>c:0008 p:---- s:0025 b:0025 l:000024 d:000024 CFUNC&#160; :record<br/>c:0007 p:0037 s:0022 b:0020 l:000019 d:000019 METHOD crash.rb:38<br/>c:0006 p:0037 s:0014 b:0014 l:000218 d:000218 METHOD crash.rb:26<br/>c:0005 p:---- s:0011 b:0011 l:000010 d:000010 FINISH<br/>c:0004 p:---- s:0009 b:0009 l:000008 d:000008 CFUNC&#160; :show<br/>c:0003 p:0051 s:0006 b:0006 l:0018b8 d:0014a8 EVAL&#160;&#160; crash.rb:45<br/>c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH<br/>c:0001 p:0000 s:0002 b:0002 l:0018b8 d:0018b8 TOP&#160;&#160; <br/>---------------------------<br/>-- Ruby level backtrace information ----------------------------------------<br/>crash.rb:45:in <code>&lt;main&gt;&#39;<br/>crash.rb:45:in </code>show&#39;<br/>crash.rb:26:in <code>draw&#39;<br/>crash.rb:38:in </code>draw_cache&#39;<br/>crash.rb:38:in `record&#39;<br/><br/>-- C level backtrace information -------------------------------------------<br/></code><br/><br/>Is that weird or what? Or is it just me?
+</div>
+</div>
+
+<div class='brn' id='brn4033'>
+<div class='frm pst' id='pid4034' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4033'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4034' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4034.html#pid4034'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-01 07:48
+</div>
+<div class='ccl'>
+Also, since it&#39;s not clear from the example given: the crash occurs after the block exits, probably during the building of the vertex array. I confirmed using simple print statements; everything after the offending function call is executed just fine, but then there&#39;s the crash.<br/><br/>That should hopefully narrow down the source of the problem a little.
+</div>
+</div>
+
+<div class='brn' id='brn4034'>
+<div class='frm pst' id='pid4036' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4034'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4036' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4036.html#pid4036'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-01 10:42
+</div>
+<div class='ccl'>
+Oh well, the recording feature is not really finished in several ways. Proper Z-ordering is still in SVN (not released), that transparency bug is new to me :(, and drawing primitives should probably throw an exception for now. Sneaking them into a vertex array is not rocket science but will take some more code.<br/><br/>Development is still going sloooooooow...
+</div>
+</div>
+
+<div class='brn' id='brn4036'>
+<div class='frm pst' id='pid4038' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4036'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4038' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4038.html#pid4038'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-01 23:16
+</div>
+<div class='ccl'>
+Yeah, I suppose the absence of <code>record</code> from the documentation should have tipped me off. I&#39;ve just noticed that the alpha for fonts is kind of messed up too, although it&#39;s not entirely missing like the image alpha.<br/><br/>This has potential to be an extremely useful feature. Seems like it would be a great way to implement the behind-the-scenes caching that Chingu::Text currently does using <code>Image#from_text</code>.<br/><br/>Since we&#39;re on the subject, though: are there any plans for macros to be saveable in the future like images are? It would be pretty awesome to be able to save them to files or even convert them to real raster images. Supposedly it&#39;s not too difficult to render to an OpenGL texture, although I can&#39;t say I know anything for sure.
+</div>
+</div>
+
+<div class='brn' id='brn4038'>
+<div class='frm pst' id='pid4039' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4039' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4039.html#pid4039'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-03-02 00:26
+</div>
+<div class='ccl'>
+See Texplay and its Window.render_to_image method (creates a block in which drawing ops get to an image; sort of a hack, but works in many use-cases)
+</div>
+</div>
+
+<div class='brn' id='brn4039'>
+<div class='frm pst' id='pid4046' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4039'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4046' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4046.html#pid4046'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-02 06:30
+</div>
+<div class='ccl'>
+Funny you should mention texplay—I just started playing with it this evening. I managed to cause several mysterious segfaults and a series of exceptions pertaining to unexpected <code>nil</code>s, attempting to <code>dup</code> false and even invoking methods on garbage collected objects! ...none of which can I reproduce since they seem to have mysteriously stopped after I changed a couple of completely unrelated lines of code. Actually, most of those errors were found by changing seemingly unrelated code and I almost suspect that which one I got depended entirely on what memory addresses the objects were at or what kind of shoes the stack pointer was wearing. And I think that means I should have gone to bed a couple of hours ago.<br/><br/>I think the <code>gen_eval</code> thing is a little too magical. I really like the library (banister&#39;s a clever fellow), but I&#39;d rather have to write something like <code>image.paint { |gfx| gfx.fill 0, 0, :color =&gt; :red }</code> if it meant I wouldn&#39;t have clever code creating hidden instance variables with illegal names and doing unspeakable things to my objects&#39; implementation details. :D
+</div>
+</div>
+
+<div class='brn' id='brn4046'>
+<div class='frm pst' id='pid4047' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4046'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4047' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4047.html#pid4047'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-03-02 07:04
+<span class='htt'>Edited</span> 2011-03-02 07:24
+</div>
+<div class='ccl'>
+Do not use <code>paint</code>!!! :) im retiring it, yes it does some crazy shit, best to forget abou tit<br/><br/>Just do: <code>image.fill x, y, :color =&gt; blah</code>. Invoke all drawing actions directly on the image. <code>paint</code> is dead to me now (i should probalby tell other people)<br/><br/>EDIT: the version of <code>gen_eval</code>(<a class='url' href='https://github.com/banister/gen_eval'>https://github.com/banister/gen_eval</a>) used in texplay is an old one, i have subsequently fixed many of the bugs and brought in 1.9 compatibility (which the version in texplay doesn&#39;t properly hvae) however there is still a ridiculous edge case in 1.9 due to the annoying way ivars for objects are implemented, that i cannot get around (it doesn&#39;t result in segfaults it just results in weird behaviour). This is really sad as <code>gen_eval</code> was so close to being brilliant, and it can work perfectly in ruby 1.8. <br/><br/>There are a few options here: <br/><br/>(1) To use <code>local_eval</code> instead - the only difference between gen_eval and local_eval is that local_eval is not threadsafe (<a class='url' href='https://github.com/banister/local_eval'>https://githubcom/banister/local_eval</a>), oh and local_eval doesn&#39;t cause crashes (or at least it shouldn&#39;t as it&#39;s a much simpler concept)<br/>(2)&#160; To replace paint with a simple instance_eval/yield <br/>(3) Get drunk
+</div>
+</div>
+
+<div class='brn' id='brn4047'>
+<div class='frm pst' id='pid4049' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4047'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4049' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4049.html#pid4049'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-02 15:08
+</div>
+<div class='ccl'>
+Ach, fair enough! The guide still indicates that using <code>paint { ... }</code> for multiple operations is faster, but I assume that&#39;s out of date now. Great library, by the way, other than that <code>gen_eval</code> weirdness. :)<br/><br/>I&#39;d like to know more about that edge case meanwhile, just for curiosity&#39;s sake. How are ivars implemented in Ruby 1.9 and how is it different to 1.8?
+</div>
+</div>
+
+<div class='brn' id='brn4049'>
+<div class='frm pst' id='pid4050' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4049'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4050.html#pid4050'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-03-02 17:03
+</div>
+<div class='ccl'>
+yeah the guide is really out of date :/ there&#39;s a lot of new functionality i havent documented (except in the texplay thread in the forums)<br/><br/>Regarding the edge-case; 1.8 ivars are just stored in a hashtable. The way that gen_eval (in 1.8) works is by duplicating the context of the paint block (block.binding.eval(&#39;self&#39;)) but having the ivar table pointer of the dup point to the ivar table of the original context. This ensures that any modifications to ivars inside the block persist outside it. <br/><br/>The difference in 1.9 is two-fold, first that there are a small number of ivars that are actually embedded in the object itself (not stored in an external ivar table) secondly that a record is kept of the number of ivars that exist in the object.<br/><br/>The first issue can be gotten around by overloading the object with ivars (&gt;3) so that the object is forced to use an external ivar table -- an external ivar table is required as we can then get our dupped context&#39;s iv table pointer to point to it (this is not possible with embedded ivars). However, the second issue, the fact that a record is kept of the number of ivars cannot be gotten around. Things will work fine inside the block, but if new ivars are added inside the block these will only be registered by the dup but not by the original context. Yet the ivar table itself will be updated with the new ivars in the original. This will cause unexpected/strange behaviour as the number of ivars in the table will not match the number of ivars it expects.<br/><br/>local_eval works differently and doesnt suffer this problem as it doesn&#39;t dup the context but uses it directly so the number of ivars in the table will always match the ivar count. However the whole purpose of the dup wsa to make everthing threadsafe. local_eval is therefore not threadsafe but aside from that should work fine. gen_eval/local_eval both work by mixing in modules/classes (yes classes hehehe) into the block context to provide functionality for the duration of the block. gen_eval doesn&#39;t need to unmix the classes after the block is executed as it&#39;s a dup and can just be discarded, but local_eval needs to unmix the classes after the block and this is why it&#39;s not threadsafe as one thread may see classes mixed in when it shouldn&#39;t and so get access to functionality it should not.<br/><br/>In summary tho, as to the edge case- the edge case in 1.9 gen_eval only occurs when new ivars are created inside the block. This is likely a rare occurance but nonetheless is a limitation and so unfortunately gen_eval is dead in 1.9, maybe it can be ressurected in a later ruby version.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid4041' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4038'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4041' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4041.html#pid4041'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-02 03:31
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; Yeah, I suppose the absence of record from the documentation should have tipped me off. I&#39;ve just noticed that the alpha for fonts is kind of messed up too, although it&#39;s not entirely missing like the image alpha.</p></blockquote><br/>Hmm, can you provide an example screenshot illustrating this?<br/><br/><blockquote><p>&gt; are there any plans for macros to be saveable in the future like images are?</p></blockquote><br/>Nope. Macros and render-to-texture are two distinct things. Macros are easy, super-fast to create and almost impossible to store, render-to-texture is harder to implement, has a higher cost and makes saving easy. Also, macros do not lose information unlike render-to-texture which pixelates when you stretch it afterwards. The semantics for alpha differ too. If render-to-texture makes it into Gosu, it will be a separate function (render{}).
+</div>
+</div>
+
+<div class='brn' id='brn4041'>
+<div class='frm pst' id='pid4044' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4041'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4044' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4044.html#pid4044'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-02 06:03
+<span class='htt'>Edited</span> 2011-03-02 06:10
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; an example screenshot</p></blockquote><br/>The problem&#39;s even more complex than I thought—It seems to mysteriously self-correct if anything non-macro has ever been drawn. Could you have overlooked some important OpenGL state setup in the vertex array drawing code? Here&#39;s a demo program that lets you see the effect more easily, with screen shots for good measure.<br/><br/>I can&#39;t be sure, but the transparent part is probably turned opaque black too. Rendering <i>images</i> like this under the same circumstances seems to draw the transparent parts without the alpha channel, so the &quot;true&quot; color of the pixels shows through. I can post a screen shot tomorrow when I&#39;m not about to fall asleep.<br/><br/>My discovery is a total edge case; I doubt anyone would ever encounter it in the wild unless they were writing test code like mine. Totally weird behavior.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/44/4044/damn-macros.rb.txt'>damn-macros.rb.txt</a> - Demo program shown in the screen shots. Press space to switch between macro and draw_text. (703B)</div>
+<a href='attach_show.pl@aid=529.html'><img class='amt' src='../../mwf/attachments/44/4044/macro.thb.jpg' title='drawing text with a recorded macro before anything else has been drawn (23k)' alt=''/></a>
+<a href='attach_show.pl@aid=530.html'><img class='amt' src='../../mwf/attachments/44/4044/normal.thb.jpg' title='drawing text the normal way (24k)' alt=''/></a>
+<a href='attach_show.pl@aid=531.html'><img class='amt' src='../../mwf/attachments/44/4044/macro_again.thb.jpg' title='drawing that same macro again after having drawn it the &quot;normal&quot; way (24k)' alt=''/></a>
+</div>
+</div>
+
+<div class='brn' id='brn4044'>
+<div class='frm pst' id='pid4053' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4044'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4053.html#pid4053'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-05 08:08
+</div>
+<div class='ccl'>
+It was the lack of GL_BLEND &amp; GL_BLEND_MODE being set. There was also a new bug introduced by a combination of patches, but now your sample works as expected here :) Progress!
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid4045' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4034.html#pid4041'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4045.html#pid4045'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-02 06:17
+</div>
+<div class='ccl'>
+Oh yes, and what I actually meant was &quot;are there any plans to allow macros to be rendered to textures?&quot; to which you have indirectly answered yes. Or rather, I <i>assume</i> that <code>render { @macro.draw x, y, z }</code> will work just as well as <code>render { @image.draw x, y, z }</code> once you have implemented it. :)<br/><br/>When you do add it, I think that render should accept height and width arguments for the image to render. They should be optional, where the default is whatever the window size is. I&#39;d get the most use out of it if areas where the black background show through were transparent on the product, but either way it would be a pretty powerful feature. :D
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=556.html#tid556'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=556.html#tid556'>Gosu Exchange</a> / primitive drawing method in record block causes segfault
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4034.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

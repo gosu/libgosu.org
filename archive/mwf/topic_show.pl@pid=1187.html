@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 1187 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Error while creating a window</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d1187' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=185.html#tid185'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=185.html#tid185'>Gosu Exchange</a> / Error while creating a window
+</div>
+</div>
+
+<div class='frm pst' id='pid1178' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1178#pid1178'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-02 14:42
+</div>
+<div class='ccl'>
+Hi! I&#39;m a newbie in gosu programming, and i&#39;m trying to run a program on it over C++ (i think it&#39;s even less than a Hello World :p), but i get an error. I hope you could help me. This is my code:<br/><br/>#include &lt;Gosu/Gosu.hpp&gt;<br/><br/>int main(int argc, char* argv[])<br/>{<br/>&#160; &#160; Gosu::Window(640,480,1);<br/>}<br/><br/>I know, it&#39;s an stupid game. Anyway, i always get the same error:<br/><br/>X Error of failed request: BadMatch (invalid parameter attributes)<br/>Major opcode of failed request: 1 (X_CreateWindow)<br/>Serial number of failed request: 138<br/>Current serial number in output stream: 139<br/>Press ENTER to continue.<br/><br/>The numbers in lines 3 and 4 change in every execution. I have run this over Ubuntu 9.04, and I used Code::Blocks IDE. Everything is correctly linked and compiled, but I can&#39;t avoid this failure in runtime. The error is given when creating the window, all the remaining parts of the code are OK (obviously...)<br/><br/>Thanks in advance for the help!!<br/><br/>(Adrian)
+</div>
+</div>
+
+<div class='frm pst' id='pid1179' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1179.html#pid1179'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=80' >Quit</a>
+<span class='htt'>Date</span> 2009-08-02 14:56
+<span class='htt'>Edited</span> 2009-08-02 15:05
+</div>
+<div class='ccl'>
+You have to declare a name for your Gosu::Window-var.<br/><br/><blockquote><p>&gt;Gosu::Window win(640, 480, true);</p></blockquote><br/>should do the trick.<br/><br/>And you won&#39;t see anything, since you don&#39;t run it - <br/><br/><blockquote><p>&gt;win.show();</p></blockquote>
+</div>
+</div>
+
+<div class='frm pst' id='pid1182' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1182#pid1182'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-03 11:44
+</div>
+<div class='ccl'>
+#include &lt;Gosu/Gosu.hpp&gt;<br/><br/>int main(int argc, char* argv[])<br/>{<br/>&#160; &#160; Gosu::Window win(640,480,0);<br/>&#160; &#160; win.show();<br/>}<br/><br/>Thanks for your help, but I still get the same problem.
+</div>
+</div>
+
+<div class='frm pst' id='pid1183' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1183.html#pid1183'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=44' >disciplex</a>
+<span class='htt'>Date</span> 2009-08-03 12:11
+</div>
+<div class='ccl'>
+Your main method is also expecting to return an integer.<br/><br/>#include &lt;Gosu/Gosu.hpp&gt;<br/><br/>int main(int argc, char* argv[])<br/>{<br/>&#160; &#160; Gosu::Window win(640,480,0);<br/>&#160; &#160; win.show();<br/>&#160; &#160; return 0;<br/>}
+</div>
+</div>
+
+<div class='frm pst' id='pid1184' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1184#pid1184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-03 15:48
+</div>
+<div class='ccl'>
+I get the same error again. I have traced the program, and the error is given in the line:<br/><br/>&#160; &#160; Gosu::Window win(640,480,0);<br/><br/>, so I think it&#39;s a less trivial error. Could it be a trouble with hardware or update packets of other libraries? I&#39;m sorry, I&#39;m new on Gosu and I feel a little lost. Do you recommend me to change into Ruby? Thank you!
+</div>
+</div>
+
+<div class='frm pst' id='pid1185' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1185.html#pid1185'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-08-04 01:36
+</div>
+<div class='ccl'>
+Can you tell us what the error says?<br/>EDIT:<br/><br/>Can you create a super class from the base Gosu::Window? Follow the tutorials on the wiki to help set up a window.
+</div>
+</div>
+
+<div class='frm pst' id='pid1186' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1186#pid1186'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-04 10:23
+</div>
+<div class='ccl'>
+You don&#39;t need a variable name to test if the constructor is working, and you don&#39;t need to return anything in main() thanks to a special language rule :)<br/><br/>Does it work in windowed mode, i.e. when passing false instead of 1? If so, does it work in windowed mode when the resolution is the desktop resolution?
+</div>
+</div>
+
+<div class='frm pst' id='pid1187' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1187.html#pid1187'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-04 11:04
+</div>
+<div class='ccl'>
+Hi there.<br/>I&#39;ve tried to run the CppTutorial, and I get the same error. Changing resolution or fullscreen mode don&#39;t work either. Could I have installed something wrong? Thank you!
+</div>
+</div>
+
+<div class='frm pst' id='pid1188' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=1188.html#pid1188'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-08-04 16:05
+</div>
+<div class='ccl'>
+I don&#39;t have the slightest idea, X11 always leaves me puzzled :( Does it work if you turn off the visual effects under the Appearance settings?
+</div>
+</div>
+
+<div class='frm pst' id='pid1189' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1189#pid1189'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-08-04 19:24
+</div>
+<div class='ccl'>
+They were already off...
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=185.html#tid185'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=185.html#tid185'>Gosu Exchange</a> / Error while creating a window
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=1187.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

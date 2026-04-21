@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Support for multiple windows [from wiki]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=55.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=55.html#tid55'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=55.html#tid55'>Gosu Exchange</a> / Support for multiple windows [from wiki]
+</div>
+</div>
+
+<div class='frm pst' id='pid188' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=188.html#pid188'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-07 10:20
+</div>
+<div class='ccl'>
+(This thread of discussion originated on the wiki but has since been moved to the forums.)<br/><br/><b>Comment by tmcdowell, Apr 30, 2008</b><br/>Hey, I am just going through the first ruby tutorial thing, and adding onto it as I go, so I&#39;ve made a separate class called &#39;PopUp?&#39; which inherits from the normal Gosu::Window class. I&#39;ll explain the problem after this bit of code:<br/><br/><code>class PopUp? &lt; Gosu::Window<br/><br/>&#160; def initialize<br/>&#160; &#160; super(240, 240, false) @font = Gosu::Font.new(self, Gosu::default_font_name, 10)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; if button_down? Gosu::Button::Kb then<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; def draw<br/>&#160; &#160; @font.draw(&quot;You have opened up the WIP menu!&quot;, 10, 10, 0xffffff00)<br/>&#160; end<br/>end<br/>pu = PopUp.new<br/>w = GameWindow.new(pu)<br/>w.show</code><br/><br/>Thats the PopUp? bit, and the window bit:<br/><br/><code>class GameWindow &lt; Gosu::Window<br/><br/>&#160; def initialize(popup)<br/>&#160; &#160; @pu = popup super(640, 480, false)<br/>&#160; &#160; self.caption = &quot;Gosu Tutorial Game&quot;<br/>&#160; &#160; @background_image = Gosu::Image.new(self, &quot;/Users/kidz/Desktop/dynamite.png&quot;, true)<br/>&#160; &#160; @player = Player.new(self)<br/>&#160; &#160; @player.warp(320, 240)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; if button_down? Gosu::Button::KbLeft then<br/>&#160; &#160; &#160; @player.turn_left<br/>&#160; &#160; end<br/>&#160; &#160; if button_down? Gosu::Button::KbRight then<br/>&#160; &#160; &#160; @player.turn_right<br/>&#160; &#160; end<br/>&#160; &#160; if button_down? Gosu::Button::KbUp then<br/>&#160; &#160; &#160; @player.accelerate<br/>&#160; &#160; end<br/>&#160; &#160; if button_down? Gosu::Button::KbDown then<br/>&#160; &#160; &#160; @player.reversebackup<br/>&#160; &#160; end<br/>&#160; &#160; if button_down? Gosu::Button::KbSpace then<br/>&#160; &#160; &#160; @pu.show<br/>&#160; &#160; end<br/>&#160; &#160; @player.move<br/>&#160; end<br/>&#160; def draw<br/>&#160; &#160; @player.draw<br/>&#160; &#160; @background_image.draw(0, 0, 0)<br/>&#160; end<br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::Button::KbEscape<br/>&#160; &#160; &#160; close<br/>&#160; &#160; end<br/>&#160; end<br/>end</code><br/>The problem is this: I hit space in the program to open the popup, and the entire thing just closes down... any ideas? Also, can I get a little example on how to use &#39;visible&#39;?<br/><br/><b>Comment by tmcdowell, Apr 30, 2008</b><br/>Hrm, in the popup class I changed it to KbReturn to close it, and now when I hit space it freezes up, and there is a weird, crazy screwed up window BEHIND the main, but I still can close it via the close button in top left corner of the window, then the main window starts working for about a second, and then closes. I am on an iMac 10.4<br/><br/><b>Comment by julianraschke, Apr 30, 2008<br/></b><br/>tmcdowell: The disappointing bottom line is that you shouldn&#39;t use more than one window at a time. I&#39;ll add that as a note to the RubyReference to make this more clear because it often seems to cause confusion. I will try to improve on this in Gosu 0.8.x, i.e. either throw an explanative error the moment a second Window is created, or extend Window so multiple windows actually make sense. With the current interface, you couldn&#39;t place the popup or make it always in front of the main one.<br/><br/><b>Comment by tmcdowell, Jun 09, 2008</b><br/>Has their been any update to the ability to create multiple windows?<br/><br/><b>Comment by julianraschke, Jun 10, 2008</b><br/>No; actually, at the moment it seems that it will rather be explicitly forbidden because a) there&#39;s a LOT that is missing for multiple windows to make sense in any use case (I think), and b) with only one window, all the window arguments could be omitted from the constructors.<br/><br/>But since nothing of that has been made into code yet, what are you trying to build? :)<br/><br/><b>Comment by rabbitblue, Jun 21, 2008</b><br/>@tmcdowell<br/><br/>For the record, I agree with Julian&#39;s stance on not having multiple windows. Name one modern game that uses multiple windows. I&#39;m talking about real OS-level windows, not faux/graphical windows.<br/><br/>I think the only game I&#39;ve ever played that had multiple windows was called Dungeons of Mordor. Screenshot available here about 1/3 way down:<br/><br/><a class='url' href='http://www.vintagecomputing.com/index.php/archives/180'>http://www.vintagecomputing.com/index.php/archives/180</a><br/><br/>I&#39;ve forgotten the terminology but those are child windows to a parent. That feels like a feature of Windows specifically because I&#39;ve never seen a Cocoa app that does that.<br/><br/>Anywho, what you probably need are states. I have a simple state machine you can use over at github:<br/><br/><a class='url' href='http://github.com/angryrabbit/retris/tree/master'>http://github.com/angryrabbit/retris/tree/master</a><br/><br/>HTH.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=55.html#tid55'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=55.html#tid55'>Gosu Exchange</a> / Support for multiple windows [from wiki]
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=55.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

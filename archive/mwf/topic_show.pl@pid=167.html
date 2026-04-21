@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 167 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>[Resolved] - [BUG] Bus Error</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d167' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=41#tid41'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=41#tid41'>Gosu Exchange</a> / [Resolved] - [BUG] Bus Error
+</div>
+</div>
+
+<div class='frm pst' id='pid97' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=97.html#pid97'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2008-12-07 17:44
+<span class='htt'>Edited</span> 2008-12-07 17:53
+</div>
+<div class='ccl'>
+What causes it?<br/><br/>I&#39;m using ruby this has cropped up a few times, I have a feeling its when when I&#39;ve given to much for gosu todo, and perhaps the update and draw methods have conflicted.<br/><br/>This is happened with two programs now, I cant really see what&#39;s causing it. <br/><br/>this is a snippet of what where the error is happening<br/><br/>[code]<br/>&#160; &#160; def draw<br/>&#160; &#160; &#160; @shape.length.times do |p|<br/> error line --&gt; @window.draw_line(@shape[p][:x], @shape[p][:y], Gosu::red, @shape[p - 1][:x], @shape[p - 1][:y], Gosu::red)<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>[/code]<br/><br/>nothing seems out the ordinary, the @shape array will get reset in the next update method call, is there any chance that Gosu is going to do update before draw was finished.<br/><br/>PS: Gosu running on Mac Leopard, ruby 1.8.6<br/><br/>EDIT: The crash always happens at the same point of the program, but not necessarily at the same time, it can go on for some time before it crashes, or happen quickly
+</div>
+</div>
+
+<div class='frm pst' id='pid100' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=100#pid100'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2008-12-08 05:29
+</div>
+<div class='ccl'>
+No, Gosu does not do anything in parallel there. Are you using Chipmunk or any other extensions?
+</div>
+</div>
+
+<div class='frm pst' id='pid102' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=102.html#pid102'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2008-12-08 08:36
+</div>
+<div class='ccl'>
+no, just straight up ruby, gosu(via gems)<br/><br/>In this instance I&#39;ve been creating a circle and expand the radius. If i make a circle from 360 straight lines I get this error at some point, if I just make it with 40 lines, I don&#39;t.<br/><br/>I realise that making a circle from 360 lines isn&#39;t really a good thing to do, but it was just for testing a shapes class and also how many lines I could draw/update before I saw a performance drop
+</div>
+</div>
+
+<div class='frm pst' id='pid103' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=103.html#pid103'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2008-12-08 09:12
+</div>
+<div class='ccl'>
+lol, ok its getting werid.<br/><br/>I&#39;ve had this program drawing a circle thats ever expanding, (riveting I know), to try and see how far the circle was expanding I decided to add &quot;puts self.radius&quot; for whatever reason I put the call just before the line that crashes the program, and that seems to fix the problem. remove it and it crashes again. Strange how a puts. not any puts will do ;) I did have a puts @vector.inspect there before<br/><br/>for whatever reason its now occurring with the smaller quality circles now as well. (again unless the puts self.radius is preset)
+</div>
+</div>
+
+<div class='frm pst' id='pid104' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=104.html#pid104'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2008-12-08 10:01
+</div>
+<div class='ccl'>
+Out of curiosity, what is self in this context? An object you created entirely yourself, or something derived from Gosu?<br/><br/>Perhaps more importantly, what is the text of the radius method? Or is it just an attr_* method (in which case, do you get the same result with <code>puts @radius</code>)?
+</div>
+</div>
+
+<div class='frm pst' id='pid105' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=105.html#pid105'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2008-12-08 11:03
+</div>
+<div class='ccl'>
+its is an attr_ . yeah I know I can use @radius, a habbit I picked up&#160; from rails, not sure why tho. I&#39;m sure there is some reason tho :)<br/><br/>radius, is part of the shape class. simply defining the obvious valvue of a circle
+</div>
+</div>
+
+<div class='frm pst' id='pid106' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=106#pid106'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2008-12-08 17:58
+</div>
+<div class='ccl'>
+So, if you put in <code>puts @radius</code> rather than <code>puts self.radius</code>, does it still prevent the crash? That&#39;s what I meant to ask.
+</div>
+</div>
+
+<div class='frm pst' id='pid107' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=107.html#pid107'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2008-12-09 08:40
+</div>
+<div class='ccl'>
+no difference. I left the prog running, for some time. it does&#39;nt seem to prevent, but does delay it. this is altogether strange. perhaps its something unique to my computer
+</div>
+</div>
+
+<div class='frm pst' id='pid140' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=140#pid140'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-01-01 22:12
+</div>
+<div class='ccl'>
+Sorry to bump, but anybody got any ideas what might cause this error?
+</div>
+</div>
+
+<div class='frm pst' id='pid145' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=145.html#pid145'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-01-02 00:22
+</div>
+<div class='ccl'>
+If you can provide the source code for when this is happening, I could try running it for a while since I am on the same operating system (assuming you didn&#39;t install a newer version of 1.8.6 using MacPorts or such). Being able to reproduce it would help lots with debugging :)
+</div>
+</div>
+
+<div class='frm pst' id='pid156' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=156#pid156'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-01-02 17:13
+</div>
+<div class='ccl'>
+I dont think i&#39;ve updated ruby via macports.<br/><br/><a class='url' href='http://source.cooperking.net/circles.rb'>http://source.cooperking.net/circles.rb</a><br/><br/>please dont laugh at my code ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid167' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=167.html#pid167'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2009-01-04 13:04
+</div>
+<div class='ccl'>
+I think I&#39;ve found the reason for it. I ran into again, while playing around with chipmunk, I was basically copying the falling blocks gosu/chipmunk example when it happened. so I had a reference to see what was different in mine compared to Leonardo Boiko&#39;s version, which wasn&#39;t crashing on my machine.<br/><br/>I was being lazy and referencing the colour from the gosu module directly into the draw methods<br/><br/>@window.draw_line(@vector[p][:x] + self.x, @vector[p][:y] + self.y, Gosu::red, @vector[p - 1][:x] + self.x, @vector[p - 1][:y] + self.y, Gosu::red, 1)<br/><br/>but when I move that into an instance var<br/>@colour = Gosu::red # in def initialize<br/><br/>@window.draw_line(@vector[p][:x] + self.x, @vector[p][:y] + self.y, @colour, @vector[p - 1][:x] + self.x, @vector[p - 1][:y] + self.y, @colour, 1)<br/><br/>the problem disappears, and the app does not :)
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=41#tid41'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=41#tid41'>Gosu Exchange</a> / [Resolved] - [BUG] Bus Error
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=167.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

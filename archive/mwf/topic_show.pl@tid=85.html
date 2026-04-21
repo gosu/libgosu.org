@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Cptn. Ruby MAP EDITOR</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=85.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=85.html#tid85'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=85.html#tid85'>Gosu Showcase</a> / Cptn. Ruby MAP EDITOR
+</div>
+</div>
+
+<div class='frm pst' id='pid322' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=322.html#pid322'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-02-16 21:10
+</div>
+<div class='ccl'>
+<b>What?</b><br/>&#160; &#160; &#160; &#160; &#160;&#160; A map editor for Cptn. Ruby.<br/><br/><b>Why?</b><br/>&#160; &#160; &#160; &#160; &#160; Because.<br/><br/><b>No, seriously, why?</b><br/>&#160; &#160; &#160; &#160; &#160; Because I needed to have a starting project.<br/><br/><b>Current version?</b><br/>&#160; &#160; &#160; &#160; &#160; Version 1.0<br/><br/><b>Screenshots?</b><br/>Sure: <br/><img class='emi' src='http://i45.photobucket.com/albums/f62/deathstar_nl/screenshot.png' alt=''/><br/><br/><b>Should we credit you if we use this?</b><br/>Yeah! It&#39;s not much, but I&#39;ve made this script; and no-one should get credit where it&#39;s not due..<br/>So, just credit me, AmIMeYet, if you use this..<br/><br/><b>Requirements?</b><br/>Ruby<br/>Gosu<br/>The Cptn. Ruby example (comes with gosu, in the &#39;example&#39; directory)<br/><br/><b>How do I install it?</b><br/>Put the script inside the folder you&#39;ve got the Cptn. Ruby example in, and run it.<br/><br/><b>How do I use it?</b><br/>Use buttons 1-4 to select the Earth, Grass, Gem and Erase tiles.<br/>The current selection will be placed in the title bar, along with the tile currently hovering over.<br/>Click with the left mouse button to apply the currently selected tile to the map.<br/>Press S to save, and overwrite the default map file (so back that one up!)<br/><br/><b>Any bugs?</b><br/>If you launch the editor, and then go do something else on your computer, it crashes.. so always SAVE.<br/><br/><b>And the code?</b><br/>Here you go:<br/><a class='url' href='http://amimeyet.890m.com/misc/editor.txt'>http://amimeyet.890m.com/misc/editor.txt</a><br/><br/>Or if that&#39;s down:<br/><code>=begin<br/>&#160; An editor for the oh so popular game &#39;Cptn. Ruby&#39;!<br/>&#160; Made by AmIMeYet<br/>&#160; Version 1.0<br/>&#160; Buttons:<br/>&#160; &#160; Left Mouse Button: Add Tile<br/>&#160; &#160; 1: Select Earth (#)<br/>&#160; &#160; 2: Select Grass (&quot;)<br/>&#160; &#160; 3: Select Gem&#160;&#160; (x)<br/>&#160; &#160; 4: Erase<br/>&#160; &#160; S: Save map (overwrite) <br/>=end<br/>#media/Editor Tileset.png -&gt; CptnRuby Tileset.png<br/># -&gt; CptnRuby.png<br/># Editor Gem -&gt; CptnRuby Gem.png<br/><br/>begin<br/>&#160; # In case you use Gosu via rubygems.<br/>&#160; require &#39;rubygems&#39;<br/>rescue LoadError<br/>&#160; # In case you don&#39;t.<br/>end<br/><br/>require &#39;gosu&#39;<br/>include Gosu<br/><br/># Module tiles defines the types of tile<br/>module Tiles<br/>&#160; Grass = 0<br/>&#160; Earth = 1<br/>end<br/><br/># CollectibleGem is a class to show gems<br/>class CollectibleGem<br/>&#160; attr_reader :x, :y<br/><br/>&#160; def initialize(image, x, y)<br/>&#160; &#160; @image = image<br/>&#160; &#160; @x, @y = x, y<br/>&#160; end<br/>&#160; <br/>&#160; def draw(screen_x, screen_y)<br/>&#160; &#160; @image.draw(@x - screen_x - 5, @y - screen_y -5, 0, 0.5, 0.5)<br/>&#160; &#160; #-5 == offset#<br/>&#160; end<br/>end<br/><br/># MousePointer class adds a nice little cursor to the window<br/>class MousePointer<br/>&#160; attr_reader :x, :y<br/><br/>&#160; def initialize(window, image)<br/>&#160; &#160; @image = Image.new(window, image, false)<br/>&#160; &#160; @x = window.mouse_x<br/>&#160; &#160; @y = window.mouse_y<br/>&#160; end<br/><br/>&#160; def draw(window)<br/>&#160; &#160; @image.draw($edwin.mouse_x, $edwin.mouse_y, 0)<br/>&#160; end<br/><br/>end<br/><br/># Map class holds and draws tiles and gems.<br/>class Map<br/>&#160; attr_reader :width, :height, :gems, :tiles<br/>&#160; <br/>&#160; def initialize(window, filename)<br/>&#160; &#160; # Load 60x60 tiles, 5px overlap in all four directions.<br/>&#160; &#160; @tileset = Image.load_tiles(window, &quot;media/CptnRuby Tileset.png&quot;, 60, 60, true)<br/>&#160; &#160; @sky = Image.new(window, &quot;media/Space.png&quot;, true)<br/><br/>&#160; &#160; gem_img = Image.new(window, &quot;media/CptnRuby Gem.png&quot;, false)<br/>&#160; &#160; @gems = []<br/><br/>&#160; &#160; $lines = File.readlines(filename).map { |line| line.chop }<br/>&#160; &#160; @height = $lines.size<br/>&#160; &#160; @width = $lines[0].size<br/>&#160; &#160; <br/>&#160; &#160; @tiles = Array.new(@width) do |x|<br/>&#160; &#160; &#160; Array.new(@height) do |y|<br/>&#160; &#160; &#160; &#160; case $lines[y][x, 1]<br/>&#160; &#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Grass<br/>&#160; &#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Earth<br/>&#160; &#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; &#160; @gems.push(CollectibleGem.new(gem_img, x * 20 + 5, y * 20 + 5)) # 5 &gt; 25<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def reload<br/>&#160; &#160; @height = $lines.size<br/>&#160; &#160; @width = $lines[0].size<br/>&#160; &#160; gem_img = Image.new($edwin, &quot;media/CptnRuby Gem.png&quot;, false)<br/>&#160; &#160; @gems = []<br/>&#160; &#160; <br/>&#160; &#160; @tiles = Array.new(@width) do |x|<br/>&#160; &#160; &#160; Array.new(@height) do |y|<br/>&#160; &#160; &#160; &#160; case $lines[y][x, 1]<br/>&#160; &#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Grass<br/>&#160; &#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Earth<br/>&#160; &#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; &#160; @gems.push(CollectibleGem.new(gem_img, x * 20 + 5, y * 20 + 5)) # 5 &gt; 25<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def draw(screen_x, screen_y)<br/>&#160; &#160; # Sigh, stars!<br/>&#160; &#160; @sky.draw(0, 0, 0)<br/>&#160; &#160; # Very primitive drawing function:<br/>&#160; &#160; # Draws all the tiles, some off-screen, some on-screen.<br/>&#160; &#160; @height.times do |y|<br/>&#160; &#160; &#160; @width.times do |x|<br/>&#160; &#160; &#160; &#160; tile = @tiles[x][y]<br/>&#160; &#160; &#160; &#160; if tile<br/>&#160; &#160; &#160; &#160; &#160; # Draw the tile with an offset (tile images have some overlap)<br/>&#160; &#160; &#160; &#160; &#160; # Scrolling is implemented here just as in the game objects.<br/>&#160; &#160; &#160; &#160; &#160; @tileset[tile].draw(x * 20 - screen_x - 5, y * 20 - screen_y - 5, 0, 0.5, 0.5)<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @gems.each { |c| c.draw(screen_x, screen_y) }<br/>&#160; end<br/>&#160; <br/>&#160; # Solid at a given pixel position?<br/>&#160; def solid?(x, y)<br/>&#160; &#160; y &lt; 0 || @tiles[x / 20][y / 20]<br/>&#160; end<br/>end<br/><br/># Ted class handles editing functions<br/>class Ted<br/>&#160; attr_reader :type<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; @type = &quot;#&quot;<br/>&#160; end<br/>&#160; <br/>&#160; def save<br/>&#160; &#160;&#160; file = File.new(&quot;media/CptnRuby Map.txt&quot;, &quot;w+&quot;)<br/>&#160; &#160;&#160; file.puts($lines)<br/>&#160; &#160;&#160; file.close<br/>&#160; end<br/>&#160; <br/>&#160; def load<br/>&#160; &#160; &#160; $edwin.map.reload<br/>&#160; end<br/>&#160; &#160; <br/>&#160; def set_type(btn)<br/>&#160; &#160; &#160; case btn<br/>&#160; &#160; &#160;&#160; when &quot;1&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;#&quot;<br/>&#160; &#160; &#160;&#160; when &quot;2&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;\&quot;&quot;<br/>&#160; &#160; &#160;&#160; when &quot;3&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;x&quot;<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; @type = &quot;.&quot;<br/>&#160; &#160;&#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def clicked(sx, sy)<br/>&#160; &#160; mx = $edwin.mouse_x<br/>&#160; &#160; my = $edwin.mouse_y<br/>&#160; &#160; ry = ((sy + my) / 20).floor<br/>&#160; &#160; rx = ((sx + mx) / 20).floor&#160; &#160;&#160; <br/>&#160; &#160; $lines[ry][rx] = @type<br/>&#160; &#160; load<br/>&#160; end<br/>&#160; <br/>end<br/><br/># The Game class is the main window<br/>class Game &lt; Window<br/>&#160; attr_reader :map<br/>&#160; attr_reader :mouse<br/>&#160; <br/>&#160; WIDTH = 640<br/>&#160; HEIGHT = 480<br/><br/>&#160; def initialize&#160; &#160; <br/>&#160; &#160; super(WIDTH , HEIGHT, false)<br/>&#160; &#160; self.caption = &quot;Cptn. Ruby&quot;<br/>&#160; &#160; @map = Map.new(self, &quot;media/CptnRuby Map.txt&quot;)<br/>&#160; &#160; @mouse = MousePointer.new(self, &quot;media/cursor.png&quot;)<br/>&#160; &#160; @ted = Ted.new<br/>&#160; &#160; # Scrolling is stored as the position of the top left corner of the screen.<br/>&#160; &#160; @screen_x = @screen_y = 0<br/>&#160; &#160; @font = Gosu::Font.new(self, Gosu::default_font_name, 20)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; move_x = 0<br/>&#160; &#160; move_x -= 5 if atedge?(&quot;left&quot;)<br/>&#160; &#160; move_x += 5 if atedge?(&quot;right&quot;)<br/>&#160; &#160; move_y = 0<br/>&#160; &#160; move_y -= 5 if atedge?(&quot;up&quot;)<br/>&#160; &#160; move_y += 5 if atedge?(&quot;down&quot;)<br/>&#160; &#160; <br/>&#160; &#160; tempscreen_x = @screen_x + move_x<br/>&#160; &#160; tempscreen_y = @screen_y + move_y<br/>&#160; &#160; if tempscreen_x &lt;= 0<br/>&#160; &#160; &#160; tempscreen_x = 0<br/>&#160; &#160; elsif tempscreen_x &gt;= @map.width * 20 - WIDTH<br/>&#160; &#160;&#160; tempscreen_x = @map.width * 20 - WIDTH<br/>&#160; &#160; end<br/>&#160; &#160; if tempscreen_y &lt;= 0<br/>&#160; &#160; &#160; tempscreen_y = 0<br/>&#160; &#160; elsif tempscreen_y &gt;= @map.height * 20 - HEIGHT<br/>&#160; &#160;&#160; tempscreen_y = @map.height * 20 - HEIGHT<br/>&#160; &#160; end<br/>&#160; &#160; @screen_x = tempscreen_x<br/>&#160; &#160; @screen_y = tempscreen_y<br/>&#160; &#160; <br/>&#160; &#160; cx = ((@screen_x + mouse_x) / 20).floor<br/>&#160; &#160; cy = ((@screen_y+ mouse_y) / 20).floor<br/>&#160; &#160; case @ted.type<br/>&#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Earth&quot;<br/>&#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Grass&quot;<br/>&#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Diamond&quot;<br/>&#160; &#160; &#160; when &#39;.&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Erase&quot;<br/>&#160; &#160; &#160; end<br/>&#160; &#160; self.caption = &quot;Capt. Ruby - Editor (#{cx}; #{cy}; #{ct})&quot;<br/>&#160; end<br/>&#160; def draw<br/>&#160; &#160; @map.draw @screen_x, @screen_y<br/>&#160; &#160; @mouse.draw self<br/>&#160; &#160; @font.draw(@message, 10, 10, 999, 1.0, 1.0, 0xffffff00)<br/>&#160; end<br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Button::KbEscape then close end<br/>&#160; &#160; if id == Button::Kb1 then @ted.set_type(&quot;1&quot;) end<br/>&#160; &#160; if id == Button::Kb2 then @ted.set_type(&quot;2&quot;) end<br/>&#160; &#160; if id == Button::Kb3 then @ted.set_type(&quot;3&quot;) end<br/>&#160; &#160; if id == Button::Kb4 then @ted.set_type(&quot;4&quot;) end<br/>&#160; &#160; if id == Button::MsLeft then @ted.clicked(@screen_x, @screen_y) end<br/>&#160; &#160; if id == Button::KbS then @ted.save end<br/>&#160; end<br/>&#160; def atedge?(dir)<br/>&#160; &#160; val = false<br/>&#160; &#160; case dir<br/>&#160; &#160; &#160; when &quot;left&quot;<br/>&#160; &#160; &#160; &#160; if mouse_x.between?(0, 20)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; when &quot;right&quot;<br/>&#160; &#160; &#160; &#160; if mouse_x.between?(620, 6405)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; when &quot;up&quot;<br/>&#160; &#160; &#160; &#160; if mouse_y.between?(0, 20)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; when &quot;down&quot;<br/>&#160; &#160; &#160; &#160; if mouse_y.between?(460, 480)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; return val<br/>&#160; end<br/>end<br/><br/># Set window as new window and show it (edwin == Editor Window)<br/>$edwin = Game.new<br/>$edwin.show</code>
+</div>
+<div class='ccl pat'>
+<a href='attach_show.pl@aid=400.html'><img class='amt' src='../../mwf/attachments/22/322/screenshot.thb.jpg' title='screenshot.png (114k)' alt=''/></a>
+</div>
+</div>
+
+<div class='frm pst' id='pid346' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=346.html#pid346'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-02-26 14:32
+</div>
+<div class='ccl'>
+nice work :) and a cool first project
+</div>
+</div>
+
+<div class='frm pst' id='pid349' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=349.html#pid349'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-02-26 19:49
+</div>
+<div class='ccl'>
+Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid560' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=560.html#pid560'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-14 14:14
+</div>
+<div class='ccl'>
+Hey AmiMeYet<br/><br/>Great work with the map editor for Cptn Ruby<br/><br/>though when I ran it the sprites(gems) where not placed where they should have been<br/>they where a bit lower than where they should have been (compared to where they are when you play Cptn Ruby)<br/><br/>so I edited the source code and now it works fine(for me at lease)<br/><br/>please try out the changes Ive made and see what you think<br/><br/>I plan to use the new version of your map editor for my game Arthur&#39;s Adventures,hope you don&#39;t mind,I will give you full credit of course <br/><br/>Here is the source code for the new version I made<br/><br/>=begin<br/> Originaly an Level Editor for the oh so popular game &#39;Cptn. Ruby&#39;!<br/>&#160; Made by AmIMeYet<br/>&#160; Modifyed by Shinobi Chef<br/>&#160; Now the Level Editor for Arthur&#39;s Adventure <br/>&#160; Version 1.1<br/>&#160; Buttons:<br/>&#160; &#160; Left Mouse Button: Add Tile<br/>&#160; &#160; 1: Select Earth (#)<br/>&#160; &#160; 2: Select Grass (&quot;)<br/>&#160; &#160; 3: Select Gold&#160;&#160; (x)<br/>&#160; &#160; 4: Erase<br/>&#160; &#160; 5: Select Blue Shield (s)<br/>&#160; &#160; S: Save map (overwrite)<br/>=end<br/>#media/Editor Tileset.png -&gt; CptnRuby Tileset.png<br/># -&gt; CptnRuby.png<br/># Editor Gold -&gt; CptnRuby Gold.png<br/><br/>begin<br/>&#160; # In case you use Gosu via rubygolds.<br/>&#160; require &#39;rubygolds&#39;<br/>rescue LoadError<br/>&#160; # In case you don&#39;t.<br/>end<br/><br/>require &#39;gosu&#39;<br/>include Gosu<br/><br/># Module tiles defines the types of tile<br/>module Tiles<br/>&#160; Grass = 0<br/>&#160; Earth = 1<br/>end<br/><br/># CollectibleGold is a class to show golds<br/>class CollectibleGold<br/>&#160; attr_reader :x, :y<br/><br/>&#160; def initialize(image, x, y)<br/>&#160; &#160; @image = image<br/>&#160; &#160; @x, @y = x, y<br/>&#160; end<br/>&#160; <br/>&#160; def draw(screen_x, screen_y)<br/>&#160; &#160; @image.draw(@x - screen_x - 5, @y - screen_y -5, 0, 0.5, 0.5)<br/>&#160; &#160; #-5 == offset#<br/>&#160; end<br/>end<br/><br/>class CollectibleBlueshield<br/>&#160; attr_reader :x, :y<br/><br/>&#160; def initialize(image, x, y)<br/>&#160; &#160; @image = image<br/>&#160; &#160; @x, @y = x, y<br/>&#160; end<br/>&#160; <br/>&#160; def draw(screen_x, screen_y)<br/>&#160; &#160; @image.draw(@x - screen_x - 5, @y - screen_y -5, 0, 0.5, 0.5)<br/>&#160; &#160; #-5 == offset#<br/>&#160; end<br/>end<br/><br/># MousePointer class adds a nice little cursor to the window<br/>class MousePointer<br/>&#160; attr_reader :x, :y<br/><br/>&#160; def initialize(window, image)<br/>&#160; &#160; @image = Image.new(window, image, false)<br/>&#160; &#160; @x = window.mouse_x<br/>&#160; &#160; @y = window.mouse_y<br/>&#160; end<br/><br/>&#160; def draw(window)<br/>&#160; &#160; @image.draw($edwin.mouse_x, $edwin.mouse_y, 0)<br/>&#160; end<br/><br/>end<br/><br/># Map class holds and draws tiles and golds.<br/>class Map<br/>&#160; attr_reader :width, :height, :golds, :tiles, :blueshields<br/>&#160; <br/>&#160; def initialize(window, filename)<br/>&#160; &#160; # Load 60x60 tiles, 5px overlap in all four directions.<br/>&#160; &#160; @tileset = Image.load_tiles(window, &quot;media/CptnRuby Tileset.png&quot;, 60, 60, true)<br/>&#160; &#160; @sky = Image.new(window, &quot;media/skybackground.png&quot;, true)<br/><br/>&#160; &#160; gold_img = Image.new(window, &quot;media/gold.png&quot;, false)<br/>&#160; &#160; @golds = []<br/><br/>&#160; &#160;&#160; blueshield_img = Image.new(window, &quot;media/blueshield.png&quot;, false)<br/>&#160; &#160; @blueshields = []<br/><br/>&#160; &#160; $lines = File.readlines(filename).map { |line| line.chop }<br/>&#160; &#160; @height = $lines.size<br/>&#160; &#160; @width = $lines[0].size<br/>&#160; &#160; <br/>&#160; &#160; @tiles = Array.new(@width) do |x|<br/>&#160; &#160; &#160; Array.new(@height) do |y|<br/>&#160; &#160; &#160; &#160; case $lines[y][x, 1]<br/>&#160; &#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Grass<br/>&#160; &#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Earth<br/>&#160; &#160; &#160; &#160; when &#39;s&#39;<br/>&#160; &#160; &#160; &#160; &#160; @blueshields.push(CollectibleBlueshield.new(blueshield_img, x * 25 + 2, y * 25 + 2))<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; &#160; @golds.push(CollectibleGold.new(gold_img, x * 25 + 2 , y * 25 + 2)) # 5 &gt; 25<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def reload<br/>&#160; &#160; @height = $lines.size<br/>&#160; &#160; @width = $lines[0].size<br/>&#160; &#160; gold_img = Image.new($edwin, &quot;media/gold.png&quot;, false)<br/>&#160; &#160; @golds = []<br/>&#160; &#160; <br/>&#160; &#160; blueshield_img = Image.new($edwin, &quot;media/blueshield.png&quot;, false)<br/>&#160; &#160; @blueshields = []<br/>&#160; &#160; <br/>&#160; &#160; @tiles = Array.new(@width) do |x|<br/>&#160; &#160; &#160; Array.new(@height) do |y|<br/>&#160; &#160; &#160; &#160; case $lines[y][x, 1]<br/>&#160; &#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Grass<br/>&#160; &#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; &#160; Tiles::Earth<br/>&#160; &#160; &#160; &#160; &#160; when &#39;s&#39;<br/>&#160; &#160; &#160; &#160; &#160; @blueshields.push(CollectibleBlueshield.new(blueshield_img, x * 25 + 2, y * 25 + 2))<br/>&#160; &#160; &#160; &#160; &#160; nil&#160; &#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; &#160; @golds.push(CollectibleGold.new(gold_img, x * 25 + 2, y * 25+ 2)) # 5 &gt; 25<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; &#160; nil<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def draw(screen_x, screen_y)<br/>&#160; &#160; # Sigh, stars!<br/>&#160; &#160; @sky.draw(0, 0, 0)<br/>&#160; &#160; # Very primitive drawing function:<br/>&#160; &#160; # Draws all the tiles, some off-screen, some on-screen.<br/>&#160; &#160; @height.times do |y|<br/>&#160; &#160; &#160; @width.times do |x|<br/>&#160; &#160; &#160; &#160; tile = @tiles[x][y]<br/>&#160; &#160; &#160; &#160; if tile<br/>&#160; &#160; &#160; &#160; &#160; # Draw the tile with an offset (tile images have some overlap)<br/>&#160; &#160; &#160; &#160; &#160; # Scrolling is implemented here just as in the game objects.<br/>&#160; &#160; &#160; &#160; &#160; @tileset[tile].draw(x * 25 - screen_x - 5, y * 25 - screen_y - 5, 0, 0.5, 0.5)<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @golds.each { |c| c.draw(screen_x, screen_y) }<br/>&#160; &#160; @blueshields.each { |c| c.draw(screen_x, screen_y) }<br/>&#160; end<br/>&#160; <br/>&#160; # Solid at a given pixel position?<br/>&#160; def solid?(x, y)<br/>&#160; &#160; y &lt; 0 || @tiles[x / 25][y / 25]<br/>&#160; end<br/>end<br/><br/># Ted class handles editing functions<br/>class Ted<br/>&#160; attr_reader :type<br/>&#160; <br/>&#160; def initialize<br/>&#160; &#160; @type = &quot;#&quot;<br/>&#160; end<br/>&#160; <br/>&#160; def save<br/>&#160; &#160;&#160; file = File.new(&quot;maps/level1.txt&quot;, &quot;w+&quot;)<br/>&#160; &#160;&#160; file.puts($lines)<br/>&#160; &#160;&#160; file.close<br/>&#160; end<br/>&#160; <br/>&#160; def load<br/>&#160; &#160; &#160; $edwin.map.reload<br/>&#160; end<br/>&#160; &#160; <br/>&#160; def set_type(btn)<br/>&#160; &#160; &#160; case btn<br/>&#160; &#160; &#160;&#160; when &quot;1&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;#&quot;<br/>&#160; &#160; &#160;&#160; when &quot;2&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;\&quot;&quot;<br/>&#160; &#160; &#160; &#160; when &quot;5&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;s&quot;<br/>&#160; &#160; &#160;&#160; when &quot;3&quot;<br/>&#160; &#160; &#160; &#160; @type = &quot;x&quot;<br/>&#160; &#160; &#160; else<br/>&#160; &#160; &#160; &#160; @type = &quot;.&quot;<br/>&#160; &#160;&#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def clicked(sx, sy)<br/>&#160; &#160; mx = $edwin.mouse_x<br/>&#160; &#160; my = $edwin.mouse_y<br/>&#160; &#160; ry = ((sy + my) / 25).floor<br/>&#160; &#160; rx = ((sx + mx) / 25).floor&#160; &#160;&#160; <br/>&#160; &#160; $lines[ry][rx] = @type<br/>&#160; &#160; load<br/>&#160; end<br/>&#160; <br/>end<br/><br/># The Game class is the main window<br/>class Game &lt; Window<br/>&#160; attr_reader :map<br/>&#160; attr_reader :mouse<br/>&#160; <br/>&#160; WIDTH = 640<br/>&#160; HEIGHT = 480<br/><br/>&#160; def initialize&#160; &#160; <br/>&#160; &#160; super(WIDTH , HEIGHT, false)<br/>&#160; &#160; self.caption = &quot;Arthur&#39;s Adventures - Level Editor&quot;<br/>&#160; &#160; @map = Map.new(self, &quot;maps/level1.txt&quot;)<br/>&#160; &#160; @mouse = MousePointer.new(self, &quot;media/cursor.png&quot;)<br/>&#160; &#160; @ted = Ted.new<br/>&#160; &#160; # Scrolling is stored as the position of the top left corner of the screen.<br/>&#160; &#160; @screen_x = @screen_y = 0<br/>&#160; &#160; @font = Gosu::Font.new(self, Gosu::default_font_name, 25)<br/>&#160; end<br/>&#160; def update<br/>&#160; &#160; move_x = 0<br/>&#160; &#160; move_x -= 5 if atedge?(&quot;left&quot;)<br/>&#160; &#160; move_x += 5 if atedge?(&quot;right&quot;)<br/>&#160; &#160; move_y = 0<br/>&#160; &#160; move_y -= 5 if atedge?(&quot;up&quot;)<br/>&#160; &#160; move_y += 5 if atedge?(&quot;down&quot;)<br/>&#160; &#160; <br/>&#160; &#160; tempscreen_x = @screen_x + move_x<br/>&#160; &#160; tempscreen_y = @screen_y + move_y<br/>&#160; &#160; if tempscreen_x &lt;= 0<br/>&#160; &#160; &#160; tempscreen_x = 0<br/>&#160; &#160; elsif tempscreen_x &gt;= @map.width * 25 - WIDTH<br/>&#160; &#160;&#160; tempscreen_x = @map.width * 25 - WIDTH<br/>&#160; &#160; end<br/>&#160; &#160; if tempscreen_y &lt;= 0<br/>&#160; &#160; &#160; tempscreen_y = 0<br/>&#160; &#160; elsif tempscreen_y &gt;= @map.height * 25 - HEIGHT<br/>&#160; &#160;&#160; tempscreen_y = @map.height * 25 - HEIGHT<br/>&#160; &#160; end<br/>&#160; &#160; @screen_x = tempscreen_x<br/>&#160; &#160; @screen_y = tempscreen_y<br/>&#160; &#160; <br/>&#160; &#160; cx = ((@screen_x + mouse_x) / 25).floor<br/>&#160; &#160; cy = ((@screen_y+ mouse_y) / 25).floor<br/>&#160; &#160; case @ted.type<br/>&#160; &#160; &#160; when &#39;#&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Earth&quot;<br/>&#160; &#160; &#160; when &#39;&quot;&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Grass&quot;<br/>&#160; &#160; &#160; when &#39;s&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Blue Shield&quot;<br/>&#160; &#160; &#160; when &#39;x&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Gold&quot;<br/>&#160; &#160; &#160; when &#39;.&#39;<br/>&#160; &#160; &#160; &#160; ct = &quot;Erase&quot;<br/>&#160; &#160; &#160; end<br/>&#160; &#160; self.caption = &quot;Arthur&#39;s Adventures - Level Editor (#{cx}; #{cy}; #{ct})&quot;<br/>&#160; end<br/>&#160; def draw<br/>&#160; &#160; @map.draw @screen_x, @screen_y<br/>&#160; &#160; @mouse.draw self<br/>&#160; &#160; @font.draw(@message, 10, 10, 999, 1.0, 1.0, 0xffffff00)<br/>&#160; end<br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Button::KbEscape then close end<br/>&#160; &#160; if id == Button::Kb1 then @ted.set_type(&quot;1&quot;) end<br/>&#160; &#160; if id == Button::Kb2 then @ted.set_type(&quot;2&quot;) end<br/>&#160; &#160; if id == Button::Kb3 then @ted.set_type(&quot;3&quot;) end<br/>&#160; &#160; if id == Button::Kb4 then @ted.set_type(&quot;4&quot;) end<br/>&#160; &#160; if id == Button::Kb5 then @ted.set_type(&quot;5&quot;) end<br/>&#160; &#160; if id == Button::MsLeft then @ted.clicked(@screen_x, @screen_y) end<br/>&#160; &#160; if id == Button::KbS then @ted.save end<br/>&#160; end<br/>&#160; def atedge?(dir)<br/>&#160; &#160; val = false<br/>&#160; &#160; case dir<br/>&#160; &#160; &#160; when &quot;left&quot;<br/>&#160; &#160; &#160; &#160; if mouse_x.between?(0, 25)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; when &quot;right&quot;<br/>&#160; &#160; &#160; &#160; if mouse_x.between?(620, 6405)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; when &quot;up&quot;<br/>&#160; &#160; &#160; &#160; if mouse_y.between?(0, 25)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; when &quot;down&quot;<br/>&#160; &#160; &#160; &#160; if mouse_y.between?(460, 480)<br/>&#160; &#160; &#160; &#160; val = true<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; &#160; return val<br/>&#160; end<br/>end<br/><br/># Set window as new window and show it (edwin == Editor Window)<br/>$edwin = Game.new<br/>$edwin.show
+</div>
+</div>
+
+<div class='frm pst' id='pid561' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=561.html#pid561'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-14 16:42
+</div>
+<div class='ccl'>
+I&#39;d be honored!<br/><br/>Though, I&#39;m afraid I can&#39;t test your source.. I don&#39;t have blueshield&#39;s and gold. .. ..&#160; Have you posted the right version? (as Gold should be Gems for cpt. Ruby)<br/><br/>Also, I&#39;m working on a game of my own (a small, simple thing to show my teacher I&#39;m already familliar with OO-programming, so I don&#39;t have to use some dumb point-and-click game program), and I&#39;m thinking about making a small editor thingy on the side..<br/>So I&#39;m thinking on improving it too... making it more user-friendly, etc.<br/>Like pressing UI-buttons in the editor, instead of pressing 1,2,3 and 4 on your keyboard.
+</div>
+</div>
+
+<div class='frm pst' id='pid565' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=565.html#pid565'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-15 07:53
+</div>
+<div class='ccl'>
+Hey AmiMeYet<br/><br/>whats your email address ,ill send you the other files u need if you want,like blueshield.png and gold.png<br/><br/>or you can make a copy of original gem file and rename it to blueshield.png same goes for gold.png<br/><br/>as far as gems not being in the source code any more,its because I am using gold now in place of gems so I though it would be best to rename it in the code too<br/><br/>run your map editor(v1.0) look at where the gems are placed that are the position above ground or grass tiles,the gem is partly inside the ground or grass tile,that how it appears for me any way<br/><br/>Talk to you soon<br/>Shinobi Chef
+</div>
+</div>
+
+<div class='frm pst' id='pid566' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=566.html#pid566'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>Date</span> 2009-05-15 08:12
+</div>
+<div class='ccl'>
+Hey AmiMeYet <br/>Your idea of using UI buttons in an improved version of your editor sounds great<br/><br/>Would you like to make a similar version of your editor but for my game &quot;Arthur&#39;s Adventures&quot;?<br/>as they are almost the same except my game will have more tiles and objects that you can place<br/><br/>What is this game you are working on? what type of game is it?<br/><br/>Bye for now<br/>Shinobi Chef
+</div>
+</div>
+
+<div class='frm pst' id='pid567' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=567.html#pid567'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2009-05-15 09:33
+<span class='htt'>Edited</span> 2009-05-15 10:50
+</div>
+<div class='ccl'>
+Merely a small and simple rpg (without the roleplay part :p) thingy..<br/>But all there is is 1 or 2 players, a map built of &#39;#&#39;s and other characters saying stuff.<br/>It&#39;s really low-tech.<br/><br/>Also.. I haven&#39;t even started on the map editor!<br/>I&#39;m a little too busy with the game right now.<br/><br/>Also, about the email.. I hate spam.. so I&#39;ll give you one of my spam-accounts.. (security layer #1).<br/>It&#39;s in the attachment (security layer #2)<br/><br/>Edit: Do you have msn? If so, mail your msn address to me.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=85.html#tid85'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=85.html#tid85'>Gosu Showcase</a> / Cptn. Ruby MAP EDITOR
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=85.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

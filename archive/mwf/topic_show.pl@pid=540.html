@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 540 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>C++ error when running... [ NOW FIXED ]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d540' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=116.html#tid116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=116.html#tid116'>Gosu Exchange</a> / C++ error when running... [ NOW FIXED ]
+</div>
+</div>
+
+<div class='frm pst' id='pid517' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=517.html#pid517'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-08 00:22
+</div>
+<div class='ccl'>
+Hey guys. Gosu is pretty awesome so far. It is really clean.<br/>|Anyway, I followed the step-by-step tutorial on setting up Gosu on Windows and successfully compiled the TextInput.cpp tutorial. No problems.<br/>Then I compiled Tutorial.cpp ( with the rocket and collecting stars ) and it compiles fine. However, it does not run fine. It says that there is a bug in the DLL or the stack over-flowed. <br/><br/>This is strange because TextInput gave me absolutely no problems whatsoever. Can someone help out? Thanks!
+</div>
+</div>
+
+<div class='frm pst' id='pid518' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=518.html#pid518'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-08 01:54
+</div>
+<div class='ccl'>
+Hmm, this is a new bug :)<br/><br/>Can you paste the exact error message? I suspect it has to do with fmod.dll, which the TextInput example doesn&#39;t use, but I&#39;m not sure.
+</div>
+</div>
+
+<div class='frm pst' id='pid522' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=522.html#pid522'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-08 03:14
+</div>
+<div class='ccl'>
+Sorry to have to tell you that bad news. I hate bugs too. ( I don&#39;t think anyone really likes them anyways ).<br/>If I ran the EXE via double-clicking it, a Microsoft error report would be shown with the following:<br/>&quot;A problem occurred with Tutorial.exe. If you were in the middle of something , we&#39;re sorry for the inconvenience&quot; - blah blah blah.<br/><br/>I fixed this problem ( kind of ) my going to the EXE&#39;s Properties and clicking on &quot;Compatibility&quot;-&gt;&quot;Run this program in compatibility for&quot;-&gt;&quot;Windows 95&quot;<br/>Then it worked. However, even after exiting, the program would still be running in the background and you would have to manually kill it.<br/>When I run it via the MSVC++ 2009 Express IDE, an error message would come up. Then it may run the program and the program runs fine after the message.<br/><br/>Here&#39;s the message:<br/><br/>&quot;Windows has triggered a breakpoint in Tutorial.exe.<br/>This may be due to a corruption of the heap, which indicates a bug in Tutorial.exe or any of the DLLs it has loaded.<br/>This may also be due to the user pressing F12 while Tutorial.exe has focus.<br/>The output window may have more diagnostic information.&quot;<br/><br/>And, by the way, F12 was not pressed. :p
+</div>
+</div>
+
+<div class='frm pst' id='pid523' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=523.html#pid523'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-08 09:27
+</div>
+<div class='ccl'>
+Oh, Express 2009 is out? :) I think you are the first one to test Gosu with that. I&#39;ll try to get a hold of it later and see if I can fix Gosu to work with VS Express 2005-2009.
+</div>
+</div>
+
+<div class='frm pst' id='pid524' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=524.html#pid524'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-08 11:53
+</div>
+<div class='ccl'>
+I&#39;m terribly sorry, but I meant MSVC++ 9.0 <b>2008</b> Express Edition. I looked at the &quot;9.0&quot; on it and assumed 2009. It&#39;s 2008. My bad. :p
+</div>
+</div>
+
+<div class='frm pst' id='pid531' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=531.html#pid531'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-09 02:50
+</div>
+<div class='ccl'>
+Does this happen in both Debug and Release configurations, and did you set both to the Multithreaded (not DLL) variants? Does the Call Stack window show any specific function names when the debugger halts the game? If not, you could add breakpoints to see if it dies before main(), in main() before the window is constructed, or during/after Window construction.<br/><br/>I&#39;d ask you to share the project files but I don&#39;t have 08 installed right now. I should see if one can install several editions of MSVC, would be helpful in debugging Gosu from time to time :)
+</div>
+</div>
+
+<div class='frm pst' id='pid532' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=532.html#pid532'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-09 14:59
+</div>
+<div class='ccl'>
+It doesn&#39;t happen at all in Debug. It works perfectly fine even if I&#39;m executing it through the IDE or not. Only Release mode does it apparently.<br/>The Call Stack shows absolutely nothing. And it&#39;s not during the game. The game doesn&#39;t even load and the error pops up.<br/>And the variants are correct. :]
+</div>
+</div>
+
+<div class='frm pst' id='pid533' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=533.html#pid533'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-10 07:45
+</div>
+<div class='ccl'>
+I feel like it has something to do with the containers. When I was starting out with C++ and learning STL vectors and what-not andI didn&#39;t do it properly, it would give me an identical message. I could be wrong.
+</div>
+</div>
+
+<div class='frm pst' id='pid534' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=534.html#pid534'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-10 21:14
+</div>
+<div class='ccl'>
+I&#39;m positive it has something to do with the way the animation is set up. I broke apart the examples and did lots of things and it ran fine. However, when I added the animation in, it gave the exact message that I had from the Tutorial.<br/><br/>I&#39;m not sure how to fix it though. Why would it only say something during the Release and absolutely nothing during the Debug if it has something to do with the containers? Maybe there&#39;s something is missing in the regular Gosu.lib and the not debug? <br/><br/>Whatever it is, I know it has to do with the containers ( boost and stl for the animation )
+</div>
+</div>
+
+<div class='frm pst' id='pid535' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=535.html#pid535'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-11 00:36
+</div>
+<div class='ccl'>
+OK, have you put breakpoints in the Window constructor and stepped through them? If control doesn&#39;t even get there, I think it&#39;s something way more low-level than STL containers and boost (which I found to be very reliable) :)
+</div>
+</div>
+
+<div class='frm pst' id='pid536' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=536.html#pid536'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-11 01:37
+</div>
+<div class='ccl'>
+&quot;int main(int argc, char* argv[])<br/>{<br/>&quot;<br/><br/>It points to the bracket.<br/>This is what the call stack shows:<br/>&quot;&gt;&#160; GOSU_TEST_ONE_FINDTHEBUG.exe!main(int argc=137820628, char * * argv=0x00000000)&#160; Line 185&#160; C++<br/>&quot;<br/><br/>argc results in this:<br/>&quot;&#160; &#160; argc&#160; 137820628&#160; int<br/>&quot;<br/><br/>and argv results in this<br/>&quot;-&#160; &#160; argv&#160; 0x00000000&#160; char * *<br/>&#160; &#160; &#160; CXX0030: Error: expression cannot be evaluated&#160; <br/>&quot;
+</div>
+</div>
+
+<div class='frm pst' id='pid540' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=540.html#pid540'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-11 13:20
+</div>
+<div class='ccl'>
+And if you do a &quot;step over&quot; it already crashes? What happens if you put a harmless line like puts(&quot;foo&quot;); after the bracket?
+</div>
+</div>
+
+<div class='frm pst' id='pid542' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=542.html#pid542'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-11 23:53
+</div>
+<div class='ccl'>
+It skips the puts(&quot;foo&quot;) and the bracket and it stops at this:<br/>&quot;MyWindow win;&quot;<br/><br/>Then it stopped at the bracket after the myWindow constructor. Then it stopped at win.show();
+</div>
+</div>
+
+<div class='frm pst' id='pid543' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=543.html#pid543'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-12 00:51
+</div>
+<div class='ccl'>
+OK, does that mean it didn&#39;t call either of the Window&#39;s callbacks, that is draw() and update() did you put breakpoints in there? show() will internally call both of them after doing some setup—still trying to narrow down the places in which this can happen.
+</div>
+</div>
+
+<div class='frm pst' id='pid547' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=547.html#pid547'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-12 20:37
+</div>
+<div class='ccl'>
+It skips the update and draw functions. So that seems fine.<br/><br/>Can you post a link to a full VC project so I can try it from there just to make sure it&#39;s not the actual engine maybe just the way I set it up? 
+</div>
+</div>
+
+<div class='frm pst' id='pid551' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=551.html#pid551'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-13 02:39
+</div>
+<div class='ccl'>
+I think I may have narrowed it down. The call stack ( at the bottom ) mentioned a line at 163 where I create my character class. Inside of the character class, there is an animation. I commented anything to do with animation and it ran ( though... with no animation ). So I created a test object to see if it was the actual animations or the library itself. <br/><br/>Doing this is just fine:<br/>std::vector&lt; boost::shared_ptr&lt; Gosu::Image &gt; &gt; test;<br/><br/>But doing this gives the whole error problem:<br/>std::vector&lt; boost::shared_ptr&lt; Gosu::Image &gt; &gt; test;<br/>Gosu::imagesFromTiledBitmap ( graphics, Gosu::sharedResourcePrefix() + L&quot;media/RonWalkAnim.png&quot;, 110, 236, false, test );<br/><br/>So I think it has something to do with &quot;test&quot; or the function in Gosu. 
+</div>
+</div>
+
+<div class='frm pst' id='pid563' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=563.html#pid563'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-14 21:39
+</div>
+<div class='ccl'>
+I have more information that may help us:<br/>&quot;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\Documents and Settings\BPeppers\Desktop\gosu-windows-cpp-0.7.13\examples\GOSU_TEST_ONE\Release\GOSU_TEST_ONE.exe&#39;, Symbols loaded.<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ntdll.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\kernel32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\dinput8.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\msvcrt.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\advapi32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\rpcrt4.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\secur32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\user32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\gdi32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\opengl32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\glu32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ddraw.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\dciman32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\winmm.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\Documents and Settings\BPeppers\Desktop\gosu-windows-cpp-0.7.13\examples\GOSU_TEST_ONE\Release\fmod.dll&#39;, Binary was not built with debug information.<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\msacm32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ole32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\wsock32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ws2_32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ws2help.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\shell32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\shlwapi.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\imm32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83\comctl32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\comctl32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\Program Files\RK Launcher\RKLauncher.dll&#39;, Binary was not built with debug information.<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\msctf.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\version.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Unloaded &#39;C:\WINDOWS\system32\version.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\msctfime.ime&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\nvoglnt.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\mcd32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Unloaded &#39;C:\WINDOWS\system32\mcd32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\hid.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\setupapi.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\wintrust.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\crypt32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\msasn1.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\imagehlp.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ntmarta.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\samlib.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\wldap32.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\wdmaud.drv&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Unloaded &#39;C:\WINDOWS\system32\wdmaud.drv&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\wdmaud.drv&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\msacm32.drv&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\midimap.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\dsound.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\version.dll&#39;<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\ksuser.dll&#39;<br/>HEAP[GOSU_TEST_ONE.exe]: Invalid Address specified to RtlFreeHeap( 00E20000, 02690498 )<br/>Windows has triggered a breakpoint in GOSU_TEST_ONE.exe.<br/><br/>This may be due to a corruption of the heap, which indicates a bug in GOSU_TEST_ONE.exe or any of the DLLs it has loaded.<br/><br/>This may also be due to the user pressing F12 while GOSU_TEST_ONE.exe has focus.<br/><br/>The output window may have more diagnostic information.<br/>First-chance exception at 0x7c96f749 in GOSU_TEST_ONE.exe: 0xC0000005: Access violation reading location 0x7c527428.<br/>&#39;GOSU_TEST_ONE.exe&#39;: Loaded &#39;C:\WINDOWS\system32\oleaut32.dll&#39;<br/>The thread &#39;Win32 Thread&#39; (0xee0) has exited with code 0 (0x0).<br/>The thread &#39;Win32 Thread&#39; (0xf04) has exited with code 0 (0x0).<br/>The thread &#39;Win32 Thread&#39; (0xcf8) has exited with code 0 (0x0).<br/>The thread &#39;Win32 Thread&#39; (0x368) has exited with code 0 (0x0).<br/>The thread &#39;Win32 Thread&#39; (0xda4) has exited with code 0 (0x0).<br/>The thread &#39;Win32 Thread&#39; (0x8e0) has exited with code 0 (0x0).<br/>The program &#39;[3768] GOSU_TEST_ONE.exe: Native&#39; has exited with code 0 (0x0).<br/>&quot;<br/><br/>Not a clue what it means for me, but hopefully that helps you. :/
+</div>
+</div>
+
+<div class='frm pst' id='pid564' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=564.html#pid564'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-14 23:29
+</div>
+<div class='ccl'>
+I can&#39;t look into it in detail right now, but it somehow looks as if there was a problem with linking the C++ standard library (RtlFreeMemory). So when anything gets freed internally, the game probably crashes.<br/><br/>This does _not_ have anything to do with boost or the STL :) So maybe I did break MSVC08 compatibility somehow...? Anyone using MSVC08 successfully with the precompiled Gosu?
+</div>
+</div>
+
+<div class='frm pst' id='pid665' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=665.html#pid665'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-23 19:20
+</div>
+<div class='ccl'>
+Just uploaded both .lib files built with VC08 for you:<br/><br/><a class='url' href='http://www.raschke.de/julian/temp/gosu-wincpp-vc08.zip'>http://www.raschke.de/julian/temp/gosu-wincpp-vc08.zip</a><br/><br/>Let me know if this changes anything.
+</div>
+</div>
+
+<div class='frm pst' id='pid676' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=676.html#pid676'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-24 03:42
+</div>
+<div class='ccl'>
+&quot;error LNK2001: unresolved external symbol &quot;public: __thiscall Gosu::Font::Font(class Gosu::Graphics &amp;,class std::basic_string&lt;wchar_t,struct std::char_traits&lt;wchar_t&gt;,class std::allocator&lt;wchar_t&gt; &gt; const &amp;,unsigned int)&quot; (??0Font@Gosu@@QAE@AAVGraphics@1@ABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@I@Z)&quot;<br/><br/>I got punk&#39;d by Gosu. :p
+</div>
+</div>
+
+<div class='frm pst' id='pid677' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=677.html#pid677'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-24 10:30
+</div>
+<div class='ccl'>
+You also need the very latest headers from 0.7.13.3 to go along with it. This constructor&#39;s signature was different in &lt;0.7.13.3.
+</div>
+</div>
+
+<div class='frm pst' id='pid679' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=679.html#pid679'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-24 16:07
+</div>
+<div class='ccl'>
+Ah didn&#39;t see a new release was out...<br/><br/>...<br/><br/>Yes! It&#39;s all working fine now. :D<br/>What was the problem out of curiosity? <br/>Thanks. Now I can get to my games with Gosu. 
+</div>
+</div>
+
+<div class='frm pst' id='pid681' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=681.html#pid681'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-24 17:47
+</div>
+<div class='ccl'>
+Ah ok.<br/><br/>So the problem is apparently that libraries built with MSVC05 (what I release) are not 100% binary compatible with those built in MSVC08 (which I built &amp; uploaded for you). This is of course horrible, because it means I either have to drop support for MSVC05 or include both sets of libraries in the .ZIP archive. Prepare for a huge download when MSVC10 is out... ;)<br/><br/>On the upside, I can have both versions of MSVC installed side by side, and I hope I can automate building Gosu with both via the msbuild shell tool. I&#39;ll see.
+</div>
+</div>
+
+<div class='frm pst' id='pid684' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=684.html#pid684'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-05-24 23:20
+</div>
+<div class='ccl'>
+That sucks. It would be Microsoft to do something like that though.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=116.html#tid116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=116.html#tid116'>Gosu Exchange</a> / C++ error when running... [ NOW FIXED ]
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=540.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

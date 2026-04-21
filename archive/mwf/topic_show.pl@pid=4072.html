@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 4072 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Extending Ruby/Gosu with Inline C</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d4072' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=561.html#tid561'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=561.html#tid561'>Extending Gosu</a> / Extending Ruby/Gosu with Inline C
+</div>
+</div>
+
+<div class='frm pst' id='pid4060' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4060' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4060.html#pid4060'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-08 13:04
+</div>
+<div class='ccl'>
+(Warning: getting this to work on Windows is probably a pain? :))<br/><br/>I have posted this in a different context before, I think, but I want to point out this technique again (public code snippet by zenspider):<br/><br/><a class='url' href='http://p.zenspider.com/gosu-extensions.rb.html'>http://p.zenspider.com/gosu-extensions.rb.html</a><br/><br/>If you have any performance critical, isolated(!) thing that Gosu is missing, you may use this to get an instant performance boost. And when your serious game is ready to be shipped, you can precompile it for Windows (or discuss integrating your feature into Gosu :)).
+</div>
+</div>
+
+<div class='brn' id='brn4060'>
+<div class='frm pst' id='pid4064' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4060'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4064' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4064.html#pid4064'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-08 16:05
+</div>
+<div class='ccl'>
+Since the posted example is mostly about drawing a circle efficiently, I figured I&#39;d share this: <a class='url' href='http://slabode.exofire.net/circle_draw.shtml'>An Efficient Way to Draw Approximate Circles in OpenGL</a>. I adapted this algorithm for Chingu and it works great. You only have to calculate sin and cos at the beginning and the rest is essentially matrix multiplication, so it&#39;s much faster.<br/><br/>The way I implemented it uses blocks to avoid duplicated code so it may have additional overhead, but I&#39;m not sure how well Ruby optimises those block calls. :)
+</div>
+</div>
+
+<div class='brn' id='brn4064'>
+<div class='frm pst' id='pid4065' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4064'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4065' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4065.html#pid4065'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>Date</span> 2011-03-08 16:15
+</div>
+<div class='ccl'>
+Since we are talking about circles ;)<br/><br/>Efficient ways to draw a circle?<br/>hmmm, trig functions and floating points?<br/><br/>While I have not benchmarked it on a modern machine (so therefor I could be entirely wrong), an efficient way to draw a circle would be using ints and no trig what soever.<br/><br/>Bresenham&#39;s circle algorithm<br/><a class='url' href='http://en.wikipedia.org/wiki/Midpoint_circle_algorithm'>http://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a><br/><br/>I&#39;ve used this on the GBA and this is fast as hell. (GBA has no floating point unit).
+</div>
+</div>
+
+<div class='brn' id='brn4065'>
+<div class='frm pst' id='pid4069' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4065'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4069.html#pid4069'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-08 17:30
+</div>
+<div class='ccl'>
+Most modern systems (apart from video game consoles and mobiles, I guess) have an FPU for fast floating point math, and they&#39;re used behind the scenes with OpenGL anyway. Integer math might give you a bigger performance boost in Ruby since integers are immediate values while floats are objects, but I feel like there&#39;s a good balance here between mental cycles and CPU cycles.<br/><br/>I have encountered Bresenham&#39;s circle algorithm but somehow it totally slipped my mind because it doesn&#39;t initially seem appropriate for OpenGL. Reading about it again, I realise that it could easily be thought of as connecting points on a grid, so it&#39;s totally applicable. I&#39;ll give it consideration, but I think I&#39;m content for now to use trigonometric functions sparingly.<br/><br/>I think Julian&#39;s solution is really clever, and probably has us both beat if you know you&#39;re gonna be reusing the same circle. I have a little piece of code that uses TexPlay to generate raster images on demand and caches the results for future use and I think it would work pretty famously as an alternate implementation.<br/><br/>Drawing a circular target might look something like this, for instance:<br/><br/><code>class Target<br/>&#160; include Drawing<br/>&#160; <br/>&#160; ...<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; left, top, size = @x - @radius, @y - @radius, @radius * 2<br/><br/>&#160; &#160; # Draw the :target layer; the painting operations only get called when the<br/>&#160; &#160; # layer needs to be repainted.<br/>&#160; &#160; paint_layer(:target, left, top, size, size, :z =&gt; 0) do |canvas|<br/>&#160; &#160; &#160; cx = cy = @radius # for clarity below<br/>&#160; &#160; &#160; canvas.circle cx, cy, @radius,&#160; &#160; &#160;&#160; :color =&gt; :red,&#160;&#160; :fill =&gt; true<br/>&#160; &#160; &#160; canvas.circle cx, cy, @radius * 0.8, :color =&gt; :white, :fill =&gt; true<br/>&#160; &#160; &#160; canvas.circle cx, cy, @radius * 0.6, :color =&gt; :red,&#160;&#160; :fill =&gt; true<br/>&#160; &#160; &#160; canvas.circle cx, cy, @radius * 0.4, :color =&gt; :white, :fill =&gt; true<br/>&#160; &#160; &#160; canvas.circle cx, cy, @radius * 0.2, :color =&gt; :red,&#160;&#160; :fill =&gt; true<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def radius= new_radius<br/>&#160; &#160; @radius = Float(new_radius)<br/>&#160; &#160; <br/>&#160; &#160; # The :target layer must be redrawn when the radius changes.<br/>&#160; &#160; invalidate_layer_cache! :target<br/>&#160; end<br/>&#160; <br/>end<br/></code><br/><br/>I&#39;ve tested this system in a small widget library I probably won&#39;t finish and it makes drawing pretty fast.
+</div>
+</div>
+
+<div class='frm pst' id='pid4075' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4065'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4075' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4075.html#pid4075'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2011-03-09 06:36
+</div>
+<div class='ccl'>
+TexPlay uses bresenham circle and line routines too :)
+</div>
+</div>
+
+<div class='brn' id='brn4075'>
+<div class='frm pst' id='pid4076' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4075'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4076.html#pid4076'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2011-03-09 09:04
+<span class='htt'>Edited</span> 2011-03-09 09:37
+</div>
+<div class='ccl'>
+Have you seen this?<br/><br/><a class='url' href='http://www.edepot.com/algorithm.html'>http://www.edepot.com/algorithm.html</a><br/><br/>EDIT: Here it is in ActionScript3:<br/><br/><a class='url' href='http://www.simppa.fi/blog/extremely-fast-line-algorithm-as3-optimized/'>http://www.simppa.fi/blog/extremely-fast-line-algorithm-as3-optimized/</a>
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid4066' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4064'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4066' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4066.html#pid4066'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-08 16:17
+</div>
+<div class='ccl'>
+FWIW my take on the circle example is <a class='url' href='topic_show.pl@pid=3459.html'>here</a> :)
+</div>
+</div>
+
+<div class='brn' id='brn4066'>
+<div class='frm pst' id='pid4070' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4066'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4070.html#pid4070'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2011-03-08 17:39
+</div>
+<div class='ccl'>
+My adaptation of the algorithm was meant to provide a faster, backwards-compatible implementation of Chingu&#39;s <code>draw_circle</code>; if I were going to be writing code that required arbitrary primitives, I&#39;d probably use the &quot;layer caching&quot; thing with TexPlay that I mentioned above. I thought it was pretty clever. I like your solution too, though. :D
+</div>
+</div>
+
+<div class='frm pst' id='pid4072' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4066'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl4072' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=4072.html#pid4072'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=216.html' >kaBOOM</a>
+<span class='htt'>Date</span> 2011-03-09 01:26
+</div>
+<div class='ccl'>
+Hi. :0&#160; Just in case anyone knows... I want to make a &quot;draw arc&quot; method similar to the draw_line one. Anybody knows the formula?
+</div>
+</div>
+
+<div class='brn' id='brn4072'>
+<div class='frm pst' id='pid4074' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=4072.html#pid4072'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=4074.html#pid4074'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-03-09 04:18
+</div>
+<div class='ccl'>
+An arc is a partially drawn circle, right? Then you just need to adjust the start and end the for() loop in the posted code.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=561.html#tid561'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=561.html#tid561'>Extending Gosu</a> / Extending Ruby/Gosu with Inline C
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=4072.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

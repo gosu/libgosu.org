@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6008 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Limiting speed of user input / player movement</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6008' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=783.html#tid783'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=783.html#tid783'>Gosu Exchange</a> / Limiting speed of user input / player movement
+</div>
+</div>
+
+<div class='frm pst' id='pid5994' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5994' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5994.html#pid5994'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=947' >bleakcabal</a>
+<span class='htt'>Date</span> 2012-07-07 03:33
+</div>
+<div class='ccl'>
+Hi, <br/><br/>I started developing a small 2D tile game which uses a first person 2D view. The view and movement is along the lines of Dungeon Master, Eye of the Beholder, Bard&#39;s Tale, Might and Magic, etc. <br/><br/>My current problem is that when I press a key to move. The game moves way too fast. I know that the game is running in a loop and that it must draw a certain number of frames per second. Considering these facts, what is the best, cleanest way to limit the speed of player movement / user input ?<br/><br/>Ideally, I would like that if the user holds the foward arrow key, the game moves one square, has a small delay and then moves again.
+</div>
+</div>
+
+<div class='brn' id='brn5994'>
+<div class='frm pst' id='pid5995' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6008.html#pid5994'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5995' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5995.html#pid5995'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2012-07-07 04:43
+</div>
+<div class='ccl'>
+There are two mechanisms for handling input. One is checking for <code>button_down?(id)</code> in <code>Window#update</code>. This will happen 60 times per second.<br/><br/>The other is reacting to the <code>Window#button_down</code> callback. This is how the Tutorial game handles the Escape key. This is called only once for the whole duration of holding the button.<br/><br/>I&#39;m sorry for the confusing names here. :)<br/><br/>You would use a combination of both to implement what you need. Maybe like this:<br/><br/><code>TICKS_PER_STEP = 30<br/><br/>def initialize<br/>&#160; ..<br/>&#160; @countdown = 0<br/>end<br/><br/>def update<br/>&#160; ..<br/>&#160; if @countdown &gt; 0 then<br/>&#160; &#160; @countdown -= 1<br/>&#160; &#160; # Second, third… step<br/>&#160; &#160; if @countdown == 0 and button_down? Gosu::KbLeft then<br/>&#160; &#160; &#160; @countdown = TICKS_PER_STEP<br/>&#160; &#160; &#160; move_left<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; ..<br/><br/>def button_down(id)<br/>&#160; if id == Gosu::KbLeft and @countdown == 0 then<br/>&#160; &#160; # First step<br/>&#160; &#160; @countdown = TICKS_PER_STEP<br/>&#160; &#160; move_left<br/>&#160; end<br/>end</code><br/><br/>This also ensures that the player cannot move faster than one step per <code>TICKS_PER_STEP</code> even if they hammer the left key. If the speed of movement should be unrestricted for hammering keys, then you can just reset <code>@countdown</code> in the <code>button_up(id)</code> callback.
+</div>
+</div>
+
+<div class='brn' id='brn5995'>
+<div class='frm pst' id='pid6008' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6008.html#pid5995'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6008.html#pid6008'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=947' >bleakcabal</a>
+<span class='htt'>Date</span> 2012-07-12 02:05
+</div>
+<div class='ccl'>
+Thanks !
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=783.html#tid783'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=783.html#tid783'>Gosu Exchange</a> / Limiting speed of user input / player movement
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6008.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

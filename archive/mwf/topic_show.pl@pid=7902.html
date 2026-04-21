@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 7902 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Basic GOSU Installation dont works</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d7902' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1116.html#tid1116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1116.html#tid1116'>Gosu Exchange</a> / Basic GOSU Installation dont works
+</div>
+</div>
+
+<div class='frm pst' id='pid7898' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7898' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7898.html#pid7898'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1148' >BinarySoul</a>
+<span class='htt'>Date</span> 2014-07-12 23:43
+</div>
+<div class='ccl'>
+Hello together, <br/><br/>i was trying to install GOSU today, to make my first steps. <br/>Sadly the installation will stop on a certain point without a reason that i can handle.<br/>here´s what i did:<br/><br/>sudo yum groupinstall --assumeyes &quot;Development Tools&quot; #everything works fine!<br/>sudo yum install --assumeyes freeglut-devel freeimage-devel mesa-libGL-devel openal-devel pango-devel SDL_ttf-devel libsndfile-devel libXinerama-devel libvorbis-devel&#160; #also fine!<br/>ruby, ruby-devel and gems are already installed @ version 2.0.0p353<br/><br/>then: sudo gem install gosu #brings me to:<br/><br/>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; /usr/bin/ruby extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>checking for TTF_RenderUTF8_Blended() in -lSDL_ttf... yes<br/>checking for SDL_ttf.h... yes<br/>checking for FreeImage_ConvertFromRawBits() in -lfreeimage... yes<br/>checking for FreeImage.h... yes<br/>checking for main() in -lopenal... yes<br/>checking for AL/al.h... yes<br/>creating Makefile<br/><br/>make &quot;DESTDIR=&quot;<br/>g++ -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I. -I../ -I../GosuImpl -DHAVE_SDL_TTF_H -DHAVE_FREEIMAGE_H -DHAVE_AL_AL_H&#160; -D_FILE_OFFSET_BITS=64&#160; -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -march=i686 -mtune=atom -fasynchronous-unwind-tables -fPIC -DGOSU_DEPRECATED= -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -pthread -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/freetype2&#160;&#160; -I/usr/include/libdrm&#160; -I/usr/include/AL&#160; -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -march=i686 -mtune=atom -fasynchronous-unwind-tables -m32 -o RubyGosu_wrap.o -c RubyGosu_wrap.cxx<br/>make: g++: Kommando nicht gefunden<br/>make: *** [RubyGosu_wrap.o] Fehler 127<br/><br/>Gem files will remain installed in /usr/local/share/gems/gems/gosu-0.7.50 for inspection.<br/>Results logged to /usr/local/share/gems/gems/gosu-0.7.50/linux/gem_make.out<br/><br/>what shall i do?
+</div>
+</div>
+
+<div class='brn' id='brn7898'>
+<div class='frm pst' id='pid7902' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7902.html#pid7898'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7902' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7902.html#pid7902'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-07-13 10:34
+</div>
+<div class='ccl'>
+It looks like you are missing the C++ compiler <code>g++</code>. I am not sure how your distribution works, but can you just enter &quot;g++&quot; in a terminal and it will tell you that it is missing, and which package to install?
+</div>
+</div>
+
+<div class='brn' id='brn7902'>
+<div class='frm pst' id='pid7903' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7902.html#pid7902'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl7903' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=7903.html#pid7903'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1148' >BinarySoul</a>
+<span class='htt'>Date</span> 2014-07-13 12:22
+</div>
+<div class='ccl'>
+thats it, many thanks!<br/><br/>for the creator of the homepage here, in Fedora 20, you need to install gcc-c++ seperately with this command:<br/><br/>sudo yum install gcc-c++<br/><br/>thanks for the help
+</div>
+</div>
+
+<div class='brn' id='brn7903'>
+<div class='frm pst' id='pid7908' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=7902.html#pid7903'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=7908.html#pid7908'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2014-07-14 18:26
+</div>
+<div class='ccl'>
+Thanks! I&#39;ve updated the wiki.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1116.html#tid1116'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1116.html#tid1116'>Gosu Exchange</a> / Basic GOSU Installation dont works
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=7902.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

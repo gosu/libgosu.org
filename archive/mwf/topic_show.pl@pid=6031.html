@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6031 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>TexPlay: now working in 1.9.3</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6031' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=665#tid665'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=665#tid665'>Extending Gosu</a> / TexPlay: now working in 1.9.3
+</div>
+</div>
+
+<div class='frm pst' id='pid5109' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5109' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5109.html#pid5109'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=879.html' >chrismdp</a>
+<span class='htt'>Date</span> 2011-11-07 23:49
+</div>
+<div class='ccl'>
+Hi all,<br/><br/>Couldn&#39;t bear not to have the neat smoother GC in 1.9.3, which starts to deal with the final outstanding issue raised by this post: <a class='url' href='http://gafferongames.com/2009/01/11/ruby-is-not-at-all-suitable-for-game-development/'>http://gafferongames.com/2009/01/11/ruby-is-not-at-all-suitable-for-game-development/</a><br/><br/>Unfortunately TexPlay wasn&#39;t 1.9.3 compatible. No longer! I&#39;ve taken the liberty of patching it to support 1.9.3. I&#39;ve put up a pull request, but in the meantime use my fork in your Gemfile:<br/><br/><code>gem &quot;texplay&quot;, :git =&gt; &quot;git://github.com/chrismdp/texplay.git&quot;</code><br/><br/><b>Note:</b> you can no longer refer to instance variables in the image blocks - I needed to head back to using instance_eval, rather than a custom extension, as 1.9.3 removed the API it relied upon.<br/><br/>Enjoy! Feedback on the patch welcome, especially on platforms that aren&#39;t OSX Lion.<br/><br/>Chris<br/><a class='url' href='http://pa.rsons.org'>http://pa.rsons.org</a><br/><a class='url' href='http://twitter.com/chrismdp'>http://twitter.com/chrismdp</a>
+</div>
+</div>
+
+<div class='brn' id='brn5109'>
+<div class='frm pst' id='pid5110' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5110' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5110#pid5110'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-08 12:13
+</div>
+<div class='ccl'>
+I have to admit that I never used the gen_eval in Texplay since it was never very clear where the variables were coming from and going to (I actually use a pure-ruby &quot;partial eval&quot; in Fidgit for cases like this, but it isn&#39;t appropriate for Texplay since it is very slow - I use it for creating nested GUI elements which is only done once). <br/><br/>I&#39;ve been able to use the existing TexPlay release for my own games in 1.9.3 because I don&#39;t use that particular feature. So, erm, no point me testing the patch then :)<br/><br/>Regarding the GC, I actually notice it working more in 1.9.3, but only because the performance is so much higher and my current game project has a relatively static display (so I can see the FPS dip every few seconds when I&#39;m drawing exactly the same things - this won&#39;t be apparent when I have more going on in the background and my FPS isn&#39;t quite as artificially high). I have never seen the effect of the GC in my Gosu games (with 1.9.2), but I did in the game I made with Mon_Ouie&#39;s Ray library (I should try that with 1.9.3!).
+</div>
+</div>
+
+<div class='brn' id='brn5110'>
+<div class='frm pst' id='pid5111' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5110'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5111' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5111.html#pid5111'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=879.html' >chrismdp</a>
+<span class='htt'>Date</span> 2011-11-08 12:21
+</div>
+<div class='ccl'>
+Interesting: I didn&#39;t use the gen_eval stuff either, but couldn&#39;t even install the gem under 1.9.3-p0 as it failed to compile. I got errors similar to <a class='url' href='https://github.com/banister/texplay/issues/16'>this</a> when including texplay in my Gemfile. How did you manage to compile against 1.9.3 ruby?
+</div>
+</div>
+
+<div class='brn' id='brn5111'>
+<div class='frm pst' id='pid5112' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5111'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5112#pid5112'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2011-11-08 12:23
+</div>
+<div class='ccl'>
+Sorry, I didn&#39;t compile it. I was just using the binary gem compiled for 1.9.2 and it worked fine (I think I might have needed &#39;Config = RbConfig&#39; before the require; I did for most older gems). Using win7x64 and 1.9.3p0.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid5113' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5109'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5113.html#pid5113'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2011-11-08 12:32
+</div>
+<div class='ccl'>
+Yay for Texplay progress. :)<br/><br/>If you want to fix Texplay completely, you could make it use <code>Image#to_blob</code> for retrieving image data, and <code>Image#insert</code> to update it back- that would give Texplay support for images &gt;1022x1022. But I think Texplay works with floats and both methods use byte quartets. :(
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid5848' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5848' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5848#pid5848'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=915' >Omegas7</a>
+<span class='htt'>Date</span> 2012-05-13 15:31
+</div>
+<div class='ccl'>
+So right now (months after this topic was posted), I am using the latest gosu version and ruby 1.9.3. Should I do what this topic says or is everything already fixed right now?
+</div>
+</div>
+
+<div class='brn' id='brn5848'>
+<div class='frm pst' id='pid5850' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5848'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5850' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=5850.html#pid5850'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2012-05-13 17:45
+</div>
+<div class='ccl'>
+As far as I&#39;m aware, the OP&#39;s patches have been merged into the original version of the gem already, but there&#39;s no up-to-date binary version of the gem available.<br/><br/>If you&#39;re on Windows and you have the devkit installed, you can build Texplay yourself. You need to get FreeGLUT (<a class='url' href='http://www.transmissionzero.co.uk/software/freeglut-devel/'>precompiled for Windows here</a>) and extract it to /your/path/of/choice (so that there are folders named bin, lib, and include immediately under /your/path/of/choice).<br/><br/>Then, anything equivalent to this command should build and install texplay for you (won&#39;t work in Powershell):<br/><br/><code>ruby -S gem install texplay -- --with-opt-dir=/your/path/of/choice</code><br/><br/>I&#39;m not sure how to get this to work with Bundler, unfortunately.
+</div>
+</div>
+
+<div class='brn' id='brn5850'>
+<div class='frm pst' id='pid5894' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5850'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl5894' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=5894#pid5894'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2012-06-04 06:56
+</div>
+<div class='ccl'>
+How would one do this in windows? Is the the path format the same? Do I use backslashes instead, as per Windows convention?
+</div>
+</div>
+
+<div class='brn' id='brn5894'>
+<div class='frm pst' id='pid5895' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5894'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=5895.html#pid5895'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2012-06-04 10:28
+</div>
+<div class='ccl'>
+These are the Windows instructions -- you can run the command using Cmd or by typing it straight into the Start menu search box (on Vista and 7).<br/><br/>/your/path/of/choice is a placeholder. It doesn&#39;t matter what path you use as long as it doesn&#39;t contain spaces.<br/><br/>For reference, Windows works just fine if you use forward slashes as a directory separator.
+</div>
+</div>
+
+<div class='frm pst' id='pid6023' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid5894'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6023' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6023.html#pid6023'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2012-07-14 23:35
+</div>
+<div class='ccl'>
+For the record, I just did this with the latest RubyInstaller and Devkit and it worked, unlike a charm. I extracted the FreeGlut stuff straight into the devkit root (C:\RubyDK on my system), since there were already bin, lib, and include dirs there, and ran the above command in an MSys terminal window with &quot;/usr&quot; as &quot;/your/path/of/choice&quot; like so:<br/><code>ruby -S gem install texplay -- --with-opt-dir=/usr</code><br/>BTW, XP Pro SP3.
+</div>
+</div>
+
+<div class='brn' id='brn6023'>
+<div class='frm pst' id='pid6027' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid6023'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6027' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6027.html#pid6027'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-15 09:51
+</div>
+<div class='ccl'>
+Thanks!<br/><br/>Can you compile it in both 1.8 and 1.9 and merge it, so that both .so files are in it please, and attach it here? Then banister can <code>gem push</code> it and we can all go on with our lives :) <br/><br/>Alternatively, can you give me a link to the _correct_ freeglut binaries/headers and I can compile it myself. I&#39;ve tried a few times before with no success, but I found several freeglut versions which failed to different degrees. This option would help me, because then I could consider working on Texplay in the future; pointless if I can&#39;t compile it myself.
+</div>
+</div>
+
+<div class='brn' id='brn6027'>
+<div class='frm pst' id='pid6028' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid6027'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6028' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6028.html#pid6028'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2012-07-15 15:07
+</div>
+<div class='ccl'>
+I&#39;ve only tried this for 1.9.3, since the 1.8 series is basically deprecated.<br/><br/>Assuming you tried the MinGW version of FreeGLUT from the link I posted above, do you recall what problem you had?
+</div>
+</div>
+
+<div class='brn' id='brn6028'>
+<div class='frm pst' id='pid6029' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid6028'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6029' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6029#pid6029'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-15 15:29
+</div>
+<div class='ccl'>
+Sadly, a lot of people (not me) disagree about 1.8. The fact that 1.8 is still the system Ruby on OSX is a major factor in this, since it allows apps to be distributed to any Mac easily. Still, 1.9 is enough for me personally (e.g. my gems are mainly 1.9+); we can see how happy banister is with that!<br/><br/>I&#39;ve added,<br/><br/>&#160; &#160; <code>$CFLAGS &lt;&lt; &quot; -I#{File.expand_path &quot;../vendor/freeglut/include&quot;, __FILE__}&quot; </code><br/><br/>to the extconf.rb file in Texplay and placed the MinGW stuff to match that location. I still get:<br/><br/>&#160; &#160; <code>checking for main() in -lfreeglut_static... no</code><br/><br/>It is presumably not finding: <code>lib/libfreeglut_static.a</code> ? I wish it was more clear!<br/><br/>log says that it is passing<br/>&#160; &#160;&#160; <code>-IC:/Users/Owner/RubymineProjects/texplay/ext/texplay/vendor/freeglut/include</code><br/>which is correct. What am I missing?
+</div>
+</div>
+
+<div class='brn' id='brn6029'>
+<div class='frm pst' id='pid6031' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid6029'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6031' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6031.html#pid6031'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=876' >pete_mw</a>
+<span class='htt'>Date</span> 2012-07-15 19:05
+</div>
+<div class='ccl'>
+Yes, I&#39;m pretty sure that is the problem.<br/><br/>Specifically, it looks like line 17 of extconf.rb: <code>exit unless have_library(&quot;freeglut_static&quot;)</code>, is the one that checks for the library and aborts if it&#39;s not there.<br/><br/>It might work if you change it to <code>exit unless find_library(&quot;freeglut_static&quot;, &quot;main&quot;, freeglut_lib)</code> where freeglut_lib is the path to the folder containing libfreeglut_static.a
+</div>
+</div>
+
+<div class='brn' id='brn6031'>
+<div class='frm pst' id='pid6033' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid6031'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=6033#pid6033'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-15 21:31
+<span class='htt'>Edited</span> 2012-07-15 22:00
+</div>
+<div class='ccl'>
+I&#39;ve got it working, sorted out quite a few things (e.g. included freeglut so we never have to worry about where it is when building) and made it easy to create a fat Windows gem on Windows :) Just need to poke Banister about a few things and then I can get him to push it :)<br/><br/>Thanks for your help!
+</div>
+</div>
+
+<div class='frm pst' id='pid6077' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6031.html#pid6031'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6077.html#pid6077'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-07-23 15:19
+</div>
+<div class='ccl'>
+Banister has pushed 0.4.3 with both ruby and Windows binary versions. Poke me if there are any problems, since I built them!
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=665#tid665'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=665#tid665'>Extending Gosu</a> / TexPlay: now working in 1.9.3
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6031.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

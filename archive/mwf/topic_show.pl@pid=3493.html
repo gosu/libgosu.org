@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 3493 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Haskell bindings for Gosu - Preview</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d3493' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=465.html#tid465'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=465.html#tid465'>Gosu Exchange</a> / Haskell bindings for Gosu - Preview
+</div>
+</div>
+
+<div class='frm pst' id='pid3249' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3249' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3249.html#pid3249'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-15 15:41
+</div>
+<div class='ccl'>
+I think I&#39;m far enough to subject the project to a bit of commentary from the people that know Gosu... So here it goes.<br/><br/>I am currently thinking about how to best translate the very object-oriented approach of Gosu into something a <a class='url' href='http://www.haskell.org'>Haskell</a> programmer could work with. This is meant as an experiment: I don&#39;t know whether the result will actually be a usable game development environment. Especially because with all the power of functional programming you still have to live with the fact that state in purely functional languages is <a class='url' href='http://research.microsoft.com/en-us/um/people/simonpj/papers/marktoberdorf/mark.pdf'>awkward</a>. And games tend to involve a lot of state. We will see.<br/><br/>The project is registered at darcsden, in case anyone wants to have a look at it:<br/><a class='url' href='http://www.darcsden.org/scpmw/gosu'>http://www.darcsden.org/scpmw/gosu</a><br/><br/>Actual installation should go somewhat like this:<br/><code>&#160; darcs get <a class='url' href='http://www.darcsden.org/scpmw/gosu'>http://www.darcsden.org/scpmw/gosu</a><br/>&#160; cd gosu<br/>&#160; cabal install</code><br/>(modulo cabal probably complaining about missing libraries that you need to install. Or missing Objective-C bits on Mac.)<br/><br/>There&#39;s also documentation, and I have started writing a tutorial in the style of the CppTutorial:<br/><a class='url' href='http://www.darcsden.org/scpmw/gosu/raw/doc/html/Gosu/index.html'>http://www.darcsden.org/scpmw/gosu/raw/doc/html/Gosu/index.html</a><br/><a class='url' href='http://www.darcsden.org/scpmw/gosu/raw/doc/html/Gosu/Gosu-Tutorial.html'>http://www.darcsden.org/scpmw/gosu/raw/doc/html/Gosu/Gosu-Tutorial.html</a><br/><br/>The concrete status is that I have graphics, fonts and input stuff working on Linux, Windows and Mac OS X - with the latter being most problematic because I guess I will have to ship precompiled bits. Right now I&#39;m going in tutorial order, so I will continue with the audio functions. After that I think I will polish it up and make it public (properly).<br/><br/>All sorts of comments welcome ;)
+</div>
+</div>
+
+<div class='brn' id='brn3249'>
+<div class='frm pst' id='pid3251' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3251.html#pid3251'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>Date</span> 2010-09-15 20:07
+</div>
+<div class='ccl'>
+wow.. -&#160; just wow.<br/>This is pretty awesome, although personally I can&#39;t stand to use it :P<br/><br/>I&#39;ll leave it to the rest to add some some more interesting comments ;)
+</div>
+</div>
+
+<div class='frm pst' id='pid3256' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3256' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3256.html#pid3256'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-16 12:01
+</div>
+<div class='ccl'>
+Are you planing to create CptnHaskell? I kinda enjoy looking at the Haskell game logic but I never really understand it. :D
+</div>
+</div>
+
+<div class='brn' id='brn3256'>
+<div class='frm pst' id='pid3259' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3256'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3259' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3259.html#pid3259'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-16 13:44
+</div>
+<div class='ccl'>
+We will see. There are quite a number of fun things you can try with this.<br/><br/>For example, I would be interested in seeing how I could integrate <a class='url' href='http://hackage.haskell.org/package/Hipmunk'>Hipmunk</a>. If I&#39;m reading the <a class='url' href='http://code.google.com/p/gosu/wiki/RubyChipmunkIntegration'>wiki page</a> correctly, this would be even more natural for Haskell, as splitting the model (= data structures) from view/controllers (= controls) is something you will end up doing anyway. In this case, you have a great example why this is a good idea: Because you can use Hipmunk as a drop-in-replacement for your model, and have physics essentially for free :)
+</div>
+</div>
+
+<div class='brn' id='brn3259'>
+<div class='frm pst' id='pid3260' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3259'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3260' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3260.html#pid3260'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-16 14:14
+<span class='htt'>Edited</span> 2010-09-16 14:27
+</div>
+<div class='ccl'>
+Speaking of spitting view and controllers—does it actually help that all rendering in Gosu can be done in a very functional style? I mean, it&#39;s not *really* side-effect free, but it somehow feels very close to it. At least I seldom have any side effects in rendering code except the actual .draw calls.<br/><br/>I also wonder if in a pure-Haskell Gosu, the actual Z ordering could easily be transferred to some optional monad so that people can ignore that feature more easily.<br/><br/>The idea of actually returning DrawOperation objects (without side-effects so far) instead of calling image.draw is one I had a long time ago anyway, mostly to make client/server coding more DRY. Not sure if that has much practical value though.
+</div>
+</div>
+
+<div class='brn' id='brn3260'>
+<div class='frm pst' id='pid3264' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3260'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3264' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3264.html#pid3264'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-17 21:49
+</div>
+<div class='ccl'>
+The framework uses the same GosuIO for drawing as for the rest... You could model it as some sort of pipeline with variable values going in and draw calls going out. But typical draw routines are so simple anyway that you don&#39;t have much room to exploit this kind of thing. Especially because this small sub-domain isn&#39;t really worth changing all the language rules for.<br/><br/>What exactly do you mean by &quot;optional monad&quot;? In my mind, the big upside of having the Z-order defined like this is that you don&#39;t have to order your draw calls explicitly. Your suggestion sounds like you want to un-do that?
+</div>
+</div>
+
+<div class='brn' id='brn3264'>
+<div class='frm pst' id='pid3268' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3264'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3268' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3268.html#pid3268'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-09-17 23:40
+</div>
+<div class='ccl'>
+<blockquote><p>&gt; In my mind, the big upside of having the Z-order defined like this is that you don&#39;t have to order your draw calls explicitly.</p></blockquote><br/>Well, half-way. In C++ and Ruby, stuff rendered on the same Z level is still drawn in the order you call draw(). So if you have a composite object and can predict the Z order, you don&#39;t need to actually increase the value for each draw op. This also means that for simple games you may not even need Z ordering (but Gosu still requires you to pass 0 or some number for every call).<br/><br/>I was just wondering, if—given Gosu couldn&#39;t do Z—the whole draw op ordering could be done more beautifully on the Haskell side or not. As I understand it, Haskell has pretty well-established mechanisms for that kind of ... well, ordering of side effects? :)
+</div>
+</div>
+
+<div class='brn' id='brn3268'>
+<div class='frm pst' id='pid3281' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3268'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3281.html#pid3281'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-09-21 12:07
+</div>
+<div class='ccl'>
+Well, yes, that&#39;s monads. They are pretty powerful in that you can write series of &quot;statements&quot; like &quot;do bla; blub; bla&quot; and have that &quot;sequencing&quot; mean whatever you want it to mean. Just look at GosuIO, which I use to have all statements pass the global state to each other so the programmer doesn&#39;t need to pass the &quot;window&quot; parameter manually (plus some more internal state).<br/><br/>But this isn&#39;t the magic solution for everything... The programmer wants to specify the drawing order, but also wants this to be fully composable. But this is hard: If one element has three draw calls &quot;1 &gt; 2 &gt; 3&quot; and another three others &quot;1&#39; &gt; 2&#39; &gt; 3&#39;&quot;, how do you compose them? Concatenation (1&gt;2&gt;3&gt;1&#39;&gt;2&#39;&gt;3&#39; or 1&#39;&gt;2&#39;&gt;3&#39;&gt;1&gt;2&gt;3) is the standard approach and not be flexible enough. The only possible way an upper layer can order the drawing calls without knowing anything about the lower elements is by using markers - just the way it is now.<br/><br/>Only thing I could think of would be to make the markers less global - provide some abstraction that automatically and dynamically gives you Z-levels by &quot;splitting&quot; levels. But to me, this doesn&#39;t sound very useful - typically your Z-levels are pretty static and having them as a top-level list actually makes the program easier to understand.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid3391' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3256'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3391' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3391.html#pid3391'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-14 18:41
+<span class='htt'>Edited</span> 2010-10-16 13:49
+</div>
+<div class='ccl'>
+Btw, <a class='url' href='http://www.darcsden.org/scpmw/gosu/browse/test/CptnGosu.hs'>here</a> is my current stab at a translated captain game. Including strange comments, I was writing most of it on a night train. For your looking pleasure ;)
+</div>
+</div>
+
+<div class='brn' id='brn3391'>
+<div class='frm pst' id='pid3392' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3391'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3392.html#pid3392'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-10-14 18:45
+</div>
+<div class='ccl'>
+... and just realized that I actually implemented gem drawing twice. Oh well.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid3257' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3257.html#pid3257'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-09-16 13:26
+</div>
+<div class='ccl'>
+You are insane. Take this as a compliment, please.
+</div>
+</div>
+
+<div class='frm pst' id='pid3493' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3493' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3493.html#pid3493'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-06 16:51
+</div>
+<div class='ccl'>
+Okay, I now would expect the bindings to build on all platforms. So if someone has a Haskell installation lying around (or is willing to <a class='url' href='http://hackage.haskell.org/platform/'>get one</a>), it would be nice to know whether the following works:<br/><br/><code>&#160; darcs get --lazy <a class='url' href='http://www.darcsden.org/scpmw/gosu'>http://www.darcsden.org/scpmw/gosu</a><br/>&#160; cd gosu<br/>&#160; cabal install</code><br/><br/>... or more realistically: Exactly how horribly it fails. ;)
+</div>
+</div>
+
+<div class='brn' id='brn3493'>
+<div class='frm pst' id='pid3499' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3493'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3499' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3499.html#pid3499'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-09 17:18
+</div>
+<div class='ccl'>
+581 MB for GHC alone? Is this the new TeX? :S …I know why I used to have my tiny cute hugs89 ;)<br/><br/>Can you post a ZIP or tar ball for those of us who don&#39;t have darcs installed?
+</div>
+</div>
+
+<div class='brn' id='brn3499'>
+<div class='frm pst' id='pid3503' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3499'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl3503' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=3503.html#pid3503'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=201.html' >Maytsh</a>
+<span class='htt'>Date</span> 2010-11-10 11:59
+</div>
+<div class='ccl'>
+Huh? Which one did you try? The platform on Mac is about 130 MB. On Windows it might be a bit more because it needs to bundle MinGW.<br/><br/>And hm, yes, but I would have to find some way to host it. Plus darcs is only &quot;cabal install darcs&quot; away, is that really a problem?
+</div>
+</div>
+
+<div class='brn' id='brn3503'>
+<div class='frm pst' id='pid3504' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=3493.html#pid3503'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=3504.html#pid3504'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-11-10 12:06
+</div>
+<div class='ccl'>
+Yeah the packed download is small, but the installer for GHC told me it&#39;d install stuff just short of 600 MB :) If that&#39;s true then it must be something that compresses very well.<br/><br/>I can&#39;t wait to play around with it. I have no idea about darcs or cabal so that was not an obvious command for me to try :)
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=465.html#tid465'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=465.html#tid465'>Gosu Exchange</a> / Haskell bindings for Gosu - Preview
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=3493.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

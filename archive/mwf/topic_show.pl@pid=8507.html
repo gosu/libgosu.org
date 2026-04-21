@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8507 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu 0.10.0 released</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8507' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1212.html#tid1212'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=1212.html#tid1212'>Gosu News</a> / Gosu 0.10.0 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=1212.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<div class='frm pst' id='pid8504' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8504' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8504.html#pid8504'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-20 08:51
+<span class='htt'>Edited</span> 2015-08-20 09:05
+</div>
+<div class='ccl'>
+Gosu 0.10.0 is out. It contains two things that I thought I had already released:<br/><br/>• Add new <code>ifRetro</code>/<code>:retro</code> parameter to image constructors<br/>• Ruby: Fix mouse position getter/setter interaction<br/><br/>Sorry for the delay, I meant to release 0.9.3 months ago. The tl;dr is that you should start using <code>Image.new(&quot;filename.png&quot;, :retro =&gt; true)</code> instead of using <code>Gosu::enable_undocumented_retrofication</code>.<br/><br/>I&#39;ve also replaced a few third-party libraries with easier-to-maintain public domain code.<br/>(The version was bumped to 0.10.0 because some exotic image files might not work anymore — but at least they will consistently be broken across platforms now! No more surprises during porting.)<br/><br/>• Use stb_image(_write) for image I/O instead of GDI+, FreeImage, <code>UIImage</code>/<code>NSImage</code> etc.<br/>• Use stb_vorbis for OGG decoding instead of libogg/libvorbis/libvorbisfile<br/><br/>This is also great news because libogg/libvorbis require written attribution in every game that uses the libraries (BSD license) - and readers of our games&#39; README files honestly don&#39;t care about audio codecs. Less clutter for everyone.<br/><br/>The biggest changes in 0.10.0 are in the non-Ruby build scripts, though:<br/><br/>• Windows: Upgrade to Visual C++ 2015 (the free Express Desktop edition works). Microsoft has pulled all downloads for good old Visual C++ 2010, time to move on.<br/>• Unix: Fix the CMake build files.<br/>• Xcode: The <code>Gosu.podspec</code> for OS X and iOS is now versioned, instead of being stuck at v0.0.1.<br/><br/>Precompiled libraries for Windows, and a source code tarball for UNIX systems can be found here: <a class='ura' href='https://libgosu.org/downloads/'>https://libgosu.org/downloads/</a><br/><br/>To keep the Gosu codebase somewhat manageable, I have also ripped out the Socket classes for C++ and moved them to <a class='ura' href='https://github.com/jlnr/Sockets.'>https://github.com/jlnr/Sockets.</a>
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8504)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8504' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8504.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8504'>
+<div class='frm pst' id='pid8505' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8507.html#pid8504'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8505.html#pid8505'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-20 08:59
+<span class='htt'>Edited</span> 2015-08-20 09:05
+</div>
+<div class='ccl'>
+Two more things:<br/><br/>First, I&#39;m sorry for not looking into the Chingu bug yet! It&#39;s on my list.<br/><br/>Second, 33th Ludum Dare gamedev competition starts tomorrow! If you have no plans for the weekend, stock up on healthy snacks and write a game :)<br/><br/><a class='ura' href='http://ludumdare.com/compo/'>http://ludumdare.com/compo/</a>
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8505)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8505' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8505.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid8519' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8507.html#pid8504'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8519' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8519.html#pid8519'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=58' >bestguigui</a>
+<span class='htt'>Date</span> 2015-08-21 18:39
+</div>
+<div class='ccl'>
+Hi jlnr,<br/><br/>I&#39;m sorry but your fix for the mouse doesn&#39;t work.<br/><br/>Quick and dirty test code : <br/><br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; end<br/>&#160; <br/>&#160; def button_down(id)<br/>&#160; &#160; exit if id == Gosu::KbEscape<br/>&#160; &#160; if id == Gosu::KbSpace<br/>&#160; &#160; &#160; self.mouse_x = 10 <br/>&#160; &#160; &#160; self.mouse_y = 10<br/>&#160; &#160; end<br/>&#160; end<br/>&#160; <br/>&#160; def needs_cursor?;true;end<br/>end<br/><br/>Window.new.show<br/><br/>Only the y value is set to 10.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8519)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8519' style='display:none;'>bestguigui</span><a href='post_add.pl@pid=8519.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8519'>
+<div class='frm pst' id='pid8520' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8507.html#pid8519'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8520.html#pid8520'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-22 01:23
+</div>
+<div class='ccl'>
+Works as expected on OS X. I wonder if it doesn&#39;t work on Windows because I&#39;m still using SDL 2.0.3 there. (Man, SDL 2.0.4 can&#39;t come fast enough :( Maybe I should compile an intermediate DLL myself?) Thanks for reporting this, and sorry for the lack of progress.<br/><br/>I&#39;ve opened a GitHub issue here: <a class='ura' href='https://github.com/gosu/gosu/issues/293'>https://github.com/gosu/gosu/issues/293</a>
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8520)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8520' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8520.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid8506' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8506' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8506.html#pid8506'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1213.html' >Gammel</a>
+<span class='htt'>Date</span> 2015-08-20 15:56
+</div>
+<div class='ccl'>
+Hi<br/><br/>Is it me or :retro doesn&#39;t work with load_tiles?
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8506)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8506' style='display:none;'>Gammel</span><a href='post_add.pl@pid=8506.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8506'>
+<div class='frm pst' id='pid8507' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8507.html#pid8506'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8507' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8507.html#pid8507'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2015-08-20 21:18
+</div>
+<div class='ccl'>
+I think it doesn&#39;t. I even tried loading tiles from :retro Image.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8507)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8507' style='display:none;'>lol_o2</span><a href='post_add.pl@pid=8507.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+<div class='brn' id='brn8507'>
+<div class='frm pst' id='pid8509' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8507.html#pid8507'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8509.html#pid8509'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-20 22:05
+<span class='htt'>Edited</span> 2015-08-22 01:24
+</div>
+<div class='ccl'>
+Loading tiles will copy the image data to a new texture, so you&#39;d have to pass <code>:retro</code> when creating the individual tiles - that should work!<br/><br/>If you use <code>retro_image.subimage(x,y,w,h)</code>, it should preserve the parent texture&#39;s retro-ness. The image data is shared in that case, which also makes <code>subimage</code> extremely cheap.<br/><br/>Then again, I&#39;m not sure if <code>subimage</code> was really a good idea, or if <code>Image.load_tiles</code> should just take an array of rectangles to support texture atlas loading.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8509)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8509' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8509.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid8508' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8507.html#pid8506'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8508.html#pid8508'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-08-20 21:58
+<span class='htt'>Edited</span> 2015-08-20 22:04
+</div>
+<div class='ccl'>
+Confirmed, looking into it now.<br/><br/>Edit: Fixed, will be released as 0.10.1 ASAP. I&#39;ve also fixed the <code>:retro</code> parameter in <code>Image.from_text</code>, for the sake of consistency.
+</div>
+<div class='bcl'>
+<a class='btl qr' onclick='qr.openQuickReply(8508)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
+<span id='qrnfield8508' style='display:none;'>jlnr</span><a href='post_add.pl@pid=8508.html' title='Reply to post'>Reply</a>
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1212.html#tid1212'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid1'>Gosu</a> / <a href='board_show.pl@tid=1212.html#tid1212'>Gosu News</a> / Gosu 0.10.0 released
+</div>
+<div class='bcl'>
+<div class='nbl'>
+<a href='post_add.pl@tid=1212.html' title='Post concerning the topic in general'>Post</a>
+</div>
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8507.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

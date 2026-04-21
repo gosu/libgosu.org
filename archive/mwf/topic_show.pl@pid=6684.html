@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 6684 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>How do I add Gosu framework for XCode4 project?</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d6684' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=869.html#tid869'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=869.html#tid869'>Gosu Exchange</a> / How do I add Gosu framework for XCode4 project?
+</div>
+</div>
+
+<div class='frm pst' id='pid6681' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6681' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6681.html#pid6681'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1012.html' >ellmo</a>
+<span class='htt'>Date</span> 2013-03-26 00:57
+</div>
+<div class='ccl'>
+Hey there,<br/>I&#39;m completely new to XCode and even tho I&#39;ve been a programmer for 4 years, I have little to no knowledge about linking and referencing files/resources when it comes to compiled languages (I&#39;m a Ruby programmer).<br/><br/>I&#39;m trying my best using general tutorials on &quot;how to add a framework to XCode 4 project&quot;, but I&#39;m having a rough time trying to understand how am I supposed to do this, as everything I do fails in the end.<br/><br/>I&#39;ve simply created a new cocoa application, went to <b>build phases</b> / <b>Link Binary With Libraries</b> and added <code>Gosu.framework</code> there. I didn&#39;t do anything else.<br/><br/>Now when I try to run the application, I get this error:<br/><code>dyld: Library not loaded: @executable_path/../Frameworks/Gosu.framework/Versions/A/Gosu<br/>&#160; Referenced from: /Users/ellmo/Library/Developer/Xcode/DerivedData/gosuTest-hkmqdspnwjepredgslldpnmuhlvx/Build/Products/Debug/gosuTest.app/Contents/MacOS/gosuTest<br/>&#160; Reason: image not found</code><br/><br/>What should I do?
+</div>
+</div>
+
+<div class='brn' id='brn6681'>
+<div class='frm pst' id='pid6682' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6684.html#pid6681'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6682' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6682.html#pid6682'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-26 01:42
+</div>
+<div class='ccl'>
+You also need to copy the framework into your app bundle. To do so, select your target, go to Build Phases and add a Copy File build phase. It needs to copy Gosu.framework into the &quot;Frameworks&quot; folder inside your app.
+</div>
+</div>
+
+<div class='brn' id='brn6682'>
+<div class='frm pst' id='pid6683' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6684.html#pid6682'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6683' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6683.html#pid6683'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1012.html' >ellmo</a>
+<span class='htt'>Date</span> 2013-03-26 14:18
+</div>
+<div class='ccl'>
+Hey, thanks, things moved on, but I have another problem.<br/>I tried to follow <a class='url' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X</a> so I deleted <code>main.m</code> and AppDelegates and such, and I added <code>main.cpp</code> wich contains the following code:<br/><code><br/>//<br/>//&#160; main.cpp<br/>//&#160; gosu test<br/><br/>#include &quot;main.h&quot;<br/>#include &lt;Gosu/Gosu.hpp&gt;<br/><br/>class MyWindow : public Gosu::Window<br/>{<br/>public:<br/>&#160; &#160; MyWindow()<br/>&#160; &#160; :&#160;&#160; Gosu::Window(640, 480, false)<br/>&#160; &#160; {<br/>&#160; &#160; &#160; &#160; setCaption(L&quot;Hello World!&quot;);<br/>&#160; &#160; }<br/>};<br/><br/>int main()<br/>{<br/>&#160; &#160; MyWindow window;<br/>&#160; &#160; window.show();<br/>}<br/></code><br/><br/>Whenever I try to build, the compiler returns error for <code>IO.hpp</code> file<br/><code>Lexical or Preprocessor Issue<br/>/Users/ellmo/xcode/gosu-mac-0.7.28/Gosu.framework/Versions/A/Headers/IO.hpp:7:10: &#39;boost/utility.hpp&#39; file not found</code>
+</div>
+</div>
+
+<div class='brn' id='brn6683'>
+<div class='frm pst' id='pid6684' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=6684.html#pid6683'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6684.html#pid6684'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2013-03-27 10:19
+</div>
+<div class='ccl'>
+Old versions of Gosu required the boost library. Please download the latest version here: <a class='url' href='http://libgosu.org/downloads/'>http://libgosu.org/downloads/</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=869.html#tid869'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=869.html#tid869'>Gosu Exchange</a> / How do I add Gosu framework for XCode4 project?
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=6684.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

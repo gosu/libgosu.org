@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>A State Pattern implementation</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=148.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=148.html#tid148'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=148.html#tid148'>Gosu Exchange</a> / A State Pattern implementation
+</div>
+</div>
+
+<div class='frm pst' id='pid878' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=878.html#pid878'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-06-13 00:16
+</div>
+<div class='ccl'>
+Introducing Stateology, an implementation of the State Pattern using the Mixology C extension.<br/><br/>Use it like the following:<br/><br/>&#160; &#160; class Sample<br/>&#160; &#160; &#160; &#160; include Stateology<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; state(:Happy) {<br/>&#160; &#160; &#160; &#160; &#160; &#160; def do_something<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; puts &quot;Pets a puppy&quot;<br/>&#160; &#160; &#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; }<br/>&#160; &#160; &#160; &#160; <br/>&#160; &#160; &#160; &#160; state(:Angry) {<br/>&#160; &#160; &#160; &#160; &#160; &#160; def do_something<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; puts &quot;Kicks a puppy&quot;<br/>&#160; &#160; &#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; &#160; &#160; }<br/>&#160; &#160; end<br/><br/>&#160; &#160; s = Sample.new<br/><br/>&#160; &#160; # switch to Happy state<br/>&#160; &#160; s.state :Happy<br/>&#160; &#160; s.do_something&#160; #=&gt; &quot;Pets a puppy&quot;<br/><br/>&#160; &#160; # now switch to Angry state<br/>&#160; &#160; s.state :Angry<br/>&#160; &#160; s.do_something&#160; #=&gt; &quot;Kicks a puppy&quot;<br/><br/>The State Pattern is quite useful in game-dev where you may want different behaviours depending on whether the Player is Running, Jumping, Sleeping, etc<br/><br/>* Stateology is different to other implementations in that it works by dynamically mixing and unmixing modules from the target class. <br/><br/>* How to get Stateology: gem install stateology<br/><br/>* Note that stateology requires the mixology extension to work. The stateology gem will try to install the mixology gem itself and should work fine out of the box with ruby 1.8.6.<br/><br/>* However I am unsure whether the mixology maintainer applied my 1.9.1 patch to the mixology source - if you are trying to use Stateology with ruby 1.9.1 and encountering troubles<br/>go here to get the 1.9.1 compatible version of mixology: <a class='url' href='http://github.com/banister/mixology19/tree/master'>http://github.com/banister/mixology19/tree/master</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid879' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=879.html#pid879'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>Date</span> 2009-06-13 00:26
+</div>
+<div class='ccl'>
+s.state :Chinese<br/>s.do_something #=&gt; &quot;Cook and eat a puppy&quot;<br/><br/>Cool idea but couldn&#39;t just as easily do this?:<br/><br/>def do_something<br/>&#160; &#160;&#160; if @state == &quot;Happy&quot;<br/>&#160; &#160; &#160; &#160; &#160; puts &quot;Pets a puppy&quot;<br/>&#160; &#160;&#160; elseif @state == &quot;Angry&quot;<br/>&#160; &#160; &#160; &#160; &#160; puts &quot;Kicks a puppy&quot;<br/>&#160; &#160;&#160; else<br/>&#160; &#160; &#160; &#160; &#160; puts &quot;Stares dumbfounded at puppy&quot;<br/>&#160; &#160;&#160; end<br/>end
+</div>
+</div>
+
+<div class='frm pst' id='pid880' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=880.html#pid880'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-06-13 00:31
+</div>
+<div class='ccl'>
+of course you could :) but that&#39;s potentially alot of boiler-plate esp. if you have many methods that all change behaviour depending on the state. I guess it&#39;s up to each person and their own situation; but i&#39;ve found using it makes my code both easier to read and maintain :) 
+</div>
+</div>
+
+<div class='frm pst' id='pid882' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=882.html#pid882'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-13 00:37
+</div>
+<div class='ccl'>
+Hmmm, this sounds nice. Might even work well for the main window if there are very few/simple states the actual game app can be in, hehe :) Why not <code>obj.state = :foo</code> though?<br/><br/>How does it work with instance variables?
+</div>
+</div>
+
+<div class='frm pst' id='pid883' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=883.html#pid883'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
+<span class='htt'>Date</span> 2009-06-13 00:47
+</div>
+<div class='ccl'>
+ivars work fine, since a &#39;state&#39; is really just a module that is dynamically included upon transition (and, more complicatedly, unincluded upon transition out of that state).&#160; 
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=148.html#tid148'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=148.html#tid148'>Gosu Exchange</a> / A State Pattern implementation
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=148.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

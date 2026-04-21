@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2118 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>InputHandler class (C++ and Ruby)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2118' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=322.html#tid322'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=322.html#tid322'>Extending Gosu</a> / InputHandler class (C++ and Ruby)
+</div>
+</div>
+
+<div class='frm pst' id='pid2114' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2114.html#pid2114'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=9' >ChadyG</a>
+<span class='htt'>Date</span> 2010-02-22 06:50
+</div>
+<div class='ccl'>
+I haven&#39;t seen anyone sharing code for something like this, so I figured once I got one built for myself I&#39;d share.<br/><br/>This is a manager for high level input based on three types of game input;<br/>simple actions<br/>&#160; &#160; - simple key binding<br/>chords<br/>&#160; &#160; - multiple keys pressed at once for an action<br/>sequences<br/>&#160; &#160; - multiple keys pressed in order for an action<br/><br/>Each of these are presented in a way such that you provide a named action, and this class will poll Gosu&#39;s input methods to determine the state of it.&#160; Simple actions are pretty straight forward, if any of the buttons are pressed, the action will fire.&#160; Chords and sequences are a little bit more complicated.&#160; Chords allow the user some amount of time (here it is hard coded to 10 frames, but you can change that however you please) to press down all of the buttons.&#160; Sequences permit the user some threshold between keystrokes to fire (this threshold is determined when creating the action).&#160; All three of these input types will have one of five states;<br/>idle - not active<br/>process - chord or sequence has started<br/>begin - the key has just been pressed<br/>active - the key(s) is/are held down<br/>finish - the/a key has just been released<br/><br/>I did not implement any event triggering code, and instead opted for a query interface.&#160; This was simply just because it was easier to write (plus, for my projects I don&#39;t have much need for anything more complicated :D ).<br/><br/>At any rate, I started out mocking the code in Ruby then created the C++ code I needed.&#160; Since I&#39;m a nice guy (so I&#39;m told), and I know most of you enjoy using the Ruby end of Gosu, I finished the Ruby version and wrote a simple test case (instead of proper documentation).&#160; If any of you want to use the C++ code, hopefully you can figure out how to use it from the header file, if not I&#39;ll be happy to answer questions here.&#160; As for the Ruby, you should be able to gather everything from the test case.&#160; But I&#39;ll still answer any questions you have if I can.<br/><br/>Happy coding!<br/><br/><a class='url' href='http://dl.dropbox.com/u/6366/ChadyG_InputHandler.zip'>http://dl.dropbox.com/u/6366/ChadyG_InputHandler.zip</a><br/>note: This code is fresh as of today, so it may have some bugs.&#160; Also I realize the Ruby version could be cleaner, but it should still be usable.
+</div>
+</div>
+
+<div class='frm pst' id='pid2118' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2118.html#pid2118'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-02-23 11:52
+</div>
+<div class='ccl'>
+The sequences remind me that I still haven&#39;t seen a Gosu or Ruby fighting game… hey, when is the next Ludum Dare… :&gt;
+</div>
+</div>
+
+<div class='frm pst' id='pid2170' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=2170.html#pid2170'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=150' >RavensKrag</a>
+<span class='htt'>Date</span> 2010-03-09 05:53
+</div>
+<div class='ccl'>
+This is very useful code, and I really do appreciate it, but the Ruby code looks quite awful.&#160; I&#39;m going to try to rewrite it to make it look cleaner and not use the instance variable @time, as I think that Gosu::milliseconds or some other preexisting variable should do the job.&#160; If that ever happens, I&#39;ll try to remember to post the resultant code back up here.<br/><br/>It&#39;d be cool to see someone turn this into C wrapped in Ruby all packaged nice and neat in a gem, but that might be hoping for too much ^_^;
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=322.html#tid322'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=322.html#tid322'>Extending Gosu</a> / InputHandler class (C++ and Ruby)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2118.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

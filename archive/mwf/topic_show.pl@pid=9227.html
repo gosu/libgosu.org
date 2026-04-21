@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9227 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu::Grid, passing draw an array</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9227' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1348.html#tid1348'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1348.html#tid1348'>Gosu Exchange</a> / Gosu::Grid, passing draw an array
+</div>
+</div>
+
+<div class='frm pst' id='pid9226' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9226' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9226.html#pid9226'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1296.html' >Beamerr</a>
+<span class='htt'>Date</span> 2017-08-23 16:13
+</div>
+<div class='ccl'>
+Hi all,<br/><br/>I get a type error cannot pass array into integer. I understand what&#39;s going on but I don&#39;t know how to effectively pass draw an array so it draws each image. Any hair keeping strategies appreciated?<br/><br/>class Cell &lt; Gosu::Grid::Cell<br/><br/>&#160; def size<br/>&#160; &#160; object.width<br/>&#160; end<br/>&#160;&#160; <br/>private<br/><br/>&#160; def object<br/>&#160; &#160; Dir.glob(&quot;PNG-cards-1.3/*.png&quot;).each do |file|<br/>&#160; &#160; &#160; &#160; &#160;&#160; <br/>&#160; &#160; &#160; @object ||= Gosu::Image.new(window, &quot;PNG-cards-1.3/#{file}&quot;, true)<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class SequenceGame &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize width=1280, height=800, fullscreen=true<br/>&#160; &#160; super<br/>&#160; &#160; <br/>&#160; &#160; @grid = Gosu::Grid.new(self)<br/>&#160; &#160; @grid.default_cell = Cell.new(self, 0, 0)<br/> <br/>&#160; end<br/><br/>&#160; def button_down id<br/>&#160; &#160; close if id == Gosu::KbEscape<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; <br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @grid.draw<br/>&#160; end<br/><br/>end
+</div>
+</div>
+
+<div class='brn' id='brn9226'>
+<div class='frm pst' id='pid9227' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9227.html#pid9226'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9227' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9227.html#pid9227'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<span class='htt'>Date</span> 2017-08-25 00:51
+<span class='htt'>Edited</span> 2017-08-25 01:17
+</div>
+<div class='ccl'>
+(Note: The &quot;Showcase&quot; forum is for showing off completed projects. Please start posting your questions in the &quot;Exchange&quot; forum. Thanks.)<br/><br/>This is a Ruby question, not a Gosu one. You might want to take a look at some Ruby tutorials before continuing with Gosu. The language is both powerful and readable, but it has some quirks and special ways of doing things that will take some getting used to.<br/><br/>The way to do something with each item in an array is to use it&#39;s Enumerable methods. One of these is Array#each. It can be used like so:<br/><br/><code>@grid.each { |g| g.draw }</code><br/><br/>Look for documentation on Ruby&#39;s Array class (or the Enumerable mixin module) for more information.<br/><br/>EDIT: Note that this assumes your Gosu::Grid class behaves as an Array (or also mixes in Enumerable), which there is no evidence of in the above code. Since I can&#39;t find any documentation for the Grid class, I don&#39;t know if this is the case.<br/><br/>EDIT2: Are you using this? <a class='ura' href='https://github.com/shemerey/gosu_grid'>https://github.com/shemerey/gosu_grid</a><br/><br/>If so, it looks like the Grid class <i>does</i> respond to #draw as you would expect, so you must be using it incorrectly somewhere else. What line actually gives the &quot;cannot pass array into integer&quot; error?
+</div>
+</div>
+
+<div class='brn' id='brn9227'>
+<div class='frm pst' id='pid9228' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9227.html#pid9227'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9228' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9228.html#pid9228'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-08-25 07:28
+</div>
+<div class='ccl'>
+I&#39;ve moved both topics to Gosu Exchange.<br/><br/>TIL that there&#39;s a gosu_grid gem :)
+</div>
+</div>
+
+<div class='brn' id='brn9228'>
+<div class='frm pst' id='pid9229' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9227.html#pid9228'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9229' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9229.html#pid9229'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1296.html' >Beamerr</a>
+<span class='htt'>Date</span> 2017-08-29 11:36
+<span class='htt'>Edited</span> 2017-08-29 12:17
+</div>
+<div class='ccl'>
+Sorry, wrongly posted. Thanks for getting back to me.<br/><br/>I do understand that I need enumerable to effectively deal with &#39;each&#39; image which I had tried. That piece of code I gave was the probably the worst example. <br/><br/>Here&#39;s the section I&#39;ve been working on including some commented stuff which also doesn&#39;t work. <br/><br/>Yeah I&#39;m using the link you provided in EDIT2. <br/><br/>I&#39;m actually getting a runtime error: cannot read 10_of_clubs.png on the current code (Dir.new). I can&#39;t use glob because it returns a string. <br/><br/>I don&#39;t understand why I can&#39;t just open a file pass it to and array and then read with &#39;each&#39;. <br/><br/>As you say maybe Gosu::Grid doesn&#39;t work in this way. I don&#39;t understand why it doesn&#39;t? Why wouldn&#39;t it be designed to deal with an array. <br/><br/>Do you think the gem will make any difference?<br/><br/><code>class Cell &lt; Gosu::Grid::Cell<br/><br/>&#160; def size<br/>&#160; &#160; object.each do |image|<br/>&#160; &#160; &#160; image.width<br/>&#160; &#160; end<br/>&#160; end<br/>&#160;&#160; <br/>=begin<br/>&#160; &#160;&#160; @object = Array.new<br/>&#160; &#160;&#160; Dir.glob(&quot;PNG-cards-1.3/*.png&quot;) do |x|<br/>&#160; &#160; &#160; @object.push Gosu::Image.new(x)&#160; <br/>&#160; &#160;&#160; end<br/><br/>&#160; &#160; @object.each do |x|<br/>&#160; &#160; &#160; @object.push Gosu::Image.new(window, x, true)<br/>&#160; &#160; end<br/>=end <br/><br/>private<br/><br/>&#160; def object<br/><br/>&#160; &#160; Dir.new(&quot;PNG-cards-1.3&quot;).each do |file|<br/>&#160; &#160; &#160; next if File.directory? file<br/>&#160; &#160; &#160; &#160; @object ||= Gosu::Image.new(window, file, false)<br/>&#160; &#160; end<br/>&#160; end<br/>end</code><br/><br/><code>class SequenceGame &lt; Gosu::Window<br/>&#160; <br/>&#160; def initialize width=1280, height=800, fullscreen=true<br/>&#160; &#160; super<br/>&#160; &#160; <br/>&#160; &#160; @grid = Gosu::Grid.new(self)<br/>&#160; &#160; @grid.default_cell = Cell.new(self, 0, 0)<br/>&#160; &#160; <br/> <br/>&#160; end<br/><br/>&#160; def button_down id<br/>&#160; &#160; close if id == Gosu::KbEscape<br/>&#160; end<br/><br/>&#160; def update<br/>&#160; &#160; <br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @grid.draw<br/>&#160; end<br/><br/>end</code><br/><br/>Thanks again!
+</div>
+</div>
+
+<div class='brn' id='brn9229'>
+<div class='frm pst' id='pid9236' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9227.html#pid9229'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9236.html#pid9236'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-09-02 16:22
+</div>
+<div class='ccl'>
+I haven&#39;t looked at the source code of the grid gem, but drawing a grid of things isn&#39;t hard to do in pure Ruby/Gosu. Maybe that&#39;s easier than getting the grid library to work. The Cptn Ruby example game contains a tiled map that works like a grid:<br/><br/><a class='ura' href='https://github.com/gosu/gosu-examples/blob/master/examples/cptn_ruby.rb'>https://github.com/gosu/gosu-examples/blob/master/examples/cptn_ruby.rb</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1348.html#tid1348'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1348.html#tid1348'>Gosu Exchange</a> / Gosu::Grid, passing draw an array
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9227.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

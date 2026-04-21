@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Gosu and RubyMotion (on OS X, for now)</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8394' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1194.html#tid1194'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1194.html#tid1194'>Extending Gosu</a> / Gosu and RubyMotion (on OS X, for now)
+</div>
+</div>
+
+<div class='frm pst' id='pid8394' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=8394.html#pid8394'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2015-06-14 21:23
+</div>
+<div class='ccl'>
+I&#39;ve been playing around with Gosu and RubyMotion lately, and I thought I&#39;d share what the experience was like. RubyMotion is a commercial implementation of Ruby running on Apple&#39;s Objective C runtime (OS X, iOS), and on Android. I&#39;ve only tried it on OS X so far.<br/><br/>To run Ruby/Gosu code in RubyMotion, I had to wrap Gosu in two thin layers of code. First, a set of Objective C classes that call C++ code - this part is called GosuKit, and in theory you could use it to write Gosu games in Objective C and Swift (but why...). It looks like this:<br/><br/><a class='ura' href='https://github.com/gosu/motion-gosu/blob/master/GosuKitTests/GosuKitTests.m'>https://github.com/gosu/motion-gosu/blob/master/GosuKitTests/GosuKitTests.m</a><br/><br/>It is possible to call GosuKit from RubyMotion, but the method names are very un-Ruby-like: <code>GSKImage.new.drawAtX(x, y: 5, z: 45...)</code> and so on. So there is a second layer of paint called &quot;motion-gosu&quot; that wraps the GosuKit Objective-C classes in the familiar Gosu 0.9 interface:<br/><br/><a class='ura' href='https://github.com/gosu/motion-gosu/blob/master/motion/image.rb'>https://github.com/gosu/motion-gosu/blob/master/motion/image.rb</a><br/><br/>It&#39;s not 100% complete - TextInput, custom OpenGL and loading images from &quot;blobs&quot; are all missing. Also, motion-gosu is not backward compatible at all - every step away from the new Gosu 0.9 results in an exception.<br/><br/>With these two things in place, I was able to get my old game Peter Morphose to run (half the levels, anyway). It&#39;s a very chaotic codebase, mostly translated to Ruby from Delphi source files written in 2001 - but it only took a few changes to get it to work in RubyMotion! That&#39;s pretty sweet :)<br/><br/><a class='ura' href='https://github.com/jlnr/petermorphose/tree/motion'>https://github.com/jlnr/petermorphose/tree/motion</a><br/><br/>Thoughts:<br/>• RubyMotion does not use garbage collection. If you want to have circular references between objects, you have to use <code>WeakRef</code> - otherwise you&#39;ll leak memory. Auditing an existing Ruby codebase for circular references sounds frustrating.<br/>• Everything about RubyMotion is extremely unforgiving. In one case I&#39;ve passed <code>:additive</code> instead of the newer <code>:add</code> to <code>Image#draw</code> and had to use <code>lldb</code> (the low-level Objective C debugger) to figure out what was going on. So I&#39;d always develop my game using &quot;standard&quot; Ruby/Gosu and then only wrap it up for release with RubyMotion.<br/>• I&#39;m not sure if you can keep your existing directory Ruby/Gosu structure and just add a RubyMotion <code>Gemfile</code>, <code>Rakefile</code> etc? I moved everything around to match the RubyMotion default structure.<br/><br/>iOS is next, obviously. My long-term goal is to run the same (unreleased) Ruby game on iOS and Android devices.
+</div>
+<div class='ccl pat'>
+<div class='amf'>Attachment: <a href='../../mwf/attachments/94/8394/Monstris.app.zip'>Monstris.app.zip</a>  (2062k)</div>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1194.html#tid1194'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=1194.html#tid1194'>Extending Gosu</a> / Gosu and RubyMotion (on OS X, for now)
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8394.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

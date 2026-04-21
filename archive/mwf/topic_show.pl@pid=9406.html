@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='nofollow,noindex'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Issues with Ruby Gosu Image#subimage</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9406' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1384.html#tid1384'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1384.html#tid1384'>Gosu Exchange</a> / Issues with Ruby Gosu Image#subimage
+</div>
+</div>
+
+<div class='frm pst' id='pid9406' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9406' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9406.html#pid9406'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2018-04-07 01:35
+</div>
+<div class='ccl'>
+So far I was glad with the option of reusing pictures by caching them. The only thing I disliked was the very same need to cache them :P<br/><br/>Sadly that has changed since I tried to make a new composite sprite class that kept an image that looks like a gauge, some sort of bar. As a single bar in a menu it worked quite fine, but that was not the case when I tried to use more than one of the same kind. While trying to draw three of them, only the first one got drawn as expected. I thought they shared the same x coordinate but they didn&#39;t!! What did I use to tile it? The Image#subimage method because the tiles have different dimensions. I suspected I should not cache that picture since you cannot dup Gosu::Images, so I preferred to skip the caching part and load it from file every single time I need to update it... to no avail, guys!! Gosu keeps ignoring them,even after I confirmed they do so exist! Honestly, I don&#39;t think it could be my fault and I do need some serious help here... :S<br/><br/>You can find the CompositePictureSprite or SpriteCompositePicture class in my KUnits Gosu demo on the corresponding subforum.
+</div>
+</div>
+
+<div class='brn' id='brn9406'>
+<div class='frm pst' id='pid9407' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9406'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9407' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9407.html#pid9407'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2018-04-07 13:37
+</div>
+<div class='ccl'>
+Um, could you include music download for your game? &gt;_&gt;<br/>Can&#39;t run it without this.
+</div>
+</div>
+
+<div class='brn' id='brn9407'>
+<div class='frm pst' id='pid9408' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9407'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9408' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9408.html#pid9408'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2018-04-07 17:22
+</div>
+<div class='ccl'>
+You can easily fix that yourself, in lib/setup folder you&#39;ll find all the modules that are used to configure my scenes or states scripts. There they usually begin with a BGM constant... but if you wanna test it with the multiple gauges on screen (OK, just one being displayed while the others are missing), you better wait till I upload the most recent version of my project.<br/><br/>I know, it looks more like a concept than an actual game, even if it exceeded 8000 lines of code already... :S<br/><br/>By the way, you gotta talk to the dark elf lady on the first map to open the pseudo battle screen. :P
+</div>
+</div>
+
+<div class='brn' id='brn9408'>
+<div class='frm pst' id='pid9410' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9408'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9410' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9410.html#pid9410'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2018-04-08 10:42
+</div>
+<div class='ccl'>
+Why did you split everything into few archives? :/<br/>Game complains about &quot;images/pictures/gauge0.png&quot;. It doesn&#39;t exist and I can&#39;t start a battle.
+</div>
+</div>
+
+<div class='brn' id='brn9410'>
+<div class='frm pst' id='pid9411' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9410'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9411.html#pid9411'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2018-04-08 19:13
+</div>
+<div class='ccl'>
+O.o but it does exist, it&#39;s the same as gauge1 and gauge2... Let me check the resources compressed file I uploaded, but you can use any other image as a gauge and go through the same nasty situation as I did :/
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pst' id='pid9418' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9406'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9418' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9418.html#pid9418'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<span class='htt'>Date</span> 2018-04-11 19:31
+</div>
+<div class='ccl'>
+So, what exactly is your problem here? I checked the game and gauges look fine. You updated them all at once so obviously they have the same length. Caching has nothing to do with subimage, because it would be waste of memory (although it&#39;s possible it doesn&#39;t even allocate new texture).
+</div>
+</div>
+
+<div class='brn' id='brn9418'>
+<div class='frm pst' id='pid9419' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9418'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9419' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9419.html#pid9419'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2018-04-12 03:23
+</div>
+<div class='ccl'>
+I was using two images as gauge components, that did not work at all. Using a single image seems to work fine, but there is no good reason why neither subimage nor dup would work as expected.
+</div>
+</div>
+
+<div class='brn' id='brn9419'>
+<div class='frm pst' id='pid9422' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9419'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9422' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9422.html#pid9422'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2018-04-16 22:33
+</div>
+<div class='ccl'>
+I try to reply to bug reports ASAP but I really need an example that demonstrates the issue. Now that you have updated the game before I had the free time to download it, I still don&#39;t understand what the issue with <code>subimage</code> was :/<br/><br/>Putting your game on GitHub makes it easier to refer to previous revisions. You can also always download a ZIP of the current master version (or link to that ZIP from other sites), instead of having several RAR files in MediaFire. I really recommend it (plus: knowing Git/GitHub is a valuable skill :)).
+</div>
+</div>
+
+<div class='brn' id='brn9422'>
+<div class='frm pst' id='pid9424' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9406.html#pid9422'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9424.html#pid9424'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=183.html' >kyonides</a>
+<span class='htt'>Date</span> 2018-04-17 00:01
+</div>
+<div class='ccl'>
+Well, I also use mega, but I know, github might help. The thing is I never got used to github :P<br/><br/>The issue was that it subimage does not let you create composite images, like tiles that have different sizes. If you try to use it to draw them during gameplay, it fails to show you anything...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1384.html#tid1384'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1384.html#tid1384'>Gosu Exchange</a> / Issues with Ruby Gosu Image#subimage
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9406.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='http://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

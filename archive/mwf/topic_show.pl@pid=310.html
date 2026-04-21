@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='../../mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='../../mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 310 }'></script>
+<script type='text/javascript' src='../../mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>TexPlay, drawing and hit-testing for Gosu::Image [from wiki]</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum_show.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='forum_search.pl.html' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='http://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d310' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=79.html#tid79'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=79.html#tid79'>Extending Gosu</a> / TexPlay, drawing and hit-testing for Gosu::Image [from wiki]
+</div>
+<div class='bcl'>
+<span class='pln'>
+<span>1</span>
+<a href='topic_show.pl@tid=79%3Bpg=2.html'>2</a>
+<img class='sic dsb sic_nav_prev_d' src='../../mwf/epx.png' title='Go to previous page' alt='Previous'>
+<a href='topic_show.pl@tid=79%3Bpg=2.html'><img class='sic sic_nav_next' src='../../mwf/epx.png' title='Go to next page' alt='Next'></a>
+</span>
+&#160;
+</div>
+</div>
+
+<div class='frm pst' id='pid303' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=303.html#pid303'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-02-10 03:17
+<span class='htt'>Edited</span> 2009-02-10 03:24
+</div>
+<div class='ccl'>
+As originally posted on the Wiki by jrmair, Aug 26, 2008:<br/><br/><blockquote><p>&gt; if anyone is interested in trying out or bugtesting TexPlay (a c extension for gosu for manipulating images) go here: <a class='url' href='http://banisterfiend.wordpress.com/'>http://banisterfiend.wordpress.com/</a><br/>&gt; <br/>&gt; it currently supports get_pixel and the ability to manipulate gosu images at runtime (the drawing of circles, lines boxes etc).<br/>&gt; <br/>&gt; Perfect for fast pixel-perfect collision detection in games, and fast image manipulation.</p></blockquote><br/>The library is explained in great detail here: <a class='url' href='http://banisterfiend.wordpress.com/2008/08/23/texplay-an-image-manipulation-tool-for-ruby-and-gosu/'>http://banisterfiend.wordpress.com/2008/08/23/texplay-an-image-manipulation-tool-for-ruby-and-gosu/</a>
+</div>
+</div>
+
+<div class='frm pst' id='pid310' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=310.html#pid310'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-02-12 16:16
+<span class='htt'>Edited</span> 2009-02-13 17:19
+</div>
+<div class='ccl'>
+i just updated TexPlay, it&#39;s now at version 0.1.0. I&#39;ve changed the API and the syntax:<br/><br/>* To get the color of a pixel on your image:<br/><br/>&#160; &#160; image.get_pixel(60,60)<br/><br/>* To modify your image:<br/><br/>&#160; &#160; image.paint {<br/>&#160; &#160; &#160; &#160; circle 20, 20<br/>&#160; &#160; &#160; &#160; pixel 10, 10<br/>&#160; &#160; }<br/><br/>image is just any Gosu::Image. <br/><br/>For full information and download go here: <a class='url' href='http://banisterfiend.wordpress.com/2008/08/23/texplay-an-image-manipulation-tool-for-ruby-and-gosu/'>http://banisterfiend.wordpress.com/2008/08/23/texplay-an-image-manipulation-tool-for-ruby-and-gosu/</a><br/><br/>TexPlay supports Windows, Linux and MacOsx systems.<br/><br/>Please get back to me with any feedback, suggestions or bug reports :)
+</div>
+</div>
+
+<div class='frm pst' id='pid318' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=318.html#pid318'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=55.html' >awright</a>
+<span class='htt'>Date</span> 2009-02-15 05:16
+</div>
+<div class='ccl'>
+wow cool! now i can write my lemmings clone! get_pixel was just what i was looking for!! thanks for the lib!
+</div>
+</div>
+
+<div class='frm pst' id='pid710' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=710.html#pid710'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<span class='htt'>Date</span> 2009-05-29 01:51
+</div>
+<div class='ccl'>
+I really like TexPlay, but I have a problem... the performance of the refresh_cache call you add to the instantiation of images (i.e. Gosu::Image.new(args)) is very, very bad for me. It adds anywhere from 0.5 seconds to nearly 0.9 seconds per image instantiation, and since I load more than a hundred images in my game, all at once, I&#39;ve had to comment out the call to refresh_cache.<br/><br/>Interestingly, commenting out that call hasn&#39;t had any negative effect, so I&#39;ve not been able to figure out exactly what it was supposed to do in the first place...
+</div>
+</div>
+
+<div class='frm pst' id='pid736' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=736.html#pid736'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-06-01 15:11
+<span class='htt'>Edited</span> 2009-06-01 15:49
+</div>
+<div class='ccl'>
+hehe yes. 90% of the time you will be able to use TexPlay just fine without the automatic caching in the Gosu::Image::new method...however in certain rare situations (see below) TexPlay will not do what you want unless auto-caching is enabled.<br/><br/>The rare situation is when two or more Gosu images are stored internally on the same quad yet you invoke the TexPlay#paint method on one of those images BEFORE you&#39;ve finished loading the other images.. In this situation all TexPlay manipulations will work fine for the images loaded prior to the first TexPlay#paint call (TexPlay lazily caches the quad on #paint if the quad is not already cached) but will produce weird results for all image manipulation on the images loaded AFTER (since they missed out on being cached.)<br/><br/>(sorry that was convoluted, it&#39;s 3am here :/)<br/><br/>You&#39;ve convinced me that since this case is so rare I will remove auto-caching from the next version of TexPlay and come up with another way of resolving the weird edge-case .<br/><br/>thanks
+</div>
+</div>
+
+<div class='frm pst' id='pid743' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=743.html#pid743'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-06-01 19:18
+</div>
+<div class='ccl'>
+I think you could get the OpenGL id of the texture in Image::new and see if you need to redo/merge(?) your painting? :)
+</div>
+</div>
+
+<div class='frm pst' id='pid744' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=744.html#pid744'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-06-01 19:42
+</div>
+<div class='ccl'>
+ah yes :)
+</div>
+</div>
+
+<div class='frm pst' id='pid811' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=811.html#pid811'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>Date</span> 2009-06-08 16:37
+<span class='htt'>Edited</span> 2009-06-08 19:24
+</div>
+<div class='ccl'>
+hey,<br/><br/>I fixed the issue with refresh_cache in the new (0.1.4) release of TexPlay. I also added some useful error messages for when you encounter the quirk with gl_tex_info (fixed in Gosu 0.7.13.4 ?) <br/><br/>also added a few more methods and constants:<br/>* TexPlay#quad_cached?&#160; &#160; -&#160; returns true if the quad the texture is located on has already been cached<br/>* TexPlay::TP_MAX_QUAD_SIZE&#160; &#160; - returns the sidelength of the largest quad that can be allocated. (taken directly from max_texture_size() method in Gosu&#39;s Texture.cpp)<br/><br/>You can get the new TexPlay 0.1.4 binaries and source from here: <br/><a class='url' href='http://code.google.com/p/texplay/downloads/list?saved=1&amp;ts=1244477834'>http://code.google.com/p/texplay/downloads/list?saved=1&amp;ts=1244477834</a><br/><br/>Note: It is better to use TexPlay with versions of Gosu that do not have the quirk in gl_tex_info or you may be limited to a texture size of 254 x 254<br/><br/>banister
+</div>
+</div>
+

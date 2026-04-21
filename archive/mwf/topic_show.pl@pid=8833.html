@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 8833 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Animate image after key press</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d8833' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1268#tid1268'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1268#tid1268'>Gosu Exchange</a> / Animate image after key press
+</div>
+</div>
+
+<div class='frm pst' id='pid8830' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8830' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8830.html#pid8830'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1246.html' >GusAntoniassi</a>
+<span class='htt'>Date</span> 2016-02-22 04:00
+</div>
+<div class='ccl'>
+I&#39;m testing some things out, and I&#39;m trying to animate a box once by 100px to the right after a keypress is detected (the key doesn&#39;t have to be holded, just pressed once). The problem is that using loops inside <code>button_down</code> seem to freeze the draw method until execution is complete. The only way to make it work I could find was to use a boolean and call the move event in the Update method. That feels weird though, and I&#39;m going to have a lot of things to move so that&#39;d require a lot of global variables, doesn&#39;t feels optimal. Is there a better way to do it? Here&#39;s my code so far:<br/><br/><code>require &#39;gosu&#39;;<br/><br/>class Box<br/>&#160; attr_reader :x;<br/>&#160; attr_reader :y;<br/><br/>&#160; def initialize<br/>&#160; &#160; @x = 0;<br/>&#160; &#160; @y = 0;<br/>&#160; &#160; @vel_x = 0.5;<br/>&#160; &#160; @vel_y = 0;<br/>&#160; &#160; @graphic = Gosu::Image.new(&quot;media/box.png&quot;);<br/>&#160; end<br/><br/>&#160; def move<br/>&#160; &#160; @x += @vel_x<br/>&#160; end;<br/><br/>&#160; def draw<br/>&#160; &#160; @graphic.draw(@x, @y, 1);<br/>&#160; end;<br/>end;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false);<br/><br/>&#160; &#160; @box = Box.new;<br/>&#160; &#160; @beginMovement = false;<br/>&#160; end;<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::KbRight or id == Gosu::GpRight then<br/>&#160; &#160; &#160; @beginMovement = true;<br/>&#160; &#160; end;<br/>&#160; end;<br/><br/>&#160; def draw<br/>&#160; &#160; @box.draw<br/>&#160; end;<br/><br/>&#160; def update<br/>&#160; &#160; @beginMovement = false if @box.x &gt;= 100;<br/>&#160; &#160; @box.move if @beginMovement;<br/>&#160; end<br/>end;<br/><br/>window = Window.new;<br/>window.show;<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn8830'>
+<div class='frm pst' id='pid8831' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8833.html#pid8830'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8831' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8831.html#pid8831'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1242' >nietzschette</a>
+<span class='htt'>Date</span> 2016-02-22 06:46
+</div>
+<div class='ccl'>
+That is exactly the sort of thing the update method is intended to handle!&#160; In fact, your code already looks pretty close to optimum, though there are a few things I would do differently because I tend to have my boxes move in more than one direction, often with a layer of intelligence.&#160; If these boxes are only suppose to move right, than you might as well not bother with a method call to box.move because it&#39;s only one line anyway.&#160; Reducing method call is probably your greatest speed up.&#160; Those booleans could probably be trimmed as well, though I&#39;d wait until testing with 100-1000 boxes before making assumptions about how the code executes.<br/><br/>I like to use enumerators and arrays where I can.&#160; your entire box object could simply be packed into an array like this:<br/><br/>[Gosu::Image,x,y,vx,vy] <br/><br/>thus eliminating the overhead associated with the object.&#160; Better yet, if you want many boxes to share the same graphic, hold just the coordinates in a separate, nested array<br/><code><br/>@graphic = Gosu::Image<br/>@boxes = [<br/>[x0,y0,vx0,vy0],<br/>[x1,y1,vx1,vy1],<br/>...<br/>]<br/></code><br/>and enumerate through @boxes for movement and draw operations, so you don&#39;t need to allocate memory for separate box classes or spend precious time looking-up method calls for those objects.<br/><code><br/>def update<br/> @boxes.each{|b|<br/>&#160;&#160; if b[0] &gt;= 100<br/>&#160; &#160; b[0] += 0.5<br/>&#160;&#160; end<br/> } <br/>end<br/><br/>def draw<br/> @boxes.each{|b|<br/>&#160; @graphic.draw[b[0],b[1],1]<br/> }<br/>end<br/></code>
+</div>
+</div>
+
+<div class='brn' id='brn8831'>
+<div class='frm pst' id='pid8833' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8833.html#pid8831'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl8833' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=8833.html#pid8833'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=1246.html' >GusAntoniassi</a>
+<span class='htt'>Date</span> 2016-02-22 15:51
+</div>
+<div class='ccl'>
+Hey, thanks for the reply! I&#39;m using objects to keep things neat (and I&#39;m gonna need them later on). So, let&#39;s say if I wanted to move 10 boxes depending on the player pressing the keys 1 to 0 (key 1 for the first box, 2 for the second, and so on). I would need 10 booleans and I&#39;d check them on every update?<br/>I can&#39;t test things on Gosu now, but this is how I imagine it would go on:<br/><br/><code>class Box<br/>&#160; attr_reader :x;<br/>&#160; attr_accessor :move;<br/><br/>&#160; def initialize(x)<br/>&#160; &#160; @x = x;<br/>&#160; &#160; @move = false;<br/>&#160; &#160; @graphic = Gosu::Image.new(&quot;media/box.png&quot;);<br/>&#160; end<br/><br/>&#160; def moveX<br/>&#160; &#160; @x += @vel_x if @move;<br/>&#160; end;<br/><br/>&#160; def draw<br/>&#160; &#160; @graphic.draw(@x, @y, 1);<br/>&#160; end;<br/>end;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false);<br/>&#160; &#160; @box = [];<br/><br/>&#160; &#160; for i in 0..9 <br/>&#160; &#160; &#160;&#160; @box.push(Box.new(i*32));<br/>&#160; &#160; end;<br/>&#160; end;<br/><br/>&#160; def button_down(id)<br/>&#160; &#160; if id == Gosu::Kb1 then<br/>&#160; &#160; &#160; @box[0].move = true;<br/>&#160; &#160; end;<br/>&#160; &#160; if id == Gosu::Kb2 then<br/>&#160; &#160; &#160; @box[1].move = true;<br/>&#160; &#160; end;<br/><br/>&#160; &#160; # [...]<br/><br/>&#160; &#160; if id == Gosu::Kb0 then<br/>&#160; &#160; &#160; @box[9].move = true;<br/>&#160; &#160; end;<br/>&#160; end;<br/><br/>&#160; def draw<br/>&#160; &#160; @box.draw<br/>&#160; end;<br/><br/>&#160; # Using &#39;j&#39; here because the forum parses [ i ] as a tag<br/>&#160; def update<br/>&#160; &#160; for x in 0..9<br/>&#160; &#160; &#160; &#160; @box[j].moveX unless @box[j].x &gt;= 100;<br/>&#160; &#160; end;<br/>&#160; end<br/>end;<br/></code><br/><br/>I&#39;m not sure if this is gonna compile since I didn&#39;t test it, but is this how moving things is supposed to work? There are a few tweaks I could do, but I think I&#39;m understanding it now. <br/>Again, thank you for the help!
+</div>
+</div>
+
+<div class='brn' id='brn8833'>
+<div class='frm pst' id='pid8834' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=8833.html#pid8833'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=8834.html#pid8834'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2016-02-22 16:20
+</div>
+<div class='ccl'>
+Yep, exactly. A few minor nitpicks:<br/>- You don&#39;t any of these semicolons in Ruby :)<br/>- In <code>draw</code>, you want to iterate over the boxes and <code>.draw</code> each of them. You can use a <code>for ... in</code> loop for that, but <code>@box.each { |b| b.draw }</code> is more common in Ruby. It can even be shortened to <code>@box.each(&amp;:draw)</code>.<br/>- Method names usually use_underscores() instead of javaCase()<br/>- You don&#39;t need to pass <code>false</code> to <code>super</code> in <code>initialize</code> anymore, that&#39;s Gosu&#39;s old interface (which still works). The new way is <code>super(w, h)</code> or <code>super(w, h, fullscreen: some_boolean)</code><br/>- In <code>button_down</code>, you can use <code>button_id_to_char</code> to see which number was pressed:<br/><code>&#160; def button_down(id)<br/>&#160; &#160; ch = Gosu::button_id_to_char(id)<br/>&#160; &#160; if ch =~ /^[0-9]$/ then # Regexp to test for 0-9<br/>&#160; &#160; &#160; index = (ch.to_i + 1) % 10<br/>&#160; &#160; &#160; box[index].move = true<br/>&#160; &#160; end<br/>&#160; end</code><br/>That has the advantage of also working with the numpad.<br/><br/>Also, sorry for the troublesome forum markup! I really wish it was Markdown.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1268#tid1268'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1268#tid1268'>Gosu Exchange</a> / Animate image after key press
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=8833.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

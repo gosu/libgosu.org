@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 9246 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Input update interval</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d9246' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1349.html#tid1349'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1349.html#tid1349'>Gosu Exchange</a> / Input update interval
+</div>
+</div>
+
+<div class='frm pst' id='pid9231' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9231' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9231.html#pid9231'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-08-30 02:26
+<span class='htt'>Edited</span> 2017-08-30 02:55
+</div>
+<div class='ccl'>
+So far I&#39;ve seen and read Gosu (for Ruby) usually updates its contents or its input info every 16.6 milliseconds unless you change that right at the beginning. I&#39;ve been having an issue with the input update stuff because I need the game to update images every 40 milliseconds or less to make them run smoothly or decently at least, but then I see that handling input becomes a pain you know where. It updates the button_down? method too often for my needs and the only thing I could do was to make my game ignore a button that has not released so far, forcing the player to keep pushing the button once and again. Most of the time it might work if I&#39;m working with menus but not when walking on a map with my playable characters. How can I alter the input update frequency while keeping the refresh update frequency intact? I need it to ignore a pressed button that is not released for a few extra milliseconds...<br/><br/>I&#39;d also be grateful if you could share some ideas on how to implement graphical transitions on Gosu (for Ruby).
+</div>
+</div>
+
+<div class='brn' id='brn9231'>
+<div class='frm pst' id='pid9235' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9231'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9235' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9235.html#pid9235'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-09-02 16:02
+<span class='htt'>Edited</span> 2017-09-02 16:50
+</div>
+<div class='ccl'>
+You&#39;ll have to implement input delays in your game code. For example, if the player can hold the spacebar to keep shooting, you shouldn&#39;t create a new projectile every tick in <code>Window#update</code> when <code>button_down? Gosu::KB_SPACE</code>, since 60 bullets per second are probably too many. Instead, you should have a counter variable like <code>@reload_time</code> that you set to 30 when the player shoots, and then you decrement it every time <code>update</code> is called, and only when it reaches 0, you create another projectile. Now the player can shoot twice per second, and it will feel much nicer than if Gosu would only update <code>button_down?</code> every 500ms, because the first shot still happens immediately after pressing the button.<br/><br/>It&#39;s quite common for game objects in Gosu to have counter variables that count up or down until something happens.
+</div>
+</div>
+
+<div class='brn' id='brn9235'>
+<div class='frm pst' id='pid9237' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9235'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9237' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9237.html#pid9237'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-02 16:34
+</div>
+<div class='ccl'>
+I see, but I HATE to implement such counters, they look weird and I can&#39;t place it in button_down? method that&#39;s the one that gets updated often. Isn&#39;t there any other alternative? It had become a nuisance to update the counter info every time I had to change the update interval... Besides I have already noticed that even the counter blocks some attempts to press a different button that should trigger different methods...
+</div>
+</div>
+
+<div class='brn' id='brn9237'>
+<div class='frm pst' id='pid9239' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9237'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9239' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9239.html#pid9239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-09-02 16:54
+</div>
+<div class='ccl'>
+There is no alternative, but of course you can write a helper method/class that wraps this and reuse it throughout your game.
+</div>
+</div>
+
+<div class='brn' id='brn9239'>
+<div class='frm pst' id='pid9240' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9239'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9240' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9240.html#pid9240'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-02 17:06
+</div>
+<div class='ccl'>
+Sounds bad... What can you tell me about the transitions? What should I learn to implement them in my Ruby Gosu projects? (Don&#39;t tell me I can only do that via C extensions... -_-)
+</div>
+</div>
+
+<div class='brn' id='brn9240'>
+<div class='frm pst' id='pid9241' style='margin-left: 15%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9240'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9241' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9241.html#pid9241'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2017-09-02 18:27
+</div>
+<div class='ccl'>
+I&#39;m not sure what kind of transition you are looking for, but this video shows a game that I&#39;ve built with pure Gosu (in C++, but the code would look the same in Ruby - no C necessary):<br/><br/><a class='ura' href='https://www.youtube.com/watch?v=HyNmL_PogKE'>https://www.youtube.com/watch?v=HyNmL_PogKE</a><br/><br/>(The first ten seconds are basically just different screens transitioning into each other. Ignore the rest, the game is dead now :))<br/><br/>The way I usually do it is that each screen (menu, dialog box, ...) is a different class/object and when a transition happens, I divide the number of ticks by total duration so that I end up with a number <code>t</code> between 0.0 and 1.0 as the &quot;position&quot; inside of the current transition. For example, if I wanted one screen to zoom in while another fades out, I would do this in <code>draw</code>:<br/><br/><code>def draw<br/>&#160; t = position_in_transition() # 0.0...0.1<br/>&#160; @previous_screen.draw<br/>&#160; overlay_color = Gosu::Color.argb(t * 255, 0, 0, 0)<br/>&#160; Gosu.draw_rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, overlay_color, 999999)<br/>&#160; Gosu.scale(t) { @next_screen.draw }<br/>end</code><br/><br/>So...it&#39;s all possible, but you also have to do it all by yourself.
+</div>
+</div>
+
+<div class='brn' id='brn9241'>
+<div class='frm pst' id='pid9246' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9241'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9246.html#pid9246'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-05 02:24
+</div>
+<div class='ccl'>
+OK, it seems to be something I need to carefully analyze in hopes of finding a not so heavy solution to make it happen... Perhaps I could use a Module to avoid using global variables...
+</div>
+</div>
+
+<div class='frm pst' id='pid9252' style='margin-left: 18%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9241'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9252' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9252.html#pid9252'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-19 18:49
+</div>
+<div class='ccl'>
+What I was thinking had to do more with black and white graphics (or grayish gradients) that could let you perform the transitions in many ways. Let&#39;s say I&#39;ve got a graphic for a box transition, meaning there is a box inside another box and even another inside the last one and so on, then you&#39;d see that half of the boxes make parts of the previous screen disappear and the next scene shows up slowly...
+</div>
+</div>
+
+<div class='brn' id='brn9252'>
+<div class='frm pst' id='pid9253' style='margin-left: 21%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9252'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9253' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9253.html#pid9253'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-09-20 13:04
+<span class='htt'>Edited</span> 2017-09-20 14:22
+</div>
+<div class='ccl'>
+If you mean something like in RPG Maker XP, where you have grayscale transition effects that go transparent from white to black, that&#39;s something you can do with shaders, which are sadly not supported natively by Gosu. You&#39;d need to use Ashton extension library.<br/><br/><img class='emi' src='https://thumbs.gfycat.com/OffensiveApprehensiveLice-size_restricted.gif' alt=''/><br/>If you want the shader: <a class='ura' href='http://lpaste.net/6797344972136775680'>http://lpaste.net/6797344972136775680</a><br/><br/>You could probably achieve this with pure Gosu, but that requires two images and shifting between them with default/multiply drawing mode.<br/><br/>EDIT:<br/>Well, I was right. Perfectly doable in pure Gosu, although you lose non-smooth effect option (where pixels are either fully opaque or transparent).<br/>Have fun: <a class='urs' href='https://www.mediafire.com/file/55s5yc55e6x09w5/gosu_transintion_example.zip'>https://www.mediafire.com/file/55s5yc55e6x09w5/gosu_transintion_example.zip</a>
+</div>
+</div>
+
+<div class='brn' id='brn9253'>
+<div class='frm pst' id='pid9254' style='margin-left: 24%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9253'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9254' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9254.html#pid9254'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-23 03:25
+</div>
+<div class='ccl'>
+Thanks for your assistance, lol_o2, I&#39;ll be checking it out once I get some spare time, storms kept me busy lately, but why do you call yourself an anonymous coward on the first link you posted? O.o
+</div>
+</div>
+
+<div class='brn' id='brn9254'>
+<div class='frm pst' id='pid9258' style='margin-left: 27%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9254'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl9258' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=9258.html#pid9258'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2017-09-23 14:12
+</div>
+<div class='ccl'>
+Uh, what link? Wut? &gt;_&gt;
+</div>
+</div>
+
+<div class='brn' id='brn9258'>
+<div class='frm pst' id='pid9263' style='margin-left: 30%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=9246.html#pid9258'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=9263.html#pid9263'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
+<span class='htt'>Date</span> 2017-09-25 21:29
+</div>
+<div class='ccl'>
+The lpaste.net link XD<br/><br/>I couldn&#39;t make it work with just fake images, the ones recorded by window.record feature, so I had to create black rectangles to simulate a transition. Now my issue is that it gets stuck for a few seconds especially while transitioning between maps...
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=1349.html#tid1349'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1349.html#tid1349'>Gosu Exchange</a> / Input update interval
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=9246.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

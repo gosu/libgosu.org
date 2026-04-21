@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>TexPlay Bug</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=828.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=828.html#tid828'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=828.html#tid828'>Extending Gosu</a> / TexPlay Bug
+</div>
+</div>
+
+<div class='frm pst' id='pid6378' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6378' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6378.html#pid6378'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-12-02 13:19
+</div>
+<div class='ccl'>
+I mentioned it before, but now I found a 100% way to reproduce it. I made a method that loads tiles with different palettes. It correctly loads 1-3 tilesets and next images appear blank. It&#39;s interesting that loading single images doesn&#39;t cause the bug. The code looks like this (it&#39;s a part of method that loads tiles):<br/><code><br/>array = Image.load_tiles($screen, &quot;data#{dir}/#{name}.png&quot;, width, height, tileable)<br/>if palette<br/>&#160;&#160; pal=Img[&quot;Palettes/#{palette}&quot;]&#160; ##loads image for palette<br/>&#160;&#160; array.each{|img| <br/>&#160; &#160; &#160; pal.width.times{|x| img.clear(:dest_select=&gt;pal.get_pixel(x,0),:color=&gt;pal.get_pixel(x,1),:tolerance=&gt;0.001)}<br/>&#160;&#160; }<br/>end<br/>@@tiles[[name.downcase,size,palette]]=array<br/></code><br/><br/>And the demo where it appears: <a class='url' href='http://www.fileden.com/files/2008/1/21/1712119/Texplay%20Bug.zip'>http://www.fileden.com/files/2008/1/21/1712119/Texplay%20Bug.zip</a><br/>So, is there a way to fix it?
+</div>
+</div>
+
+<div class='brn' id='brn6378'>
+<div class='frm pst' id='pid6379' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=828.html#pid6378'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6379' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6379.html#pid6379'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-12-02 23:17
+</div>
+<div class='ccl'>
+Something to try might be<code> img.refresh_cache</code> after you&#39;ve cleared it. Just a guess, but sometimes that forces updates which otherwise might not get synced properly. Beyond that, I haven&#39;t a clue.
+</div>
+</div>
+
+<div class='brn' id='brn6379'>
+<div class='frm pst' id='pid6380' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=828.html#pid6379'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6380.html#pid6380'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-12-03 14:58
+</div>
+<div class='ccl'>
+Thanks!<br/>But I haven&#39;t solved it completely. Strangely, first image of each tileset (after 1-2 loads) is missing.
+</div>
+</div>
+
+</div>
+</div>
+<div class='frm pst' id='pid6385' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6385' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6385.html#pid6385'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-12-10 18:11
+</div>
+<div class='ccl'>
+I&#39;ve just came up with idea to use Ashton for it. I have to ask if there&#39;s a possibility to load image by shader and use it&#39;s color data?
+</div>
+</div>
+
+<div class='brn' id='brn6385'>
+<div class='frm pst' id='pid6386' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=828.html#pid6385'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6386' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6386.html#pid6386'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-12-10 18:30
+</div>
+<div class='ccl'>
+Not sure what you mean, since I&#39;m not really sure what the code is supposed to do (and I&#39;m less than keen to write shaders for everyone, rather than help them write their own). I&#39;ve no doubt that everything TexPlay can do could be done with Ashton::Shader (and significantly faster) but it involves a great deal more work actually writing the appropriate shaders.
+</div>
+</div>
+
+<div class='brn' id='brn6386'>
+<div class='frm pst' id='pid6387' style='margin-left: 6%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=828.html#pid6386'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6387' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6387.html#pid6387'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-12-10 18:52
+</div>
+<div class='ccl'>
+So to explain it:<br/>I have a palette file (just png). It has any width and 2 pixel height. When I recolor image, I iterate each upper pixel of palette and replace pixels with this color in my image by adjacent color from lower row of palette. So, the upper row of 2-pixel-height palette image is source colors and lower is destination colors. I was asking if Ashton can load these colors into shader to use them.<br/><br/>In TexPlay it works correctly only for single images. When changing whole array (<code>image.load_tiles</code>), it vanishes some of tiles.
+</div>
+</div>
+
+<div class='brn' id='brn6387'>
+<div class='frm pst' id='pid6388' style='margin-left: 9%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=828.html#pid6387'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl6388' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=6388.html#pid6388'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<span class='htt'>Date</span> 2012-12-10 20:30
+</div>
+<div class='ccl'>
+Yes, you could just use multitexturing and you can read from two textures at once or else keep it simple and read the pixels in individually and pass those colours into the shader as variables.<br/><br/>I still think there is a possibility that liberal overuse of refresh_cache might help (that is, before AND after every operation on an image - if it fixes it, then remove them one by one until you have the optimal code. I could never be 100% about when I should be manipulating the cache, even though I wrote a similar caching code in Ashton, but that is intentionally automatic, lazy and one-way, so it was simpler - there is no need to sync images back onto the graphics card, since shaders are better for manipulating graphics than pulling it onto the main memory, manipulating and sending back to the card, as Texplay does it).
+</div>
+</div>
+
+<div class='brn' id='brn6388'>
+<div class='frm pst' id='pid6390' style='margin-left: 12%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@tid=828.html#pid6388'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=6390.html#pid6390'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
+<span class='htt'>Date</span> 2012-12-11 15:49
+</div>
+<div class='ccl'>
+FINALLY IT WORKS (at least until it magically breaks again)<br/>Thanks for suggestion, I made cache refreshing before manipulation and nothing seems to be missing.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=828.html#tid828'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=828.html#tid828'>Extending Gosu</a> / TexPlay Bug
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=828.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

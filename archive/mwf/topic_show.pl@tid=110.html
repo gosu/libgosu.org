@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 0 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Tutorial crashing on Ubuntu</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='user_login.pl@ori=topic_show.pl%253Ftid=110.html' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=110.html#tid110'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=110.html#tid110'>Gosu Exchange</a> / Tutorial crashing on Ubuntu
+</div>
+</div>
+
+<div class='frm pst' id='pid474' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=474.html#pid474'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-05-03 18:55
+</div>
+<div class='ccl'>
+Hello!<br/><br/>I installed Gosu 0.7.13 (via sudo gem install gosu) and the Tutorial doesn&#39;t work. At first the images were all messed up and the game crashed at exit, bringing X down with it.<br/><br/>Then I disabled Compiz effects, following some advice here. Now the images seem fine at startup, but as soon as I hit the first star, they all disappear, except the background and one of the numbers of the score. If I keep pressing the buttons for moving around, the remaining score number keeps increasing. So, the problem seems to be with showing the images, everything else seems to work.<br/><br/>Eventually I got one of those:<br/>Tutorial.rb:43: [BUG] object allocation during garbage collection phase<br/>ruby 1.8.7 (2008-08-11 patchlevel 72) [i486-linux]<br/><br/>ruby -d Tutorial.rb gives:<br/>Exception <code>LoadError&#39; at /usr/lib/ruby/1.8/rubygems.rb:772 - no such file to load -- rubygems/defaults/operating_system<br/>Exception </code>LoadError&#39; at /usr/lib/ruby/1.8/rubygems/custom_require.rb:27 - no such file to load -- gosu<br/><br/>I also tried copying the gosu.so file to the file directory and commenting out the require &#39;rubygems&#39;. That obviously got rid of those exceptions, but the problems were the same.<br/><br/>Any ideas?<br/><br/>Thanks
+</div>
+</div>
+
+<div class='frm pst' id='pid475' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=475.html#pid475'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-05-03 18:57
+</div>
+<div class='ccl'>
+PS: Already tried commenting out the beep, nothing changed.
+</div>
+</div>
+
+<div class='frm pst' id='pid476' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=476.html#pid476'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-03 19:37
+<span class='htt'>Edited</span> 2009-05-03 19:47
+</div>
+<div class='ccl'>
+There&#39;s two bugs here.<br/><br/>First, the crash, which I have never ever seen so far. It seems that Ruby 1.8.7 is to blame, or rather, that SWIG needs to catch up so Gosu will work with that particular version.<br/><br/>It seems to happen with all native libraries that have been packaged using SWIG with object tracking enabled (<a class='url' href='http://www.ruby-forum.com/topic/161876'>http://www.ruby-forum.com/topic/161876</a>):<br/><br/><blockquote><p>&gt; No, it&#39;s not your fault, and it&#39;s not our fault either. With 1.8.7, the<br/>&gt; ruby developers chose to change both the public APIs and aspects of the<br/>&gt; GC/memory management internals. This broke any SWIG-generated ruby<br/>&gt; libraries that use certain SWIG features (object tracking). IMO this was<br/>&gt; a sloppy decision on a stable branch that reflects badly on ruby&#39;s<br/>&gt; development process, but - there we are.</p></blockquote><br/>What you can do here is to wait for the next version, which I will generate using the newer SWIG 1.3.3.9. Until then, you will probably have to use either Ruby 1.8.6 or 1.9, both of which seem not to have this feature.<br/><br/>---<br/><br/>The second one is a bit weirder. What is happening is that Gosu creates all its textures, then shows the game; as soon as you collect a star, the internal texture is updated on-demand to include the rendered digit &quot;1&quot;. For some reason, the latest Ubuntu drops *everything* that was drawn to the texture earlier in that moment. I have no idea why, but if this is a widespread problem there are obvious (but horribly ugly) workarounds for that :|<br/><br/>A bit unfortunate that I can&#39;t reproduce it in my VM, but i&#39;ll try that on a friend&#39;s Ubuntu laptop.
+</div>
+</div>
+
+<div class='frm pst' id='pid477' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=477.html#pid477'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-05-03 20:22
+</div>
+<div class='ccl'>
+Thanks for the reply.<br/><br/>Running ruby 1.9 really seemed to fix the GC bug. And I don&#39;t get the rubygems exceptions.<br/><br/>About the second issue, why I haven&#39;t thought of disabling the font before is a mistery. Doing it makes the game run normally.<br/><br/>Do you have more information about it? Is there anything I can do?<br/><br/>And, for the record, I&#39;m using Ubuntu 8.10.
+</div>
+</div>
+
+<div class='frm pst' id='pid478' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=478.html#pid478'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2009-05-03 21:01
+</div>
+<div class='ccl'>
+Ah. Did you update your drivers recently then? It seems to be a new phenomenon :) Are you on Nvidia or ATI?<br/><br/>As a workaround, you can try not to load images (explicitly or implicitly) while the game is already running. In this example, you can force the pre-rendering of all required font glyphs by calling @font.text_width(&quot;0123456789&quot;) in the constructor. But this is not a proper solution because this is very unnatural usage of Gosu for larger projects :)
+</div>
+</div>
+
+<div class='frm pst' id='pid479' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<a class='psl' href='topic_show.pl@pid=479.html#pid479'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> ?
+<span class='htt'>Date</span> 2009-05-03 21:44
+</div>
+<div class='ccl'>
+I&#39;m on Intel (i865). The xserver-xorg-video-intel package is at version 2:2.4.1-1ubuntu10.4, which <a class='url' href='http://changelogs.ubuntu.com/changelogs/pool/main/x/xserver-xorg-video-intel/xserver-xorg-video-intel_2.4.1-1ubuntu10.4/changelog'>seems to be from March 30th</a>.<br/><br/>Well, I can live with this workaround for now. I&#39;m just messing around a little, trying to have a little fun making something that isn&#39;t just number crunching and using libraries instead of coding basic data structures.
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=110.html#tid110'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=110.html#tid110'>Gosu Exchange</a> / Tutorial crashing on Ubuntu
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@tid=110.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>

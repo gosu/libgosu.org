@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
+<meta name='robots' content='noindex,nofollow'>
+<link rel='stylesheet' href='https://www.libgosu.org/mwf/mwforum.css'>
+<link rel='stylesheet' href='../../mwf/default/default.css'>
+<style>
+body, input, textarea, select, button { font-family: 'Lucida Grande, Verdana', sans-serif; font-size: 15px }
+img.ava { width: 50px; height: 50px }
+</style>
+<script src='https://www.libgosu.org/mwf/jquery.js'></script>
+<script src='../../mwf/mwforum.js' id='mwfjs' data-params='{ "boardAdmin": 0, "cfg_dataPath": "/mwf", "env_script": "topic_show", "lng_tpcBrnCollap": "Collapse branch", "lng_tpcBrnExpand": "Expand branch", "m_ext": ".pl", "scrollPostId": 2916 }'></script>
+<script type='text/javascript' src='https://www.libgosu.org/mwf/quickreply.js'></script>
+<script type='text/javascript' src='../../mwf/quickedit.js'></script>
+<title>Ruby Packaging on Windows</title>
+</head>
+<body class='topic_show'>
+
+<div class='frm tpb'>
+<div class='hcl'><span class='nav'>Not logged in</span><span class='htt'>Gosu Forums</span></div>
+<div class='bcl'>
+<a href='forum.pl.html' title='Forum start page'>Forum</a>
+<a href='../../index.html' title=''>back to libgosu.org</a>
+<a href='forum_help.pl.html' title='Help and FAQ'>Help</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/forum_search.pl' title='Search posts for keywords'>Search</a>
+<a href='user_register.pl.html' title='Register user account'>Register</a>
+<a href='https://www.libgosu.org/cgi-bin/mwf/user_login.pl?ori=topic_show.pl%3fpid%3d2916' title='Login with username and password'>Login</a>
+</div>
+</div>
+
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=426.html#tid426'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=426.html#tid426'>Gosu Exchange</a> / Ruby Packaging on Windows
+</div>
+</div>
+
+<div class='frm pst' id='pid2907' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2907' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2907.html#pid2907'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>Date</span> 2010-07-29 21:12
+</div>
+<div class='ccl'>
+My problems have most likely been discussed by someone else on some hidden previous thread, but as there is no convenient way to search the gosu forums I will raise them myself. The google code site for gosu does provide a wikipage about packaging ruby games. However, to put it simply, it&#39;s just not helpful enough for a few small reasons. So, I am taking the advice explicitly stated on that page:<br/><br/><blockquote><p>&gt;If you have any trouble, feel free to ask on the Gosu boards. Ocra is still a project in development and everybody can benefit from sharing your experience. </p></blockquote><br/>After leaving the blessed land of Ubuntu and venturing cautiously into the dark realm of my Windows partition, I spent hours wrangling with the beast to try and package the new <a class='url' href='http://code.google.com/p/ultimate-comet'>Ultimate Comet V2.0</a>. Unsuccessful, I once again resolved that Windows sucks. But I also resolved to try again, and I need some help.<br/><br/><b>Problem 1: fmod.dll</b><br/><br/>I had trouble getting my game to find fmod.dll, and the instructions on the wikipage were vague and unhelpful to me (call me an idiot all you want, but that solves nothing). <br/><br/>I put fmod into a &quot;lib\&quot; subdirectory and compiled it along with main.rb using <code>ocra main.rb lib\*</code>. The wiki page says I must also change the path environment &quot;like this&quot;:<br/><br/><code>ENV[&#39;PATH&#39;] = File.join(GAMEROOT,&quot;lib&quot;) + &quot;;&quot; + ENV[&#39;PATH&#39;]</code><br/><br/>Frankly, I don&#39;t know when or where this goes. I don&#39;t even really know what it means, and when I don&#39;t understand code, it feels like crap trying to use it (ever feel that way?). Furthermore, &quot;GAMEROOT&quot; appears to be something I have to define myself, I just don&#39;t know what path it&#39;s supposed to be, because it sure isn&#39;t something that ruby recognized.<br/><br/>This is assuming that changing the environment variable will solve all my problems.<br/><br/>When I tried compiling fmod.dll along with the .exe through <code>ocra main.rb fmod.dll</code>, Windows even broke from command line protocol and popped up a message saying &quot;fmod.dll is either not designed for windows or it has an error. Blah blah blah...&quot; and then the game would crash with the first attempt to use a sound returning the &quot;could not load fmod.dll&quot; error.<br/><br/><b>Problem 2: Quitting in an &quot;unusual way&quot;</b><br/><br/>Even running the source code on Windows was unsuccessful. The game would run, it would get to the menus, but when I try to start up an actual adventure it would crash and windows would pop up saying something like &quot;ruby.exe - runtime error: the application asked (something) to quit in an unusual way.&quot;<br/><br/>Turns out, it appears the same exact problem occurred for Dahrkael in <a class='url' href='topic_show.pl@tid=136%3Bpg=1.html'>Deathly Dimensions</a> (he made a post 2009-12-17 12:55).<br/><br/>Why do my games crash like this when someone attempts to start a level, and not when the game initially starts up? And why Windows, aside from its obvious shortcomings? The source code works just fine on Ubuntu 9.10 and Snow Leopard. Granted, I was only able to test it on one Windows computer so far.
+</div>
+</div>
+
+<div class='brn' id='brn2907'>
+<div class='frm pst' id='pid2908' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2916.html#pid2907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2908.html#pid2908'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<span class='htt'>Date</span> 2010-07-29 23:32
+<span class='htt'>Edited</span> 2010-07-29 23:41
+</div>
+<div class='ccl'>
+Short answer: put that code at the very beginning of your file. GAMEROOT is something you will have to calculate yourself, and it is the folder where all your game&#39;s stuff is. The more in-depth answer follows.<br/><br/><b><code>GAMEROOT</code></b>: To get the folder your game lives in, I believe <code>File.dirname($PROGRAM_NAME)</code> will do what you want—it does on Mac and Linux, but I don&#39;t have experience with Ruby on Windows.<br/><br/><b><code>ENV[&#39;PATH&#39;]</code></b>: <code>ENV</code> is a Hash-like object that grants access to your program&#39;s environment variables—basically information about the environment the program is running in that it passes on to its children. These variables can be modified by any process, but changes only apply to that process and any child processes it spawns after the change. These values can only be strings.<br/><br/><code>PATH</code> in particular is a colon-separated (Unix) or semicolon-separated (Windows) list of directories that tells the operating system where to search for an executable when it&#39;s called. Apparently, on Windows, it&#39;s also used to find dynamic libraries.<br/><br/><b>Putting it all together</b>: <code>ENV[&#39;PATH&#39;] = File.join(GAMEROOT, &#39;lib&#39;) + &#39;;&#39; + ENV[&#39;PATH&#39;]</code> is essentially prepending your own search path to the list of search paths. <code>File.join(GAMEROOT, &#39;lib&#39;)</code> can be seen as a fancy way of saying <code>&quot;#{GAMEROOT}/lib&quot;</code>, but it will use the platform&#39;s native directory separator instead of a hard-coded one. The semicolon is, of course, to separate your path from the rest.<br/><br/>If your lib folder is going to be in the same folder as your executable, the code you&#39;ll actually want to put at the top of your main file would look something like this:<br/><br/><code>game_root = File.dirname $PROGRAM_NAME<br/>ENV[&#39;PATH&#39;] = File.join(game_root, &#39;lib&#39;) + &#39;;&#39; + ENV[&#39;PATH&#39;]</code><br/><br/>If you intend to distribute the same code for other platforms, then you&#39;ll want to put this in a conditional that only runs if the game is running under Windows.<br/><br/>I&#39;ll delegate solving &quot;quitting in an unusual way&quot; to someone else, because I&#39;m afraid I&#39;d have no idea without poking at it myself. Otherwise, if you&#39;d like any clarification, I&#39;ll be glad to provide.
+</div>
+</div>
+
+<div class='frm pst' id='pid2909' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2916.html#pid2907'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2909.html#pid2909'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-07-30 01:24
+</div>
+<div class='ccl'>
+I remember with RubyScript2Exe I just put fmod.dll next to my EXE and everything worked magically. I only used ocra once, but I can&#39;t remember if that game had sound effects? If not then sorry, I wasn&#39;t even aware of that problem :)<br/><br/>As for the crash, that usually happens when the GC decides to free objects in a totally unstructured order, i.e. sounds before the window. I usually protected against all these cases. Is there a convenient way for you to just disable sounds globally and see if the crash permits? Then I know whenter it has to do with the Audio subsystem.
+</div>
+</div>
+
+</div>
+<div class='frm pst' id='pid2913' style='margin-left: 0%'>
+<div class='hcl'>
+<span class='nav'>
+<img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
+</span>
+<img class='tgl clk sic sic_nav_minus' id='tgl2913' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
+<a class='psl' href='topic_show.pl@pid=2913.html#pid2913'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>Date</span> 2010-07-30 19:26
+</div>
+<div class='ccl'>
+Got it working. The Windows XP/Vista/7 compatible executable is now available for download at the <a class='url' href='http://code.google.com/p/ultimate-comet'>site</a>. Happy Ultimate-Comet-ing.<br/><br/>The Environment Variable problem I was able to fix just as described. On top of that, I needed to get myself a new fmod.dll file through the gosu site because the one I had before must have been the wrong saved link, which solved the second part of problem 1.<br/><br/>As it turned out, problem 2 where Windows said &quot;This application has requested the Runtime to terminate it in an unusual way&quot; occurs because of game keyboard configuration settings that Windows apparently did not understand. The solution was simply for me to delete control_config.yaml from the bundle and let the program initialize and rewrite the control_config.yaml itself, thus ensuring that operating system dependent Gosu::Button constants would not conflict. The original control_config.yaml was created in Ubuntu, so obviously it would not carry over.<br/><br/>Thank you for the quick feedback. Now, on to the Mac Version.
+</div>
+</div>
+
+<div class='brn' id='brn2913'>
+<div class='frm pst' id='pid2916' style='margin-left: 3%'>
+<div class='hcl'>
+<span class='nav'>
+<a class='prl' href='topic_show.pl@pid=2916.html#pid2913'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+</span>
+<a class='psl' href='topic_show.pl@pid=2916.html#pid2916'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
+<span class='htt'>Date</span> 2010-08-01 01:26
+</div>
+<div class='ccl'>
+The fundamental problem is that button ids are just not portable right now (which definitely would be nice in the future). But I still changed Gosu on all platforms so that button_down?(invalid_id) will just return false instead of crashing.<br/><br/>I will give the packaging another try when I am free to do so, likely just in time for the next Ludum Dare compo. For now I linked to this thread from the wiki page.
+</div>
+</div>
+
+</div>
+<div class='frm pgb'>
+<div class='hcl'>
+<span class='nav'>
+<a href='board_show.pl@tid=426.html#tid426'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+</span>
+<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=426.html#tid426'>Gosu Exchange</a> / Ruby Packaging on Windows
+</div>
+</div>
+
+<p class='cpr'>Powered by <a href='https://www.mwforum.org/'>mwForum</a> 2.29.7 &#169; 1999-2015 Markus Wichitill</p>
+
+<script type='text/javascript'>
+	var indent = 3;
+</script>
+
+<div id='qr' class='frm pst new' style='display:none;'>
+<div class='hcl'>
+<span class='nav'>
+<a href='topic_show.pl@pid=2916.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
+</span>
+<span class='htt'>In Response to</span>
+<span id='qrname'>?</span></div>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_add.pl' method='post'>
+<div class='ccl'>
+<p>Use <code>`backticks`</code> to format code. You can attach files and embed images after posting.</p>
+<textarea name='body' cols='80' rows='4' id='qrtextarea'></textarea><br/>
+<button type='submit' class='isb' name='add' value='1'> Post</button>
+<input type='hidden' name='pid' id='qrpid' value='0'/>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+<div id='qewait' class='ccl' style='display:none'>
+Loading...
+</div>
+<div id='qe' class='ccl' style='display:none;'>
+<form action='https://www.libgosu.org/cgi-bin/mwf/post_edit.pl' method='post'>
+<textarea name='body' class='tgi' cols='80' rows='4' id='qebody'></textarea><br/>
+<button type='submit' class='isb' > Change</button>
+<input type='hidden' name='pid' id='qepid' value='0'/>
+<input type='hidden' name='subject' id='qesubject' value=''/>
+<input type='hidden' name='edit' value='edit'/>
+<textarea name='raw' id='qeraw' value='' style='display:none'></textarea>
+<button type='button' class='isb' onclick='qe.loadQuickEdit(-1)'>Cancel</button>
+<input type='hidden' name='subm' value='1'>
+</div>
+</form>
+</div>
+
+</body>
+</html>
