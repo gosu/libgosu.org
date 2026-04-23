@@ -32,11 +32,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum_show.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1376#tid1376'>Gosu News</a> / Gosu 0.13.3 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1376' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid9354' style='margin-left: 0%'>
@@ -51,10 +46,6 @@ img.ava { width: 50px; height: 50px }
 </div>
 <div class='ccl'>
 This release only updates some dependencies, mainly for Windows users:<br/><br/>• Windows: Support for Ruby 2.5 (#427)<br/>• Windows: Update bundles SDL to 2.0.8<br/>• All: Updated stb dependencies (#428)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9354)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9354' style='display:none;'>jlnr</span><a href='post_add.pl?pid=9354' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -72,10 +63,6 @@ This release only updates some dependencies, mainly for Windows users:<br/><br/>
 <div class='ccl'>
 Hi Jlnr,<br/><br/>I can&#39;t install it :<br/><br/><img class='emi' src='http://bestguigui.free.fr/gosu/Capture.PNG' alt=''/><br/><br/>It never happened before, Gosu always installed fast and quick.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9360)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9360' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=9360' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn9360'>
@@ -92,10 +79,6 @@ Hi Jlnr,<br/><br/>I can&#39;t install it :<br/><br/><img class='emi' src='http:/
 <div class='ccl'>
 Oh wow, thanks for pointing that out! The 64-bit version of the 0.13.3 was missing, not sure how that happened. I&#39;ve just pushed it again. I only tested the 32-bit version after uploading it.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9361)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9361' style='display:none;'>jlnr</span><a href='post_add.pl?pid=9361' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn9361'>
@@ -110,10 +93,6 @@ Oh wow, thanks for pointing that out! The 64-bit version of the 0.13.3 was missi
 </div>
 <div class='ccl'>
 For sure, that was a really quick fix ;)<br/><br/><img class='emi' src='http://bestguigui.free.fr/gosu/Capture2.PNG' alt=''/>
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9362)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9362' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=9362' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -130,10 +109,6 @@ For sure, that was a really quick fix ;)<br/><br/><img class='emi' src='http://b
 <div class='ccl'>
 By the way, I have noticed that using a specific milliseconds delay for the input update on Linux, makes it run quite slow on Windows. I reduced it by 10 milliseconds because it isn&#39;t a high value nor a large number at all, and still it ran slowly. On Linux some 1200 water drops fall fast enough to simulate rain, but they fall slower than leaves in autumn while on Windows. Is this a feature we all gotta deal with? Or is there any previous report concerning this issue? O_o
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9363)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9363' style='display:none;'>kyonides</span><a href='post_add.pl?pid=9363' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn9363'>
@@ -149,10 +124,6 @@ By the way, I have noticed that using a specific milliseconds delay for the inpu
 <div class='ccl'>
 With input update delay, do you mean the <code>update_interval</code> parameter in the Gosu::Window constructor?<br/><br/>One possibility here is that your Linux system does not vsync Gosu with your screen, and so if you use an update_interval of 6 ms, you could be simulating three frames but only one is rendered. If your Windows system supports vsync, then each 6 ms frame could be waiting for your 60 Hz monitor refresh, effectively stretching each frame to 16.666 ms. If you are using a 4K screen that only supports 30 Hz, it would even take 33.333 ms for each frame to finish. This is definitely something where Gosu needs to improve given that so many people have screens with refresh rates ≠ 60 Hz nowadays.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9364)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9364' style='display:none;'>jlnr</span><a href='post_add.pl?pid=9364' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 </div>
@@ -165,11 +136,6 @@ With input update delay, do you mean the <code>update_interval</code> parameter 
 <a href='board_show.pl?tid=1376#tid1376'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum_show.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1376#tid1376'>Gosu News</a> / Gosu 0.13.3 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1376' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

@@ -32,11 +32,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=670#tid670'>Gosu News</a> / Gosu 0.7.39 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=670' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid5193' style='margin-left: 0%'>
@@ -53,10 +48,6 @@ img.ava { width: 50px; height: 50px }
 <div class='ccl'>
 This is a bit more of an experimental release, I have cleaned up the backend a lot, which conveniently made the long-undocumented <code>record</code> function work.<br/><br/>Let me know if performance has suffered in any way. If anything, Gosu should be faster now, but it doesn&#39;t feel faster in CptnRuby for me. (Might be my system.)<br/><br/>• All: Added <code>Window#record(width, height)</code>.<br/>• All: Removed an overcautious assert() from OGG file reading<br/>• All: Fixed OGG files&#39; destructor stopping unrelated songs<br/>• Linux: Fullscreen only covers one screen now (thanks JayThirtySeven!)<br/>• Ruby: Switched from rdoc to YARD<br/><br/>Note to GL hackers: Custom GL code now inherits Gosu&#39;s MODEL_VIEW matrix (applied transforms) as well as current clipping rect. If your code does not want this, you have to unset it manually. Also, if the current clipping area is empty while you call <code>enqueueGL</code>, the GL block is <i>not</i> run. I am open to debate this, it&#39;s a weird case. :)<br/><br/><code>record</code> is a super-powerful, awesome feature, and there are countless ways to use and abuse it. In two sentences, you can just do <code>@map_image = record(@map.width_in_pixels, @map.height_in_pixels) { @map.draw }</code> once and then draw <code>@map_image</code> every frame. <code>@map_image</code> will behave like a single Image, but contain a <i>vertex array</i> of all your map tiles. One method call - <code>@map_image.draw</code> - will draw your whole map. This is a good optimization in C++ and a HUGE one in Ruby. Putting 120,000 calls to <code>Image#draw</code> inside a macro, I could still draw it at 60 Hz, and that would be one gigantic map. Try that with nested Ruby loops!<br/><br/>I wish it wasn&#39;t so hard to explain, I really need to adjust the CptnRuby script. :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5193)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5193' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5193' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5193'>
@@ -72,10 +63,6 @@ This is a bit more of an experimental release, I have cleaned up the backend a l
 <div class='ccl'>
 I&#39;m using a fair bit of recording in Smash and Grab and it makes a massive difference to frame-rate (only about 3000 draws in 4 recordings though). Without it, I&#39;d have to render everything to multiple images and mess around with a lot of code to manage that instead, because it would be unusable otherwise. Thanks for finally fixing it up properly - saved a lot of code over what I had to use for the undocumented version though it is likely to break other games that use it because it now works properly :D
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5194)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5194' style='display:none;'>Spooner</span><a href='post_add.pl?pid=5194' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid5195' style='margin-left: 3%'>
@@ -89,10 +76,6 @@ I&#39;m using a fair bit of recording in Smash and Grab and it makes a massive d
 </div>
 <div class='ccl'>
 Oh, and a note. If you call <code>record</code> within any transform, the outer transform will be applied to what is in the block. This makes sense in its own way, but will change, so don&#39;t rely on it :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5195)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5195' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5195' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -109,10 +92,6 @@ Oh, and a note. If you call <code>record</code> within any transform, the outer 
 <div class='ccl'>
 Ooooh! That record thing sounds pretty nifty. So it&#39;s basically like getting a region from the screen and then being able to draw it?
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5196)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5196' style='display:none;'>Jwosty</span><a href='post_add.pl?pid=5196' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5196'>
@@ -127,10 +106,6 @@ Ooooh! That record thing sounds pretty nifty. So it&#39;s basically like getting
 </div>
 <div class='ccl'>
 It is a bit like rendering to a texture, but not really. It just groups a lot of drawing operations together. This is why you cannot <code>draw_rot</code> the resulting image yet, or tint it with colors (but this will be fixed). You can also not use Texplay on it.<br/><br/>Also, unlike rendering to a texture, it does not restrict you to drawing in the region between (0, 0) and (width, height). You need to use clipping for that.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5198)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5198' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5198' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -147,10 +122,6 @@ It is a bit like rendering to a texture, but not really. It just groups a lot of
 <div class='ccl'>
 Goodness. Record is working? I&#39;m gonna have to dig out some of my old code one of these days and try it out. :D
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5197)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5197' style='display:none;'>erisdiscord</span><a href='post_add.pl?pid=5197' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid5222' style='margin-left: 3%'>
@@ -165,10 +136,6 @@ Goodness. Record is working? I&#39;m gonna have to dig out some of my old code o
 </div>
 <div class='ccl'>
 As erisdiscord said, is record working?<br/>I&#39;m on C++ and 0.7.40 and still getting error C2039: &#39;record&#39; : is not a member of MyWindow (class MyWindow : public Gosu::Window)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5222)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5222' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5222' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -186,10 +153,6 @@ As erisdiscord said, is record working?<br/>I&#39;m on C++ and 0.7.40 and still 
 </div>
 <div class='ccl'>
 In C++, it is <code>beginRecording()</code> to start recording, then <code>Gosu::Image(endRecording(width, height))</code> to construct an image from the result of the recording process. Both are member functions of <code>Gosu::Graphics</code>. (corrected)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5223)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5223' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5223' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -210,10 +173,6 @@ uhm, I&#39;m sorry, but as it&#39;s not documented I didn&#39;t know how to use 
 <div class='ccl pat'>
 <a href='attach_show.pl?aid=669'><img class='amt' src='../../mwf/attachments/24/5224/record.thb.jpg' title='record.png (16k)' alt=''/></a>
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5224)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5224' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5224' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5224'>
@@ -229,10 +188,6 @@ uhm, I&#39;m sorry, but as it&#39;s not documented I didn&#39;t know how to use 
 </div>
 <div class='ccl'>
 Sorry, I was confused. They are both members of <code>Gosu::Graphics</code> and documented there:<br/><br/><a class='url' href='../../cpp/class_gosu_1_1_graphics.html'>http://www.libgosu.org/cpp/class_gosu_1_1_graphics.html</a>
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5225)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5225' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5225' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -250,10 +205,6 @@ Sorry, I was confused. They are both members of <code>Gosu::Graphics</code> and 
 <div class='ccl'>
 Thanks.<br/><br/>So this should work, right? (but it doesn&#39;t :P)<br/><code><br/>graphics().beginRecording();<br/><br/>// do some drawing ops.<br/><br/>auto_ptr&lt;Gosu::ImageData&gt; ptr =&#160; graphics().endRecording(1280,720);<br/>Gosu::saveImageFile(ptr-&gt;toBitmap(), resourcePrefix() + L&quot;screenshot.png&quot;);<br/></code>
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5226)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5226' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5226' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5226'>
@@ -269,10 +220,6 @@ Thanks.<br/><br/>So this should work, right? (but it doesn&#39;t :P)<br/><code><
 </div>
 <div class='ccl'>
 Right, because recording is not the same as rendering to a texture. <code>toBitmap()</code> will throw an exception telling you that Macros cannot be converted into Bitmaps.<br/><br/>Rendering to textures has not been implemented yet. But if it was, you wouldn&#39;t need record anyway. :) There would be an equivalent pair of <code>beginRenderingToTexture</code>/<code>endRenderingToTexture</code>.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5227)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5227' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5227' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -291,10 +238,6 @@ Right, because recording is not the same as rendering to a texture. <code>toBitm
 <div class='ccl'>
 so right now you can&#39;t &quot;take screenshots&quot; using this, can you?
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5228)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5228' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5228' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5228'>
@@ -311,10 +254,6 @@ so right now you can&#39;t &quot;take screenshots&quot; using this, can you?
 <div class='ccl'>
 No, you can use raw GL for that though. You just have to call <code>Graphics::flush()</code> and then use any of the GL functions for copying the screen to memory (or was it textures? - not Gosu specific anyway).
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5229)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5229' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5229' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5229'>
@@ -329,10 +268,6 @@ No, you can use raw GL for that though. You just have to call <code>Graphics::fl
 </div>
 <div class='ccl'>
 well, I&#39;ll do my research with GL then :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5230)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5230' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5230' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -357,10 +292,6 @@ well, I&#39;ll do my research with GL then :)
 <div class='ccl'>
 I still feel like this whole record() business is misleading and very very strict in terms of what it can and cannot do. <br/>I know this is a really useful feature, but I feel like this could be a stand-out feature for Gosu if we could (*ahem* you could...) figure out how to make the recorded data mutable like a texture.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5231)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5231' style='display:none;'>Maverick</span><a href='post_add.pl?pid=5231' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5231'>
@@ -378,10 +309,6 @@ I still feel like this whole record() business is misleading and very very stric
 <div class='ccl'>
 Although it acts like an Image in Gosu, all that happens in record is that it stores a series of GL commands you are calling and can replicate exactly that at a later date (why jlnr calls it a &quot;macro&quot;). This is a small speed improvement in C++ but a massive, massive one in Ruby (since then you just have &quot;many&quot; operations in pure C++, not &quot;many&quot; Image#draws calling those same operations in Ruby). Brilliant for drawing large backgrounds from tiles, for example, which don&#39;t often change and need to be re-recorded.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5232)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5232' style='display:none;'>Spooner</span><a href='post_add.pl?pid=5232' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5232'>
@@ -396,10 +323,6 @@ Although it acts like an Image in Gosu, all that happens in record is that it st
 </div>
 <div class='ccl'>
 As I said, I&#39;m not denying it&#39;s awesome, but if we can see it move onto actually being mutable as an image, that would be the real big step I think for Gosu. (One of the key features that really stands out both performance-wise AND graphics-wise)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5234)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5234' style='display:none;'>Maverick</span><a href='post_add.pl?pid=5234' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -418,10 +341,6 @@ As I said, I&#39;m not denying it&#39;s awesome, but if we can see it move onto 
 <div class='ccl'>
 I really want to add render-to-texture too, but I think it would be even more misleading to make it related to macro recording - I think it should be a separate function. Some advantage of record-to-macro that couldn&#39;t be had with a proper texture:<br/><br/>• recording macros is super fast, independent of graphics drivers, unlike textures<br/>• macros can be much smaller than textures in memory. If you want to e.g. record a large tile map, each tile is 144 bytes in the macro because it only references the existing tile Image. On a texture, you could only represent 6x6px in that space.<br/>• macros scale up and rotate nicely like vector graphics do, textures become pixelated and blurry.<br/><br/>Maybe &quot;like vector graphics&quot; is really the right way to imagine them? idk :)<br/><br/>For my use cases (tile maps, skeletal animation) this makes them much better than textures. But now that they&#39;re there, the next cool feature will indeed be render-to-texture. Maybe that&#39;d make the whole GLSL post-processing thing nicer too?
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5236)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5236' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5236' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5236'>
@@ -437,10 +356,6 @@ I really want to add render-to-texture too, but I think it would be even more mi
 </div>
 <div class='ccl'>
 For this purpose, maybe enabling a backbuffer would be even more useful.<br/>Do you plan to enable it sometime?
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5238)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5238' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5238' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -458,10 +373,6 @@ For this purpose, maybe enabling a backbuffer would be even more useful.<br/>Do 
 <div class='ccl'>
 Isn&#39;t that the same as render-to-texture? I have no clue (yet) ;)<br/><br/>Anyway, I&#39;ll be focusing on the interface for a while now. Contributions on GitHub are welcome if there is a use case for them. (Unused code breaks within months, in my experience)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5239)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5239' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5239' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5239'>
@@ -476,10 +387,6 @@ Isn&#39;t that the same as render-to-texture? I have no clue (yet) ;)<br/><br/>A
 </div>
 <div class='ccl'>
 I&#39;m not sure. Never implemented it, just used ;)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5240)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5240' style='display:none;'>danikaze</span><a href='post_add.pl?pid=5240' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -500,10 +407,6 @@ I&#39;m not sure. Never implemented it, just used ;)
 <div class='ccl'>
 This is an amazing feature ! I was starting to use render to texture, but it seems that native Gosu will now do the trick ! Thanks again !
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5290)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5290' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=5290' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5290'>
@@ -519,10 +422,6 @@ This is an amazing feature ! I was starting to use render to texture, but it see
 </div>
 <div class='ccl'>
 So, how does this work exactly? There&#39;s a height and a width, but no x and y? What if I record images being draw at 2000,2000 or something like that? Is it somehow intelligent enough to cut out the 2000x2000 block of dead space?<br/><br/>Suddenly interested in this technique for the game I&#39;m working on, but I have a larger bottleneck I need to get through first.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5292)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5292' style='display:none;'>RavensKrag</span><a href='post_add.pl?pid=5292' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -540,10 +439,6 @@ So, how does this work exactly? There&#39;s a height and a width, but no x and y
 <div class='ccl'>
 That&#39;s what it used to do, and you didn&#39;t even have to pass width/height then. But the resulting values were hard to rely on so I made it manual. (e.g. what if you want to record a map, but this one block happens to an empty first row/column)<br/><br/>It always starts from (0, 0). You should draw what you want to draw all between (0, 0) and (width, height), but you can easily use <code>translate()</code> to do so.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5293)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5293' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5293' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5293'>
@@ -559,10 +454,6 @@ That&#39;s what it used to do, and you didn&#39;t even have to pass width/height
 </div>
 <div class='ccl'>
 Yeah, I figured <code>translate()</code> was the solution there.&#160; Thanks a lot.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5295)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5295' style='display:none;'>RavensKrag</span><a href='post_add.pl?pid=5295' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -580,10 +471,6 @@ Yeah, I figured <code>translate()</code> was the solution there.&#160; Thanks a 
 <div class='ccl'>
 Also note that this only works in 0.7.40, so we are definitely in the wrong thread now. ;)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5296)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5296' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5296' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5296'>
@@ -599,10 +486,6 @@ Also note that this only works in 0.7.40, so we are definitely in the wrong thre
 </div>
 <div class='ccl'>
 Too bad it currently doesn&#39;t take Custom OpenGL Code :( <br/>I hope it&#39;ll be possible in a coming version ;)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5298)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5298' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=5298' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -620,10 +503,6 @@ Too bad it currently doesn&#39;t take Custom OpenGL Code :( <br/>I hope it&#39;l
 <div class='ccl'>
 <code>translate</code> does actually work with custom GL now. Just be sure to use <code>gl(z) { code }</code> instead of the old <code>gl { code }</code>.<br/><br/>Macros are also implemented using <code>gl(z)</code>, and they respect transforms correctly.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5299)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5299' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5299' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5299'>
@@ -639,10 +518,6 @@ Too bad it currently doesn&#39;t take Custom OpenGL Code :( <br/>I hope it&#39;l
 </div>
 <div class='ccl'>
 I was referring to Window#record ;)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5302)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5302' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=5302' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -660,10 +535,6 @@ I was referring to Window#record ;)
 <div class='ccl'>
 Oh...yeah well, that is impossible sadly :) It may work with a future <code>render_to_texture</code> function.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5303)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5303' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5303' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5303'>
@@ -678,10 +549,6 @@ Oh...yeah well, that is impossible sadly :) It may work with a future <code>rend
 </div>
 <div class='ccl'>
 That would be great ! But take the time needed, your work is still awesome
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5304)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5304' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=5304' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -704,10 +571,6 @@ That would be great ! But take the time needed, your work is still awesome
 <div class='ccl'>
 I got the impression that the only effect that the recorded size had was to affect how <code>#draw_rot</code> managed <code>rotation</code> and <code>center_x</code>/<code>center_y</code>. Other than that, the size is not relevant (And I tell Gosu that all my recordings are 1x1 because I don&#39;t need to rotate or center them and everything is fine :D).
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5294)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5294' style='display:none;'>Spooner</span><a href='post_add.pl?pid=5294' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 </div>
@@ -719,11 +582,6 @@ I got the impression that the only effect that the recorded size had was to affe
 <a href='board_show.pl?tid=670#tid670'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=670#tid670'>Gosu News</a> / Gosu 0.7.39 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=670' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

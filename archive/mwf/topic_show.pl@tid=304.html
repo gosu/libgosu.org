@@ -32,11 +32,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=304#tid304'>Gosu News</a> / Gosu 0.7.16, 0.7.17, 0.7.18 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=304' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid2003' style='margin-left: 0%'>
@@ -51,10 +46,6 @@ img.ava { width: 50px; height: 50px }
 </div>
 <div class='ccl'>
 Hey,<br/><br/>I released 0.7.16 silently last year, but it had a few little issues that I wanted to resolve before posting here. So now, let me introduce Gosu 0.7.17:<br/><br/>• Ruby: Gosu::milliseconds always returns a Fixnum now<br/>• All: Added Gosu::TextInput#filter for customizing what can/will be entered<br/>• Windows: Added an error message when running a windowed game on a too small desktop<br/>• All: Added Gosu::Color::RED etc., for C++ and Ruby, deprecated Colors::red in C++<br/>• Ruby: Added Gosu::MAX_TEXTURE_SIZE for banisterfiend ;)<br/>• Ruby: Added support for stringio, socket and yaml (=syck.bundle) in RubyGosu App.app<br/>• Ruby: Added enough experimental MacRuby support to run Tutorial.rb (you will need to build Gosu from source)<br/><br/>A lot of these items made bizarre internal monkey-patching necessary, especially with regards to SWIG and libGL on Linux. I hope I can clean that all up at some point. (If anyone knows why calling OpenGL functions at C++ initialization time causes a segfault on Linux, please let me know…)<br/><br/>Also, some places in the code are screaming &quot;gigantic rewrite&quot; already, but I don&#39;t want to go that route. Instead, I will try to hand out small releases like this and wait for reports that everything still works. I also made some changes to the packaging (Mac zip archive is C++ only, source tarball is Linux-only). And last but not least, I pushed all the gems using gemcutter.<br/><br/>Let me know if things still work, and if so on which platform/language. :)<br/><br/>And because I just thought it was a good read: <a class='url' href='http://www.indiegames.com/blog/2009/12/opinion_indie_game_design_dos.html'>http://www.indiegames.com/blog/2009/12/opinion_indie_game_design_dos.html</a>
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(2003)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield2003' style='display:none;'>jlnr</span><a href='post_add.pl?pid=2003' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -71,10 +62,6 @@ Hey,<br/><br/>I released 0.7.16 silently last year, but it had a few little issu
 <div class='ccl'>
 Ubuntu 9.10 (linux) ruby 1.9.1 gem compiled successfully.<br/>It would seem you have removed Gosu::Button though.. That caused some breakage for my other games.<br/><br/>Hm.. In Tutorial.rb, it seems to error with Gosu::Sample.new:<br/><br/><blockquote><p>&gt;&gt;ruby Tutorial.rbTutorial.rb:19:in <code>initialize&#39;: wrong # of arguments(2 for 1) (ArgumentError)<br/>&gt;&gt;&gt;from Tutorial.rb:19:in </code>new&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:19:in <code>initialize&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:95:in </code>new&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:95:in <code>initialize&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:136:in </code>new&#39;<br/>&gt;&gt;&gt;from Tutorial.rb:136:in `&lt;main&gt;&#39;</p></blockquote><br/>This is the line:<br/><br/><blockquote><p>&gt;&gt; @beep = Gosu::Sample.new(window, &quot;media/Beep.wav&quot;)</p></blockquote><br/>Weird..
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(2004)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield2004' style='display:none;'>AmIMeYet</span><a href='post_add.pl?pid=2004' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid2010' style='margin-left: 0%'>
@@ -88,10 +75,6 @@ Ubuntu 9.10 (linux) ruby 1.9.1 gem compiled successfully.<br/>It would seem you 
 </div>
 <div class='ccl'>
 Ouch. I see. Actually I hoped Ruby would include gosu.rb, and from there gosu.so. gosu.rb would add patches for exactly the functionality you are missing.<br/><br/>By the way, this sucks. I try to follow a sane versioning model where I don&#39;t use long versions like 0.7.17.1 again, but now I have to bump everything to 0.7.18. Good thing I am not going to run out of natural numbers.<br/><br/>Also, I think I messed the release up in that the Windows version probably still has the old version number. Argh. :)<br/><br/>I&#39;ll wait for another day before I push 0.7.18 to fix it. If you want, you can manually include &#39;gosu/patches&#39; at the top of your script to fix everything, but the Gosu::Button module is deprecated anyway. I just forgot to remove it from the examples for way too long.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(2010)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield2010' style='display:none;'>jlnr</span><a href='post_add.pl?pid=2010' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -107,10 +90,6 @@ Ouch. I see. Actually I hoped Ruby would include gosu.rb, and from there gosu.so
 <div class='ccl'>
 Chingu also got hit with the Gosu::Button thing, ye I took it from the examples and not the docs ;). Fixed now though. I wouldn&#39;t worry about the versions...
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(2015)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield2015' style='display:none;'>ippa</span><a href='post_add.pl?pid=2015' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid2017' style='margin-left: 0%'>
@@ -124,10 +103,6 @@ Chingu also got hit with the Gosu::Button thing, ye I took it from the examples 
 </div>
 <div class='ccl'>
 <blockquote><p>&gt;&gt;you can manually include &#39;gosu/patches&#39; at the top of your script to fix everything</p></blockquote><br/>ah yes, &#39;gosu/patches&#39; works.<br/><br/><blockquote><p>&gt;&gt;Actually I hoped Ruby would include gosu.rb, and from there gosu.so. gosu.rb would add patches for exactly the functionality you are missing.</p></blockquote><br/>I think you&#39;d need to rename gosu.so for that to work, yes.<br/><br/>Thanks
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(2017)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield2017' style='display:none;'>AmIMeYet</span><a href='post_add.pl?pid=2017' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -143,10 +118,6 @@ Chingu also got hit with the Gosu::Button thing, ye I took it from the examples 
 <div class='ccl'>
 Okay, released it as 0.7.18. Windows and Mac users can optionally upgrade to 0.7.18, which has absolutely no effect. But I cannot just upload a new version for *one* platform :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(2032)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield2032' style='display:none;'>jlnr</span><a href='post_add.pl?pid=2032' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pgb'>
@@ -155,11 +126,6 @@ Okay, released it as 0.7.18. Windows and Mac users can optionally upgrade to 0.7
 <a href='board_show.pl?tid=304#tid304'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=304#tid304'>Gosu News</a> / Gosu 0.7.16, 0.7.17, 0.7.18 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=304' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

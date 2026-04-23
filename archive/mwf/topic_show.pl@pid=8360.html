@@ -33,11 +33,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1185#tid1185'>Gosu News</a> / Gosu 0.9.0 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1185' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid8349' style='margin-left: 0%'>
@@ -52,10 +47,6 @@ img.ava { width: 50px; height: 50px }
 </div>
 <div class='ccl'>
 This version finally implements the new, cleaner interface I had originally planned for Gosu 0.8.0. (This release does not introduce any other major features, nor does it fix any bugs.)<br/><br/>Basically, instead of this:<br/><br/><code>Gosu::Image.new(some_window, &quot;filename&quot;, true)</code><br/><br/>...you can now write:<br/><br/><code>Gosu::Image.new(&quot;filename&quot;, tileable: true)</code><br/><br/>This does not rely on any global variables or other hacks - <code>Gosu::Image</code> is really independent from <code>Gosu::Window</code> now. All the constructors and factory methods have been completely refactored. All the rendering primitives, from <code>draw_line</code> to <code>rotate(4) { ... }</code>, now live directly inside the <code>Gosu</code> module, e.g. <code>Gosu::draw_line(...)</code>.<br/><br/>The new interface has been documented in rdoc already: <a class='ura' href='../../rdoc/index.html'>https://www.libgosu.org/rdoc/</a><br/><br/>Please let me know if anything that works in Gosu 0.8.x does not work in Gosu 0.9.x. In theory, this version should be 100% backwards compatible.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8349)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8349' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8349' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -72,10 +63,6 @@ This version finally implements the new, cleaner interface I had originally plan
 <div class='ccl'>
 Ouch, <code>Gosu::Font#initialize</code> does not seem to be backwards compatible. I&#39;ll see what other bugs I find until tomorrow and release v0.9.1 then.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8350)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8350' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8350' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid8359' style='margin-left: 3%'>
@@ -90,10 +77,6 @@ Ouch, <code>Gosu::Font#initialize</code> does not seem to be backwards compatibl
 </div>
 <div class='ccl'>
 I tried this new version and I get this: &quot;Gosu::Graphics can only be drawn to while rendering&quot; :(<br/>I&#39;m using Window.record to pre-draw map, but it&#39;s done while initializing game state and it happens in update. Is there a way to bypass this limitation?
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8359)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8359' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8359' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -110,10 +93,6 @@ I tried this new version and I get this: &quot;Gosu::Graphics can only be drawn 
 <div class='ccl'>
 You can either lazily record it inside the <code>Window#draw</code> call tree, or wait for me to fix this issue here: <a class='ura' href='https://github.com/jlnr/gosu/issues/277'>https://github.com/jlnr/gosu/issues/277</a><br/><br/>I wasn&#39;t sure if anyone already used <code>record</code> outside of <code>draw</code>, so I didn&#39;t make it a priority for 0.9.0 - oops. I&#39;ll try to address this later today.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8360)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8360' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8360' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 </div>
@@ -124,11 +103,6 @@ You can either lazily record it inside the <code>Window#draw</code> call tree, o
 <a href='board_show.pl?tid=1185#tid1185'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1185#tid1185'>Gosu News</a> / Gosu 0.9.0 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1185' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

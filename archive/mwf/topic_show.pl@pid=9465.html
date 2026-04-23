@@ -33,11 +33,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1398#tid1398'>Gosu News</a> / Gosu 0.14.0 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1398' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid9463' style='margin-left: 0%'>
@@ -53,10 +48,6 @@ img.ava { width: 50px; height: 50px }
 </div>
 <div class='ccl'>
 This is a pretty big release, with commits going back all the way to 2017.<br/><br/>All text rendering has been rewritten to use <code>stb_truetype</code> instead of platform-specific APIs. This means text will look subtly different than in Gosu 0.13, but it will now be much more consistent across platforms.<br/><br/>I have also made markup parsing (<code>&lt;b&gt;This is bold&lt;/b&gt;, &lt;c=ff0000&gt;this is red&lt;/c&gt;</code>) more explicit by introducing new methods: <code>Font#draw_markup</code>, <code>Font#draw_markup_rel</code>, <code>Font#markup_width</code>, <code>Image.from_markup</code>. The existing methods will stop parsing markup in Gosu 1.0. If you want to keep using the markup feature, you should use the <code>markup</code> methods from now on.<br/><br/>One new feature that I&#39;m sure many users will appreciate is <code>Gosu.render(width, height) {}</code>, which can render arbitrary Gosu code to a new texture and return it as a <code>Gosu::Image</code>.<br/><br/>And then there are a few bug fixes for macOS that were long overdue.<br/><br/>Other changes:<br/><br/>• Ruby: <code>Gosu::Font#initialize</code> now accepts style parameters, e.g. <code>Gosu::Font.new(20, bold: true, italic: false)</code>. Unlike in earlier versions of Gosu, <code>Font</code> is not bold by default.<br/>• macOS: Compatibility with macOS 10.14 Mojave<br/>• Ruby: <code>Image.from_markup</code>/<code>Image.from_text</code> now supports <code>alignment: :center</code>, <code>alignment: :right</code>, and the <code>spacing:</code> parameter even when there is no <code>width:</code> parameter.<br/>• C++: The interface for rendering text has changed completely, please look at <code>Gosu/Text.hpp</code> to see the new set of available functions.<br/>• iOS: Support for <code>Gosu::TextInput</code> on iOS.<br/>• Ruby: Remove support for Ruby 1.8-2.2 on Windows. Ruby 1.9 through 2.2 are still supported on macOS and Linux while I&#39;m working to update (fix) the CI.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9463)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9463' style='display:none;'>jlnr</span><a href='post_add.pl?pid=9463' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -74,10 +65,6 @@ This is a pretty big release, with commits going back all the way to 2017.<br/><
 <div class='ccl'>
 Thanks @jlnr for the hard work. A long awaited release. <br/><br/>Sorry for not beeing active lately. But now that my probation period on my new company comes to an end and I&#39;m getting used to my new timetable I hope to at least finish the open drawing PR in a reasonable time.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9464)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9464' style='display:none;'>kjarrigan</span><a href='post_add.pl?pid=9464' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn9464'>
@@ -93,10 +80,6 @@ Thanks @jlnr for the hard work. A long awaited release. <br/><br/>Sorry for not 
 <div class='ccl'>
 No problem. I think the current PRs on GitHub would make for a good ladder to Gosu 1.0, with 0.15.0 inbetween (one version for audio, one for all the <code>Image</code>/keyword args stuff). Thanks for getting these branches started! And sorry for butchering the CI a bit because I wanted to get 0.14.0 out. Cross-platform tests still aren&#39;t as easy as I&#39;d hoped =/
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(9465)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield9465' style='display:none;'>jlnr</span><a href='post_add.pl?pid=9465' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 </div>
@@ -107,11 +90,6 @@ No problem. I think the current PRs on GitHub would make for a good ladder to Go
 <a href='board_show.pl?tid=1398#tid1398'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1398#tid1398'>Gosu News</a> / Gosu 0.14.0 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1398' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

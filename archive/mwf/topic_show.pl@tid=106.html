@@ -32,11 +32,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum_show.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=106#tid106'>Gosu News</a> / Gosu 0.7.13 released!
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=106' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid447' style='margin-left: 0%'>
@@ -50,10 +45,6 @@ img.ava { width: 50px; height: 50px }
 </div>
 <div class='ccl'>
 Hey,<br/><br/>I&#39;ve uploaded the current status of Gosu, and the gems are on their way too, just in time for the upcoming Ludum Dare compo (5 hours to go!).<br/><br/>Almost all of the changes are small fixes that have been requested rather than things that affect everyone, so it&#39;s definitely more of a polish release.<br/><br/>Most interesting changes:<br/>• global screen width/screen height getter <br/>• Introduced Window#needs_redraw? for game-specific optimizations (see the new WindowMainLoop article in the wiki)<br/><br/>I don&#39;t know if there is a one-size-fits-all solution for most impressive window sizes, or frame skip, or whatever else can be built with this. Experimentation is welcome so we all find out :)<br/><br/>Other changes:<br/>• Win: Gosu automatically uses the first icon in the game&#39;s executable (if present) as the window icon<br/>• Ruby: button_id_to_char and char_to_button_id are also available as class methods of Window now (old version is inofficially deprecated now).<br/>• Win: No button_down events for clicking on the task bar button anymore, thanks AmIMeYet!<br/>• All: Accept both OpenGL and previous vertex order for draw_quad/Image#draw_as_quad (wiki explanation coming...)<br/>• All: Reinstalled Image allocation optimization, meaning that you can load gazillions of tiny tiles again<br/>• All: Fixed PNG writing (alpha channel)<br/>• All: Fixed loading top-down BMP files (seem to be rare? :) )<br/>• All: Made Gosu::createText/Image.from_text more compatible with Chinese and Japanese scripts (wrt line breaks)<br/>• All: Reintroduced optimization that square, power-of-two, hard-bordered images are always allocated on a texture of their own<br/>• Ruby: Upgraded to SWIG 1.3.37 (better error messages, probably some fixes in corner cases)<br/>• All: Added Window::updateInterval() / Window#updateInterval<br/><br/>—<br/><br/>The ToDo list on the wiki is a bit in a mess right now, but painless Ruby 1.9 support, replacing FMOD because of its licensing complexity, and official documentation for the iPhone port are next up. So stay tuned for bigger changes :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(447)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield447' style='display:none;'>jlnr</span><a href='post_add.pl?pid=447' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -69,10 +60,6 @@ Hey,<br/><br/>I&#39;ve uploaded the current status of Gosu, and the gems are on 
 <div class='ccl'>
 Hooray! I&#39;ll be playing with this this weekend (though I won&#39;t be participating in Ludum Dare this time around). Thanks for the update, and look forward to, at the very least, SDL- and 1.9-SDL- based builds of 0.7.13 for Mac. Maybe I&#39;ll get a chance to do a Windows build this time around, too.<br/><br/>Thanks for you continued work!
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(448)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield448' style='display:none;'>philomory</span><a href='post_add.pl?pid=448' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid450' style='margin-left: 0%'>
@@ -86,10 +73,6 @@ Hooray! I&#39;ll be playing with this this weekend (though I won&#39;t be partic
 </div>
 <div class='ccl'>
 Really Great Julian, except for the linux problem I was talking about on the other topic (for SEGMENTATION BUG back).<br/>BTW, another thing that would be great for next one would be to have a method to get a music or sound duration.<br/><br/>Thanks again, we can make great games now :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(450)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield450' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=450' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -105,10 +88,6 @@ Really Great Julian, except for the linux problem I was talking about on the oth
 <div class='ccl'>
 I&#39;ll look into it once I have recovered from this weekend&#39;s competition...!<br/><br/>What would be a use case for using the duration instead of SampleInstance#playing? :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(451)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield451' style='display:none;'>jlnr</span><a href='post_add.pl?pid=451' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid453' style='margin-left: 0%'>
@@ -122,10 +101,6 @@ I&#39;ll look into it once I have recovered from this weekend&#39;s competition.
 </div>
 <div class='ccl'>
 Not that much, I agree ^_^ It turns out that I used playing? method to take care of that, and it does the job well.<br/>So I guess that one of my favorite whishes, and I&#39;m sure not to be alone for that,&#160; would be an access to Gosu::Image pixels on Ruby version :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(453)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield453' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=453' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -141,10 +116,6 @@ Not that much, I agree ^_^ It turns out that I used playing? method to take care
 <div class='ccl'>
 Hmm, banisterfiend&#39;s library (in the Extending Gosu board) has recently gotten a prettier interface for that. I think if I added something it&#39;d be a stable interface so his library doesn&#39;t have to rely on internals anymore :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(456)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield456' style='display:none;'>jlnr</span><a href='post_add.pl?pid=456' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pgb'>
@@ -153,11 +124,6 @@ Hmm, banisterfiend&#39;s library (in the Extending Gosu board) has recently gott
 <a href='board_show.pl?tid=106#tid106'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum_show.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=106#tid106'>Gosu News</a> / Gosu 0.7.13 released!
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=106' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

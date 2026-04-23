@@ -32,11 +32,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=671#tid671'>Gosu News</a> / Gosu 0.7.40 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=671' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid5199' style='margin-left: 0%'>
@@ -53,10 +48,6 @@ img.ava { width: 50px; height: 50px }
 <div class='ccl'>
 Hotfix release:<br/><br/>• All: Fixed interaction between recording and transforms<br/>• Linux: <code>screenWidth</code>/<code>screenHeight</code> also returns the size of the primary screen only (thanks again, JayThirtySeven)<br/>• Linux/Ruby: Fixed linking error<br/><br/>The only things <code>record</code> cannot handle now are lines, triangles, clipping and custom GL, and the resulting image cannot generally be drawn with <code>draw_rot</code> or <code>draw_as_quad</code>/<code>getData().draw(...)</code>.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5199)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5199' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5199' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5199'>
@@ -72,10 +63,6 @@ Hotfix release:<br/><br/>• All: Fixed interaction between recording and transf
 </div>
 <div class='ccl'>
 Perhaps it&#39;s time to refactor slightly: new base class (Drawable) that is inherited by Image and Macro. That way there&#39;s no worrying whether an image is actually an image, right? C:<br/><br/>At least once all the draw methods work for recorded macros.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5201)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5201' style='display:none;'>erisdiscord</span><a href='post_add.pl?pid=5201' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -94,10 +81,6 @@ Perhaps it&#39;s time to refactor slightly: new base class (Drawable) that is in
 <div class='ccl'>
 Spooner brought this up too, but I am not convinced yet. With a shared base class, the interfaces of Image and Macro would be the same, except Macro wouldn&#39;t have <code>#to_blob</code> and <code>#insert</code> (the new interface for things like Texplay). <code>#gl_tex_info</code> could be there, but return <code>nil</code> as large Images already do. Or maybe BigImage could be a third class, but then calling <code>Image.new</code> to create it would be weird.<br/><br/>Or I could actually implement&#160; <code>#to_blob</code> and <code>#update</code> for Macro. (<code>#to_blob</code> would require render-to-texture to be there, <code>#update</code> is easy.) That would probably take the same amount of time and keep the class count down.<br/><br/>The annoying thing is that all the differences lie in the arguments to the methods, so it would actually be more correct if Macro had an interface that is <i>similar</i> but technically unrelated to Image, with the <code>color</code> and <code>mode</code> arguments missing because they won&#39;t ever work accurately. Usually they&#39;re at the end of the argument list...except for <code>#draw_as_quad</code>. So that wouldn&#39;t be super clean either.<br/><br/>Weird, weird, weird. :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5202)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5202' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5202' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5202'>
@@ -113,10 +96,6 @@ Spooner brought this up too, but I am not convinced yet. With a shared base clas
 </div>
 <div class='ccl'>
 In 0.8 the arguments would be hashes, so the &quot;missing parameter&quot; argument is a terribly short-lived one :).
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5204)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5204' style='display:none;'>Spooner</span><a href='post_add.pl?pid=5204' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -134,10 +113,6 @@ In 0.8 the arguments would be hashes, so the &quot;missing parameter&quot; argum
 <div class='ccl'>
 The hashes are only coming for constructors in 0.8, not <code>Image#draw</code> and friends. I haven&#39;t had time to do benchmarks yet either, but it seems we could have a modular drawing thing at the same performance cost. (<code>img.rotate(6).scale(2).draw(x, y, z)</code>, which I scheduled for 0.9 :P)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5205)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5205' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5205' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5205'>
@@ -153,10 +128,6 @@ The hashes are only coming for constructors in 0.8, not <code>Image#draw</code> 
 </div>
 <div class='ccl'>
 Oh, sorry, I thought we were getting img.draw x, y, z, scale: 2, rotate: 45, mode: :add in 0.8. I think I remember you mentioning you liked the idea of method chains though :(<br/><br/>The issue I have with img.rotate(6).scale(2).draw(x, y, z) is the probably performance issue of lots of ruby method calls every time I draw something (maybe not that important; sometimes it is hard to judge real CPU impact). However, if I can do manipulated_image =&#160; img.rotate(6).scale(2).translate(x, y) and then manipulated_image.translate(1, 0) and then manipulated_image.draw() at a later date, then I feel I am really winning :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5206)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5206' style='display:none;'>Spooner</span><a href='post_add.pl?pid=5206' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -174,10 +145,6 @@ Oh, sorry, I thought we were getting img.draw x, y, z, scale: 2, rotate: 45, mod
 <div class='ccl'>
 Since I cannot stop you Ruby guys from keeping a reference to the &quot;manipulated&quot; image, that&#39;s the only way it&#39;d make sense. But it&#39;d also mean a new allocated object for every step in the chain. :( I will benchmark all the possibilities once I get there.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5207)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5207' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5207' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5207'>
@@ -194,10 +161,6 @@ Since I cannot stop you Ruby guys from keeping a reference to the &quot;manipula
 <div class='ccl'>
 Not really. The standard way to manage chains like that is only to calculate when required by something like a draw (treat it something like a ruby iterator?).
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5208)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5208' style='display:none;'>Spooner</span><a href='post_add.pl?pid=5208' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5208'>
@@ -212,10 +175,6 @@ Not really. The standard way to manage chains like that is only to calculate whe
 </div>
 <div class='ccl'>
 I guess it depends on whether <code>rotate</code> and <code>scale</code> are mutating methods or not. Since they won&#39;t mutate the underlying Image at least, I would&#39;ve expected them to always be non-mutating. I think your middle code bit should be <code>manipulated_image.translate!(1, 0)</code>. So for efficiency&#39;s sake, one could make it clear as <code>img.rotate(6).scale!(2).draw(...)</code>, meh. :/
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5209)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5209' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5209' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -239,10 +198,6 @@ I guess it depends on whether <code>rotate</code> and <code>scale</code> are mut
 <div class='ccl'>
 Just updated to 0.7.40.<br/><br/>Not totally sure what&#39;s wrong, but it&#39;s broken for me.&#160; Sorry to be helpful and unhelpful at the same time, but I got a deadline to meet.&#160; Well, more of a personal milestone, but still.&#160; I&#39;ll try to post more detailed information later.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5285)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5285' style='display:none;'>RavensKrag</span><a href='post_add.pl?pid=5285' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5285'>
@@ -258,10 +213,6 @@ Just updated to 0.7.40.<br/><br/>Not totally sure what&#39;s wrong, but it&#39;s
 </div>
 <div class='ccl'>
 Yeah, that would be awesome. :D Linux, right? I haven&#39;t exactly tested it a lot in my VM before releasing.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5287)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5287' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5287' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -279,10 +230,6 @@ Yeah, that would be awesome. :D Linux, right? I haven&#39;t exactly tested it a 
 <div class='ccl'>
 Ok, finally got around to it.&#160; Here&#39;s the error.<br/><br/><code> ruby: ../GosuImpl/Graphics/DrawOpQueue.hpp:128: void Gosu::DrawOpQueue::popTransform(): Assertion </code>individualTransforms.size() &gt; 1&#39; failed.<br/>Aborted `
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5337)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5337' style='display:none;'>RavensKrag</span><a href='post_add.pl?pid=5337' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5337'>
@@ -298,10 +245,6 @@ Ok, finally got around to it.&#160; Here&#39;s the error.<br/><br/><code> ruby: 
 </div>
 <div class='ccl'>
 Do you use <code>flush()</code> somewhere? Up to the upcoming .41, <code>flush()</code> can only be used outside of clipping and transformations :(
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5339)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5339' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5339' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -319,10 +262,6 @@ Do you use <code>flush()</code> somewhere? Up to the upcoming .41, <code>flush()
 <div class='ccl'>
 So it&#39;s supposed to work past .41 then? Strange, as it works in .38, just not in .40.<br/><br/>Ah well, I&#39;ll shuffle the code around a bit for the time being, although it results in a bit of a performance hit.&#160; My code is by no means optimized though, so I&#39;m sure I could stand to eek out some efficiency elsewhere.&#160; I look forward to .41, it sounds like that&#39;s gonna be&#160; good one.<br/><br/>For those interested, here&#39;s what I&#39;m doing.&#160; It&#39;s intended to draw gamestates in different &quot;layers,&quot; such that each state has it&#39;s own z-index ordering.<br/><br/><code>@window.translate *@camera.offset do<br/>&#160; @stack[ACTIVE].each do |gamestate|<br/>&#160; &#160; if gamestate.visible?<br/>&#160; &#160; &#160; gamestate.draw @camera.zoom<br/>&#160; &#160; &#160; @window.flush<br/>&#160; &#160; end<br/>&#160; end<br/>end</code>
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5340)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5340' style='display:none;'>RavensKrag</span><a href='post_add.pl?pid=5340' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn5340'>
@@ -338,10 +277,6 @@ So it&#39;s supposed to work past .41 then? Strange, as it works in .38, just no
 <div class='ccl'>
 I am also flushing between states - it&#39;s nice to have reusable states that don&#39;t Z-collide with the game. But I was lucky enough to only scroll in one of the states. :)<br/><br/>Yes, it is already fixed, I just need to package a release again. (Soon, Ludum Dare is impending after all!)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(5342)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield5342' style='display:none;'>jlnr</span><a href='post_add.pl?pid=5342' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 </div>
@@ -356,11 +291,6 @@ I am also flushing between states - it&#39;s nice to have reusable states that d
 <a href='board_show.pl?tid=671#tid671'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=671#tid671'>Gosu News</a> / Gosu 0.7.40 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=671' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

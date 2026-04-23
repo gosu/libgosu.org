@@ -33,11 +33,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1188#tid1188'>Gosu News</a> / Gosu 0.9.2 released
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1188' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid8363' style='margin-left: 0%'>
@@ -53,10 +48,6 @@ img.ava { width: 50px; height: 50px }
 </div>
 <div class='ccl'>
 Another tiny release to keep everything going – support for the current version of Ruby on Windows, and two fixes for things that actually used to work in Gosu 0.7.<br/><br/>• Windows: Support for Ruby 2.2.x<br/>• Allow macro recording outside of Window::draw<br/>• All: Use new <code>SDL_GetGlobalMouseState</code> function if available (this function tracks the mouse position even when it leaves the window)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8363)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8363' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8363' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -75,10 +66,6 @@ Another tiny release to keep everything going – support for the current versio
 <div class='ccl'>
 Note: <code>SDL_GetGlobalMouseState</code> is only available in SDL 2.0.4, which is still not out by now (pending tickets: <a class='ura' href='https://bitly.com/sdl204-todo'>https://bitly.com/sdl204-todo</a>). So it probably only fixes <code>mouse_x</code> and <code>mouse_y</code> if you use <code>brew install sdl2 --HEAD</code> on OS X.<br/><br/>Next up: Updated Ruby.app for OS X, if I don&#39;t receive any bug reports for 0.9.2 in the next days. Then CMake build files, and I&#39;m playing around with RubyMotion as well.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8364)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8364' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8364' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8364'>
@@ -93,10 +80,6 @@ Note: <code>SDL_GetGlobalMouseState</code> is only available in SDL 2.0.4, which
 </div>
 <div class='ccl'>
 Ooohh, SDL 2.0.4 is coming closer! Can&#39;t wait: <a class='ura' href='http://forums.libsdl.org/viewtopic.php?t=11294'>http://forums.libsdl.org/viewtopic.php?t=11294</a>
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8397)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8397' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8397' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -114,10 +97,6 @@ Ooohh, SDL 2.0.4 is coming closer! Can&#39;t wait: <a class='ura' href='http://f
 <div class='ccl'>
 So I tested all this 2.2 compatibility etc. The new Gosu works with 2.2.2, seems to be backward-compatible and even &quot;compiles&quot; with Ocra.<br/>Then I tried Ashton:<br/><br/><code>C:/Ruby22/lib/ruby/gems/2.2.0/gems/gosu-0.9.2-x86-mingw32/lib/gosu/swig_patches.rb:63:in <code>unsafe_gl&#39;: There is no rendering queue for this operation (RuntimeError)<br/>&#160; &#160; &#160; &#160; from C:/Ruby22/lib/ruby/gems/2.2.0/gems/gosu-0.9.2-x86-mingw32/lib/gosu/swig_patches.rb:63:in </code>gl&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby22/lib/ruby/gems/2.2.0/gems/gosu-0.9.2-x86-mingw32/lib/gosu/patches.rb:108:in <code>block (2 levels) in &lt;class:Window&gt;&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby22/lib/ruby/gems/2.2.0/gems/ashton-0.1.6/lib/ashton/gosu_ext/window.rb:37:in </code>gl&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby22/lib/ruby/gems/2.2.0/gems/ashton-0.1.6/lib/ashton/shader.rb:105:in <code>enable&#39;<br/>&#160; &#160; &#160; &#160; from C:/Ruby22/lib/ruby/gems/2.2.0/gems/ashton-0.1.6/lib/ashton/shader.rb:68:in </code>initialize&#39;<br/>&#160; &#160; &#160; &#160; from D:/Ruby/Gry/Projekty/Mariovania/data/scripts/system.rb:850:in <code>new&#39;<br/>&#160; &#160; &#160; &#160; from D:/Ruby/Gry/Projekty/Mariovania/data/scripts/system.rb:850:in </code>initialize&#39;<br/>&#160; &#160; &#160; &#160; from Mariovania.rb:69:in <code>new&#39;<br/>&#160; &#160; &#160; &#160; from Mariovania.rb:69:in </code>&lt;main&gt;&#39;</code><br/><br/>Looks like the shaders (and probably other GL things) are broken. It may be Ashton&#39;s fault though. Anyways, I&#39;m not using it currently very much and if I do, I can just stick to older versions. It&#39;s not super important or something.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8365)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8365' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8365' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8365'>
@@ -134,10 +113,6 @@ So I tested all this 2.2 compatibility etc. The new Gosu works with 2.2.2, seems
 <div class='ccl'>
 Awesome, good to know that Gosu by itself works.<br/><br/>I&#39;d love to fork and fix both Ashton and Releasy, but before I get to Gosu 1.0 or so, I don&#39;t see it happening :(
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8366)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8366' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8366' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8366'>
@@ -153,10 +128,6 @@ Awesome, good to know that Gosu by itself works.<br/><br/>I&#39;d love to fork a
 <div class='ccl'>
 Ashton has many thing to be fixed anyways. It&#39;s both terribly broken and irreplaceable :(
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8367)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8367' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8367' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid8368' style='margin-left: 9%'>
@@ -171,10 +142,6 @@ Ashton has many thing to be fixed anyways. It&#39;s both terribly broken and irr
 </div>
 <div class='ccl'>
 I forgot to report this, but fullscreen doesn&#39;t always look good. I assume that what it currently does is scaling each draw call individually. On some resolutions (like my 1366 x 768 with 640 x 480 game), artifacts are very likely to appear when drawing small tiles. Isn&#39;t it possible to draw everything normally and THEN scale up to the screen? (this would also probably fix one problem with Ashton)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8368)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8368' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8368' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -192,10 +159,6 @@ I forgot to report this, but fullscreen doesn&#39;t always look good. I assume t
 <div class='ccl'>
 I guess it would be possible to render to a texture and then scale it up, but I still haven&#39;t looked into render-to-texture at all.<br/><br/>My expectation was that it should actually look <i>better</i> if you render it at a higher resolution directly, but I&#39;m not sure if that&#39;s true.<br/><br/>What kind of artefacts, by the way? Are you using the <code>:tileable</code> parameter to ensure crisp tile boundaries?
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8369)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8369' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8369' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8369'>
@@ -211,10 +174,6 @@ I guess it would be possible to render to a texture and then scale it up, but I 
 </div>
 <div class='ccl'>
 (Since I can&#39;t take screenshots on full-screen, I had to draw this manually, lol)<br/><img class='emi' src='http://i.imgur.com/VVsB0Xu.png' alt=''/><br/>Top image shows how it looks in windowed mode. The bottom shows &quot;fullscreen&quot; one (but actually it should be stretched). These are map tiles, each of them has a background, borders and corners drawn individually. Each border is 12x2-sized image! In fullscreen, they scale up wrongly so edges of each border/corner is blurred, leaving space.<br/>This happens also with tileability set to true. Retrofication fixes this, but then the fonts and most graphics look terrible O_o. It probably all depends on scale ratio. With my laptop it&#39;s 1.6 for this resolution, so pixels are unequally stretched.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8370)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8370' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8370' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -232,10 +191,6 @@ I guess it would be possible to render to a texture and then scale it up, but I 
 <div class='ccl'>
 Hi and great job there ! Thank you for this major update that allows to get rid of the Gosu::Window reference !<br/><br/>Just one issue from now : since I updated the gem, I now have a couple of white frames at first when I run the program. I didn&#39;t have that problem before updating. <br/><br/>Do you have an idea ?
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8386)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8386' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=8386' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8386'>
@@ -251,10 +206,6 @@ Hi and great job there ! Thank you for this major update that allows to get rid 
 </div>
 <div class='ccl'>
 Thanks! Does it happen only in 0.9.x, or also 0.8.x? Do you have an example script for me to try?
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8387)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8387' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8387' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -272,10 +223,6 @@ Thanks! Does it happen only in 0.9.x, or also 0.8.x? Do you have an example scri
 <div class='ccl'>
 Only on 0.9.x. Here is the smallest code I could provide...<br/><br/>require &quot;gosu&quot;<br/><br/>Gosu::Window.new(320, 240, false).show<br/><br/>I get a white screen at the beginning.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8388)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8388' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=8388' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8388'>
@@ -292,10 +239,6 @@ Only on 0.9.x. Here is the smallest code I could provide...<br/><br/>require &qu
 <div class='ccl'>
 I noticed it just now. It&#39;s so short that you can blink and miss it. It&#39;s probably window loading or something, not a big deal. At least for me.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8389)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8389' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8389' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8389'>
@@ -310,10 +253,6 @@ I noticed it just now. It&#39;s so short that you can blink and miss it. It&#39;
 </div>
 <div class='ccl'>
 For me neither, of course. But if it can be fixed sometime, it&#39;s better. &quot;Glad&quot; to hear I&#39;m not alone with that, it&#39;s often the case with my poor computer :(
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8391)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8391' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=8391' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -331,10 +270,6 @@ For me neither, of course. But if it can be fixed sometime, it&#39;s better. &qu
 <div class='ccl'>
 Cool thanks, will take a look. Maybe it&#39;s an SDL issue anyway :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8390)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8390' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8390' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8390'>
@@ -351,10 +286,6 @@ Cool thanks, will take a look. Maybe it&#39;s an SDL issue anyway :)
 <div class='ccl'>
 Hi !<br/><br/>I have another issue : when I use mouse_x= and mouse_y= to place my pointor, only the second called method is taken.<br/><br/>For example the following code :<br/><br/>require &#39;gosu&#39;<br/><br/>class Window &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; super(640, 480, false)<br/>&#160; end<br/>&#160; <br/>&#160; def needs_cursor?; true; end<br/>&#160; <br/>&#160; def update<br/>&#160; &#160; self.mouse_x = self.width / 2<br/>&#160; &#160; self.mouse_y = self.height / 2<br/>&#160; end<br/>end<br/><br/>Window.new.show<br/><br/>will put the mouse pointor on the horizontal left but centered vertically... I now have to use the deprecated method set_mouse_position(x, y) instead if I want to set the mouse where I want.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8393)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8393' style='display:none;'>bestguigui</span><a href='post_add.pl?pid=8393' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8393'>
@@ -370,10 +301,6 @@ Hi !<br/><br/>I have another issue : when I use mouse_x= and mouse_y= to place m
 <div class='ccl'>
 Ouch! It&#39;s on my list. Hopefully updating to SDL 2.0.4 &quot;soon&quot; will fix the issue :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8396)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8396' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8396' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='frm pst' id='pid8455' style='margin-left: 33%'>
@@ -387,10 +314,6 @@ Ouch! It&#39;s on my list. Hopefully updating to SDL 2.0.4 &quot;soon&quot; will
 </div>
 <div class='ccl'>
 Nope, this was an error on my side - will be fixed in Gosu 0.9.3 (ASAP), no need to wait for an SDL update.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8455)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8455' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8455' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -412,10 +335,6 @@ Nope, this was an error on my side - will be fixed in Gosu 0.9.3 (ASAP), no need
 <div class='ccl'>
 I&#39;ve tried to reproduce this issue but it all looks good here. Does this gist work for you?<br/><br/><a class='ura' href='https://gist.github.com/jlnr/a42235af10f75159f2d9'>https://gist.github.com/jlnr/a42235af10f75159f2d9</a><br/><br/>It is creating a 12x2 sized image (pure white) and drawing it all over the screen. Or is it because your borders are separate images?
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8398)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8398' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8398' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8398'>
@@ -431,10 +350,6 @@ I&#39;ve tried to reproduce this issue but it all looks good here. Does this gis
 </div>
 <div class='ccl'>
 This code seems to work.<br/>In my game I&#39;m using 16x16 tiles for all parts and they are drawn using draw_rot to produce borders/corners all around.<br/>Here&#39;s the image with all tiles: <a class='ura' href='http://i.imgur.com/vMfp6nS.png'>http://i.imgur.com/vMfp6nS.png</a> (it&#39;s white on transparent background)<br/>First tile is background (drawn on bottom with color), fourth tile is border (drawn up to 4 times with draw_rot) and eighth one is corner. Unfortunately, I don&#39;t have much time to do testing this week.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8399)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8399' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8399' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -452,10 +367,6 @@ This code seems to work.<br/>In my game I&#39;m using 16x16 tiles for all parts 
 <div class='ccl'>
 I see. I&#39;ve been meaning to finally replace <code>enable_undocumented_retrofication</code> with a new flag during image creation, e.g. <code>Image.new(&quot;tile.png&quot;, :retro =&gt; true)</code>, same for <code>load_tiles</code> etc.; would this help?<br/><br/>(It&#39;s gotten a lot easier to actually implement this based on the new interface :) )
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8400)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8400' style='display:none;'>jlnr</span><a href='post_add.pl?pid=8400' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn8400'>
@@ -470,10 +381,6 @@ I see. I&#39;ve been meaning to finally replace <code>enable_undocumented_retrof
 </div>
 <div class='ccl'>
 Yeah, if I could set retrofication for single images it would help.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(8401)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield8401' style='display:none;'>lol_o2</span><a href='post_add.pl?pid=8401' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -492,11 +399,6 @@ Yeah, if I could set retrofication for single images it would help.
 <a href='board_show.pl?tid=1188#tid1188'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=1188#tid1188'>Gosu News</a> / Gosu 0.9.2 released
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=1188' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 

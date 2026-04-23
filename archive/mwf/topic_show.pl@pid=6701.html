@@ -33,11 +33,6 @@ img.ava { width: 50px; height: 50px }
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=872#tid872'>Gosu News</a> / Gosu 0.7.47 released (+ 0.7.47.1 hot-fix gem)
 </div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=872' title='Post concerning the topic in general'>Post</a>
-</div>
-</div>
 </div>
 
 <div class='frm pst' id='pid6697' style='margin-left: 0%'>
@@ -53,10 +48,6 @@ img.ava { width: 50px; height: 50px }
 <div class='ccl'>
 This is a follow-up release to yesterday&#39;s v0.7.46. I&#39;ve tried to close as many input-related tickets on github as possible:<br/><br/>• All: Add msOther0 - msOther7 constants for extra mouse buttons<br/>• All: Add constants: kbBacktick, kbMinus, kbEqual, kbBracketLeft, kbBracketRight, kbBackslash, kbSemicolon, kbApostrophe, kbComma, kbPeriod, kbSlash<br/>• Windows: Add support for up to four gamepads<br/>• Linux: Fix button_down/button_up/TextInput (thanks @oli-obk)<br/>• Linux: Enable optimizations in CMake build files (thanks @oli-obk)<br/>• Mac: Work around crashes in C++ exception handling<br/>• Mac: Fix some gamepad bugs (e.g. unplugging when Gosu is running)<br/>• Mac: Fix a bug where Gosu processes would not terminate while a song is running<br/><br/>Most of these suggestions were taken from the Gosu Exchange board, so thanks everyone :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6697)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6697' style='display:none;'>jlnr</span><a href='post_add.pl?pid=6697' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn6697'>
@@ -71,10 +62,6 @@ This is a follow-up release to yesterday&#39;s v0.7.46. I&#39;ve tried to close 
 </div>
 <div class='ccl'>
 This time I&#39;ve been able to update the RubyGosu app wrapper as well: <a class='url' href='http://libgosu.org/downloads/gosu-mac-wrapper-0.7.47.tar.gz'>http://libgosu.org/downloads/gosu-mac-wrapper-0.7.47.tar.gz</a><br/><br/>I will need to wait until May before I can update the bundled Ruby &amp; gems though.
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6700)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6700' style='display:none;'>jlnr</span><a href='post_add.pl?pid=6700' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -92,10 +79,6 @@ This time I&#39;ve been able to update the RubyGosu app wrapper as well: <a clas
 <div class='ccl'>
 Trying to update my gem gives me the following error:<br/><br/>RubyGosu_wrap.cxx: In function ‘void Init_gosu()’:<br/>RubyGosu_wrap.cxx:11479:74: error: ‘kbRightMeta’ is not a member of ‘Gosu’<br/>In file included from ../Gosu/Bitmap.hpp:9:0,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from ../Gosu/Gosu.hpp:14,<br/>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160; from RubyGosu_wrap.cxx:2227:<br/><br/>Edit: In Button.hpp#48-58<br/>&#160; &#160; kbLeftAlt = 0x38,<br/>#if defined(GOSU_IS_WIN)<br/>&#160; &#160; kbRightAlt = 0xb8,<br/>&#160; &#160; kbLeftMeta = 0xdb,<br/>&#160; &#160; kbRightMeta = 0xdc,<br/>#elif defined(GOSU_IS_X)<br/>&#160; &#160; kbRightAlt = 0x64,<br/>&#160; &#160; kbLeftMeta = 0x7d,<br/>#else<br/># error this should not happen<br/>#endif<br/><br/>The kbRightMeta is missing for X. It seems you merged ButtonsX and ButtonsWin. I looked at the ButtonsX but cannot determine the hex value for&#160; &#160;&#160; <br/>kbRightMeta = XK_Meta_R. If I had to guess I would say 0x7e :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6701)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6701' style='display:none;'>SPK</span><a href='post_add.pl?pid=6701' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn6701'>
@@ -111,10 +94,6 @@ Trying to update my gem gives me the following error:<br/><br/>RubyGosu_wrap.cxx
 </div>
 <div class='ccl'>
 That was a bug in Gosu 0.7.46 that has been fixed in 0.7.47 - can you please try to install again? You were probably a few minutes too early :)
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6702)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6702' style='display:none;'>jlnr</span><a href='post_add.pl?pid=6702' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -132,10 +111,6 @@ That was a bug in Gosu 0.7.46 that has been fixed in 0.7.47 - can you please try
 <div class='ccl'>
 Quick response. :P<br/><br/>Unfortunately I installed 0.7.47.
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6703)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6703' style='display:none;'>SPK</span><a href='post_add.pl?pid=6703' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn6703'>
@@ -150,10 +125,6 @@ Quick response. :P<br/><br/>Unfortunately I installed 0.7.47.
 </div>
 <div class='ccl'>
 You are right. Somehow I must have pushed very old code. Not sure how this happened - fixing now...
-</div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6704)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6704' style='display:none;'>jlnr</span><a href='post_add.pl?pid=6704' title='Reply to post'>Reply</a>
 </div>
 </div>
 
@@ -171,10 +142,6 @@ You are right. Somehow I must have pushed very old code. Not sure how this happe
 <div class='ccl'>
 Can you please retry now, with 0.7.47.1?<br/><br/>It works for me on Ubuntu 12.10. Thanks for reporting this issue! :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6705)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6705' style='display:none;'>jlnr</span><a href='post_add.pl?pid=6705' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 <div class='brn' id='brn6705'>
@@ -190,10 +157,6 @@ Can you please retry now, with 0.7.47.1?<br/><br/>It works for me on Ubuntu 12.1
 <div class='ccl'>
 spk@skuld:~&gt; sudo gem update gosu<br/>root&#39;s password:<br/>Updating installed gems<br/>Updating gosu<br/>Fetching: gosu-0.7.47.1.gem (100%)<br/>Building native extensions.&#160; This could take a while...<br/>Successfully installed gosu-0.7.47.1<br/>file &#39;README.txt&#39; not found<br/>file &#39;COPYING&#39; not found<br/>file &#39;reference/gosu.rb&#39; not found<br/>file &#39;reference/Drawing_with_Colors.rdoc&#39; not found<br/>file &#39;reference/Order_of_Corners.rdoc&#39; not found<br/>file &#39;reference/Tileability.rdoc&#39; not found<br/>file &#39;reference/Z_Ordering.rdoc&#39; not found<br/>Installing ri documentation for gosu-0.7.47.1<br/>Installing darkfish documentation for gosu-0.7.47.1<br/>Gems updated: gosu<br/><br/>Working! Thousand thanks! :)
 </div>
-<div class='bcl'>
-<a class='btl qr' onclick='qr.openQuickReply(6708)' style='cursor:pointer;display:none;' title='Quick reply'>Quickreply</a>
-<span id='qrnfield6708' style='display:none;'>SPK</span><a href='post_add.pl?pid=6708' title='Reply to post'>Reply</a>
-</div>
 </div>
 
 </div>
@@ -207,11 +170,6 @@ spk@skuld:~&gt; sudo gem update gosu<br/>root&#39;s password:<br/>Updating insta
 <a href='board_show.pl?tid=872#tid872'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
 <span class='htt'>Topic</span> <a href='forum.pl#bid1'>Gosu</a> / <a href='board_show.pl?tid=872#tid872'>Gosu News</a> / Gosu 0.7.47 released (+ 0.7.47.1 hot-fix gem)
-</div>
-<div class='bcl'>
-<div class='nbl'>
-<a href='post_add.pl?tid=872' title='Post concerning the topic in general'>Post</a>
-</div>
 </div>
 </div>
 
