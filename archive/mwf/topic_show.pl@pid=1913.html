@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=272.html#tid272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=272#tid272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=272.html#tid272'>Gosu Showcase</a> / AIG 2009
+<span class='htt'>Topic</span> <a href='forum.pl#bid2'>Gosu</a> / <a href='board_show.pl?tid=272#tid272'>Gosu Showcase</a> / AIG 2009
 </div>
 </div>
 
@@ -40,13 +40,13 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1751.html#pid1751'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1751#pid1751'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-11-21 03:04
 <span class='htt'>Edited</span> 2009-12-21 20:54
 </div>
 <div class='ccl'>
-Artificial Intelligence Games 2009<br/><br/><b>Purpose:</b> A purely recreational competition to battle each others&#39; coding skills. Will promote and share clever Artificial Intelligence tactics for inspiration and use in other Gosu games.<br/><br/><b>Game:</b><br/>The attached mini-game involves five hunters chasing and overtaking 100 preys. Once the preys are eaten, the game resimulates. Very simple, allows a very basic knowledge of programming tactics while still leaving plenty of room for clever code.<br/><br/><a href='attach_show.pl@aid=356.html'><img class='amt' src='../../mwf/attachments/51/1751/Screenshot-1.thb.jpg' title='Default game in action. Hunters are multicolor, preys are green. (15k)' alt=''/></a><br/><br/><b>Procedure:</b> <br/>&#160;&#160; 1. Download and observe the simple mini-game as provided.<br/><br/>&#160;&#160; 2. Redefine one or both of the classes &quot;Prey&quot; and &quot;Hunter&quot; (prey.rb, hunter.rb) in the given download and replace their respective files to make the game work with your new classes.<br/><br/>&#160;&#160; 3. In your own classes, try to either extend or shorten the average lifetime of the preys. Make the Hunters &quot;smarter&quot; or else make the preys &quot;smarter.&quot; If you submit a Hunter class, your scoring is based on how quickly the preys are consumed. Likewise, a submitted Prey class is scored on how long the preys can stay alive.<br/><br/>&#160;&#160; 4. Submit your new class(es) on this forum thread the day of the deadline (TBA).<br/>&#160;&#160; (edit) hey, you can just send me a message containing your class(es) too<br/><br/><b>Description of a Few Shortcomings to Hunter and Prey:</b><br/>The hunters are fast, but dull. They can chase down the preys easily enough, but sometimes they get caught in a merry-go-round with one prey in the center, which makes them spin in circles until another hunter knocks them away. They only ever accelerate toward the nearest prey at any given moment.<br/><br/>The preys can avoid capture through agility, but they run in an unorganized straight line away from the nearest hunter. Often, they cluster in the corners of the screen allowing the hunters to destroy many of them in one swoop. They only ever accelerate away from the nearest hunter at any given moment. (They do not detect or collide with one another due to optimization necessity).<br/><br/><b>Special Keys:</b><br/>The game runs itself through &quot;ruby main.rb&quot; but once the simulation begins, the display can be hidden or shown by pressing &quot;D&quot; and the game can be resimulated at no cost to the average time by pressing the space bar. Press the escape button to quit.<br/><br/><b>Specs and Restrictions:</b><br/>&#160; - There is no real reward to the contest. It should not take much time to submit a simple improved class, do it just for fun and to face off with other competitors&#39; classes.<br/>&#160; - Anyone can join, there is no official signup. Just submit however many classes you want on the deadline. Competitors are discouraged from submitting code early to avoid plagiarism (other players might steal your AI ideas and then submit their &quot;own&quot; class before the deadline).<br/>(edit) sending me a private message containing your class solves any cheating problems. I didn&#39;t realize this at first. Do that instead xD<br/>&#160; - You are permitted only to change the classes Prey and Hunter (prey.rb, hunter.rb)<br/>&#160; - You cannot adjust the acceleration, radius, or other such set values in either class<br/>&#160; - You cannot &quot;stupefy&quot; or else make &quot;less smart&quot; any class. There simply is no point: any and all classes you send in will be tested separate from each other.<br/>&#160; - Average time is measured in seconds relative to game loops and is unaffected by the performance of your computer.<br/>&#160; - Entities cannot &quot;warp&quot; in any way whatsoever (deliberate setting of x and y position)<br/>&#160; - Let&#39;s be honest: The line between clever code and cheap loophole is obvious. Cheating at this competition is about as impressive as playing chess with a broom.<br/>&#160; - Scoring will be based on how well your class stands up against the default counterpart and then against other competitors&#39; classes. All submitted hunter classes will be pitted against the default Prey class and vice versa. At the end, some of the best classes of different competitors will be put against each other.<br/>&#160; - The deadline has not yet been finalized, but is anticipated to be toward the end of December. Plenty of time.<br/><br/>(edit)<br/><b>Deadline:</b><br/>Tuesday, December 22, 2009 (no specific time range/zone - all 24 hours of your day to submit)<br/><br/>All entries may be submitted before this deadline, however, this is discouraged to prevent others from receiving ample time to cheat and/or plagiarize other code. It is the expectation that this should not be a problem anyway.<br/><br/>The results will most likely be posted within a week after the deadline. After submitting all entries, a contestant can download other entries to see the results for themselves, but &quot;even_smarter&quot; classes submitted based on these results will not be eligible for the original competition. <br/><br/><b>Note:</b><br/>I&#39;m not pretending to be Ludum Dare or anything. I just thought there would be no better way to promote cool code than hosting an AIG. Please post a reply if you wish to join, although it is not required. If it turns out nobody cares, then I&#39;ll just shut it down and get out of the way.<br/><br/>If this actually works out, however, there could be more AIG in the future with more elaborate scenarios. Just take a day or two and improve the Prey/Hunter classes. Use my own &quot;smart_prey.rb&quot; as an example - an addition of two or three lines of code increased the preys&#39; lifetime by 30sec. The month-long deadline is just to allow anyone short on time to be able to submit.<br/><br/>Inform me of any errors, if you want fewer restrictions, or if you need help debugging your own classes. <br/><br/><b>class Entity</b><br/><br/>Location: entity.rb<br/><br/>--Members--<br/>x, y&#160; &#160; &#160; &#160; read only<br/>vx, vy&#160; &#160; read and write, but <b>read only</b> for competition purposes<br/><br/>--Public Class Methods--<br/><br/>new(game)<br/>&#160; game - the Gosu::Window instance being used.<br/><br/>--Public Instance Methods--<br/><br/>move<br/>&#160; Call this function exactly one time in the update method of its subclasses Prey and Hunter. No exceptions. This really should have been called by GameWindow rather than the instances themselves, in fact.<br/><br/>find_closest(targets)<br/>&#160; targets - an array of the counterpart entities, ex: hunters would call &quot;find_closest(array_of_preys)&quot;<br/>&#160; Iterates through targets and returns the instance of the closest Prey/Hunter. Use at your pleasure.<br/><br/>accelerate(dir)<br/>&#160; dir - the angle to accelerated toward.<br/>&#160; Call this function once or not at all in your own code. Do not call it more than once or else the submission is illegitimate.<br/><br/><b>class Hunter</b><br/><br/>Location: hunter.rb<br/><br/>--Relevant Instance Methods--<br/><br/>update(preys)<br/>&#160; preys - an array given by GameWindow of all the preys on the screen. Use at you pleasure<br/>&#160; Probably the only method intended to be adjusted in this competition for Hunter. Initialize may be adjusted to accommodate new instance variables, etc. You can find the closest prey in here via find_closest(preys). Note that the code where preys are eaten should not be adjusted to work on more than one prey per cycle and the distance &lt; 5 should not be in any way changed for a larger eating radius.<br/><br/><b>class Prey</b><br/><br/>Location: prey.rb<br/><br/>--Members--<br/>eaten&#160; &#160; &#160; read, boolean for whether or not the prey has been destroyed<br/><br/>--Relevant Instance Methods--<br/><br/>update(hunters)<br/>&#160; hunters - array given by GameWindow containing all the hunter instances. Use at your pleasure.<br/>&#160; The only method that really needs tweaking in this competition. You may consider using find_closest(hunters) and accelerate away. Use &quot;move&quot; exactly one time and &quot;accelerate&quot; at most once or not at all. Always have !@eaten as the last line of this method to tell GameWindow that the prey still exists.
+Artificial Intelligence Games 2009<br/><br/><b>Purpose:</b> A purely recreational competition to battle each others&#39; coding skills. Will promote and share clever Artificial Intelligence tactics for inspiration and use in other Gosu games.<br/><br/><b>Game:</b><br/>The attached mini-game involves five hunters chasing and overtaking 100 preys. Once the preys are eaten, the game resimulates. Very simple, allows a very basic knowledge of programming tactics while still leaving plenty of room for clever code.<br/><br/><a href='attach_show.pl?aid=356'><img class='amt' src='../../mwf/attachments/51/1751/Screenshot-1.thb.jpg' title='Default game in action. Hunters are multicolor, preys are green. (15k)' alt=''/></a><br/><br/><b>Procedure:</b> <br/>&#160;&#160; 1. Download and observe the simple mini-game as provided.<br/><br/>&#160;&#160; 2. Redefine one or both of the classes &quot;Prey&quot; and &quot;Hunter&quot; (prey.rb, hunter.rb) in the given download and replace their respective files to make the game work with your new classes.<br/><br/>&#160;&#160; 3. In your own classes, try to either extend or shorten the average lifetime of the preys. Make the Hunters &quot;smarter&quot; or else make the preys &quot;smarter.&quot; If you submit a Hunter class, your scoring is based on how quickly the preys are consumed. Likewise, a submitted Prey class is scored on how long the preys can stay alive.<br/><br/>&#160;&#160; 4. Submit your new class(es) on this forum thread the day of the deadline (TBA).<br/>&#160;&#160; (edit) hey, you can just send me a message containing your class(es) too<br/><br/><b>Description of a Few Shortcomings to Hunter and Prey:</b><br/>The hunters are fast, but dull. They can chase down the preys easily enough, but sometimes they get caught in a merry-go-round with one prey in the center, which makes them spin in circles until another hunter knocks them away. They only ever accelerate toward the nearest prey at any given moment.<br/><br/>The preys can avoid capture through agility, but they run in an unorganized straight line away from the nearest hunter. Often, they cluster in the corners of the screen allowing the hunters to destroy many of them in one swoop. They only ever accelerate away from the nearest hunter at any given moment. (They do not detect or collide with one another due to optimization necessity).<br/><br/><b>Special Keys:</b><br/>The game runs itself through &quot;ruby main.rb&quot; but once the simulation begins, the display can be hidden or shown by pressing &quot;D&quot; and the game can be resimulated at no cost to the average time by pressing the space bar. Press the escape button to quit.<br/><br/><b>Specs and Restrictions:</b><br/>&#160; - There is no real reward to the contest. It should not take much time to submit a simple improved class, do it just for fun and to face off with other competitors&#39; classes.<br/>&#160; - Anyone can join, there is no official signup. Just submit however many classes you want on the deadline. Competitors are discouraged from submitting code early to avoid plagiarism (other players might steal your AI ideas and then submit their &quot;own&quot; class before the deadline).<br/>(edit) sending me a private message containing your class solves any cheating problems. I didn&#39;t realize this at first. Do that instead xD<br/>&#160; - You are permitted only to change the classes Prey and Hunter (prey.rb, hunter.rb)<br/>&#160; - You cannot adjust the acceleration, radius, or other such set values in either class<br/>&#160; - You cannot &quot;stupefy&quot; or else make &quot;less smart&quot; any class. There simply is no point: any and all classes you send in will be tested separate from each other.<br/>&#160; - Average time is measured in seconds relative to game loops and is unaffected by the performance of your computer.<br/>&#160; - Entities cannot &quot;warp&quot; in any way whatsoever (deliberate setting of x and y position)<br/>&#160; - Let&#39;s be honest: The line between clever code and cheap loophole is obvious. Cheating at this competition is about as impressive as playing chess with a broom.<br/>&#160; - Scoring will be based on how well your class stands up against the default counterpart and then against other competitors&#39; classes. All submitted hunter classes will be pitted against the default Prey class and vice versa. At the end, some of the best classes of different competitors will be put against each other.<br/>&#160; - The deadline has not yet been finalized, but is anticipated to be toward the end of December. Plenty of time.<br/><br/>(edit)<br/><b>Deadline:</b><br/>Tuesday, December 22, 2009 (no specific time range/zone - all 24 hours of your day to submit)<br/><br/>All entries may be submitted before this deadline, however, this is discouraged to prevent others from receiving ample time to cheat and/or plagiarize other code. It is the expectation that this should not be a problem anyway.<br/><br/>The results will most likely be posted within a week after the deadline. After submitting all entries, a contestant can download other entries to see the results for themselves, but &quot;even_smarter&quot; classes submitted based on these results will not be eligible for the original competition. <br/><br/><b>Note:</b><br/>I&#39;m not pretending to be Ludum Dare or anything. I just thought there would be no better way to promote cool code than hosting an AIG. Please post a reply if you wish to join, although it is not required. If it turns out nobody cares, then I&#39;ll just shut it down and get out of the way.<br/><br/>If this actually works out, however, there could be more AIG in the future with more elaborate scenarios. Just take a day or two and improve the Prey/Hunter classes. Use my own &quot;smart_prey.rb&quot; as an example - an addition of two or three lines of code increased the preys&#39; lifetime by 30sec. The month-long deadline is just to allow anyone short on time to be able to submit.<br/><br/>Inform me of any errors, if you want fewer restrictions, or if you need help debugging your own classes. <br/><br/><b>class Entity</b><br/><br/>Location: entity.rb<br/><br/>--Members--<br/>x, y&#160; &#160; &#160; &#160; read only<br/>vx, vy&#160; &#160; read and write, but <b>read only</b> for competition purposes<br/><br/>--Public Class Methods--<br/><br/>new(game)<br/>&#160; game - the Gosu::Window instance being used.<br/><br/>--Public Instance Methods--<br/><br/>move<br/>&#160; Call this function exactly one time in the update method of its subclasses Prey and Hunter. No exceptions. This really should have been called by GameWindow rather than the instances themselves, in fact.<br/><br/>find_closest(targets)<br/>&#160; targets - an array of the counterpart entities, ex: hunters would call &quot;find_closest(array_of_preys)&quot;<br/>&#160; Iterates through targets and returns the instance of the closest Prey/Hunter. Use at your pleasure.<br/><br/>accelerate(dir)<br/>&#160; dir - the angle to accelerated toward.<br/>&#160; Call this function once or not at all in your own code. Do not call it more than once or else the submission is illegitimate.<br/><br/><b>class Hunter</b><br/><br/>Location: hunter.rb<br/><br/>--Relevant Instance Methods--<br/><br/>update(preys)<br/>&#160; preys - an array given by GameWindow of all the preys on the screen. Use at you pleasure<br/>&#160; Probably the only method intended to be adjusted in this competition for Hunter. Initialize may be adjusted to accommodate new instance variables, etc. You can find the closest prey in here via find_closest(preys). Note that the code where preys are eaten should not be adjusted to work on more than one prey per cycle and the distance &lt; 5 should not be in any way changed for a larger eating radius.<br/><br/><b>class Prey</b><br/><br/>Location: prey.rb<br/><br/>--Members--<br/>eaten&#160; &#160; &#160; read, boolean for whether or not the prey has been destroyed<br/><br/>--Relevant Instance Methods--<br/><br/>update(hunters)<br/>&#160; hunters - array given by GameWindow containing all the hunter instances. Use at your pleasure.<br/>&#160; The only method that really needs tweaking in this competition. You may consider using find_closest(hunters) and accelerate away. Use &quot;move&quot; exactly one time and &quot;accelerate&quot; at most once or not at all. Always have !@eaten as the last line of this method to tell GameWindow that the prey still exists.
 </div>
 <div class='ccl pat'>
 <div class='amf'>Attachment: <a href='../../mwf/attachments/51/1751/AIG2009-1.tgz'>AIG2009-1.tgz</a>  (3k)</div>
@@ -58,8 +58,8 @@ Artificial Intelligence Games 2009<br/><br/><b>Purpose:</b> A purely recreationa
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1757.html#pid1757'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<a class='psl' href='topic_show.pl?pid=1757#pid1757'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=22' >ippa</a>
 <span class='htt'>Date</span> 2009-11-22 11:50
 </div>
 <div class='ccl'>
@@ -72,7 +72,7 @@ cool :) .. hope I can take time enough from work to submit a really hungry hunte
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1782.html#pid1782'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1782#pid1782'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-11-25 08:47
 </div>
@@ -86,8 +86,8 @@ hi,<br/><br/>the included smart_hunter.rb is not ascii text and is unreadable
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1783.html#pid1783'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1783#pid1783'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-11-25 19:32
 <span class='htt'>Edited</span> 2009-11-25 19:34
 </div>
@@ -104,7 +104,7 @@ Okay, I&#39;ve fixed my smart_hunter.rb and it is now attached here as a .txt fi
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1785.html#pid1785'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1785#pid1785'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-11-25 22:10
 </div>
@@ -118,7 +118,7 @@ pretty interesting stuff, thanks, ill have&#160; a play :)
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1862.html#pid1862'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1862#pid1862'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-12-08 11:16
 </div>
@@ -132,8 +132,8 @@ can you explain how your smart hunter works in particular how you used calculus 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1868.html#pid1868'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1868#pid1868'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-09 00:27
 <span class='htt'>Edited</span> 2009-12-09 05:29
 </div>
@@ -147,8 +147,8 @@ The calculus is more conceptual than complex. I estimated the rate of change in 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1871.html#pid1871'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1871#pid1871'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-09 05:37
 <span class='htt'>Edited</span> 2009-12-18 05:07
 </div>
@@ -162,7 +162,7 @@ Deadline: (I already posted this, but it was destroyed in the server crash)<br/>
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1913.html#pid1913'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1913#pid1913'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-12-16 05:48
 </div>
@@ -176,8 +176,8 @@ hey im not sure if this is possible, but im not going to be able to work on this
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1916.html#pid1916'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1916#pid1916'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-16 22:25
 </div>
 <div class='ccl'>
@@ -190,8 +190,8 @@ The deadline is created for 3 reasons:<br/><br/>1. There has to be a cut-off jus
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1919.html#pid1919'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1919#pid1919'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-18 05:09
 </div>
 <div class='ccl'>
@@ -204,8 +204,8 @@ The deadline has now been extended to Tuesday, December 22<br/><br/>Hopefully th
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1940.html#pid1940'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=1940#pid1940'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-12-20 20:49
 </div>
 <div class='ccl'>
@@ -218,8 +218,8 @@ phelps, I seek your help.<br/><br/>I made (am making) a prey class right now, bu
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1942.html#pid1942'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1942#pid1942'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-21 05:04
 </div>
 <div class='ccl'>
@@ -232,8 +232,8 @@ Attach the class to a post. I&#39;ll delete/change the attachment when I check i
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1944.html#pid1944'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<a class='psl' href='topic_show.pl?pid=1944#pid1944'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=22' >ippa</a>
 <span class='htt'>Date</span> 2009-12-21 10:20
 <span class='htt'>Edited</span> 2009-12-21 11:20
 </div>
@@ -247,8 +247,8 @@ Got an email address phelps? .. submitting a hunter and a prey :P
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1945.html#pid1945'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=1945#pid1945'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-12-21 12:54
 </div>
 <div class='ccl'>
@@ -261,8 +261,8 @@ Okay, they won&#39;t cheat, but I&#39;ve put a link in a PM for you anyway, so p
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1947.html#pid1947'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1947#pid1947'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-21 17:19
 </div>
 <div class='ccl'>
@@ -275,8 +275,8 @@ Okay guys, I feel really stupid right now because I didn&#39;t realize there was
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1948.html#pid1948'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=1948#pid1948'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-21 18:11
 </div>
 <div class='ccl'>
@@ -289,8 +289,8 @@ I have discovered your problem.<br/><br/>When you declare:<br/><br/><code>diff =
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1949.html#pid1949'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=1949#pid1949'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-12-21 19:05
 </div>
 <div class='ccl'>
@@ -303,8 +303,8 @@ No way, I did NOT just make the divided by zero mistake!?! :O<br/>Wow.. I did no
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1956.html#pid1956'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=1956#pid1956'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-12-22 17:41
 </div>
 <div class='ccl'>
@@ -317,7 +317,7 @@ Okay, entry sent in! :D
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1958.html#pid1958'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1958#pid1958'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-12-23 01:56
 </div>
@@ -331,8 +331,8 @@ hey,<br/><br/>sorry i haven&#39;t had access to a computer for more than 1 hour 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1960.html#pid1960'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<a class='psl' href='topic_show.pl?pid=1960#pid1960'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=22' >ippa</a>
 <span class='htt'>Date</span> 2009-12-23 10:26
 </div>
 <div class='ccl'>
@@ -345,8 +345,8 @@ banister:<br/><br/><blockquote><p>&gt; hey,<br/>&gt;<br/>&gt; sorry i haven&#39;
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1967.html#pid1967'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<a class='psl' href='topic_show.pl?pid=1967#pid1967'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=22' >ippa</a>
 <span class='htt'>Date</span> 2009-12-27 00:10
 </div>
 <div class='ccl'>
@@ -359,13 +359,13 @@ when can we expect some score-tables? :)
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2019.html#pid2019'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=2019#pid2019'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2010-01-06 01:52
 <span class='htt'>Edited</span> 2010-01-06 01:59
 </div>
 <div class='ccl'>
-<b>Competition Results</b><br/><br/>(click on image)<br/><a href='attach_show.pl@aid=368.html'><img class='amt' src='../../mwf/attachments/19/2019/results.thb.jpg' title='Results Table (22k)' alt=''/></a><br/><br/>All participating classes are attached in .tgz along with game and results image.<br/><br/><b>Further Results</b><br/><br/>--AmIMeYet--<br/><br/>-Smart Prey: Avoided clustering by ignoring the position of any hunters and detecting proximity to edges of the screen. Preys regularly shifted acceleration to a calculated &quot;smart&quot; direction (instead of a random direction). Reduced the rate of consumption by requiring hunters to take them one at a time.<br/><br/>This one was interesting to watch, similar to watching a formation pattern of a school of fish. It represents a tactic that does not attempt to avoid the hunters, but rather slow them down.<br/><br/>--Dahrkael--<br/><br/>-Smart Prey: Simplest of tweaks to the original file. Instead of accelerating directly away from the nearest prey, accelerated at a perpendicular trajectory. A simple &quot; + 90.&quot; Interestingly effective. Lessened clustering and frequently stalled the hunters in circular chases.<br/><br/>While the simplicity was highly effective, it did not make the prey &quot;smart,&quot; nor was it particularly clever for a month-long competition. One hour competition maybe, but I was not impressed by so little effort getting such a high rank. The method did teach a thing or two about simplicity, making us all smack our foreheads, but when one is watching the single remaining prey spinning the hunters in an infinite merry-go-round loop, one isn&#39;t thinking &quot;this is genius,&quot; but rather &quot;this is boring.&quot; I cannot justify counting the lucky rounds that chanced to become infinite loops on the scoreboard; the recorded time is the average of the times when rounds went smoothly, unbiased. If a much more complex class had created infinite loops as frequently, I would happily count it as the winner. But part of the purpose of the competition was to share clever code. Thanks for participating anyway, however. I must commend you for submitting a quick and easy high-scoring class in the face of everyone who didn&#39;t participate for &quot;time and schedule&quot; constraints.<br/><br/>--Ippa--<br/><br/>-Smart Prey:&#160; Ignored the hunters and any other obstacles to move in a oscillating pattern either left/right, up/down, or diagonally. Looked similar to AmIMeYet&#39;s prey, except this prey wasn&#39;t as smart, but the coding was simpler and more clever.<br/><br/>Funny to watch the hunters fail at each swipe to nab the prey that isn&#39;t even trying to dodge. Represents the same tactic of distracting the hunters for as long as possible without actually running away. Interesting, but not exactly exciting. Nice job, though.<br/><br/>-Smart Hunter: Gathered to the center of the screen for a few seconds before splitting off to catch the preys in the default hunter mentality. The idea was to cluster the preys as much as possible to increase the rate of consumption. Attempts were made to further improve the hunter&#39;s skill, but apparently they didn&#39;t work and were commented out before submission.<br/><br/>Showed effective results for the default prey, but the smart prey and dahrkael&#39;s prey weren&#39;t as easy to cluster, and AmIMeYet&#39;s and your own prey did not operate around that mind setting. It was a reasonable approach that did need representation in the competition. Unfortunately, as it turns out, herding the preys is not as rewarding as one might have hoped.<br/><br/>--phelps.db--<br/><br/>-Smart Prey: Used mathematical functions to skew the angle of acceleration. As the nearest hunter grew closer, the prey would accelerate at an increasing angle to the right. Enabled the prey to dodge hunters homing in.<br/><br/>Simple, but clever. I must admit this class is the most interesting one to watch. I enjoyed watching four or five hunters zone in on a single prey, but be impossibly thwarted by its ability to make subtle, seemingly precise movements that keep it alive for several seconds even when completely surrounded. If dahrkael had more time to work, I&#39;m sure something like this would have been the result. Although, I feel a little guilty winning the competition when others of you spend more time and effort on your classes.<br/><br/>-Smart Hunter: Calculated the rate of change in the angle between itself and the prey to predict a more extreme angle of acceleration that would be more likely to make its path intersect with the prey.<br/><br/>Slightly more complex than my smart prey, yet still relatively simple and clever. I cannot say it is an absolute winner because it had only Ippa to compete against, but I think these were some all around smart hunters.
+<b>Competition Results</b><br/><br/>(click on image)<br/><a href='attach_show.pl?aid=368'><img class='amt' src='../../mwf/attachments/19/2019/results.thb.jpg' title='Results Table (22k)' alt=''/></a><br/><br/>All participating classes are attached in .tgz along with game and results image.<br/><br/><b>Further Results</b><br/><br/>--AmIMeYet--<br/><br/>-Smart Prey: Avoided clustering by ignoring the position of any hunters and detecting proximity to edges of the screen. Preys regularly shifted acceleration to a calculated &quot;smart&quot; direction (instead of a random direction). Reduced the rate of consumption by requiring hunters to take them one at a time.<br/><br/>This one was interesting to watch, similar to watching a formation pattern of a school of fish. It represents a tactic that does not attempt to avoid the hunters, but rather slow them down.<br/><br/>--Dahrkael--<br/><br/>-Smart Prey: Simplest of tweaks to the original file. Instead of accelerating directly away from the nearest prey, accelerated at a perpendicular trajectory. A simple &quot; + 90.&quot; Interestingly effective. Lessened clustering and frequently stalled the hunters in circular chases.<br/><br/>While the simplicity was highly effective, it did not make the prey &quot;smart,&quot; nor was it particularly clever for a month-long competition. One hour competition maybe, but I was not impressed by so little effort getting such a high rank. The method did teach a thing or two about simplicity, making us all smack our foreheads, but when one is watching the single remaining prey spinning the hunters in an infinite merry-go-round loop, one isn&#39;t thinking &quot;this is genius,&quot; but rather &quot;this is boring.&quot; I cannot justify counting the lucky rounds that chanced to become infinite loops on the scoreboard; the recorded time is the average of the times when rounds went smoothly, unbiased. If a much more complex class had created infinite loops as frequently, I would happily count it as the winner. But part of the purpose of the competition was to share clever code. Thanks for participating anyway, however. I must commend you for submitting a quick and easy high-scoring class in the face of everyone who didn&#39;t participate for &quot;time and schedule&quot; constraints.<br/><br/>--Ippa--<br/><br/>-Smart Prey:&#160; Ignored the hunters and any other obstacles to move in a oscillating pattern either left/right, up/down, or diagonally. Looked similar to AmIMeYet&#39;s prey, except this prey wasn&#39;t as smart, but the coding was simpler and more clever.<br/><br/>Funny to watch the hunters fail at each swipe to nab the prey that isn&#39;t even trying to dodge. Represents the same tactic of distracting the hunters for as long as possible without actually running away. Interesting, but not exactly exciting. Nice job, though.<br/><br/>-Smart Hunter: Gathered to the center of the screen for a few seconds before splitting off to catch the preys in the default hunter mentality. The idea was to cluster the preys as much as possible to increase the rate of consumption. Attempts were made to further improve the hunter&#39;s skill, but apparently they didn&#39;t work and were commented out before submission.<br/><br/>Showed effective results for the default prey, but the smart prey and dahrkael&#39;s prey weren&#39;t as easy to cluster, and AmIMeYet&#39;s and your own prey did not operate around that mind setting. It was a reasonable approach that did need representation in the competition. Unfortunately, as it turns out, herding the preys is not as rewarding as one might have hoped.<br/><br/>--phelps.db--<br/><br/>-Smart Prey: Used mathematical functions to skew the angle of acceleration. As the nearest hunter grew closer, the prey would accelerate at an increasing angle to the right. Enabled the prey to dodge hunters homing in.<br/><br/>Simple, but clever. I must admit this class is the most interesting one to watch. I enjoyed watching four or five hunters zone in on a single prey, but be impossibly thwarted by its ability to make subtle, seemingly precise movements that keep it alive for several seconds even when completely surrounded. If dahrkael had more time to work, I&#39;m sure something like this would have been the result. Although, I feel a little guilty winning the competition when others of you spend more time and effort on your classes.<br/><br/>-Smart Hunter: Calculated the rate of change in the angle between itself and the prey to predict a more extreme angle of acceleration that would be more likely to make its path intersect with the prey.<br/><br/>Slightly more complex than my smart prey, yet still relatively simple and clever. I cannot say it is an absolute winner because it had only Ippa to compete against, but I think these were some all around smart hunters.
 </div>
 <div class='ccl pat'>
 <div class='amf'>Attachment: <a href='../../mwf/attachments/19/2019/AIG2009_final.tgz'>AIG2009_final.tgz</a> - The full game including all participating classes and results image. (26k)</div>
@@ -377,8 +377,8 @@ when can we expect some score-tables? :)
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2020.html#pid2020'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<a class='psl' href='topic_show.pl?pid=2020#pid2020'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=106' >Dahrkael</a>
 <span class='htt'>Date</span> 2010-01-06 11:43
 </div>
 <div class='ccl'>
@@ -391,8 +391,8 @@ wow, i wouldnt expect a second rank :O<br/>i must admit that my prey looks like 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2022.html#pid2022'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=2022#pid2022'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2010-01-06 15:03
 </div>
 <div class='ccl'>
@@ -405,8 +405,8 @@ Great!<br/>Congratulations, everyone!<br/>Also, a very close 3rd-4th :)<br/><br/
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2023.html#pid2023'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<a class='psl' href='topic_show.pl?pid=2023#pid2023'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=22' >ippa</a>
 <span class='htt'>Date</span> 2010-01-08 15:28
 </div>
 <div class='ccl'>
@@ -419,8 +419,8 @@ w00t.. so I won? .. if we count out the author :)<br/><br/>Nice competition! Som
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2025.html#pid2025'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<a class='psl' href='topic_show.pl?pid=2025#pid2025'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2010-01-09 03:47
 </div>
 <div class='ccl'>
@@ -433,8 +433,8 @@ w00t.. so I won? .. if we count out the author :)<br/><br/>Nice competition! Som
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2026.html#pid2026'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=22.html' >ippa</a>
+<a class='psl' href='topic_show.pl?pid=2026#pid2026'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=22' >ippa</a>
 <span class='htt'>Date</span> 2010-01-09 11:23
 </div>
 <div class='ccl'>
@@ -445,9 +445,9 @@ Regarding your disappointment with the amount of entries.. did you try to get pp
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=272.html#tid272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=272#tid272'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=272.html#tid272'>Gosu Showcase</a> / AIG 2009
+<span class='htt'>Topic</span> <a href='forum.pl#bid2'>Gosu</a> / <a href='board_show.pl?tid=272#tid272'>Gosu Showcase</a> / AIG 2009
 </div>
 </div>
 
@@ -460,7 +460,7 @@ Regarding your disappointment with the amount of entries.. did you try to get pp
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=1913.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=1913' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

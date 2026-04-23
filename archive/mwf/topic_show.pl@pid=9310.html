@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1369.html#tid1369'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1369#tid1369'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1369.html#tid1369'>Gosu Exchange</a> / bullets are not created right in the middle of the ship
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1369#tid1369'>Gosu Exchange</a> / bullets are not created right in the middle of the ship
 </div>
 </div>
 
@@ -41,8 +41,8 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl9309' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=9309.html#pid9309'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1306.html' >volcom21pr</a>
+<a class='psl' href='topic_show.pl?pid=9309#pid9309'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1306' >volcom21pr</a>
 <span class='htt'>Date</span> 2018-01-05 17:25
 <span class='htt'>Edited</span> 2018-01-05 19:11
 </div>
@@ -50,7 +50,7 @@ img.ava { width: 50px; height: 50px }
 Hello,<br/><br/>I am learning Ruby programming and how to use Gosu using a book but I had issues to create the bullets right in the middle of my spaceship game. From what I understand the bullets should use the position and angle of the spaceship as arguments to the initialize method but it <br/><br/>Could you please help me, how to accomplish this?<br/><br/>...........<br/>main.rb<br/><br/>def button_down(id)<br/>&#160; &#160; if id == Gosu::KbSpace<br/>&#160; &#160; &#160; @bullets.push Bullet.new(self, @player.x, @player.y, @player.angle)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>.........<br/>player.rb<br/><br/>&#160; attr_reader :x, :y, :angle, :radius<br/>&#160; <br/>&#160; def initialize(window)<br/>&#160; &#160; @x = 400<br/>&#160; &#160; @y = 450<br/>&#160; &#160; @angle = 0<br/>&#160; &#160; @image = Gosu::Image.new(&#39;images/ship.png&#39;)<br/>&#160; &#160; @velocity_x = 0<br/>&#160; &#160; @velocity_y = 0<br/>&#160; &#160; @radius = 20<br/>&#160; &#160; @window = window<br/>&#160; end<br/><br/>.............<br/>bullet.rb<br/><br/>class Bullet<br/><br/>&#160; SPEED = 5<br/><br/>&#160; def initialize(window, x, y, angle)<br/>&#160; &#160; @x = x<br/>&#160; &#160; @y = y<br/>&#160; &#160; @direction = angle<br/>&#160; &#160; @image = Gosu::Image.new(&#39;images/bullet.png&#39;)<br/>&#160; &#160; @radius = 3<br/>&#160; &#160; @window = window<br/>&#160; end<br/><br/>&#160; def move<br/>&#160; &#160; @x += Gosu.offset_x(@direction, SPEED)<br/>&#160; &#160; @y += Gosu.offset_y(@direction, SPEED)<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @image.draw(@x - @radius, @y - @radius, 1)<br/>&#160; end<br/>end
 </div>
 <div class='ccl pat'>
-<a href='attach_show.pl@aid=884.html'><img class='amt' src='../../mwf/attachments/9/9309/Bulletsposition.thb.jpg' title='Bullets position issues (11k)' alt=''/></a>
+<a href='attach_show.pl?aid=884'><img class='amt' src='../../mwf/attachments/9/9309/Bulletsposition.thb.jpg' title='Bullets position issues (11k)' alt=''/></a>
 </div>
 </div>
 
@@ -58,11 +58,11 @@ Hello,<br/><br/>I am learning Ruby programming and how to use Gosu using a book 
 <div class='frm pst' id='pid9310' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=9310.html#pid9309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=9310#pid9309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl9310' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=9310.html#pid9310'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=9310#pid9310'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2018-01-05 22:27
 </div>
 <div class='ccl'>
@@ -74,9 +74,9 @@ Hello,<br/><br/>I am learning Ruby programming and how to use Gosu using a book 
 <div class='frm pst' id='pid9314' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=9310.html#pid9310'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=9310#pid9310'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=9314.html#pid9314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=9314#pid9314'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2018-01-08 10:02
 </div>
@@ -89,10 +89,10 @@ Correct, moving this thread.
 <div class='frm pst' id='pid9312' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=9310.html#pid9309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=9310#pid9309'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl9312' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=9312.html#pid9312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=9312#pid9312'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
 <span class='htt'>Date</span> 2018-01-05 22:40
 </div>
@@ -105,9 +105,9 @@ Did you know that you no longer need to pass a window as an argument? Or are you
 <div class='frm pst' id='pid9313' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=9310.html#pid9312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=9310#pid9312'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=9313.html#pid9313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=9313#pid9313'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2018-01-08 10:02
 </div>
@@ -121,9 +121,9 @@ Even if you were working with multiple windows, the OpenGL context is shared. Pa
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1369.html#tid1369'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1369#tid1369'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1369.html#tid1369'>Gosu Exchange</a> / bullets are not created right in the middle of the ship
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1369#tid1369'>Gosu Exchange</a> / bullets are not created right in the middle of the ship
 </div>
 </div>
 
@@ -136,7 +136,7 @@ Even if you were working with multiple windows, the OpenGL context is shared. Pa
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=9310.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=9310' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

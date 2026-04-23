@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=123.html#tid123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=123#tid123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=123.html#tid123'>Extending Gosu</a> / Disable &#39;close&#39; button [WINDOWS]
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=123#tid123'>Extending Gosu</a> / Disable &#39;close&#39; button [WINDOWS]
 </div>
 </div>
 
@@ -40,8 +40,8 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=590.html#pid590'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=590#pid590'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-05-17 13:02
 <span class='htt'>Edited</span> 2009-05-18 18:41
 </div>
@@ -49,7 +49,7 @@ img.ava { width: 50px; height: 50px }
 &quot;Is your game troubled by that pesky close button at the top? Well, not anymore, with my DisableCloseButton-izer Gold Deluxe Special edition, you can disable it in an instant!&quot;<br/>-That&#39;s what it would sound like if I where one of those annoying salesmen on tv.<br/><br/>Now, this snippet might not be of use to everyone, but for my current project (improving my MapEditor), I really needed it.<br/>What this does is disable/gray out the close-button&#39;s from your window&#39;s titlebar, the titlebar&#39;s context-menu, and the taskbar&#39;s context-menu..<br/><br/>(See attachment)<br/><br/>Remember, people can still close your window by pressing ALT+F4, or going into the task-manager.<br/>You ofcourse always have the option to close it with gosu&#39;s &#39;close&#39; method.<br/><br/>All you have to do, is add my snippet (the bottom of the post) to your window class, and call it in your initialize method.<br/>Another important thing is to change self.caption at least once BEFORE calling disable_close_button.<br/>If you don&#39;t do this, the snippet won&#39;t be able to recognize the game-window.<br/><br/>=====<br/><br/>&#160; def disable_close_button<br/>&#160; &#160; case Config::CONFIG[&#39;host_os&#39;]<br/>&#160; &#160; when /mswin|windows/i<br/>&#160; &#160; &#160; @getWindow = Win32API.new(&#39;user32&#39;,&#39;FindWindowEx&#39;,&#39;%w(l,l,p,p)&#39;,&#39;L&#39;)<br/>&#160; &#160; &#160; @wnd = @getWindow.call(0,0,&quot;Gosu::Window&quot;,self.caption)<br/>&#160; &#160; &#160; @getMenu = Win32API.new(&#39;user32&#39;,&#39;GetSystemMenu&#39;,&#39;%w(p,p)&#39;,&#39;L&#39;)<br/>&#160; &#160; &#160; @menu = @getMenu.call(@wnd,0)<br/>&#160; &#160; &#160; @enable = Win32API.new(&#39;user32&#39;,&#39;EnableMenuItem&#39;,&#39;%w(p,i,i)&#39;,&#39;L&#39;)<br/>&#160; &#160; &#160; @enable.call(@menu,0xf060,0x0001)<br/>&#160; &#160; when /linux/i<br/>&#160; &#160; &#160; p &quot;DISABLE CLOSE: sorry, linux is not supported for this method&quot;<br/>&#160; &#160; when /sunos|solaris/i<br/>&#160; &#160; &#160; p &quot;DISABLE CLOSE: sorry, solaris is not supported for this method&quot;<br/>&#160; &#160; else<br/>&#160; &#160; &#160; p &quot;DISABLE CLOSE: sorry, your operating system is not supported for this method&quot;<br/>&#160; &#160; end<br/>&#160; end
 </div>
 <div class='ccl pat'>
-<div class='amf'>Attachment: <a href='attach_show.pl@aid=54.html'>disable_close_screenshot.png</a>  (0B)</div>
+<div class='amf'>Attachment: <a href='attach_show.pl?aid=54'>disable_close_screenshot.png</a>  (0B)</div>
 </div>
 </div>
 
@@ -58,7 +58,7 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=591.html#pid591'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=591#pid591'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-17 15:34
 </div>
@@ -72,8 +72,8 @@ Nice snippet :)<br/>A more advanced method would be to subclass the Gosu window 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=595.html#pid595'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=595#pid595'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-05-17 19:50
 <span class='htt'>Edited</span> 2009-05-18 14:18
 </div>
@@ -87,7 +87,7 @@ Nice snippet :)<br/>A more advanced method would be to subclass the Gosu window 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=598.html#pid598'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=598#pid598'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-17 22:46
 </div>
@@ -101,8 +101,8 @@ I don&#39;t know how, but you would have to create a WndProc callback and retrie
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=611.html#pid611'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=611#pid611'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-05-18 15:11
 </div>
 <div class='ccl'>
@@ -115,7 +115,7 @@ Can you tell me a bit about how you spawn the gosu window?<br/>I think the answe
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=612.html#pid612'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=612#pid612'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-18 16:26
 </div>
@@ -129,8 +129,8 @@ The C++ file for that is:<br/><br/><a class='url' href='http://gosu.googlecode.c
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=613.html#pid613'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=613#pid613'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-05-18 17:32
 <span class='htt'>Edited</span> 2009-05-18 17:38
 </div>
@@ -144,7 +144,7 @@ Wow, Gosu has a public source? .. too bad I don&#39;t know C++<br/>Therefore I d
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=614.html#pid614'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=614#pid614'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-18 18:05
 </div>
@@ -158,8 +158,8 @@ Oh right, the Window class is and always has been &quot;Gosu::Window&quot;. Of c
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=615.html#pid615'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<a class='psl' href='topic_show.pl?pid=615#pid615'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-05-18 19:11
 <span class='htt'>Edited</span> 2009-05-18 19:19
 </div>
@@ -167,7 +167,7 @@ Oh right, the Window class is and always has been &quot;Gosu::Window&quot;. Of c
 Ah, yes, I updated the code with @getWindow.call(0,0,&quot;Gosu::Window&quot;,self.caption).<br/><br/>About the icon, so you would basically NEED RubyScript2Exe? :D<br/><br/>So, any chance of implementation of &lt;@attachement&gt;?<br/>Edit: In the screenshot: &quot;hook? close&quot; (and minimize) should be &quot;hook?(rb_close)&quot;, where rb_ means it&#39;s a users ruby code
 </div>
 <div class='ccl pat'>
-<div class='amf'>Attachment: <a href='attach_show.pl@aid=96.html'>wndproc.png</a>  (0B)</div>
+<div class='amf'>Attachment: <a href='attach_show.pl?aid=96'>wndproc.png</a>  (0B)</div>
 </div>
 </div>
 
@@ -176,7 +176,7 @@ Ah, yes, I updated the code with @getWindow.call(0,0,&quot;Gosu::Window&quot;,se
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=616.html#pid616'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=616#pid616'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-18 20:30
 </div>
@@ -190,7 +190,7 @@ Well, no EXE, no icon :)<br/><br/>And the attached proposal is exactly what coul
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=6872.html#pid6872'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=6872#pid6872'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1019' >carno</a>
 <span class='htt'>Date</span> 2013-06-06 06:46
 </div>
@@ -202,9 +202,9 @@ I know it&#39;s been years but it would be nice to actually have this feature im
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=123.html#tid123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=123#tid123'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=123.html#tid123'>Extending Gosu</a> / Disable &#39;close&#39; button [WINDOWS]
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=123#tid123'>Extending Gosu</a> / Disable &#39;close&#39; button [WINDOWS]
 </div>
 </div>
 
@@ -217,7 +217,7 @@ I know it&#39;s been years but it would be nice to actually have this feature im
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=595.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=595' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

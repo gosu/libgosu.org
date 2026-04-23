@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=236.html#tid236'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=236#tid236'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=236.html#tid236'>Extending Gosu</a> / Post processing effects for Ruby
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=236#tid236'>Extending Gosu</a> / Post processing effects for Ruby
 </div>
 </div>
 
@@ -40,12 +40,12 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1572.html#pid1572'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=1572#pid1572'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2009-09-20 17:50
 </div>
 <div class='ccl'>
-Here&#39;s my effort at porting mathias_&#39; <a class='url' href='topic_show.pl@tid=125.html'>PostProcessing</a> library from C++ to Ruby. Here is some example code:<br/><br/><code>require &#39;gosu&#39;<br/>require &#39;shader&#39;<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; ...<br/>&#160; &#160; <br/>&#160; &#160; @blur = Shader.new(self, &#39;shader/radialblur.fs&#39;)<br/>&#160; &#160; <br/>&#160; &#160; @blur[&#39;BlurFactor&#39;] = 0.15<br/>&#160; &#160; @blur[&#39;BrightFactor&#39;] = 1.0<br/>&#160; &#160; @blur[&#39;origin_x&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;origin_y&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;passes&#39;] = 16<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; ...<br/>&#160; &#160; <br/>&#160; &#160; @blur.apply<br/>&#160; end<br/>end</code><br/><br/>Unfortunately, there seem to be some bugs, possibly related to OS X. That&#39;s why I&#39;d like you to try out some of the example scripts I&#39;ve attached and post any errors along with your OS and Ruby version. I hope to be fixing those issues soon but atm I feel kinda clueless.
+Here&#39;s my effort at porting mathias_&#39; <a class='url' href='topic_show.pl?tid=125'>PostProcessing</a> library from C++ to Ruby. Here is some example code:<br/><br/><code>require &#39;gosu&#39;<br/>require &#39;shader&#39;<br/><br/>class GameWindow &lt; Gosu::Window<br/>&#160; def initialize<br/>&#160; &#160; ...<br/>&#160; &#160; <br/>&#160; &#160; @blur = Shader.new(self, &#39;shader/radialblur.fs&#39;)<br/>&#160; &#160; <br/>&#160; &#160; @blur[&#39;BlurFactor&#39;] = 0.15<br/>&#160; &#160; @blur[&#39;BrightFactor&#39;] = 1.0<br/>&#160; &#160; @blur[&#39;origin_x&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;origin_y&#39;] = 0.5<br/>&#160; &#160; @blur[&#39;passes&#39;] = 16<br/>&#160; end<br/>&#160; <br/>&#160; def draw<br/>&#160; &#160; ...<br/>&#160; &#160; <br/>&#160; &#160; @blur.apply<br/>&#160; end<br/>end</code><br/><br/>Unfortunately, there seem to be some bugs, possibly related to OS X. That&#39;s why I&#39;d like you to try out some of the example scripts I&#39;ve attached and post any errors along with your OS and Ruby version. I hope to be fixing those issues soon but atm I feel kinda clueless.
 </div>
 <div class='ccl pat'>
 <div class='amf'>Attachment: <a href='../../mwf/attachments/72/1572/gosu-shader.zip'>gosu-shader.zip</a>  (9k)</div>
@@ -57,7 +57,7 @@ Here&#39;s my effort at porting mathias_&#39; <a class='url' href='topic_show.pl
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1573.html#pid1573'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1573#pid1573'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=112' >deps</a>
 <span class='htt'>Date</span> 2009-09-20 19:55
 </div>
@@ -71,12 +71,12 @@ This sounds awesome, but sadly I can&#39;t try it out. My ruby setup is a bit br
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1575.html#pid1575'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1575#pid1575'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-09-21 01:47
 </div>
 <div class='ccl'>
-As a quick workaround, you can maybe try to run the examples with that arch thingie:<br/><br/><a class='url' href='topic_show.pl@pid=1425.html#pid1425'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1425#pid1425</a><br/><br/>Also, I guess Ruby 1.9 doesn&#39;t need the rubygems require anymore, but I also have to retype it every time, still being on 1.8.6 by default ;)
+As a quick workaround, you can maybe try to run the examples with that arch thingie:<br/><br/><a class='url' href='topic_show.pl?pid=1425#pid1425'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1425#pid1425</a><br/><br/>Also, I guess Ruby 1.9 doesn&#39;t need the rubygems require anymore, but I also have to retype it every time, still being on 1.8.6 by default ;)
 </div>
 </div>
 
@@ -85,8 +85,8 @@ As a quick workaround, you can maybe try to run the examples with that arch thin
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1577.html#pid1577'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=1577#pid1577'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2009-09-21 07:03
 </div>
 <div class='ccl'>
@@ -99,7 +99,7 @@ I&#39;m on Ruby 1.8.6 on Windows and I&#39;ve never needed the <code>require &#3
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1578.html#pid1578'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1578#pid1578'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> ?
 <span class='htt'>Date</span> 2009-09-21 08:30
 </div>
@@ -113,7 +113,7 @@ I&#39;m on Ruby 1.8.6 on Windows and I&#39;ve never needed the <code>require &#3
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1579.html#pid1579'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1579#pid1579'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=112' >deps</a>
 <span class='htt'>Date</span> 2009-09-21 11:13
 </div>
@@ -127,7 +127,7 @@ Using arch I got test_pixelate to work, but the other two didn&#39;t. They got t
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1580.html#pid1580'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1580#pid1580'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-09-21 12:48
 </div>
@@ -141,7 +141,7 @@ im on linux using ruby 1.9.1 and i get this error, for all examples:<br/><br/>$ 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1581.html#pid1581'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1581#pid1581'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=115' >adamsanderson</a>
 <span class='htt'>Date</span> 2009-09-22 23:20
 </div>
@@ -155,7 +155,7 @@ Hey thanks for making this, I&#39;ve really been wanting something along these l
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1582.html#pid1582'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1582#pid1582'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=115' >adamsanderson</a>
 <span class='htt'>Date</span> 2009-09-23 15:17
 </div>
@@ -169,8 +169,8 @@ Hey thanks for making this, I&#39;ve really been wanting something along these l
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1583.html#pid1583'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=1583#pid1583'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2009-09-23 16:45
 </div>
 <div class='ccl'>
@@ -183,8 +183,8 @@ Thank you for your error reports so far. As my Macbook Pro will arrive in two da
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1584.html#pid1584'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<a class='psl' href='topic_show.pl?pid=1584#pid1584'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=103' >erisdiscord</a>
 <span class='htt'>Date</span> 2009-09-23 17:06
 </div>
 <div class='ccl'>
@@ -197,12 +197,12 @@ Hey, this is theoretically totally awesome. OK, in practice it&#39;s awesome too
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1587.html#pid1587'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=1587#pid1587'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2009-09-26 16:31
 </div>
 <div class='ccl'>
-Apparently, the shader files get compiled differently depending on the platform and bindings (C++ or Ruby). For example, on my Macbook Pro, I got the contrast shader to work after changing<br/><code>vec4 color = texture2D(tex, gl_TexCoord[0]);</code><br/>to<br/><code>vec4 color = texture2D(tex, gl_TexCoord[0].xy);</code><br/><br/>For the radialblur shader, I needed to add some typecasts, that apparently worked implicitly before, i.e.:<br/><code>float scale = 1.0 - BlurFactor * (float(i) / (passes - 1));</code><br/>because passes is an int, needed to be changed to<br/><code>float scale = 1.0 - BlurFactor * (float(i) / float(passes - 1));</code><br/><br/>I successfully tested the fixed shaders so far with Ruby 1.8.7 on my MPB with Snow Leopard, as well with Ruby 1.8.6 on Windows Vista. If you&#39;d like to give it a try, you can download the updated attachment from my <a class='url' href='topic_show.pl@pid=1572.html#pid1572'>original post</a>. I&#39;m still very confused as why the shaders are compiled differently between platforms.
+Apparently, the shader files get compiled differently depending on the platform and bindings (C++ or Ruby). For example, on my Macbook Pro, I got the contrast shader to work after changing<br/><code>vec4 color = texture2D(tex, gl_TexCoord[0]);</code><br/>to<br/><code>vec4 color = texture2D(tex, gl_TexCoord[0].xy);</code><br/><br/>For the radialblur shader, I needed to add some typecasts, that apparently worked implicitly before, i.e.:<br/><code>float scale = 1.0 - BlurFactor * (float(i) / (passes - 1));</code><br/>because passes is an int, needed to be changed to<br/><code>float scale = 1.0 - BlurFactor * (float(i) / float(passes - 1));</code><br/><br/>I successfully tested the fixed shaders so far with Ruby 1.8.7 on my MPB with Snow Leopard, as well with Ruby 1.8.6 on Windows Vista. If you&#39;d like to give it a try, you can download the updated attachment from my <a class='url' href='topic_show.pl?pid=1572#pid1572'>original post</a>. I&#39;m still very confused as why the shaders are compiled differently between platforms.
 </div>
 </div>
 
@@ -211,8 +211,8 @@ Apparently, the shader files get compiled differently depending on the platform 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2208.html#pid2208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<a class='psl' href='topic_show.pl?pid=2208#pid2208'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=141' >Wurstinator</a>
 <span class='htt'>Date</span> 2010-03-12 18:24
 </div>
 <div class='ccl'>
@@ -225,7 +225,7 @@ Hi,<br/>is it possible to create something like Adobe Pixel Bender on the base o
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2209.html#pid2209'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2209#pid2209'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-12 20:44
 </div>
@@ -239,8 +239,8 @@ Yeah, I would saw from a quick glance that Adobe Pixel Bender is a thin layer on
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2210.html#pid2210'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<a class='psl' href='topic_show.pl?pid=2210#pid2210'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=141' >Wurstinator</a>
 <span class='htt'>Date</span> 2010-03-12 21:35
 </div>
 <div class='ccl'>
@@ -253,7 +253,7 @@ So this means &quot;yes&quot;? :)<br/>Is there a tutorial for opengl in gosu or 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2213.html#pid2213'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2213#pid2213'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-13 03:23
 </div>
@@ -267,8 +267,8 @@ Well, you could use the very library posted in this thread, the language for sha
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2214.html#pid2214'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<a class='psl' href='topic_show.pl?pid=2214#pid2214'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=141' >Wurstinator</a>
 <span class='htt'>Date</span> 2010-03-13 10:30
 </div>
 <div class='ccl'>
@@ -281,8 +281,8 @@ I know the OpenGL example but it is not a tutorial. There is not a single commen
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2215.html#pid2215'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=2215#pid2215'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2010-03-13 11:31
 </div>
 <div class='ccl'>
@@ -295,8 +295,8 @@ Hi,<br/><br/>actually, this is what the Post Processing effects are already usin
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2216.html#pid2216'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<a class='psl' href='topic_show.pl?pid=2216#pid2216'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=141' >Wurstinator</a>
 <span class='htt'>Date</span> 2010-03-13 15:01
 </div>
 <div class='ccl'>
@@ -309,8 +309,8 @@ Okay... I tried a blur filter now but all I get is a screen full in black :/<br/
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2221.html#pid2221'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=2221#pid2221'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2010-03-14 13:50
 </div>
 <div class='ccl'>
@@ -323,8 +323,8 @@ The Gosu pixel-related coordinates are not used in the shader programs. Rather, 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2222.html#pid2222'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<a class='psl' href='topic_show.pl?pid=2222#pid2222'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=141' >Wurstinator</a>
 <span class='htt'>Date</span> 2010-03-14 15:46
 </div>
 <div class='ccl'>
@@ -337,8 +337,8 @@ uniform sampler2D tex;<br/>uniform float radius;<br/>uniform float width;<br/>un
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2223.html#pid2223'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=2223#pid2223'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2010-03-14 22:39
 </div>
 <div class='ccl'>
@@ -351,8 +351,8 @@ I think your error is that <code>n</code> and <code>m</code> are still increment
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2233.html#pid2233'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=141.html' >Wurstinator</a>
+<a class='psl' href='topic_show.pl?pid=2233#pid2233'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=141' >Wurstinator</a>
 <span class='htt'>Date</span> 2010-03-16 17:38
 </div>
 <div class='ccl'>
@@ -365,8 +365,8 @@ Thanks, it works :)<br/>I think I can do some other filters on my own now... if 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2235.html#pid2235'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=2235#pid2235'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2010-03-16 18:30
 </div>
 <div class='ccl'>
@@ -380,8 +380,8 @@ Thanks, it works :)<br/>I think I can do some other filters on my own now... if 
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2797' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2797.html#pid2797'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=192.html' >youpi</a>
+<a class='psl' href='topic_show.pl?pid=2797#pid2797'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=192' >youpi</a>
 <span class='htt'>Date</span> 2010-07-16 08:30
 </div>
 <div class='ccl'>
@@ -393,11 +393,11 @@ Hi! I&#39;ve been trying out Gosu for a few days, and I&#39;ll proceed to bother
 <div class='frm pst' id='pid2798' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=1581.html#pid2797'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=1581#pid2797'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2798' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2798.html#pid2798'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=2798#pid2798'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2010-07-16 09:40
 </div>
 <div class='ccl'>
@@ -409,11 +409,11 @@ Hey, first of all, thanks for the extended test reports! To me, this sounds like
 <div class='frm pst' id='pid2799' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=1581.html#pid2798'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=1581#pid2798'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2799' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2799.html#pid2799'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=192.html' >youpi</a>
+<a class='psl' href='topic_show.pl?pid=2799#pid2799'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=192' >youpi</a>
 <span class='htt'>Date</span> 2010-07-16 10:01
 </div>
 <div class='ccl'>
@@ -425,10 +425,10 @@ Running those statements in all the environments I described (including those th
 <div class='frm pst' id='pid2800' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=1581.html#pid2799'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=1581#pid2799'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=2800.html#pid2800'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=75.html' >jsb</a>
+<a class='psl' href='topic_show.pl?pid=2800#pid2800'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=75' >jsb</a>
 <span class='htt'>Date</span> 2010-07-16 10:07
 </div>
 <div class='ccl'>
@@ -442,9 +442,9 @@ The script is free to use without any need for attribution (didn&#39;t bother pu
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=236.html#tid236'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=236#tid236'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=236.html#tid236'>Extending Gosu</a> / Post processing effects for Ruby
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=236#tid236'>Extending Gosu</a> / Post processing effects for Ruby
 </div>
 </div>
 
@@ -457,7 +457,7 @@ The script is free to use without any need for attribution (didn&#39;t bother pu
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=1581.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=1581' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

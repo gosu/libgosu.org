@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=332.html#tid332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=332#tid332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=332.html#tid332'>Extending Gosu</a> / Workaround to use Custom Fonts in LINUX
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=332#tid332'>Extending Gosu</a> / Workaround to use Custom Fonts in LINUX
 </div>
 </div>
 
@@ -40,13 +40,13 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2153.html#pid2153'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2153#pid2153'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-03-07 15:37
 <span class='htt'>Edited</span> 2010-05-16 02:07
 </div>
 <div class='ccl'>
-Hi there. As I wrote in the other forum post (<a class='url' href='topic_show.pl@tid=310.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=310</a>) some time ago, I was needing custom fonts support ¡n Linux/C++. Looks like the problem in pango is not yet solved, so I started to think about something else.<br/><br/>Given I had some experience in SDL, I remembered that SDL_ttf was actually able to load custom ttf files so I thought I could write my text in a SDL_Surface, copy it to a Gosu::Bitmap and then create a Gosu::Image from it. And it works!!! It&#39;s nice!<br/><br/>I have written a class &quot;customFont&quot; with more or less the same members as Gosu::Font. The way to use it is very simple:<br/><code><br/>boost::scoped_ptr&lt;customFont&gt; myFont(new CustomFont(graphics(), &quot;nameOfFile.ttf&quot;, 30)); // being 30 the font height<br/>myFont -&gt; draw (&quot;Hello&quot;, x, y, z);<br/><br/>// members<br/>myFont -&gt; name(); // returns &quot;nameOfFile.ttf&quot;<br/>myFont -&gt; height(); // returns 30<br/>myFont -&gt; textWidth(&quot;text&quot;); <br/></code><br/>I&#39;ve used std::string instead of std::wstring because I found no easy way to get a const char * from a wstring. The other two overloaded &quot;draw&quot; member functions are not implemented because I don&#39;t need them for now, but they&#39;re pretty straightforward to create if you happen to need them.<br/><br/>To compile it, you just need to link the sdl ttf lib: &quot;g++ -o myExe ... -lSDL_ttf&quot;. Obviously you need to have installed libsdl-ttf2.0-dev or similar.<br/><br/>You can download the file here: <a class='url' href='https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log'>https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log</a><br/><br/>Please comment any errors or sugestions you come across.<br/>Thanks.
+Hi there. As I wrote in the other forum post (<a class='url' href='topic_show.pl?tid=310'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=310</a>) some time ago, I was needing custom fonts support ¡n Linux/C++. Looks like the problem in pango is not yet solved, so I started to think about something else.<br/><br/>Given I had some experience in SDL, I remembered that SDL_ttf was actually able to load custom ttf files so I thought I could write my text in a SDL_Surface, copy it to a Gosu::Bitmap and then create a Gosu::Image from it. And it works!!! It&#39;s nice!<br/><br/>I have written a class &quot;customFont&quot; with more or less the same members as Gosu::Font. The way to use it is very simple:<br/><code><br/>boost::scoped_ptr&lt;customFont&gt; myFont(new CustomFont(graphics(), &quot;nameOfFile.ttf&quot;, 30)); // being 30 the font height<br/>myFont -&gt; draw (&quot;Hello&quot;, x, y, z);<br/><br/>// members<br/>myFont -&gt; name(); // returns &quot;nameOfFile.ttf&quot;<br/>myFont -&gt; height(); // returns 30<br/>myFont -&gt; textWidth(&quot;text&quot;); <br/></code><br/>I&#39;ve used std::string instead of std::wstring because I found no easy way to get a const char * from a wstring. The other two overloaded &quot;draw&quot; member functions are not implemented because I don&#39;t need them for now, but they&#39;re pretty straightforward to create if you happen to need them.<br/><br/>To compile it, you just need to link the sdl ttf lib: &quot;g++ -o myExe ... -lSDL_ttf&quot;. Obviously you need to have installed libsdl-ttf2.0-dev or similar.<br/><br/>You can download the file here: <a class='url' href='https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log'>https://forja.rediris.es/plugins/scmsvn/viewcvs.php/trunk/customFont.h?root=cusl4-oflute&amp;view=log</a><br/><br/>Please comment any errors or sugestions you come across.<br/>Thanks.
 </div>
 </div>
 
@@ -55,7 +55,7 @@ Hi there. As I wrote in the other forum post (<a class='url' href='topic_show.pl
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2154.html#pid2154'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2154#pid2154'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-07 20:20
 </div>
@@ -69,7 +69,7 @@ Hmm, good idea! Actually it&#39;s just a tiny bit of code in Gosu that would nee
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2159.html#pid2159'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2159#pid2159'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-03-08 00:32
 <span class='htt'>Edited</span> 2010-03-08 01:08
@@ -84,7 +84,7 @@ The quality is really good. In fact, there are three different methods in SDL tt
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2160.html#pid2160'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2160#pid2160'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-03-08 01:08
 </div>
@@ -98,8 +98,8 @@ Ouch, looks like SDL ttf lacks the ability to use a already installed font. Too 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2181.html#pid2181'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<a class='psl' href='topic_show.pl?pid=2181#pid2181'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=103' >erisdiscord</a>
 <span class='htt'>Date</span> 2010-03-09 23:02
 </div>
 <div class='ccl'>
@@ -112,7 +112,7 @@ I think that the ability to load a font by file name is more useful than loading
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2184.html#pid2184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2184#pid2184'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-10 00:24
 </div>
@@ -126,8 +126,8 @@ I think relying on web-safe fonts is pretty reasonable :)<br/><br/>But even keep
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2185.html#pid2185'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<a class='psl' href='topic_show.pl?pid=2185#pid2185'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=103' >erisdiscord</a>
 <span class='htt'>Date</span> 2010-03-10 01:10
 </div>
 <div class='ccl'>
@@ -140,7 +140,7 @@ Mm, true, but web safe fonts means the likes of Arial (gag). :)<br/><br/>Any cha
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2195.html#pid2195'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2195#pid2195'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-10 12:17
 </div>
@@ -154,7 +154,7 @@ Oh, if you knew all the dreams I have about proper typography in Gosu… ;) It&#
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2239.html#pid2239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2239#pid2239'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-03-17 23:05
 </div>
@@ -171,8 +171,8 @@ I&#39;m improving the customFont class. Right now I&#39;ve just added bold, ital
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2268.html#pid2268'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=95.html' >lobo_tuerto</a>
+<a class='psl' href='topic_show.pl?pid=2268#pid2268'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=95' >lobo_tuerto</a>
 <span class='htt'>Date</span> 2010-03-31 02:08
 </div>
 <div class='ccl'>
@@ -185,7 +185,7 @@ I&#39;d love to see this already implemented in Gosu/Ruby :) pls pls jlnr *nudge
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2270.html#pid2270'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2270#pid2270'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-31 03:54
 </div>
@@ -199,7 +199,7 @@ Sure. but I just added it for OS X (64-bit, it worked for 32-bit before). One af
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2450.html#pid2450'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2450#pid2450'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-05-16 02:06
 <span class='htt'>Edited</span> 2010-05-16 02:08
@@ -214,7 +214,7 @@ Hey there.<br/><br/>I&#39;ve been improving the customFont class, because it was
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2452.html#pid2452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2452#pid2452'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-05-16 04:03
 </div>
@@ -228,7 +228,7 @@ Sweet, I have been meaning to steal your code into Gosu. Is this appreciated? I 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2453.html#pid2453'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2453#pid2453'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-05-16 11:53
 </div>
@@ -242,7 +242,7 @@ You can do what you want with the code, although some credit would be appreciate
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2461.html#pid2461'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2461#pid2461'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-05-17 16:16
 </div>
@@ -259,7 +259,7 @@ Wow, so it&#39;s basically SingStar for the flute, too bad I don&#39;t have mine
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2556.html#pid2556'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2556#pid2556'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-05-30 05:34
 <span class='htt'>Edited</span> 2010-05-30 05:46
@@ -275,7 +275,7 @@ I just integrated a SDL_TTF fallback based on your code into GosuImpl/Graphics/T
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2633' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2633.html#pid2633'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2633#pid2633'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-06-09 17:47
 <span class='htt'>Edited</span> 2010-06-09 19:34
@@ -289,10 +289,10 @@ Really nice!! I don&#39;t know how you solved it (I&#39;ll take a look at the co
 <div class='frm pst' id='pid2982' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2633'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2633'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2982' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2982.html#pid2982'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2982#pid2982'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-08-07 01:57
 </div>
@@ -305,10 +305,10 @@ Two months later, I&#39;ve got stuck again on the same segmentation fault errors
 <div class='frm pst' id='pid2985' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2982'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2982'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2985' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2985.html#pid2985'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2985#pid2985'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-08-07 04:34
 </div>
@@ -321,10 +321,10 @@ If it crashes in texName then it sounds as if you are deleting the Font object b
 <div class='frm pst' id='pid2987' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2985'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2985'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2987' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2987.html#pid2987'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2987#pid2987'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-08-07 15:20
 </div>
@@ -337,10 +337,10 @@ Watch out! I&#39;m talking about my ancient customFont class, not Gosu::Font. Th
 <div class='frm pst' id='pid2988' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2987'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2987'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2988' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2988.html#pid2988'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2988#pid2988'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-08-07 16:54
 <span class='htt'>Edited</span> 2010-08-07 16:56
@@ -354,15 +354,15 @@ Wasn&#39;t there a problem with descenders (like the lower-case &#39;q&#39;) bei
 <div class='frm pst' id='pid2989' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2988'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2988'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2989' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2989.html#pid2989'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2989#pid2989'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-08-07 17:50
 </div>
 <div class='ccl'>
-Yes, there&#39;s a clipping problem, but I&#39;m using a workaround (explained in <a class='url' href='topic_show.pl@pid=2636.html#pid2636'>this post</a>)to avoid that clipping. Without using the workaround it looks like this: <br/><img class='emi' src='http://img843.imageshack.us/img843/8093/seleccin002.png' alt=''/><br/><br/>In my opinion, it&#39;s not that SDLTTFRenderer is rendering things too big, because if you look at the other image, it&#39;s the one that fits the actual size (30px) passed to the Gosu::Font constructor, but the windows&#39;s rendering stuff too small. I don&#39;t know...
+Yes, there&#39;s a clipping problem, but I&#39;m using a workaround (explained in <a class='url' href='topic_show.pl?pid=2636#pid2636'>this post</a>)to avoid that clipping. Without using the workaround it looks like this: <br/><img class='emi' src='http://img843.imageshack.us/img843/8093/seleccin002.png' alt=''/><br/><br/>In my opinion, it&#39;s not that SDLTTFRenderer is rendering things too big, because if you look at the other image, it&#39;s the one that fits the actual size (30px) passed to the Gosu::Font constructor, but the windows&#39;s rendering stuff too small. I don&#39;t know...
 </div>
 </div>
 
@@ -370,10 +370,10 @@ Yes, there&#39;s a clipping problem, but I&#39;m using a workaround (explained i
 <div class='frm pst' id='pid2991' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2989'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2989'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl2991' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=2991.html#pid2991'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2991#pid2991'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-08-08 02:19
 <span class='htt'>Edited</span> 2010-08-08 02:23
@@ -387,10 +387,10 @@ Even in the comparison image I can see at least one pixel of the &#39;J&#39; bei
 <div class='frm pst' id='pid3007' style='margin-left: 21%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2991'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2991'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl3007' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=3007.html#pid3007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=3007#pid3007'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-08-09 15:08
 </div>
@@ -403,10 +403,10 @@ When you tell SDL_ttf to open a font with size=30, it doesn&#39;t actually mean 
 <div class='frm pst' id='pid3008' style='margin-left: 24%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid3007'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid3007'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl3008' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=3008.html#pid3008'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=3008#pid3008'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-08-10 01:52
 </div>
@@ -419,10 +419,10 @@ SDL_TTF only works for custom loaded .TTF files and it&#39;s a DLL (or .framewor
 <div class='frm pst' id='pid3009' style='margin-left: 27%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid3008'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid3008'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl3009' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=3009.html#pid3009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=3009#pid3009'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
 <span class='htt'>Date</span> 2010-08-10 02:09
 </div>
@@ -435,9 +435,9 @@ But isn&#39;t there any method or proposal that might let us test the size of a 
 <div class='frm pst' id='pid3010' style='margin-left: 30%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid3009'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid3009'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=3010.html#pid3010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=3010#pid3010'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-08-10 04:47
 </div>
@@ -455,10 +455,10 @@ Opening a TTF font, creating images and rendering something to screen are three 
 <div class='frm pst' id='pid3750' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid2987'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid2987'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl3750' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=3750.html#pid3750'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=3750#pid3750'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2011-01-15 19:42
 </div>
@@ -471,9 +471,9 @@ I guess with the new changes in 0.7.26 (<a class='url' href='http://code.google.
 <div class='frm pst' id='pid3758' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=3010.html#pid3750'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=3010#pid3750'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=3758.html#pid3758'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=3758#pid3758'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2011-01-16 02:57
 </div>
@@ -492,7 +492,7 @@ Yep. My list still has two SDL_TTF related issues though: bold/italic/underline 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2636.html#pid2636'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2636#pid2636'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=156' >TheOm3ga</a>
 <span class='htt'>Date</span> 2010-06-09 23:11
 </div>
@@ -506,7 +506,7 @@ Hi,<br/><br/>I&#39;m afraid I&#39;ve found a bug. Take a look at the &quot;g&quo
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2640.html#pid2640'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2640#pid2640'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-06-10 02:08
 </div>
@@ -520,7 +520,7 @@ Well, that makes it a different height than on other operating systems then. I t
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2651.html#pid2651'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2651#pid2651'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-06-13 04:13
 </div>
@@ -534,7 +534,7 @@ Hey TheOm3ga, I am currently working on improving text support in Gosu. Right no
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2654.html#pid2654'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2654#pid2654'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-06-13 15:15
 </div>
@@ -546,9 +546,9 @@ Hey TheOm3ga, I am currently working on improving text support in Gosu. Right no
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=332.html#tid332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=332#tid332'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=332.html#tid332'>Extending Gosu</a> / Workaround to use Custom Fonts in LINUX
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=332#tid332'>Extending Gosu</a> / Workaround to use Custom Fonts in LINUX
 </div>
 </div>
 
@@ -561,7 +561,7 @@ Hey TheOm3ga, I am currently working on improving text support in Gosu. Right no
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=3010.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=3010' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

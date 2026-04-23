@@ -19,7 +19,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -28,9 +28,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1354.html#tid1354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1354#tid1354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1354.html#tid1354'>Gosu Exchange</a> / Map scrolling nightmare...
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1354#tid1354'>Gosu Exchange</a> / Map scrolling nightmare...
 </div>
 </div>
 
@@ -40,7 +40,7 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl9248' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=9248.html#pid9248'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=9248#pid9248'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
 <span class='htt'>Date</span> 2017-09-09 17:03
 </div>
@@ -48,8 +48,8 @@ img.ava { width: 50px; height: 50px }
 I was trying to implement a map scrolling system thanks to Gosu&#39;s translate method that semiautomatically handles tiles and events offsets making it easier for game developers to handle more ordinary stuff than usual while drawing a map. Sadly you end up watching how my player and his not so heroic team makes the map look larger and darker than expected. I&#39;m not really used dealing with scrolling issues so I thought somebody here could tell me what I&#39;m doing wrong here hopefully... For now solving the issue with the horizontal map scroll should suffice. I only commented those lines that somehow affect map scrolling.<br/><br/>This happens when I go left... (Those two lonely tiles denote the actual end of the map on the righthand side.) (Check out the first image I attached.)<br/><br/>And this is the disaster that takes place if I go right... (Take a look at the second screenshot if you ever dare...)<br/><br/>class Player<br/>&#160; def update<br/>&#160; &#160; return if @halt<br/>&#160; &#160; @last_x = @screen_x<br/>&#160; &#160; @last_y = @screen_y<br/>&#160; &#160; return if moved?<br/>&#160; &#160; if Gosu.button_down?(Gosu::KbDown)<br/>&#160; &#160; &#160; @dir = @other_way ? 8 : 2<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @y += 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_y = @y * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; elsif Gosu.button_down?(Gosu::KbUp)<br/>&#160; &#160; &#160; @dir = @other_way ? 2 : 8<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @y -= 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_y = @y * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; elsif Gosu.button_down?(Gosu::KbLeft)<br/>&#160; &#160; &#160; @dir = @other_way ? 6 : 4<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @x -= 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_x = @x * 16<br/>&#160; &#160; &#160; ### Calculating the horizontal offset, Current direction: Left (4)<br/>&#160; &#160; &#160; @offset_x = [0, -@screen_x].min if @screen_x &lt; Map.width * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; elsif Gosu.button_down?(Gosu::KbRight)<br/>&#160; &#160; &#160; @dir = @other_way ? 4 : 6<br/>&#160; &#160; &#160; return unless pass?<br/>&#160; &#160; &#160; @x += 0.5#actual_speed<br/>&#160; &#160; &#160; @screen_x = @x * 16<br/>&#160; &#160; &#160; ### Calculating the horizontal offset, Current direction: Right (6)<br/>&#160; &#160; &#160; @offset_x = [[-@screen_x + @last_x, -Map.width * 16].max, 0].min if @screen_x &gt; Map.width * 16<br/>&#160; &#160; &#160; update_steps<br/>&#160; &#160; end<br/>&#160; &#160; if button_down?(:enter) or button_down?(:return)<br/>&#160; &#160; &#160; Map.events.each do |event|<br/>&#160; &#160; &#160; &#160; blocked = block_pass?(event)<br/>&#160; &#160; &#160; &#160; next unless blocked<br/>&#160; &#160; &#160; &#160; event.react_now if event.react<br/>&#160; &#160; &#160; &#160; if event.button?<br/>&#160; &#160; &#160; &#160; &#160; event.activate<br/>&#160; &#160; &#160; &#160; &#160; @halt = true<br/>&#160; &#160; &#160; &#160; &#160; return<br/>&#160; &#160; &#160; &#160; end<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; end<br/>end<br/><br/>class SceneMap<br/>&#160; def update_scene<br/>&#160; &#160; @offset_x = @player.offset_x # saving last horizontal offset<br/>&#160; &#160; @offset_y = [-@player.screen_y + @window_height / 1.08, 0].min<br/>&#160; &#160; if @map_ticks &gt; 0<br/>&#160; &#160; &#160; @map_ticks -= 1<br/>&#160; &#160; &#160; @map_texts.clear if @map_ticks == 0<br/>&#160; &#160; end<br/>&#160; &#160; @player.update # Calling Player&#39;s Update Method and setting a new horizontal offset value<br/>&#160; &#160; Map.events.each {|e| e.update }<br/>&#160; &#160; @spriteset.update<br/>&#160; &#160; if press_quit?<br/>&#160; &#160; &#160; Game.cancel_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsMenu)<br/>&#160; &#160; &#160; return<br/>&#160; &#160; elsif button_down?(:left_ctrl)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsAchieve)<br/>&#160; &#160; elsif button_down?(:caps_lock)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKUnitsFoes)<br/>&#160; &#160; elsif button_down?(:left_shift)<br/>&#160; &#160; &#160; Game.ok_se.play<br/>&#160; &#160; &#160; Game.setup(SceneKBookPages, id: 1)<br/>&#160; &#160; end<br/>&#160; end<br/><br/>&#160; def draw<br/>&#160; &#160; @window.clip_to(0,0,@window_width,@window_height) do # Some sort of Viewport singleton command<br/>&#160; &#160; &#160; @window.translate(@offset_x,@offset_y) do # Scroll loop<br/>&#160; &#160; &#160; &#160; @spriteset.draw<br/>&#160; &#160; &#160; end<br/>&#160; &#160; end<br/>&#160; &#160; @map_texts.each {|text| text.draw }<br/>&#160; end<br/>end
 </div>
 <div class='ccl pat'>
-<a href='attach_show.pl@aid=873.html'><img class='amt' src='../../mwf/attachments/48/9248/kunitsgosumaperror01.thb.jpg' title='RIGHT! It&#39;s a true mess indeed! (33k)' alt=''/></a>
-<a href='attach_show.pl@aid=874.html'><img class='amt' src='../../mwf/attachments/48/9248/kunitsgosumaperror02.thb.jpg' title='A sorrowful blank space Left alone! (27k)' alt=''/></a>
+<a href='attach_show.pl?aid=873'><img class='amt' src='../../mwf/attachments/48/9248/kunitsgosumaperror01.thb.jpg' title='RIGHT! It&#39;s a true mess indeed! (33k)' alt=''/></a>
+<a href='attach_show.pl?aid=874'><img class='amt' src='../../mwf/attachments/48/9248/kunitsgosumaperror02.thb.jpg' title='A sorrowful blank space Left alone! (27k)' alt=''/></a>
 </div>
 </div>
 
@@ -57,10 +57,10 @@ I was trying to implement a map scrolling system thanks to Gosu&#39;s translate 
 <div class='frm pst' id='pid9249' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@tid=1354.html#pid9248'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?tid=1354#pid9248'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl9249' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=9249.html#pid9249'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=9249#pid9249'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=183' >kyonides</a>
 <span class='htt'>Date</span> 2017-09-09 17:13
 </div>
@@ -73,9 +73,9 @@ Guess what? I solved it, not thanks to you, guys -_- (Yeah, I&#39;d say I&#39;m 
 <div class='frm pst' id='pid9250' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@tid=1354.html#pid9249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?tid=1354#pid9249'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=9250.html#pid9250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=9250#pid9250'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2017-09-10 11:04
 </div>
@@ -89,9 +89,9 @@ Well, I don&#39;t get your code at all. Why are you using some @offset_x variabl
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1354.html#tid1354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1354#tid1354'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1354.html#tid1354'>Gosu Exchange</a> / Map scrolling nightmare...
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1354#tid1354'>Gosu Exchange</a> / Map scrolling nightmare...
 </div>
 </div>
 
@@ -104,7 +104,7 @@ Well, I don&#39;t get your code at all. Why are you using some @offset_x variabl
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@tid=1354.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?tid=1354' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

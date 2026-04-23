@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1088.html#tid1088'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1088#tid1088'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1088.html#tid1088'>Gosu Exchange</a> / YAML problems when building an osx app w/ gosu + releasy
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1088#tid1088'>Gosu Exchange</a> / YAML problems when building an osx app w/ gosu + releasy
 </div>
 </div>
 
@@ -40,22 +40,22 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=7758.html#pid7758'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1123.html' >indspenceable</a>
+<a class='psl' href='topic_show.pl?pid=7758#pid7758'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1123' >indspenceable</a>
 <span class='htt'>Date</span> 2014-03-04 17:16
 <span class='htt'>Edited</span> 2014-03-04 19:21
 </div>
 <div class='ccl'>
-I&#39;m running into YAML problems every time I try to build my game into a .app. Depending on the version of the wrapper, it gives me a different issue. I use YAML for both important configs and (more problematically) saving gamestate so it&#39;s important that I&#39;m able to use it.<br/><br/>0.7.44: When I load a serialized object w/ references, it turns (some) of the references into nulls. Looking at the YAML that&#39;s being loaded confirms that it is incorrect.<br/>0.7.47: First, I have to do the lipo thing from here: <a class='ura' href='topic_show.pl@tid=887.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=887</a> . This breaks monospaced fonts. Regardless: When I serialize my gamestate, it for some cases appears to do so incorrectly. I get a syntax error when I do <code>YAML.load(YAML.dump(gamestate))</code><br/>0.7.48: I built this app wrapper out of the ruby wrapper project here: <a class='ura' href='https://github.com/jlnr/ruby_app'>https://github.com/jlnr/ruby_app</a> . I renamed Ruby -&gt; RubyGosu\ App, and tar.gz&#39;d it. Actually, everything works fine for me, but it looks like it&#39;s dynamically linked against psych and fails on my friends computer:<br/><br/>/Users/BigDaddy/Desktop/Frost.app/Contents/Resources/lib/yaml.rb:4:in <code>&lt;top (required)&gt;&#39;:<br/>It seems your ruby installation is missing psych (for YAML output).<br/>To eliminate this warning, please install libyaml and reinstall your ruby.<br/>/Users/BigDaddy/Desktop/Frost.app/Contents/Resources/lib/psych.rb:1:in </code>require&#39;: dlopen(/Users/BigDaddy/Desktop/Frost.app/Contents/Resources/lib/psych.bundle, 9): Library not loaded: /usr/local/lib/libyaml-0.2.dylib (LoadError)<br/><br/>I can&#39;t build my own version of the app wrapper because it fails when trying to build a non-existant .xcodeproj. I&#39;m not sure what should actually be in that project, and it&#39;s not really documented, so I&#39;m not sure how to proceed. <br/><br/>Thanks for the help.<br/><br/>EDIT: looking at when it was deleted (a394ae853e4b1319508c849aa79c109fab4a0df2) suggests how to fix it... I&#39;ll give it a shot today.<br/>EDIT2: No luck on that front. trying to switch from YAML to JSON just caused a segfault when I run the program using 0.7.48, as well.
+I&#39;m running into YAML problems every time I try to build my game into a .app. Depending on the version of the wrapper, it gives me a different issue. I use YAML for both important configs and (more problematically) saving gamestate so it&#39;s important that I&#39;m able to use it.<br/><br/>0.7.44: When I load a serialized object w/ references, it turns (some) of the references into nulls. Looking at the YAML that&#39;s being loaded confirms that it is incorrect.<br/>0.7.47: First, I have to do the lipo thing from here: <a class='ura' href='topic_show.pl?tid=887'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=887</a> . This breaks monospaced fonts. Regardless: When I serialize my gamestate, it for some cases appears to do so incorrectly. I get a syntax error when I do <code>YAML.load(YAML.dump(gamestate))</code><br/>0.7.48: I built this app wrapper out of the ruby wrapper project here: <a class='ura' href='https://github.com/jlnr/ruby_app'>https://github.com/jlnr/ruby_app</a> . I renamed Ruby -&gt; RubyGosu\ App, and tar.gz&#39;d it. Actually, everything works fine for me, but it looks like it&#39;s dynamically linked against psych and fails on my friends computer:<br/><br/>/Users/BigDaddy/Desktop/Frost.app/Contents/Resources/lib/yaml.rb:4:in <code>&lt;top (required)&gt;&#39;:<br/>It seems your ruby installation is missing psych (for YAML output).<br/>To eliminate this warning, please install libyaml and reinstall your ruby.<br/>/Users/BigDaddy/Desktop/Frost.app/Contents/Resources/lib/psych.rb:1:in </code>require&#39;: dlopen(/Users/BigDaddy/Desktop/Frost.app/Contents/Resources/lib/psych.bundle, 9): Library not loaded: /usr/local/lib/libyaml-0.2.dylib (LoadError)<br/><br/>I can&#39;t build my own version of the app wrapper because it fails when trying to build a non-existant .xcodeproj. I&#39;m not sure what should actually be in that project, and it&#39;s not really documented, so I&#39;m not sure how to proceed. <br/><br/>Thanks for the help.<br/><br/>EDIT: looking at when it was deleted (a394ae853e4b1319508c849aa79c109fab4a0df2) suggests how to fix it... I&#39;ll give it a shot today.<br/>EDIT2: No luck on that front. trying to switch from YAML to JSON just caused a segfault when I run the program using 0.7.48, as well.
 </div>
 </div>
 
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1088.html#tid1088'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1088#tid1088'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1088.html#tid1088'>Gosu Exchange</a> / YAML problems when building an osx app w/ gosu + releasy
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1088#tid1088'>Gosu Exchange</a> / YAML problems when building an osx app w/ gosu + releasy
 </div>
 </div>
 
@@ -68,7 +68,7 @@ I&#39;m running into YAML problems every time I try to build my game into a .app
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=7758.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=7758' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

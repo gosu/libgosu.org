@@ -19,7 +19,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -28,9 +28,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1071.html#tid1071'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1071#tid1071'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1071.html#tid1071'>Gosu Exchange</a> / Turning off interpolation?
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1071#tid1071'>Gosu Exchange</a> / Turning off interpolation?
 </div>
 </div>
 
@@ -40,8 +40,8 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7635' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7635.html#pid7635'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1115.html' >darkhog</a>
+<a class='psl' href='topic_show.pl?pid=7635#pid7635'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1115' >darkhog</a>
 <span class='htt'>Date</span> 2014-01-06 22:39
 </div>
 <div class='ccl'>
@@ -53,15 +53,15 @@ As we know, Gosu uses hardware acceleration and does mipmapping (interpolation) 
 <div class='frm pst' id='pid7638' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@tid=1071.html#pid7635'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?tid=1071#pid7635'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7638' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7638.html#pid7638'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1114.html' >nicklink483</a>
+<a class='psl' href='topic_show.pl?pid=7638#pid7638'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1114' >nicklink483</a>
 <span class='htt'>Date</span> 2014-01-06 23:00
 </div>
 <div class='ccl'>
-I can&#39;t remember the link to the forum post, but here&#39;s how you do that:<br/><br/>First, make sure you have the ruby-opengl gem.<br/>Then, require &#39;opengl&#39; in your game file right under require &#39;gosu&#39;<br/>Then, for each image object you instantiate, add this code right after:<br/><br/>&#160; &#160; @image = Gosu::Image.new(&quot;cool_retro_scaled_image.bmp&quot;, false)<br/><br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, self.gl_tex_info.tex_name)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)<br/><br/>I extracted this into a method by opening up the Gosu::Image class in my main game file<br/><br/>class Gosu:Image<br/><br/>&#160; def retro!<br/>&#160; &#160; <br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, self.gl_tex_info.tex_name)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)<br/>&#160; &#160; <br/>&#160; &#160; self<br/>&#160; <br/>&#160; end<br/><br/>end<br/><br/>so now when I have an image, I can just do this:<br/><br/>&#160; &#160; @image = Gosu::Image.new(&quot;cool_retro_scaled_image.bmp&quot;, false).retro!<br/><br/>Try it out!&#160; Whenever you @image.draw_rot and you have the scale to something bigger than 1, it will do nearest-neighbor approximation scaling (which is what you&#39;re looking for).<br/><br/>Quick edit: here&#39;s that other forum post on it: <a class='ura' href='topic_show.pl@tid=227.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=227</a>
+I can&#39;t remember the link to the forum post, but here&#39;s how you do that:<br/><br/>First, make sure you have the ruby-opengl gem.<br/>Then, require &#39;opengl&#39; in your game file right under require &#39;gosu&#39;<br/>Then, for each image object you instantiate, add this code right after:<br/><br/>&#160; &#160; @image = Gosu::Image.new(&quot;cool_retro_scaled_image.bmp&quot;, false)<br/><br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, self.gl_tex_info.tex_name)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)<br/><br/>I extracted this into a method by opening up the Gosu::Image class in my main game file<br/><br/>class Gosu:Image<br/><br/>&#160; def retro!<br/>&#160; &#160; <br/>&#160; &#160; glBindTexture(GL_TEXTURE_2D, self.gl_tex_info.tex_name)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)<br/>&#160; &#160; glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)<br/>&#160; &#160; <br/>&#160; &#160; self<br/>&#160; <br/>&#160; end<br/><br/>end<br/><br/>so now when I have an image, I can just do this:<br/><br/>&#160; &#160; @image = Gosu::Image.new(&quot;cool_retro_scaled_image.bmp&quot;, false).retro!<br/><br/>Try it out!&#160; Whenever you @image.draw_rot and you have the scale to something bigger than 1, it will do nearest-neighbor approximation scaling (which is what you&#39;re looking for).<br/><br/>Quick edit: here&#39;s that other forum post on it: <a class='ura' href='topic_show.pl?tid=227'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=227</a>
 </div>
 </div>
 
@@ -69,10 +69,10 @@ I can&#39;t remember the link to the forum post, but here&#39;s how you do that:
 <div class='frm pst' id='pid7639' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@tid=1071.html#pid7638'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?tid=1071#pid7638'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7639.html#pid7639'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1115.html' >darkhog</a>
+<a class='psl' href='topic_show.pl?pid=7639#pid7639'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1115' >darkhog</a>
 <span class='htt'>Date</span> 2014-01-06 23:05
 </div>
 <div class='ccl'>
@@ -84,10 +84,10 @@ Thanks!
 <div class='frm pst' id='pid7640' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@tid=1071.html#pid7635'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?tid=1071#pid7635'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7640' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7640.html#pid7640'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=7640#pid7640'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2014-01-07 07:44
 </div>
@@ -100,10 +100,10 @@ The OpenGL snippet has since been turned into the <code>Gosu::enable_undocumente
 <div class='frm pst' id='pid7641' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@tid=1071.html#pid7640'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?tid=1071#pid7640'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7641.html#pid7641'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1115.html' >darkhog</a>
+<a class='psl' href='topic_show.pl?pid=7641#pid7641'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1115' >darkhog</a>
 <span class='htt'>Date</span> 2014-01-07 11:02
 </div>
 <div class='ccl'>
@@ -116,9 +116,9 @@ How about adding optional boolean parameter to image loader function that if tru
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=1071.html#tid1071'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=1071#tid1071'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=1071.html#tid1071'>Gosu Exchange</a> / Turning off interpolation?
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=1071#tid1071'>Gosu Exchange</a> / Turning off interpolation?
 </div>
 </div>
 
@@ -131,7 +131,7 @@ How about adding optional boolean parameter to image loader function that if tru
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@tid=1071.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?tid=1071' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

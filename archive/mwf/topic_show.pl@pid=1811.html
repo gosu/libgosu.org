@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=281.html#tid281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=281#tid281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=281.html#tid281'>Gosu Exchange</a> / New User + Questions
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=281#tid281'>Gosu Exchange</a> / New User + Questions
 </div>
 </div>
 
@@ -54,21 +54,21 @@ Greetings to the GOSU forum users.<br/><br/>I am an indie game developer who has
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=1811.html#pid1811'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=1811#pid1811'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-11-30 09:56
 </div>
 <div class='ccl'>
-<blockquote><p>&gt; 1. To create a game for several platforms (specifically Windows, Mac, Linux &amp; IPhone) can I use the same source code or do I need to rewrite the code with a different plugin for each targeted OS?</p></blockquote><br/>If you want to target the iPhone too, you need to use the C++ version. Deployment on all platforms isn&#39;t automatic, you still have to use the proper IDE on each platform and compile/package your game. Specifically on the iPhone, you need to handle completely different callbacks than on the desktop.<br/><br/>The iPhone version is also still not very well-documented. In short, targeting all these platforms EXCEPT the iPhone, using Ruby/Gosu, is easier. I have no idea about your performance requirements :)<br/><br/><blockquote><p>&gt; 2. What is the meaning of &quot;no 3d rendering&quot;? Does this mean that you can only place sprites at a 90 degrees angle from the camera? I suppose not but I didn&#39;t quite understand.</p></blockquote><br/>Gosu only has rectangular images (think textures, even though this is simplified). You also have a method to draw such images with four arbitrary given coordinates, so in theory you can do whatever 3D calculations you want to and ten draw the image at that point. If you want to do real 3D, you can do it using OpenGL.<br/><br/><blockquote><p>&gt; 3. Does the engine use directx? Can it? (For several reasons I prefer using directx graphics over OpenGL)</p></blockquote><br/>No. Gosu switched to OpenGL on all platforms. Otherwise, you couldn&#39;t have portable 3D bits in your code.<br/><br/><blockquote><p>&gt; 4. How can I use the engine with C++ code (it is easier for me)</p></blockquote><br/>Yes. The engine is all C++. Ruby is just a wrapped version.<br/><br/><blockquote><p>&gt; 5. Have any 2.5d games used the GOSU engine?</p></blockquote><br/>I didn&#39;t yet use custom OpenGL but I sometimes add some basic fake 3D effects, like in StarFerret 48h: <a class='url' href='topic_show.pl@tid=118.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=118</a><br/><br/>There is a complete 3D game which will not help you any because it uses oldschool rendering: <a class='url' href='topic_show.pl@tid=119.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=119</a><br/><br/><blockquote><p>&gt; 6. How do I create menus and different screens wit hthe engine?</p></blockquote><br/>There is nothing premade for this in Gosu (there are add-on libraries for the Ruby version). You have to be creative or get some inspiration from all the games on the showcase, most of them being open source.
+<blockquote><p>&gt; 1. To create a game for several platforms (specifically Windows, Mac, Linux &amp; IPhone) can I use the same source code or do I need to rewrite the code with a different plugin for each targeted OS?</p></blockquote><br/>If you want to target the iPhone too, you need to use the C++ version. Deployment on all platforms isn&#39;t automatic, you still have to use the proper IDE on each platform and compile/package your game. Specifically on the iPhone, you need to handle completely different callbacks than on the desktop.<br/><br/>The iPhone version is also still not very well-documented. In short, targeting all these platforms EXCEPT the iPhone, using Ruby/Gosu, is easier. I have no idea about your performance requirements :)<br/><br/><blockquote><p>&gt; 2. What is the meaning of &quot;no 3d rendering&quot;? Does this mean that you can only place sprites at a 90 degrees angle from the camera? I suppose not but I didn&#39;t quite understand.</p></blockquote><br/>Gosu only has rectangular images (think textures, even though this is simplified). You also have a method to draw such images with four arbitrary given coordinates, so in theory you can do whatever 3D calculations you want to and ten draw the image at that point. If you want to do real 3D, you can do it using OpenGL.<br/><br/><blockquote><p>&gt; 3. Does the engine use directx? Can it? (For several reasons I prefer using directx graphics over OpenGL)</p></blockquote><br/>No. Gosu switched to OpenGL on all platforms. Otherwise, you couldn&#39;t have portable 3D bits in your code.<br/><br/><blockquote><p>&gt; 4. How can I use the engine with C++ code (it is easier for me)</p></blockquote><br/>Yes. The engine is all C++. Ruby is just a wrapped version.<br/><br/><blockquote><p>&gt; 5. Have any 2.5d games used the GOSU engine?</p></blockquote><br/>I didn&#39;t yet use custom OpenGL but I sometimes add some basic fake 3D effects, like in StarFerret 48h: <a class='url' href='topic_show.pl?tid=118'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=118</a><br/><br/>There is a complete 3D game which will not help you any because it uses oldschool rendering: <a class='url' href='topic_show.pl?tid=119'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=119</a><br/><br/><blockquote><p>&gt; 6. How do I create menus and different screens wit hthe engine?</p></blockquote><br/>There is nothing premade for this in Gosu (there are add-on libraries for the Ruby version). You have to be creative or get some inspiration from all the games on the showcase, most of them being open source.
 </div>
 </div>
 
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=281.html#tid281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=281#tid281'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=281.html#tid281'>Gosu Exchange</a> / New User + Questions
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=281#tid281'>Gosu Exchange</a> / New User + Questions
 </div>
 </div>
 
@@ -81,7 +81,7 @@ Greetings to the GOSU forum users.<br/><br/>I am an indie game developer who has
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=1811.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=1811' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

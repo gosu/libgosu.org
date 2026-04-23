@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -31,7 +31,7 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <a href='http://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=136#tid136'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='http://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=136#tid136'>Gosu Showcase</a> / Deathly Dimensions
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid2'>Gosu</a> / <a href='http://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=136#tid136'>Gosu Showcase</a> / Deathly Dimensions
 </div>
 <div class='bcl'>
 <span class='pln'>
@@ -50,12 +50,12 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=718#pid718'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-05-30 20:28
 <span class='htt'>Edited</span> 2009-12-16 22:59
 </div>
 <div class='ccl'>
-A year or so ago I received a revelation when I discovered the relative simplicity of making an adventure game such as Gosu&#39;s own Captain Ruby. And so, following the instinct that many of us programmers possess to chase after a new idea, I built my own game off of Captain Ruby.<br/><br/>Now, a couple thousand lines of code later, I&#39;ve finally figured out, with EuphGuy19&#39;s help, what to call it. We decided on the name &quot;Dimensions,&quot; and he added &quot;Deathly Dimensions.&quot;<br/><br/>I would say that two words to describe it are be &quot;fun&quot; and &quot;hard.&quot;<br/><br/>Those two words also match the description of the early <i>Super Mario Brothers</i> games, to which the physics of my game are most similar. It&#39;s a one player adventure side-scroller where the unnamed, faceless character must run, jump, and shoot his way through dogs, turrets, guards, lava, and gravity. There are a few good items to collect on the way such as coins (very original, I know), super jumps, keys, and fire bullets. Instead of tunnels as in Mario, there are doors you need to unlock and enter to progress in the game.<br/><br/><a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=348'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_lv7.thb.jpg' title='This level was made by EuphGuy19 (67k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=349'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_lv1.thb.jpg' title='My first level (198k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160; &#160;&#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=350'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_cs4.thb.jpg' title='This level was also made by EuphGuy19 (76k)' alt=''/></a><br/><br/>Simple as the game may sound, there are plenty of novelties not seen in Captain Ruby, some of them very necessary to keep the game working. For example, my bro showed me a new bounding-box collision method that we now use as our engine to keep the entities from impaling themselves on walls. We also figured out an advanced tile drawing/updating function that makes the game only worry about on-screen tiles every cycle.<br/><br/>I got quite a few complaints from friends about the intense difficulty of the game. But dumbing down my levels to suit their experience would be no fun&#160; &gt;:)&#160; I didn&#39;t know what to do until I saw AmIMeYet&#39;s <a class='url' href='topic_show.pl@tid=85.html'>Captain Ruby Map Editor</a>. I snatched this nugget and used to to build a much more complex Level Constructor for my own game, allowing the user to create his/her own levels, set his/her own traps, and have his/her own fun.<br/><br/><a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=351'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_editor_select.thb.jpg' title='Selecting an object from a menu in the Level Constructor (56k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160;&#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=352'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_editor_cs1.thb.jpg' title='Tinkering with a custom level through the Level Constructor (108k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160;&#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=353'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_cs1.thb.jpg' title='Playing the custom level edited through the Level Constructor (99k)' alt=''/></a><br/><br/>Unfortunately, my head hit the ceiling when the game finally overflowed with &quot;stuff&quot; and started to slow down at certain stress points from its original speed of 60fps. Those dang array iterations! Of course, my Windows computer is a piece of crap, but I imagine many others are also in my unfortunate position and don&#39;t want to wade through lag time. I&#39;m not a pro at this, so I have no doubt that if I make the game any bigger, the code will get way too messy.<br/><br/>(edit) I now use Ubuntu and I highly recommend it over Windows for programmers.<br/>(edit) I tested the game with ruby 1.9.1 and things worked much smoother. I recommend it for anyone experiencing slower fps with this game.<br/><br/>The source package is attached as a .tgz. I highly recommend you view the readme.txt just so that you know how things work.<br/><br/>(edit) current attachment is V1.1.1. See readme.txt or else further notification posts below for changelog.
+A year or so ago I received a revelation when I discovered the relative simplicity of making an adventure game such as Gosu&#39;s own Captain Ruby. And so, following the instinct that many of us programmers possess to chase after a new idea, I built my own game off of Captain Ruby.<br/><br/>Now, a couple thousand lines of code later, I&#39;ve finally figured out, with EuphGuy19&#39;s help, what to call it. We decided on the name &quot;Dimensions,&quot; and he added &quot;Deathly Dimensions.&quot;<br/><br/>I would say that two words to describe it are be &quot;fun&quot; and &quot;hard.&quot;<br/><br/>Those two words also match the description of the early <i>Super Mario Brothers</i> games, to which the physics of my game are most similar. It&#39;s a one player adventure side-scroller where the unnamed, faceless character must run, jump, and shoot his way through dogs, turrets, guards, lava, and gravity. There are a few good items to collect on the way such as coins (very original, I know), super jumps, keys, and fire bullets. Instead of tunnels as in Mario, there are doors you need to unlock and enter to progress in the game.<br/><br/><a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=348'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_lv7.thb.jpg' title='This level was made by EuphGuy19 (67k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160; &#160; &#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=349'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_lv1.thb.jpg' title='My first level (198k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160; &#160;&#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=350'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_cs4.thb.jpg' title='This level was also made by EuphGuy19 (76k)' alt=''/></a><br/><br/>Simple as the game may sound, there are plenty of novelties not seen in Captain Ruby, some of them very necessary to keep the game working. For example, my bro showed me a new bounding-box collision method that we now use as our engine to keep the entities from impaling themselves on walls. We also figured out an advanced tile drawing/updating function that makes the game only worry about on-screen tiles every cycle.<br/><br/>I got quite a few complaints from friends about the intense difficulty of the game. But dumbing down my levels to suit their experience would be no fun&#160; &gt;:)&#160; I didn&#39;t know what to do until I saw AmIMeYet&#39;s <a class='url' href='topic_show.pl?tid=85'>Captain Ruby Map Editor</a>. I snatched this nugget and used to to build a much more complex Level Constructor for my own game, allowing the user to create his/her own levels, set his/her own traps, and have his/her own fun.<br/><br/><a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=351'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_editor_select.thb.jpg' title='Selecting an object from a menu in the Level Constructor (56k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160;&#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=352'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_editor_cs1.thb.jpg' title='Tinkering with a custom level through the Level Constructor (108k)' alt=''/></a>&#160; &#160; &#160; &#160; &#160;&#160; <a href='http://www.libgosu.org/cgi-bin/mwf/attach_show.pl?aid=353'><img class='amt' src='http://www.libgosu.org/mwf/attachments/18/718/screenshot_cs1.thb.jpg' title='Playing the custom level edited through the Level Constructor (99k)' alt=''/></a><br/><br/>Unfortunately, my head hit the ceiling when the game finally overflowed with &quot;stuff&quot; and started to slow down at certain stress points from its original speed of 60fps. Those dang array iterations! Of course, my Windows computer is a piece of crap, but I imagine many others are also in my unfortunate position and don&#39;t want to wade through lag time. I&#39;m not a pro at this, so I have no doubt that if I make the game any bigger, the code will get way too messy.<br/><br/>(edit) I now use Ubuntu and I highly recommend it over Windows for programmers.<br/>(edit) I tested the game with ruby 1.9.1 and things worked much smoother. I recommend it for anyone experiencing slower fps with this game.<br/><br/>The source package is attached as a .tgz. I highly recommend you view the readme.txt just so that you know how things work.<br/><br/>(edit) current attachment is V1.1.1. See readme.txt or else further notification posts below for changelog.
 </div>
 <div class='ccl pat'>
 <div class='amf'>Attachment: <a href='http://www.libgosu.org/mwf/attachments/18/718/dimensionsV1.1.1.tgz'>dimensionsV1.1.1.tgz</a> - Latest Version now compatible with ruby 1.9.1 (8783k)</div>
@@ -68,7 +68,7 @@ A year or so ago I received a revelation when I discovered the relative simplici
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=719#pid719'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-31 00:30
 </div>
 <div class='ccl'>
@@ -82,7 +82,7 @@ Wow, can&#39;t wait! Blame it on both the screenshots that look totally unlike M
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=721#pid721'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-05-31 11:15
 <span class='htt'>Edited</span> 2009-05-31 11:24
 </div>
@@ -97,7 +97,7 @@ Very Nice,Would like to try it out sometime<br/><br/>If you are getting some slo
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=728#pid728'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=24' >Basic</a>
 <span class='htt'>Date</span> 2009-05-31 13:36
 <span class='htt'>Edited</span> 2009-05-31 13:45
 </div>
@@ -112,7 +112,7 @@ I was having some issues with collisions slowing things down, I used chipmunk to
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=731#pid731'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-05-31 19:46
 <span class='htt'>Edited</span> 2009-05-31 19:52
 </div>
@@ -127,7 +127,7 @@ The game will run at normal speed on my computer as long as the levels do not ha
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=732#pid732'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=25.html' >benko</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=25' >benko</a>
 <span class='htt'>Date</span> 2009-05-31 22:08
 </div>
 <div class='ccl'>
@@ -141,7 +141,7 @@ The game will run at normal speed on my computer as long as the levels do not ha
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=733#pid733'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=24.html' >Basic</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=24' >Basic</a>
 <span class='htt'>Date</span> 2009-06-01 08:27
 </div>
 <div class='ccl'>
@@ -155,7 +155,7 @@ also dont draw anything that is&#39;nt in the screen. I ran into that mistake.
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=735#pid735'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=78' >Maverick</a>
 <span class='htt'>Date</span> 2009-06-01 14:56
 </div>
 <div class='ccl'>
@@ -169,7 +169,7 @@ Also if you want to go really high-tech and improve your speed learn 2D quad tre
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=739#pid739'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=86.html' >EuphGuy19</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=86' >EuphGuy19</a>
 <span class='htt'>Date</span> 2009-06-01 17:45
 </div>
 <div class='ccl'>
@@ -183,7 +183,7 @@ Yes, I was one of his &quot;beta testers&quot; of this game. I remember the game
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=748#pid748'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-06-02 12:11
 </div>
 <div class='ccl'>
@@ -197,7 +197,7 @@ Hey Maverick<br/><br/>do you have an example of 2D quad trees<br/><br/>I would l
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=749#pid749'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2009-06-02 14:51
 </div>
 <div class='ccl'>
@@ -211,7 +211,7 @@ a simpler way than resorting to quadtrees is just to divide your map into a bunc
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=751#pid751'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-02 21:32
 <span class='htt'>Edited</span> 2009-08-09 19:43
 </div>
@@ -226,7 +226,7 @@ Okay, I&#39;ve just attached the game source package to the original post. Sorry
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=752#pid752'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-02 21:50
 </div>
 <div class='ccl'>
@@ -240,7 +240,7 @@ I like the movement, plays very smooth! Just like holding down the space bar etc
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=753#pid753'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-02 22:25
 <span class='htt'>Edited</span> 2009-09-20 23:28
 </div>
@@ -255,7 +255,7 @@ I thought about that as well, but my Mac using friends didn&#39;t mention it to 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=755#pid755'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-02 22:43
 </div>
 <div class='ccl'>
@@ -269,7 +269,7 @@ Well, technically, nothing prevents me from plugging in a USB keyboard that has 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=756#pid756'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-06-03 03:59
 </div>
 <div class='ccl'>
@@ -283,7 +283,7 @@ Hey<br/><br/>Thanks for uploading the source code,<br/><br/>Though I got a probl
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=760#pid760'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-03 06:10
 </div>
 <div class='ccl'>
@@ -297,11 +297,11 @@ That can happen when the window resolution is larger than the desktop resolution
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=763#pid763'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-03 16:23
 </div>
 <div class='ccl'>
-hima had that same problem with <a class='url' href='topic_show.pl@tid=50.html'>Ultimate Comet</a>.<br/><br/>For those of you who don&#39;t know, the game window is 1024x768. Sorry if this is a problem, I probably should have started off with 800x600 or something.
+hima had that same problem with <a class='url' href='topic_show.pl?tid=50'>Ultimate Comet</a>.<br/><br/>For those of you who don&#39;t know, the game window is 1024x768. Sorry if this is a problem, I probably should have started off with 800x600 or something.
 </div>
 </div>
 
@@ -311,7 +311,7 @@ hima had that same problem with <a class='url' href='topic_show.pl@tid=50.html'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=764#pid764'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-03 16:43
 </div>
 <div class='ccl'>
@@ -325,7 +325,7 @@ You can work around this with the new screen_width/screen_height methods, but on
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=765#pid765'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-06-03 17:26
 </div>
 <div class='ccl'>
@@ -343,7 +343,7 @@ Ah, nice game overall, but I can&#39;t help but notice these 2 shortcomings:<br/
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=767#pid767'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-03 18:59
 </div>
 <div class='ccl'>
@@ -357,7 +357,7 @@ Thanks for the feedback :)<br/>Even though there are just two screenshots, I lik
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=768#pid768'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=86.html' >EuphGuy19</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=86' >EuphGuy19</a>
 <span class='htt'>Date</span> 2009-06-03 19:29
 </div>
 <div class='ccl'>
@@ -374,7 +374,7 @@ A new level for you tastes :P<br/><br/>Pillars of Doom!
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=770#pid770'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-06-03 20:35
 </div>
 <div class='ccl'>
@@ -388,7 +388,7 @@ A new level for you tastes :P<br/><br/>Pillars of Doom!
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=772#pid772'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=86.html' >EuphGuy19</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=86' >EuphGuy19</a>
 <span class='htt'>Date</span> 2009-06-04 01:45
 </div>
 <div class='ccl'>
@@ -405,7 +405,7 @@ Haha, yet another level that I created for you guys to enjoy!! Here is a little 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=774#pid774'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-06-04 03:46
 </div>
 <div class='ccl'>
@@ -419,7 +419,7 @@ Hey Thanks for the Bonus Levels<br/><br/>I got around the minamize thing by&#160
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=777#pid777'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-06-04 09:37
 </div>
 <div class='ccl'>
@@ -433,7 +433,7 @@ Have you had a chance to play Arthur&#39;s Adventures yet?<br/><br/>I was playin
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=786#pid786'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-05 22:24
 </div>
 <div class='ccl'>
@@ -450,7 +450,7 @@ New custom level to enjoy:<br/><br/>Weighty Decisions<br/><br/>Difficulty: ****<
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=796#pid796'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=78' >Maverick</a>
 <span class='htt'>Date</span> 2009-06-07 19:27
 </div>
 <div class='ccl'>
@@ -464,7 +464,7 @@ This is most impressive.This should be one of the top examples made with Gosu th
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=806#pid806'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-06-08 14:49
 </div>
 <div class='ccl'>
@@ -478,7 +478,7 @@ Yeh I agree,its currently Project of the Day on the main Gosu Page!<br/><br/>How
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=809#pid809'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-08 15:36
 </div>
 <div class='ccl'>
@@ -492,7 +492,7 @@ They are randomly selected from the topics in Showcase which have a screenshot. 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=825#pid825'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=79.html' >Shinobi Chef</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=79' >Shinobi Chef</a>
 <span class='htt'>Date</span> 2009-06-09 02:18
 </div>
 <div class='ccl'>
@@ -506,7 +506,7 @@ by winning so quickly you mean our games where in the project of the day?<br/>if
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=832#pid832'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-09 07:25
 </div>
 <div class='ccl'>
@@ -520,7 +520,7 @@ I think just one day after Deathly Dimensions. Maybe your browser had the front 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=892#pid892'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-14 19:51
 </div>
 <div class='ccl'>
@@ -534,11 +534,11 @@ So I finally messed with the controls and was instantly hooked to Level8. I also
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=898#pid898'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-15 05:18
 </div>
 <div class='ccl'>
-<blockquote><p>&gt; do you think auto-saving at doors would make it too easy?</p></blockquote><br/>I like to design my levels so that this is not necessary. The ideal approach is something like a &quot;Zelda: Ocarina of Time&quot; dungeon where progress is not linear and is therefore easier to get back to where you left off when you quit. In my game, you&#39;ll notice in a few levels such as level 7 the doors are conveniently placed so that it is easy to move ahead when you&#39;ve already died getting that stupid key. Hopefully, everyone has read that one textbox explaining that you retain your keys after dying.<br/><br/>Levels should be designed after this manner. In the Level Constructor, you can place as many of the same door as you want; they will all take you to the same warp point. Do the player a favor on really hard levels and throw a few doors in strategic places like I try to do. Once that gets taken care of, post your levels here so we can try them out.<br/><br/><blockquote><p>&gt; I&#39;m wondering, what was the bottleneck in the game when you profiled it? The collisions?</p></blockquote><br/>To be honest, I couldn&#39;t quite puzzle out the profile too well. It did tell me, however, that tons of time was spent on the draw method, even though it has been optimized to only on-screen images, and that tons of calculations were going on. When I disabled #draw and ran the game, things sped up. When I disabled the inter-object collision, things sped up. When I play a level and come back to the start after blowing up bad guys and collecting powerups, things have sped up.<br/><br/>I run into complications when I think about how quad trees or octrees might be implemented, such as a guard&#39;s patrol, a turret shooting bullets far and wide, and objects falling off cliffs into lower parts of the level. I wish I could find just one little rogue line of code that, if repaired, would really boost things. I played the game on my friend&#39;s Mac and everything ran beautifully. Heck, let&#39;s all just get Macs&#160;&#160; :)<br/><br/><blockquote><p>&gt; I have also looked through the code, I like the Tasks bit.</p></blockquote><br/>The Tasks bit are mostly thanks to rmphelps who showed them to me in the early days of <a class='url' href='topic_show.pl@tid=50.html'>Ultimate Comet</a> when I was I naive, ignorant programmer, head spinning with questions. After I gained proficiency, I implemented them on Ultimate Comet. I can&#39;t imagine living without them, there are so many things in a game that need delayed execution.
+<blockquote><p>&gt; do you think auto-saving at doors would make it too easy?</p></blockquote><br/>I like to design my levels so that this is not necessary. The ideal approach is something like a &quot;Zelda: Ocarina of Time&quot; dungeon where progress is not linear and is therefore easier to get back to where you left off when you quit. In my game, you&#39;ll notice in a few levels such as level 7 the doors are conveniently placed so that it is easy to move ahead when you&#39;ve already died getting that stupid key. Hopefully, everyone has read that one textbox explaining that you retain your keys after dying.<br/><br/>Levels should be designed after this manner. In the Level Constructor, you can place as many of the same door as you want; they will all take you to the same warp point. Do the player a favor on really hard levels and throw a few doors in strategic places like I try to do. Once that gets taken care of, post your levels here so we can try them out.<br/><br/><blockquote><p>&gt; I&#39;m wondering, what was the bottleneck in the game when you profiled it? The collisions?</p></blockquote><br/>To be honest, I couldn&#39;t quite puzzle out the profile too well. It did tell me, however, that tons of time was spent on the draw method, even though it has been optimized to only on-screen images, and that tons of calculations were going on. When I disabled #draw and ran the game, things sped up. When I disabled the inter-object collision, things sped up. When I play a level and come back to the start after blowing up bad guys and collecting powerups, things have sped up.<br/><br/>I run into complications when I think about how quad trees or octrees might be implemented, such as a guard&#39;s patrol, a turret shooting bullets far and wide, and objects falling off cliffs into lower parts of the level. I wish I could find just one little rogue line of code that, if repaired, would really boost things. I played the game on my friend&#39;s Mac and everything ran beautifully. Heck, let&#39;s all just get Macs&#160;&#160; :)<br/><br/><blockquote><p>&gt; I have also looked through the code, I like the Tasks bit.</p></blockquote><br/>The Tasks bit are mostly thanks to rmphelps who showed them to me in the early days of <a class='url' href='topic_show.pl?tid=50'>Ultimate Comet</a> when I was I naive, ignorant programmer, head spinning with questions. After I gained proficiency, I implemented them on Ultimate Comet. I can&#39;t imagine living without them, there are so many things in a game that need delayed execution.
 </div>
 </div>
 
@@ -548,7 +548,7 @@ So I finally messed with the controls and was instantly hooked to Level8. I also
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=899#pid899'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=78' >Maverick</a>
 <span class='htt'>Date</span> 2009-06-15 08:18
 </div>
 <div class='ccl'>
@@ -562,11 +562,11 @@ For those of us too busy to dig into your code, could you explain these Tasks? C
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=901#pid901'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-06-15 16:33
 </div>
 <div class='ccl'>
-You&#39;ll find the big picture in the file task.rb. The Task class is called in various other places of the code such as in player.rb or game.rb.<br/>Let&#39;s say I want to restart the level after the player dies. I don&#39;t want everything to snap right back to the beginning just as soon as health hits zero, I want to give the user a second to say, &quot;Oh @#$%!&quot; and allow a smoother transition back to the beginning.<br/><code><br/>Task.new(self, :wait =&gt; 240) { restart_level }<br/></code><br/>This sets a &quot;time bomb,&quot; if you will, that will explode in 240 cycles (4 seconds). When it explodes, the block { restart_level } will be executed. Here&#39;s another example:<br/><code><br/>Task.new(self, :wait =&gt; 150) do<br/>&#160; &#160; # reset everything after the player dies<br/>&#160; &#160; @player.respawn<br/>&#160; &#160; reload_course<br/>&#160; &#160; @objects = []<br/>&#160; &#160; @player.warp_to(@course.warps[0])<br/>end<br/></code><br/>Everything between &quot;do&quot; and &quot;end&quot; will be executed after 150 cycles. There are many other applications for this other than restarting a level. <a class='url' href='topic_show.pl@tid=50.html'>Ultimate Comet</a> uses them everywhere when telling powerups to disappear, alien ships, black holes, and comets to appear, and the player&#39;s ship to reappear a second or two after dying.
+You&#39;ll find the big picture in the file task.rb. The Task class is called in various other places of the code such as in player.rb or game.rb.<br/>Let&#39;s say I want to restart the level after the player dies. I don&#39;t want everything to snap right back to the beginning just as soon as health hits zero, I want to give the user a second to say, &quot;Oh @#$%!&quot; and allow a smoother transition back to the beginning.<br/><code><br/>Task.new(self, :wait =&gt; 240) { restart_level }<br/></code><br/>This sets a &quot;time bomb,&quot; if you will, that will explode in 240 cycles (4 seconds). When it explodes, the block { restart_level } will be executed. Here&#39;s another example:<br/><code><br/>Task.new(self, :wait =&gt; 150) do<br/>&#160; &#160; # reset everything after the player dies<br/>&#160; &#160; @player.respawn<br/>&#160; &#160; reload_course<br/>&#160; &#160; @objects = []<br/>&#160; &#160; @player.warp_to(@course.warps[0])<br/>end<br/></code><br/>Everything between &quot;do&quot; and &quot;end&quot; will be executed after 150 cycles. There are many other applications for this other than restarting a level. <a class='url' href='topic_show.pl?tid=50'>Ultimate Comet</a> uses them everywhere when telling powerups to disappear, alien ships, black holes, and comets to appear, and the player&#39;s ship to reappear a second or two after dying.
 </div>
 </div>
 
@@ -576,7 +576,7 @@ You&#39;ll find the big picture in the file task.rb. The Task class is called in
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=902#pid902'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=78' >Maverick</a>
 <span class='htt'>Date</span> 2009-06-15 19:53
 </div>
 <div class='ccl'>
@@ -590,7 +590,7 @@ So its like a timer just with the ability to perform a command when reaching zer
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1574#pid1574'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-09-20 23:46
 <span class='htt'>Edited</span> 2009-09-20 23:53
 </div>
@@ -605,7 +605,7 @@ Deathly Dimensions has returned as version 1.1 with many improvements that direc
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1576#pid1576'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=86.html' >EuphGuy19</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=86' >EuphGuy19</a>
 <span class='htt'>Date</span> 2009-09-21 03:05
 </div>
 <div class='ccl'>
@@ -619,7 +619,7 @@ Well, there is some issues that I have noticed when I was attempting to use your
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1588#pid1588'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-09-26 17:20
 </div>
 <div class='ccl'>
@@ -633,7 +633,7 @@ The music problem doesn&#39;t sound like the game&#39;s fault. I did very little
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1903#pid1903'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-15 00:27
 </div>
 <div class='ccl'>
@@ -647,7 +647,7 @@ Ruby 1.9.1 on Ubuntu 9.10 = awesome.<br/><br/>I just managed to install ruby 1.9
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1906#pid1906'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=56.html' >AmIMeYet</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=56' >AmIMeYet</a>
 <span class='htt'>Date</span> 2009-12-15 09:51
 </div>
 <div class='ccl'>
@@ -661,7 +661,7 @@ Well, I must confess.. I haven&#39;t actually tried your game yet I think.. :(<b
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1910#pid1910'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-15 23:27
 </div>
 <div class='ccl'>
@@ -675,7 +675,7 @@ The game size (uncompressed) is about 9MB. The soundfx folder takes up 6.2MB of 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1911#pid1911'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-12-16 04:35
 </div>
 <div class='ccl'>
@@ -689,7 +689,7 @@ I changed the max upload size back to 10 MB, feel free to attach it, I will also
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1917#pid1917'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-16 23:03
 </div>
 <div class='ccl'>
@@ -703,7 +703,7 @@ V1.1.1 uploaded. Attached to original post at the top.<br/><br/>Changelog: new t
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1918#pid1918'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=106' >Dahrkael</a>
 <span class='htt'>Date</span> 2009-12-17 12:55
 </div>
 <div class='ccl'>
@@ -717,7 +717,7 @@ i got a &quot;runtime error, this program wants to terminate&quot; or something 
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1920#pid1920'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=38.html' >phelps.db</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=38' >phelps.db</a>
 <span class='htt'>Date</span> 2009-12-18 05:16
 </div>
 <div class='ccl'>
@@ -731,7 +731,7 @@ I scanned through my code, but I didn&#39;t find any lines around the level load
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1922#pid1922'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=106' >Dahrkael</a>
 <span class='htt'>Date</span> 2009-12-18 09:20
 </div>
 <div class='ccl'>
@@ -745,7 +745,7 @@ I scanned through my code, but I didn&#39;t find any lines around the level load
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1924#pid1924'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-12-18 11:45
 </div>
 <div class='ccl'>
@@ -759,7 +759,7 @@ Ouch. Sounds like a pretty bad error. Are you running the game from command line
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <a class='psl' href='http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=1929#pid1929'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=106.html' >Dahrkael</a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=106' >Dahrkael</a>
 <span class='htt'>Date</span> 2009-12-19 11:58
 </div>
 <div class='ccl'>
@@ -772,7 +772,7 @@ source from command line.
 <span class='nav'>
 <a href='http://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=136#tid136'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='http://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=136#tid136'>Gosu Showcase</a> / Deathly Dimensions
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid2'>Gosu</a> / <a href='http://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=136#tid136'>Gosu Showcase</a> / Deathly Dimensions
 </div>
 <div class='bcl'>
 <span class='pln'>

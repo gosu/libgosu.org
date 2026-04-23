@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=784.html#tid784'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=784#tid784'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=784.html#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=784#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
 </div>
 <div class='bcl'>
 <span class='pln'>
@@ -50,19 +50,19 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl5996' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=5996.html#pid5996'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=5996#pid5996'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-09 15:48
 <span class='htt'>Edited</span> 2012-07-15 18:17
 </div>
 <div class='ccl'>
-I&#39;ve started developing a gem to incorporate shaders and framebuffers into Ruby/Gosu, using a high-level framework. Although mostly my own work, I did use the existing post-processing code to get me started, by&#160; <a class='url' href='topic_show.pl@pid=4790.html'>Mathias in C++</a> and <a class='url' href='topic_show.pl@pid=2800.html'>jsb&#39;s port of that to Ruby</a>. I also peeked at Mon_Ouie&#39;s implementation of shaders in <a class='url' href='http://mon-ouie.github.com/projects/ray.html'>Ray</a>.<br/><br/>* <b>Shader</b> allows for all sorts of real-time manipulation of textures and vertices and, being written in a C-like language run on your graphics card, they will run painfully fast, even in Ruby :) Aston will support both full-screen post-processing (blur, pixelate, etc) and affecting individual Image/Font/primitive draw operations.<br/>* <b>Framebuffer</b> allows for drawing Image/Font, etc., directly into other Images, as though they were the window. A very limited version of this ability to draw off-screen is currently available as Window#render_to_image, provided by TexPlay.<br/>* Although not directly related, I also have a <b>ParticleEmitter </b>class which manages large-scale particle drops. It supports shaders and is relatively efficient compared to anything you could implement in Ruby, even though it can update and draw a lot of moving particles. Current benchmark is 18k particles @ 40FPS, so you should be able to use it with a couple of thousand at a time quite nicely.<br/><br/>I&#39;ve only released a --pre gem, but the github project is <a class='url' href='https://github.com/Spooner/ashton'>spooner/ashton</a>. I&#39;ve added a <a class='url' href='https://github.com/Spooner/ashton/wiki'>todo list</a> on the wiki.<br/><br/>I&#39;m aiming at strict OpenGL2.0/GLSL 1.10 compatibility in the gem, but that wouldn&#39;t stop people using more advanced stuff for their own projects if they don&#39;t mind alienating people with ancient hardware (e.g. Maverick&#39;s laptop only supports OpenGL2.0).
+I&#39;ve started developing a gem to incorporate shaders and framebuffers into Ruby/Gosu, using a high-level framework. Although mostly my own work, I did use the existing post-processing code to get me started, by&#160; <a class='url' href='topic_show.pl?pid=4790'>Mathias in C++</a> and <a class='url' href='topic_show.pl?pid=2800'>jsb&#39;s port of that to Ruby</a>. I also peeked at Mon_Ouie&#39;s implementation of shaders in <a class='url' href='http://mon-ouie.github.com/projects/ray.html'>Ray</a>.<br/><br/>* <b>Shader</b> allows for all sorts of real-time manipulation of textures and vertices and, being written in a C-like language run on your graphics card, they will run painfully fast, even in Ruby :) Aston will support both full-screen post-processing (blur, pixelate, etc) and affecting individual Image/Font/primitive draw operations.<br/>* <b>Framebuffer</b> allows for drawing Image/Font, etc., directly into other Images, as though they were the window. A very limited version of this ability to draw off-screen is currently available as Window#render_to_image, provided by TexPlay.<br/>* Although not directly related, I also have a <b>ParticleEmitter </b>class which manages large-scale particle drops. It supports shaders and is relatively efficient compared to anything you could implement in Ruby, even though it can update and draw a lot of moving particles. Current benchmark is 18k particles @ 40FPS, so you should be able to use it with a couple of thousand at a time quite nicely.<br/><br/>I&#39;ve only released a --pre gem, but the github project is <a class='url' href='https://github.com/Spooner/ashton'>spooner/ashton</a>. I&#39;ve added a <a class='url' href='https://github.com/Spooner/ashton/wiki'>todo list</a> on the wiki.<br/><br/>I&#39;m aiming at strict OpenGL2.0/GLSL 1.10 compatibility in the gem, but that wouldn&#39;t stop people using more advanced stuff for their own projects if they don&#39;t mind alienating people with ancient hardware (e.g. Maverick&#39;s laptop only supports OpenGL2.0).
 </div>
 <div class='ccl pat'>
-<a href='attach_show.pl@aid=706.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_01_18k_particles.thb.jpg' title='18k particles @ 40fps (hopefully this will improve, but enough for most people, I&#39;m sure :D). (688k)' alt=''/></a>
-<a href='attach_show.pl@aid=707.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_02_simplex_noise.thb.jpg' title='Animated fluid look through use of Simplex noise shader in full-screen post-processing. (424k)' alt=''/></a>
-<a href='attach_show.pl@aid=708.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_03_outline_sprirtes.thb.jpg' title='Shaders can apply to both individual draws (right) and composing into a Framebuffer first (left) (105k)' alt=''/></a>
-<a href='attach_show.pl@aid=709.html'><img class='amt' src='../../mwf/attachments/96/5996/ashton_04_image_shaders.thb.jpg' title='A variety of simple shader effects applied to image #draw. (494k)' alt=''/></a>
+<a href='attach_show.pl?aid=706'><img class='amt' src='../../mwf/attachments/96/5996/ashton_01_18k_particles.thb.jpg' title='18k particles @ 40fps (hopefully this will improve, but enough for most people, I&#39;m sure :D). (688k)' alt=''/></a>
+<a href='attach_show.pl?aid=707'><img class='amt' src='../../mwf/attachments/96/5996/ashton_02_simplex_noise.thb.jpg' title='Animated fluid look through use of Simplex noise shader in full-screen post-processing. (424k)' alt=''/></a>
+<a href='attach_show.pl?aid=708'><img class='amt' src='../../mwf/attachments/96/5996/ashton_03_outline_sprirtes.thb.jpg' title='Shaders can apply to both individual draws (right) and composing into a Framebuffer first (left) (105k)' alt=''/></a>
+<a href='attach_show.pl?aid=709'><img class='amt' src='../../mwf/attachments/96/5996/ashton_04_image_shaders.thb.jpg' title='A variety of simple shader effects applied to image #draw. (494k)' alt=''/></a>
 </div>
 </div>
 
@@ -70,11 +70,11 @@ I&#39;ve started developing a gem to incorporate shaders and framebuffers into R
 <div class='frm pst' id='pid5997' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl5997' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=5997.html#pid5997'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=5997#pid5997'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-10 00:21
 <span class='htt'>Edited</span> 2012-07-11 08:47
 </div>
@@ -87,11 +87,11 @@ I sorted out my dumb mistake with the shaders that was holding me back, after a 
 <div class='frm pst' id='pid5998' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl5998' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=5998.html#pid5998'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=5998#pid5998'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-07-11 08:16
 </div>
 <div class='ccl'>
@@ -103,11 +103,11 @@ I&#39;d suggest Stencil operations for framebuffer or some alpha-replacing (e.g.
 <div class='frm pst' id='pid5999' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5998'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5998'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl5999' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=5999.html#pid5999'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=5999#pid5999'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-11 08:29
 </div>
 <div class='ccl'>
@@ -119,11 +119,11 @@ Hard to tell too much about the speed, really, since the examples are not really
 <div class='frm pst' id='pid6004' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5999'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5999'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6004' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6004.html#pid6004'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=6004#pid6004'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2012-07-11 10:32
 </div>
 <div class='ccl'>
@@ -135,11 +135,11 @@ A particle system is one of those things that everyone can agree on, I think, so
 <div class='frm pst' id='pid6005' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6004'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6004'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6005' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6005.html#pid6005'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6005#pid6005'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-11 10:59
 </div>
 <div class='ccl'>
@@ -151,11 +151,11 @@ jlnr Why would point-sprites be like GL_LINE? Yeah, they would be GL_POINT, but 
 <div class='frm pst' id='pid6006' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6005'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6005'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6006' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6006.html#pid6006'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=6006#pid6006'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2012-07-11 11:39
 </div>
 <div class='ccl'>
@@ -167,11 +167,11 @@ jlnr Why would point-sprites be like GL_LINE? Yeah, they would be GL_POINT, but 
 <div class='frm pst' id='pid6007' style='margin-left: 21%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6006'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6006'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6007' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6007.html#pid6007'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6007#pid6007'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-11 11:53
 </div>
 <div class='ccl'>
@@ -183,11 +183,11 @@ I thought the issue with GL_LINE was that it wasn&#39;t pixel-perfect, so if you
 <div class='frm pst' id='pid6009' style='margin-left: 24%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6007'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6007'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6009' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6009.html#pid6009'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=6009#pid6009'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2012-07-12 04:12
 </div>
 <div class='ccl'>
@@ -199,10 +199,10 @@ Well, being off by one pixel would be enough to trigger bug reports! :) And this
 <div class='frm pst' id='pid6010' style='margin-left: 27%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6009'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6009'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6010.html#pid6010'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6010#pid6010'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-12 10:39
 </div>
 <div class='ccl'>
@@ -214,10 +214,10 @@ Well, it depends on what people are using things for. I agree that in Gosu, pixe
 <div class='frm pst' id='pid6019' style='margin-left: 24%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6007'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6007'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6019.html#pid6019'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<a class='psl' href='topic_show.pl?pid=6019#pid6019'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=150' >RavensKrag</a>
 <span class='htt'>Date</span> 2012-07-14 19:45
 </div>
 <div class='ccl'>
@@ -233,11 +233,11 @@ Indeed, GL_LINE is defined by OpenGL is such a way that it is ambiguous as to wh
 <div class='frm pst' id='pid6000' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5998'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5998'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6000' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6000.html#pid6000'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6000#pid6000'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-11 08:52
 </div>
 <div class='ccl'>
@@ -249,11 +249,11 @@ Regarding alpha-replacing, I think that might be difficult to implement, since i
 <div class='frm pst' id='pid6001' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6000'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6000'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6001' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6001.html#pid6001'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=6001#pid6001'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-07-11 09:13
 <span class='htt'>Edited</span> 2012-07-11 09:18
 </div>
@@ -266,10 +266,10 @@ What I want with this is simple light/shadow effect (<a class='url' href='../../
 <div class='frm pst' id='pid6002' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6002.html#pid6002'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6002#pid6002'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-11 09:34
 </div>
 <div class='ccl'>
@@ -280,10 +280,10 @@ If you are using Texplay&#39;s&#160; Image#circle, then yeah, that would be tota
 <div class='frm pst' id='pid6003' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6001'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6003.html#pid6003'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6003#pid6003'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-11 09:47
 <span class='htt'>Edited</span> 2012-07-11 09:52
 </div>
@@ -298,11 +298,11 @@ I don&#39;t know about getpixel. I&#39;ll look at the texplay source to see how 
 <div class='frm pst' id='pid6013' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5997'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6013' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6013.html#pid6013'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=6013#pid6013'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2012-07-13 23:54
 </div>
 <div class='ccl'>
@@ -314,11 +314,11 @@ First of all, thank you for doing this! I&#39;ve been watching this thread since
 <div class='frm pst' id='pid6014' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6013'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6013'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6014' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6014.html#pid6014'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6014#pid6014'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-14 00:27
 </div>
 <div class='ccl'>
@@ -330,11 +330,11 @@ That should just be checking you have OpenGL 2.0+ (absolute minimum needed for s
 <div class='frm pst' id='pid6015' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6014'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6014'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6015' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6015.html#pid6015'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=6015#pid6015'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2012-07-14 17:23
 </div>
 <div class='ccl'>
@@ -346,11 +346,11 @@ That should just be checking you have OpenGL 2.0+ (absolute minimum needed for s
 <div class='frm pst' id='pid6016' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6015'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6015'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6016' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6016.html#pid6016'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6016#pid6016'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-14 17:39
 </div>
 <div class='ccl'>
@@ -362,11 +362,11 @@ Right, the 6600 is _just_ at the cusp of OpenGL 2.0, which is where I&#39;d set 
 <div class='frm pst' id='pid6017' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6016'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6016'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6017' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6017.html#pid6017'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=6017#pid6017'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2012-07-14 18:23
 </div>
 <div class='ccl'>
@@ -378,11 +378,11 @@ Right, the 6600 is _just_ at the cusp of OpenGL 2.0, which is where I&#39;d set 
 <div class='frm pst' id='pid6018' style='margin-left: 21%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6017'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6017'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6018' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6018.html#pid6018'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6018#pid6018'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-14 18:56
 <span class='htt'>Edited</span> 2012-07-14 19:03
 </div>
@@ -395,10 +395,10 @@ There is obviously something odd going on and yes, I don&#39;t think I can reaso
 <div class='frm pst' id='pid6021' style='margin-left: 24%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6018'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6018'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6021.html#pid6021'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=6021#pid6021'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2012-07-14 20:34
 <span class='htt'>Edited</span> 2012-07-14 21:13
 </div>
@@ -413,11 +413,11 @@ Actually, I used to be able to run jsb&#39;s Ruby shader stuff successfully usin
 <div class='frm pst' id='pid6020' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6015'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6015'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6020' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6020.html#pid6020'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6020#pid6020'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-14 19:49
 </div>
 <div class='ccl'>
@@ -429,10 +429,10 @@ The keyword <code>return</code> apparently isn&#39;t supported in GLSL1.10 (Open
 <div class='frm pst' id='pid6022' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6020'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6020'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6022.html#pid6022'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=6022#pid6022'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2012-07-14 20:35
 </div>
 <div class='ccl'>
@@ -448,10 +448,10 @@ Maybe you could find a cheap system to drop that card into on craigslist.
 <div class='frm pst' id='pid6030' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6030.html#pid6030'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6030#pid6030'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-15 17:51
 </div>
 <div class='ccl'>
@@ -462,11 +462,11 @@ Added several screenshots, from the examples, to the first post. Getting there :
 <div class='frm pst' id='pid8043' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8043' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8043.html#pid8043'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=8043#pid8043'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2014-09-27 11:35
 </div>
 <div class='ccl'>
@@ -478,11 +478,11 @@ I just installed Ruby 1.9.3 on my laptop, installed Gosu and Ashton and when try
 <div class='frm pst' id='pid8044' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid8043'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid8043'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8044' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8044.html#pid8044'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=8044#pid8044'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2014-09-28 00:46
 </div>
 <div class='ccl'>
@@ -494,10 +494,10 @@ Er...not a clue on that info.
 <div class='frm pst' id='pid8046' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid8044'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid8044'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=8046.html#pid8046'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=8046#pid8046'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2014-09-28 17:13
 </div>
 <div class='ccl'>
@@ -508,10 +508,10 @@ I downgraded to Ruby 1.9.2 - miracle happened. I think it was problem with my Ru
 <div class='frm pst' id='pid8105' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid8044'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid8044'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=8105.html#pid8105'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=53.html' >banister</a>
+<a class='psl' href='topic_show.pl?pid=8105#pid8105'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2014-11-09 13:20
 </div>
 <div class='ccl'>
@@ -524,11 +524,11 @@ what&#39;s up spooner, ltns
 <div class='frm pst' id='pid8330' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid5996'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8330' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8330.html#pid8330'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=116.html' >RunnerPack</a>
+<a class='psl' href='topic_show.pl?pid=8330#pid8330'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=116' >RunnerPack</a>
 <span class='htt'>Date</span> 2015-03-19 04:23
 </div>
 <div class='ccl'>
@@ -540,11 +540,11 @@ Regarding the shadow-casting:<br/><br/>Have you seen this page? <a class='ura' h
 <div class='frm pst' id='pid8332' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid8330'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid8330'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8332' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8332.html#pid8332'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=8332#pid8332'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2015-03-19 12:48
 </div>
 <div class='ccl'>
@@ -556,11 +556,11 @@ Sadly, I&#39;ve stopped trying to make games for Ruby (Unity just opens up so mu
 <div class='frm pst' id='pid8334' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid8332'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid8332'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8334' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8334.html#pid8334'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=8334#pid8334'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2015-03-19 17:33
 </div>
 <div class='ccl'>
@@ -572,10 +572,10 @@ Does this mean that Ashton is pretty dead right now? FrameBuffers have &quot;few
 <div class='frm pst' id='pid8335' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid8334'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid8334'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=8335.html#pid8335'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=8335#pid8335'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2015-03-19 18:50
 </div>
 <div class='ccl'>
@@ -593,8 +593,8 @@ Sorry, but that is about the size of it.
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6076' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6076.html#pid6076'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6076#pid6076'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-22 16:27
 <span class='htt'>Edited</span> 2012-07-22 19:32
 </div>
@@ -607,10 +607,10 @@ Tried to implement some shadow-casting lighting effects with <code>Ashton::Light
 <div class='frm pst' id='pid6084' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6076'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6076'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6084.html#pid6084'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6084#pid6084'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-24 14:22
 <span class='htt'>Edited</span> 2012-07-24 14:27
 </div>
@@ -622,11 +622,11 @@ I added <code>Framebuffer#rgba</code> (returns array of Fixnum) and <code>Frameb
 <div class='frm pst' id='pid6122' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6076'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6076'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6122' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6122.html#pid6122'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<a class='psl' href='topic_show.pl?pid=6122#pid6122'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=150' >RavensKrag</a>
 <span class='htt'>Date</span> 2012-08-05 20:00
 </div>
 <div class='ccl'>
@@ -638,10 +638,10 @@ I added <code>Framebuffer#rgba</code> (returns array of Fixnum) and <code>Frameb
 <div class='frm pst' id='pid6123' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6122'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6122'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6123.html#pid6123'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6123#pid6123'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-08-05 20:25
 </div>
 <div class='ccl'>
@@ -657,8 +657,8 @@ No, I don&#39;t mean that. I mean that I won&#39;t offer an Image#circle or Imag
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6085' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6085.html#pid6085'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=6085#pid6085'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-07-26 12:31
 </div>
 <div class='ccl'>
@@ -670,10 +670,10 @@ I forgot to ask sooner: is this possible with some shaders? <a class='url' href=
 <div class='frm pst' id='pid6086' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6085'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6085'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6086.html#pid6086'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<a class='psl' href='topic_show.pl?pid=6086#pid6086'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=78' >Maverick</a>
 <span class='htt'>Date</span> 2012-07-26 15:45
 </div>
 <div class='ccl'>
@@ -684,11 +684,11 @@ Yep.
 <div class='frm pst' id='pid6087' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6085'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6085'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6087' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6087.html#pid6087'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6087#pid6087'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-26 22:53
 </div>
 <div class='ccl'>
@@ -700,11 +700,11 @@ Yes, I&#39;m sure it is possible, but changing whole palettes dynamically makes 
 <div class='frm pst' id='pid6088' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6087'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6087'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6088' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6088.html#pid6088'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=6088#pid6088'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-07-27 08:06
 </div>
 <div class='ccl'>
@@ -716,11 +716,11 @@ You saw my game, player is in 8 color schemes that has only few color varying. I
 <div class='frm pst' id='pid6089' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6088'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6088'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6089' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6089.html#pid6089'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6089#pid6089'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-27 08:38
 </div>
 <div class='ccl'>
@@ -732,11 +732,11 @@ Oh, it is the player wearing different suits? Doesn&#39;t really make much diffe
 <div class='frm pst' id='pid6090' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6089'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6089'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6090' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6090.html#pid6090'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=6090#pid6090'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-07-27 09:03
 </div>
 <div class='ccl'>
@@ -748,11 +748,11 @@ Oh, thanks for this, it seems fast enough. :)
 <div class='frm pst' id='pid6092' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6090'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6090'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6092' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6092.html#pid6092'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6092#pid6092'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-27 09:26
 </div>
 <div class='ccl'>
@@ -764,11 +764,11 @@ The only real advantage a shader implementation would have over this would be th
 <div class='frm pst' id='pid6093' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6092'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6092'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6093' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6093.html#pid6093'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=6093#pid6093'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-07-27 09:42
 </div>
 <div class='ccl'>
@@ -780,10 +780,10 @@ Maybe it&#39;s possible in real-time, because I only need to change 1-2 images t
 <div class='frm pst' id='pid6094' style='margin-left: 21%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6093'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6093'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=6094.html#pid6094'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6094#pid6094'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-27 09:47
 <span class='htt'>Edited</span> 2012-07-27 10:02
 </div>
@@ -804,8 +804,8 @@ It really shouldn&#39;t be slow (dup that is), but the way Gosu implements it is
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=6091.html#pid6091'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6091#pid6091'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-07-27 09:24
 </div>
 <div class='ccl'>
@@ -818,8 +818,8 @@ Renamed <code>Ashton::Framebuffer</code> as <code>Ashton::Texture</code> since i
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=6117.html#pid6117'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6117#pid6117'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-08-05 16:40
 </div>
 <div class='ccl'>
@@ -833,8 +833,8 @@ Well, I&#39;ve been beating Ashton&#39;s ParticleEmitter with a stick and now it
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6165' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6165.html#pid6165'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=6165#pid6165'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2012-08-22 20:06
 </div>
 <div class='ccl'>
@@ -846,11 +846,11 @@ I need a grayscale effect, so could you make next release? Or just give working 
 <div class='frm pst' id='pid6166' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=6002.html#pid6165'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=6002#pid6165'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl6166' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=6166.html#pid6166'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=191.html' >Spooner</a>
+<a class='psl' href='topic_show.pl?pid=6166#pid6166'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=191' >Spooner</a>
 <span class='htt'>Date</span> 2012-08-22 21:48
 </div>
 <div class='ccl'>
@@ -864,9 +864,9 @@ There is already a grayscale shader included in Ashton. Look at examples/shader_
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=784.html#tid784'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=784#tid784'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=784.html#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=784#tid784'>Extending Gosu</a> / Ashton - shaders and framebuffers in Ruby
 </div>
 <div class='bcl'>
 <span class='pln'>
@@ -888,7 +888,7 @@ There is already a grayscale shader included in Ashton. Look at examples/shader_
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=6002.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=6002' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=156.html#tid156'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=156#tid156'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=156.html#tid156'>Gosu Exchange</a> / Diving game into levels
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=156#tid156'>Gosu Exchange</a> / Diving game into levels
 </div>
 </div>
 
@@ -40,7 +40,7 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=953.html#pid953'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=953#pid953'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> ?
 <span class='htt'>Date</span> 2009-06-19 14:08
 </div>
@@ -54,12 +54,12 @@ I&#39;m designing the first game I&#39;ve ever made (remaking Sokoban) and I&#39
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=954.html#pid954'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=954#pid954'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-06-19 14:57
 </div>
 <div class='ccl'>
-The only requirement coming from Gosu is that any drawing operations (image.draw, draw_quad etc.) have to take place while Window#draw is running, i.e. you cannot draw anything in direct response to a button_down. Other than that, you are free to do whatever the Ruby language supports, and that means creating things everywhere :)<br/><br/>A very basic approach would be to have a start_level method that clears the object arrays etc., and is called by the Window constructor and every time that a level is finished.<br/><br/>However, this gets ugly as soon as you have several different screens like the main menu, the actual game, a help screen etc. The usual approach to that is to create classes like GameState that have the same callbacks as Window does (draw, update, button_up, button_down). The Window then has a reference to the current game state and forwards all its methods. An example of this with some extra features can be found here: <a class='url' href='topic_show.pl@tid=113.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=113</a>
+The only requirement coming from Gosu is that any drawing operations (image.draw, draw_quad etc.) have to take place while Window#draw is running, i.e. you cannot draw anything in direct response to a button_down. Other than that, you are free to do whatever the Ruby language supports, and that means creating things everywhere :)<br/><br/>A very basic approach would be to have a start_level method that clears the object arrays etc., and is called by the Window constructor and every time that a level is finished.<br/><br/>However, this gets ugly as soon as you have several different screens like the main menu, the actual game, a help screen etc. The usual approach to that is to create classes like GameState that have the same callbacks as Window does (draw, update, button_up, button_down). The Window then has a reference to the current game state and forwards all its methods. An example of this with some extra features can be found here: <a class='url' href='topic_show.pl?tid=113'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=113</a>
 </div>
 </div>
 
@@ -68,8 +68,8 @@ The only requirement coming from Gosu is that any drawing operations (image.draw
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=969.html#pid969'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=78.html' >Maverick</a>
+<a class='psl' href='topic_show.pl?pid=969#pid969'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=78' >Maverick</a>
 <span class='htt'>Date</span> 2009-06-20 00:22
 </div>
 <div class='ccl'>
@@ -82,7 +82,7 @@ Julian ninja&#39;d my response. Curses!
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=971.html#pid971'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=971#pid971'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> ?
 <span class='htt'>Date</span> 2009-06-20 01:09
 </div>
@@ -94,9 +94,9 @@ Thanks for the reply :)
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=156.html#tid156'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=156#tid156'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid3'>Gosu</a> / <a href='board_show.pl@tid=156.html#tid156'>Gosu Exchange</a> / Diving game into levels
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid3'>Gosu</a> / <a href='board_show.pl?tid=156#tid156'>Gosu Exchange</a> / Diving game into levels
 </div>
 </div>
 
@@ -109,7 +109,7 @@ Thanks for the reply :)
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=954.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=954' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

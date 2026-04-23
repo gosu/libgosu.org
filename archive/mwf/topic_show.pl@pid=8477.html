@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -31,7 +31,7 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1204#tid1204'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1204#tid1204'>Gosu Exchange</a> / Gosu on Debian 8 / Jessie
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1204#tid1204'>Gosu Exchange</a> / Gosu on Debian 8 / Jessie
 </div>
 </div>
 
@@ -41,12 +41,12 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8466' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8466.html#pid8466'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8466#pid8466'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
 <span class='htt'>Date</span> 2015-08-04 22:14
 </div>
 <div class='ccl'>
-So, you may remember <a class='url' href='topic_show.pl@pid=8121.html'>this thread</a> I made a while ago... never got it to work, kept typing on Windows.<br/><br/>Now there&#39;s a new and shiny Debian 8, and all the libsdl packages one could ever want are available (libsdl stuff, as well as all the other listed requirements install just fine)!<br/>I do, however, get a different error (complete output):<br/><br/>---<br/><br/><code>root@debian:/home/mike# gem install gosu<br/>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; /usr/bin/ruby2.1 extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>*** extconf.rb failed ***<br/>Could not create Makefile due to some reason, probably lack of necessary<br/>libraries and/or headers.&#160; Check the mkmf.log file for more details.&#160; You may<br/>need configuration options.<br/><br/>Provided configuration options:<br/>&#160; --with-opt-dir<br/>&#160; --without-opt-dir<br/>&#160; --with-opt-include<br/>&#160; --without-opt-include=${opt-dir}/include<br/>&#160; --with-opt-lib<br/>&#160; --without-opt-lib=${opt-dir}/lib<br/>&#160; --with-make-prog<br/>&#160; --without-make-prog<br/>&#160; --srcdir=.<br/>&#160; --curdir<br/>&#160; --ruby=/usr/bin/ruby2.1<br/>&#160; --with-gl-config<br/>&#160; --without-gl-config<br/>&#160; --with-pkg-config<br/>&#160; --without-pkg-config<br/>/usr/lib/ruby/2.1.0/mkmf.rb:456:in <code>try_do&#39;: The compiler failed to generate an executable file. (RuntimeError)<br/>You have to install development tools first.<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:541:in </code>try_link0&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:556:in <code>try_link&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:642:in </code>block in try_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:635:in <code>with_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:641:in </code>try_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:1762:in <code>pkg_config&#39;<br/>&#160; from extconf.rb:118:in </code>&lt;main&gt;&#39;<br/><br/>extconf failed, exit code 1<br/><br/>Gem files will remain installed in /var/lib/gems/2.1.0/gems/gosu-0.9.2 for inspection.<br/>Results logged to /var/lib/gems/2.1.0/extensions/x86_64-linux/2.1.0/gosu-0.9.2/gem_make.out</code><br/><br/>---<br/><br/>Now, <a class='url' href='https://wiki.debian.org/Ruby#Available_interpreters_in_Debian_8_.28jessie.29'>Jessie only comes with Ruby 2.1</a> (and Ruby2.1-dev respectively), and I assume that has something to do with it. I&#39;m just wondering whether there are any configuration options I could use, as well as whether 2.1 is probably not supported at all (though I thought I read somewhere that it&#39;ll work with 2.x...)<br/><br/>Any help is, as always, apprechiated :)
+So, you may remember <a class='url' href='topic_show.pl?pid=8121'>this thread</a> I made a while ago... never got it to work, kept typing on Windows.<br/><br/>Now there&#39;s a new and shiny Debian 8, and all the libsdl packages one could ever want are available (libsdl stuff, as well as all the other listed requirements install just fine)!<br/>I do, however, get a different error (complete output):<br/><br/>---<br/><br/><code>root@debian:/home/mike# gem install gosu<br/>Building native extensions.&#160; This could take a while...<br/>ERROR:&#160; Error installing gosu:<br/>&#160; ERROR: Failed to build gem native extension.<br/><br/>&#160; &#160; /usr/bin/ruby2.1 extconf.rb<br/>The Gosu gem requires some libraries to be installed system-wide.<br/>See the following site for a list:<br/><a class='ura' href='https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux'>https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux</a><br/><br/>*** extconf.rb failed ***<br/>Could not create Makefile due to some reason, probably lack of necessary<br/>libraries and/or headers.&#160; Check the mkmf.log file for more details.&#160; You may<br/>need configuration options.<br/><br/>Provided configuration options:<br/>&#160; --with-opt-dir<br/>&#160; --without-opt-dir<br/>&#160; --with-opt-include<br/>&#160; --without-opt-include=${opt-dir}/include<br/>&#160; --with-opt-lib<br/>&#160; --without-opt-lib=${opt-dir}/lib<br/>&#160; --with-make-prog<br/>&#160; --without-make-prog<br/>&#160; --srcdir=.<br/>&#160; --curdir<br/>&#160; --ruby=/usr/bin/ruby2.1<br/>&#160; --with-gl-config<br/>&#160; --without-gl-config<br/>&#160; --with-pkg-config<br/>&#160; --without-pkg-config<br/>/usr/lib/ruby/2.1.0/mkmf.rb:456:in <code>try_do&#39;: The compiler failed to generate an executable file. (RuntimeError)<br/>You have to install development tools first.<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:541:in </code>try_link0&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:556:in <code>try_link&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:642:in </code>block in try_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:635:in <code>with_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:641:in </code>try_ldflags&#39;<br/>&#160; from /usr/lib/ruby/2.1.0/mkmf.rb:1762:in <code>pkg_config&#39;<br/>&#160; from extconf.rb:118:in </code>&lt;main&gt;&#39;<br/><br/>extconf failed, exit code 1<br/><br/>Gem files will remain installed in /var/lib/gems/2.1.0/gems/gosu-0.9.2 for inspection.<br/>Results logged to /var/lib/gems/2.1.0/extensions/x86_64-linux/2.1.0/gosu-0.9.2/gem_make.out</code><br/><br/>---<br/><br/>Now, <a class='url' href='https://wiki.debian.org/Ruby#Available_interpreters_in_Debian_8_.28jessie.29'>Jessie only comes with Ruby 2.1</a> (and Ruby2.1-dev respectively), and I assume that has something to do with it. I&#39;m just wondering whether there are any configuration options I could use, as well as whether 2.1 is probably not supported at all (though I thought I read somewhere that it&#39;ll work with 2.x...)<br/><br/>Any help is, as always, apprechiated :)
 </div>
 </div>
 
@@ -54,7 +54,7 @@ So, you may remember <a class='url' href='topic_show.pl@pid=8121.html'>this thre
 <div class='frm pst' id='pid8467' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8466'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8466'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8467' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
 <a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8467#pid8467'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
@@ -70,10 +70,10 @@ Ruby 2.1 is a fine version :) Every version from 1.8.7 to 2.2.x should work with
 <div class='frm pst' id='pid8468' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8467'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8467'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8468' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8468.html#pid8468'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8468#pid8468'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
 <span class='htt'>Date</span> 2015-08-05 16:54
 </div>
@@ -86,10 +86,10 @@ All dependencies listed installed fine, using the command provided for the Ubunt
 <div class='frm pst' id='pid8469' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8468'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8468'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8469' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8469.html#pid8469'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8469#pid8469'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2015-08-05 17:47
 </div>
@@ -102,7 +102,7 @@ Oh, that sounds like a different error altogether :) The important part is &quot
 <div class='frm pst' id='pid8470' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8469'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8469'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8470' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
 <a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8470#pid8470'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
@@ -118,10 +118,10 @@ There&#39;s a libGL.so in /usr/lib/, along with a few other, similarly named fil
 <div class='frm pst' id='pid8471' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8470'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8470'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8471' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8471.html#pid8471'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8471#pid8471'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2015-08-05 19:15
 </div>
@@ -134,9 +134,9 @@ Phew - not sure why it can&#39;t find this library?<br/><br/>Gosu is using a too
 <div class='frm pst' id='pid8475' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8471'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=8475.html#pid8475'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8475#pid8475'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
 <span class='htt'>Date</span> 2015-08-05 19:40
 </div>
@@ -149,7 +149,7 @@ Oh, I glanced over this one - the output is probably what it should be: <code>-l
 <div class='frm pst' id='pid8472' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8470'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8470'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8472' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
 <a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8472#pid8472'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
@@ -165,9 +165,9 @@ And another idea: Does <code>gem install opengl</code> work?
 <div class='frm pst' id='pid8473' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8472'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8472'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=8473.html#pid8473'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8473#pid8473'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
 <span class='htt'>Date</span> 2015-08-05 19:24
 </div>
@@ -179,10 +179,10 @@ No dice - here&#39;s the console output:<br/><br/><code>root@debian:/home/mike# 
 <div class='frm pst' id='pid8474' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8472'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8472'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8474' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=8474.html#pid8474'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8474#pid8474'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=182' >BlueScope</a>
 <span class='htt'>Date</span> 2015-08-05 19:29
 </div>
@@ -195,7 +195,7 @@ I believe <a class='url' href='https://www.linuxquestions.org/questions/linux-so
 <div class='frm pst' id='pid8476' style='margin-left: 21%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8474'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8474'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl8476' src='https://www.libgosu.org/mwf/epx.png' title='Collapse branch' alt='-'>
 <a class='psl' href='https://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=8476#pid8476'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
@@ -212,9 +212,9 @@ Okay, it was indeed caused by nVidia drivers - I had manually installed the driv
 <div class='frm pst' id='pid8477' style='margin-left: 24%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=8477.html#pid8476'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=8477#pid8476'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=8477.html#pid8477'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=8477#pid8477'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2015-08-05 22:50
 </div>
@@ -236,7 +236,7 @@ Great to hear that it works and thanks for the write-up! I&#39;ve added a link t
 <span class='nav'>
 <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1204#tid1204'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1204#tid1204'>Gosu Exchange</a> / Gosu on Debian 8 / Jessie
+<span class='htt'>Topic</span> <a href='forum.pl#bid3'>Gosu</a> / <a href='https://www.libgosu.org/cgi-bin/mwf/board_show.pl?tid=1204#tid1204'>Gosu Exchange</a> / Gosu on Debian 8 / Jessie
 </div>
 </div>
 
@@ -249,7 +249,7 @@ Great to hear that it works and thanks for the write-up! I&#39;ve added a link t
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=8477.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=8477' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

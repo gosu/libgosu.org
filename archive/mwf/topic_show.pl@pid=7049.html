@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=928.html#tid928'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=928#tid928'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=928.html#tid928'>Gosu Showcase</a> / rPhalanx 2
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid2'>Gosu</a> / <a href='board_show.pl?tid=928#tid928'>Gosu Showcase</a> / rPhalanx 2
 </div>
 </div>
 
@@ -41,8 +41,8 @@ img.ava { width: 50px; height: 50px }
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7046' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7046.html#pid7046'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<a class='psl' href='topic_show.pl?pid=7046#pid7046'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1029' >allcaps</a>
 <span class='htt'>Date</span> 2013-07-29 16:06
 <span class='htt'>Edited</span> 2013-08-07 00:11
 </div>
@@ -50,9 +50,9 @@ img.ava { width: 50px; height: 50px }
 This is the first lump of code I&#39;m actually kind of sort of a tiny bit proud of.<br/><br/><a class='url' href='https://github.com/mikezila/rPhalanx2'>rPhalanx2</a><br/><br/>A pretty simple semi-bullet hell engine in the sirit of R-Type and Phalanx, which is steals its name and graphics from.<br/><br/>I pretty much re-wrote this whole thing after realizing I was hitting a wall with the way I was doing my game&#39;s objects.&#160; I followed jlnr&#39;s advice/method of using gamestates and gameobjects in a way that makes it much easier for all objects to interact with each other.&#160; I wanted to take it a step further, though, so I added an array to all gameobjects called &quot;tags&quot;, which just contains simple strings.&#160; Things like &quot;shot&quot;, &quot;player_shot&quot;, &quot;enemy_ship&quot;, and so on.&#160; This way I can do...<br/><br/><code><br/>self.game.objects.each do |object|<br/>&#160; if object.tags include? &quot;some_tag&quot;<br/>&#160; &#160; object.do_stuff<br/>&#160; end<br/>end<br/></code><br/><br/>...and I can be sure I&#39;m only hitting the objects I want with my callbacks.&#160; It also makes it easy to do things like count how many bullets there are, and how many belong to the player or to enemies without having to keep a running tally.&#160; Ruby&#39;s arrays seem reasonably fast.&#160; We can get up to about 150 enemies all firing shots at the player before we start to get any slowdown, having about 300 bullets on screen, give or take. I also have a lot of debug display code running over the gameobjects each frame, so that&#39;s probably bogging it a little bit too.<br/><br/>I was inspired by Unity3D, as it makes use of a very similar tagging system that lets you find and act on gameobjects using their tags, though I think the way it does it is that when you tag an object it&#39;s registered into a list for that tag, rather then the tag being search for on-the-fly.<br/><br/>I&#39;m sure this can be improve a lot.&#160; There are a lot of things that don&#39;t need to use the tag system, like things that search for just the player, and other misc ways to make it more efficient.&#160; But for small games this should be fine.&#160; It&#39;s of course still missing a lot, like shots connecting or enemy movement.&#160; Just wanted to share.<br/><br/><b>Update:</b>&#160; Holy smokes.&#160; Just making enemy fire more efficient by breaking after it finds the player let me go from about 300 bullets at a time at 55fps to nearly a thousand with 60fps and no stutter at all when new volleys are fired.&#160; And this is with the player now checking to see if they&#39;re hit. A simple distance check, but still.&#160; Pretty sure I&#39;m going to be using Ruby and Gosu for any future game jams.<br/><br/><b>Update 2:</b> Code is a bit cleaner, and enemies now spawn and can be destroyed, with an animation and everything.&#160; It&#39;s getting to the point it could be turned into an actual game, but I think I&#39;m ready to move on.&#160; I tried/learned a lot of things with this mini-project, and I&#39;ll apply those going forward.&#160; Some things worked well, some didn&#39;t, but it was all good learning.
 </div>
 <div class='ccl pat'>
-<a href='attach_show.pl@aid=776.html'><img class='amt' src='../../mwf/attachments/46/7046/screen.thb.jpg' title='screen.jpg (108k)' alt=''/></a>
-<a href='attach_show.pl@aid=778.html'><img class='amt' src='../../mwf/attachments/46/7046/screen2.thb.jpg' title='lag after about 250 shots at once (112k)' alt=''/></a>
-<a href='attach_show.pl@aid=779.html'><img class='amt' src='../../mwf/attachments/46/7046/screen3.thb.jpg' title='After some optimization, nearly a thousand shots with zero lag at any time (113k)' alt=''/></a>
+<a href='attach_show.pl?aid=776'><img class='amt' src='../../mwf/attachments/46/7046/screen.thb.jpg' title='screen.jpg (108k)' alt=''/></a>
+<a href='attach_show.pl?aid=778'><img class='amt' src='../../mwf/attachments/46/7046/screen2.thb.jpg' title='lag after about 250 shots at once (112k)' alt=''/></a>
+<a href='attach_show.pl?aid=779'><img class='amt' src='../../mwf/attachments/46/7046/screen3.thb.jpg' title='After some optimization, nearly a thousand shots with zero lag at any time (113k)' alt=''/></a>
 </div>
 </div>
 
@@ -60,11 +60,11 @@ This is the first lump of code I&#39;m actually kind of sort of a tiny bit proud
 <div class='frm pst' id='pid7047' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7046'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7046'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7047' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7047.html#pid7047'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=7047#pid7047'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2013-07-29 18:11
 </div>
 <div class='ccl'>
@@ -76,11 +76,11 @@ Iterating through game objects so many times isn&#39;t much efficient. You could
 <div class='frm pst' id='pid7048' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7047'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7047'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7048' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7048.html#pid7048'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<a class='psl' href='topic_show.pl?pid=7048#pid7048'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1029' >allcaps</a>
 <span class='htt'>Date</span> 2013-07-29 18:48
 </div>
 <div class='ccl'>
@@ -92,11 +92,11 @@ This is a good point!&#160; The hud was put together pretty quickly, so I didn&#
 <div class='frm pst' id='pid7049' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7048'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7048'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7049' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7049.html#pid7049'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=138.html' >lol_o2</a>
+<a class='psl' href='topic_show.pl?pid=7049#pid7049'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=138' >lol_o2</a>
 <span class='htt'>Date</span> 2013-07-29 19:10
 </div>
 <div class='ccl'>
@@ -108,10 +108,10 @@ But player reference is also for enemies, bullets etc. Player object is probably
 <div class='frm pst' id='pid7050' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7049'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7049'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7050.html#pid7050'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<a class='psl' href='topic_show.pl?pid=7050#pid7050'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1029' >allcaps</a>
 <span class='htt'>Date</span> 2013-07-29 19:34
 </div>
 <div class='ccl'>
@@ -124,11 +124,11 @@ I&#39;d like to avoid using globals if I can.&#160; I prefer just using self.gam
 <div class='frm pst' id='pid7058' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7047'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7047'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7058' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7058.html#pid7058'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=150.html' >RavensKrag</a>
+<a class='psl' href='topic_show.pl?pid=7058#pid7058'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=150' >RavensKrag</a>
 <span class='htt'>Date</span> 2013-08-01 18:04
 </div>
 <div class='ccl'>
@@ -140,10 +140,10 @@ I personally prefer to use a series of arrays inside of a hash.&#160; Makes for 
 <div class='frm pst' id='pid7082' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7058'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7058'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7082.html#pid7082'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<a class='psl' href='topic_show.pl?pid=7082#pid7082'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1029' >allcaps</a>
 <span class='htt'>Date</span> 2013-08-07 00:08
 </div>
 <div class='ccl'>
@@ -156,11 +156,11 @@ Hadn&#39;t thought about using a hash, that&#39;s actually a really good idea.&#
 <div class='frm pst' id='pid7093' style='margin-left: 3%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7046'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7046'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7093' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7093.html#pid7093'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<a class='psl' href='topic_show.pl?pid=7093#pid7093'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=993' >ml</a>
 <span class='htt'>Date</span> 2013-08-10 01:25
 </div>
 <div class='ccl'>
@@ -172,11 +172,11 @@ Hi, I was able to load rPhalanx2 and get it to run. The HUD was giving me errors
 <div class='frm pst' id='pid7094' style='margin-left: 6%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7093'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7093'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7094' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7094.html#pid7094'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<a class='psl' href='topic_show.pl?pid=7094#pid7094'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1029' >allcaps</a>
 <span class='htt'>Date</span> 2013-08-10 04:06
 </div>
 <div class='ccl'>
@@ -188,11 +188,11 @@ What about the HUD was not working?&#160; I just downloaded the source I have on
 <div class='frm pst' id='pid7095' style='margin-left: 9%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7094'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7094'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7095' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7095.html#pid7095'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<a class='psl' href='topic_show.pl?pid=7095#pid7095'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=993' >ml</a>
 <span class='htt'>Date</span> 2013-08-10 19:00
 </div>
 <div class='ccl'>
@@ -204,11 +204,11 @@ Hi allcaps. Here&#39;s the error I get:<br/><br/>/rPhalanx2/hud.rb:40:in &#39;dr
 <div class='frm pst' id='pid7096' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7095'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7095'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7096' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7096.html#pid7096'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1029.html' >allcaps</a>
+<a class='psl' href='topic_show.pl?pid=7096#pid7096'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1029' >allcaps</a>
 <span class='htt'>Date</span> 2013-08-10 19:17
 <span class='htt'>Edited</span> 2013-08-10 19:23
 </div>
@@ -221,11 +221,11 @@ ah, it must be taking issue with the font I included.&#160; If you open the HUD.
 <div class='frm pst' id='pid7098' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7096'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7096'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7098' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7098.html#pid7098'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<a class='psl' href='topic_show.pl?pid=7098#pid7098'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=993' >ml</a>
 <span class='htt'>Date</span> 2013-08-10 19:32
 </div>
 <div class='ccl'>
@@ -237,10 +237,10 @@ I replied at the same time as you were replying. Yes, it was a simple case-sensi
 <div class='frm pst' id='pid7099' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7098'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7098'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7099.html#pid7099'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<a class='psl' href='topic_show.pl?pid=7099#pid7099'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=993' >ml</a>
 <span class='htt'>Date</span> 2013-08-10 19:40
 </div>
 <div class='ccl'>
@@ -253,11 +253,11 @@ I replied at the same time as you were replying. Yes, it was a simple case-sensi
 <div class='frm pst' id='pid7097' style='margin-left: 12%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7095'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7095'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7097' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7097.html#pid7097'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<a class='psl' href='topic_show.pl?pid=7097#pid7097'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=993' >ml</a>
 <span class='htt'>Date</span> 2013-08-10 19:30
 </div>
 <div class='ccl'>
@@ -269,11 +269,11 @@ Hey I figured it out - very small detail... in hud.rb:7<br/><br/>@font = Gosu::F
 <div class='frm pst' id='pid7104' style='margin-left: 15%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7097'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7097'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
 <img class='tgl clk sic sic_nav_minus' id='tgl7104' src='../../mwf/epx.png' title='Collapse branch' alt='-'>
-<a class='psl' href='topic_show.pl@pid=7104.html#pid7104'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=7104#pid7104'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2013-08-12 08:54
 </div>
 <div class='ccl'>
@@ -285,10 +285,10 @@ Sudden realisation: Wouldn&#39;t it be useful if Gosu would warn you for any fil
 <div class='frm pst' id='pid7105' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7104'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7104'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7105.html#pid7105'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=19.html' >oli.obk</a>
+<a class='psl' href='topic_show.pl?pid=7105#pid7105'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=19' >oli.obk</a>
 <span class='htt'>Date</span> 2013-08-12 09:47
 </div>
 <div class='ccl'>
@@ -299,10 +299,10 @@ or since loading doesn&#39;t happen very often, stat the folder, search (ignorin
 <div class='frm pst' id='pid7106' style='margin-left: 18%'>
 <div class='hcl'>
 <span class='nav'>
-<a class='prl' href='topic_show.pl@pid=7049.html#pid7104'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
+<a class='prl' href='topic_show.pl?pid=7049#pid7104'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'></a>
 </span>
-<a class='psl' href='topic_show.pl@pid=7106.html#pid7106'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=993.html' >ml</a>
+<a class='psl' href='topic_show.pl?pid=7106#pid7106'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=993' >ml</a>
 <span class='htt'>Date</span> 2013-08-12 18:41
 </div>
 <div class='ccl'>
@@ -319,9 +319,9 @@ For Windows users it doesn&#39;t seem to make a difference, not sure on Mac, but
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=928.html#tid928'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=928#tid928'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=928.html#tid928'>Gosu Showcase</a> / rPhalanx 2
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid2'>Gosu</a> / <a href='board_show.pl?tid=928#tid928'>Gosu Showcase</a> / rPhalanx 2
 </div>
 </div>
 
@@ -334,7 +334,7 @@ For Windows users it doesn&#39;t seem to make a difference, not sure on Mac, but
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=7049.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=7049' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=109.html#tid109'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=109#tid109'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=109.html#tid109'>Gosu Showcase</a> / Tron 3000
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid2'>Gosu</a> / <a href='board_show.pl?tid=109#tid109'>Gosu Showcase</a> / Tron 3000
 </div>
 </div>
 
@@ -40,15 +40,15 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=467.html#pid467'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=73.html' >jose</a>
+<a class='psl' href='topic_show.pl?pid=467#pid467'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=73' >jose</a>
 <span class='htt'>Date</span> 2009-05-01 10:58
 </div>
 <div class='ccl'>
 I&#39;ve developed a game using this great library. Thanks Julian for developing Ruby Gosu.<br/><br/>Its name is Tron 3000, and it&#39;s available at <a class='url' href='http://tron3000.eltorbellino.com'>http://tron3000.eltorbellino.com</a> for Windows, Mac &amp; Linux.<br/><br/>This is a deathmatch-style remake of classic Tron game, for multiple players on the same computer, or for playing against artificial intelligence players. Controls are so simple. There are lots of items to pick up, which make the game very addictive:<br/>&#160; - Green bubbles provide weapons, which can be used using the &quot;fire&quot; button. There are missiles available, and so on.<br/>&#160; - Red bubbles provide temporal skills, such as high speed.<br/>&#160; - Blue bubbles have immediate effects, such as cleaning the screen.<br/>Everytime an opponent is killed, you get one point, but if you kill yourself, you&#39;ll lose one point! The player with more points wins.<br/><br/>As the game starts, a demo game is played background. You can change video resolution and go fullscreen in the &quot;options&quot; menu. In order to play, you have to create some players in the &quot;players&quot; menu, either human or AI players. Then you&#39;re ready to start a new game!<br/><br/>For the geeks, the game allows creating new weapons or AI profiles by including new extensions under the &#39;extensions&#39; folder, such as:<br/>- tron3000<br/>&#160; - extensions<br/>&#160; &#160; - new_extension&#160; &#160; &#160; &#160; &#160;&#160; (name for the extension)<br/>&#160; &#160; &#160; - art<br/>&#160; &#160; &#160; &#160; - audio<br/>&#160; &#160; &#160; &#160; &#160; * new_item.wav&#160; &#160; &#160; (sound played when picking the item -- optional)<br/>&#160; &#160; &#160; &#160; - graphics<br/>&#160; &#160; &#160; &#160; &#160; * new_item.png&#160; &#160; &#160; (icon for the item -- optional)<br/>&#160; &#160; &#160; - code<br/>&#160; &#160; &#160; &#160; - items<br/>&#160; &#160; &#160; &#160; &#160; * new_item.rb&#160; &#160; &#160;&#160; (code for the item)<br/><br/>Items are quite easy to code. The following example defines a skill which removes the trail that is left after a player (by redefining the &quot;trail&quot; method that Motorbike class uses):<br/><br/>Skill do<br/>&#160; def trail; end<br/>end<br/><br/>The next example creates an action which clears all the screen. Like in the previous one, code is executed under the Motorbike class:<br/><br/>Action do<br/>&#160; def pick_action<br/>&#160; &#160; @game.arena.clear_all<br/>&#160; end<br/>end<br/><br/>Check more items under tron3000/code/items. If you also want to add a new AI profile to your extension, just create it like tron3000/extensions/new_extensions/code/bots/my_new_killer_bot.rb and you&#39;ll be able to select it when creating new players during the game. Check the existing AI profile at tron3000/code/bots/machine.rb. After you have created an extension, you can activate it in the &quot;extensions&quot; menu of the game.<br/><br/>A frequently asked question about Gosu is how to draw on textures, so you can check my implementation at tron3000/code/core/arena.rb, although it is pure OpenGL for some reasons. Game performance is just OK, so I hope Ruby 1.9 improves it, though I&#39;ve not tried it yet. So Gosu for Ruby 1.9 would be very appreciated :) Also, the Linux version doesn&#39;t work on my Ubuntu since the day I added sound support... maybe there&#39;s a problem with SDL library.<br/><br/>I hope you like the game.<br/><br/>Enjoy it!!
 </div>
 <div class='ccl pat'>
-<a href='attach_show.pl@aid=401.html'><img class='amt' src='../../mwf/attachments/67/467/tron3000.thb.jpg' title='tron3000.png (287k)' alt=''/></a>
+<a href='attach_show.pl?aid=401'><img class='amt' src='../../mwf/attachments/67/467/tron3000.thb.jpg' title='tron3000.png (287k)' alt=''/></a>
 </div>
 </div>
 
@@ -57,8 +57,8 @@ I&#39;ve developed a game using this great library. Thanks Julian for developing
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=468.html#pid468'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<a class='psl' href='topic_show.pl?pid=468#pid468'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=21' >philomory</a>
 <span class='htt'>Date</span> 2009-05-01 14:22
 </div>
 <div class='ccl'>
@@ -71,8 +71,8 @@ This looks really awesome. Extendable AI? Very, very cool.
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=469.html#pid469'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=21.html' >philomory</a>
+<a class='psl' href='topic_show.pl?pid=469#pid469'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=21' >philomory</a>
 <span class='htt'>Date</span> 2009-05-01 15:02
 </div>
 <div class='ccl'>
@@ -85,8 +85,8 @@ Incidentally, for what it&#39;s worth, using Ruby 1.9 approximately doubles my f
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=470.html#pid470'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=73.html' >jose</a>
+<a class='psl' href='topic_show.pl?pid=470#pid470'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=73' >jose</a>
 <span class='htt'>Date</span> 2009-05-01 15:18
 </div>
 <div class='ccl'>
@@ -99,8 +99,8 @@ Thanks, philomory! Regarding Ruby 1.9, I&#39;ve been forced to reduce computatio
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=473.html#pid473'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=473#pid473'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-03 09:32
 </div>
 <div class='ccl'>
@@ -113,12 +113,12 @@ Amazing stuff! Very very polished. Will need to look at the source code in place
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=490.html#pid490'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=1.html' >jlnr</a> (dev)
+<a class='psl' href='topic_show.pl?pid=490#pid490'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2009-05-05 01:48
 </div>
 <div class='ccl'>
-You should be able to test your game with Ruby 1.9 using the files from this posting (gosu.so for Windows, .app wrapper for OS X):<br/><br/><a class='url' href='topic_show.pl@pid=489.html#pid489'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=489#pid489</a><br/><br/>I wanted to test it on Windows with your game, but I couldn&#39;t get the ruby-opengl gem installed :(<br/><br/>(Still looking forward to testing the computer enemies, with only two human players it&#39;s too easy to just keep firing :) )
+You should be able to test your game with Ruby 1.9 using the files from this posting (gosu.so for Windows, .app wrapper for OS X):<br/><br/><a class='url' href='topic_show.pl?pid=489#pid489'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?pid=489#pid489</a><br/><br/>I wanted to test it on Windows with your game, but I couldn&#39;t get the ruby-opengl gem installed :(<br/><br/>(Still looking forward to testing the computer enemies, with only two human players it&#39;s too easy to just keep firing :) )
 </div>
 </div>
 
@@ -127,8 +127,8 @@ You should be able to test your game with Ruby 1.9 using the files from this pos
 <span class='nav'>
 <img class='sic sic_nav_up' src='../../mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=500.html#pid500'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=73.html' >jose</a>
+<a class='psl' href='topic_show.pl?pid=500#pid500'><img src='../../mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=73' >jose</a>
 <span class='htt'>Date</span> 2009-05-06 08:22
 </div>
 <div class='ccl'>
@@ -139,9 +139,9 @@ Thanks Julian!! I&#39;ll try the Ruby 1.9 version as soon as I can. Anyway, righ
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=109.html#tid109'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=109#tid109'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum_show.pl.html#bid2'>Gosu</a> / <a href='board_show.pl@tid=109.html#tid109'>Gosu Showcase</a> / Tron 3000
+<span class='htt'>Topic</span> <a href='forum_show.pl#bid2'>Gosu</a> / <a href='board_show.pl?tid=109#tid109'>Gosu Showcase</a> / Tron 3000
 </div>
 </div>
 
@@ -154,7 +154,7 @@ Thanks Julian!! I&#39;ll try the Ruby 1.9 version as soon as I can. Anyway, righ
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=490.html' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=490' id='qrparent'><img class='sic sic_nav_up' src='../../mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>

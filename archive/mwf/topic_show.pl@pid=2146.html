@@ -20,7 +20,7 @@ img.ava { width: 50px; height: 50px }
 <div class='frm tpb'>
 <div class='hcl'><span class='htt'>Gosu Forums (archived)</span></div>
 <div class='bcl'>
-<a href='forum.pl.html' title='Forum start page'>Overview</a>
+<a href='forum.pl' title='Forum start page'>Overview</a>
 <a href='/'>back to libgosu.org</a>
 <a href='https://github.com/gosu/libgosu.org'>Send corrections on GitHub</a>
 </div>
@@ -29,9 +29,9 @@ img.ava { width: 50px; height: 50px }
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=327.html#tid327'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=327#tid327'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=327.html#tid327'>Extending Gosu</a> / [Texplay] Ruby GC make the game freeze when using Texplay
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=327#tid327'>Extending Gosu</a> / [Texplay] Ruby GC make the game freeze when using Texplay
 </div>
 </div>
 
@@ -40,12 +40,12 @@ img.ava { width: 50px; height: 50px }
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2136.html#pid2136'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=164.html' >Gavos</a>
+<a class='psl' href='topic_show.pl?pid=2136#pid2136'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=164' >Gavos</a>
 <span class='htt'>Date</span> 2010-02-28 04:59
 </div>
 <div class='ccl'>
-Hi everyone,<br/><br/>As people advised me to do in <a class='url' href='topic_show.pl@tid=325,.html'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=325,</a> I switched to Texplay for building a single image that is getting drawn to the screen. The performance is very good, except... when Ruby&#39;s garbage collector enter the scene!<br/><br/>Everytime it is called it makes a small (but very noticeable) freeze of about 100 ms. The GC seems to be run quite often (once every 2 seconds maybe) and I suppose it comes from the use I make of Texplay. The reason for that is that when I disable the GC (&quot;GC.disable&quot;) there is no more freeze but my program reaches the gig in 1 minute, but if I disable the use of Texplay the memory consumption increases much slower (but maybe it is not a good clue as to whether Texplay is the one who makes the GC run that often?)<br/><br/>Now, I would like to know if there is a better way to use Texplay that would not be so memory consuming. Here is what I am doing: <a class='url' href='http://pastebin.com/xpA6h7XQ'>http://pastebin.com/xpA6h7XQ</a><br/><br/>It is quite simple, I read a list of squares to draw and I call &quot;rect&quot; on the picture on each one of them. But it could be done differently maybe? Or I could play with the cache? And if not, does anyone knows any good tricks to &quot;smooth&quot; the garbage collector? But to be honest, I cannot think of any good time to run it manually (if I could) because the game can be continuous, that is without any pause.<br/><br/>Thanks in advance for your answers!
+Hi everyone,<br/><br/>As people advised me to do in <a class='url' href='topic_show.pl?tid=325,'>http://www.libgosu.org/cgi-bin/mwf/topic_show.pl?tid=325,</a> I switched to Texplay for building a single image that is getting drawn to the screen. The performance is very good, except... when Ruby&#39;s garbage collector enter the scene!<br/><br/>Everytime it is called it makes a small (but very noticeable) freeze of about 100 ms. The GC seems to be run quite often (once every 2 seconds maybe) and I suppose it comes from the use I make of Texplay. The reason for that is that when I disable the GC (&quot;GC.disable&quot;) there is no more freeze but my program reaches the gig in 1 minute, but if I disable the use of Texplay the memory consumption increases much slower (but maybe it is not a good clue as to whether Texplay is the one who makes the GC run that often?)<br/><br/>Now, I would like to know if there is a better way to use Texplay that would not be so memory consuming. Here is what I am doing: <a class='url' href='http://pastebin.com/xpA6h7XQ'>http://pastebin.com/xpA6h7XQ</a><br/><br/>It is quite simple, I read a list of squares to draw and I call &quot;rect&quot; on the picture on each one of them. But it could be done differently maybe? Or I could play with the cache? And if not, does anyone knows any good tricks to &quot;smooth&quot; the garbage collector? But to be honest, I cannot think of any good time to run it manually (if I could) because the game can be continuous, that is without any pause.<br/><br/>Thanks in advance for your answers!
 </div>
 </div>
 
@@ -54,7 +54,7 @@ Hi everyone,<br/><br/>As people advised me to do in <a class='url' href='topic_s
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2137.html#pid2137'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2137#pid2137'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2010-02-28 09:32
 </div>
@@ -68,8 +68,8 @@ Could you link to the entire game so i can play with it and see what&#39;s going
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2138.html#pid2138'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=164.html' >Gavos</a>
+<a class='psl' href='topic_show.pl?pid=2138#pid2138'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=164' >Gavos</a>
 <span class='htt'>Date</span> 2010-02-28 13:28
 </div>
 <div class='ccl'>
@@ -82,7 +82,7 @@ Sure, you can get the &quot;game&quot; here: <a class='url' href='http://gavos.f
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2139.html#pid2139'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2139#pid2139'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2010-02-28 14:29
 </div>
@@ -96,8 +96,8 @@ Hi,<br/><br/>to be honest i did not get much of a noticeable slowdown at all on 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2140.html#pid2140'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=164.html' >Gavos</a>
+<a class='psl' href='topic_show.pl?pid=2140#pid2140'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=164' >Gavos</a>
 <span class='htt'>Date</span> 2010-02-28 15:16
 </div>
 <div class='ccl'>
@@ -110,8 +110,8 @@ Hey, your &quot;slight speedup&quot; did the trick!<br/><br/>I am running on a q
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2141.html#pid2141'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=103.html' >erisdiscord</a>
+<a class='psl' href='topic_show.pl?pid=2141#pid2141'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=103' >erisdiscord</a>
 <span class='htt'>Date</span> 2010-02-28 17:14
 </div>
 <div class='ccl'>
@@ -124,8 +124,8 @@ I don&#39;t know if you&#39;ve caught this yet, but I clicked on the status bar 
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2142.html#pid2142'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
-<span class='htt'>By</span> <a href='user_info.pl@uid=164.html' >Gavos</a>
+<a class='psl' href='topic_show.pl?pid=2142#pid2142'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<span class='htt'>By</span> <a href='user_info.pl?uid=164' >Gavos</a>
 <span class='htt'>Date</span> 2010-03-01 18:31
 </div>
 <div class='ccl'>
@@ -138,7 +138,7 @@ Thanks for your feedback erisdiscord, I had not caught this one and it is now fi
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2143.html#pid2143'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2143#pid2143'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=1' >jlnr</a> (dev)
 <span class='htt'>Date</span> 2010-03-01 21:42
 </div>
@@ -152,7 +152,7 @@ Waiting for it—didn&#39;t understand it right now :)
 <span class='nav'>
 <img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' style='visibility: hidden' alt=''>
 </span>
-<a class='psl' href='topic_show.pl@pid=2146.html#pid2146'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
+<a class='psl' href='topic_show.pl?pid=2146#pid2146'><img src='https://www.libgosu.org/mwf/epx.png' class='sic sic_post_ou' title='Old' alt='-'></a>
 <span class='htt'>By</span> <a href='https://www.libgosu.org/cgi-bin/mwf/user_info.pl?uid=53' >banister</a>
 <span class='htt'>Date</span> 2010-03-02 22:06
 </div>
@@ -164,9 +164,9 @@ I don&#39;t quite understand the game either<br/>It all seems to be written in s
 <div class='frm pgb'>
 <div class='hcl'>
 <span class='nav'>
-<a href='board_show.pl@tid=327.html#tid327'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
+<a href='board_show.pl?tid=327#tid327'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go up a level' alt='Up'></a>
 </span>
-<span class='htt'>Topic</span> <a href='forum.pl.html#bid4'>Gosu</a> / <a href='board_show.pl@tid=327.html#tid327'>Extending Gosu</a> / [Texplay] Ruby GC make the game freeze when using Texplay
+<span class='htt'>Topic</span> <a href='forum.pl#bid4'>Gosu</a> / <a href='board_show.pl?tid=327#tid327'>Extending Gosu</a> / [Texplay] Ruby GC make the game freeze when using Texplay
 </div>
 </div>
 
@@ -179,7 +179,7 @@ I don&#39;t quite understand the game either<br/>It all seems to be written in s
 <div id='qr' class='frm pst new' style='display:none;'>
 <div class='hcl'>
 <span class='nav'>
-<a href='topic_show.pl@pid=2146.html' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
+<a href='topic_show.pl?pid=2146' id='qrparent'><img class='sic sic_nav_up' src='https://www.libgosu.org/mwf/epx.png' title='Go to parent post' alt='Parent'/></a>
 <img style='vertical-align:text-top;width:16px;height:16px;' id='qrCloseQuickReply' src='../../mwf/default/nav_close.png' title='Close' alt='X'/>
 </span>
 <span class='htt'>In Response to</span>
