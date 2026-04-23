@@ -6,6 +6,20 @@ RedirectMatch 404 /\.git
     RewriteRule ^rdoc/(.*).html(.*)$ https://www.rubydoc.info/gems/gosu/$1$2 [R=301,L]
     RewriteRule ^rdoc(/?)$ https://www.rubydoc.info/gems/gosu/ [R=301,L]
 
+    # Rewrite forum requests with two query parameters:
+    # cgi-bin/mwf/*.pl?a=b&c=d -> archive/mwf/*.pl@a=b;c=d.html
+    RewriteCond %{QUERY_STRING} ^([^&]+)&([^&]+)$
+    RewriteRule ^cgi-bin/(mwf/[^/]+\.pl)$ /archive/$1@%1;%2.html [L,QSD]
+
+    # Rewrite forum requests with one query parameter:
+    # cgi-bin/mwf/*.pl?a=b -> archive/mwf/*.pl@a=b.html
+    RewriteCond %{QUERY_STRING} ^([^&]+)$
+    RewriteRule ^cgi-bin/(mwf/[^/]+\.pl)$ /archive/$1@%1.html [L,QSD]
+
+    # Rewrite forum requests with no query parameters:
+    # cgi-bin/mwf/*.pl -> archive/mwf/*.html (note: no .pl.html)
+    RewriteRule ^cgi-bin/(mwf/[^/]+)\.pl$ /archive/$1.html [L,QSD]
+
     RewriteCond %{HTTPS} off
     # First rewrite to HTTPS:
     # Don't put www. here. If it is already there it will be included, if not
